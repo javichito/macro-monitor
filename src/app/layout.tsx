@@ -31,7 +31,7 @@ export default function RootLayout({
                 </p>
               </div>
               <div className="flex items-center gap-6">
-                <span>Updated for 2025</span>
+                <span>Updated for 2026</span>
                 <span>Minimalist Institutional Grade</span>
               </div>
             </div>

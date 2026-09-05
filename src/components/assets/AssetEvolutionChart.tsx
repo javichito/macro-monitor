@@ -70,7 +70,7 @@ export function AssetEvolutionChart({
           <div>
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <Layers className="h-4 w-4 text-emerald-400" />
-              Global Asset Class Stack (2000–2025)
+              Global Asset Class Stack (1980–2026)
             </h3>
             <p className="text-xs text-slate-400 mt-0.5">
               Visualizing how the world stores its wealth across tangible property and financial capital.

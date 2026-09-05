@@ -17,12 +17,12 @@ interface AppContextValue {
 
 const AppContext = createContext<AppContextValue | undefined>(undefined);
 
-const AVAILABLE_YEARS = [2000, 2005, 2010, 2015, 2020, 2021, 2022, 2023, 2024, 2025];
+const AVAILABLE_YEARS = [1980, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2022, 2024, 2025, 2026];
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [currencyPerspective, setCurrencyPerspective] = useState<CurrencyPerspective>('nominal');
   const [granularity, setGranularity] = useState<Granularity>('country');
-  const [selectedYear, setSelectedYear] = useState<number>(2025);
+  const [selectedYear, setSelectedYear] = useState<number>(2026);
   const [isPlayingTimeline, setIsPlayingTimeline] = useState<boolean>(false);
 
   /*

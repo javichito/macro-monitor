@@ -75,7 +75,7 @@ export function Header() {
                   mode === 'nominal'
                     ? 'Nominal USD: Current unadjusted market values'
                     : mode === 'real'
-                    ? 'Real USD: Inflation-adjusted to constant 2025 purchasing power'
+                    ? 'Real USD: Inflation-adjusted to constant 2026 purchasing power'
                     : 'PPP: Purchasing Power Parity adjusted for local basket costs'
                 }
                 className={`rounded px-2.5 py-1 font-medium transition-all capitalize ${

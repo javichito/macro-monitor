@@ -14,11 +14,12 @@ export function TimelineControls() {
   } = useApp();
 
   const getEraLabel = (year: number) => {
-    if (year <= 2005) return 'Early Millennial & Real Estate Expansion';
-    if (year <= 2010) return 'Great Financial Crisis & ZIRP Initiation';
-    if (year <= 2019) return 'Quantitative Easing & Tech Bull Cycle';
-    if (year <= 2022) return 'Pandemic Fiscal Surge & Inflation Shock';
-    return 'Present Day: Higher-For-Longer Rates & AI Wave';
+    if (year <= 1985) return 'Late Cold War & Volcker Anti-Inflation Tightening';
+    if (year <= 1995) return 'Fall of Iron Curtain & Globalization Acceleration';
+    if (year <= 2005) return 'Dot-Com Expansion & Pre-2008 Housing Cycle';
+    if (year <= 2015) return 'Great Financial Crisis & Quantitative Easing (QE)';
+    if (year <= 2022) return 'Pandemic Fiscal Surge & Global Inflation Shock';
+    return 'Present Day (2024–2026): Post-Tightening Easing & Tech Cycle';
   };
 
   return (
@@ -86,13 +87,13 @@ export function TimelineControls() {
         <button
           onClick={() => {
             setIsPlayingTimeline(false);
-            setSelectedYear(2025);
+            setSelectedYear(2026);
           }}
           className="hidden sm:flex items-center gap-1 text-xs text-slate-400 hover:text-white px-2.5 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/50"
-          title="Reset to 2025"
+          title="Reset to 2026"
         >
           <RotateCcw className="h-3 w-3" />
-          <span>Latest</span>
+          <span>Latest (2026)</span>
         </button>
       </div>
     </div>

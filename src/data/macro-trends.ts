@@ -13,6 +13,75 @@ export interface EconomicMilestone {
  */
 export const MACRO_TRENDS_HISTORY: MacroIndicatorYear[] = [
   {
+    year: 1980,
+    globalGdpTrillion: 11.2,
+    globalDebtTrillion: 19.5,
+    globalDebtToGdp: 174.1,
+    globalInflationRate: 13.5,
+    usCpiIndex: 49.2,
+    centralBankRates: {
+      fed: 16.5,
+      ecb: 9.5,
+      boj: 7.25,
+      pboc: 6.5,
+      boe: 14.0,
+    },
+    currencyReserves: {
+      usd: 72.5,
+      eur: 14.2,
+      cny: 0.0,
+      jpy: 4.1,
+      gbp: 3.2,
+      goldAndOther: 6.0,
+    },
+  },
+  {
+    year: 1990,
+    globalGdpTrillion: 23.4,
+    globalDebtTrillion: 48.2,
+    globalDebtToGdp: 206.0,
+    globalInflationRate: 7.8,
+    usCpiIndex: 76.7,
+    centralBankRates: {
+      fed: 8.25,
+      ecb: 8.0,
+      boj: 6.0,
+      pboc: 8.64,
+      boe: 11.5,
+    },
+    currencyReserves: {
+      usd: 69.1,
+      eur: 17.5,
+      cny: 0.0,
+      jpy: 5.8,
+      gbp: 3.1,
+      goldAndOther: 4.5,
+    },
+  },
+  {
+    year: 1995,
+    globalGdpTrillion: 31.0,
+    globalDebtTrillion: 66.5,
+    globalDebtToGdp: 214.5,
+    globalInflationRate: 6.5,
+    usCpiIndex: 89.1,
+    centralBankRates: {
+      fed: 5.5,
+      ecb: 4.5,
+      boj: 0.5,
+      pboc: 10.98,
+      boe: 6.75,
+    },
+    currencyReserves: {
+      usd: 68.3,
+      eur: 18.2,
+      cny: 0.0,
+      jpy: 6.4,
+      gbp: 3.0,
+      goldAndOther: 4.1,
+    },
+  },
+  {
     year: 2000,
     globalGdpTrillion: 33.6,
     globalDebtTrillion: 84.0,
@@ -219,9 +288,44 @@ export const MACRO_TRENDS_HISTORY: MacroIndicatorYear[] = [
       goldAndOther: 10.5,
     },
   },
+  {
+    year: 2026,
+    globalGdpTrillion: 122.4,
+    globalDebtTrillion: 334.0,
+    globalDebtToGdp: 272.8,
+    globalInflationRate: 3.1,
+    usCpiIndex: 189.5,
+    centralBankRates: {
+      fed: 3.75,
+      ecb: 2.25,
+      boj: 0.75,
+      pboc: 2.85,
+      boe: 3.75,
+    },
+    currencyReserves: {
+      usd: 56.4,
+      eur: 19.3,
+      cny: 2.5,
+      jpy: 5.5,
+      gbp: 4.8,
+      goldAndOther: 11.5,
+    },
+  },
 ];
 
 export const ECONOMIC_MILESTONES: EconomicMilestone[] = [
+  {
+    year: 1980,
+    title: 'The Volcker Shock & Anti-Inflation Crusade',
+    description: 'Fed Chair Paul Volcker pushed benchmark rates to 20% to break double-digit stagflation, resetting the global dollar cycle.',
+    impactCategory: 'rate',
+  },
+  {
+    year: 1997,
+    title: 'Asian Financial Contagion & Currency Crises',
+    description: 'Devaluations across Thailand, Indonesia, and South Korea triggered IMF bailouts and ignited sovereign reserve accumulation.',
+    impactCategory: 'debt',
+  },
   {
     year: 2001,
     title: 'Dot-Com Bust & Post-9/11 Easing',
@@ -251,5 +355,11 @@ export const ECONOMIC_MILESTONES: EconomicMilestone[] = [
     title: 'Central Bank Pivot & Gold Reserve Surge',
     description: 'Global central banks entered monetary easing cycles while sovereign states diversified reserves into physical gold.',
     impactCategory: 'rate',
+  },
+  {
+    year: 2026,
+    title: 'Higher Productivity Wave & De-Dollarization Dialogue',
+    description: 'AI-driven productivity gains coupled with BRICS+ settlements accelerated sovereign reserve diversification beyond USD.',
+    impactCategory: 'growth',
   },
 ];

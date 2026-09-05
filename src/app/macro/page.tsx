@@ -33,7 +33,7 @@ export default function MacroPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <PlainEnglishCard
           title="What is the Debt Supercycle?"
-          summary="In 2000, world debt was $84 Trillion. By 2025, it crossed $324 Trillion. Debt grew nearly 4x while real economic production only grew ~3.4x."
+          summary="In 1980, world debt was $19.5 Trillion. By 2026, it crossed $334 Trillion. Debt grew over 17x while real economic production only grew ~10.9x."
           detail="Debt allows governments, companies, and people to pull future consumption into the present. However, as debt-to-GDP levels climb beyond 250%, more income must be spent simply servicing interest payments rather than investing in new infrastructure or productivity."
           takeaway="Global debt cannot be eliminated quickly without severe deflation; instead, economies attempt to 'inflate away' the real burden over decades."
           defaultExpanded={true}

@@ -63,7 +63,7 @@ export function WorldMap({
   };
 
   const getCountryMetricDisplay = (country: CountryProfile, metric: MetricType) => {
-    const historyData = country.history[selectedYear] || country.history[2025];
+    const historyData = country.history[selectedYear] || country.history[2026] || country.history[2025];
     switch (metric) {
       case 'totalWealth':
         return formatCurrency(adjustValue(historyData.totalWealthTrillion, selectedYear, currencyPerspective) * 1_000_000_000_000, { compact: true });
@@ -345,7 +345,7 @@ export function WorldMap({
 
               {/* Bloc Metrics */}
               {(() => {
-                const blocMetric = selectedBloc.history[selectedYear] || selectedBloc.history[2025];
+                const blocMetric = selectedBloc.history[selectedYear] || selectedBloc.history[2026] || selectedBloc.history[2025];
                 return (
                   <div className="space-y-3 border-t border-slate-800 pt-3 text-xs">
                     <div className="flex justify-between items-center py-1 border-b border-slate-800">

@@ -11,7 +11,7 @@ export function WealthCalculator() {
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>('USA');
 
   const selectedCountry = COUNTRIES_DATA.find((c) => c.code === selectedCountryCode) || COUNTRIES_DATA[0];
-  const latestMetric = selectedCountry.history[2025];
+  const latestMetric = selectedCountry.history[2026] || selectedCountry.history[2025];
 
   const result = calculateWealthPercentile(
     netWorth,
@@ -32,7 +32,7 @@ export function WealthCalculator() {
             Where Do You Stand? (Personal Wealth Positioner)
           </h3>
           <p className="text-xs text-slate-400">
-            Discover your exact percentile standing nationally and globally based on 2025 wealth data.
+            Discover your exact percentile standing nationally and globally based on 2026 wealth data.
           </p>
         </div>
       </div>

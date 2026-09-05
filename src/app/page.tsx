@@ -138,7 +138,7 @@ export default function OverviewPage() {
       <PlainEnglishCard
         title="Why does the 'Median' wealth tell the true human story?"
         summary="If a billionaire walks into a room of 100 people with $0, the 'average' wealth suddenly becomes $10,000,000—even though 99 people remain broke. The 'Median' is the exact person in the middle."
-        detail="Worldwide in 2025, the average wealth per adult is ~$94,700, but the median is only ~$9,450. That means the typical global citizen owns roughly one-tenth of the statistical average, because high-net-worth individuals at the top pull up the mean significantly."
+        detail="Worldwide in 2026, the average wealth per adult is ~$98,200, but the median is only ~$9,750. That means the typical global citizen owns roughly one-tenth of the statistical average, because high-net-worth individuals at the top pull up the mean significantly."
         takeaway="Always evaluate median wealth to understand standard of living; use average wealth only to gauge aggregate capital capacity."
         defaultExpanded={true}
       />

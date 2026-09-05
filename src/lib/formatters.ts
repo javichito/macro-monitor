@@ -2,20 +2,24 @@ import { CurrencyPerspective } from './types';
 
 /* 
  * The base year 2000 has a CPI benchmark of 100.
- * These factors translate nominal figures into constant real 2025 dollars
+ * These factors translate nominal figures into constant real 2026 purchasing power
  * so everyday users can see if wealth actually bought more or simply inflated.
  */
-const CPI_FACTORS_TO_2025: Record<number, number> = {
-  2000: 1.83,
-  2005: 1.62,
-  2010: 1.44,
-  2015: 1.34,
-  2020: 1.23,
-  2021: 1.17,
-  2022: 1.08,
-  2023: 1.04,
-  2024: 1.01,
-  2025: 1.00,
+const CPI_FACTORS_TO_2026: Record<number, number> = {
+  1980: 3.82,
+  1990: 2.45,
+  1995: 2.11,
+  2000: 1.88,
+  2005: 1.66,
+  2010: 1.48,
+  2015: 1.37,
+  2020: 1.26,
+  2021: 1.20,
+  2022: 1.11,
+  2023: 1.07,
+  2024: 1.04,
+  2025: 1.02,
+  2026: 1.00,
 };
 
 /*
@@ -32,7 +36,7 @@ export function adjustValue(
     return value;
   }
   if (perspective === 'real') {
-    const factor = CPI_FACTORS_TO_2025[year] ?? 1.0;
+    const factor = CPI_FACTORS_TO_2026[year] ?? 1.0;
     return value * factor;
   }
   if (perspective === 'ppp') {

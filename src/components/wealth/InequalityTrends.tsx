@@ -34,7 +34,7 @@ export function InequalityTrends() {
         <div>
           <h3 className="text-base font-bold text-white flex items-center gap-2">
             <TrendingUp className="h-4 w-4 text-emerald-400" />
-            Wealth Inequality Trajectory (2000–2025)
+            Wealth Inequality Trajectory (1980–2026)
           </h3>
           <p className="text-xs text-slate-400 mt-0.5">
             Tracking how wealth concentration shifted between the Top 1%, Middle 40%, and Bottom 50%.
@@ -191,7 +191,7 @@ export function InequalityTrends() {
         ) : (
           <div className="text-slate-400">
             A Gini coefficient of 1.0 represents total inequality (one person holding all wealth).
-            Global wealth Gini softened from 0.905 in 2000 to 0.878 in 2025 as emerging markets grew.
+            Global wealth Gini softened from 0.912 in 1980 to 0.877 in 2026 as emerging markets expanded their asset base.
           </div>
         )}
       </div>

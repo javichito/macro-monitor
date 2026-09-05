@@ -22,7 +22,7 @@ export default function AssetsPage() {
           Where is the World's Wealth Stored?
         </h1>
         <p className="text-sm text-slate-400 mt-1 max-w-2xl">
-          Examine the composition of aggregate global assets across residential real estate, corporate equities, bonds, sovereign debt liabilities, and physical gold from 2000 through 2025.
+          Examine the composition of aggregate global assets across residential real estate, corporate equities, bonds, sovereign debt liabilities, and physical gold from 1980 through 2026.
         </p>
       </div>
 
@@ -38,7 +38,7 @@ export default function AssetsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <PlainEnglishCard
           title="Why is Real Estate consistently the largest asset class on Earth?"
-          summary="Real estate accounts for nearly half of all global private wealth ($286T+ in 2025). Unlike paper securities, real estate fulfills a universal physical need: shelter."
+          summary="Real estate accounts for nearly half of all global private wealth ($297T+ in 2026). Unlike paper securities, real estate fulfills a universal physical need: shelter."
           detail="Governments and central banks historically protect and subsidize mortgages through 30-year fixed loans, tax deductions, and zoning limits that constrain supply. As populations grow and urbanize, finite land values systematically compound."
           takeaway="For the bottom 90% of households, the primary residence represents over 70% of total family net worth."
           defaultExpanded={true}

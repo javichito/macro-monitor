@@ -31,7 +31,7 @@ export function MacroTrendChart() {
           <div>
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <BarChart3 className="h-4 w-4 text-emerald-400" />
-              Global Macroeconomic Engine (2000–2025)
+              Global Macroeconomic Engine (1980–2026)
             </h3>
             <p className="text-xs text-slate-400 mt-0.5">
               Long-run historical trends of global debt, interest rates, inflation, and sovereign reserves.
@@ -218,23 +218,23 @@ export function MacroTrendChart() {
         <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400">
           {activeTab === 'debt-gdp' && (
             <p>
-              Total global debt (government, corporate, and household) reached <strong>$324 Trillion</strong> in 2025,
-              standing at <strong>277%</strong> of world GDP. Debt expansion outpacing economic production remains the primary structural macro trend of the 21st century.
+              Total global debt (government, corporate, and household) reached <strong>$334 Trillion</strong> in 2026,
+              standing at <strong>273%</strong> of world GDP. Debt expansion outpacing economic production remains the primary structural macro trend of the modern era.
             </p>
           )}
           {activeTab === 'rates' && (
             <p>
-              Following a decade of near-zero policy rates post-2008, central banks executed an aggressive rate hiking cycle in 2022-2023 to tame inflation, before initiating cautious rate reductions through 2024-2025.
+              From the 16%+ Volcker shock in 1980 through 15 years of zero rates post-2008 and the rapid 2022-2023 tightening, global central banks now operate in a calibrated easing cycle through 2026.
             </p>
           )}
           {activeTab === 'reserves' && (
             <p>
-              The US Dollar remains the premier reserve currency (57.2% in 2025), but central bank allocations into physical gold and sovereign alternatives have accelerated notably over the last decade.
+              The US Dollar remains the leading global reserve currency (56.4% in 2026), but central bank allocations into physical gold and diversified sovereign holdings have reached a multi-decade high of 11.5%.
             </p>
           )}
           {activeTab === 'inflation' && (
             <p>
-              Global inflation spiked to 8.7% in 2022 amid supply chain bottlenecks and monetary stimulus before settling toward 3.5% in 2025.
+              Global inflation spiked above 13% in 1980 and 8.7% in 2022, before moderating to 3.1% in 2026 amid normalized supply chains.
             </p>
           )}
         </div>
