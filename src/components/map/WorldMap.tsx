@@ -49,9 +49,6 @@ export function WorldMap({
   const [selectedBlocId, setSelectedBlocId] = useState<string>('g7');
   const [hoveredCountryId, setHoveredCountryId] = useState<string | null>(null);
 
-  const [zoom, setZoom] = useState(1);
-  const [pan, setPan] = useState({ x: 0, y: 0 });
-
   const countryByCode = useMemo(() => {
     const map = new Map<string, CountryProfile>();
     for (const c of COUNTRIES_DATA) {
@@ -154,13 +151,87 @@ export function WorldMap({
     return '#10b981';
   };
 
+  const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+
+  const svgRef = React.useRef<SVGSVGElement | null>(null);
+  const isDraggingRef = React.useRef(false);
+  const dragStartRef = React.useRef({ x: 0, y: 0 });
+  const hasMovedRef = React.useRef(false);
+
   const handleZoom = (delta: number) => {
-    setZoom((prev) => Math.min(4, Math.max(1, prev + delta)));
+    setZoom((prev) => {
+      const next = Math.min(4.5, Math.max(1, Math.round((prev + delta) * 10) / 10));
+      if (next === 1) setPan({ x: 0, y: 0 });
+      return next;
+    });
   };
 
   const handleResetZoom = () => {
     setZoom(1);
     setPan({ x: 0, y: 0 });
+  };
+
+  /*
+   * Captures pointer coordinates for fluid 60fps drag navigation.
+   * Tracks distance to distinguish deliberate click selection from map panning.
+   */
+  const handlePointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    isDraggingRef.current = true;
+    hasMovedRef.current = false;
+    dragStartRef.current = { x: e.clientX, y: e.clientY };
+    setIsDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<SVGSVGElement>) => {
+    if (!isDraggingRef.current) return;
+    const dx = e.clientX - dragStartRef.current.x;
+    const dy = e.clientY - dragStartRef.current.y;
+
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+      hasMovedRef.current = true;
+    }
+
+    dragStartRef.current = { x: e.clientX, y: e.clientY };
+
+    const svgRect = svgRef.current?.getBoundingClientRect();
+    const scaleFactor = svgRect ? 960 / svgRect.width : 1;
+    const svgDx = dx * scaleFactor;
+    const svgDy = dy * scaleFactor;
+
+    setPan((prev) => {
+      const maxPanX = Math.max(300, (zoom - 1) * 480 + 300);
+      const maxPanY = Math.max(200, (zoom - 1) * 250 + 200);
+      return {
+        x: Math.max(-maxPanX, Math.min(maxPanX, prev.x + svgDx)),
+        y: Math.max(-maxPanY, Math.min(maxPanY, prev.y + svgDy)),
+      };
+    });
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<SVGSVGElement>) => {
+    isDraggingRef.current = false;
+    setIsDragging(false);
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch {
+      // Fail gracefully if pointer capture was already released by browser
+    }
+  };
+
+  const handleWheel = (e: React.WheelEvent<SVGSVGElement>) => {
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? 0.25 : -0.25;
+    setZoom((prev) => {
+      const next = Math.min(4.5, Math.max(1, Math.round((prev + delta) * 10) / 10));
+      if (next === 1) setPan({ x: 0, y: 0 });
+      return next;
+    });
   };
 
   const hoveredPath = WORLD_COUNTRIES_PATHS.find((p) => p.id === hoveredCountryId || p.code === hoveredCountryId);
@@ -252,7 +323,7 @@ export function WorldMap({
           {/* SVG Map Canvas with Equal Earth projection */}
           <div className="relative aspect-[16/9] w-full rounded-lg border border-slate-800/80 bg-[#090b11] overflow-hidden flex items-center justify-center">
             {/* Zoom Controls */}
-            <div className="absolute top-3 right-3 z-10 flex flex-col gap-1 rounded-md border border-slate-800 bg-[#121622]/90 p-1 shadow-lg backdrop-blur">
+            <div className="absolute top-3 right-3 z-10 flex flex-col items-center gap-1 rounded-md border border-slate-800 bg-[#121622]/90 p-1 shadow-lg backdrop-blur">
               <button
                 onClick={() => handleZoom(0.5)}
                 className="rounded p-1 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
@@ -274,12 +345,27 @@ export function WorldMap({
               >
                 <RotateCcw className="h-3.5 w-3.5" />
               </button>
+              <span className="text-[9px] font-mono text-slate-500 border-t border-slate-800 pt-1 px-1">
+                {zoom.toFixed(1)}x
+              </span>
+            </div>
+
+            {/* Drag & zoom guidance badge */}
+            <div className="absolute bottom-3 left-3 z-10 hidden sm:flex items-center gap-1.5 rounded-md border border-slate-800/80 bg-[#121622]/80 px-2.5 py-1 text-[11px] text-slate-400 backdrop-blur pointer-events-none">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Drag canvas to pan • Scroll or buttons to zoom</span>
             </div>
 
             <svg
+              ref={svgRef}
               viewBox="0 0 960 500"
-              className="w-full h-full select-none cursor-grab active:cursor-grabbing"
-              style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))' }}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              onWheel={handleWheel}
+              className={`w-full h-full select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+              style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))', touchAction: 'none' }}
             >
               <defs>
                 <filter id="glow-selected" x="-30%" y="-30%" width="160%" height="160%">
@@ -288,7 +374,10 @@ export function WorldMap({
                 </filter>
               </defs>
 
-              <g transform={`translate(${pan.x}, ${pan.y}) scale(${zoom})`} className="transition-transform duration-300">
+              <g
+                transform={`translate(${pan.x}, ${pan.y}) scale(${zoom})`}
+                className={isDragging ? '' : 'transition-transform duration-300 ease-out'}
+              >
                 {/* Global sphere ocean boundary */}
                 <path d={SPHERE_PATH} fill="#080a12" stroke="#1c2538" strokeWidth="1" />
 
@@ -321,6 +410,7 @@ export function WorldMap({
                       strokeWidth={isSelected ? 1.8 : isBlocMember ? 1.4 : isHovered ? 1.2 : 0.6}
                       className="cursor-pointer transition-colors duration-150"
                       onClick={() => {
+                        if (hasMovedRef.current) return;
                         if (isModeled) {
                           setSelectedCountryCode(country.code);
                           if (granularity === 'bloc') onGranularityChange('country');
