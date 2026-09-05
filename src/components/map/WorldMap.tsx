@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import { COUNTRIES_DATA, ECONOMIC_BLOCS } from '../../data/country-metrics';
+import { WORLD_LANDMASSES } from './world-landmasses';
 import { CountryProfile, EconomicBloc, Granularity, CurrencyPerspective } from '../../lib/types';
 import { formatCurrency, formatPercent, adjustValue } from '../../lib/formatters';
-import { MapPin, Search, Layers, TrendingUp, Info } from 'lucide-react';
+import { MapPin, Search, Layers, TrendingUp, Info, Globe } from 'lucide-react';
 
 interface WorldMapProps {
   selectedYear: number;
@@ -42,9 +43,11 @@ export function WorldMap({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>('USA');
   const [selectedBlocId, setSelectedBlocId] = useState<string>('g7');
+  const [hoveredCountryCode, setHoveredCountryCode] = useState<string | null>(null);
 
   const selectedCountry = COUNTRIES_DATA.find((c) => c.code === selectedCountryCode) || COUNTRIES_DATA[0];
   const selectedBloc = ECONOMIC_BLOCS.find((b) => b.id === selectedBlocId) || ECONOMIC_BLOCS[0];
+  const hoveredCountry = COUNTRIES_DATA.find((c) => c.code === hoveredCountryCode);
 
   const filteredCountries = COUNTRIES_DATA.filter(
     (c) =>
@@ -142,88 +145,172 @@ export function WorldMap({
               <MapPin className="h-4 w-4 text-emerald-400" />
               Global Distribution Map ({selectedYear})
             </h4>
-            <span className="text-xs text-slate-400">
-              Metric: <strong className="text-slate-200">{metricLabels[activeMetric]}</strong>
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="hidden sm:inline-flex items-center gap-1 rounded bg-slate-800/80 px-2 py-0.5 text-[11px] font-medium text-emerald-400 border border-slate-700/60">
+                <Globe className="h-3 w-3" /> 31 Sovereign Economies
+              </span>
+              <span className="text-xs text-slate-400">
+                Metric: <strong className="text-slate-200">{metricLabels[activeMetric]}</strong>
+              </span>
+            </div>
           </div>
 
           {/* SVG Map Canvas */}
-          <div className="relative aspect-[16/9] w-full rounded-lg border border-slate-800/80 bg-[#0c0e14] overflow-hidden flex items-center justify-center p-2">
+          <div className="relative aspect-[16/9] w-full rounded-lg border border-slate-800/80 bg-[#0a0c12] overflow-hidden flex items-center justify-center p-2">
             <svg
               viewBox="0 0 800 420"
               className="w-full h-full"
-              style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }}
+              style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.6))' }}
             >
               {/* World outline grid lines */}
               <defs>
                 <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#181e2b" strokeWidth="0.5" />
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#141824" strokeWidth="0.5" />
                 </pattern>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
               </defs>
               <rect width="800" height="420" fill="url(#grid)" />
 
               {/* Equator & Prime Meridian markers */}
-              <line x1="0" y1="210" x2="800" y2="210" stroke="#1f2738" strokeWidth="0.8" strokeDasharray="4 4" />
-              <line x1="400" y1="0" x2="400" y2="420" stroke="#1f2738" strokeWidth="0.8" strokeDasharray="4 4" />
+              <line x1="0" y1="210" x2="800" y2="210" stroke="#1a2233" strokeWidth="0.8" strokeDasharray="4 4" />
+              <line x1="400" y1="0" x2="400" y2="420" stroke="#1a2233" strokeWidth="0.8" strokeDasharray="4 4" />
 
-              {/* Render country nodes with interactive pulse & sizing */}
+              {/* Continental Landmass Silhouettes */}
+              <g className="landmasses pointer-events-none select-none">
+                {WORLD_LANDMASSES.map((lm) => (
+                  <path
+                    key={lm.id}
+                    d={lm.path}
+                    fill="#151b27"
+                    stroke="#232d3f"
+                    strokeWidth="0.8"
+                    className="transition-colors duration-300"
+                  />
+                ))}
+              </g>
+
+              {/* Render country beacons */}
               {COUNTRIES_DATA.map((c) => {
                 const [cx, cy] = projectToSvg(c.coordinates);
                 const isSelected = selectedCountryCode === c.code;
+                const isHovered = hoveredCountryCode === c.code;
                 const isMemberOfSelectedBloc = selectedBloc.memberCodes.includes(c.code);
 
                 const highlight = granularity === 'country' ? isSelected : isMemberOfSelectedBloc;
+                const isProminent = highlight || isHovered;
 
                 return (
                   <g
                     key={c.code}
                     className="cursor-pointer group"
-                    onClick={() => setSelectedCountryCode(c.code)}
+                    onClick={() => {
+                      setSelectedCountryCode(c.code);
+                      if (granularity === 'bloc') onGranularityChange('country');
+                    }}
+                    onMouseEnter={() => setHoveredCountryCode(c.code)}
+                    onMouseLeave={() => setHoveredCountryCode(null)}
                   >
-                    {/* Outer glow ring for active selection */}
+                    {/* Outer glow pulse ring for active selection */}
                     {highlight && (
                       <circle
                         cx={cx}
                         cy={cy}
-                        r={18}
+                        r={16}
                         fill="none"
                         stroke={granularity === 'bloc' ? selectedBloc.color : '#10b981'}
                         strokeWidth="1.5"
-                        strokeDasharray="2 2"
+                        strokeDasharray="3 3"
                         className="animate-spin-slow"
+                        filter="url(#glow)"
                       />
                     )}
                     {/* Geographic bubble */}
                     <circle
                       cx={cx}
                       cy={cy}
-                      r={highlight ? 10 : 7}
-                      fill={highlight ? (granularity === 'bloc' ? selectedBloc.color : '#10b981') : '#242b3d'}
-                      stroke="#090a0f"
-                      strokeWidth="1.5"
-                      className="transition-all group-hover:scale-125"
+                      r={isProminent ? 7.5 : 3.5}
+                      fill={
+                        highlight
+                          ? granularity === 'bloc'
+                            ? selectedBloc.color
+                            : '#10b981'
+                          : isHovered
+                          ? '#38bdf8'
+                          : '#475569'
+                      }
+                      stroke={isProminent ? '#ffffff' : '#090a0f'}
+                      strokeWidth={isProminent ? 1.5 : 0.8}
+                      className="transition-all duration-150 group-hover:scale-125"
                     />
-                    {/* Country Code Label */}
-                    <text
-                      x={cx}
-                      y={cy - 12}
-                      textAnchor="middle"
-                      fill={highlight ? '#ffffff' : '#64748b'}
-                      fontSize="10"
-                      fontWeight={highlight ? 'bold' : 'normal'}
-                      className="pointer-events-none select-none"
-                    >
-                      {c.flag} {c.code}
-                    </text>
+
+                    {/* Label display for prominent or hovered nodes */}
+                    {isProminent && (
+                      <g className="pointer-events-none select-none">
+                        <rect
+                          x={cx - 24}
+                          y={cy - 23}
+                          width={48}
+                          height={15}
+                          rx={3}
+                          fill="#090b10"
+                          stroke={highlight ? (granularity === 'bloc' ? selectedBloc.color : '#10b981') : '#38bdf8'}
+                          strokeWidth="0.8"
+                          opacity="0.92"
+                        />
+                        <text
+                          x={cx}
+                          y={cy - 12}
+                          textAnchor="middle"
+                          fill="#ffffff"
+                          fontSize="9"
+                          fontWeight="bold"
+                        >
+                          {c.flag} {c.code}
+                        </text>
+                      </g>
+                    )}
                   </g>
                 );
               })}
+
+              {/* Hover Tooltip Overlay in SVG */}
+              {hoveredCountry && (
+                <g
+                  className="pointer-events-none select-none"
+                  transform={`translate(${Math.min(640, Math.max(160, projectToSvg(hoveredCountry.coordinates)[0]))}, ${
+                    projectToSvg(hoveredCountry.coordinates)[1] > 320
+                      ? projectToSvg(hoveredCountry.coordinates)[1] - 40
+                      : projectToSvg(hoveredCountry.coordinates)[1] + 25
+                  })`}
+                >
+                  <rect
+                    x={-85}
+                    y={-14}
+                    width={170}
+                    height={28}
+                    rx={4}
+                    fill="#0f131d"
+                    stroke="#38bdf8"
+                    strokeWidth="1"
+                    filter="url(#glow)"
+                  />
+                  <text x={0} y={-1} textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="bold">
+                    {hoveredCountry.flag} {hoveredCountry.name}
+                  </text>
+                  <text x={0} y={10} textAnchor="middle" fill="#38bdf8" fontSize="9">
+                    {metricLabels[activeMetric]}: {getCountryMetricDisplay(hoveredCountry, activeMetric)}
+                  </text>
+                </g>
+              )}
             </svg>
           </div>
 
           {/* Map legend and guidance */}
           <div className="mt-3 flex items-center justify-between text-xs text-slate-400">
-            <span>Click any territory beacon to inspect economic health</span>
+            <span>Click any territory beacon or search list to inspect detailed economic health</span>
             <span className="flex items-center gap-1 text-slate-500">
               <Info className="h-3.5 w-3.5" /> Equirectangular projection
             </span>
@@ -404,9 +491,13 @@ export function WorldMap({
                     setSelectedCountryCode(c.code);
                     if (granularity === 'bloc') onGranularityChange('country');
                   }}
+                  onMouseEnter={() => setHoveredCountryCode(c.code)}
+                  onMouseLeave={() => setHoveredCountryCode(null)}
                   className={`flex w-full items-center justify-between px-2.5 py-1.5 rounded text-xs transition-colors ${
                     selectedCountryCode === c.code && granularity === 'country'
                       ? 'bg-emerald-500/20 text-emerald-400 font-medium'
+                      : hoveredCountryCode === c.code
+                      ? 'bg-slate-800 text-sky-400 font-medium'
                       : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                   }`}
                 >
