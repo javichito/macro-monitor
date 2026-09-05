@@ -296,7 +296,7 @@ export function WorldMap({
                 <path d={GRATICULE_PATH} fill="none" stroke="#121826" strokeWidth="0.5" strokeDasharray="3 3" />
 
                 {/* All world country polygons */}
-                {WORLD_COUNTRIES_PATHS.map((country) => {
+                {WORLD_COUNTRIES_PATHS.map((country, idx) => {
                   const isModeled = country.code !== '' && countryByCode.has(country.code);
                   const isSelected = selectedCountryCode === country.code && granularity === 'country';
                   const isBlocMember = granularity === 'bloc' && country.code !== '' && selectedBloc.memberCodes.includes(country.code);
@@ -306,7 +306,7 @@ export function WorldMap({
 
                   return (
                     <path
-                      key={country.id}
+                      key={country.id || country.code || `country-${idx}`}
                       d={country.path}
                       fill={fillColor}
                       stroke={
