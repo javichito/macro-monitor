@@ -61,11 +61,24 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
             >
               <div className="flex items-center justify-between text-sm mb-2">
                 <span className="font-bold text-white flex items-center gap-2">
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                  <span
+                    className={`text-xs font-semibold px-2 py-0.5 rounded border ${
+                      tier.bracket === '> $100M'
+                        ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-sm shadow-amber-500/20'
+                        : 'bg-slate-800 text-slate-300 border-slate-700'
+                    }`}
+                  >
                     {tier.bracket}
                   </span>
+                  {tier.bracket === '> $100M' && (
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-400/10 text-amber-300 border border-amber-400/30">
+                      Apex
+                    </span>
+                  )}
                   <span className="text-xs text-slate-400 hidden sm:inline">
-                    ({formatNumber(tier.adultsMillion)}M adults)
+                    ({tier.adultsMillion < 1
+                      ? `${formatNumber(Math.round(tier.adultsMillion * 1_000_000))} adults`
+                      : `${formatNumber(tier.adultsMillion)}M adults`})
                   </span>
                 </span>
                 <span className="text-xs font-semibold text-emerald-400">
@@ -80,7 +93,9 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
                     <span className="flex items-center gap-1">
                       <Users className="h-3 w-3 text-cyan-400" /> Population Share
                     </span>
-                    <span className="font-medium text-slate-200">{formatPercent(tier.adultsShare)}</span>
+                    <span className="font-medium text-slate-200">
+                      {tier.adultsShare < 0.01 ? '< 0.01%' : formatPercent(tier.adultsShare)}
+                    </span>
                   </div>
                   <div className="h-2 w-full rounded-full bg-slate-800 overflow-hidden">
                     <div
@@ -109,6 +124,16 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
               {/* Explanatory footer for the bracket */}
               {isSelected && (
                 <div className="mt-3 pt-2.5 border-t border-slate-700/60 text-xs text-slate-300 animate-in fade-in duration-150">
+                  {tier.bracket === '> $100M' && (
+                    <p>
+                      <strong>Ultra-High-Net-Worth (Centi-Millionaires &amp; Billionaires):</strong> An ultra-exclusive apex group of roughly {formatNumber(Math.round(tier.adultsMillion * 1_000_000))} individuals (&lt; 0.01% of global adults) controlling {formatPercent(tier.wealthShare)} of all private net wealth on Earth (${formatCurrency(adjustedWealthTrillion * 1_000_000_000_000, { compact: true })}). This tier encompasses sovereign-scale holdings, listed tech equity, and private conglomerates.
+                    </p>
+                  )}
+                  {tier.bracket === '$1M - $100M' && (
+                    <p>
+                      <strong>High-Net-Worth Individuals:</strong> Comprises {formatPercent(tier.adultsShare)} of global adults ({formatNumber(tier.adultsMillion)}M individuals), representing established entrepreneurs, corporate executives, and substantial real estate portfolios controlling {formatPercent(tier.wealthShare)} of global wealth.
+                    </p>
+                  )}
                   {tier.bracket === '> $1M' && (
                     <p>
                       <strong>The Top Tier:</strong> Comprises only {formatPercent(tier.adultsShare)} of global adults ({formatNumber(tier.adultsMillion)}M individuals), yet commands {formatPercent(tier.wealthShare)} of all private net wealth on Earth.
