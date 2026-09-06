@@ -27,6 +27,15 @@ export interface GlobalWealthYear {
   tiers: WealthTier[];
 }
 
+export interface SubAssetCategory {
+  id: string;
+  name: string;
+  shareOfParentPercent: number;
+  valueTrillion: number;
+  description: string;
+  color: string;
+}
+
 export interface AssetCategory {
   id: string;
   name: string;
@@ -35,6 +44,7 @@ export interface AssetCategory {
   description: string;
   color: string;
   isTangible: boolean;
+  subCategories?: SubAssetCategory[];
 }
 
 export interface GlobalAssetYear {
@@ -43,6 +53,7 @@ export interface GlobalAssetYear {
   totalLiabilitiesTrillion: number;
   netWealthTrillion: number;
   categories: AssetCategory[];
+  liabilityBreakdown?: SubAssetCategory[];
 }
 
 export interface CountryYearMetric {
