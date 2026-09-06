@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { TimelineControls } from '../../components/layout/TimelineControls';
 import { WorldMap } from '../../components/map/WorldMap';
+import { CountryComparison } from '../../components/geography/CountryComparison';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import { MapPin, Globe } from 'lucide-react';
 
@@ -14,6 +15,12 @@ export default function GeographyPage() {
     granularity,
     setGranularity,
   } = useApp();
+
+  /*
+   * Allow interactive jump from map inspector into the duel comparison.
+   */
+  const [duelCountryA, setDuelCountryA] = useState('USA');
+  const [duelCountryB, setDuelCountryB] = useState('CHN');
 
   return (
     <div className="space-y-8">
@@ -39,6 +46,17 @@ export default function GeographyPage() {
         currencyPerspective={currencyPerspective}
         granularity={granularity}
         onGranularityChange={setGranularity}
+        onCompareCountry={(code) => {
+          setDuelCountryA(code);
+        }}
+      />
+
+      {/* Head-to-Head Country Comparison Duel */}
+      <CountryComparison
+        selectedYear={selectedYear}
+        currencyPerspective={currencyPerspective}
+        initialCountryCodeA={duelCountryA}
+        initialCountryCodeB={duelCountryB}
       />
 
       {/* Educational Explainer */}

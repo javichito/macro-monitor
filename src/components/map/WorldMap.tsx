@@ -5,13 +5,14 @@ import { COUNTRIES_DATA, ECONOMIC_BLOCS } from '../../data/country-metrics';
 import { WORLD_COUNTRIES_PATHS, SPHERE_PATH, GRATICULE_PATH } from './world-paths';
 import { CountryProfile, EconomicBloc, Granularity, CurrencyPerspective } from '../../lib/types';
 import { formatCurrency, formatPercent, adjustValue } from '../../lib/formatters';
-import { MapPin, Search, Info, Globe, Plus, Minus, RotateCcw } from 'lucide-react';
+import { MapPin, Search, Info, Globe, Plus, Minus, RotateCcw, ArrowLeftRight } from 'lucide-react';
 
 interface WorldMapProps {
   selectedYear: number;
   currencyPerspective: CurrencyPerspective;
   granularity: Granularity;
   onGranularityChange: (g: Granularity) => void;
+  onCompareCountry?: (countryCode: string) => void;
 }
 
 type MetricType =
@@ -42,6 +43,7 @@ export function WorldMap({
   currencyPerspective,
   granularity,
   onGranularityChange,
+  onCompareCountry,
 }: WorldMapProps) {
   const [activeMetric, setActiveMetric] = useState<MetricType>('wealthPerAdult');
   const [searchQuery, setSearchQuery] = useState('');
@@ -626,6 +628,18 @@ export function WorldMap({
                   </div>
                 </div>
               </div>
+
+              {/* Action: Compare in Duel */}
+              <a
+                href="#country-comparison"
+                onClick={() => {
+                  onCompareCountry?.(selectedCountry.code);
+                }}
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-2 text-xs font-semibold text-indigo-400 hover:bg-indigo-500/20 hover:text-white transition-colors"
+              >
+                <ArrowLeftRight className="h-3.5 w-3.5" />
+                <span>Compare {selectedCountry.name} in Macro Duel</span>
+              </a>
             </div>
           ) : (
             <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-5">
