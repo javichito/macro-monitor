@@ -21,6 +21,50 @@ interface AssetEvolutionChartProps {
   selectedYear: number;
 }
 
+interface AreaConfig {
+  key: string;
+  name: string;
+  stroke: string;
+  fill: string;
+  fillOpacity?: number;
+}
+
+const MACRO_AREAS: AreaConfig[] = [
+  { key: 'realEstate', name: 'Real Estate & Land', stroke: '#10b981', fill: 'url(#colorRealEstate)' },
+  { key: 'equities', name: 'Public & Private Equities', stroke: '#06b6d4', fill: 'url(#colorEquities)' },
+  { key: 'bonds', name: 'Bonds & Pension Reserves', stroke: '#6366f1', fill: 'url(#colorBonds)' },
+  { key: 'cash', name: 'Cash & Bank Deposits', stroke: '#f59e0b', fill: 'url(#colorCash)' },
+  { key: 'gold', name: 'Gold & Precious Metals', stroke: '#eab308', fill: 'url(#colorGold)' },
+  { key: 'crypto', name: 'Digital Assets & Crypto', stroke: '#a855f7', fill: 'url(#colorCrypto)' },
+];
+
+const SUB_AREAS: AreaConfig[] = [
+  // Real estate sub-sectors
+  { key: 'reResidential', name: 'Residential Real Estate', stroke: '#10b981', fill: '#10b981', fillOpacity: 0.85 },
+  { key: 'reCommercial', name: 'Commercial Real Estate', stroke: '#34d399', fill: '#34d399', fillOpacity: 0.8 },
+  { key: 'reAgricultural', name: 'Agricultural Farmland', stroke: '#6ee7b7', fill: '#6ee7b7', fillOpacity: 0.75 },
+  // Equities sub-sectors
+  { key: 'eqDeveloped', name: 'Developed Large-Cap Tech', stroke: '#06b6d4', fill: '#06b6d4', fillOpacity: 0.85 },
+  { key: 'eqEmerging', name: 'Emerging & Small-Cap', stroke: '#38bdf8', fill: '#38bdf8', fillOpacity: 0.8 },
+  { key: 'eqPrivate', name: 'Private Equity & Unlisted', stroke: '#7dd3fc', fill: '#7dd3fc', fillOpacity: 0.75 },
+  // Fixed income sub-sectors
+  { key: 'bondSovereign', name: 'Sovereign Treasuries', stroke: '#6366f1', fill: '#6366f1', fillOpacity: 0.85 },
+  { key: 'bondCorporate', name: 'Corporate Debt', stroke: '#818cf8', fill: '#818cf8', fillOpacity: 0.8 },
+  { key: 'bondPension', name: 'Pension Reserves', stroke: '#a5b4fc', fill: '#a5b4fc', fillOpacity: 0.75 },
+  // Liquidity sub-sectors
+  { key: 'cashBank', name: 'Commercial Bank Deposits', stroke: '#f59e0b', fill: '#f59e0b', fillOpacity: 0.85 },
+  { key: 'cashMmf', name: 'Money Market Funds / T-Bills', stroke: '#fbbf24', fill: '#fbbf24', fillOpacity: 0.8 },
+  { key: 'cashPhysical', name: 'Physical Banknotes', stroke: '#fde68a', fill: '#fde68a', fillOpacity: 0.75 },
+  // Gold sub-sectors
+  { key: 'goldJewelry', name: 'Jewelry & Private Gold', stroke: '#eab308', fill: '#eab308', fillOpacity: 0.85 },
+  { key: 'goldInvestment', name: 'Bullion Bars & ETFs', stroke: '#facc15', fill: '#facc15', fillOpacity: 0.8 },
+  { key: 'goldReserves', name: 'Central Bank Vault Gold', stroke: '#fef08a', fill: '#fef08a', fillOpacity: 0.75 },
+  // Crypto sub-sectors
+  { key: 'cryptoBtc', name: 'Bitcoin (Digital Gold)', stroke: '#a855f7', fill: '#a855f7', fillOpacity: 0.85 },
+  { key: 'cryptoSmart', name: 'Smart Contract Networks', stroke: '#c084fc', fill: '#c084fc', fillOpacity: 0.8 },
+  { key: 'cryptoStable', name: 'Stablecoins & Tokenized RWAs', stroke: '#e9d5ff', fill: '#e9d5ff', fillOpacity: 0.75 },
+];
+
 export function AssetEvolutionChart({
   currencyPerspective,
   selectedYear,
@@ -32,6 +76,8 @@ export function AssetEvolutionChart({
   const activeYearData =
     GLOBAL_ASSET_HISTORY.find((y) => y.year === selectedYear) ||
     GLOBAL_ASSET_HISTORY[GLOBAL_ASSET_HISTORY.length - 1];
+
+  const activeAreas = granularity === 'macro' ? MACRO_AREAS : SUB_AREAS;
 
   /*
    * Normalizes longitudinal asset data across either 6 high-level classes
@@ -179,8 +225,8 @@ export function AssetEvolutionChart({
           </div>
         </div>
 
-        <div className="h-80 w-full">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-80 w-full min-h-[320px]">
+          <ResponsiveContainer width="100%" height="100%" minHeight={320}>
             <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
               <defs>
                 {/* Macro Gradients */}
@@ -214,6 +260,7 @@ export function AssetEvolutionChart({
               <YAxis
                 stroke="#64748b"
                 tick={{ fontSize: 11 }}
+                domain={viewType === 'share' ? [0, 100] : ['auto', 'auto']}
                 tickFormatter={(v) => (viewType === 'share' ? `${v}%` : `$${v}T`)}
               />
               <Tooltip
@@ -224,91 +271,30 @@ export function AssetEvolutionChart({
                   fontSize: '12px',
                   color: '#fff',
                 }}
-                formatter={(val: any) => [
+                formatter={(val: any, name: any) => [
                   viewType === 'share' ? `${val}%` : `$${Number(val).toFixed(1)}T`,
-                  '',
+                  name,
                 ]}
               />
 
-              {granularity === 'macro' ? (
-                <>
-                  <Area
-                    type="monotone"
-                    dataKey="realEstate"
-                    name="Real Estate & Land"
-                    stackId="1"
-                    stroke="#10b981"
-                    fill="url(#colorRealEstate)"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="equities"
-                    name="Public & Private Equities"
-                    stackId="1"
-                    stroke="#06b6d4"
-                    fill="url(#colorEquities)"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="bonds"
-                    name="Bonds & Pension Reserves"
-                    stackId="1"
-                    stroke="#6366f1"
-                    fill="url(#colorBonds)"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="cash"
-                    name="Cash & Bank Deposits"
-                    stackId="1"
-                    stroke="#f59e0b"
-                    fill="url(#colorCash)"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="gold"
-                    name="Gold & Precious Metals"
-                    stackId="1"
-                    stroke="#eab308"
-                    fill="url(#colorGold)"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="crypto"
-                    name="Digital Assets & Crypto"
-                    stackId="1"
-                    stroke="#a855f7"
-                    fill="url(#colorCrypto)"
-                  />
-                </>
-              ) : (
-                <>
-                  {/* Real estate sub-sectors */}
-                  <Area type="monotone" dataKey="reResidential" name="Residential Real Estate" stackId="1" stroke="#10b981" fill="#10b981" fillOpacity={0.85} />
-                  <Area type="monotone" dataKey="reCommercial" name="Commercial Real Estate" stackId="1" stroke="#34d399" fill="#34d399" fillOpacity={0.8} />
-                  <Area type="monotone" dataKey="reAgricultural" name="Agricultural Farmland" stackId="1" stroke="#6ee7b7" fill="#6ee7b7" fillOpacity={0.75} />
-                  {/* Equities sub-sectors */}
-                  <Area type="monotone" dataKey="eqDeveloped" name="Developed Large-Cap Tech" stackId="1" stroke="#06b6d4" fill="#06b6d4" fillOpacity={0.85} />
-                  <Area type="monotone" dataKey="eqEmerging" name="Emerging & Small-Cap" stackId="1" stroke="#38bdf8" fill="#38bdf8" fillOpacity={0.8} />
-                  <Area type="monotone" dataKey="eqPrivate" name="Private Equity & Unlisted" stackId="1" stroke="#7dd3fc" fill="#7dd3fc" fillOpacity={0.75} />
-                  {/* Fixed income sub-sectors */}
-                  <Area type="monotone" dataKey="bondSovereign" name="Sovereign Treasuries" stackId="1" stroke="#6366f1" fill="#6366f1" fillOpacity={0.85} />
-                  <Area type="monotone" dataKey="bondCorporate" name="Corporate Debt" stackId="1" stroke="#818cf8" fill="#818cf8" fillOpacity={0.8} />
-                  <Area type="monotone" dataKey="bondPension" name="Pension Reserves" stackId="1" stroke="#a5b4fc" fill="#a5b4fc" fillOpacity={0.75} />
-                  {/* Liquidity sub-sectors */}
-                  <Area type="monotone" dataKey="cashBank" name="Commercial Bank Deposits" stackId="1" stroke="#f59e0b" fill="#f59e0b" fillOpacity={0.85} />
-                  <Area type="monotone" dataKey="cashMmf" name="Money Market Funds / T-Bills" stackId="1" stroke="#fbbf24" fill="#fbbf24" fillOpacity={0.8} />
-                  <Area type="monotone" dataKey="cashPhysical" name="Physical Banknotes" stackId="1" stroke="#fde68a" fill="#fde68a" fillOpacity={0.75} />
-                  {/* Gold sub-sectors */}
-                  <Area type="monotone" dataKey="goldJewelry" name="Jewelry & Private Gold" stackId="1" stroke="#eab308" fill="#eab308" fillOpacity={0.85} />
-                  <Area type="monotone" dataKey="goldInvestment" name="Bullion Bars & ETFs" stackId="1" stroke="#facc15" fill="#facc15" fillOpacity={0.8} />
-                  <Area type="monotone" dataKey="goldReserves" name="Central Bank Vault Gold" stackId="1" stroke="#fef08a" fill="#fef08a" fillOpacity={0.75} />
-                  {/* Crypto sub-sectors */}
-                  <Area type="monotone" dataKey="cryptoBtc" name="Bitcoin (Digital Gold)" stackId="1" stroke="#a855f7" fill="#a855f7" fillOpacity={0.85} />
-                  <Area type="monotone" dataKey="cryptoSmart" name="Smart Contract Networks" stackId="1" stroke="#c084fc" fill="#c084fc" fillOpacity={0.8} />
-                  <Area type="monotone" dataKey="cryptoStable" name="Stablecoins & Tokenized RWAs" stackId="1" stroke="#e9d5ff" fill="#e9d5ff" fillOpacity={0.75} />
-                </>
-              )}
+              {/*
+               * Recharts uses React.Children.forEach to inspect graphical items. In React 19,
+               * react-is cannot recognize React.Fragment, so wrapped elements are omitted.
+               * Mapping activeAreas directly provides first-order children that Recharts detects.
+               */}
+              {activeAreas.map((area) => (
+                <Area
+                  key={area.key}
+                  type="monotone"
+                  dataKey={area.key}
+                  name={area.name}
+                  stackId="1"
+                  stroke={area.stroke}
+                  fill={area.fill}
+                  fillOpacity={area.fillOpacity}
+                  isAnimationActive={false}
+                />
+              ))}
             </AreaChart>
           </ResponsiveContainer>
         </div>
