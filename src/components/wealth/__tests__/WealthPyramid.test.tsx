@@ -6,11 +6,12 @@ import { GLOBAL_WEALTH_HISTORY } from '../../../data/global-wealth';
 
 /*
  * Component testing for WealthPyramid verifying tier presentation,
- * apex > $100M tier presence in 2026, population/wealth bar scaling, and interactive details.
+ * apex > $100M tier presence across years, population/wealth bar scaling, and interactive details.
  */
 
 describe('WealthPyramid Component', () => {
   const wealth2026 = GLOBAL_WEALTH_HISTORY.find((w) => w.year === 2026)!;
+  const wealth2000 = GLOBAL_WEALTH_HISTORY.find((w) => w.year === 2000)!;
 
   it('renders all 5 tiers for 2026 including the > $100M apex tier', () => {
     render(<WealthPyramid data={wealth2026} currencyPerspective="nominal" />);
@@ -22,6 +23,16 @@ describe('WealthPyramid Component', () => {
     expect(screen.getByText('$100k - $1M')).toBeDefined();
     expect(screen.getByText('$10k - $100k')).toBeDefined();
     expect(screen.getByText('< $10k')).toBeDefined();
+  });
+
+  it('works smoothly when year is changed to 2000, displaying the > $100M apex tier for historical data', () => {
+    render(<WealthPyramid data={wealth2000} currencyPerspective="nominal" />);
+
+    expect(screen.getByText('Global Wealth Pyramid (2000)')).toBeDefined();
+    expect(screen.getByText('> $100M')).toBeDefined();
+    expect(screen.getByText('Apex')).toBeDefined();
+    expect(screen.getByText('(10,000 adults)')).toBeDefined();
+    expect(screen.getByText('$1M - $100M')).toBeDefined();
   });
 
   it('formats centi-millionaire population count and share with readable precision', () => {
