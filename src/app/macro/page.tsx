@@ -11,15 +11,15 @@ export default function MacroPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="border-b border-[#242b3d] pb-6">
-        <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400 mb-3">
-          <BarChart3 className="h-3.5 w-3.5" />
+      <div className="border-b border-white/[0.08] pb-6">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-200 mb-3 shadow-inner">
+          <BarChart3 className="h-3.5 w-3.5 text-sky-400" />
           <span>Macroeconomic Cycles</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
           The Global Economic Engine
         </h1>
-        <p className="text-sm text-slate-400 mt-1 max-w-2xl">
+        <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
           Observe how the world's debt burden expanded to $324 Trillion, how central bank interest rate decisions ripple across the globe, and how sovereign currency reserves are shifting.
         </p>
       </div>

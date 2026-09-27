@@ -25,15 +25,15 @@ export default function GeographyPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="border-b border-[#242b3d] pb-6">
-        <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400 mb-3">
-          <MapPin className="h-3.5 w-3.5" />
-          <span>Geographic & Coalition Intelligence</span>
+      <div className="border-b border-white/[0.08] pb-6">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-200 mb-3 shadow-inner">
+          <MapPin className="h-3.5 w-3.5 text-sky-400" />
+          <span>Geographic &amp; Coalition Intelligence</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-          World Wealth & Macro Heatmap
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          World Wealth &amp; Macro Heatmap
         </h1>
-        <p className="text-sm text-slate-400 mt-1 max-w-2xl">
+        <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
           Interact with global territories and major economic coalitions (G7, BRICS+, Eurozone). Toggle granularity to compare sovereign nations against global geopolitical blocs over time.
         </p>
       </div>

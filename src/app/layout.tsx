@@ -16,23 +16,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" data-scroll-behavior="smooth">
-      <body className="min-h-screen bg-[#090a0f] text-slate-100 flex flex-col selection:bg-emerald-500/30 selection:text-emerald-300">
+      <body className="min-h-screen bg-[#05070c] text-slate-100 flex flex-col selection:bg-sky-500/30 selection:text-sky-200 antialiased relative">
+        {/* Apple subtle ambient top glow */}
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-sky-500/10 via-indigo-500/5 to-transparent blur-[120px] rounded-full" />
+        </div>
+
         <AppProvider>
           <Header />
-          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
             {children}
           </main>
-          <footer className="border-t border-[#1e2433] bg-[#0c0e14] py-8 text-xs text-slate-500">
+          <footer className="relative z-10 border-t border-white/[0.08] bg-black/40 backdrop-blur-xl py-8 text-xs text-slate-400">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <span className="font-bold text-slate-300">MacroMonitor</span> — Modern Financial Transparency
-                <p className="text-[11px] text-slate-500 mt-0.5">
+                <span className="font-semibold text-white tracking-tight">MacroMonitor</span> — Modern Financial Transparency
+                <p className="text-[11px] text-slate-400 mt-0.5">
                   Synthesizing authoritative data from UBS Global Wealth Reports, World Bank Open Data, and IMF WEO.
                 </p>
               </div>
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-6 text-slate-400">
                 <span>Updated for 2026</span>
-                <span>Minimalist Institutional Grade</span>
+                <span className="inline-flex items-center gap-1.5 font-medium text-slate-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Institutional Grade
+                </span>
               </div>
             </div>
           </footer>

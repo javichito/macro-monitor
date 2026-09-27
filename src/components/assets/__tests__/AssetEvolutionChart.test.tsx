@@ -26,17 +26,17 @@ describe('AssetEvolutionChart Component', () => {
     const subButton = screen.getByRole('button', { name: 'Sub-Sectors (18)' });
 
     // Initial state is 'macro'
-    expect(macroButton.className).toContain('bg-emerald-500');
-    expect(subButton.className).not.toContain('bg-emerald-500');
+    expect(macroButton.className).toContain('bg-white');
+    expect(subButton.className).not.toContain('bg-white');
 
     // Toggle to 'sub'
     fireEvent.click(subButton);
-    expect(subButton.className).toContain('bg-emerald-500');
-    expect(macroButton.className).not.toContain('bg-emerald-500');
+    expect(subButton.className).toContain('bg-white');
+    expect(macroButton.className).not.toContain('bg-white');
 
     // Toggle back to 'macro'
     fireEvent.click(macroButton);
-    expect(macroButton.className).toContain('bg-emerald-500');
+    expect(macroButton.className).toContain('bg-white');
   });
 
   it('allows toggling between Valuation ($T) and Share (%) units', () => {
@@ -46,13 +46,13 @@ describe('AssetEvolutionChart Component', () => {
     const shareButton = screen.getByRole('button', { name: 'Share (%)' });
 
     // Initial state is 'trillion'
-    expect(valuationButton.className).toContain('bg-emerald-500');
-    expect(shareButton.className).not.toContain('bg-emerald-500');
+    expect(valuationButton.className).toContain('bg-white');
+    expect(shareButton.className).not.toContain('bg-white');
 
     // Toggle to 'share'
     fireEvent.click(shareButton);
-    expect(shareButton.className).toContain('bg-emerald-500');
-    expect(valuationButton.className).not.toContain('bg-emerald-500');
+    expect(shareButton.className).toContain('bg-white');
+    expect(valuationButton.className).not.toContain('bg-white');
   });
 
   it('renders all 6 primary asset category cards with sub-sector preview bars', () => {

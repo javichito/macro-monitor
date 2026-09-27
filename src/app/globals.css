@@ -2,46 +2,92 @@
 
 @layer base {
   :root {
-    --bg-primary: #090a0f;
-    --bg-secondary: #12151e;
-    --bg-card: #181c27;
-    --bg-card-hover: #1f2433;
-    --border-subtle: #242b3d;
-    --border-muted: #1e2433;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --accent-emerald: #10b981;
-    --accent-cyan: #06b6d4;
-    --accent-amber: #f59e0b;
-    --accent-rose: #f43f5e;
-    --accent-indigo: #6366f1;
+    /* Apple Pro Dark canvas foundations with high contrast and translucent layers */
+    --bg-canvas: #05070c;
+    --bg-surface: rgba(255, 255, 255, 0.04);
+    --bg-surface-elevated: rgba(255, 255, 255, 0.07);
+    --bg-surface-hover: rgba(255, 255, 255, 0.09);
+    
+    /* Apple hairline border strokes */
+    --border-hairline: rgba(255, 255, 255, 0.10);
+    --border-subtle: rgba(255, 255, 255, 0.15);
+    
+    /* Apple High-Legibility Typography colors */
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --text-quaternary: #64748b;
+    
+    /* Apple System Vibrant Accents */
+    --apple-blue: #0a84ff;
+    --apple-green: #30d158;
+    --apple-mint: #64d2ff;
+    --apple-orange: #ff9f0a;
+    --apple-purple: #bf5af2;
+    --apple-red: #ff453a;
   }
 
   body {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-canvas);
     color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
   }
 }
 
-/* Custom scrollbar to keep the analytical dashboard sleek without native OS scrollbar bulk */
+/*
+ * Apple VisionOS / macOS Frosted Glass & Specular Depth
+ * Provides visual separation without harsh opaque outlines.
+ */
+.apple-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  border-radius: 1.25rem; /* rounded-2xl continuous squircle */
+}
+
+.apple-card-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-card-hover:hover {
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 20px 40px -12px rgba(0, 0, 0, 0.7);
+}
+
+.apple-pill {
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.10);
+}
+
+/*
+ * Sleek macOS style scrollbar for seamless navigation without visual weight.
+ */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #090a0f;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #242b3d;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333d54;
+  background: rgba(255, 255, 255, 0.28);
 }

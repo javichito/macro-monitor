@@ -22,74 +22,92 @@ export function TimelineControls() {
     return 'Present Day (2024–2026): Post-Tightening Easing & Tech Cycle';
   };
 
+  const currentIndex = availableYears.indexOf(selectedYear);
+  const progressPercent = (currentIndex / (availableYears.length - 1)) * 100;
+
   return (
-    <div className="rounded-xl border border-[#242b3d] bg-[#12151e]/80 p-3.5 sm:p-4 backdrop-blur-sm">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-        <div className="flex items-center gap-2">
-          <Clock className="h-4 w-4 text-emerald-400" />
-          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-            Timeline Engine
-          </span>
-          <span className="text-sm font-bold text-white px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+    <div className="apple-card p-4 sm:p-5 relative overflow-hidden transition-all duration-300">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.06] border border-white/[0.08] shadow-inner">
+            <Clock className="h-3.5 w-3.5 text-sky-400" />
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-300">
+              Timeline Scrubber
+            </span>
+          </div>
+          <span className="text-sm font-bold text-white px-3 py-0.5 rounded-full bg-sky-500/20 border border-sky-400/40 text-sky-200 shadow-[0_0_12px_rgba(56,189,248,0.25)]">
             {selectedYear}
           </span>
         </div>
-        <p className="text-xs text-slate-400 italic">
+        <p className="text-xs text-slate-300 font-medium">
           {getEraLabel(selectedYear)}
         </p>
       </div>
 
-      <div className="flex items-center gap-3">
-        {/* Playback trigger */}
+      <div className="flex items-center gap-3.5">
+        {/* Apple Music style tactile playback button */}
         <button
           onClick={() => setIsPlayingTimeline((prev) => !prev)}
-          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border transition-colors ${
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-200 shadow-md active:scale-95 ${
             isPlayingTimeline
-              ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
-              : 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/30'
+              ? 'bg-amber-500/20 text-amber-300 border-amber-400/40 hover:bg-amber-500/30'
+              : 'bg-white text-black border-white hover:bg-slate-100 hover:scale-105'
           }`}
           title={isPlayingTimeline ? 'Pause timeline playback' : 'Play historical evolution'}
           aria-label={isPlayingTimeline ? 'Pause playback' : 'Play playback'}
         >
-          {isPlayingTimeline ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 translate-x-0.5" />}
+          {isPlayingTimeline ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 translate-x-0.5 fill-current" />}
         </button>
 
-        {/* Range slider */}
-        <div className="relative flex-1">
+        {/* Custom Apple-styled range scrubber */}
+        <div className="relative flex-1 py-1">
+          <div className="relative h-2.5 w-full rounded-full bg-white/[0.08] overflow-hidden">
+            {/* Active progress fill */}
+            <div
+              className="h-full bg-gradient-to-r from-sky-500 to-cyan-400 transition-all duration-150 rounded-full"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+
           <input
             type="range"
             min={0}
             max={availableYears.length - 1}
-            value={availableYears.indexOf(selectedYear)}
+            value={currentIndex}
             onChange={(e) => {
               const idx = Number(e.target.value);
               setSelectedYear(availableYears[idx]);
             }}
-            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-800 accent-emerald-400 focus:outline-none"
+            className="absolute inset-0 h-full w-full opacity-0 cursor-pointer"
             aria-label="Select timeline year"
           />
-          <div className="flex justify-between text-[11px] text-slate-500 mt-1 px-1">
-            {availableYears.map((yr) => (
-              <button
-                key={yr}
-                onClick={() => setSelectedYear(yr)}
-                className={`transition-colors hover:text-white ${
-                  yr === selectedYear ? 'font-bold text-emerald-400' : ''
-                }`}
-              >
-                {yr}
-              </button>
-            ))}
+
+          {/* Year ticks */}
+          <div className="flex justify-between text-[11px] text-slate-400 font-medium mt-2 px-1">
+            {availableYears.map((yr) => {
+              const isSelected = yr === selectedYear;
+              return (
+                <button
+                  key={yr}
+                  onClick={() => setSelectedYear(yr)}
+                  className={`transition-all duration-150 hover:text-white ${
+                    isSelected ? 'font-bold text-sky-400 scale-110' : 'text-slate-400'
+                  }`}
+                >
+                  {yr}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Reset to present */}
+        {/* Reset to present button: Apple glass pill */}
         <button
           onClick={() => {
             setIsPlayingTimeline(false);
             setSelectedYear(2026);
           }}
-          className="hidden sm:flex items-center gap-1 text-xs text-slate-400 hover:text-white px-2.5 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/50"
+          className="hidden sm:flex items-center gap-1.5 text-xs text-slate-300 hover:text-white px-3.5 py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.10] hover:border-white/[0.20] transition-all shadow-sm active:scale-95"
           title="Reset to 2026"
         >
           <RotateCcw className="h-3 w-3" />

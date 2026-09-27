@@ -242,18 +242,18 @@ export function WorldMap({
   return (
     <div className="space-y-6">
       {/* Control bar */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 rounded-xl border border-[#242b3d] bg-[#12151e] p-4">
+      <div className="apple-card p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         {/* Granularity switch */}
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
             Granularity:
           </span>
-          <div className="flex rounded-lg border border-[#242b3d] bg-[#181c27] p-0.5 text-xs">
+          <div className="flex rounded-full p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs">
             <button
               onClick={() => onGranularityChange('country')}
-              className={`rounded px-3 py-1 font-medium transition-colors ${
+              className={`rounded-full px-3.5 py-1 font-semibold transition-all duration-200 cursor-pointer ${
                 granularity === 'country'
-                  ? 'bg-emerald-500 text-white'
+                  ? 'bg-white text-black shadow-md'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -261,9 +261,9 @@ export function WorldMap({
             </button>
             <button
               onClick={() => onGranularityChange('bloc')}
-              className={`rounded px-3 py-1 font-medium transition-colors ${
+              className={`rounded-full px-3.5 py-1 font-semibold transition-all duration-200 cursor-pointer ${
                 granularity === 'bloc'
-                  ? 'bg-emerald-500 text-white'
+                  ? 'bg-white text-black shadow-md'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -273,15 +273,15 @@ export function WorldMap({
         </div>
 
         {/* Metric Selector */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0">
           {(Object.keys(metricLabels) as MetricType[]).map((m) => (
             <button
               key={m}
               onClick={() => setActiveMetric(m)}
-              className={`shrink-0 rounded-md px-2.5 py-1 text-xs font-medium border transition-colors ${
+              className={`shrink-0 rounded-full px-3 py-1 text-xs font-medium border transition-all duration-150 cursor-pointer ${
                 activeMetric === m
-                  ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40'
-                  : 'border-slate-800 bg-[#161a26] text-slate-400 hover:text-slate-200'
+                  ? 'bg-sky-500/20 text-sky-200 border-sky-400/40 shadow-sm font-semibold'
+                  : 'border-white/[0.08] bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.08]'
               }`}
             >
               {metricLabels[m]}
@@ -293,14 +293,14 @@ export function WorldMap({
       {/* Main Geographic Display Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Interactive Map Visualizer */}
-        <div className="lg:col-span-8 rounded-xl border border-[#242b3d] bg-[#12151e] p-5 flex flex-col justify-between">
+        <div className="lg:col-span-8 apple-card p-5 sm:p-6 flex flex-col justify-between">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
             <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-emerald-400" />
-              <h4 className="text-sm font-bold text-white">
+              <MapPin className="h-4 w-4 text-sky-400" />
+              <h4 className="text-sm sm:text-base font-bold text-white tracking-tight">
                 Global Equal Earth Cartography ({selectedYear})
               </h4>
-              <span className="inline-flex items-center gap-1 rounded bg-slate-800/80 px-2 py-0.5 text-[11px] font-medium text-emerald-400 border border-slate-700/60">
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.06] px-2.5 py-0.5 text-[11px] font-medium text-sky-300 border border-white/[0.08]">
                 <Globe className="h-3 w-3" /> 178 Territories (31 Modeled)
               </span>
             </div>
@@ -314,7 +314,7 @@ export function WorldMap({
                     setZoom(preset.zoom);
                     setPan(preset.pan);
                   }}
-                  className="rounded px-2 py-0.5 border border-slate-800 bg-[#161a26] text-slate-400 hover:text-white transition-colors"
+                  className="rounded-full px-2.5 py-0.5 border border-white/[0.08] bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.10] transition-colors cursor-pointer"
                 >
                   {preset.name}
                 </button>
@@ -323,26 +323,26 @@ export function WorldMap({
           </div>
 
           {/* SVG Map Canvas with Equal Earth projection */}
-          <div className="relative aspect-[16/9] w-full rounded-lg border border-slate-800/80 bg-[#090b11] overflow-hidden flex items-center justify-center">
+          <div className="relative aspect-[16/9] w-full rounded-2xl border border-white/[0.08] bg-[#06080e] overflow-hidden flex items-center justify-center shadow-inner">
             {/* Zoom Controls */}
-            <div className="absolute top-3 right-3 z-10 flex flex-col items-center gap-1 rounded-md border border-slate-800 bg-[#121622]/90 p-1 shadow-lg backdrop-blur">
+            <div className="absolute top-3 right-3 z-10 flex flex-col items-center gap-1 rounded-full border border-white/[0.12] bg-black/60 p-1 shadow-lg backdrop-blur-xl">
               <button
                 onClick={() => handleZoom(0.5)}
-                className="rounded p-1 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
+                className="rounded-full p-1.5 text-slate-200 hover:bg-white/20 hover:text-white transition-colors"
                 title="Zoom In"
               >
                 <Plus className="h-3.5 w-3.5" />
               </button>
               <button
                 onClick={() => handleZoom(-0.5)}
-                className="rounded p-1 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
+                className="rounded-full p-1.5 text-slate-200 hover:bg-white/20 hover:text-white transition-colors"
                 title="Zoom Out"
               >
                 <Minus className="h-3.5 w-3.5" />
               </button>
               <button
                 onClick={handleResetZoom}
-                className="rounded p-1 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
+                className="rounded-full p-1.5 text-slate-200 hover:bg-white/20 hover:text-white transition-colors"
                 title="Reset View"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
@@ -546,62 +546,63 @@ export function WorldMap({
         </div>
 
         {/* Country or Bloc Detail Inspector Card */}
+        {/* Country or Bloc Detail Inspector Card */}
         <div className="lg:col-span-4 space-y-4">
           {granularity === 'country' ? (
-            <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-5">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{selectedCountry.flag}</span>
+            <div className="apple-card p-5 sm:p-6 transition-all duration-300">
+              <div className="flex items-center justify-between mb-3.5">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-3xl">{selectedCountry.flag}</span>
                   <div>
-                    <h3 className="text-base font-bold text-white">{selectedCountry.name}</h3>
-                    <span className="text-xs text-slate-400">{selectedCountry.region}</span>
+                    <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">{selectedCountry.name}</h3>
+                    <span className="text-xs text-slate-300 font-medium">{selectedCountry.region}</span>
                   </div>
                 </div>
-                <span className="rounded bg-slate-800 px-2 py-0.5 text-xs font-mono text-slate-300 border border-slate-700">
+                <span className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-xs font-mono text-slate-200 border border-white/[0.12]">
                   {selectedCountry.code}
                 </span>
               </div>
 
               {/* Metrics list */}
-              <div className="space-y-2.5 border-t border-slate-800 pt-3 text-xs">
-                <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                  <span className="text-slate-400">Total Net Wealth:</span>
+              <div className="space-y-2 border-t border-white/[0.08] pt-3 text-xs sm:text-sm">
+                <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                  <span className="text-slate-300">Total Net Wealth:</span>
                   <span className="font-bold text-emerald-400">
                     {formatCurrency(adjustValue(selectedCountry.history[selectedYear]?.totalWealthTrillion ?? 0, selectedYear, currencyPerspective) * 1_000_000_000_000, { compact: true })}
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                  <span className="text-slate-400">Wealth per Adult:</span>
+                <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                  <span className="text-slate-300">Wealth per Adult:</span>
                   <span className="font-bold text-white">
                     {formatCurrency(adjustValue(selectedCountry.history[selectedYear]?.wealthPerAdultUSD ?? 0, selectedYear, currencyPerspective), { compact: true })}
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                  <span className="text-slate-400">Median Wealth:</span>
-                  <span className="font-bold text-cyan-400">
+                <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                  <span className="text-slate-300">Median Wealth:</span>
+                  <span className="font-bold text-sky-400">
                     {formatCurrency(adjustValue(selectedCountry.history[selectedYear]?.medianWealthUSD ?? 0, selectedYear, currencyPerspective), { compact: true })}
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                  <span className="text-slate-400">Annual Gross GDP:</span>
+                <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                  <span className="text-slate-300">Annual Gross GDP:</span>
                   <span className="font-semibold text-slate-200">
                     {formatCurrency(adjustValue(selectedCountry.history[selectedYear]?.gdpTrillionUSD ?? 0, selectedYear, currencyPerspective) * 1_000_000_000_000, { compact: true })}
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                  <span className="text-slate-400">Debt-to-GDP Ratio:</span>
+                <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                  <span className="text-slate-300">Debt-to-GDP Ratio:</span>
                   <span className="font-semibold text-slate-200">
                     {formatPercent(selectedCountry.history[selectedYear]?.debtToGdp ?? 0)}
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                  <span className="text-slate-400">Wealth Gini Index:</span>
-                  <span className="font-semibold text-amber-400 font-mono">
+                <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                  <span className="text-slate-300">Wealth Gini Index:</span>
+                  <span className="font-semibold text-amber-300 font-mono">
                     {(selectedCountry.history[selectedYear]?.gini ?? 0).toFixed(2)}
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-1">
-                  <span className="text-slate-400">Annual Inflation:</span>
+                <div className="flex justify-between items-center py-1.5">
+                  <span className="text-slate-300">Annual Inflation:</span>
                   <span className="font-semibold text-slate-200">
                     {formatPercent(selectedCountry.history[selectedYear]?.inflationRate ?? 0)}
                   </span>
@@ -609,18 +610,18 @@ export function WorldMap({
               </div>
 
               {/* Asset Mix Breakdown */}
-              <div className="mt-4 pt-3 border-t border-slate-800">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-2">
+              <div className="mt-4 pt-3 border-t border-white/[0.08]">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-300 block mb-2">
                   Balance Sheet Composition
                 </span>
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="rounded bg-slate-900/60 p-2 border border-slate-800">
+                  <div className="rounded-xl bg-white/[0.04] p-2.5 border border-white/[0.08]">
                     <span className="text-slate-400 block text-[10px]">Financial Assets</span>
-                    <span className="font-bold text-cyan-400">
+                    <span className="font-bold text-sky-400">
                       {formatPercent(selectedCountry.history[selectedYear]?.assetMix.financialShare ?? 50)}
                     </span>
                   </div>
-                  <div className="rounded bg-slate-900/60 p-2 border border-slate-800">
+                  <div className="rounded-xl bg-white/[0.04] p-2.5 border border-white/[0.08]">
                     <span className="text-slate-400 block text-[10px]">Real Estate / Land</span>
                     <span className="font-bold text-emerald-400">
                       {formatPercent(selectedCountry.history[selectedYear]?.assetMix.nonFinancialShare ?? 50)}
@@ -635,20 +636,20 @@ export function WorldMap({
                 onClick={() => {
                   onCompareCountry?.(selectedCountry.code);
                 }}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-2 text-xs font-semibold text-indigo-400 hover:bg-indigo-500/20 hover:text-white transition-colors"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/15 px-4 py-2.5 text-xs font-semibold text-sky-200 hover:bg-sky-500/25 hover:text-white transition-all shadow-sm"
               >
                 <ArrowLeftRight className="h-3.5 w-3.5" />
                 <span>Compare {selectedCountry.name} in Macro Duel</span>
               </a>
             </div>
           ) : (
-            <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-5">
-              <div className="mb-3">
+            <div className="apple-card p-5 sm:p-6 transition-all duration-300">
+              <div className="mb-3.5">
                 <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">
                   Economic Bloc Profile
                 </span>
-                <h3 className="text-base font-bold text-white mt-1">{selectedBloc.name}</h3>
-                <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight mt-1">{selectedBloc.name}</h3>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed font-normal">
                   {selectedBloc.description}
                 </p>
               </div>
@@ -659,10 +660,10 @@ export function WorldMap({
                   <button
                     key={b.id}
                     onClick={() => setSelectedBlocId(b.id)}
-                    className={`px-2.5 py-1 text-xs rounded border transition-colors ${
+                    className={`px-3 py-1 text-xs rounded-full border transition-all duration-150 cursor-pointer ${
                       selectedBlocId === b.id
-                        ? 'bg-amber-500/20 text-amber-400 border-amber-500/40 font-bold'
-                        : 'border-slate-800 bg-slate-900 text-slate-400 hover:text-white'
+                        ? 'bg-amber-500/20 text-amber-300 border-amber-400/40 font-semibold shadow-sm'
+                        : 'border-white/[0.08] bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.08]'
                     }`}
                   >
                     {b.name.split(' ')[0]}
@@ -674,33 +675,33 @@ export function WorldMap({
               {(() => {
                 const blocMetric = selectedBloc.history[selectedYear] || selectedBloc.history[2026] || selectedBloc.history[2025];
                 return (
-                  <div className="space-y-3 border-t border-slate-800 pt-3 text-xs">
-                    <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                      <span className="text-slate-400">Total Bloc Wealth:</span>
+                  <div className="space-y-2 border-t border-white/[0.08] pt-3 text-xs sm:text-sm">
+                    <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                      <span className="text-slate-300">Total Bloc Wealth:</span>
                       <span className="font-bold text-emerald-400">
                         {formatCurrency(adjustValue(blocMetric.totalWealthTrillion, selectedYear, currencyPerspective) * 1_000_000_000_000, { compact: true })}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                      <span className="text-slate-400">Global Wealth Share:</span>
+                    <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                      <span className="text-slate-300">Global Wealth Share:</span>
                       <span className="font-bold text-white">
                         {formatPercent(blocMetric.globalWealthShare)}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                      <span className="text-slate-400">Global GDP Share:</span>
-                      <span className="font-bold text-cyan-400">
+                    <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                      <span className="text-slate-300">Global GDP Share:</span>
+                      <span className="font-bold text-sky-400">
                         {formatPercent(blocMetric.globalGdpShare)}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center py-1 border-b border-slate-800">
-                      <span className="text-slate-400">Bloc Population:</span>
+                    <div className="flex justify-between items-center py-1.5 border-b border-white/[0.05]">
+                      <span className="text-slate-300">Bloc Population:</span>
                       <span className="font-semibold text-slate-200">
                         {(blocMetric.populationMillion / 1000).toFixed(2)} Billion
                       </span>
                     </div>
-                    <div className="flex justify-between items-center py-1">
-                      <span className="text-slate-400">Average Wealth / Adult:</span>
+                    <div className="flex justify-between items-center py-1.5">
+                      <span className="text-slate-300">Average Wealth / Adult:</span>
                       <span className="font-semibold text-slate-200">
                         {formatCurrency(adjustValue(blocMetric.wealthPerAdultUSD, selectedYear, currencyPerspective), { compact: true })}
                       </span>

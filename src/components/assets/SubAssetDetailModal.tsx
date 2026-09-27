@@ -42,49 +42,49 @@ export function SubAssetDetailModal({
         onClick={onClose}
       />
 
-      {/* Modal dialog box */}
-      <div className="relative w-full max-w-2xl rounded-2xl border border-[#242b3d] bg-[#0e111a] p-6 shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col">
+      {/* Modal dialog box — Apple frosted sheet design */}
+      <div className="relative w-full max-w-2xl rounded-3xl border border-white/[0.14] bg-[#0c1017]/90 backdrop-blur-3xl p-6 sm:p-7 shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-start justify-between pb-4 border-b border-slate-800">
+        <div className="flex items-start justify-between pb-4 border-b border-white/[0.08]">
           <div className="flex items-center gap-3">
             <div
-              className="h-4 w-4 rounded-full shrink-0"
+              className="h-4 w-4 rounded-full shrink-0 shadow-sm"
               style={{ backgroundColor: category.color }}
             />
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-bold text-white">{category.name}</h3>
-                <span className="rounded bg-slate-800/80 px-2 py-0.5 text-[11px] font-semibold text-slate-300 border border-slate-700">
+                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">{category.name}</h3>
+                <span className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[11px] font-semibold text-slate-200 border border-white/[0.12]">
                   {formatPercent(category.sharePercent)} of World Wealth
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Sub-sector composition & capital distribution ({selectedYear})
+              <p className="text-xs text-slate-300 mt-1 font-normal">
+                Sub-sector composition &amp; capital distribution ({selectedYear})
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+            className="rounded-full p-2 text-slate-400 hover:text-white bg-white/[0.06] hover:bg-white/[0.12] transition-colors cursor-pointer"
             title="Close dialog"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4" />
           </button>
         </div>
 
         {/* Content body */}
-        <div className="overflow-y-auto space-y-6 pt-5 pr-1 flex-1">
+        <div className="overflow-y-auto space-y-5 pt-5 pr-1 flex-1">
           {/* Key figure banner */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xl border border-slate-800/80 bg-[#141824] p-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-white/[0.10] bg-white/[0.04] p-4.5">
             <div>
-              <span className="text-xs text-slate-400 block">Total Asset Class Valuation</span>
-              <span className="text-2xl font-extrabold text-white">
+              <span className="text-xs text-slate-400 block font-medium">Total Asset Class Valuation</span>
+              <span className="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-0.5 block">
                 {formatCurrency(totalAdjustedVal * 1_000_000_000_000, { compact: true })}
               </span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-slate-400">
-              <span className="px-2.5 py-1 rounded-md bg-slate-800/60 border border-slate-700/60 text-slate-300">
+            <div className="flex items-center gap-2 text-xs text-slate-300">
+              <span className="px-3 py-1 rounded-full bg-white/[0.06] border border-white/[0.10] text-slate-200 font-medium">
                 {category.isTangible ? 'Tangible Physical Property' : 'Contractual Financial Capital'}
               </span>
             </div>
@@ -92,14 +92,14 @@ export function SubAssetDetailModal({
 
           {/* Sub-sector proportional distribution bar */}
           <div>
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-400 mb-2">
+            <div className="flex items-center justify-between text-xs font-semibold text-slate-300 mb-2">
               <span className="flex items-center gap-1.5">
-                <PieChart className="h-3.5 w-3.5 text-cyan-400" />
+                <PieChart className="h-3.5 w-3.5 text-sky-400" />
                 Sub-Asset Proportional Allocation
               </span>
-              <span>100% of Asset Class</span>
+              <span className="text-slate-400 font-medium">100% of Asset Class</span>
             </div>
-            <div className="h-3 w-full rounded-full bg-slate-800 overflow-hidden flex">
+            <div className="h-3 w-full rounded-full bg-white/[0.08] overflow-hidden flex shadow-inner">
               {subCategories.map((sub) => (
                 <div
                   key={sub.id}
@@ -116,7 +116,7 @@ export function SubAssetDetailModal({
 
           {/* Sub-categories detailed list */}
           <div className="space-y-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300">
               Granular Sector Breakdown
             </h4>
             {subCategories.map((sub) => {
@@ -124,28 +124,28 @@ export function SubAssetDetailModal({
               return (
                 <div
                   key={sub.id}
-                  className="rounded-xl border border-slate-800 bg-[#121622] p-4 hover:border-slate-700 transition-colors"
+                  className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4 hover:border-white/[0.15] hover:bg-white/[0.06] transition-all"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
                     <div className="flex items-center gap-2.5">
                       <span
-                        className="h-3 w-3 rounded-full shrink-0"
+                        className="h-2.5 w-2.5 rounded-full shrink-0"
                         style={{ backgroundColor: sub.color }}
                       />
-                      <span className="font-bold text-sm text-white">{sub.name}</span>
+                      <span className="font-semibold text-sm text-white">{sub.name}</span>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <span className="text-sm font-extrabold text-emerald-400">
+                      <span className="text-sm font-bold text-emerald-400">
                         {formatCurrency(subAdjustedVal * 1_000_000_000_000, { compact: true })}
                       </span>
-                      <span className="rounded bg-slate-800 px-2 py-0.5 text-xs font-mono font-semibold text-slate-300 border border-slate-700">
+                      <span className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-xs font-mono font-medium text-slate-200 border border-white/[0.10]">
                         {formatPercent(sub.shareOfParentPercent)}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-400 leading-relaxed pl-5.5">
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal pl-5">
                     {sub.description}
                   </p>
                 </div>
@@ -154,11 +154,11 @@ export function SubAssetDetailModal({
           </div>
 
           {/* Contextual institutional note */}
-          <div className="rounded-xl border border-slate-800 bg-[#111624] p-4 text-xs text-slate-400 flex items-start gap-3">
-            <ShieldCheck className="h-4 w-4 text-cyan-400 shrink-0 mt-0.5" />
+          <div className="rounded-2xl border border-sky-500/20 bg-sky-500/[0.06] p-4 text-xs text-slate-300 flex items-start gap-3">
+            <ShieldCheck className="h-4 w-4 text-sky-400 shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <span className="font-bold text-slate-200 block">Macroeconomic Behavior</span>
-              <p className="leading-relaxed text-slate-400">
+              <span className="font-semibold text-white block">Macroeconomic Behavior</span>
+              <p className="leading-relaxed text-slate-300 font-normal">
                 Sub-sectors often decouple during monetary transitions. For example, commercial property yields diverge from residential shelter demand during rate tightening cycles, while public equities concentrate into top tech firms during productivity expansions.
               </p>
             </div>
@@ -166,10 +166,10 @@ export function SubAssetDetailModal({
         </div>
 
         {/* Footer */}
-        <div className="mt-4 pt-3 border-t border-slate-800 flex justify-end">
+        <div className="mt-4 pt-4 border-t border-white/[0.08] flex justify-end">
           <button
             onClick={onClose}
-            className="rounded-lg bg-emerald-500 px-4 py-1.5 text-xs font-semibold text-white hover:bg-emerald-400 transition-colors"
+            className="rounded-full bg-white px-5 py-2 text-xs font-semibold text-black hover:bg-slate-200 transition-colors shadow-md cursor-pointer"
           >
             Done
           </button>

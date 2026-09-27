@@ -29,36 +29,36 @@ export function InequalityTrends() {
   }));
 
   return (
-    <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-5">
+    <div className="apple-card p-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <TrendingUp className="h-4 w-4 text-emerald-400" />
+          <h3 className="text-base font-semibold text-white tracking-tight flex items-center gap-2">
+            <TrendingUp className="h-4 w-4 text-[#30d158]" />
             Wealth Inequality Trajectory (1980–2026)
           </h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-white/60 mt-0.5">
             Tracking how wealth concentration shifted between the Top 1%, Middle 40%, and Bottom 50%.
           </p>
         </div>
 
         {/* View toggle */}
-        <div className="flex items-center rounded-lg border border-[#242b3d] bg-[#181c27] p-0.5 text-xs">
+        <div className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1 text-xs">
           <button
             onClick={() => setViewMode('shares')}
-            className={`rounded px-2.5 py-1 font-medium transition-colors ${
+            className={`rounded-full px-3 py-1 font-medium transition-all ${
               viewMode === 'shares'
-                ? 'bg-emerald-500 text-white'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-white/20 text-white shadow-sm'
+                : 'text-white/60 hover:text-white'
             }`}
           >
             Tier Shares (%)
           </button>
           <button
             onClick={() => setViewMode('gini')}
-            className={`rounded px-2.5 py-1 font-medium transition-colors ${
+            className={`rounded-full px-3 py-1 font-medium transition-all ${
               viewMode === 'gini'
-                ? 'bg-emerald-500 text-white'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-white/20 text-white shadow-sm'
+                : 'text-white/60 hover:text-white'
             }`}
           >
             Gini Coefficient
@@ -168,28 +168,28 @@ export function InequalityTrends() {
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-slate-800/80 pt-3">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-white/[0.08] pt-4">
         {viewMode === 'shares' ? (
           <>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-amber-500"></span>
-              <span className="text-slate-300">Top 10% Share (~83.7%)</span>
+              <span className="h-2 w-2 rounded-full bg-[#ff9f0a]"></span>
+              <span className="text-white/70">Top 10% Share (~83.7%)</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-rose-500"></span>
-              <span className="text-slate-300">Top 1% Share (~45.4%)</span>
+              <span className="h-2 w-2 rounded-full bg-[#ff453a]"></span>
+              <span className="text-white/70">Top 1% Share (~45.4%)</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-cyan-500"></span>
-              <span className="text-slate-300">Middle 40% Share (~14.8%)</span>
+              <span className="h-2 w-2 rounded-full bg-[#64d2ff]"></span>
+              <span className="text-white/70">Middle 40% Share (~14.8%)</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-slate-500"></span>
-              <span className="text-slate-300">Bottom 50% Share (~1.5%)</span>
+              <span className="h-2 w-2 rounded-full bg-white/40"></span>
+              <span className="text-white/70">Bottom 50% Share (~1.5%)</span>
             </div>
           </>
         ) : (
-          <div className="text-slate-400">
+          <div className="text-white/60">
             A Gini coefficient of 1.0 represents total inequality (one person holding all wealth).
             Global wealth Gini softened from 0.912 in 1980 to 0.877 in 2026 as emerging markets expanded their asset base.
           </div>

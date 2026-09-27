@@ -26,48 +26,48 @@ export function MacroTrendChart() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-5">
+      <div className="apple-card p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <BarChart3 className="h-4 w-4 text-emerald-400" />
+            <h3 className="text-base font-semibold text-white tracking-tight flex items-center gap-2">
+              <BarChart3 className="h-4 w-4 text-[#30d158]" />
               Global Macroeconomic Engine (1980–2026)
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-white/60 mt-0.5">
               Long-run historical trends of global debt, interest rates, inflation, and sovereign reserves.
             </p>
           </div>
 
           {/* Metric tabs */}
-          <div className="flex flex-wrap gap-1 rounded-lg border border-[#242b3d] bg-[#181c27] p-0.5 text-xs">
+          <div className="flex flex-wrap gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1 text-xs">
             <button
               onClick={() => setActiveTab('debt-gdp')}
-              className={`rounded px-2.5 py-1 font-medium transition-colors ${
-                activeTab === 'debt-gdp' ? 'bg-emerald-500 text-white' : 'text-slate-400 hover:text-white'
+              className={`rounded-full px-3 py-1 font-medium transition-all ${
+                activeTab === 'debt-gdp' ? 'bg-white/20 text-white shadow-sm' : 'text-white/60 hover:text-white'
               }`}
             >
               Debt vs GDP
             </button>
             <button
               onClick={() => setActiveTab('rates')}
-              className={`rounded px-2.5 py-1 font-medium transition-colors ${
-                activeTab === 'rates' ? 'bg-emerald-500 text-white' : 'text-slate-400 hover:text-white'
+              className={`rounded-full px-3 py-1 font-medium transition-all ${
+                activeTab === 'rates' ? 'bg-white/20 text-white shadow-sm' : 'text-white/60 hover:text-white'
               }`}
             >
               Central Bank Rates
             </button>
             <button
               onClick={() => setActiveTab('reserves')}
-              className={`rounded px-2.5 py-1 font-medium transition-colors ${
-                activeTab === 'reserves' ? 'bg-emerald-500 text-white' : 'text-slate-400 hover:text-white'
+              className={`rounded-full px-3 py-1 font-medium transition-all ${
+                activeTab === 'reserves' ? 'bg-white/20 text-white shadow-sm' : 'text-white/60 hover:text-white'
               }`}
             >
               FX & Gold Reserves
             </button>
             <button
               onClick={() => setActiveTab('inflation')}
-              className={`rounded px-2.5 py-1 font-medium transition-colors ${
-                activeTab === 'inflation' ? 'bg-emerald-500 text-white' : 'text-slate-400 hover:text-white'
+              className={`rounded-full px-3 py-1 font-medium transition-all ${
+                activeTab === 'inflation' ? 'bg-white/20 text-white shadow-sm' : 'text-white/60 hover:text-white'
               }`}
             >
               Global Inflation
@@ -215,11 +215,11 @@ export function MacroTrendChart() {
         </div>
 
         {/* Dynamic footer contextual note */}
-        <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400">
+        <div className="mt-4 pt-4 border-t border-white/[0.08] text-xs text-white/60 leading-relaxed">
           {activeTab === 'debt-gdp' && (
             <p>
-              Total global debt (government, corporate, and household) reached <strong>$334 Trillion</strong> in 2026,
-              standing at <strong>273%</strong> of world GDP. Debt expansion outpacing economic production remains the primary structural macro trend of the modern era.
+              Total global debt (government, corporate, and household) reached <strong className="text-white">\$334 Trillion</strong> in 2026,
+              standing at <strong className="text-white">273%</strong> of world GDP. Debt expansion outpacing economic production remains the primary structural macro trend of the modern era.
             </p>
           )}
           {activeTab === 'rates' && (
@@ -241,25 +241,25 @@ export function MacroTrendChart() {
       </div>
 
       {/* Historical Milestones Timeline */}
-      <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-5">
-        <h4 className="text-sm font-bold text-white flex items-center gap-2 mb-4">
-          <Award className="h-4 w-4 text-amber-400" />
+      <div className="apple-card p-6">
+        <h4 className="text-sm font-semibold text-white flex items-center gap-2 mb-4">
+          <Award className="h-4 w-4 text-[#ff9f0a]" />
           Critical Macroeconomic Turning Points
         </h4>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
           {ECONOMIC_MILESTONES.map((m) => (
             <div
               key={m.year}
-              className="rounded-lg border border-slate-800/80 bg-slate-900/50 p-3.5 hover:border-slate-700 transition-colors"
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 hover:border-white/20 transition-all"
             >
               <div className="flex items-center justify-between text-xs mb-1.5">
-                <span className="font-bold text-amber-400">{m.year}</span>
-                <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-medium text-slate-400 uppercase">
+                <span className="font-bold text-[#ff9f0a]">{m.year}</span>
+                <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-medium text-white/70 uppercase">
                   {m.impactCategory}
                 </span>
               </div>
               <h5 className="text-xs font-semibold text-white">{m.title}</h5>
-              <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
+              <p className="text-[11px] text-white/60 mt-1.5 leading-relaxed">
                 {m.description}
               </p>
             </div>

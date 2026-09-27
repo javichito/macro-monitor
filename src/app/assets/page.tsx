@@ -13,15 +13,15 @@ export default function AssetsPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="border-b border-[#242b3d] pb-6">
-        <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-400 mb-3">
-          <Layers className="h-3.5 w-3.5" />
+      <div className="border-b border-white/[0.08] pb-6">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-200 mb-3 shadow-inner">
+          <Layers className="h-3.5 w-3.5 text-sky-400" />
           <span>Global Asset Allocation</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
           Where is the World's Wealth Stored?
         </h1>
-        <p className="text-sm text-slate-400 mt-1 max-w-2xl">
+        <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
           Examine the composition of aggregate global assets across residential real estate, corporate equities, bonds, sovereign debt liabilities, and physical gold from 1980 through 2026.
         </p>
       </div>

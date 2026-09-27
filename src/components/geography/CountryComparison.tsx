@@ -184,24 +184,24 @@ export function CountryComparison({
   return (
     <section id="country-comparison" className="space-y-6">
       {/* Header card with presets */}
-      <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-5 sm:p-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-800">
+      <div className="apple-card p-5 sm:p-6 transition-all duration-300">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-white/[0.08]">
           <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-400 mb-2">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-400/30 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-300 mb-2 shadow-inner">
               <Scale className="h-3.5 w-3.5" />
               <span>Head-to-Head Macro Comparison</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
               Sovereign Balance Sheet Duel ({selectedYear})
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl font-normal leading-relaxed">
               Compare two sovereign nations side-by-side across wealth per adult, median distribution, debt solvency, and household asset allocations.
             </p>
           </div>
 
           {/* Quick Duel Presets */}
-          <div className="flex flex-col gap-1.5">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+          <div className="flex flex-col gap-2">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-300">
               Curated Comparisons:
             </span>
             <div className="flex flex-wrap gap-1.5">
@@ -214,10 +214,10 @@ export function CountryComparison({
                   <button
                     key={p.id}
                     onClick={() => handleApplyPreset(p)}
-                    className={`rounded-md px-2.5 py-1 text-xs font-medium border transition-colors ${
+                    className={`rounded-full px-3 py-1 text-xs font-medium border transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? 'border-cyan-500/60 bg-cyan-500/20 text-cyan-300'
-                        : 'border-[#242b3d] bg-[#181c27] text-slate-400 hover:text-white hover:border-slate-600'
+                        ? 'bg-white text-black border-white shadow-md font-semibold'
+                        : 'bg-white/[0.05] text-slate-300 border-white/[0.08] hover:bg-white/[0.12] hover:text-white'
                     }`}
                   >
                     {p.name}
@@ -231,20 +231,20 @@ export function CountryComparison({
         {/* Country Selectors & Duel Arena Bar */}
         <div className="grid grid-cols-1 md:grid-cols-11 gap-4 items-center pt-6">
           {/* Country A Picker */}
-          <div className="md:col-span-5 rounded-xl border border-cyan-500/30 bg-gradient-to-br from-[#121c2c] to-[#0f1422] p-4.5">
+          <div className="md:col-span-5 rounded-2xl border border-sky-500/30 bg-gradient-to-br from-sky-500/[0.08] via-white/[0.03] to-transparent p-5 shadow-sm">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-sky-400">
                 Country A
               </span>
-              <span className="text-xs font-mono text-slate-400">{countryA.region}</span>
+              <span className="text-xs font-mono text-slate-300">{countryA.region}</span>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3.5">
               <span className="text-3xl">{countryA.flag}</span>
               <div className="flex-1">
                 <select
                   value={countryCodeA}
                   onChange={(e) => setCountryCodeA(e.target.value)}
-                  className="w-full rounded-lg border border-[#242b3d] bg-[#181c27] px-3 py-2 text-sm font-bold text-white focus:border-cyan-500 focus:outline-none cursor-pointer"
+                  className="w-full rounded-xl border border-white/[0.12] bg-[#0c1017] px-3.5 py-2.5 text-sm font-semibold text-white focus:border-sky-400 focus:outline-none cursor-pointer"
                 >
                   {COUNTRIES_DATA.map((c) => (
                     <option key={`a-${c.code}`} value={c.code} disabled={c.code === countryCodeB}>
@@ -262,27 +262,27 @@ export function CountryComparison({
               onClick={handleSwap}
               title="Swap countries"
               aria-label="Swap countries"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-[#1a2130] text-slate-300 hover:border-cyan-400 hover:text-cyan-300 hover:scale-110 active:scale-95 transition-all shadow-md"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/[0.15] bg-white/[0.08] text-slate-200 hover:bg-white/[0.18] hover:text-white hover:scale-110 active:scale-95 transition-all shadow-md cursor-pointer"
             >
               <ArrowLeftRight className="h-4 w-4" />
             </button>
           </div>
 
           {/* Country B Picker */}
-          <div className="md:col-span-5 rounded-xl border border-emerald-500/30 bg-gradient-to-br from-[#102422] to-[#0e171b] p-4.5">
+          <div className="md:col-span-5 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/[0.08] via-white/[0.03] to-transparent p-5 shadow-sm">
             <div className="flex items-center justify-between mb-3">
               <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400">
                 Country B
               </span>
-              <span className="text-xs font-mono text-slate-400">{countryB.region}</span>
+              <span className="text-xs font-mono text-slate-300">{countryB.region}</span>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3.5">
               <span className="text-3xl">{countryB.flag}</span>
               <div className="flex-1">
                 <select
                   value={countryCodeB}
                   onChange={(e) => setCountryCodeB(e.target.value)}
-                  className="w-full rounded-lg border border-[#242b3d] bg-[#181c27] px-3 py-2 text-sm font-bold text-white focus:border-emerald-500 focus:outline-none cursor-pointer"
+                  className="w-full rounded-xl border border-white/[0.12] bg-[#0c1017] px-3.5 py-2.5 text-sm font-semibold text-white focus:border-emerald-400 focus:outline-none cursor-pointer"
                 >
                   {COUNTRIES_DATA.map((c) => (
                     <option key={`b-${c.code}`} value={c.code} disabled={c.code === countryCodeA}>
@@ -396,97 +396,99 @@ export function CountryComparison({
       </div>
 
       {/* Household Asset Allocation Comparison */}
-      <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-5 sm:p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+      <div className="apple-card p-5 sm:p-6 transition-all duration-300">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <Layers className="h-4 w-4 text-cyan-400" />
+            <h3 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2.5">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/15 text-sky-400 border border-sky-500/25">
+                <Layers className="h-4 w-4" />
+              </div>
               Household Balance Sheet &amp; Asset Allocation Duel
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-300 mt-1 font-normal">
               How households construct their net worth: Financial market claims vs. Tangible physical real estate vs. Debt encumbrance.
             </p>
           </div>
-          <div className="flex items-center gap-4 text-xs">
-            <div className="flex items-center gap-1.5 text-slate-300">
-              <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
-              <span>Financial (Stocks/Bonds/Cash)</span>
+          <div className="flex items-center gap-2 text-xs flex-wrap">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-slate-300">
+              <span className="h-2 w-2 rounded-full bg-sky-400" />
+              <span>Financial Assets</span>
             </div>
-            <div className="flex items-center gap-1.5 text-slate-300">
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-              <span>Non-Financial (Real Estate)</span>
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-slate-300">
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              <span>Real Estate</span>
             </div>
-            <div className="flex items-center gap-1.5 text-slate-300">
-              <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-slate-300">
+              <span className="h-2 w-2 rounded-full bg-rose-400" />
               <span>Household Debt</span>
             </div>
           </div>
         </div>
 
-        <div className="space-y-6">
-          <div className="rounded-lg border border-cyan-500/20 bg-[#161d2b]/60 p-4">
-            <div className="flex items-center justify-between text-sm mb-2 font-bold text-white">
+        <div className="space-y-4">
+          <div className="rounded-2xl border border-white/[0.10] bg-white/[0.035] p-4 sm:p-5">
+            <div className="flex items-center justify-between text-sm mb-2.5 font-semibold text-white">
               <span className="flex items-center gap-2">
                 <span>{countryA.flag}</span>
                 <span>{countryA.name} Asset Composition</span>
               </span>
-              <span className="text-xs text-slate-400 font-mono">
+              <span className="text-xs text-slate-300 font-medium">
                 Debt Burden: {formatPercent(metricsA.assetMix.debtShareOfGross)} of gross assets
               </span>
             </div>
 
-            <div className="h-4 w-full rounded-full bg-slate-800 overflow-hidden flex shadow-inner">
+            <div className="h-3 w-full rounded-full bg-white/[0.08] overflow-hidden flex shadow-inner">
               <div
-                className="h-full bg-cyan-400 transition-all duration-500"
+                className="h-full bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-500"
                 style={{ width: `${metricsA.assetMix.financialShare}%` }}
                 title={`Financial: ${metricsA.assetMix.financialShare}%`}
               />
               <div
-                className="h-full bg-emerald-400 transition-all duration-500"
+                className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500"
                 style={{ width: `${metricsA.assetMix.nonFinancialShare}%` }}
                 title={`Non-Financial: ${metricsA.assetMix.nonFinancialShare}%`}
               />
             </div>
 
-            <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
-              <span className="text-cyan-300 font-medium">
+            <div className="flex justify-between text-xs text-slate-300 mt-2.5 font-medium">
+              <span className="text-sky-300">
                 Financial Assets: {formatPercent(metricsA.assetMix.financialShare)}
               </span>
-              <span className="text-emerald-300 font-medium">
+              <span className="text-emerald-300">
                 Tangible Property: {formatPercent(metricsA.assetMix.nonFinancialShare)}
               </span>
             </div>
           </div>
 
-          <div className="rounded-lg border border-emerald-500/20 bg-[#132021]/60 p-4">
-            <div className="flex items-center justify-between text-sm mb-2 font-bold text-white">
+          <div className="rounded-2xl border border-white/[0.10] bg-white/[0.035] p-4 sm:p-5">
+            <div className="flex items-center justify-between text-sm mb-2.5 font-semibold text-white">
               <span className="flex items-center gap-2">
                 <span>{countryB.flag}</span>
                 <span>{countryB.name} Asset Composition</span>
               </span>
-              <span className="text-xs text-slate-400 font-mono">
+              <span className="text-xs text-slate-300 font-medium">
                 Debt Burden: {formatPercent(metricsB.assetMix.debtShareOfGross)} of gross assets
               </span>
             </div>
 
-            <div className="h-4 w-full rounded-full bg-slate-800 overflow-hidden flex shadow-inner">
+            <div className="h-3 w-full rounded-full bg-white/[0.08] overflow-hidden flex shadow-inner">
               <div
-                className="h-full bg-cyan-400 transition-all duration-500"
+                className="h-full bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-500"
                 style={{ width: `${metricsB.assetMix.financialShare}%` }}
                 title={`Financial: ${metricsB.assetMix.financialShare}%`}
               />
               <div
-                className="h-full bg-emerald-400 transition-all duration-500"
+                className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500"
                 style={{ width: `${metricsB.assetMix.nonFinancialShare}%` }}
                 title={`Non-Financial: ${metricsB.assetMix.nonFinancialShare}%`}
               />
             </div>
 
-            <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
-              <span className="text-cyan-300 font-medium">
+            <div className="flex justify-between text-xs text-slate-300 mt-2.5 font-medium">
+              <span className="text-sky-300">
                 Financial Assets: {formatPercent(metricsB.assetMix.financialShare)}
               </span>
-              <span className="text-emerald-300 font-medium">
+              <span className="text-emerald-300">
                 Tangible Property: {formatPercent(metricsB.assetMix.nonFinancialShare)}
               </span>
             </div>
@@ -495,36 +497,36 @@ export function CountryComparison({
       </div>
 
       {/* Automated Macro Narrative Synthesis */}
-      <div className="rounded-xl border border-indigo-500/30 bg-gradient-to-br from-[#121629] to-[#0c0f1d] p-5 sm:p-6 shadow-xl">
+      <div className="apple-card p-5 sm:p-6 shadow-2xl border-white/[0.12] bg-gradient-to-br from-white/[0.05] via-white/[0.02] to-sky-500/[0.04]">
         <div className="flex items-center gap-2.5 mb-3">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500/15 text-sky-400 border border-sky-500/25 shadow-sm">
             <Sparkles className="h-4 w-4" />
           </div>
-          <h3 className="text-base font-bold text-white">
+          <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
             Comparative Economic Synthesis: {countryA.name} vs. {countryB.name}
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs text-slate-300 leading-relaxed">
-          <div className="rounded-lg border border-slate-800 bg-[#161a2b]/60 p-3.5">
-            <div className="font-semibold text-cyan-300 mb-1.5 flex items-center gap-1.5">
-              <CheckCircle2 className="h-3.5 w-3.5" /> Middle-Class Living Standards
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
+            <div className="font-semibold text-sky-300 mb-1.5 flex items-center gap-1.5">
+              <CheckCircle2 className="h-4 w-4" /> Middle-Class Living Standards
             </div>
-            <p>{narrative.medianComparison}</p>
+            <p className="font-normal text-slate-300">{narrative.medianComparison}</p>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-[#161a2b]/60 p-3.5">
+          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
             <div className="font-semibold text-amber-300 mb-1.5 flex items-center gap-1.5">
-              <CheckCircle2 className="h-3.5 w-3.5" /> Distribution &amp; Concentration
+              <CheckCircle2 className="h-4 w-4" /> Distribution &amp; Concentration
             </div>
-            <p>{narrative.inequalityComparison}</p>
+            <p className="font-normal text-slate-300">{narrative.inequalityComparison}</p>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-[#161a2b]/60 p-3.5">
+          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
             <div className="font-semibold text-emerald-300 mb-1.5 flex items-center gap-1.5">
-              <CheckCircle2 className="h-3.5 w-3.5" /> Balance Sheet Composition
+              <CheckCircle2 className="h-4 w-4" /> Balance Sheet Composition
             </div>
-            <p>{narrative.assetStructure}</p>
+            <p className="font-normal text-slate-300">{narrative.assetStructure}</p>
           </div>
         </div>
       </div>
@@ -568,54 +570,54 @@ function MetricBattleCard({
   const percentB = 100 - percentA;
 
   return (
-    <div className="rounded-xl border border-[#242b3d] bg-[#12151e] p-4 flex flex-col justify-between hover:border-slate-600 transition-colors">
+    <div className="apple-card apple-card-hover p-4.5 flex flex-col justify-between">
       <div>
         <div className="flex items-start justify-between mb-1">
-          <h4 className="text-xs font-bold text-white">{title}</h4>
+          <h4 className="text-xs sm:text-sm font-semibold text-white tracking-tight">{title}</h4>
         </div>
-        <p className="text-[11px] text-slate-400 line-clamp-2 leading-tight mb-3">
+        <p className="text-[11px] text-slate-400 line-clamp-2 leading-tight mb-3 font-normal">
           {description}
         </p>
       </div>
 
       <div>
-        <div className="grid grid-cols-2 gap-2 text-sm font-mono mb-2">
+        <div className="grid grid-cols-2 gap-2 text-sm font-mono mb-2.5">
           <div
-            className={`rounded-lg p-2 text-left border ${
+            className={`rounded-xl p-2.5 text-left border transition-colors ${
               isBetterA
-                ? 'bg-cyan-500/10 border-cyan-500/40 text-cyan-300 font-bold'
-                : 'bg-slate-900/60 border-slate-800 text-slate-400'
+                ? 'bg-sky-500/15 border-sky-400/40 text-sky-200 font-bold shadow-sm'
+                : 'bg-white/[0.04] border-white/[0.08] text-slate-300'
             }`}
           >
-            <div className="text-[10px] font-sans font-normal text-slate-400 flex items-center gap-1">
+            <div className="text-[10px] font-sans font-medium text-slate-400 flex items-center gap-1">
               <span>{flagA}</span>
-              {isBetterA && <span className="text-cyan-400 font-bold">▲ Lead</span>}
+              {isBetterA && <span className="text-sky-300 font-semibold">▲ Lead</span>}
             </div>
-            <span className="text-xs sm:text-sm">{valA}</span>
+            <span className="text-xs sm:text-sm font-semibold">{valA}</span>
           </div>
 
           <div
-            className={`rounded-lg p-2 text-right border ${
+            className={`rounded-xl p-2.5 text-right border transition-colors ${
               isBetterB
-                ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300 font-bold'
-                : 'bg-slate-900/60 border-slate-800 text-slate-400'
+                ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-200 font-bold shadow-sm'
+                : 'bg-white/[0.04] border-white/[0.08] text-slate-300'
             }`}
           >
-            <div className="text-[10px] font-sans font-normal text-slate-400 flex items-center justify-end gap-1">
-              {isBetterB && <span className="text-emerald-400 font-bold">Lead ▲</span>}
+            <div className="text-[10px] font-sans font-medium text-slate-400 flex items-center justify-end gap-1">
+              {isBetterB && <span className="text-emerald-300 font-semibold">Lead ▲</span>}
               <span>{flagB}</span>
             </div>
-            <span className="text-xs sm:text-sm">{valB}</span>
+            <span className="text-xs sm:text-sm font-semibold">{valB}</span>
           </div>
         </div>
 
-        <div className="h-1.5 w-full rounded-full bg-slate-800 overflow-hidden flex">
+        <div className="h-2 w-full rounded-full bg-white/[0.08] overflow-hidden flex shadow-inner">
           <div
-            className="h-full bg-cyan-400 transition-all duration-500"
+            className="h-full bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-500"
             style={{ width: `${percentA}%` }}
           />
           <div
-            className="h-full bg-emerald-400 transition-all duration-500"
+            className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500"
             style={{ width: `${percentB}%` }}
           />
         </div>
