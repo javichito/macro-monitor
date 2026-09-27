@@ -35,7 +35,29 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.011em;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
+}
+
+/*
+ * iOS Dynamic Island & Home Bar safe-area insets
+ */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Hide scrollbars on mobile navigation strips while allowing native momentum swipe */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /*

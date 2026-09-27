@@ -76,67 +76,67 @@ export default function OverviewPage() {
       <TimelineControls />
 
       {/* Primary KPI Indicator Grid — Apple Health/Stocks aesthetic */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
         {/* Total Wealth Card */}
-        <div className="apple-card apple-card-hover p-6 relative overflow-hidden group">
+        <div className="apple-card apple-card-hover p-5 sm:p-6 relative overflow-hidden group">
           <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
             <span className="uppercase tracking-wider font-semibold text-slate-300">Total Global Wealth</span>
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 shadow-sm">
               <Coins className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-1">
+          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-1">
             {formatCurrency(adjustedWealthTrillion * 1_000_000_000_000, { compact: true })}
           </div>
-          <p className="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
             Combined net worth of all {currentWealth.adultPopulationBillions.toFixed(2)}B adults on Earth.
           </p>
         </div>
 
         {/* Global GDP Card */}
-        <div className="apple-card apple-card-hover p-6 relative overflow-hidden group">
+        <div className="apple-card apple-card-hover p-5 sm:p-6 relative overflow-hidden group">
           <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
             <span className="uppercase tracking-wider font-semibold text-slate-300">World Annual GDP</span>
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500/15 text-sky-300 border border-sky-500/25 shadow-sm">
               <TrendingUp className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-1">
+          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-1">
             {formatCurrency(adjustedGdpTrillion * 1_000_000_000_000, { compact: true })}
           </div>
-          <p className="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
             Annual economic production of goods and services worldwide.
           </p>
         </div>
 
         {/* Median Adult Wealth */}
-        <div className="apple-card apple-card-hover p-6 relative overflow-hidden group">
+        <div className="apple-card apple-card-hover p-5 sm:p-6 relative overflow-hidden group">
           <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
             <span className="uppercase tracking-wider font-semibold text-slate-300">Median Adult Wealth</span>
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/25 shadow-sm">
               <Scale className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-1">
+          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-1">
             {formatCurrency(adjustedMedian, { compact: true })}
           </div>
-          <p className="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
             50% of the world owns less than this, 50% owns more.
           </p>
         </div>
 
         {/* Global Debt Load */}
-        <div className="apple-card apple-card-hover p-6 relative overflow-hidden group">
+        <div className="apple-card apple-card-hover p-5 sm:p-6 relative overflow-hidden group">
           <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
             <span className="uppercase tracking-wider font-semibold text-slate-300">Global Debt Ratio</span>
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-rose-500/15 text-rose-300 border border-rose-500/25 shadow-sm">
               <ShieldCheck className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-1">
+          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-1">
             {formatPercent(currentMacro.globalDebtToGdp)}
           </div>
-          <p className="text-xs text-slate-400 mt-2.5 leading-relaxed">
+          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
             Total debt ({formatCurrency(currentMacro.globalDebtTrillion * 1_000_000_000_000, { compact: true })}) relative to world GDP.
           </p>
         </div>

@@ -53,6 +53,7 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
           return (
             <div
               key={tier.bracket}
+              onClick={() => setActiveBracket((curr) => (curr === tier.bracket ? null : tier.bracket))}
               onMouseEnter={() => setActiveBracket(tier.bracket)}
               onMouseLeave={() => setActiveBracket(null)}
               className={`rounded-2xl border p-4 sm:p-4.5 transition-all duration-200 cursor-pointer ${

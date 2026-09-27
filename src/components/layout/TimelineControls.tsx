@@ -82,16 +82,22 @@ export function TimelineControls() {
             aria-label="Select timeline year"
           />
 
-          {/* Year ticks */}
-          <div className="flex justify-between text-[11px] text-slate-400 font-medium mt-2 px-1">
-            {availableYears.map((yr) => {
+          {/* Year ticks: condensed on mobile to prevent overlapping */}
+          <div className="flex justify-between text-[11px] font-medium mt-2 px-1">
+            {availableYears.map((yr, idx) => {
               const isSelected = yr === selectedYear;
+              // On small screens, hide dense interim years unless currently selected
+              const isPrimaryYear = yr === 1980 || yr === 2000 || yr === 2010 || yr === 2020 || yr === 2026;
+              const hideOnMobile = !isPrimaryYear && !isSelected;
+
               return (
                 <button
                   key={yr}
                   onClick={() => setSelectedYear(yr)}
-                  className={`transition-all duration-150 hover:text-white ${
-                    isSelected ? 'font-bold text-sky-400 scale-110' : 'text-slate-400'
+                  className={`transition-all duration-150 py-1 px-0.5 ${
+                    hideOnMobile ? 'hidden sm:inline-block' : 'inline-block'
+                  } ${
+                    isSelected ? 'font-bold text-sky-400 scale-110' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   {yr}

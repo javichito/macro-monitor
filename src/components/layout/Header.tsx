@@ -92,8 +92,8 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile navigation row */}
-      <div className="flex md:hidden overflow-x-auto border-t border-white/[0.06] px-4 py-2 gap-1.5 bg-black/40">
+      {/* Mobile navigation row: iOS momentum swipeable tab bar */}
+      <div className="flex md:hidden overflow-x-auto no-scrollbar border-t border-white/[0.06] px-4 py-2 gap-2 bg-black/40 backdrop-blur-xl">
         {navLinks.map((link) => {
           const Icon = link.icon;
           const isActive = pathname === link.href;
@@ -101,13 +101,13 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
+              className={`flex shrink-0 items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-full transition-all active:scale-95 ${
                 isActive
-                  ? 'bg-white/15 text-white border border-white/20 shadow-sm'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-white/20 text-white border border-white/25 shadow-sm'
+                  : 'text-white/60 hover:text-white bg-white/[0.04]'
               }`}
             >
-              <Icon className="h-3.5 w-3.5" />
+              <Icon className="h-4 w-4" />
               {link.label}
             </Link>
           );
