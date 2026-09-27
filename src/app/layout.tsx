@@ -7,6 +7,16 @@ export const metadata: Metadata = {
   title: 'MacroMonitor — Global Wealth & Macroeconomic Intelligence',
   description:
     'State-of-the-art web application tracking global wealth distribution, asset classes, geographies, and macroeconomic trends over time.',
+  manifest: '/macro-monitor/manifest.json',
+  icons: {
+    icon: '/macro-monitor/icon.svg',
+    apple: '/macro-monitor/icon.svg',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'MacroMonitor',
+  },
 };
 
 export default function RootLayout({
