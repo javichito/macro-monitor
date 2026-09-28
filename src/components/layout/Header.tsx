@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Globe2, TrendingUp, Layers, MapPin, BarChart3 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { CurrencyPerspective } from '../../lib/types';
+import { MarketPulseTicker } from './MarketPulseTicker';
 
 export function Header() {
   const pathname = usePathname();
@@ -113,6 +114,9 @@ export function Header() {
           );
         })}
       </div>
+
+      {/* Global Live Market Pulse Ticker */}
+      <MarketPulseTicker />
     </header>
   );
 }
