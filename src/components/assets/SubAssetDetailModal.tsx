@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AssetCategory, CurrencyPerspective, SubAssetCategory } from '../../lib/types';
 import { adjustValue, formatCurrency, formatPercent } from '../../lib/formatters';
 import { X, PieChart, Layers, ArrowRight, ShieldCheck } from 'lucide-react';
@@ -18,6 +19,12 @@ export function SubAssetDetailModal({
   currencyPerspective,
   onClose,
 }: SubAssetDetailModalProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   /*
    * Traps escape key presses to ensure accessibility standards for modal dialogs.
    */
@@ -29,12 +36,12 @@ export function SubAssetDetailModal({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  if (!category) return null;
+  if (!category || !mounted) return null;
 
   const totalAdjustedVal = adjustValue(category.valueTrillion, selectedYear, currencyPerspective);
   const subCategories = category.subCategories || [];
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
       {/* Dimmed backdrop */}
       <div
@@ -175,6 +182,7 @@ export function SubAssetDetailModal({
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
