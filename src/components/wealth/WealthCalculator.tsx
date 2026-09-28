@@ -4,9 +4,13 @@ import React, { useState } from 'react';
 import { COUNTRIES_DATA } from '../../data/country-metrics';
 import { calculateWealthPercentile } from '../../lib/calculations';
 import { formatCurrency, formatPercent } from '../../lib/formatters';
-import { UserCheck, Compass, Sparkles, DollarSign } from 'lucide-react';
+import { UserCheck, Compass, Sparkles, DollarSign, Globe2 } from 'lucide-react';
 
-export function WealthCalculator() {
+interface WealthCalculatorProps {
+  onSwitchToPpp?: () => void;
+}
+
+export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) {
   const [netWorth, setNetWorth] = useState<number>(65000);
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>('USA');
 
@@ -165,6 +169,17 @@ export function WealthCalculator() {
               </span>
             </div>
           </div>
+
+          {onSwitchToPpp && (
+            <button
+              type="button"
+              onClick={onSwitchToPpp}
+              className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] py-2 text-xs font-semibold text-white/80 hover:bg-white/[0.08] hover:text-white transition-colors"
+            >
+              <Globe2 className="h-3.5 w-3.5 text-[#0a84ff]" />
+              <span>Compare what this buys abroad (PPP Converter) &rarr;</span>
+            </button>
+          )}
         </div>
       </div>
     </div>
