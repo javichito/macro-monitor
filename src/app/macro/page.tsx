@@ -4,6 +4,7 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { TimelineControls } from '../../components/layout/TimelineControls';
 import { MacroTrendChart } from '../../components/macro/MacroTrendChart';
+import { CentralBankLiquidityRadar } from '../../components/macro/CentralBankLiquidityRadar';
 import { FiscalDominanceSimulator } from '../../components/macro/FiscalDominanceSimulator';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import { BarChart3 } from 'lucide-react';
@@ -29,6 +30,9 @@ export default function MacroPage() {
 
       {/* Main Macro Trend Visualizer */}
       <MacroTrendChart />
+
+      {/* Global Central Bank Liquidity Radar */}
+      <CentralBankLiquidityRadar />
 
       {/* Sovereign Fiscal Dominance & Debt Spiral Simulator */}
       <FiscalDominanceSimulator />
