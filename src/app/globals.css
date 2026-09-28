@@ -204,6 +204,22 @@ html.light .bg-white\/\[0\.2\] {
   background-color: rgba(15, 23, 42, 0.09) !important;
 }
 
+/* Automatic conversion of hardcoded dark containers in Light Mode */
+html.light .bg-\[\#14121a\] {
+  background-color: rgba(244, 63, 94, 0.06) !important;
+  border-color: rgba(244, 63, 94, 0.20) !important;
+}
+html.light .bg-\[\#0c1017\],
+html.light .bg-\[\#0c1017\]\/90,
+html.light .bg-\[\#12141c\],
+html.light .bg-\[\#12151e\],
+html.light .bg-\[\#121622\],
+html.light .bg-\[\#161a26\],
+html.light .bg-\[\#0e121b\]\/95 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
 /* Border strokes for Light Mode */
 html.light .border-white\/10,
 html.light .border-white\/15,

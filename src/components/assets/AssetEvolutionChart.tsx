@@ -387,19 +387,19 @@ export function AssetEvolutionChart({
       </div>
 
       {/* Household Liabilities & Net Global Wealth Balance Sheet */}
-      <div className="apple-card p-5 sm:p-6 border-rose-500/30 bg-gradient-to-br from-rose-500/[0.08] via-white/[0.02] to-transparent shadow-sm">
+      <div className="apple-card p-5 sm:p-6 border-rose-500/30 bg-gradient-to-br from-rose-500/[0.06] via-transparent to-transparent shadow-sm">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <ShieldAlert className="h-4 w-4 text-rose-400" />
-              <h4 className="text-sm font-bold text-white">
+              <ShieldAlert className="h-4 w-4 text-rose-500 dark:text-rose-400" />
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                 Global Liabilities & Encumbrances ({activeYearData.year})
               </h4>
-              <span className="rounded bg-rose-500/20 px-2 py-0.5 text-xs font-semibold text-rose-400 border border-rose-500/30">
+              <span className="rounded bg-rose-500/15 px-2 py-0.5 text-xs font-semibold text-rose-600 dark:text-rose-400 border border-rose-500/30">
                 Total: -{formatCurrency(adjustValue(activeYearData.totalLiabilitiesTrillion, activeYearData.year, currencyPerspective) * 1_000_000_000_000, { compact: true })}
               </span>
             </div>
-            <p className="text-xs text-slate-400 max-w-2xl leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
               Household debt claims offsetting gross assets. Subtracting these contractual liabilities from total gross assets yields Net World Wealth ({formatCurrency(adjustValue(activeYearData.netWealthTrillion, activeYearData.year, currencyPerspective) * 1_000_000_000_000, { compact: true })}).
             </p>
           </div>
@@ -419,7 +419,7 @@ export function AssetEvolutionChart({
                 });
               }
             }}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-rose-500/40 bg-rose-500/10 px-3 py-1.5 text-xs font-semibold text-rose-300 hover:bg-rose-500/20 transition-colors shrink-0"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs font-semibold text-rose-600 dark:text-rose-300 hover:bg-rose-500/20 transition-colors shrink-0"
           >
             Inspect Debt Sub-Sectors <ArrowUpRight className="h-3.5 w-3.5" />
           </button>
@@ -427,16 +427,19 @@ export function AssetEvolutionChart({
 
         {/* Liabilities Sub-Sector Preview */}
         {activeYearData.liabilityBreakdown && (
-          <div className="mt-4 pt-3 border-t border-rose-900/30 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div className="mt-4 pt-3 border-t border-rose-500/20 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
             {activeYearData.liabilityBreakdown.map((liab) => (
-              <div key={liab.id} className="rounded-lg bg-[#14121a] p-2.5 border border-rose-900/20">
+              <div
+                key={liab.id}
+                className="rounded-xl bg-rose-500/[0.06] dark:bg-white/[0.03] p-3 border border-rose-500/20 dark:border-rose-500/20 shadow-sm"
+              >
                 <div className="flex justify-between items-center mb-1">
-                  <span className="font-semibold text-slate-300">{liab.name}</span>
-                  <span className="font-bold text-rose-400">
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">{liab.name}</span>
+                  <span className="font-bold text-rose-600 dark:text-rose-400 font-mono">
                     {formatPercent(liab.shareOfParentPercent)}
                   </span>
                 </div>
-                <span className="text-xs font-mono text-slate-400">
+                <span className="text-xs font-mono font-medium text-slate-600 dark:text-slate-400">
                   -{formatCurrency(adjustValue(liab.valueTrillion, activeYearData.year, currencyPerspective) * 1_000_000_000_000, { compact: true })}
                 </span>
               </div>
