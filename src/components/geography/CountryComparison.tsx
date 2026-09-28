@@ -274,10 +274,10 @@ export function CountryComparison({
           {/* Country A Picker */}
           <div className="md:col-span-5 rounded-2xl border border-sky-500/30 bg-gradient-to-br from-sky-500/[0.08] via-white/[0.03] to-transparent p-5 shadow-sm">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-sky-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">
                 Country A
               </span>
-              <span className="text-xs font-mono text-slate-300">{countryA.region}</span>
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-300">{countryA.region}</span>
             </div>
             <div className="flex items-center gap-3.5">
               <span className="text-3xl">{countryA.flag}</span>
@@ -285,7 +285,7 @@ export function CountryComparison({
                 <select
                   value={countryCodeA}
                   onChange={(e) => setCountryCodeA(e.target.value)}
-                  className="w-full rounded-xl border border-white/[0.12] bg-[#0c1017] px-3.5 py-2.5 text-sm font-semibold text-white focus:border-sky-400 focus:outline-none cursor-pointer"
+                  className="w-full rounded-xl border border-slate-200 dark:border-white/[0.12] bg-white dark:bg-[#0c1017] px-3.5 py-2.5 text-sm font-semibold text-slate-900 dark:text-white focus:border-sky-400 focus:outline-none cursor-pointer"
                 >
                   {COUNTRIES_DATA.map((c) => (
                     <option key={`a-${c.code}`} value={c.code} disabled={c.code === countryCodeB}>
@@ -303,7 +303,7 @@ export function CountryComparison({
               onClick={handleSwap}
               title="Swap countries"
               aria-label="Swap countries"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/[0.15] bg-white/[0.08] text-slate-200 hover:bg-white/[0.18] hover:text-white hover:scale-110 active:scale-95 transition-all shadow-md cursor-pointer"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 dark:border-white/[0.15] bg-slate-100 dark:bg-white/[0.08] text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-white/[0.18] hover:text-slate-900 dark:hover:text-white hover:scale-110 active:scale-95 transition-all shadow-md cursor-pointer"
             >
               <ArrowLeftRight className="h-4 w-4" />
             </button>
@@ -312,10 +312,10 @@ export function CountryComparison({
           {/* Country B Picker */}
           <div className="md:col-span-5 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/[0.08] via-white/[0.03] to-transparent p-5 shadow-sm">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
                 Country B
               </span>
-              <span className="text-xs font-mono text-slate-300">{countryB.region}</span>
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-300">{countryB.region}</span>
             </div>
             <div className="flex items-center gap-3.5">
               <span className="text-3xl">{countryB.flag}</span>
@@ -323,7 +323,7 @@ export function CountryComparison({
                 <select
                   value={countryCodeB}
                   onChange={(e) => setCountryCodeB(e.target.value)}
-                  className="w-full rounded-xl border border-white/[0.12] bg-[#0c1017] px-3.5 py-2.5 text-sm font-semibold text-white focus:border-emerald-400 focus:outline-none cursor-pointer"
+                  className="w-full rounded-xl border border-slate-200 dark:border-white/[0.12] bg-white dark:bg-[#0c1017] px-3.5 py-2.5 text-sm font-semibold text-slate-900 dark:text-white focus:border-emerald-400 focus:outline-none cursor-pointer"
                 >
                   {COUNTRIES_DATA.map((c) => (
                     <option key={`b-${c.code}`} value={c.code} disabled={c.code === countryCodeA}>
@@ -491,28 +491,28 @@ export function CountryComparison({
               />
             </div>
 
-            <div className="flex justify-between text-xs text-slate-300 mt-2.5 font-medium">
-              <span className="text-sky-300">
+            <div className="flex justify-between text-xs mt-2.5 font-medium">
+              <span className="text-sky-600 dark:text-sky-300">
                 Financial Assets: {formatPercent(metricsA.assetMix.financialShare)}
               </span>
-              <span className="text-emerald-300">
+              <span className="text-emerald-600 dark:text-emerald-300">
                 Tangible Property: {formatPercent(metricsA.assetMix.nonFinancialShare)}
               </span>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.10] bg-white/[0.035] p-4 sm:p-5">
-            <div className="flex items-center justify-between text-sm mb-2.5 font-semibold text-white">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.10] bg-slate-100/70 dark:bg-white/[0.035] p-4 sm:p-5">
+            <div className="flex items-center justify-between text-sm mb-2.5 font-semibold text-slate-900 dark:text-white">
               <span className="flex items-center gap-2">
                 <span>{countryB.flag}</span>
                 <span>{countryB.name} Asset Composition</span>
               </span>
-              <span className="text-xs text-slate-300 font-medium">
+              <span className="text-xs text-slate-500 dark:text-slate-300 font-medium">
                 Debt Burden: {formatPercent(metricsB.assetMix.debtShareOfGross)} of gross assets
               </span>
             </div>
 
-            <div className="h-3 w-full rounded-full bg-white/[0.08] overflow-hidden flex shadow-inner">
+            <div className="h-3 w-full rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden flex shadow-inner">
               <div
                 className="h-full bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-500"
                 style={{ width: `${metricsB.assetMix.financialShare}%` }}
@@ -525,11 +525,11 @@ export function CountryComparison({
               />
             </div>
 
-            <div className="flex justify-between text-xs text-slate-300 mt-2.5 font-medium">
-              <span className="text-sky-300">
+            <div className="flex justify-between text-xs mt-2.5 font-medium">
+              <span className="text-sky-600 dark:text-sky-300">
                 Financial Assets: {formatPercent(metricsB.assetMix.financialShare)}
               </span>
-              <span className="text-emerald-300">
+              <span className="text-emerald-600 dark:text-emerald-300">
                 Tangible Property: {formatPercent(metricsB.assetMix.nonFinancialShare)}
               </span>
             </div>
@@ -538,36 +538,36 @@ export function CountryComparison({
       </div>
 
       {/* Automated Macro Narrative Synthesis */}
-      <div className="apple-card p-5 sm:p-6 shadow-2xl border-white/[0.12] bg-gradient-to-br from-white/[0.05] via-white/[0.02] to-sky-500/[0.04]">
+      <div className="apple-card p-5 sm:p-6 shadow-2xl border-slate-200/80 dark:border-white/[0.12] bg-gradient-to-br from-white/80 via-white/50 to-sky-500/[0.05] dark:from-white/[0.05] dark:via-white/[0.02] dark:to-sky-500/[0.04]">
         <div className="flex items-center gap-2.5 mb-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500/15 text-sky-400 border border-sky-500/25 shadow-sm">
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/25 shadow-sm">
             <Sparkles className="h-4 w-4" />
           </div>
-          <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">
             Comparative Economic Synthesis: {countryA.name} vs. {countryB.name}
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
-            <div className="font-semibold text-sky-300 mb-1.5 flex items-center gap-1.5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs sm:text-sm leading-relaxed">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] bg-slate-100/70 dark:bg-white/[0.035] p-4">
+            <div className="font-semibold text-sky-700 dark:text-sky-300 mb-1.5 flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4" /> Middle-Class Living Standards
             </div>
-            <p className="font-normal text-slate-300">{narrative.medianComparison}</p>
+            <p className="font-normal text-slate-700 dark:text-slate-300">{narrative.medianComparison}</p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
-            <div className="font-semibold text-amber-300 mb-1.5 flex items-center gap-1.5">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] bg-slate-100/70 dark:bg-white/[0.035] p-4">
+            <div className="font-semibold text-amber-700 dark:text-amber-300 mb-1.5 flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4" /> Distribution &amp; Concentration
             </div>
-            <p className="font-normal text-slate-300">{narrative.inequalityComparison}</p>
+            <p className="font-normal text-slate-700 dark:text-slate-300">{narrative.inequalityComparison}</p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
-            <div className="font-semibold text-emerald-300 mb-1.5 flex items-center gap-1.5">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] bg-slate-100/70 dark:bg-white/[0.035] p-4">
+            <div className="font-semibold text-emerald-700 dark:text-emerald-300 mb-1.5 flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4" /> Balance Sheet Composition
             </div>
-            <p className="font-normal text-slate-300">{narrative.assetStructure}</p>
+            <p className="font-normal text-slate-700 dark:text-slate-300">{narrative.assetStructure}</p>
           </div>
         </div>
       </div>
@@ -626,33 +626,45 @@ function MetricBattleCard({
           <div
             className={`rounded-xl p-2.5 text-left border transition-colors ${
               isBetterA
-                ? 'bg-sky-500/15 border-sky-400/40 text-sky-200 font-bold shadow-sm'
-                : 'bg-white/[0.04] border-white/[0.08] text-slate-300'
+                ? 'bg-sky-500/15 border-sky-400/50 dark:border-sky-400/40 shadow-sm'
+                : 'bg-slate-100/70 dark:bg-white/[0.04] border-slate-200/80 dark:border-white/[0.08]'
             }`}
           >
-            <div className="text-[10px] font-sans font-medium text-slate-400 flex items-center gap-1">
+            <div className="text-[10px] font-sans font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1">
               <span>{flagA}</span>
-              {isBetterA && <span className="text-sky-300 font-semibold">▲ Lead</span>}
+              {isBetterA && <span className="text-sky-600 dark:text-sky-300 font-semibold">▲ Lead</span>}
             </div>
-            <span className="text-xs sm:text-sm font-semibold">{valA}</span>
+            <span
+              className={`text-xs sm:text-sm font-bold block mt-0.5 ${
+                isBetterA ? 'text-sky-900 dark:text-sky-100' : 'text-slate-800 dark:text-slate-200'
+              }`}
+            >
+              {valA}
+            </span>
           </div>
 
           <div
             className={`rounded-xl p-2.5 text-right border transition-colors ${
               isBetterB
-                ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-200 font-bold shadow-sm'
-                : 'bg-white/[0.04] border-white/[0.08] text-slate-300'
+                ? 'bg-emerald-500/15 border-emerald-400/50 dark:border-emerald-400/40 shadow-sm'
+                : 'bg-slate-100/70 dark:bg-white/[0.04] border-slate-200/80 dark:border-white/[0.08]'
             }`}
           >
-            <div className="text-[10px] font-sans font-medium text-slate-400 flex items-center justify-end gap-1">
-              {isBetterB && <span className="text-emerald-300 font-semibold">Lead ▲</span>}
+            <div className="text-[10px] font-sans font-medium text-slate-500 dark:text-slate-400 flex items-center justify-end gap-1">
+              {isBetterB && <span className="text-emerald-600 dark:text-emerald-300 font-semibold">Lead ▲</span>}
               <span>{flagB}</span>
             </div>
-            <span className="text-xs sm:text-sm font-semibold">{valB}</span>
+            <span
+              className={`text-xs sm:text-sm font-bold block mt-0.5 ${
+                isBetterB ? 'text-emerald-900 dark:text-emerald-100' : 'text-slate-800 dark:text-slate-200'
+              }`}
+            >
+              {valB}
+            </span>
           </div>
         </div>
 
-        <div className="h-2 w-full rounded-full bg-white/[0.08] overflow-hidden flex shadow-inner">
+        <div className="h-2 w-full rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden flex shadow-inner">
           <div
             className="h-full bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-500"
             style={{ width: `${percentA}%` }}
