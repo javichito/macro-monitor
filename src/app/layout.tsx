@@ -10,7 +10,10 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: 'cover',
-  themeColor: '#05070c',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#05070c' },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: 'default',
     title: 'MacroMonitor',
   },
 };
@@ -35,10 +38,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" data-scroll-behavior="smooth">
-      <body className="min-h-screen bg-[#05070c] text-slate-100 flex flex-col selection:bg-sky-500/30 selection:text-sky-200 antialiased relative safe-top safe-bottom">
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        {/*
+         * Inline script executes synchronously before browser paints to prevent
+         * light/dark flash of unstyled content (FOUC) on cold starts.
+         */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('macro_theme');
+                  var isDark = stored === 'dark' || (!stored || stored === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var theme = isDark ? 'dark' : 'light';
+                  document.documentElement.classList.add(theme);
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] flex flex-col selection:bg-sky-500/30 selection:text-sky-200 antialiased relative safe-top safe-bottom transition-colors duration-200">
         {/* Apple subtle ambient top glow */}
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="ambient-glow fixed inset-0 pointer-events-none z-0 overflow-hidden transition-opacity duration-300">
           <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-sky-500/10 via-indigo-500/5 to-transparent blur-[120px] rounded-full" />
         </div>
 

@@ -3,14 +3,19 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Globe2, TrendingUp, Layers, MapPin, BarChart3 } from 'lucide-react';
+import { Globe2, TrendingUp, Layers, MapPin, BarChart3, Sun, Moon, Monitor } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { CurrencyPerspective } from '../../lib/types';
 import { MarketPulseTicker } from './MarketPulseTicker';
 
 export function Header() {
   const pathname = usePathname();
-  const { currencyPerspective, setCurrencyPerspective } = useApp();
+  const {
+    currencyPerspective,
+    setCurrencyPerspective,
+    themePreference,
+    setThemePreference,
+  } = useApp();
 
   const navLinks = [
     { href: '/', label: 'Overview', icon: Globe2 },
@@ -66,8 +71,9 @@ export function Header() {
           })}
         </nav>
 
-        {/* Currency Perspective Switcher: Apple segmented control */}
+        {/* Action Controls: Currency Perspective & Appearance Mode */}
         <div className="flex items-center gap-2">
+          {/* Currency Perspective Switcher: Apple segmented control */}
           <div className="flex items-center rounded-full p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs">
             {(['nominal', 'real', 'ppp'] as CurrencyPerspective[]).map((mode) => (
               <button
@@ -80,7 +86,7 @@ export function Header() {
                     ? 'Real USD: Inflation-adjusted to constant 2026 purchasing power'
                     : 'PPP: Purchasing Power Parity adjusted for local basket costs'
                 }
-                className={`rounded-full px-3 py-1 text-[11px] font-semibold transition-all duration-200 uppercase tracking-wider ${
+                className={`rounded-full px-2.5 sm:px-3 py-1 text-[11px] font-semibold transition-all duration-200 uppercase tracking-wider ${
                   currencyPerspective === mode
                     ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                     : 'text-slate-400 hover:text-slate-200'
@@ -89,6 +95,52 @@ export function Header() {
                 {mode}
               </button>
             ))}
+          </div>
+
+          {/* Theme Mode Switcher: Apple segmented control (System / Light / Dark) */}
+          <div
+            className="flex items-center rounded-full p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs"
+            aria-label="Appearance Mode"
+          >
+            <button
+              type="button"
+              onClick={() => setThemePreference('system')}
+              aria-label="Auto System Theme"
+              title="System: Follow device settings automatically"
+              className={`rounded-full p-1.5 transition-all duration-200 ${
+                themePreference === 'system'
+                  ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Monitor className="h-3.5 w-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setThemePreference('light')}
+              aria-label="Light Mode"
+              title="Light Mode"
+              className={`rounded-full p-1.5 transition-all duration-200 ${
+                themePreference === 'light'
+                  ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Sun className="h-3.5 w-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setThemePreference('dark')}
+              aria-label="Dark Mode"
+              title="Dark Mode"
+              className={`rounded-full p-1.5 transition-all duration-200 ${
+                themePreference === 'dark'
+                  ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Moon className="h-3.5 w-3.5" />
+            </button>
           </div>
         </div>
       </div>

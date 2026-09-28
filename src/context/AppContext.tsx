@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { CurrencyPerspective, Granularity } from '../lib/types';
 
+export type ThemePreference = 'system' | 'dark' | 'light';
+
 interface AppContextValue {
   currencyPerspective: CurrencyPerspective;
   setCurrencyPerspective: (val: CurrencyPerspective) => void;
@@ -13,6 +15,9 @@ interface AppContextValue {
   isPlayingTimeline: boolean;
   setIsPlayingTimeline: (playing: boolean | ((prev: boolean) => boolean)) => void;
   availableYears: number[];
+  themePreference: ThemePreference;
+  setThemePreference: (pref: ThemePreference) => void;
+  resolvedTheme: 'dark' | 'light';
 }
 
 const AppContext = createContext<AppContextValue | undefined>(undefined);
@@ -24,6 +29,85 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [granularity, setGranularity] = useState<Granularity>('country');
   const [selectedYear, setSelectedYear] = useState<number>(2026);
   const [isPlayingTimeline, setIsPlayingTimeline] = useState<boolean>(false);
+  const [themePreference, setThemePreferenceState] = useState<ThemePreference>('system');
+  const [resolvedTheme, setResolvedTheme] = useState<'dark' | 'light'>('dark');
+
+  /*
+   * Synchronize active theme with DOM root attributes and PWA meta theme-color.
+   * This ensures iOS Safari status bars and desktop window chrome immediately match.
+   */
+  const applyResolvedTheme = (resolved: 'dark' | 'light') => {
+    setResolvedTheme(resolved);
+    if (typeof document === 'undefined') return;
+
+    const root = document.documentElement;
+    root.classList.remove('dark', 'light');
+    root.classList.add(resolved);
+    root.setAttribute('data-theme', resolved);
+
+    // Update dynamic PWA theme-color tag
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    const colorHex = resolved === 'dark' ? '#05070c' : '#f8fafc';
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', colorHex);
+    }
+  };
+
+  const setThemePreference = (pref: ThemePreference) => {
+    setThemePreferenceState(pref);
+    try {
+      localStorage.setItem('macro_theme', pref);
+    } catch (e) {
+      // LocalStorage might be restricted in private browsing
+    }
+
+    if (pref === 'system') {
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyResolvedTheme(isDark ? 'dark' : 'light');
+    } else {
+      applyResolvedTheme(pref);
+    }
+  };
+
+  /*
+   * Initialize theme from localStorage or system device settings on client mount,
+   * and bind a live mediaQuery listener for when device shifts between light and dark.
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    let savedPref: ThemePreference = 'system';
+    try {
+      const stored = localStorage.getItem('macro_theme');
+      if (stored === 'system' || stored === 'dark' || stored === 'light') {
+        savedPref = stored;
+      }
+    } catch (e) {}
+
+    setThemePreferenceState(savedPref);
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const computeResolved = (pref: ThemePreference) => {
+      if (pref === 'system') {
+        return mediaQuery.matches ? 'dark' : 'light';
+      }
+      return pref;
+    };
+
+    applyResolvedTheme(computeResolved(savedPref));
+
+    const handleSystemChange = (e: MediaQueryListEvent) => {
+      setThemePreferenceState((currentPref) => {
+        if (currentPref === 'system') {
+          applyResolvedTheme(e.matches ? 'dark' : 'light');
+        }
+        return currentPref;
+      });
+    };
+
+    mediaQuery.addEventListener('change', handleSystemChange);
+    return () => mediaQuery.removeEventListener('change', handleSystemChange);
+  }, []);
 
   /*
    * Hydrate state from deep link URL query params on initial mount
@@ -77,6 +161,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         isPlayingTimeline,
         setIsPlayingTimeline,
         availableYears: AVAILABLE_YEARS,
+        themePreference,
+        setThemePreference,
+        resolvedTheme,
       }}
     >
       {children}
