@@ -152,6 +152,15 @@ html.light .apple-pill {
 html.light .text-white {
   color: #0f172a !important;
 }
+/* Preserve crisp white text on buttons and saturated badges in Light Mode */
+html.light button.text-white,
+html.light button .text-white,
+html.light [class*="bg-sky-"].text-white,
+html.light [class*="bg-blue-"].text-white,
+html.light [class*="bg-emerald-"].text-white,
+html.light [class*="bg-slate-900"].text-white {
+  color: #ffffff !important;
+}
 html.light .text-white\/90 {
   color: rgba(15, 23, 42, 0.90) !important;
 }

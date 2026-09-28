@@ -176,7 +176,8 @@ export function SubAssetDetailModal({
         <div className="mt-4 pt-4 border-t border-slate-200 dark:border-white/[0.08] flex justify-end">
           <button
             onClick={onClose}
-            className="rounded-full bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200 px-5 py-2 text-xs font-semibold transition-colors shadow-md cursor-pointer"
+            className="rounded-full bg-sky-500 hover:bg-sky-600 active:scale-95 px-5 py-2 text-xs font-semibold text-white shadow-sm transition-all cursor-pointer"
+            style={{ color: '#ffffff' }}
           >
             Done
           </button>
