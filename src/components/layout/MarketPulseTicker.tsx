@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   MARKET_BENCHMARKS,
   MarketBenchmark,
@@ -60,18 +61,37 @@ export function MarketPulseTicker() {
   const [selectedBenchmark, setSelectedBenchmark] =
     useState<MarketBenchmark | null>(null);
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   /*
-   * Handle ESC key navigation for the detail modal to conform to accessible modal UX.
+   * We defer portal rendering until client mount to avoid Next.js SSR hydration mismatches,
+   * since document.body is unavailable during initial server-side compilation.
    */
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  /*
+   * Prevent background page scroll bleed-through when inspecting benchmark intelligence,
+   * and support standard accessible ESC key dismissal.
+   */
+  useEffect(() => {
+    if (!selectedBenchmark) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedBenchmark) {
+      if (e.key === 'Escape') {
         setSelectedBenchmark(null);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [selectedBenchmark]);
 
   const formatPrice = (b: MarketBenchmark) => {
@@ -172,124 +192,127 @@ export function MarketPulseTicker() {
         </div>
       </div>
 
-      {/* Detail Modal */}
-      {selectedBenchmark && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-benchmark-title"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md transition-opacity animate-in fade-in duration-200"
-          onClick={() => setSelectedBenchmark(null)}
-        >
+      {/* Detail Modal: Rendered via portal to document.body to break out of header backdrop-filter stacking context */}
+      {mounted &&
+        selectedBenchmark &&
+        createPortal(
           <div
-            className="apple-card max-w-lg w-full p-6 sm:p-7 relative border border-white/15 shadow-2xl bg-[#0b0e17]/95"
-            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-benchmark-title"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl overflow-y-auto animate-in fade-in duration-200"
+            onClick={() => setSelectedBenchmark(null)}
           >
-            {/* Close Button */}
-            <button
-              type="button"
-              onClick={() => setSelectedBenchmark(null)}
-              className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.06] text-white/60 hover:text-white hover:bg-white/[0.12] transition-colors focus:outline-none"
-              aria-label="Close modal"
+            <div
+              className="apple-card max-w-lg w-full p-6 sm:p-7 relative border border-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] bg-[#0b0e17] my-auto"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X className="h-4 w-4" />
-            </button>
-
-            {/* Header info */}
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/[0.08] text-white/70">
-                {selectedBenchmark.category}
-              </span>
-              <span className="text-xs text-white/40 font-mono">
-                {selectedBenchmark.symbol}
-              </span>
-            </div>
-
-            <h3
-              id="modal-benchmark-title"
-              className="text-xl sm:text-2xl font-bold text-white tracking-tight"
-            >
-              {selectedBenchmark.name}
-            </h3>
-
-            {/* Price display & 24h change */}
-            <div className="mt-3 flex items-baseline gap-3">
-              <span className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
-                {formatPrice(selectedBenchmark)}
-              </span>
-              <div
-                className={`inline-flex items-center gap-1 font-mono text-sm font-bold px-2.5 py-0.5 rounded-lg ${
-                  selectedBenchmark.changePercent >= 0
-                    ? 'bg-[#30d158]/15 text-[#30d158] border border-[#30d158]/30'
-                    : 'bg-[#ff453a]/15 text-[#ff453a] border border-[#ff453a]/30'
-                }`}
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setSelectedBenchmark(null)}
+                className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.15] transition-colors focus:outline-none"
+                aria-label="Close modal"
               >
-                {selectedBenchmark.changePercent >= 0 ? (
-                  <TrendingUp className="h-4 w-4" />
-                ) : (
-                  <TrendingDown className="h-4 w-4" />
-                )}
-                <span>
-                  {selectedBenchmark.changePercent >= 0 ? '+' : ''}
-                  {selectedBenchmark.changePercent.toFixed(2)}%
+                <X className="h-4 w-4" />
+              </button>
+
+              {/* Header info */}
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/[0.08] text-white/70">
+                  {selectedBenchmark.category}
                 </span>
-                <span className="text-xs opacity-75">
-                  ({selectedBenchmark.changeAbsolute >= 0 ? '+' : ''}
-                  {selectedBenchmark.changeAbsolute.toFixed(selectedBenchmark.decimals)})
+                <span className="text-xs text-white/40 font-mono">
+                  {selectedBenchmark.symbol}
                 </span>
               </div>
-            </div>
 
-            {/* 52-Week Range Bar */}
-            <div className="mt-6 pt-4 border-t border-white/[0.08]">
-              <div className="flex justify-between items-center text-xs text-white/60 mb-1.5 font-mono">
-                <span>52W Low: {selectedBenchmark.prefix}{selectedBenchmark.low52w.toLocaleString()}{selectedBenchmark.suffix}</span>
-                <span>52W High: {selectedBenchmark.prefix}{selectedBenchmark.high52w.toLocaleString()}{selectedBenchmark.suffix}</span>
-              </div>
-              <div className="h-2 w-full rounded-full bg-white/[0.08] relative overflow-hidden">
-                {(() => {
-                  const range =
-                    selectedBenchmark.high52w - selectedBenchmark.low52w || 1;
-                  const pct = Math.min(
-                    100,
-                    Math.max(
-                      0,
-                      ((selectedBenchmark.price - selectedBenchmark.low52w) / range) *
-                        100
-                    )
-                  );
-                  return (
-                    <div
-                      className="h-full bg-gradient-to-r from-[#0a84ff] to-[#30d158] rounded-full"
-                      style={{ width: `${pct}%` }}
-                    />
-                  );
-                })()}
-              </div>
-            </div>
+              <h3
+                id="modal-benchmark-title"
+                className="text-xl sm:text-2xl font-bold text-white tracking-tight"
+              >
+                {selectedBenchmark.name}
+              </h3>
 
-            {/* Macro Intelligence Explainer */}
-            <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.03] p-4">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-sky-400 mb-1.5">
-                <Sparkles className="h-3.5 w-3.5 text-[#ffd60a]" />
-                <span>Macro Significance</span>
-              </div>
-              <p className="text-xs text-white/80 leading-relaxed font-normal">
-                {selectedBenchmark.macroSignificance}
-              </p>
-
-              <div className="mt-3 pt-3 border-t border-white/[0.06]">
-                <span className="text-[10px] font-semibold text-white/50 uppercase tracking-wider block mb-1">
-                  Cross-Asset Correlation
+              {/* Price display & 24h change */}
+              <div className="mt-3 flex items-baseline gap-3">
+                <span className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+                  {formatPrice(selectedBenchmark)}
                 </span>
-                <p className="text-xs text-white/70 leading-relaxed">
-                  {selectedBenchmark.correlationNote}
+                <div
+                  className={`inline-flex items-center gap-1 font-mono text-sm font-bold px-2.5 py-0.5 rounded-lg ${
+                    selectedBenchmark.changePercent >= 0
+                      ? 'bg-[#30d158]/15 text-[#30d158] border border-[#30d158]/30'
+                      : 'bg-[#ff453a]/15 text-[#ff453a] border border-[#ff453a]/30'
+                  }`}
+                >
+                  {selectedBenchmark.changePercent >= 0 ? (
+                    <TrendingUp className="h-4 w-4" />
+                  ) : (
+                    <TrendingDown className="h-4 w-4" />
+                  )}
+                  <span>
+                    {selectedBenchmark.changePercent >= 0 ? '+' : ''}
+                    {selectedBenchmark.changePercent.toFixed(2)}%
+                  </span>
+                  <span className="text-xs opacity-75">
+                    ({selectedBenchmark.changeAbsolute >= 0 ? '+' : ''}
+                    {selectedBenchmark.changeAbsolute.toFixed(selectedBenchmark.decimals)})
+                  </span>
+                </div>
+              </div>
+
+              {/* 52-Week Range Bar */}
+              <div className="mt-6 pt-4 border-t border-white/[0.08]">
+                <div className="flex justify-between items-center text-xs text-white/60 mb-1.5 font-mono">
+                  <span>52W Low: {selectedBenchmark.prefix}{selectedBenchmark.low52w.toLocaleString()}{selectedBenchmark.suffix}</span>
+                  <span>52W High: {selectedBenchmark.prefix}{selectedBenchmark.high52w.toLocaleString()}{selectedBenchmark.suffix}</span>
+                </div>
+                <div className="h-2 w-full rounded-full bg-white/[0.08] relative overflow-hidden">
+                  {(() => {
+                    const range =
+                      selectedBenchmark.high52w - selectedBenchmark.low52w || 1;
+                    const pct = Math.min(
+                      100,
+                      Math.max(
+                        0,
+                        ((selectedBenchmark.price - selectedBenchmark.low52w) / range) *
+                          100
+                      )
+                    );
+                    return (
+                      <div
+                        className="h-full bg-gradient-to-r from-[#0a84ff] to-[#30d158] rounded-full"
+                        style={{ width: `${pct}%` }}
+                      />
+                    );
+                  })()}
+                </div>
+              </div>
+
+              {/* Macro Intelligence Explainer */}
+              <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-sky-400 mb-1.5">
+                  <Sparkles className="h-3.5 w-3.5 text-[#ffd60a]" />
+                  <span>Macro Significance</span>
+                </div>
+                <p className="text-xs text-white/80 leading-relaxed font-normal">
+                  {selectedBenchmark.macroSignificance}
                 </p>
+
+                <div className="mt-3 pt-3 border-t border-white/[0.06]">
+                  <span className="text-[10px] font-semibold text-white/50 uppercase tracking-wider block mb-1">
+                    Cross-Asset Correlation
+                  </span>
+                  <p className="text-xs text-white/70 leading-relaxed">
+                    {selectedBenchmark.correlationNote}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   );
 }
