@@ -4938,6 +4938,2491 @@ export const COUNTRIES_DATA: CountryProfile[] = [
       }
     }
   }
+,
+  {
+  "code": "NOR",
+  "name": "Norway",
+  "region": "Europe",
+  "blocs": [
+    "nordic",
+    "efta"
+  ],
+  "flag": "🇳🇴",
+  "coordinates": [
+    8.46,
+    60.47
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.12,
+      "wealthPerAdultUSD": 41200,
+      "medianWealthUSD": 18400,
+      "gdpTrillionUSD": 0.064,
+      "gdpPerCapitaUSD": 15700,
+      "inflationRate": 10.9,
+      "debtToGdp": 47,
+      "gini": 0.62,
+      "assetMix": {
+        "financialShare": 45,
+        "nonFinancialShare": 65,
+        "debtShareOfGross": 10
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.28,
+      "wealthPerAdultUSD": 85400,
+      "medianWealthUSD": 36200,
+      "gdpTrillionUSD": 0.12,
+      "gdpPerCapitaUSD": 28100,
+      "inflationRate": 4.1,
+      "debtToGdp": 28,
+      "gini": 0.63,
+      "assetMix": {
+        "financialShare": 48,
+        "nonFinancialShare": 62,
+        "debtShareOfGross": 10
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.42,
+      "wealthPerAdultUSD": 122000,
+      "medianWealthUSD": 49500,
+      "gdpTrillionUSD": 0.15,
+      "gdpPerCapitaUSD": 34800,
+      "inflationRate": 2.5,
+      "debtToGdp": 32,
+      "gini": 0.64,
+      "assetMix": {
+        "financialShare": 50,
+        "nonFinancialShare": 60,
+        "debtShareOfGross": 10
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.62,
+      "wealthPerAdultUSD": 174000,
+      "medianWealthUSD": 68500,
+      "gdpTrillionUSD": 0.17,
+      "gdpPerCapitaUSD": 37800,
+      "inflationRate": 3.1,
+      "debtToGdp": 29,
+      "gini": 0.65,
+      "assetMix": {
+        "financialShare": 52,
+        "nonFinancialShare": 58,
+        "debtShareOfGross": 10
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 1.15,
+      "wealthPerAdultUSD": 298000,
+      "medianWealthUSD": 114000,
+      "gdpTrillionUSD": 0.43,
+      "gdpPerCapitaUSD": 87600,
+      "inflationRate": 2.4,
+      "debtToGdp": 42,
+      "gini": 0.67,
+      "assetMix": {
+        "financialShare": 56,
+        "nonFinancialShare": 54,
+        "debtShareOfGross": 10
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 1.48,
+      "wealthPerAdultUSD": 362000,
+      "medianWealthUSD": 139000,
+      "gdpTrillionUSD": 0.37,
+      "gdpPerCapitaUSD": 68900,
+      "inflationRate": 1.3,
+      "debtToGdp": 46.5,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 61,
+        "nonFinancialShare": 50,
+        "debtShareOfGross": 11
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.58,
+      "wealthPerAdultUSD": 382000,
+      "medianWealthUSD": 147000,
+      "gdpTrillionUSD": 0.59,
+      "gdpPerCapitaUSD": 108900,
+      "inflationRate": 5.8,
+      "debtToGdp": 37,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 62,
+        "nonFinancialShare": 49,
+        "debtShareOfGross": 11
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.69,
+      "wealthPerAdultUSD": 402000,
+      "medianWealthUSD": 154000,
+      "gdpTrillionUSD": 0.54,
+      "gdpPerCapitaUSD": 98500,
+      "inflationRate": 3.2,
+      "debtToGdp": 38,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 63.5,
+        "nonFinancialShare": 48.5,
+        "debtShareOfGross": 12
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.73,
+      "wealthPerAdultUSD": 408000,
+      "medianWealthUSD": 156000,
+      "gdpTrillionUSD": 0.55,
+      "gdpPerCapitaUSD": 100200,
+      "inflationRate": 2.9,
+      "debtToGdp": 38.2,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 63.8,
+        "nonFinancialShare": 48.2,
+        "debtShareOfGross": 12
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.78,
+      "wealthPerAdultUSD": 415000,
+      "medianWealthUSD": 158000,
+      "gdpTrillionUSD": 0.56,
+      "gdpPerCapitaUSD": 102000,
+      "inflationRate": 2.8,
+      "debtToGdp": 38.5,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 64,
+        "nonFinancialShare": 48,
+        "debtShareOfGross": 12
+      }
+    }
+  }
+},
+  {
+  "code": "IRL",
+  "name": "Ireland",
+  "region": "Europe",
+  "blocs": [
+    "eurozone",
+    "eu"
+  ],
+  "flag": "🇮🇪",
+  "coordinates": [
+    -8.24,
+    53.41
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.08,
+      "wealthPerAdultUSD": 36500,
+      "medianWealthUSD": 19200,
+      "gdpTrillionUSD": 0.021,
+      "gdpPerCapitaUSD": 6200,
+      "inflationRate": 18.2,
+      "debtToGdp": 73,
+      "gini": 0.64,
+      "assetMix": {
+        "financialShare": 35,
+        "nonFinancialShare": 72,
+        "debtShareOfGross": 7
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.18,
+      "wealthPerAdultUSD": 74200,
+      "medianWealthUSD": 38500,
+      "gdpTrillionUSD": 0.048,
+      "gdpPerCapitaUSD": 13700,
+      "inflationRate": 3.4,
+      "debtToGdp": 96,
+      "gini": 0.66,
+      "assetMix": {
+        "financialShare": 38,
+        "nonFinancialShare": 70,
+        "debtShareOfGross": 8
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.28,
+      "wealthPerAdultUSD": 106000,
+      "medianWealthUSD": 54000,
+      "gdpTrillionUSD": 0.069,
+      "gdpPerCapitaUSD": 19100,
+      "inflationRate": 2.5,
+      "debtToGdp": 81,
+      "gini": 0.67,
+      "assetMix": {
+        "financialShare": 42,
+        "nonFinancialShare": 66,
+        "debtShareOfGross": 8
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.52,
+      "wealthPerAdultUSD": 182000,
+      "medianWealthUSD": 92000,
+      "gdpTrillionUSD": 0.1,
+      "gdpPerCapitaUSD": 26300,
+      "inflationRate": 5.6,
+      "debtToGdp": 37,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 45,
+        "nonFinancialShare": 64,
+        "debtShareOfGross": 9
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.68,
+      "wealthPerAdultUSD": 204000,
+      "medianWealthUSD": 98000,
+      "gdpTrillionUSD": 0.22,
+      "gdpPerCapitaUSD": 48600,
+      "inflationRate": -1,
+      "debtToGdp": 86,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 46,
+        "nonFinancialShare": 64,
+        "debtShareOfGross": 10
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 1.05,
+      "wealthPerAdultUSD": 295000,
+      "medianWealthUSD": 152000,
+      "gdpTrillionUSD": 0.42,
+      "gdpPerCapitaUSD": 84700,
+      "inflationRate": -0.3,
+      "debtToGdp": 58.5,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 49,
+        "nonFinancialShare": 61,
+        "debtShareOfGross": 10
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.18,
+      "wealthPerAdultUSD": 325000,
+      "medianWealthUSD": 165000,
+      "gdpTrillionUSD": 0.53,
+      "gdpPerCapitaUSD": 104500,
+      "inflationRate": 7.8,
+      "debtToGdp": 44.5,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 50,
+        "nonFinancialShare": 60,
+        "debtShareOfGross": 10
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.3,
+      "wealthPerAdultUSD": 352000,
+      "medianWealthUSD": 176000,
+      "gdpTrillionUSD": 0.55,
+      "gdpPerCapitaUSD": 108500,
+      "inflationRate": 2.4,
+      "debtToGdp": 41,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 51.5,
+        "nonFinancialShare": 58.5,
+        "debtShareOfGross": 10
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.34,
+      "wealthPerAdultUSD": 358000,
+      "medianWealthUSD": 179000,
+      "gdpTrillionUSD": 0.57,
+      "gdpPerCapitaUSD": 110500,
+      "inflationRate": 2.2,
+      "debtToGdp": 40.2,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 51.8,
+        "nonFinancialShare": 58.2,
+        "debtShareOfGross": 10
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.38,
+      "wealthPerAdultUSD": 365000,
+      "medianWealthUSD": 182000,
+      "gdpTrillionUSD": 0.58,
+      "gdpPerCapitaUSD": 112000,
+      "inflationRate": 2.1,
+      "debtToGdp": 39.5,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 52,
+        "nonFinancialShare": 58,
+        "debtShareOfGross": 10
+      }
+    }
+  }
+},
+  {
+  "code": "BEL",
+  "name": "Belgium",
+  "region": "Europe",
+  "blocs": [
+    "eurozone",
+    "eu"
+  ],
+  "flag": "🇧🇪",
+  "coordinates": [
+    4.46,
+    50.5
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.42,
+      "wealthPerAdultUSD": 56400,
+      "medianWealthUSD": 34500,
+      "gdpTrillionUSD": 0.12,
+      "gdpPerCapitaUSD": 12400,
+      "inflationRate": 6.6,
+      "debtToGdp": 78,
+      "gini": 0.56,
+      "assetMix": {
+        "financialShare": 52,
+        "nonFinancialShare": 56,
+        "debtShareOfGross": 8
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.98,
+      "wealthPerAdultUSD": 122000,
+      "medianWealthUSD": 74200,
+      "gdpTrillionUSD": 0.2,
+      "gdpPerCapitaUSD": 19800,
+      "inflationRate": 3.4,
+      "debtToGdp": 129,
+      "gini": 0.58,
+      "assetMix": {
+        "financialShare": 54,
+        "nonFinancialShare": 54,
+        "debtShareOfGross": 8
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 1.35,
+      "wealthPerAdultUSD": 165000,
+      "medianWealthUSD": 102000,
+      "gdpTrillionUSD": 0.29,
+      "gdpPerCapitaUSD": 28400,
+      "inflationRate": 1.5,
+      "debtToGdp": 131,
+      "gini": 0.58,
+      "assetMix": {
+        "financialShare": 55,
+        "nonFinancialShare": 53,
+        "debtShareOfGross": 8
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 1.82,
+      "wealthPerAdultUSD": 218000,
+      "medianWealthUSD": 134000,
+      "gdpTrillionUSD": 0.24,
+      "gdpPerCapitaUSD": 23100,
+      "inflationRate": 2.5,
+      "debtToGdp": 109,
+      "gini": 0.59,
+      "assetMix": {
+        "financialShare": 56,
+        "nonFinancialShare": 52,
+        "debtShareOfGross": 8
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 2.75,
+      "wealthPerAdultUSD": 312000,
+      "medianWealthUSD": 192000,
+      "gdpTrillionUSD": 0.48,
+      "gdpPerCapitaUSD": 44200,
+      "inflationRate": 2.2,
+      "debtToGdp": 100,
+      "gini": 0.6,
+      "assetMix": {
+        "financialShare": 56.5,
+        "nonFinancialShare": 52.5,
+        "debtShareOfGross": 9
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 3.32,
+      "wealthPerAdultUSD": 374000,
+      "medianWealthUSD": 232000,
+      "gdpTrillionUSD": 0.52,
+      "gdpPerCapitaUSD": 45200,
+      "inflationRate": 0.7,
+      "debtToGdp": 112.5,
+      "gini": 0.6,
+      "assetMix": {
+        "financialShare": 57.5,
+        "nonFinancialShare": 52,
+        "debtShareOfGross": 9.5
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 3.52,
+      "wealthPerAdultUSD": 395000,
+      "medianWealthUSD": 242000,
+      "gdpTrillionUSD": 0.58,
+      "gdpPerCapitaUSD": 49800,
+      "inflationRate": 9.6,
+      "debtToGdp": 104.5,
+      "gini": 0.6,
+      "assetMix": {
+        "financialShare": 57,
+        "nonFinancialShare": 52.5,
+        "debtShareOfGross": 9.5
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 3.72,
+      "wealthPerAdultUSD": 416000,
+      "medianWealthUSD": 251000,
+      "gdpTrillionUSD": 0.63,
+      "gdpPerCapitaUSD": 54100,
+      "inflationRate": 2.8,
+      "debtToGdp": 105,
+      "gini": 0.6,
+      "assetMix": {
+        "financialShare": 57.8,
+        "nonFinancialShare": 52,
+        "debtShareOfGross": 9.8
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 3.78,
+      "wealthPerAdultUSD": 422000,
+      "medianWealthUSD": 253500,
+      "gdpTrillionUSD": 0.65,
+      "gdpPerCapitaUSD": 55300,
+      "inflationRate": 2.5,
+      "debtToGdp": 105.5,
+      "gini": 0.6,
+      "assetMix": {
+        "financialShare": 57.9,
+        "nonFinancialShare": 52,
+        "debtShareOfGross": 9.9
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 3.85,
+      "wealthPerAdultUSD": 428000,
+      "medianWealthUSD": 256000,
+      "gdpTrillionUSD": 0.66,
+      "gdpPerCapitaUSD": 56500,
+      "inflationRate": 2.4,
+      "debtToGdp": 106,
+      "gini": 0.6,
+      "assetMix": {
+        "financialShare": 58,
+        "nonFinancialShare": 52,
+        "debtShareOfGross": 10
+      }
+    }
+  }
+},
+  {
+  "code": "AUT",
+  "name": "Austria",
+  "region": "Europe",
+  "blocs": [
+    "eurozone",
+    "eu"
+  ],
+  "flag": "🇦🇹",
+  "coordinates": [
+    14.55,
+    47.51
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.25,
+      "wealthPerAdultUSD": 42500,
+      "medianWealthUSD": 14800,
+      "gdpTrillionUSD": 0.08,
+      "gdpPerCapitaUSD": 10700,
+      "inflationRate": 6.4,
+      "debtToGdp": 36.5,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 40,
+        "nonFinancialShare": 66,
+        "debtShareOfGross": 6
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.62,
+      "wealthPerAdultUSD": 98500,
+      "medianWealthUSD": 33400,
+      "gdpTrillionUSD": 0.17,
+      "gdpPerCapitaUSD": 21700,
+      "inflationRate": 3.3,
+      "debtToGdp": 57,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 42,
+        "nonFinancialShare": 64,
+        "debtShareOfGross": 6
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.88,
+      "wealthPerAdultUSD": 136000,
+      "medianWealthUSD": 46200,
+      "gdpTrillionUSD": 0.24,
+      "gdpPerCapitaUSD": 30400,
+      "inflationRate": 2.2,
+      "debtToGdp": 68,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 43,
+        "nonFinancialShare": 63,
+        "debtShareOfGross": 6
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 1.15,
+      "wealthPerAdultUSD": 172000,
+      "medianWealthUSD": 58500,
+      "gdpTrillionUSD": 0.19,
+      "gdpPerCapitaUSD": 24200,
+      "inflationRate": 2.3,
+      "debtToGdp": 66,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 44,
+        "nonFinancialShare": 63,
+        "debtShareOfGross": 7
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 1.75,
+      "wealthPerAdultUSD": 252000,
+      "medianWealthUSD": 82000,
+      "gdpTrillionUSD": 0.39,
+      "gdpPerCapitaUSD": 46900,
+      "inflationRate": 1.8,
+      "debtToGdp": 82.5,
+      "gini": 0.73,
+      "assetMix": {
+        "financialShare": 45,
+        "nonFinancialShare": 63,
+        "debtShareOfGross": 8
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 2.12,
+      "wealthPerAdultUSD": 298000,
+      "medianWealthUSD": 98500,
+      "gdpTrillionUSD": 0.43,
+      "gdpPerCapitaUSD": 48600,
+      "inflationRate": 1.4,
+      "debtToGdp": 83,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 45.5,
+        "nonFinancialShare": 62.5,
+        "debtShareOfGross": 8
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 2.24,
+      "wealthPerAdultUSD": 312000,
+      "medianWealthUSD": 102000,
+      "gdpTrillionUSD": 0.47,
+      "gdpPerCapitaUSD": 52400,
+      "inflationRate": 8.6,
+      "debtToGdp": 78,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 45.8,
+        "nonFinancialShare": 62.2,
+        "debtShareOfGross": 8
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 2.37,
+      "wealthPerAdultUSD": 329000,
+      "medianWealthUSD": 106000,
+      "gdpTrillionUSD": 0.52,
+      "gdpPerCapitaUSD": 57400,
+      "inflationRate": 2.9,
+      "debtToGdp": 79,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 46,
+        "nonFinancialShare": 62,
+        "debtShareOfGross": 8
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 2.41,
+      "wealthPerAdultUSD": 333000,
+      "medianWealthUSD": 107000,
+      "gdpTrillionUSD": 0.53,
+      "gdpPerCapitaUSD": 58600,
+      "inflationRate": 2.7,
+      "debtToGdp": 79.2,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 46,
+        "nonFinancialShare": 62,
+        "debtShareOfGross": 8
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 2.45,
+      "wealthPerAdultUSD": 338000,
+      "medianWealthUSD": 108000,
+      "gdpTrillionUSD": 0.54,
+      "gdpPerCapitaUSD": 59800,
+      "inflationRate": 2.6,
+      "debtToGdp": 79.5,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 46,
+        "nonFinancialShare": 62,
+        "debtShareOfGross": 8
+      }
+    }
+  }
+},
+  {
+  "code": "DNK",
+  "name": "Denmark",
+  "region": "Europe",
+  "blocs": [
+    "nordic",
+    "eu"
+  ],
+  "flag": "🇩🇰",
+  "coordinates": [
+    9.5,
+    56.26
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.18,
+      "wealthPerAdultUSD": 45200,
+      "medianWealthUSD": 18500,
+      "gdpTrillionUSD": 0.07,
+      "gdpPerCapitaUSD": 13700,
+      "inflationRate": 12.3,
+      "debtToGdp": 38,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 55,
+        "nonFinancialShare": 55,
+        "debtShareOfGross": 10
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.42,
+      "wealthPerAdultUSD": 101000,
+      "medianWealthUSD": 42500,
+      "gdpTrillionUSD": 0.14,
+      "gdpPerCapitaUSD": 27100,
+      "inflationRate": 2.6,
+      "debtToGdp": 68,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 58,
+        "nonFinancialShare": 52,
+        "debtShareOfGross": 10
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.62,
+      "wealthPerAdultUSD": 146000,
+      "medianWealthUSD": 62000,
+      "gdpTrillionUSD": 0.19,
+      "gdpPerCapitaUSD": 35700,
+      "inflationRate": 2.1,
+      "debtToGdp": 73,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 60,
+        "nonFinancialShare": 51,
+        "debtShareOfGross": 11
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.85,
+      "wealthPerAdultUSD": 198000,
+      "medianWealthUSD": 85000,
+      "gdpTrillionUSD": 0.16,
+      "gdpPerCapitaUSD": 30800,
+      "inflationRate": 2.9,
+      "debtToGdp": 52,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 62,
+        "nonFinancialShare": 49,
+        "debtShareOfGross": 11
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 1.35,
+      "wealthPerAdultUSD": 308000,
+      "medianWealthUSD": 135000,
+      "gdpTrillionUSD": 0.32,
+      "gdpPerCapitaUSD": 58100,
+      "inflationRate": 2.3,
+      "debtToGdp": 42.5,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 64,
+        "nonFinancialShare": 48,
+        "debtShareOfGross": 12
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 1.78,
+      "wealthPerAdultUSD": 395000,
+      "medianWealthUSD": 175000,
+      "gdpTrillionUSD": 0.35,
+      "gdpPerCapitaUSD": 61100,
+      "inflationRate": 0.4,
+      "debtToGdp": 42,
+      "gini": 0.73,
+      "assetMix": {
+        "financialShare": 65,
+        "nonFinancialShare": 47,
+        "debtShareOfGross": 12
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.89,
+      "wealthPerAdultUSD": 418000,
+      "medianWealthUSD": 185000,
+      "gdpTrillionUSD": 0.39,
+      "gdpPerCapitaUSD": 67200,
+      "inflationRate": 7.7,
+      "debtToGdp": 30,
+      "gini": 0.73,
+      "assetMix": {
+        "financialShare": 65.5,
+        "nonFinancialShare": 46.5,
+        "debtShareOfGross": 12
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 2.02,
+      "wealthPerAdultUSD": 439000,
+      "medianWealthUSD": 193000,
+      "gdpTrillionUSD": 0.41,
+      "gdpPerCapitaUSD": 69800,
+      "inflationRate": 2.1,
+      "debtToGdp": 29.8,
+      "gini": 0.73,
+      "assetMix": {
+        "financialShare": 65.8,
+        "nonFinancialShare": 46.2,
+        "debtShareOfGross": 12
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 2.07,
+      "wealthPerAdultUSD": 446000,
+      "medianWealthUSD": 195500,
+      "gdpTrillionUSD": 0.415,
+      "gdpPerCapitaUSD": 70500,
+      "inflationRate": 2,
+      "debtToGdp": 29.6,
+      "gini": 0.73,
+      "assetMix": {
+        "financialShare": 65.9,
+        "nonFinancialShare": 46.1,
+        "debtShareOfGross": 12
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 2.12,
+      "wealthPerAdultUSD": 452000,
+      "medianWealthUSD": 198000,
+      "gdpTrillionUSD": 0.42,
+      "gdpPerCapitaUSD": 71200,
+      "inflationRate": 1.9,
+      "debtToGdp": 29.5,
+      "gini": 0.73,
+      "assetMix": {
+        "financialShare": 66,
+        "nonFinancialShare": 46,
+        "debtShareOfGross": 12
+      }
+    }
+  }
+},
+  {
+  "code": "ISR",
+  "name": "Israel",
+  "region": "Middle East",
+  "blocs": [
+    "oecd"
+  ],
+  "flag": "🇮🇱",
+  "coordinates": [
+    34.85,
+    31.04
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.05,
+      "wealthPerAdultUSD": 24500,
+      "medianWealthUSD": 7800,
+      "gdpTrillionUSD": 0.024,
+      "gdpPerCapitaUSD": 6200,
+      "inflationRate": 133,
+      "debtToGdp": 145,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 42,
+        "nonFinancialShare": 64,
+        "debtShareOfGross": 6
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.14,
+      "wealthPerAdultUSD": 48200,
+      "medianWealthUSD": 15400,
+      "gdpTrillionUSD": 0.059,
+      "gdpPerCapitaUSD": 12800,
+      "inflationRate": 17.2,
+      "debtToGdp": 110,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 46,
+        "nonFinancialShare": 60,
+        "debtShareOfGross": 6
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.24,
+      "wealthPerAdultUSD": 72000,
+      "medianWealthUSD": 23500,
+      "gdpTrillionUSD": 0.1,
+      "gdpPerCapitaUSD": 18100,
+      "inflationRate": 10,
+      "debtToGdp": 98,
+      "gini": 0.73,
+      "assetMix": {
+        "financialShare": 48,
+        "nonFinancialShare": 58,
+        "debtShareOfGross": 6
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.42,
+      "wealthPerAdultUSD": 114000,
+      "medianWealthUSD": 38000,
+      "gdpTrillionUSD": 0.13,
+      "gdpPerCapitaUSD": 21100,
+      "inflationRate": 1.1,
+      "debtToGdp": 83,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 50,
+        "nonFinancialShare": 57,
+        "debtShareOfGross": 7
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.78,
+      "wealthPerAdultUSD": 165000,
+      "medianWealthUSD": 54000,
+      "gdpTrillionUSD": 0.23,
+      "gdpPerCapitaUSD": 30800,
+      "inflationRate": 2.7,
+      "debtToGdp": 70,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 51,
+        "nonFinancialShare": 56.5,
+        "debtShareOfGross": 7.5
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 1.25,
+      "wealthPerAdultUSD": 228000,
+      "medianWealthUSD": 76000,
+      "gdpTrillionUSD": 0.41,
+      "gdpPerCapitaUSD": 44200,
+      "inflationRate": -0.6,
+      "debtToGdp": 71,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 53,
+        "nonFinancialShare": 55.5,
+        "debtShareOfGross": 8.5
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.42,
+      "wealthPerAdultUSD": 252000,
+      "medianWealthUSD": 84000,
+      "gdpTrillionUSD": 0.52,
+      "gdpPerCapitaUSD": 54600,
+      "inflationRate": 4.4,
+      "debtToGdp": 61,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 53.5,
+        "nonFinancialShare": 55,
+        "debtShareOfGross": 8.5
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.55,
+      "wealthPerAdultUSD": 266000,
+      "medianWealthUSD": 89000,
+      "gdpTrillionUSD": 0.51,
+      "gdpPerCapitaUSD": 53200,
+      "inflationRate": 3.3,
+      "debtToGdp": 67,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 53.8,
+        "nonFinancialShare": 55.1,
+        "debtShareOfGross": 8.9
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.6,
+      "wealthPerAdultUSD": 271000,
+      "medianWealthUSD": 90500,
+      "gdpTrillionUSD": 0.52,
+      "gdpPerCapitaUSD": 53900,
+      "inflationRate": 3.2,
+      "debtToGdp": 67.8,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 53.9,
+        "nonFinancialShare": 55,
+        "debtShareOfGross": 8.9
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.65,
+      "wealthPerAdultUSD": 275000,
+      "medianWealthUSD": 92000,
+      "gdpTrillionUSD": 0.53,
+      "gdpPerCapitaUSD": 54600,
+      "inflationRate": 3.1,
+      "debtToGdp": 68.5,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 54,
+        "nonFinancialShare": 55,
+        "debtShareOfGross": 9
+      }
+    }
+  }
+},
+  {
+  "code": "VNM",
+  "name": "Vietnam",
+  "region": "Asia",
+  "blocs": [
+    "asean"
+  ],
+  "flag": "🇻🇳",
+  "coordinates": [
+    108.27,
+    14.05
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.015,
+      "wealthPerAdultUSD": 520,
+      "medianWealthUSD": 160,
+      "gdpTrillionUSD": 0.027,
+      "gdpPerCapitaUSD": 490,
+      "inflationRate": 25,
+      "debtToGdp": 80,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 12,
+        "nonFinancialShare": 90,
+        "debtShareOfGross": 2
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.035,
+      "wealthPerAdultUSD": 1050,
+      "medianWealthUSD": 340,
+      "gdpTrillionUSD": 0.008,
+      "gdpPerCapitaUSD": 120,
+      "inflationRate": 67.4,
+      "debtToGdp": 90,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 14,
+        "nonFinancialShare": 88,
+        "debtShareOfGross": 2
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.075,
+      "wealthPerAdultUSD": 1950,
+      "medianWealthUSD": 620,
+      "gdpTrillionUSD": 0.021,
+      "gdpPerCapitaUSD": 280,
+      "inflationRate": 12.7,
+      "debtToGdp": 72,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 16,
+        "nonFinancialShare": 86,
+        "debtShareOfGross": 2
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.15,
+      "wealthPerAdultUSD": 3450,
+      "medianWealthUSD": 1150,
+      "gdpTrillionUSD": 0.031,
+      "gdpPerCapitaUSD": 390,
+      "inflationRate": -1.7,
+      "debtToGdp": 41.5,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 18,
+        "nonFinancialShare": 84,
+        "debtShareOfGross": 2.5
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.42,
+      "wealthPerAdultUSD": 7600,
+      "medianWealthUSD": 2520,
+      "gdpTrillionUSD": 0.15,
+      "gdpPerCapitaUSD": 1680,
+      "inflationRate": 9.2,
+      "debtToGdp": 45,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 20,
+        "nonFinancialShare": 82.5,
+        "debtShareOfGross": 3
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 0.95,
+      "wealthPerAdultUSD": 14800,
+      "medianWealthUSD": 4950,
+      "gdpTrillionUSD": 0.35,
+      "gdpPerCapitaUSD": 3550,
+      "inflationRate": 3.2,
+      "debtToGdp": 41.5,
+      "gini": 0.76,
+      "assetMix": {
+        "financialShare": 22.5,
+        "nonFinancialShare": 81,
+        "debtShareOfGross": 3.5
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.15,
+      "wealthPerAdultUSD": 17200,
+      "medianWealthUSD": 5750,
+      "gdpTrillionUSD": 0.41,
+      "gdpPerCapitaUSD": 4160,
+      "inflationRate": 3.2,
+      "debtToGdp": 38,
+      "gini": 0.76,
+      "assetMix": {
+        "financialShare": 23,
+        "nonFinancialShare": 80.5,
+        "debtShareOfGross": 3.5
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.32,
+      "wealthPerAdultUSD": 19400,
+      "medianWealthUSD": 6450,
+      "gdpTrillionUSD": 0.46,
+      "gdpPerCapitaUSD": 4620,
+      "inflationRate": 3.7,
+      "debtToGdp": 37.2,
+      "gini": 0.77,
+      "assetMix": {
+        "financialShare": 23.8,
+        "nonFinancialShare": 80.2,
+        "debtShareOfGross": 4
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.37,
+      "wealthPerAdultUSD": 20000,
+      "medianWealthUSD": 6620,
+      "gdpTrillionUSD": 0.475,
+      "gdpPerCapitaUSD": 4740,
+      "inflationRate": 3.8,
+      "debtToGdp": 37.1,
+      "gini": 0.77,
+      "assetMix": {
+        "financialShare": 23.9,
+        "nonFinancialShare": 80.1,
+        "debtShareOfGross": 4
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.42,
+      "wealthPerAdultUSD": 20500,
+      "medianWealthUSD": 6800,
+      "gdpTrillionUSD": 0.49,
+      "gdpPerCapitaUSD": 4850,
+      "inflationRate": 3.8,
+      "debtToGdp": 37,
+      "gini": 0.77,
+      "assetMix": {
+        "financialShare": 24,
+        "nonFinancialShare": 80,
+        "debtShareOfGross": 4
+      }
+    }
+  }
+},
+  {
+  "code": "MYS",
+  "name": "Malaysia",
+  "region": "Asia",
+  "blocs": [
+    "asean"
+  ],
+  "flag": "🇲🇾",
+  "coordinates": [
+    101.97,
+    4.21
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.04,
+      "wealthPerAdultUSD": 5400,
+      "medianWealthUSD": 1650,
+      "gdpTrillionUSD": 0.025,
+      "gdpPerCapitaUSD": 1800,
+      "inflationRate": 6.7,
+      "debtToGdp": 44,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 30,
+        "nonFinancialShare": 74,
+        "debtShareOfGross": 4
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.11,
+      "wealthPerAdultUSD": 11200,
+      "medianWealthUSD": 3450,
+      "gdpTrillionUSD": 0.044,
+      "gdpPerCapitaUSD": 2450,
+      "inflationRate": 2.6,
+      "debtToGdp": 75,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 34,
+        "nonFinancialShare": 71,
+        "debtShareOfGross": 5
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.22,
+      "wealthPerAdultUSD": 19800,
+      "medianWealthUSD": 6100,
+      "gdpTrillionUSD": 0.089,
+      "gdpPerCapitaUSD": 4350,
+      "inflationRate": 3.4,
+      "debtToGdp": 41,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 37,
+        "nonFinancialShare": 68,
+        "debtShareOfGross": 5
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.26,
+      "wealthPerAdultUSD": 20500,
+      "medianWealthUSD": 6400,
+      "gdpTrillionUSD": 0.094,
+      "gdpPerCapitaUSD": 4050,
+      "inflationRate": 1.5,
+      "debtToGdp": 33,
+      "gini": 0.76,
+      "assetMix": {
+        "financialShare": 38,
+        "nonFinancialShare": 67,
+        "debtShareOfGross": 5
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.52,
+      "wealthPerAdultUSD": 30800,
+      "medianWealthUSD": 9400,
+      "gdpTrillionUSD": 0.26,
+      "gdpPerCapitaUSD": 9050,
+      "inflationRate": 1.6,
+      "debtToGdp": 51.5,
+      "gini": 0.78,
+      "assetMix": {
+        "financialShare": 40,
+        "nonFinancialShare": 66,
+        "debtShareOfGross": 6
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 0.76,
+      "wealthPerAdultUSD": 35800,
+      "medianWealthUSD": 10800,
+      "gdpTrillionUSD": 0.34,
+      "gdpPerCapitaUSD": 10450,
+      "inflationRate": -1.1,
+      "debtToGdp": 67.8,
+      "gini": 0.79,
+      "assetMix": {
+        "financialShare": 41,
+        "nonFinancialShare": 65.5,
+        "debtShareOfGross": 6.5
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 0.84,
+      "wealthPerAdultUSD": 38200,
+      "medianWealthUSD": 11400,
+      "gdpTrillionUSD": 0.41,
+      "gdpPerCapitaUSD": 12300,
+      "inflationRate": 3.4,
+      "debtToGdp": 66,
+      "gini": 0.79,
+      "assetMix": {
+        "financialShare": 41.5,
+        "nonFinancialShare": 65.2,
+        "debtShareOfGross": 6.8
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 0.92,
+      "wealthPerAdultUSD": 40400,
+      "medianWealthUSD": 12000,
+      "gdpTrillionUSD": 0.44,
+      "gdpPerCapitaUSD": 13100,
+      "inflationRate": 2.1,
+      "debtToGdp": 64.8,
+      "gini": 0.79,
+      "assetMix": {
+        "financialShare": 41.8,
+        "nonFinancialShare": 65.1,
+        "debtShareOfGross": 6.9
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 0.95,
+      "wealthPerAdultUSD": 41100,
+      "medianWealthUSD": 12200,
+      "gdpTrillionUSD": 0.45,
+      "gdpPerCapitaUSD": 13350,
+      "inflationRate": 2.2,
+      "debtToGdp": 64.6,
+      "gini": 0.79,
+      "assetMix": {
+        "financialShare": 41.9,
+        "nonFinancialShare": 65,
+        "debtShareOfGross": 7
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 0.98,
+      "wealthPerAdultUSD": 41800,
+      "medianWealthUSD": 12400,
+      "gdpTrillionUSD": 0.46,
+      "gdpPerCapitaUSD": 13600,
+      "inflationRate": 2.2,
+      "debtToGdp": 64.5,
+      "gini": 0.79,
+      "assetMix": {
+        "financialShare": 42,
+        "nonFinancialShare": 65,
+        "debtShareOfGross": 7
+      }
+    }
+  }
+},
+  {
+  "code": "PHL",
+  "name": "Philippines",
+  "region": "Asia",
+  "blocs": [
+    "asean"
+  ],
+  "flag": "🇵🇭",
+  "coordinates": [
+    121.77,
+    12.87
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.05,
+      "wealthPerAdultUSD": 2150,
+      "medianWealthUSD": 620,
+      "gdpTrillionUSD": 0.036,
+      "gdpPerCapitaUSD": 740,
+      "inflationRate": 18.2,
+      "debtToGdp": 49,
+      "gini": 0.78,
+      "assetMix": {
+        "financialShare": 20,
+        "nonFinancialShare": 83,
+        "debtShareOfGross": 3
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.12,
+      "wealthPerAdultUSD": 3850,
+      "medianWealthUSD": 1100,
+      "gdpTrillionUSD": 0.044,
+      "gdpPerCapitaUSD": 720,
+      "inflationRate": 14.1,
+      "debtToGdp": 68,
+      "gini": 0.8,
+      "assetMix": {
+        "financialShare": 22,
+        "nonFinancialShare": 81,
+        "debtShareOfGross": 3
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.22,
+      "wealthPerAdultUSD": 5950,
+      "medianWealthUSD": 1680,
+      "gdpTrillionUSD": 0.074,
+      "gdpPerCapitaUSD": 1060,
+      "inflationRate": 8.1,
+      "debtToGdp": 59,
+      "gini": 0.81,
+      "assetMix": {
+        "financialShare": 23,
+        "nonFinancialShare": 80,
+        "debtShareOfGross": 3
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.28,
+      "wealthPerAdultUSD": 6850,
+      "medianWealthUSD": 1950,
+      "gdpTrillionUSD": 0.081,
+      "gdpPerCapitaUSD": 1040,
+      "inflationRate": 4.4,
+      "debtToGdp": 64.5,
+      "gini": 0.81,
+      "assetMix": {
+        "financialShare": 24,
+        "nonFinancialShare": 79.5,
+        "debtShareOfGross": 3.5
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.52,
+      "wealthPerAdultUSD": 9800,
+      "medianWealthUSD": 2750,
+      "gdpTrillionUSD": 0.2,
+      "gdpPerCapitaUSD": 2130,
+      "inflationRate": 3.8,
+      "debtToGdp": 47,
+      "gini": 0.82,
+      "assetMix": {
+        "financialShare": 25,
+        "nonFinancialShare": 78.5,
+        "debtShareOfGross": 3.5
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 0.85,
+      "wealthPerAdultUSD": 13200,
+      "medianWealthUSD": 3650,
+      "gdpTrillionUSD": 0.36,
+      "gdpPerCapitaUSD": 3300,
+      "inflationRate": 2.6,
+      "debtToGdp": 54.6,
+      "gini": 0.83,
+      "assetMix": {
+        "financialShare": 25.5,
+        "nonFinancialShare": 78.2,
+        "debtShareOfGross": 3.8
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 0.98,
+      "wealthPerAdultUSD": 14600,
+      "medianWealthUSD": 3950,
+      "gdpTrillionUSD": 0.4,
+      "gdpPerCapitaUSD": 3620,
+      "inflationRate": 5.8,
+      "debtToGdp": 60.9,
+      "gini": 0.83,
+      "assetMix": {
+        "financialShare": 25.8,
+        "nonFinancialShare": 78.1,
+        "debtShareOfGross": 3.9
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.08,
+      "wealthPerAdultUSD": 15600,
+      "medianWealthUSD": 4100,
+      "gdpTrillionUSD": 0.45,
+      "gdpPerCapitaUSD": 3950,
+      "inflationRate": 3.5,
+      "debtToGdp": 60.6,
+      "gini": 0.83,
+      "assetMix": {
+        "financialShare": 25.9,
+        "nonFinancialShare": 78.1,
+        "debtShareOfGross": 4
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.11,
+      "wealthPerAdultUSD": 15900,
+      "medianWealthUSD": 4150,
+      "gdpTrillionUSD": 0.465,
+      "gdpPerCapitaUSD": 4040,
+      "inflationRate": 3.6,
+      "debtToGdp": 60.5,
+      "gini": 0.83,
+      "assetMix": {
+        "financialShare": 26,
+        "nonFinancialShare": 78,
+        "debtShareOfGross": 4
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.15,
+      "wealthPerAdultUSD": 16200,
+      "medianWealthUSD": 4200,
+      "gdpTrillionUSD": 0.48,
+      "gdpPerCapitaUSD": 4120,
+      "inflationRate": 3.6,
+      "debtToGdp": 60.5,
+      "gini": 0.83,
+      "assetMix": {
+        "financialShare": 26,
+        "nonFinancialShare": 78,
+        "debtShareOfGross": 4
+      }
+    }
+  }
+},
+  {
+  "code": "NZL",
+  "name": "New Zealand",
+  "region": "Oceania",
+  "blocs": [
+    "oceania"
+  ],
+  "flag": "🇳🇿",
+  "coordinates": [
+    174.88,
+    -40.9
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.1,
+      "wealthPerAdultUSD": 48500,
+      "medianWealthUSD": 24200,
+      "gdpTrillionUSD": 0.022,
+      "gdpPerCapitaUSD": 7200,
+      "inflationRate": 17.1,
+      "debtToGdp": 42,
+      "gini": 0.65,
+      "assetMix": {
+        "financialShare": 38,
+        "nonFinancialShare": 70,
+        "debtShareOfGross": 8
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.24,
+      "wealthPerAdultUSD": 104000,
+      "medianWealthUSD": 48500,
+      "gdpTrillionUSD": 0.046,
+      "gdpPerCapitaUSD": 13500,
+      "inflationRate": 6.1,
+      "debtToGdp": 54,
+      "gini": 0.67,
+      "assetMix": {
+        "financialShare": 40,
+        "nonFinancialShare": 68,
+        "debtShareOfGross": 8
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.38,
+      "wealthPerAdultUSD": 154000,
+      "medianWealthUSD": 72000,
+      "gdpTrillionUSD": 0.062,
+      "gdpPerCapitaUSD": 17100,
+      "inflationRate": 3.8,
+      "debtToGdp": 45,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 42,
+        "nonFinancialShare": 67,
+        "debtShareOfGross": 9
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.52,
+      "wealthPerAdultUSD": 198000,
+      "medianWealthUSD": 94000,
+      "gdpTrillionUSD": 0.054,
+      "gdpPerCapitaUSD": 14100,
+      "inflationRate": 2.6,
+      "debtToGdp": 32,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 43,
+        "nonFinancialShare": 66,
+        "debtShareOfGross": 9
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.98,
+      "wealthPerAdultUSD": 312000,
+      "medianWealthUSD": 148000,
+      "gdpTrillionUSD": 0.14,
+      "gdpPerCapitaUSD": 33400,
+      "inflationRate": 2.3,
+      "debtToGdp": 30.5,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 44,
+        "nonFinancialShare": 65.5,
+        "debtShareOfGross": 9.5
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 1.48,
+      "wealthPerAdultUSD": 425000,
+      "medianWealthUSD": 198000,
+      "gdpTrillionUSD": 0.21,
+      "gdpPerCapitaUSD": 42100,
+      "inflationRate": 1.7,
+      "debtToGdp": 43,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 44.5,
+        "nonFinancialShare": 65.2,
+        "debtShareOfGross": 9.8
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.65,
+      "wealthPerAdultUSD": 445000,
+      "medianWealthUSD": 204000,
+      "gdpTrillionUSD": 0.24,
+      "gdpPerCapitaUSD": 47200,
+      "inflationRate": 7.2,
+      "debtToGdp": 48,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 44.8,
+        "nonFinancialShare": 65.1,
+        "debtShareOfGross": 9.9
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.75,
+      "wealthPerAdultUSD": 458000,
+      "medianWealthUSD": 209000,
+      "gdpTrillionUSD": 0.25,
+      "gdpPerCapitaUSD": 49400,
+      "inflationRate": 2.8,
+      "debtToGdp": 47.5,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 45,
+        "nonFinancialShare": 65,
+        "debtShareOfGross": 10
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.78,
+      "wealthPerAdultUSD": 463000,
+      "medianWealthUSD": 210500,
+      "gdpTrillionUSD": 0.255,
+      "gdpPerCapitaUSD": 49900,
+      "inflationRate": 2.6,
+      "debtToGdp": 47.2,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 45,
+        "nonFinancialShare": 65,
+        "debtShareOfGross": 10
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.82,
+      "wealthPerAdultUSD": 468000,
+      "medianWealthUSD": 212000,
+      "gdpTrillionUSD": 0.26,
+      "gdpPerCapitaUSD": 50400,
+      "inflationRate": 2.5,
+      "debtToGdp": 47,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 45,
+        "nonFinancialShare": 65,
+        "debtShareOfGross": 10
+      }
+    }
+  }
+},
+  {
+  "code": "PRT",
+  "name": "Portugal",
+  "region": "Europe",
+  "blocs": [
+    "eurozone",
+    "eu"
+  ],
+  "flag": "🇵🇹",
+  "coordinates": [
+    -8.22,
+    39.39
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.12,
+      "wealthPerAdultUSD": 16500,
+      "medianWealthUSD": 8200,
+      "gdpTrillionUSD": 0.033,
+      "gdpPerCapitaUSD": 3350,
+      "inflationRate": 16.6,
+      "debtToGdp": 32,
+      "gini": 0.65,
+      "assetMix": {
+        "financialShare": 32,
+        "nonFinancialShare": 74,
+        "debtShareOfGross": 6
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.35,
+      "wealthPerAdultUSD": 44200,
+      "medianWealthUSD": 22400,
+      "gdpTrillionUSD": 0.079,
+      "gdpPerCapitaUSD": 7950,
+      "inflationRate": 13.4,
+      "debtToGdp": 58,
+      "gini": 0.67,
+      "assetMix": {
+        "financialShare": 34,
+        "nonFinancialShare": 72,
+        "debtShareOfGross": 6
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.55,
+      "wealthPerAdultUSD": 68000,
+      "medianWealthUSD": 34500,
+      "gdpTrillionUSD": 0.12,
+      "gdpPerCapitaUSD": 11800,
+      "inflationRate": 4.2,
+      "debtToGdp": 60,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 35,
+        "nonFinancialShare": 71,
+        "debtShareOfGross": 6
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.78,
+      "wealthPerAdultUSD": 94000,
+      "medianWealthUSD": 46200,
+      "gdpTrillionUSD": 0.11,
+      "gdpPerCapitaUSD": 11200,
+      "inflationRate": 2.8,
+      "debtToGdp": 50,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 36,
+        "nonFinancialShare": 71,
+        "debtShareOfGross": 7
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 1.15,
+      "wealthPerAdultUSD": 136000,
+      "medianWealthUSD": 64000,
+      "gdpTrillionUSD": 0.24,
+      "gdpPerCapitaUSD": 22500,
+      "inflationRate": 1.4,
+      "debtToGdp": 100,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 36.5,
+        "nonFinancialShare": 71,
+        "debtShareOfGross": 7.5
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 1.35,
+      "wealthPerAdultUSD": 168000,
+      "medianWealthUSD": 78000,
+      "gdpTrillionUSD": 0.23,
+      "gdpPerCapitaUSD": 22400,
+      "inflationRate": -0.1,
+      "debtToGdp": 135,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 37.5,
+        "nonFinancialShare": 70.2,
+        "debtShareOfGross": 7.8
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.45,
+      "wealthPerAdultUSD": 178000,
+      "medianWealthUSD": 82000,
+      "gdpTrillionUSD": 0.25,
+      "gdpPerCapitaUSD": 24500,
+      "inflationRate": 8.1,
+      "debtToGdp": 112.5,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 37.8,
+        "nonFinancialShare": 70.1,
+        "debtShareOfGross": 7.9
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.55,
+      "wealthPerAdultUSD": 189000,
+      "medianWealthUSD": 86000,
+      "gdpTrillionUSD": 0.28,
+      "gdpPerCapitaUSD": 27100,
+      "inflationRate": 2.6,
+      "debtToGdp": 98,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 38,
+        "nonFinancialShare": 70,
+        "debtShareOfGross": 8
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.58,
+      "wealthPerAdultUSD": 192000,
+      "medianWealthUSD": 87000,
+      "gdpTrillionUSD": 0.285,
+      "gdpPerCapitaUSD": 27600,
+      "inflationRate": 2.4,
+      "debtToGdp": 96.5,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 38,
+        "nonFinancialShare": 70,
+        "debtShareOfGross": 8
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.62,
+      "wealthPerAdultUSD": 195000,
+      "medianWealthUSD": 88000,
+      "gdpTrillionUSD": 0.29,
+      "gdpPerCapitaUSD": 28200,
+      "inflationRate": 2.3,
+      "debtToGdp": 95,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 38,
+        "nonFinancialShare": 70,
+        "debtShareOfGross": 8
+      }
+    }
+  }
+},
+  {
+  "code": "GRC",
+  "name": "Greece",
+  "region": "Europe",
+  "blocs": [
+    "eurozone",
+    "eu"
+  ],
+  "flag": "🇬🇷",
+  "coordinates": [
+    21.82,
+    39.07
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.15,
+      "wealthPerAdultUSD": 21500,
+      "medianWealthUSD": 11400,
+      "gdpTrillionUSD": 0.056,
+      "gdpPerCapitaUSD": 5900,
+      "inflationRate": 24.9,
+      "debtToGdp": 28,
+      "gini": 0.64,
+      "assetMix": {
+        "financialShare": 24,
+        "nonFinancialShare": 82,
+        "debtShareOfGross": 6
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.38,
+      "wealthPerAdultUSD": 48500,
+      "medianWealthUSD": 25200,
+      "gdpTrillionUSD": 0.098,
+      "gdpPerCapitaUSD": 9600,
+      "inflationRate": 20.4,
+      "debtToGdp": 73,
+      "gini": 0.66,
+      "assetMix": {
+        "financialShare": 26,
+        "nonFinancialShare": 80,
+        "debtShareOfGross": 6
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.58,
+      "wealthPerAdultUSD": 72000,
+      "medianWealthUSD": 36800,
+      "gdpTrillionUSD": 0.14,
+      "gdpPerCapitaUSD": 13100,
+      "inflationRate": 8.9,
+      "debtToGdp": 98,
+      "gini": 0.67,
+      "assetMix": {
+        "financialShare": 27,
+        "nonFinancialShare": 79,
+        "debtShareOfGross": 6
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.85,
+      "wealthPerAdultUSD": 102000,
+      "medianWealthUSD": 52000,
+      "gdpTrillionUSD": 0.13,
+      "gdpPerCapitaUSD": 12000,
+      "inflationRate": 3.2,
+      "debtToGdp": 104,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 28,
+        "nonFinancialShare": 79,
+        "debtShareOfGross": 7
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 1.25,
+      "wealthPerAdultUSD": 145000,
+      "medianWealthUSD": 74000,
+      "gdpTrillionUSD": 0.3,
+      "gdpPerCapitaUSD": 26900,
+      "inflationRate": 4.7,
+      "debtToGdp": 146,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 29,
+        "nonFinancialShare": 78.5,
+        "debtShareOfGross": 7.5
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 0.98,
+      "wealthPerAdultUSD": 118000,
+      "medianWealthUSD": 58000,
+      "gdpTrillionUSD": 0.19,
+      "gdpPerCapitaUSD": 17600,
+      "inflationRate": -1.3,
+      "debtToGdp": 206,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 29.5,
+        "nonFinancialShare": 78.2,
+        "debtShareOfGross": 7.8
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.05,
+      "wealthPerAdultUSD": 128000,
+      "medianWealthUSD": 62000,
+      "gdpTrillionUSD": 0.22,
+      "gdpPerCapitaUSD": 20700,
+      "inflationRate": 9.3,
+      "debtToGdp": 172,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 29.8,
+        "nonFinancialShare": 78.1,
+        "debtShareOfGross": 7.9
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.13,
+      "wealthPerAdultUSD": 137000,
+      "medianWealthUSD": 66000,
+      "gdpTrillionUSD": 0.24,
+      "gdpPerCapitaUSD": 23100,
+      "inflationRate": 2.8,
+      "debtToGdp": 156,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 30,
+        "nonFinancialShare": 78,
+        "debtShareOfGross": 8
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.15,
+      "wealthPerAdultUSD": 140000,
+      "medianWealthUSD": 67000,
+      "gdpTrillionUSD": 0.245,
+      "gdpPerCapitaUSD": 23600,
+      "inflationRate": 2.6,
+      "debtToGdp": 153.5,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 30,
+        "nonFinancialShare": 78,
+        "debtShareOfGross": 8
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.18,
+      "wealthPerAdultUSD": 142000,
+      "medianWealthUSD": 68000,
+      "gdpTrillionUSD": 0.25,
+      "gdpPerCapitaUSD": 24100,
+      "inflationRate": 2.5,
+      "debtToGdp": 151,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 30,
+        "nonFinancialShare": 78,
+        "debtShareOfGross": 8
+      }
+    }
+  }
+},
+  {
+  "code": "PER",
+  "name": "Peru",
+  "region": "Latin America",
+  "blocs": [
+    "pacific-alliance"
+  ],
+  "flag": "🇵🇪",
+  "coordinates": [
+    -75.01,
+    -9.19
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.03,
+      "wealthPerAdultUSD": 3400,
+      "medianWealthUSD": 980,
+      "gdpTrillionUSD": 0.021,
+      "gdpPerCapitaUSD": 1200,
+      "inflationRate": 59.2,
+      "debtToGdp": 45,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 22,
+        "nonFinancialShare": 81,
+        "debtShareOfGross": 3
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.06,
+      "wealthPerAdultUSD": 5200,
+      "medianWealthUSD": 1450,
+      "gdpTrillionUSD": 0.026,
+      "gdpPerCapitaUSD": 1200,
+      "inflationRate": 7481,
+      "debtToGdp": 85,
+      "gini": 0.76,
+      "assetMix": {
+        "financialShare": 24,
+        "nonFinancialShare": 79,
+        "debtShareOfGross": 3
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.12,
+      "wealthPerAdultUSD": 9200,
+      "medianWealthUSD": 2650,
+      "gdpTrillionUSD": 0.053,
+      "gdpPerCapitaUSD": 2200,
+      "inflationRate": 11.1,
+      "debtToGdp": 68,
+      "gini": 0.76,
+      "assetMix": {
+        "financialShare": 25,
+        "nonFinancialShare": 78,
+        "debtShareOfGross": 3
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.16,
+      "wealthPerAdultUSD": 10800,
+      "medianWealthUSD": 3100,
+      "gdpTrillionUSD": 0.051,
+      "gdpPerCapitaUSD": 1950,
+      "inflationRate": 3.8,
+      "debtToGdp": 46,
+      "gini": 0.77,
+      "assetMix": {
+        "financialShare": 26,
+        "nonFinancialShare": 77.5,
+        "debtShareOfGross": 3.5
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.32,
+      "wealthPerAdultUSD": 17400,
+      "medianWealthUSD": 5200,
+      "gdpTrillionUSD": 0.14,
+      "gdpPerCapitaUSD": 4950,
+      "inflationRate": 1.5,
+      "debtToGdp": 24,
+      "gini": 0.77,
+      "assetMix": {
+        "financialShare": 27,
+        "nonFinancialShare": 76.5,
+        "debtShareOfGross": 3.5
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 0.48,
+      "wealthPerAdultUSD": 22500,
+      "medianWealthUSD": 6900,
+      "gdpTrillionUSD": 0.21,
+      "gdpPerCapitaUSD": 6350,
+      "inflationRate": 1.8,
+      "debtToGdp": 34.8,
+      "gini": 0.78,
+      "assetMix": {
+        "financialShare": 27.5,
+        "nonFinancialShare": 76.2,
+        "debtShareOfGross": 3.8
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 0.54,
+      "wealthPerAdultUSD": 24800,
+      "medianWealthUSD": 7600,
+      "gdpTrillionUSD": 0.24,
+      "gdpPerCapitaUSD": 7200,
+      "inflationRate": 8.5,
+      "debtToGdp": 33.8,
+      "gini": 0.78,
+      "assetMix": {
+        "financialShare": 27.8,
+        "nonFinancialShare": 76.1,
+        "debtShareOfGross": 3.9
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 0.59,
+      "wealthPerAdultUSD": 26500,
+      "medianWealthUSD": 8100,
+      "gdpTrillionUSD": 0.27,
+      "gdpPerCapitaUSD": 7900,
+      "inflationRate": 2.6,
+      "debtToGdp": 33.6,
+      "gini": 0.78,
+      "assetMix": {
+        "financialShare": 27.9,
+        "nonFinancialShare": 76,
+        "debtShareOfGross": 4
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 0.6,
+      "wealthPerAdultUSD": 27000,
+      "medianWealthUSD": 8250,
+      "gdpTrillionUSD": 0.275,
+      "gdpPerCapitaUSD": 8050,
+      "inflationRate": 2.5,
+      "debtToGdp": 33.5,
+      "gini": 0.78,
+      "assetMix": {
+        "financialShare": 28,
+        "nonFinancialShare": 76,
+        "debtShareOfGross": 4
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 0.62,
+      "wealthPerAdultUSD": 27500,
+      "medianWealthUSD": 8400,
+      "gdpTrillionUSD": 0.28,
+      "gdpPerCapitaUSD": 8200,
+      "inflationRate": 2.4,
+      "debtToGdp": 33.5,
+      "gini": 0.78,
+      "assetMix": {
+        "financialShare": 28,
+        "nonFinancialShare": 76,
+        "debtShareOfGross": 4
+      }
+    }
+  }
+},
+  {
+  "code": "CZE",
+  "name": "Czech Republic",
+  "region": "Europe",
+  "blocs": [
+    "eu"
+  ],
+  "flag": "🇨🇿",
+  "coordinates": [
+    15.47,
+    49.81
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.12,
+      "wealthPerAdultUSD": 16200,
+      "medianWealthUSD": 6400,
+      "gdpTrillionUSD": 0.045,
+      "gdpPerCapitaUSD": 4400,
+      "inflationRate": 8.5,
+      "debtToGdp": 20,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 36,
+        "nonFinancialShare": 70,
+        "debtShareOfGross": 6
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.24,
+      "wealthPerAdultUSD": 30500,
+      "medianWealthUSD": 12200,
+      "gdpTrillionUSD": 0.049,
+      "gdpPerCapitaUSD": 4750,
+      "inflationRate": 9.7,
+      "debtToGdp": 15,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 38,
+        "nonFinancialShare": 68,
+        "debtShareOfGross": 6
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.38,
+      "wealthPerAdultUSD": 46200,
+      "medianWealthUSD": 18500,
+      "gdpTrillionUSD": 0.06,
+      "gdpPerCapitaUSD": 5800,
+      "inflationRate": 9.1,
+      "debtToGdp": 14,
+      "gini": 0.72,
+      "assetMix": {
+        "financialShare": 40,
+        "nonFinancialShare": 66,
+        "debtShareOfGross": 6
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.48,
+      "wealthPerAdultUSD": 58400,
+      "medianWealthUSD": 23200,
+      "gdpTrillionUSD": 0.062,
+      "gdpPerCapitaUSD": 6050,
+      "inflationRate": 3.9,
+      "debtToGdp": 17.5,
+      "gini": 0.73,
+      "assetMix": {
+        "financialShare": 41,
+        "nonFinancialShare": 66,
+        "debtShareOfGross": 7
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.82,
+      "wealthPerAdultUSD": 96000,
+      "medianWealthUSD": 38500,
+      "gdpTrillionUSD": 0.21,
+      "gdpPerCapitaUSD": 19800,
+      "inflationRate": 1.5,
+      "debtToGdp": 37.5,
+      "gini": 0.74,
+      "assetMix": {
+        "financialShare": 42,
+        "nonFinancialShare": 65,
+        "debtShareOfGross": 7.5
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 1.05,
+      "wealthPerAdultUSD": 124000,
+      "medianWealthUSD": 49500,
+      "gdpTrillionUSD": 0.25,
+      "gdpPerCapitaUSD": 23100,
+      "inflationRate": 3.2,
+      "debtToGdp": 37.8,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 43,
+        "nonFinancialShare": 64.5,
+        "debtShareOfGross": 7.8
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.12,
+      "wealthPerAdultUSD": 132000,
+      "medianWealthUSD": 53000,
+      "gdpTrillionUSD": 0.29,
+      "gdpPerCapitaUSD": 27500,
+      "inflationRate": 15.1,
+      "debtToGdp": 44.2,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 43.5,
+        "nonFinancialShare": 64.2,
+        "debtShareOfGross": 7.9
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.2,
+      "wealthPerAdultUSD": 141000,
+      "medianWealthUSD": 56500,
+      "gdpTrillionUSD": 0.33,
+      "gdpPerCapitaUSD": 30800,
+      "inflationRate": 2.7,
+      "debtToGdp": 44.6,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 43.8,
+        "nonFinancialShare": 64.1,
+        "debtShareOfGross": 8
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.22,
+      "wealthPerAdultUSD": 143000,
+      "medianWealthUSD": 57200,
+      "gdpTrillionUSD": 0.335,
+      "gdpPerCapitaUSD": 31300,
+      "inflationRate": 2.6,
+      "debtToGdp": 44.5,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 43.9,
+        "nonFinancialShare": 64,
+        "debtShareOfGross": 8
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.24,
+      "wealthPerAdultUSD": 145000,
+      "medianWealthUSD": 58000,
+      "gdpTrillionUSD": 0.34,
+      "gdpPerCapitaUSD": 31800,
+      "inflationRate": 2.6,
+      "debtToGdp": 44.5,
+      "gini": 0.75,
+      "assetMix": {
+        "financialShare": 44,
+        "nonFinancialShare": 64,
+        "debtShareOfGross": 8
+      }
+    }
+  }
+},
+  {
+  "code": "FIN",
+  "name": "Finland",
+  "region": "Europe",
+  "blocs": [
+    "eurozone",
+    "nordic",
+    "eu"
+  ],
+  "flag": "🇫🇮",
+  "coordinates": [
+    25.74,
+    61.92
+  ],
+  "history": {
+    "1980": {
+      "totalWealthTrillion": 0.11,
+      "wealthPerAdultUSD": 28500,
+      "medianWealthUSD": 12400,
+      "gdpTrillionUSD": 0.054,
+      "gdpPerCapitaUSD": 11200,
+      "inflationRate": 11.6,
+      "debtToGdp": 11.5,
+      "gini": 0.65,
+      "assetMix": {
+        "financialShare": 42,
+        "nonFinancialShare": 66,
+        "debtShareOfGross": 8
+      }
+    },
+    "1990": {
+      "totalWealthTrillion": 0.28,
+      "wealthPerAdultUSD": 72000,
+      "medianWealthUSD": 31500,
+      "gdpTrillionUSD": 0.14,
+      "gdpPerCapitaUSD": 28200,
+      "inflationRate": 6.1,
+      "debtToGdp": 14.5,
+      "gini": 0.67,
+      "assetMix": {
+        "financialShare": 45,
+        "nonFinancialShare": 63,
+        "debtShareOfGross": 8
+      }
+    },
+    "1995": {
+      "totalWealthTrillion": 0.35,
+      "wealthPerAdultUSD": 88500,
+      "medianWealthUSD": 38200,
+      "gdpTrillionUSD": 0.13,
+      "gdpPerCapitaUSD": 25400,
+      "inflationRate": 1,
+      "debtToGdp": 56,
+      "gini": 0.68,
+      "assetMix": {
+        "financialShare": 47,
+        "nonFinancialShare": 61,
+        "debtShareOfGross": 9
+      }
+    },
+    "2000": {
+      "totalWealthTrillion": 0.52,
+      "wealthPerAdultUSD": 128000,
+      "medianWealthUSD": 54500,
+      "gdpTrillionUSD": 0.13,
+      "gdpPerCapitaUSD": 24100,
+      "inflationRate": 3.4,
+      "debtToGdp": 42.5,
+      "gini": 0.69,
+      "assetMix": {
+        "financialShare": 49,
+        "nonFinancialShare": 59,
+        "debtShareOfGross": 9
+      }
+    },
+    "2010": {
+      "totalWealthTrillion": 0.78,
+      "wealthPerAdultUSD": 182000,
+      "medianWealthUSD": 78000,
+      "gdpTrillionUSD": 0.25,
+      "gdpPerCapitaUSD": 46200,
+      "inflationRate": 1.2,
+      "debtToGdp": 48,
+      "gini": 0.7,
+      "assetMix": {
+        "financialShare": 50,
+        "nonFinancialShare": 59,
+        "debtShareOfGross": 9.5
+      }
+    },
+    "2020": {
+      "totalWealthTrillion": 0.96,
+      "wealthPerAdultUSD": 221000,
+      "medianWealthUSD": 94000,
+      "gdpTrillionUSD": 0.27,
+      "gdpPerCapitaUSD": 49200,
+      "inflationRate": 0.3,
+      "debtToGdp": 74.5,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 51,
+        "nonFinancialShare": 58.5,
+        "debtShareOfGross": 9.8
+      }
+    },
+    "2022": {
+      "totalWealthTrillion": 1.02,
+      "wealthPerAdultUSD": 232000,
+      "medianWealthUSD": 99000,
+      "gdpTrillionUSD": 0.28,
+      "gdpPerCapitaUSD": 51200,
+      "inflationRate": 7.1,
+      "debtToGdp": 73.5,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 51.5,
+        "nonFinancialShare": 58.2,
+        "debtShareOfGross": 9.9
+      }
+    },
+    "2024": {
+      "totalWealthTrillion": 1.06,
+      "wealthPerAdultUSD": 241000,
+      "medianWealthUSD": 102500,
+      "gdpTrillionUSD": 0.3,
+      "gdpPerCapitaUSD": 54200,
+      "inflationRate": 2,
+      "debtToGdp": 77.5,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 51.8,
+        "nonFinancialShare": 58.1,
+        "debtShareOfGross": 10
+      }
+    },
+    "2025": {
+      "totalWealthTrillion": 1.07,
+      "wealthPerAdultUSD": 243000,
+      "medianWealthUSD": 103200,
+      "gdpTrillionUSD": 0.305,
+      "gdpPerCapitaUSD": 54800,
+      "inflationRate": 1.9,
+      "debtToGdp": 78,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 51.9,
+        "nonFinancialShare": 58,
+        "debtShareOfGross": 10
+      }
+    },
+    "2026": {
+      "totalWealthTrillion": 1.08,
+      "wealthPerAdultUSD": 245000,
+      "medianWealthUSD": 104000,
+      "gdpTrillionUSD": 0.31,
+      "gdpPerCapitaUSD": 55400,
+      "inflationRate": 1.8,
+      "debtToGdp": 78.5,
+      "gini": 0.71,
+      "assetMix": {
+        "financialShare": 52,
+        "nonFinancialShare": 58,
+        "debtShareOfGross": 10
+      }
+    }
+  }
+}
 ];
 
 /*

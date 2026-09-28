@@ -145,7 +145,7 @@ export function CountryRankingsTable({
             Global Sovereign League Table ({selectedYear})
           </h3>
           <p className="text-xs text-slate-300 mt-1 font-normal">
-            Ranked macro comparison of 31 major economies across average, median, debt, and inequality metrics.
+            Ranked macro comparison of {COUNTRIES_DATA.length} major economies across average, median, debt, and inequality metrics.
           </p>
         </div>
 

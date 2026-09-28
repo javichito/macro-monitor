@@ -23,7 +23,7 @@ describe('FiscalDominanceSimulator Component', () => {
     expect(screen.getByText('United States 10-Year Solvency Trajectory (2026–2036)')).toBeDefined();
   });
 
-  it('renders all 7 sovereign selection options', () => {
+  it('renders all 14 sovereign selection options', () => {
     render(<FiscalDominanceSimulator />);
 
     expect(screen.getByRole('button', { name: /United States/i })).toBeDefined();
@@ -33,15 +33,22 @@ describe('FiscalDominanceSimulator Component', () => {
     expect(screen.getByRole('button', { name: /Italy/i })).toBeDefined();
     expect(screen.getByRole('button', { name: /Germany/i })).toBeDefined();
     expect(screen.getByRole('button', { name: /China/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /Spain/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /Canada/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /Australia/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /India/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /Brazil/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /Switzerland/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /Mexico/i })).toBeDefined();
   });
 
-  it('switches sovereign profile to Japan when clicked and updates trajectory heading', () => {
+  it('switches sovereign profile to Switzerland when clicked and updates trajectory heading', () => {
     render(<FiscalDominanceSimulator />);
 
-    const jpnButton = screen.getByRole('button', { name: /Japan/i });
-    fireEvent.click(jpnButton);
+    const cheButton = screen.getByRole('button', { name: /Switzerland/i });
+    fireEvent.click(cheButton);
 
-    expect(screen.getByText('Japan 10-Year Solvency Trajectory (2026–2036)')).toBeDefined();
+    expect(screen.getByText('Switzerland 10-Year Solvency Trajectory (2026–2036)')).toBeDefined();
   });
 
   it('renders all 5 macroeconomic scenario preset buttons', () => {

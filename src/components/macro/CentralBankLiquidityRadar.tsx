@@ -160,10 +160,10 @@ export function CentralBankLiquidityRadar() {
         </div>
       </div>
 
-      {/* Central Bank Selector Cards (Big 4) */}
+      {/* Central Bank Selector Cards */}
       <div className="apple-card p-6">
         <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center justify-between">
-          <span>The Big 4 Monetary Authorities (Click to inspect transmission mechanism)</span>
+          <span>Global Central Bank Stance Matrix (Click to inspect transmission mechanism)</span>
           {selectedBankId && (
             <button
               onClick={() => setSelectedBankId(null)}

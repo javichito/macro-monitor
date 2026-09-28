@@ -25,13 +25,16 @@ describe('CentralBankLiquidityRadar Component', () => {
     expect(screen.getByText(/US Net Liquidity:/i)).toBeDefined();
   });
 
-  it('renders cards for all Big 4 central banks (Fed, ECB, PBOC, BOJ)', () => {
+  it('renders cards for all 7 major central banks (Fed, ECB, PBOC, BOJ, BOE, SNB, BOC)', () => {
     render(<CentralBankLiquidityRadar />);
 
     expect(screen.getByText('Federal Reserve')).toBeDefined();
     expect(screen.getByText('European Central Bank')).toBeDefined();
     expect(screen.getByText('People’s Bank of China')).toBeDefined();
     expect(screen.getByText('Bank of Japan')).toBeDefined();
+    expect(screen.getByText('Bank of England')).toBeDefined();
+    expect(screen.getByText('Swiss National Bank')).toBeDefined();
+    expect(screen.getByText('Bank of Canada')).toBeDefined();
   });
 
   it('toggles transmission spotlight when clicking a central bank card', () => {

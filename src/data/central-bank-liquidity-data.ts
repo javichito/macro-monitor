@@ -16,7 +16,7 @@
  */
 
 export interface CentralBankProfile {
-  id: 'fed' | 'ecb' | 'pboc' | 'boj';
+  id: 'fed' | 'ecb' | 'pboc' | 'boj' | 'boe' | 'snb' | 'boc';
   name: string;
   shortName: string;
   flag: string;
@@ -157,6 +157,72 @@ export const CENTRAL_BANK_PROFILES: CentralBankProfile[] = [
     transmissionMechanism:
       'The Japanese Yen is the primary global funding currency for cross-border carry trades; BOJ rate shifts reverberate through US Treasuries and global equities.',
     color: '#10b981', // Emerald
+  },
+  {
+    id: 'boe',
+    name: 'Bank of England',
+    shortName: 'BOE',
+    flag: '🇬🇧',
+    currencyCode: 'GBP',
+    currencySymbol: '£',
+    assetsUsdTrillion: 1.12,
+    assetsLocalTrillion: 0.88, // £885B at ~1.27 GBP/USD
+    policyRate: 4.50,
+    rateDescription: 'Bank Rate (4.50%)',
+    policyStance: 'tightening',
+    balanceSheetTrajectory: 'shrinking',
+    monthlyRunoffRateUsdBillions: -12.0, // Active gilt sales pace (~£100B/year)
+    headlineProgram: 'Active Gilt Sales & APF Runoff',
+    nextMeetingDate: 'May 7, 2026',
+    summary:
+      'The BOE is the only G7 central bank conducting active bond sales (rather than just passive redemption), directly testing private market gilt absorption.',
+    transmissionMechanism:
+      'Active gilt sales increase term premium in UK government bonds, affecting sterling debt markets and global pension fund liability valuations.',
+    color: '#06b6d4', // Cyan
+  },
+  {
+    id: 'snb',
+    name: 'Swiss National Bank',
+    shortName: 'SNB',
+    flag: '🇨🇭',
+    currencyCode: 'CHF',
+    currencySymbol: 'CHF',
+    assetsUsdTrillion: 0.92,
+    assetsLocalTrillion: 0.81, // CHF 810B at ~1.13 CHF/USD
+    policyRate: 1.00,
+    rateDescription: 'SNB Policy Rate (1.00%)',
+    policyStance: 'neutral',
+    balanceSheetTrajectory: 'flat',
+    monthlyRunoffRateUsdBillions: -5.0,
+    headlineProgram: 'FX Interventions & Global Equity Portfolio',
+    nextMeetingDate: 'June 18, 2026',
+    summary:
+      'The SNB holds a globally unique foreign exchange reserve portfolio, owning over $150B of US equities (including big tech) alongside sovereign debt.',
+    transmissionMechanism:
+      'Interventions in EUR/CHF and USD/CHF directly inject or drain Swiss franc liquidity, acting as a global safe-haven valve during geopolitical shocks.',
+    color: '#ec4899', // Pink
+  },
+  {
+    id: 'boc',
+    name: 'Bank of Canada',
+    shortName: 'BOC',
+    flag: '🇨🇦',
+    currencyCode: 'CAD',
+    currencySymbol: 'C$',
+    assetsUsdTrillion: 0.23,
+    assetsLocalTrillion: 0.31, // CAD 315B at ~1.37 CAD/USD
+    policyRate: 3.25,
+    rateDescription: 'Overnight Target Rate (3.25%)',
+    policyStance: 'easing',
+    balanceSheetTrajectory: 'flat',
+    monthlyRunoffRateUsdBillions: -3.0,
+    headlineProgram: 'Policy Rate Normalization & QT Completion',
+    nextMeetingDate: 'June 3, 2026',
+    summary:
+      'Canada led the G7 easing cycle to alleviate mortgage renewal pressures on highly indebted households while concluding its balance sheet roll-off.',
+    transmissionMechanism:
+      'Directly drives Canadian commercial bank Prime rates and 5-year fixed mortgage rates, influencing housing debt service ratios nationwide.',
+    color: '#f97316', // Orange
   },
 ];
 
