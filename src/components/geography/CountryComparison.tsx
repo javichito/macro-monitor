@@ -636,7 +636,7 @@ function MetricBattleCard({
             </div>
             <span
               className={`text-xs sm:text-sm font-bold block mt-0.5 ${
-                isBetterA ? 'text-sky-900 dark:text-sky-100' : 'text-slate-800 dark:text-slate-200'
+                isBetterA ? 'text-sky-950 dark:text-sky-100' : 'text-slate-900 dark:text-slate-200'
               }`}
             >
               {valA}
@@ -656,7 +656,7 @@ function MetricBattleCard({
             </div>
             <span
               className={`text-xs sm:text-sm font-bold block mt-0.5 ${
-                isBetterB ? 'text-emerald-900 dark:text-emerald-100' : 'text-slate-800 dark:text-slate-200'
+                isBetterB ? 'text-emerald-950 dark:text-emerald-100' : 'text-slate-900 dark:text-slate-200'
               }`}
             >
               {valB}
