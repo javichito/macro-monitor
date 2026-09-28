@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { AppProvider } from '../context/AppContext';
 import { Header } from '../components/layout/Header';
+import { InstallPrompt } from '../components/layout/InstallPrompt';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -46,6 +47,7 @@ export default function RootLayout({
           <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-4 sm:py-8">
             {children}
           </main>
+          <InstallPrompt />
           <footer className="relative z-10 border-t border-white/[0.08] bg-black/40 backdrop-blur-xl py-8 text-xs text-slate-400 pb-12 sm:pb-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
