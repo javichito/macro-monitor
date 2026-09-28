@@ -26,6 +26,26 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [isPlayingTimeline, setIsPlayingTimeline] = useState<boolean>(false);
 
   /*
+   * Hydrate state from deep link URL query params on initial mount
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const yr = Number(params.get('year'));
+    if (yr && AVAILABLE_YEARS.includes(yr)) {
+      setSelectedYear(yr);
+    }
+    const curr = params.get('currency')?.toLowerCase();
+    if (curr === 'nominal' || curr === 'real' || curr === 'ppp') {
+      setCurrencyPerspective(curr as CurrencyPerspective);
+    }
+    const gran = params.get('granularity')?.toLowerCase();
+    if (gran === 'country' || gran === 'bloc' || gran === 'continent') {
+      setGranularity(gran as Granularity);
+    }
+  }, []);
+
+  /*
    * Automated timeline playback allows non-expert users to visually witness
    * macroeconomic cycles unfold over time without manual dragging.
    */

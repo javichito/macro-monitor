@@ -16,6 +16,8 @@ import {
   ShieldCheck,
   Percent,
   CheckCircle2,
+  Share2,
+  Check,
 } from 'lucide-react';
 
 interface CountryComparisonProps {
@@ -86,6 +88,7 @@ export function CountryComparison({
 }: CountryComparisonProps) {
   const [countryCodeA, setCountryCodeA] = useState<string>(initialCountryCodeA);
   const [countryCodeB, setCountryCodeB] = useState<string>(initialCountryCodeB);
+  const [hasCopiedLink, setHasCopiedLink] = useState(false);
 
   useEffect(() => {
     if (initialCountryCodeA) {
@@ -98,6 +101,20 @@ export function CountryComparison({
       setCountryCodeB(initialCountryCodeB);
     }
   }, [initialCountryCodeB]);
+
+  const handleCopyDeepLink = () => {
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('a', countryCodeA);
+    url.searchParams.set('b', countryCodeB);
+    url.searchParams.set('year', String(selectedYear));
+    url.searchParams.set('currency', currencyPerspective);
+
+    navigator.clipboard.writeText(url.toString()).then(() => {
+      setHasCopiedLink(true);
+      setTimeout(() => setHasCopiedLink(false), 2200);
+    });
+  };
 
   const countryMap = useMemo(() => {
     const map = new Map<string, CountryProfile>();
@@ -199,11 +216,35 @@ export function CountryComparison({
             </p>
           </div>
 
-          {/* Quick Duel Presets */}
+          {/* Quick Duel Presets & Share Link */}
           <div className="flex flex-col gap-2">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-300">
-              Curated Comparisons:
-            </span>
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-300">
+                Curated Comparisons:
+              </span>
+              <button
+                onClick={handleCopyDeepLink}
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all border shadow-sm cursor-pointer active:scale-95 ${
+                  hasCopiedLink
+                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40'
+                    : 'bg-white/[0.08] hover:bg-white/[0.14] text-white border-white/[0.15]'
+                }`}
+                title="Copy shareable link to this sovereign duel"
+                aria-label="Copy shareable link"
+              >
+                {hasCopiedLink ? (
+                  <>
+                    <Check className="h-3.5 w-3.5 text-emerald-400" />
+                    <span>Link Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="h-3.5 w-3.5 text-sky-400" />
+                    <span>Share Duel</span>
+                  </>
+                )}
+              </button>
+            </div>
             <div className="flex flex-wrap gap-1.5">
               {DUEL_PRESETS.map((p) => {
                 const isActive =
