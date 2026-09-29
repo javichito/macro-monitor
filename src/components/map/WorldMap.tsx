@@ -304,12 +304,12 @@ export function WorldMap({
                 Global Equal Earth Cartography ({selectedYear})
               </h4>
               <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.06] px-2.5 py-0.5 text-[11px] font-medium text-sky-300 border border-white/[0.08]">
-                <Globe className="h-3 w-3" /> 178 Territories (31 Modeled)
+                <Globe className="h-3 w-3" /> 178 Territories ({COUNTRIES_DATA.length} Modeled)
               </span>
             </div>
 
             {/* Regional Focus Quick Jumps */}
-            <div className="flex items-center gap-1 text-[11px]">
+            <div className="flex items-center gap-1.5 text-[11px] overflow-x-auto no-scrollbar max-w-full py-0.5">
               {Object.entries(REGION_PRESETS).map(([key, preset]) => (
                 <button
                   key={key}
@@ -317,7 +317,7 @@ export function WorldMap({
                     setZoom(preset.zoom);
                     setPan(preset.pan);
                   }}
-                  className="rounded-full px-2.5 py-0.5 border border-white/[0.08] bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.10] transition-colors cursor-pointer"
+                  className="rounded-full px-2.5 py-1 border border-white/[0.08] bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.10] transition-colors cursor-pointer shrink-0 whitespace-nowrap active:scale-95"
                 >
                   {preset.name}
                 </button>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { AppProvider } from '../context/AppContext';
 import { Header } from '../components/layout/Header';
+import { MobileTabBar } from '../components/layout/MobileTabBar';
 import { InstallPrompt } from '../components/layout/InstallPrompt';
 
 export const viewport: Viewport = {
@@ -68,11 +69,12 @@ export default function RootLayout({
 
         <AppProvider>
           <Header />
-          <main className="relative flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-4 sm:py-8">
+          <main className="relative flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-4 sm:py-8 pb-24 md:pb-8">
             {children}
           </main>
           <InstallPrompt />
-          <footer className="relative border-t border-white/[0.08] bg-black/40 backdrop-blur-xl py-8 text-xs text-slate-400 pb-12 sm:pb-8">
+          <MobileTabBar />
+          <footer className="relative border-t border-white/[0.08] bg-black/40 backdrop-blur-xl py-8 text-xs text-slate-400 mb-16 md:mb-0 pb-12 sm:pb-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <span className="font-semibold text-white tracking-tight">MacroMonitor</span> — Modern Financial Transparency

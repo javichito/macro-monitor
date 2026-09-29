@@ -123,8 +123,16 @@ export function CentralBankLiquidityRadar() {
             <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
               ${summary.totalLiquidityUsd} Trillion
             </span>
-            <span className="text-[10px] text-emerald-500 dark:text-emerald-400 font-medium block mt-0.5">
-              +{summary.netLiquidityChangeUsd}T vs prior inflection
+            <span
+              className={`text-[10px] font-medium block mt-0.5 ${
+                summary.netLiquidityChangeUsd >= 0
+                  ? 'text-emerald-500 dark:text-emerald-400'
+                  : 'text-rose-500 dark:text-rose-400'
+              }`}
+            >
+              {summary.netLiquidityChangeUsd >= 0
+                ? `+${summary.netLiquidityChangeUsd}`
+                : `${summary.netLiquidityChangeUsd}`}T vs prior inflection
             </span>
           </div>
 

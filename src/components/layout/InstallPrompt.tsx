@@ -74,54 +74,54 @@ export function InstallPrompt() {
   if (!showPrompt) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 z-50 max-w-sm mx-auto sm:mx-0 animate-in fade-in slide-in-from-bottom-5 duration-300">
-      <div className="apple-card p-4.5 bg-[#0e121b]/95 border-white/[0.16] shadow-2xl backdrop-blur-2xl rounded-2xl relative">
+    <div className="fixed bottom-20 left-3 right-3 sm:bottom-6 sm:left-auto sm:right-6 z-50 max-w-sm mx-auto sm:mx-0 animate-in fade-in slide-in-from-bottom-5 duration-300">
+      <div className="p-3.5 sm:p-4 bg-white/95 dark:bg-[#0e121b]/95 border border-slate-200 dark:border-white/[0.16] shadow-2xl backdrop-blur-2xl rounded-2xl relative text-slate-800 dark:text-slate-100">
         <button
           onClick={handleDismiss}
-          className="absolute top-3 right-3 p-1 rounded-full text-slate-400 hover:text-white bg-white/[0.06] hover:bg-white/[0.12] transition-colors"
+          className="absolute top-2.5 right-2.5 p-1 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 dark:hover:bg-white/[0.12] transition-colors"
           aria-label="Dismiss installation prompt"
         >
           <X className="h-3.5 w-3.5" />
         </button>
 
         <div className="flex items-start gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-b from-sky-400/20 to-sky-600/10 border border-sky-400/30 text-sky-400 shadow-sm mt-0.5">
-            <Smartphone className="h-5 w-5" />
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 dark:bg-sky-400/20 border border-sky-400/30 text-sky-500 dark:text-sky-400 shadow-sm mt-0.5">
+            <Smartphone className="h-4.5 w-4.5" />
           </div>
 
-          <div className="pr-4">
-            <h4 className="text-sm font-semibold text-white tracking-tight">
+          <div className="pr-4 flex-1">
+            <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white tracking-tight">
               Install MacroMonitor
             </h4>
-            <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
+            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-300 mt-0.5 leading-relaxed">
               Install as an iPhone app for a fullscreen, offline-ready experience.
             </p>
 
             {isIOS ? (
-              <div className="mt-3 space-y-1.5 text-[11px] text-slate-300 bg-white/[0.04] border border-white/[0.08] p-2.5 rounded-xl">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 font-bold text-[10px]">
+              <div className="mt-2.5 space-y-1 text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] p-2 rounded-xl">
+                <div className="flex items-center gap-1.5">
+                  <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-sky-500/20 text-sky-500 dark:text-sky-400 font-bold text-[9px]">
                     1
                   </span>
                   <span>
-                    Tap the <strong className="text-white">Share</strong> icon{' '}
-                    <Share className="inline h-3.5 w-3.5 text-sky-400 -mt-0.5" /> in Safari
+                    Tap <strong className="text-slate-900 dark:text-white">Share</strong>{' '}
+                    <Share className="inline h-3 w-3 text-sky-500 dark:text-sky-400 -mt-0.5" /> in Safari
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 font-bold text-[10px]">
+                <div className="flex items-center gap-1.5">
+                  <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-sky-500/20 text-sky-500 dark:text-sky-400 font-bold text-[9px]">
                     2
                   </span>
                   <span>
-                    Select <strong className="text-white">Add to Home Screen</strong>{' '}
-                    <PlusSquare className="inline h-3.5 w-3.5 text-sky-400 -mt-0.5" />
+                    Tap <strong className="text-slate-900 dark:text-white">Add to Home Screen</strong>{' '}
+                    <PlusSquare className="inline h-3 w-3 text-sky-500 dark:text-sky-400 -mt-0.5" />
                   </span>
                 </div>
               </div>
             ) : (
               <button
                 onClick={handleInstallClick}
-                className="mt-3 w-full py-1.5 px-3 rounded-full bg-sky-500 hover:bg-sky-400 text-black font-semibold text-xs transition-colors shadow-sm cursor-pointer"
+                className="mt-2.5 w-full py-1.5 px-3 rounded-full bg-sky-500 hover:bg-sky-400 text-black font-semibold text-xs transition-colors shadow-sm cursor-pointer"
               >
                 Install App
               </button>
