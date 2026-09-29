@@ -4,6 +4,7 @@ import { AppProvider } from '../context/AppContext';
 import { Header } from '../components/layout/Header';
 import { MobileTabBar } from '../components/layout/MobileTabBar';
 import { InstallPrompt } from '../components/layout/InstallPrompt';
+import { ServiceWorkerRegister } from '../components/layout/ServiceWorkerRegister';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -68,6 +69,7 @@ export default function RootLayout({
         </div>
 
         <AppProvider>
+          <ServiceWorkerRegister />
           <Header />
           <main className="relative flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-4 sm:py-8 pb-24 md:pb-8">
             {children}

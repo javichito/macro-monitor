@@ -5,6 +5,7 @@ import { useApp } from '../../context/AppContext';
 import { TimelineControls } from '../../components/layout/TimelineControls';
 import { MacroTrendChart } from '../../components/macro/MacroTrendChart';
 import { CentralBankLiquidityRadar } from '../../components/macro/CentralBankLiquidityRadar';
+import { LiquidityAlertsCenter } from '../../components/macro/LiquidityAlertsCenter';
 import { FiscalDominanceSimulator } from '../../components/macro/FiscalDominanceSimulator';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import { BarChart3 } from 'lucide-react';
@@ -33,6 +34,9 @@ export default function MacroPage() {
 
       {/* Global Central Bank Liquidity Radar */}
       <CentralBankLiquidityRadar />
+
+      {/* Live Liquidity Alerts & Fed Triggers Center */}
+      <LiquidityAlertsCenter />
 
       {/* Sovereign Fiscal Dominance & Debt Spiral Simulator */}
       <FiscalDominanceSimulator />
