@@ -129,3 +129,48 @@ export interface MacroIndicatorYear {
   centralBankRates: CentralBankRates;
   currencyReserves: CurrencyReserves;
 }
+
+export type MacroRegionId =
+  | 'north-america'
+  | 'europe'
+  | 'asia-pacific'
+  | 'latin-america'
+  | 'middle-east-africa';
+
+export interface RegionalAssetMix {
+  realEstate: number;
+  equities: number;
+  bonds: number;
+  cash: number;
+  alternatives: number;
+}
+
+export interface RegionMeta {
+  id: MacroRegionId;
+  name: string;
+  shortName: string;
+  flag: string;
+  color: string;
+  secondaryColor: string;
+  keyEconomies: string;
+  macroProfile: string;
+}
+
+export interface RegionYearMetric {
+  regionId: MacroRegionId;
+  name: string;
+  totalGrossAssetsTrillion: number;
+  totalLiabilitiesTrillion: number;
+  netWealthTrillion: number;
+  shareOfGlobalGrossPercent: number;
+  assets: RegionalAssetMix;
+  macroHighlight: string;
+}
+
+export interface RegionalAssetYear {
+  year: number;
+  totalGlobalGrossTrillion: number;
+  totalGlobalLiabilitiesTrillion: number;
+  totalGlobalNetWealthTrillion: number;
+  regions: Record<MacroRegionId, RegionYearMetric>;
+}

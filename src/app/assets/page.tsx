@@ -1,57 +1,107 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { TimelineControls } from '../../components/layout/TimelineControls';
 import { AssetEvolutionChart } from '../../components/assets/AssetEvolutionChart';
+import { RegionalAssetBreakdown } from '../../components/assets/RegionalAssetBreakdown';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
-import { Layers, Home, Landmark, Coins } from 'lucide-react';
+import { Layers, Globe2 } from 'lucide-react';
 
 export default function AssetsPage() {
   const { selectedYear, currencyPerspective } = useApp();
+  const [activeTab, setActiveTab] = useState<'global' | 'regional'>('global');
+
+  // Deep link hydration for direct navigation from external links or bookmarks
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab');
+    if (tabParam === 'regional' || tabParam === 'region') {
+      setActiveTab('regional');
+    } else if (tabParam === 'global') {
+      setActiveTab('global');
+    }
+  }, []);
 
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="border-b border-white/[0.08] pb-6">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-200 mb-3 shadow-inner">
+      <div className="border-b border-slate-200 dark:border-white/[0.08] pb-6">
+        <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-white/[0.12] bg-slate-100 dark:bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-800 dark:text-slate-200 mb-3 shadow-inner">
           <Layers className="h-3.5 w-3.5 text-sky-400" />
           <span>Global Asset Allocation</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
           Where is the World's Wealth Stored?
         </h1>
-        <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
           Examine the composition of aggregate global assets across residential real estate, corporate equities, bonds, sovereign debt liabilities, and physical gold from 1980 through 2026.
         </p>
+
+        {/* View Switcher Tabs */}
+        <div className="mt-5 inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] shadow-sm">
+          <button
+            onClick={() => setActiveTab('global')}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+              activeTab === 'global'
+                ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white shadow-sm'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <Layers className="h-4 w-4 text-sky-400" />
+            <span>Global Asset Classes</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('regional')}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+              activeTab === 'regional'
+                ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white shadow-sm'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <Globe2 className="h-4 w-4 text-emerald-400" />
+            <span>Regional Breakdown &amp; Shift</span>
+          </button>
+        </div>
       </div>
 
       <TimelineControls />
 
-      {/* Primary Asset Class Chart & Category Cards */}
-      <AssetEvolutionChart
-        currencyPerspective={currencyPerspective}
-        selectedYear={selectedYear}
-      />
+      {/* Conditional Active View */}
+      {activeTab === 'global' ? (
+        <>
+          {/* Primary Asset Class Chart & Category Cards */}
+          <AssetEvolutionChart
+            currencyPerspective={currencyPerspective}
+            selectedYear={selectedYear}
+          />
 
-      {/* Educational Explainers */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <PlainEnglishCard
-          title="Why is Real Estate consistently the largest asset class on Earth?"
-          summary="Real estate accounts for nearly half of all global private wealth ($297T+ in 2026). Unlike paper securities, real estate fulfills a universal physical need: shelter."
-          detail="Governments and central banks historically protect and subsidize mortgages through 30-year fixed loans, tax deductions, and zoning limits that constrain supply. As populations grow and urbanize, finite land values systematically compound."
-          takeaway="For the bottom 90% of households, the primary residence represents over 70% of total family net worth."
-          defaultExpanded={true}
-        />
+          {/* Educational Explainers */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <PlainEnglishCard
+              title="Why is Real Estate consistently the largest asset class on Earth?"
+              summary="Real estate accounts for nearly half of all global private wealth ($297T+ in 2026). Unlike paper securities, real estate fulfills a universal physical need: shelter."
+              detail="Governments and central banks historically protect and subsidize mortgages through 30-year fixed loans, tax deductions, and zoning limits that constrain supply. As populations grow and urbanize, finite land values systematically compound."
+              takeaway="For the bottom 90% of households, the primary residence represents over 70% of total family net worth."
+              defaultExpanded={true}
+            />
 
-        <PlainEnglishCard
-          title="Tangible Assets vs Paper Financial Claims"
-          summary="Tangible assets (land, buildings, gold) exist physically in the real world. Financial assets (stocks, bonds, cash) are contractual claims on future earnings."
-          detail="During high-inflation eras (such as 2022-2023), tangible assets often retain purchasing power better because their replacement costs rise. During zero-interest-rate bull markets (such as 2010-2021), financial equities explode in valuation as borrowing costs hit floor levels."
-          takeaway="A balanced civilization requires both productive physical land and fluid financial markets to allocate capital to innovations."
-          defaultExpanded={false}
+            <PlainEnglishCard
+              title="Tangible Assets vs Paper Financial Claims"
+              summary="Tangible assets (land, buildings, gold) exist physically in the real world. Financial assets (stocks, bonds, cash) are contractual claims on future earnings."
+              detail="During high-inflation eras (such as 2022-2023), tangible assets often retain purchasing power better because their replacement costs rise. During zero-interest-rate bull markets (such as 2010-2021), financial equities explode in valuation as borrowing costs hit floor levels."
+              takeaway="A balanced civilization requires both productive physical land and fluid financial markets to allocate capital to innovations."
+              defaultExpanded={false}
+            />
+          </div>
+        </>
+      ) : (
+        <RegionalAssetBreakdown
+          currencyPerspective={currencyPerspective}
+          selectedYear={selectedYear}
         />
-      </div>
+      )}
     </div>
   );
 }
