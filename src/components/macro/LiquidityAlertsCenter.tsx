@@ -72,7 +72,7 @@ export function LiquidityAlertsCenter() {
         saveStoredAlertPreferences(updated);
         triggerNativeAlert(
           '🔔 MacroMonitor Alerts Active',
-          'PWA push notifications are configured. You will receive alerts when liquidity thresholds breach.',
+          'Alerts are configured! You will receive notifications when major liquidity thresholds are breached.',
           'welcome-alert'
         );
       }
@@ -140,13 +140,13 @@ export function LiquidityAlertsCenter() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/25 bg-sky-500/10 px-3 py-0.5 text-xs font-semibold text-sky-400 mb-2">
             <BellRing className="h-3.5 w-3.5 animate-pulse" />
-            <span>PWA Push Engine</span>
+            <span>Real-Time Alerts</span>
           </div>
           <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
             Live Liquidity Alert Center &amp; Fed Triggers
           </h3>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-300 mt-1 max-w-2xl leading-relaxed">
-            Configure automated PWA push notifications that trigger on your phone or desktop when Federal Reserve Net Liquidity, Reverse Repo buffers, or Treasury cash withdrawals cross inflection points.
+            Receive instant notifications on your phone or computer whenever Federal Reserve Net Liquidity, Reverse Repo cash buffers, or Treasury withdrawals cross key inflection points.
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export function LiquidityAlertsCenter() {
         <div className="flex items-center gap-3 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] p-2.5 rounded-2xl shrink-0">
           <div className="flex flex-col">
             <span className="text-xs font-semibold text-slate-900 dark:text-white">
-              PWA Push Status
+              Alert Status
             </span>
             <span className="text-[11px] text-slate-500 dark:text-slate-400">
               {permission === 'granted' && preferences.pushEnabled
@@ -195,7 +195,7 @@ export function LiquidityAlertsCenter() {
         <div className="mt-4 p-3 rounded-xl bg-sky-500/10 border border-sky-400/20 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-2.5">
           <Smartphone className="h-4 w-4 text-sky-400 shrink-0 mt-0.5" />
           <div className="leading-relaxed">
-            <strong className="text-slate-900 dark:text-white">iPhone &amp; iPad PWA Requirement:</strong> Under Apple iOS 16.4+, Web Push notifications are enabled when MacroMonitor is added to your Home Screen. Tap <em>Share → Add to Home Screen</em> to receive background liquidity triggers.
+            <strong className="text-slate-900 dark:text-white">Lock-Screen Alerts on iPhone &amp; iPad:</strong> To receive notifications on iOS, add MacroMonitor to your Home Screen: tap <em>Share → Add to Home Screen</em>, then open the app.
           </div>
         </div>
       )}
@@ -407,7 +407,7 @@ export function LiquidityAlertsCenter() {
               </p>
               <div className="mt-2 text-[10px] font-semibold text-sky-500 dark:text-sky-400 flex items-center gap-1">
                 <Play className="h-2.5 w-2.5 fill-current" />
-                Fire PWA Push Alert
+                Simulate Notification
               </div>
             </button>
           ))}

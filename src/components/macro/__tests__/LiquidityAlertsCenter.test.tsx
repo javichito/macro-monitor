@@ -27,7 +27,7 @@ describe('LiquidityAlertsCenter Component', () => {
     render(<LiquidityAlertsCenter />);
 
     expect(screen.getByText(/Live Liquidity Alert Center/i)).toBeDefined();
-    expect(screen.getByText(/PWA Push Status/i)).toBeDefined();
+    expect(screen.getByText(/Alert Status/i)).toBeDefined();
     expect(screen.getByText('Net Liquidity Inflection Milestone')).toBeDefined();
     expect(screen.getByText('Reverse Repo Exhaustion Floor')).toBeDefined();
     expect(screen.getByText('Weekly Impulse Momentum Alert')).toBeDefined();
