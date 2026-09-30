@@ -174,3 +174,107 @@ export interface RegionalAssetYear {
   totalGlobalNetWealthTrillion: number;
   regions: Record<MacroRegionId, RegionYearMetric>;
 }
+
+/* =========================================================================
+ * Tier 1: High-Impact Macro Essentials Types
+ * ========================================================================= */
+
+export type YieldTenor = '1M' | '3M' | '6M' | '1Y' | '2Y' | '3Y' | '5Y' | '7Y' | '10Y' | '20Y' | '30Y';
+export type CurveShape = 'normal' | 'flat' | 'inverted' | 'steepening';
+
+export interface YieldPoint {
+  tenor: YieldTenor;
+  tenorMonths: number;
+  yieldPercent: number;
+}
+
+export interface SovereignYieldCurve {
+  sovereignCode: 'USA' | 'DEU' | 'JPN' | 'GBR';
+  name: string;
+  flag: string;
+  currency: string;
+  currentCurve: YieldPoint[];
+  curveOneYearAgo: YieldPoint[];
+  curvePreInversion?: YieldPoint[];
+  spread10Y2Y: number;
+  spread10Y3M: number;
+  curveShape: CurveShape;
+  recessionProbability12M: number; // In percent (e.g. 18.5)
+  realYield10Y: number; // 10Y TIPS in %
+  breakevenInflation10Y: number; // Breakeven inflation in %
+  summary: string;
+}
+
+export interface HistoricalYieldSpreadYear {
+  year: number;
+  us10Y2YSpread: number;
+  us10Y3MSpread: number;
+  us10YNominal: number;
+  us10YRealTIPS: number;
+  isInverted: boolean;
+  isRecession: boolean;
+}
+
+export type MacroQuadrant = 'goldilocks' | 'reflation' | 'stagflation' | 'deflation';
+
+export interface RegimeCoordinates {
+  growthMomentum: number; // -100 (severe contraction) to +100 (rapid acceleration)
+  inflationMomentum: number; // -100 (severe disinflation) to +100 (rapid inflation acceleration)
+  quadrant: MacroQuadrant;
+  label: string;
+  description: string;
+  favorableAssetClasses: string[];
+  headwindAssetClasses: string[];
+}
+
+export interface EconomyRegimePoint {
+  code: string;
+  name: string;
+  flag: string;
+  currentCoordinates: RegimeCoordinates;
+  historicalTrail: Array<{
+    year: number;
+    coordinates: RegimeCoordinates;
+  }>;
+}
+
+export interface MacroRegimeMilestone {
+  year: number;
+  title: string;
+  quadrant: MacroQuadrant;
+  catalyst: string;
+  assetLeader: string;
+}
+
+export interface LaborMetricsYear {
+  year: number;
+  unemploymentRate: number; // U-3 headline %
+  underemploymentRate: number; // U-6 broad %
+  laborForceParticipation: number; // LFPR %
+  sahmIndicatorValue: number; // Percentage point delta vs 12m low
+  sahmTriggered: boolean; // True if >= 0.50%
+  jobOpeningsPerUnemployed: number; // JOLTS V/U ratio
+  wageGrowthYoy: number; // Average hourly earnings % YoY
+  productivityGrowthYoy: number; // Output per worker-hour % YoY
+}
+
+export interface SovereignLaborProfile {
+  countryCode: string;
+  countryName: string;
+  flag: string;
+  currentUnemployment: number;
+  unemployment12mLow: number;
+  sahmValue: number;
+  sahmStatus: 'tranquil' | 'elevated' | 'triggered';
+  laborTightness: 'tight' | 'balanced' | 'slack';
+  historicalSeries: LaborMetricsYear[];
+}
+
+export interface PhillipsCurvePoint {
+  era: '1980s' | '1990s' | '2000s' | '2010s' | '2020s';
+  year: number;
+  unemployment: number;
+  inflation: number;
+  note: string;
+}
+

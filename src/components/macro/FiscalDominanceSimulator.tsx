@@ -21,6 +21,7 @@ import {
   simulateFiscalTrajectory,
   calculateFinancialRepressionMetrics,
 } from '../../data/fiscal-dominance-data';
+import { useThemeMode } from '../../context/AppContext';
 import {
   Scale,
   TrendingDown,
@@ -59,6 +60,8 @@ function getScenarioIcon(iconName: string) {
 }
 
 export function FiscalDominanceSimulator() {
+  const theme = useThemeMode();
+  const isDark = theme === 'dark';
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>('USA');
   const [activeScenarioId, setActiveScenarioId] = useState<string>('baseline');
   const [activeMetricTab, setActiveMetricTab] = useState<'debt' | 'interest'>('debt');
@@ -159,10 +162,10 @@ export function FiscalDominanceSimulator() {
               <Scale className="h-3.5 w-3.5" />
               <span>Sovereign Solvency & Debt Dynamics</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
               Fiscal Dominance & Debt Spiral Simulator
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
               Model real-world sovereign debt rollover dynamics, test bond market yield shocks, and discover the exact "Tipping Point" where sovereign interest obligations crowd out essential national public outlays.
             </p>
           </div>
@@ -259,19 +262,19 @@ export function FiscalDominanceSimulator() {
                 className={`p-3 rounded-xl text-left transition-all border ${
                   isActive
                     ? 'bg-sky-500/15 border-sky-400 shadow-sm ring-1 ring-sky-400/30'
-                    : 'bg-white/[0.03] border-white/10 hover:bg-white/[0.06] hover:border-white/20'
+                    : 'bg-slate-50 dark:bg-white/[0.03] border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:border-slate-300 dark:hover:border-white/20'
                 }`}
               >
                 <div className="flex items-center gap-2 mb-1.5">
                   {getScenarioIcon(scenario.iconName)}
-                  <span className="text-xs font-bold text-white tracking-tight">
+                  <span className="text-xs font-bold text-slate-900 dark:text-white tracking-tight">
                     {scenario.name}
                   </span>
                 </div>
-                <div className="text-[11px] text-sky-400 font-medium mb-1.5">
+                <div className="text-[11px] text-sky-600 dark:text-sky-400 font-medium mb-1.5">
                   {scenario.subtitle}
                 </div>
-                <p className="text-[11px] text-slate-300 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
                   {scenario.description}
                 </p>
               </button>
@@ -284,22 +287,22 @@ export function FiscalDominanceSimulator() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Interactive Parameter Control Sliders */}
         <div className="lg:col-span-5 apple-card p-6 space-y-5">
-          <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-              <Scale className="h-4 w-4 text-sky-400" />
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/[0.08] pb-3">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+              <Scale className="h-4 w-4 text-sky-500 dark:text-sky-400" />
               Sovereign Policy Levers
             </h3>
-            <span className="text-xs text-slate-400">Real-time dynamic feed</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">Real-time dynamic feed</span>
           </div>
 
           {/* Slider 1: 10Y Bond Yield (Marginal Refinancing Rate r) */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-center text-xs">
-              <span className="font-semibold text-white flex items-center gap-1.5">
-                <Percent className="h-3.5 w-3.5 text-amber-400" />
+              <span className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <Percent className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
                 10Y Sovereign Yield (r)
               </span>
-              <span className="font-mono font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">
+              <span className="font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">
                 {params.bondYield.toFixed(2)}%
               </span>
             </div>
@@ -323,15 +326,15 @@ export function FiscalDominanceSimulator() {
           {/* Slider 2: Primary Budget Deficit (% of GDP) */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-center text-xs">
-              <span className="font-semibold text-white flex items-center gap-1.5">
-                <DollarSign className="h-3.5 w-3.5 text-rose-400" />
+              <span className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <DollarSign className="h-3.5 w-3.5 text-rose-500 dark:text-rose-400" />
                 Primary Deficit (% of GDP)
               </span>
               <span
                 className={`font-mono font-bold px-2 py-0.5 rounded border ${
                   params.primaryDeficit <= 0
-                    ? 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20'
-                    : 'text-rose-400 bg-rose-400/10 border-rose-400/20'
+                    ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-400/10 border-emerald-400/20'
+                    : 'text-rose-600 dark:text-rose-400 bg-rose-400/10 border-rose-400/20'
                 }`}
               >
                 {params.primaryDeficit > 0 ? `+${params.primaryDeficit.toFixed(2)}%` : `${params.primaryDeficit.toFixed(2)}%`}
@@ -345,9 +348,9 @@ export function FiscalDominanceSimulator() {
               value={params.primaryDeficit}
               aria-label="Primary Deficit (% of GDP)"
               onChange={(e) => handleParamChange('primaryDeficit', parseFloat(e.target.value))}
-              className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-rose-400"
+              className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-rose-500"
             />
-            <div className="flex justify-between text-[10px] text-slate-400">
+            <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
               <span>-4.0% (Surplus)</span>
               <span>Baseline: +{currentProfile.primaryDeficitPercent}%</span>
               <span>+10.0% (Runaway)</span>
@@ -357,17 +360,17 @@ export function FiscalDominanceSimulator() {
           {/* Slider 3: Real GDP Growth Rate */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-center text-xs">
-              <span className="font-semibold text-white flex items-center gap-1.5">
-                <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
+              <span className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <TrendingUp className="h-3.5 w-3.5 text-emerald-500 dark:text-emerald-400" />
                 Real GDP Growth Rate
               </span>
               <span
                 className={`font-mono font-bold px-2 py-0.5 rounded border ${
                   params.realGrowth >= 2.0
-                    ? 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20'
+                    ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-400/10 border-emerald-400/20'
                     : params.realGrowth >= 0
-                    ? 'text-sky-400 bg-sky-400/10 border-sky-400/20'
-                    : 'text-rose-400 bg-rose-400/10 border-rose-400/20'
+                    ? 'text-sky-600 dark:text-sky-400 bg-sky-400/10 border-sky-400/20'
+                    : 'text-rose-600 dark:text-rose-400 bg-rose-400/10 border-rose-400/20'
                 }`}
               >
                 {params.realGrowth >= 0 ? `+${params.realGrowth.toFixed(2)}%` : `${params.realGrowth.toFixed(2)}%`}
@@ -381,9 +384,9 @@ export function FiscalDominanceSimulator() {
               value={params.realGrowth}
               aria-label="Real GDP Growth Rate"
               onChange={(e) => handleParamChange('realGrowth', parseFloat(e.target.value))}
-              className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+              className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
             />
-            <div className="flex justify-between text-[10px] text-slate-400">
+            <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
               <span>-3.0% (Recession)</span>
               <span>Baseline: +{currentProfile.realGdpGrowth}%</span>
               <span>+8.0% (Boom)</span>
@@ -393,11 +396,11 @@ export function FiscalDominanceSimulator() {
           {/* Slider 4: Inflation Rate (GDP Deflator) */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-center text-xs">
-              <span className="font-semibold text-white flex items-center gap-1.5">
-                <Flame className="h-3.5 w-3.5 text-orange-400" />
+              <span className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <Flame className="h-3.5 w-3.5 text-orange-500 dark:text-orange-400" />
                 Inflation Rate (GDP Deflator)
               </span>
-              <span className="font-mono font-bold text-orange-400 bg-orange-400/10 px-2 py-0.5 rounded border border-orange-400/20">
+              <span className="font-mono font-bold text-orange-600 dark:text-orange-400 bg-orange-400/10 px-2 py-0.5 rounded border border-orange-400/20">
                 {params.inflation.toFixed(2)}%
               </span>
             </div>
@@ -409,9 +412,9 @@ export function FiscalDominanceSimulator() {
               value={params.inflation}
               aria-label="Inflation Rate (GDP Deflator)"
               onChange={(e) => handleParamChange('inflation', parseFloat(e.target.value))}
-              className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-orange-400"
+              className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-orange-500"
             />
-            <div className="flex justify-between text-[10px] text-slate-400">
+            <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
               <span>0.0% (Deflation risk)</span>
               <span>Baseline: {currentProfile.inflationRate}%</span>
               <span>15.0% (Debasement)</span>
@@ -419,8 +422,8 @@ export function FiscalDominanceSimulator() {
           </div>
 
           {/* Theoretical Rule Explainer */}
-          <div className="text-[11px] text-slate-400 bg-white/[0.02] p-3 rounded-xl border border-white/[0.06] leading-relaxed">
-            <span className="font-semibold text-slate-300">The Compounding Law:</span> When sovereign yields exceed nominal growth (<code className="text-amber-300">r &gt; g</code>), debt grows exponentially even with zero new program spending. Maturing bonds roll over annually at 1/{currentProfile.avgDebtMaturityYears}th per year.
+          <div className="text-[11px] text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/[0.02] p-3 rounded-xl border border-slate-200 dark:border-white/[0.06] leading-relaxed">
+            <span className="font-semibold text-slate-900 dark:text-slate-300">The Compounding Law:</span> When sovereign yields exceed nominal growth (<code className="text-amber-600 dark:text-amber-300">r &gt; g</code>), debt grows exponentially even with zero new program spending. Maturing bonds roll over annually at 1/{currentProfile.avgDebtMaturityYears}th per year.
           </div>
         </div>
 
@@ -459,37 +462,37 @@ export function FiscalDominanceSimulator() {
                 </p>
               </div>
             </div>
-            <div className="mt-4 pt-3 border-t border-white/[0.08] text-[11px] text-slate-400">
-              Discretionary Budget Cap: <span className="text-white font-medium">{currentProfile.defenseAndDiscretionaryPercentGdp}% of GDP</span>
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/[0.08] text-[11px] text-slate-500 dark:text-slate-400">
+              Discretionary Budget Cap: <span className="text-slate-900 dark:text-white font-medium">{currentProfile.defenseAndDiscretionaryPercentGdp}% of GDP</span>
             </div>
           </div>
 
           {/* Card 2: Interest to Tax Revenue Absorption */}
           <div className="apple-card p-5 flex flex-col justify-between border-t-2 border-t-amber-500">
             <div>
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-                <span className="font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                  <Percent className="h-3.5 w-3.5 text-amber-400" />
+              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+                <span className="font-semibold uppercase tracking-wider flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                  <Percent className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
                   Interest-to-Tax Ratio
                 </span>
-                <span className="text-[11px] bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded font-mono font-medium">
+                <span className="text-[11px] bg-amber-500/10 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded font-mono font-medium">
                   2036 Horizon
                 </span>
               </div>
               <div className="mt-1">
-                <div className="text-2xl font-bold text-amber-400 tracking-tight flex items-baseline gap-2">
+                <div className="text-2xl font-bold text-amber-600 dark:text-amber-400 tracking-tight flex items-baseline gap-2">
                   <span>{terminalPoint.interestToTaxRevenuePercent}%</span>
-                  <span className="text-xs font-normal text-slate-400">
+                  <span className="text-xs font-normal text-slate-500 dark:text-slate-400">
                     (from {initialPoint.interestToTaxRevenuePercent}%)
                   </span>
                 </div>
-                <p className="text-xs text-slate-300 dark:text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                   Percentage of every tax dollar collected consumed exclusively to pay interest to bondholders by 2036.
                 </p>
               </div>
             </div>
-            <div className="mt-4 pt-3 border-t border-white/[0.08]">
-              <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/[0.08]">
+              <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-500 ${
                     terminalPoint.interestToTaxRevenuePercent > 35
@@ -501,7 +504,7 @@ export function FiscalDominanceSimulator() {
                   style={{ width: `${Math.min(100, (terminalPoint.interestToTaxRevenuePercent / 50) * 100)}%` }}
                 />
               </div>
-              <div className="flex justify-between text-[10px] text-slate-400 mt-1">
+              <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400 mt-1">
                 <span>Healthy (&lt;15%)</span>
                 <span>Critical (&gt;25%)</span>
                 <span>Dominance (&gt;35%)</span>
@@ -512,60 +515,60 @@ export function FiscalDominanceSimulator() {
           {/* Card 3: The r - g Compounding Differential */}
           <div className="apple-card p-5 flex flex-col justify-between border-t-2 border-t-sky-500">
             <div>
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-                <span className="font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                  <TrendingDown className="h-3.5 w-3.5 text-sky-400" />
+              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+                <span className="font-semibold uppercase tracking-wider flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                  <TrendingDown className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
                   r − g Snowball Spread
                 </span>
-                <span className="text-[11px] bg-sky-500/10 text-sky-400 px-2 py-0.5 rounded font-mono font-medium">
+                <span className="text-[11px] bg-sky-500/10 text-sky-700 dark:text-sky-400 px-2 py-0.5 rounded font-mono font-medium">
                   {terminalPoint.rMinusG > 0 ? 'Compounding' : 'Deleveraging'}
                 </span>
               </div>
               <div className="mt-1">
                 <div
                   className={`text-2xl font-bold tracking-tight ${
-                    terminalPoint.rMinusG > 0 ? 'text-rose-400' : 'text-emerald-400'
+                    terminalPoint.rMinusG > 0 ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'
                   }`}
                 >
                   {terminalPoint.rMinusG > 0 ? `+${terminalPoint.rMinusG}%` : `${terminalPoint.rMinusG}%`}
                 </div>
-                <p className="text-xs text-slate-300 dark:text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                   {terminalPoint.rMinusG > 0
                     ? `Effective debt interest (${terminalPoint.effectiveInterestRate}%) exceeds nominal GDP expansion. Debt expands organically without fresh borrowing.`
                     : `Nominal economic growth outpaces sovereign borrowing costs, allowing the debt-to-GDP burden to naturally melt down.`}
                 </p>
               </div>
             </div>
-            <div className="mt-4 pt-3 border-t border-white/[0.08] text-[11px] text-slate-400">
-              Terminal Effective Coupon: <span className="text-white font-medium">{terminalPoint.effectiveInterestRate}%</span>
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/[0.08] text-[11px] text-slate-500 dark:text-slate-400">
+              Terminal Effective Coupon: <span className="text-slate-900 dark:text-white font-medium">{terminalPoint.effectiveInterestRate}%</span>
             </div>
           </div>
 
           {/* Card 4: Financial Repression Tax */}
           <div className="apple-card p-5 flex flex-col justify-between border-t-2 border-t-purple-500">
             <div>
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-                <span className="font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                  <ShieldAlert className="h-3.5 w-3.5 text-purple-400" />
+              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+                <span className="font-semibold uppercase tracking-wider flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                  <ShieldAlert className="h-3.5 w-3.5 text-purple-500 dark:text-purple-400" />
                   Repression Tax on Savers
                 </span>
-                <span className="text-[11px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded font-mono font-medium">
+                <span className="text-[11px] bg-purple-500/10 text-purple-700 dark:text-purple-400 px-2 py-0.5 rounded font-mono font-medium">
                   Required Stealth Haircut
                 </span>
               </div>
               <div className="mt-1">
-                <div className="text-2xl font-bold text-purple-400 tracking-tight flex items-baseline gap-2">
+                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 tracking-tight flex items-baseline gap-2">
                   <span>${repression.annualWealthTransferTrillion}T / yr</span>
                 </div>
-                <p className="text-xs text-slate-300 dark:text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                   {repression.yieldPenalty > 0
                     ? `To stabilize debt without cutting deficits, central banks must suppress yields to ${repression.stabilizingYield}% (a -${repression.yieldPenalty}% negative real rate haircut).`
                     : `Primary balance is sound; no synthetic rate suppression or bondholder expropriation required.`}
                 </p>
               </div>
             </div>
-            <div className="mt-4 pt-3 border-t border-white/[0.08] text-[11px] text-slate-400">
-              Required Stabilizing Yield: <span className="text-white font-medium">{repression.stabilizingYield}%</span>
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/[0.08] text-[11px] text-slate-500 dark:text-slate-400">
+              Required Stabilizing Yield: <span className="text-slate-900 dark:text-white font-medium">{repression.stabilizingYield}%</span>
             </div>
           </div>
         </div>
@@ -576,7 +579,7 @@ export function FiscalDominanceSimulator() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-lg font-bold text-white tracking-tight">
+              <span className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">
                 {currentProfile.name} 10-Year Solvency Trajectory (2026–2036)
               </span>
               <span
@@ -652,7 +655,7 @@ export function FiscalDominanceSimulator() {
                     />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)'} vertical={false} />
                 <XAxis dataKey="year" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis
                   stroke="#64748b"
@@ -665,32 +668,32 @@ export function FiscalDominanceSimulator() {
                     if (active && payload && payload.length) {
                       const data = payload[0].payload;
                       return (
-                        <div className="apple-card p-3 shadow-xl border border-white/20 text-xs space-y-1.5 min-w-[200px]">
-                          <div className="font-bold text-white border-b border-white/10 pb-1 flex justify-between">
+                        <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/20 text-xs shadow-xl space-y-1.5 min-w-[200px]">
+                          <div className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-1 flex justify-between">
                             <span>Year {data.year}</span>
-                            <span className="uppercase text-[10px] text-sky-400 font-semibold">{data.zone}</span>
+                            <span className="uppercase text-[10px] text-sky-600 dark:text-sky-400 font-semibold">{data.zone}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">Debt to GDP:</span>
-                            <span className="font-bold text-white">{data.debtToGdp}%</span>
+                            <span className="text-slate-600 dark:text-slate-400">Debt to GDP:</span>
+                            <span className="font-bold text-slate-900 dark:text-white">{data.debtToGdp}%</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">Total Debt Stock:</span>
-                            <span className="font-medium text-white">${data.totalDebtTrillion}T</span>
+                            <span className="text-slate-600 dark:text-slate-400">Total Debt Stock:</span>
+                            <span className="font-medium text-slate-900 dark:text-white">${data.totalDebtTrillion}T</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">Net Interest Outlay:</span>
-                            <span className="font-medium text-amber-400">
+                            <span className="text-slate-600 dark:text-slate-400">Net Interest Outlay:</span>
+                            <span className="font-medium text-amber-600 dark:text-amber-400">
                               ${data.netInterestExpenseTrillion}T ({data.netInterestExpensePercentGdp}% GDP)
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">Interest / Tax Revenue:</span>
-                            <span className="font-medium text-rose-400">{data.interestToTaxRevenuePercent}%</span>
+                            <span className="text-slate-600 dark:text-slate-400">Interest / Tax Revenue:</span>
+                            <span className="font-medium text-rose-600 dark:text-rose-400">{data.interestToTaxRevenuePercent}%</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">r - g Spread:</span>
-                            <span className="font-medium text-white">{data.rMinusG}%</span>
+                            <span className="text-slate-600 dark:text-slate-400">r - g Spread:</span>
+                            <span className="font-medium text-slate-900 dark:text-white">{data.rMinusG}%</span>
                           </div>
                         </div>
                       );
@@ -735,7 +738,7 @@ export function FiscalDominanceSimulator() {
                     <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)'} vertical={false} />
                 <XAxis dataKey="year" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis
                   stroke="#64748b"
@@ -747,21 +750,21 @@ export function FiscalDominanceSimulator() {
                     if (active && payload && payload.length) {
                       const data = payload[0].payload;
                       return (
-                        <div className="apple-card p-3 shadow-xl border border-white/20 text-xs space-y-1.5 min-w-[200px]">
-                          <div className="font-bold text-white border-b border-white/10 pb-1">
+                        <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/20 text-xs shadow-xl space-y-1.5 min-w-[200px]">
+                          <div className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-1">
                             Year {data.year} Interest Burden
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">Annual Net Interest:</span>
-                            <span className="font-bold text-amber-400">${data.netInterestExpenseTrillion} Trillion</span>
+                            <span className="text-slate-600 dark:text-slate-400">Annual Net Interest:</span>
+                            <span className="font-bold text-amber-600 dark:text-amber-400">${data.netInterestExpenseTrillion} Trillion</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">Share of National GDP:</span>
-                            <span className="font-medium text-white">{data.netInterestExpensePercentGdp}%</span>
+                            <span className="text-slate-600 dark:text-slate-400">Share of National GDP:</span>
+                            <span className="font-medium text-slate-900 dark:text-white">{data.netInterestExpensePercentGdp}%</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">Share of Tax Receipts:</span>
-                            <span className="font-medium text-rose-400">{data.interestToTaxRevenuePercent}%</span>
+                            <span className="text-slate-600 dark:text-slate-400">Share of Tax Receipts:</span>
+                            <span className="font-medium text-rose-600 dark:text-rose-400">{data.interestToTaxRevenuePercent}%</span>
                           </div>
                         </div>
                       );
@@ -787,13 +790,13 @@ export function FiscalDominanceSimulator() {
 
       {/* Dynamic Macro Strategic Diagnosis Brief */}
       <div className="apple-card p-6 border-l-4 border-l-amber-500">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2 mb-3">
-          <Info className="h-4 w-4 text-amber-400" />
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2 mb-3">
+          <Info className="h-4 w-4 text-amber-500 dark:text-amber-400" />
           Autonomous Macro Diagnosis & Strategy Brief
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-300 dark:text-slate-400 leading-relaxed">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
           <div className="space-y-1.5">
-            <span className="font-semibold text-white block">1. Solvency Verdict & Central Bank Independence:</span>
+            <span className="font-semibold text-slate-900 dark:text-white block">1. Solvency Verdict & Central Bank Independence:</span>
             <p>
               {terminalZone === 'dominance'
                 ? `With debt projected to reach ${terminalPoint.debtToGdp}% of GDP, ${currentProfile.name} enters full Fiscal Dominance. The central bank loses monetary independence; raising rates to combat inflation becomes impossible without causing sovereign default. Yield Curve Control (YCC) becomes mandatory.`
@@ -804,16 +807,16 @@ export function FiscalDominanceSimulator() {
           </div>
 
           <div className="space-y-1.5">
-            <span className="font-semibold text-white block">2. Transmission Channel to Everyday Citizens:</span>
+            <span className="font-semibold text-slate-900 dark:text-white block">2. Transmission Channel to Everyday Citizens:</span>
             <p>
-              When interest payments consume <span className="text-amber-400 font-semibold">{terminalPoint.interestToTaxRevenuePercent}%</span> of all tax revenue, governments face a trilemma: (a) severe austerity gutting pensions and public infrastructure, (b) aggressive wealth and capital gains tax hikes, or (c) debasing the currency via negative real rates.
+              When interest payments consume <span className="text-amber-600 dark:text-amber-400 font-semibold">{terminalPoint.interestToTaxRevenuePercent}%</span> of all tax revenue, governments face a trilemma: (a) severe austerity gutting pensions and public infrastructure, (b) aggressive wealth and capital gains tax hikes, or (c) debasing the currency via negative real rates.
             </p>
           </div>
 
           <div className="space-y-1.5">
-            <span className="font-semibold text-white block">3. Capital Preservation & Investor Playbook:</span>
+            <span className="font-semibold text-slate-900 dark:text-white block">3. Capital Preservation & Investor Playbook:</span>
             <p>
-              Under fiscal dominance and a <span className="text-purple-400 font-semibold">${repression.annualWealthTransferTrillion}T/year</span> financial repression tax, fixed-rate sovereign bonds produce negative real yields. Institutional capital historically reallocates toward scarce real estate, gold reserves, commodities, and high-pricing-power global equities.
+              Under fiscal dominance and a <span className="text-purple-600 dark:text-purple-400 font-semibold">${repression.annualWealthTransferTrillion}T/year</span> financial repression tax, fixed-rate sovereign bonds produce negative real yields. Institutional capital historically reallocates toward scarce real estate, gold reserves, commodities, and high-pricing-power global equities.
             </p>
           </div>
         </div>

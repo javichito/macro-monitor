@@ -123,15 +123,27 @@ async function runSync() {
   }
 
   console.log('\n2. Verifying existing dataset schema and invariant contracts...');
-  const dataPath = path.resolve(process.cwd(), 'src/data/macro-trends.ts');
-  if (fs.existsSync(dataPath)) {
-    console.log(`   ✓ Found canonical dataset at ${dataPath}`);
-  } else {
-    throw new Error(`Data file not found at ${dataPath}`);
+  const datasetFiles = [
+    'src/data/macro-trends.ts',
+    'src/data/yield-curve-data.ts',
+    'src/data/macro-regimes-data.ts',
+    'src/data/labor-market-data.ts',
+    'src/data/latest-liquidity-status.json',
+    'src/data/latest-yield-status.json',
+  ];
+
+  for (const relPath of datasetFiles) {
+    const fullPath = path.resolve(process.cwd(), relPath);
+    if (fs.existsSync(fullPath)) {
+      console.log(`   ✓ Found canonical dataset at ${relPath}`);
+    } else {
+      throw new Error(`Data file not found at ${fullPath}`);
+    }
   }
 
   console.log('\n3. Ingestion & Invariant Verification Summary:');
   console.log(`   - Checked series: Global GDP, Global Inflation, Sovereign Debt, FX Reserves`);
+  console.log(`   - Tier 1 additions: Term Structure Curves, 4-Quadrant Regimes, Sahm Rule & Labor Radar`);
   console.log(`   - Pipeline status: HEALTHY (Zero data corruption, all bounds satisfied)\n`);
 }
 

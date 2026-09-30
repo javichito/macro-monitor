@@ -21,6 +21,7 @@ import {
   getCentralBankLiquiditySummary,
   CentralBankProfile,
 } from '../../data/central-bank-liquidity-data';
+import { useThemeMode } from '../../context/AppContext';
 import {
   Activity,
   ArrowUpRight,
@@ -42,6 +43,8 @@ type RadarChartTab = 'stack' | 'lead-lag' | 'us-net';
 type LeadLagAsset = 'btc' | 'sp500' | 'gold';
 
 export function CentralBankLiquidityRadar() {
+  const theme = useThemeMode();
+  const isDark = theme === 'dark';
   const [activeTab, setActiveTab] = useState<RadarChartTab>('stack');
   const [selectedAsset, setSelectedAsset] = useState<LeadLagAsset>('btc');
   const [selectedBankId, setSelectedBankId] = useState<string | null>(null);
@@ -89,28 +92,28 @@ export function CentralBankLiquidityRadar() {
       <div className="apple-card p-6 border-l-4 border-l-emerald-500">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-500 dark:text-emerald-400 mb-2">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">
               <Activity className="h-3.5 w-3.5" />
               <span>Global Monetary Base & Shadow Liquidity</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
               The Global Central Bank Liquidity Radar
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
               Track the aggregated balance sheet velocity across the Federal Reserve, ECB, PBOC, and Bank of Japan ($25T+). Discover the US Net Liquidity transmission formula and the 4–8 week empirical lead-lag correlation with global risk assets.
             </p>
           </div>
 
           {/* Regime Badge */}
           <div className="self-start sm:self-center px-4 py-2.5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-right">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-400 block">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-600 dark:text-emerald-400 block">
               Global Liquidity Regime
             </span>
-            <span className="text-sm font-bold text-white flex items-center gap-1.5 justify-end mt-0.5">
-              <Zap className="h-4 w-4 text-emerald-400" />
+            <span className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5 justify-end mt-0.5">
+              <Zap className="h-4 w-4 text-emerald-500 dark:text-emerald-400" />
               <span>{summary.regimeLabel}</span>
             </span>
-            <span className="text-[11px] font-mono text-emerald-400 block mt-0.5">
+            <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 block mt-0.5">
               Impulse: +{summary.impulseAnnualized}% (90-day annualized)
             </span>
           </div>
@@ -285,15 +288,15 @@ export function CentralBankLiquidityRadar() {
       <div className="apple-card p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
-            <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-              <Layers className="h-5 w-5 text-emerald-400" />
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+              <Layers className="h-5 w-5 text-emerald-500 dark:text-emerald-400" />
               {activeTab === 'stack'
                 ? 'Aggregate Big 4 Balance Sheet Evolution ($25T+ Stack)'
                 : activeTab === 'lead-lag'
                 ? 'Liquidity Lead-Lag Visualizer (Global Net Liquidity vs Assets)'
                 : 'US Net Liquidity Anatomy (Fed Assets − TGA − Reverse Repo)'}
             </h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
               {activeTab === 'stack'
                 ? 'Historical expansion and contraction cycles of the world’s four primary fiat monetary engines (2020–2026).'
                 : activeTab === 'lead-lag'
@@ -306,7 +309,7 @@ export function CentralBankLiquidityRadar() {
           <div className="flex flex-wrap items-center gap-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
             <button
               onClick={() => setActiveTab('stack')}
-              className={`rounded-full px-3 py-1 font-medium transition-all ${
+              className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
                 activeTab === 'stack'
                   ? 'bg-sky-500 text-white shadow-sm'
                   : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
@@ -316,7 +319,7 @@ export function CentralBankLiquidityRadar() {
             </button>
             <button
               onClick={() => setActiveTab('lead-lag')}
-              className={`rounded-full px-3 py-1 font-medium transition-all ${
+              className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
                 activeTab === 'lead-lag'
                   ? 'bg-sky-500 text-white shadow-sm'
                   : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
@@ -326,7 +329,7 @@ export function CentralBankLiquidityRadar() {
             </button>
             <button
               onClick={() => setActiveTab('us-net')}
-              className={`rounded-full px-3 py-1 font-medium transition-all ${
+              className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
                 activeTab === 'us-net'
                   ? 'bg-sky-500 text-white shadow-sm'
                   : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
@@ -340,34 +343,34 @@ export function CentralBankLiquidityRadar() {
         {/* Asset Sub-selector for Lead-Lag View */}
         {activeTab === 'lead-lag' && (
           <div className="flex items-center gap-2 mb-4 text-xs">
-            <span className="text-slate-400 font-medium">Compare Overlay:</span>
-            <div className="inline-flex gap-1 bg-white/[0.04] border border-white/10 p-0.5 rounded-lg">
+            <span className="text-slate-600 dark:text-slate-400 font-medium">Compare Overlay:</span>
+            <div className="inline-flex gap-1 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 p-0.5 rounded-lg">
               <button
                 onClick={() => setSelectedAsset('btc')}
-                className={`px-2.5 py-1 rounded font-medium transition-all ${
+                className={`px-2.5 py-1 rounded font-medium transition-all cursor-pointer ${
                   selectedAsset === 'btc'
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/40'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                 }`}
               >
                 Bitcoin (BTC)
               </button>
               <button
                 onClick={() => setSelectedAsset('sp500')}
-                className={`px-2.5 py-1 rounded font-medium transition-all ${
+                className={`px-2.5 py-1 rounded font-medium transition-all cursor-pointer ${
                   selectedAsset === 'sp500'
-                    ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-sky-500/20 text-sky-700 dark:text-sky-300 border border-sky-500/40'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                 }`}
               >
                 S&P 500 Equities
               </button>
               <button
                 onClick={() => setSelectedAsset('gold')}
-                className={`px-2.5 py-1 rounded font-medium transition-all ${
+                className={`px-2.5 py-1 rounded font-medium transition-all cursor-pointer ${
                   selectedAsset === 'gold'
-                    ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/40'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 border border-yellow-500/40'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                 }`}
               >
                 Gold (XAU)
@@ -399,7 +402,7 @@ export function CentralBankLiquidityRadar() {
                     <stop offset="95%" stopColor="#10b981" stopOpacity={0.1} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)'} vertical={false} />
                 <XAxis dataKey="date" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis stroke="#64748b" tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}T`} />
                 <Tooltip
@@ -407,26 +410,26 @@ export function CentralBankLiquidityRadar() {
                     if (active && payload && payload.length) {
                       const data = payload[0].payload;
                       return (
-                        <div className="apple-card p-3 shadow-xl border border-white/20 text-xs space-y-1.5 min-w-[200px]">
-                          <div className="font-bold text-white border-b border-white/10 pb-1 flex justify-between">
+                        <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/20 text-xs shadow-xl space-y-1.5 min-w-[200px]">
+                          <div className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-1 flex justify-between">
                             <span>{data.label}</span>
-                            <span className="text-emerald-400 font-mono font-bold">${data.totalBig4Usd}T Total</span>
+                            <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold">${data.totalBig4Usd}T Total</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sky-400">🇺🇸 Federal Reserve:</span>
-                            <span className="font-medium text-white">${data.fedAssetsUsd}T</span>
+                            <span className="text-sky-600 dark:text-sky-400">🇺🇸 Federal Reserve:</span>
+                            <span className="font-medium text-slate-900 dark:text-white">${data.fedAssetsUsd}T</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-indigo-400">🇪🇺 ECB:</span>
-                            <span className="font-medium text-white">${data.ecbAssetsUsd}T</span>
+                            <span className="text-indigo-600 dark:text-indigo-400">🇪🇺 ECB:</span>
+                            <span className="font-medium text-slate-900 dark:text-white">${data.ecbAssetsUsd}T</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-rose-400">🇨🇳 PBOC:</span>
-                            <span className="font-medium text-white">${data.pbocAssetsUsd}T</span>
+                            <span className="text-rose-600 dark:text-rose-400">🇨🇳 PBOC:</span>
+                            <span className="font-medium text-slate-900 dark:text-white">${data.pbocAssetsUsd}T</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-emerald-400">🇯🇵 Bank of Japan:</span>
-                            <span className="font-medium text-white">${data.bojAssetsUsd}T</span>
+                            <span className="text-emerald-600 dark:text-emerald-400">🇯🇵 Bank of Japan:</span>
+                            <span className="font-medium text-slate-900 dark:text-white">${data.bojAssetsUsd}T</span>
                           </div>
                         </div>
                       );
@@ -436,7 +439,7 @@ export function CentralBankLiquidityRadar() {
                 />
                 <Legend
                   wrapperStyle={{ fontSize: 12, paddingTop: 10 }}
-                  formatter={(value) => <span className="text-slate-300 font-medium">{value}</span>}
+                  formatter={(value) => <span className="text-slate-700 dark:text-slate-300 font-medium">{value}</span>}
                 />
                 <Area
                   type="monotone"
@@ -477,7 +480,7 @@ export function CentralBankLiquidityRadar() {
               </AreaChart>
             ) : activeTab === 'lead-lag' ? (
               <LineChart data={normalizedLeadLagData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)'} vertical={false} />
                 <XAxis dataKey="date" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis stroke="#64748b" tick={{ fontSize: 11 }} tickFormatter={(v) => `${v}`} />
                 <Tooltip
@@ -485,21 +488,21 @@ export function CentralBankLiquidityRadar() {
                     if (active && payload && payload.length) {
                       const data = payload[0].payload;
                       return (
-                        <div className="apple-card p-3 shadow-xl border border-white/20 text-xs space-y-1.5 min-w-[210px]">
-                          <div className="font-bold text-white border-b border-white/10 pb-1">
+                        <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/20 text-xs shadow-xl space-y-1.5 min-w-[210px]">
+                          <div className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-1">
                             {data.label}
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-emerald-400">Big 4 Liquidity Index:</span>
-                            <span className="font-mono font-bold text-white">
+                            <span className="text-emerald-600 dark:text-emerald-400">Big 4 Liquidity Index:</span>
+                            <span className="font-mono font-bold text-slate-900 dark:text-white">
                               {data.normalizedLiquidity} (${data.totalBig4Usd}T)
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-amber-400 font-medium">
+                            <span className="text-amber-600 dark:text-amber-400 font-medium">
                               {selectedAsset === 'btc' ? 'Bitcoin (BTC)' : selectedAsset === 'sp500' ? 'S&P 500' : 'Gold (XAU)'}:
                             </span>
-                            <span className="font-mono font-bold text-white">
+                            <span className="font-mono font-bold text-slate-900 dark:text-white">
                               {data.selectedAssetValue} ({data.rawAssetPrice})
                             </span>
                           </div>
@@ -511,7 +514,7 @@ export function CentralBankLiquidityRadar() {
                 />
                 <Legend
                   wrapperStyle={{ fontSize: 12, paddingTop: 10 }}
-                  formatter={(value) => <span className="text-slate-300 font-medium">{value}</span>}
+                  formatter={(value) => <span className="text-slate-700 dark:text-slate-300 font-medium">{value}</span>}
                 />
                 <Line
                   type="monotone"
@@ -546,7 +549,7 @@ export function CentralBankLiquidityRadar() {
                     <stop offset="95%" stopColor="#0284c7" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)'} vertical={false} />
                 <XAxis dataKey="date" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis stroke="#64748b" tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}T`} />
                 <Tooltip
@@ -554,21 +557,21 @@ export function CentralBankLiquidityRadar() {
                     if (active && payload && payload.length) {
                       const data = payload[0].payload;
                       return (
-                        <div className="apple-card p-3 shadow-xl border border-white/20 text-xs space-y-1.5 min-w-[200px]">
-                          <div className="font-bold text-white border-b border-white/10 pb-1">
+                        <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/20 text-xs space-y-1.5 min-w-[200px]">
+                          <div className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-1">
                             {data.label}
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">Fed Total Assets:</span>
-                            <span className="font-medium text-white">${data.fedAssetsUsd}T</span>
+                            <span className="text-slate-600 dark:text-slate-400">Fed Total Assets:</span>
+                            <span className="font-medium text-slate-900 dark:text-white">${data.fedAssetsUsd}T</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sky-400">US Net Liquidity:</span>
-                            <span className="font-bold text-white">${data.usNetLiquidityUsd}T</span>
+                            <span className="text-sky-600 dark:text-sky-400">US Net Liquidity:</span>
+                            <span className="font-bold text-slate-900 dark:text-white">${data.usNetLiquidityUsd}T</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-slate-400">30d Liquidity Impulse:</span>
-                            <span className={data.impulse30dPercent >= 0 ? 'text-emerald-400' : 'text-rose-400'}>
+                            <span className="text-slate-600 dark:text-slate-400">30d Liquidity Impulse:</span>
+                            <span className={data.impulse30dPercent >= 0 ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-rose-600 dark:text-rose-400 font-semibold'}>
                               {data.impulse30dPercent >= 0 ? `+${data.impulse30dPercent}%` : `${data.impulse30dPercent}%`}
                             </span>
                           </div>
@@ -606,11 +609,11 @@ export function CentralBankLiquidityRadar() {
 
       {/* Asset Lead-Lag Empirical Correlation Matrix */}
       <div className="apple-card p-6">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2 mb-3">
-          <Clock className="h-4 w-4 text-emerald-400" />
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2 mb-3">
+          <Clock className="h-4 w-4 text-emerald-500 dark:text-emerald-400" />
           Empirical Lead-Lag Correlation Matrix (Liquidity vs Risk Assets)
         </h3>
-        <p className="text-xs text-slate-400 mb-4 leading-relaxed">
+        <p className="text-xs text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
           Central bank balance sheet expansion and contraction does not hit asset prices simultaneously. The capital rotates through banking reserves, prime brokerage repo, and global risk markets over a measurable 4 to 8-week transmission window.
         </p>
 
@@ -656,27 +659,27 @@ export function CentralBankLiquidityRadar() {
 
       {/* Autonomous Macro Playbook Brief */}
       <div className="apple-card p-6 border-l-4 border-l-sky-500">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2 mb-3">
-          <Info className="h-4 w-4 text-sky-400" />
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2 mb-3">
+          <Info className="h-4 w-4 text-sky-500 dark:text-sky-400" />
           The Institutional Liquidity Playbook: Why Plumbing Trumps Headlines
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-300 dark:text-slate-400 leading-relaxed">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
           <div className="space-y-1.5">
-            <span className="font-semibold text-white block">1. The TGA Drain Mechanic:</span>
+            <span className="font-semibold text-slate-900 dark:text-white block">1. The TGA Drain Mechanic:</span>
             <p>
               When the US Treasury issues debt and refills its checking account (Treasury General Account), it withdraws commercial bank reserves from the private financial system. Even if the Fed holds rates constant, a surging TGA drains private collateral, elevating repo spreads and triggering equity multiple compression.
             </p>
           </div>
 
           <div className="space-y-1.5">
-            <span className="font-semibold text-white block">2. The Reverse Repo (ON RRP) Cushion:</span>
+            <span className="font-semibold text-slate-900 dark:text-white block">2. The Reverse Repo (ON RRP) Cushion:</span>
             <p>
               From 2022 to 2024, more than $2 Trillion in cash parked at the Fed's Reverse Repo facility was absorbed into newly issued Treasury bills. This acted as a synthetic stealth QE program, neutralizing the Fed's Quantitative Tightening and powering the massive bull market in tech and digital assets.
             </p>
           </div>
 
           <div className="space-y-1.5">
-            <span className="font-semibold text-white block">3. The Cross-Border Carry Trade Canal:</span>
+            <span className="font-semibold text-slate-900 dark:text-white block">3. The Cross-Border Carry Trade Canal:</span>
             <p>
               With the Bank of Japan beginning its historical tightening cycle and China's PBOC stepping up stimulus, cross-border liquidity vectors are diverging. Japanese capital repatriation forces higher yields across Western sovereign bonds, while Chinese liquidity acts as a deflationary buffer for industrial commodities.
             </p>

@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-09-30T21:37:33.192Z",
+  "sovereignCode": "USA",
+  "us10Y": 4.19,
+  "us2Y": 4.02,
+  "us3M": 4.65,
+  "spread10Y2Y": 0.17,
+  "spread10Y3M": -0.46,
+  "curveShape": "steepening",
+  "recessionProbability12M": 39.9,
+  "activeAlerts": [
+    {
+      "id": "yield-un-inversion-warning",
+      "level": "WARNING",
+      "headline": "🔔 Yield Curve Re-Steepening: 10Y-2Y Spread Dis-Inverted (+0.17%)",
+      "body": "Historically, the un-inversion window is when recession risk peaks as central banks begin rapid emergency rate cuts."
+    }
+  ]
+}

@@ -178,3 +178,15 @@ export function useApp() {
   }
   return context;
 }
+
+export function useThemeMode(): 'dark' | 'light' {
+  const context = useContext(AppContext);
+  if (!context) {
+    if (typeof document !== 'undefined' && document.documentElement.classList.contains('light')) {
+      return 'light';
+    }
+    return 'dark';
+  }
+  return context.resolvedTheme;
+}
+
