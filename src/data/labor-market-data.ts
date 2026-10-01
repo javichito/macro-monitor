@@ -2,6 +2,7 @@ import {
   SovereignLaborProfile,
   LaborMetricsYear,
   PhillipsCurvePoint,
+  LaborMarketMetrics,
 } from '../lib/types';
 
 /**
@@ -124,7 +125,198 @@ export const SOVEREIGN_LABOR_PROFILES: SovereignLaborProfile[] = [
       { year: 2026, unemploymentRate: 2.5, underemploymentRate: 3.6, laborForceParticipation: 81.9, sahmIndicatorValue: 0.08, sahmTriggered: false, jobOpeningsPerUnemployed: 1.26, wageGrowthYoy: 4.8, productivityGrowthYoy: 1.0 },
     ],
   },
+  {
+    countryCode: 'CAN',
+    countryName: 'Canada',
+    flag: '🇨🇦',
+    currentUnemployment: 6.4,
+    unemployment12mLow: 6.1,
+    sahmValue: 0.30,
+    sahmStatus: 'elevated',
+    laborTightness: 'slack',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 7.5, underemploymentRate: 9.8, laborForceParticipation: 65.1, sahmIndicatorValue: 0.18, sahmTriggered: false, jobOpeningsPerUnemployed: 0.85, wageGrowthYoy: 2.7, productivityGrowthYoy: -0.5 },
+      { year: 2022, unemploymentRate: 5.3, underemploymentRate: 7.2, laborForceParticipation: 65.4, sahmIndicatorValue: 0.05, sahmTriggered: false, jobOpeningsPerUnemployed: 1.12, wageGrowthYoy: 4.8, productivityGrowthYoy: -1.2 },
+      { year: 2023, unemploymentRate: 5.4, underemploymentRate: 7.4, laborForceParticipation: 65.6, sahmIndicatorValue: 0.15, sahmTriggered: false, jobOpeningsPerUnemployed: 0.82, wageGrowthYoy: 5.1, productivityGrowthYoy: -0.8 },
+      { year: 2024, unemploymentRate: 6.2, underemploymentRate: 8.5, laborForceParticipation: 65.3, sahmIndicatorValue: 0.38, sahmTriggered: false, jobOpeningsPerUnemployed: 0.68, wageGrowthYoy: 4.9, productivityGrowthYoy: 0.4 },
+      { year: 2026, unemploymentRate: 6.4, underemploymentRate: 8.6, laborForceParticipation: 65.2, sahmIndicatorValue: 0.30, sahmTriggered: false, jobOpeningsPerUnemployed: 0.65, wageGrowthYoy: 4.2, productivityGrowthYoy: 0.7 },
+    ],
+  },
+  {
+    countryCode: 'FRA',
+    countryName: 'France',
+    flag: '🇫🇷',
+    currentUnemployment: 7.4,
+    unemployment12mLow: 7.1,
+    sahmValue: 0.28,
+    sahmStatus: 'tranquil',
+    laborTightness: 'balanced',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 7.9, underemploymentRate: 11.2, laborForceParticipation: 73.1, sahmIndicatorValue: 0.20, sahmTriggered: false, jobOpeningsPerUnemployed: 0.55, wageGrowthYoy: 2.2, productivityGrowthYoy: 0.8 },
+      { year: 2022, unemploymentRate: 7.3, underemploymentRate: 10.4, laborForceParticipation: 73.6, sahmIndicatorValue: 0.06, sahmTriggered: false, jobOpeningsPerUnemployed: 0.72, wageGrowthYoy: 4.0, productivityGrowthYoy: -0.2 },
+      { year: 2023, unemploymentRate: 7.3, underemploymentRate: 10.5, laborForceParticipation: 74.0, sahmIndicatorValue: 0.12, sahmTriggered: false, jobOpeningsPerUnemployed: 0.68, wageGrowthYoy: 4.5, productivityGrowthYoy: -0.4 },
+      { year: 2024, unemploymentRate: 7.5, underemploymentRate: 10.8, laborForceParticipation: 74.1, sahmIndicatorValue: 0.25, sahmTriggered: false, jobOpeningsPerUnemployed: 0.60, wageGrowthYoy: 3.6, productivityGrowthYoy: 0.2 },
+      { year: 2026, unemploymentRate: 7.4, underemploymentRate: 10.6, laborForceParticipation: 74.2, sahmIndicatorValue: 0.28, sahmTriggered: false, jobOpeningsPerUnemployed: 0.58, wageGrowthYoy: 3.2, productivityGrowthYoy: 0.5 },
+    ],
+  },
+  {
+    countryCode: 'AUS',
+    countryName: 'Australia',
+    flag: '🇦🇺',
+    currentUnemployment: 4.1,
+    unemployment12mLow: 3.9,
+    sahmValue: 0.18,
+    sahmStatus: 'tranquil',
+    laborTightness: 'tight',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 5.1, underemploymentRate: 8.5, laborForceParticipation: 66.2, sahmIndicatorValue: 0.16, sahmTriggered: false, jobOpeningsPerUnemployed: 0.95, wageGrowthYoy: 2.3, productivityGrowthYoy: 1.0 },
+      { year: 2022, unemploymentRate: 3.7, underemploymentRate: 6.2, laborForceParticipation: 66.8, sahmIndicatorValue: 0.04, sahmTriggered: false, jobOpeningsPerUnemployed: 1.35, wageGrowthYoy: 3.4, productivityGrowthYoy: -1.0 },
+      { year: 2023, unemploymentRate: 3.7, underemploymentRate: 6.4, laborForceParticipation: 66.9, sahmIndicatorValue: 0.10, sahmTriggered: false, jobOpeningsPerUnemployed: 1.25, wageGrowthYoy: 4.2, productivityGrowthYoy: -0.3 },
+      { year: 2024, unemploymentRate: 4.0, underemploymentRate: 6.8, laborForceParticipation: 67.0, sahmIndicatorValue: 0.22, sahmTriggered: false, jobOpeningsPerUnemployed: 1.15, wageGrowthYoy: 4.1, productivityGrowthYoy: 0.8 },
+      { year: 2026, unemploymentRate: 4.1, underemploymentRate: 6.9, laborForceParticipation: 67.1, sahmIndicatorValue: 0.18, sahmTriggered: false, jobOpeningsPerUnemployed: 1.10, wageGrowthYoy: 3.8, productivityGrowthYoy: 1.1 },
+    ],
+  },
+  {
+    countryCode: 'CHE',
+    countryName: 'Switzerland',
+    flag: '🇨🇭',
+    currentUnemployment: 2.3,
+    unemployment12mLow: 2.1,
+    sahmValue: 0.15,
+    sahmStatus: 'tranquil',
+    laborTightness: 'tight',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 3.0, underemploymentRate: 4.5, laborForceParticipation: 83.5, sahmIndicatorValue: 0.18, sahmTriggered: false, jobOpeningsPerUnemployed: 1.10, wageGrowthYoy: 1.2, productivityGrowthYoy: 1.4 },
+      { year: 2022, unemploymentRate: 2.2, underemploymentRate: 3.8, laborForceParticipation: 83.8, sahmIndicatorValue: 0.05, sahmTriggered: false, jobOpeningsPerUnemployed: 1.45, wageGrowthYoy: 1.8, productivityGrowthYoy: 0.9 },
+      { year: 2023, unemploymentRate: 2.0, underemploymentRate: 3.6, laborForceParticipation: 84.0, sahmIndicatorValue: 0.04, sahmTriggered: false, jobOpeningsPerUnemployed: 1.40, wageGrowthYoy: 2.2, productivityGrowthYoy: 0.8 },
+      { year: 2024, unemploymentRate: 2.3, underemploymentRate: 3.9, laborForceParticipation: 84.1, sahmIndicatorValue: 0.18, sahmTriggered: false, jobOpeningsPerUnemployed: 1.30, wageGrowthYoy: 2.0, productivityGrowthYoy: 1.0 },
+      { year: 2026, unemploymentRate: 2.3, underemploymentRate: 3.8, laborForceParticipation: 84.2, sahmIndicatorValue: 0.15, sahmTriggered: false, jobOpeningsPerUnemployed: 1.25, wageGrowthYoy: 2.1, productivityGrowthYoy: 1.2 },
+    ],
+  },
+  {
+    countryCode: 'KOR',
+    countryName: 'South Korea',
+    flag: '🇰🇷',
+    currentUnemployment: 2.7,
+    unemployment12mLow: 2.6,
+    sahmValue: 0.10,
+    sahmStatus: 'tranquil',
+    laborTightness: 'balanced',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 3.7, underemploymentRate: 5.6, laborForceParticipation: 62.8, sahmIndicatorValue: 0.20, sahmTriggered: false, jobOpeningsPerUnemployed: 0.80, wageGrowthYoy: 3.1, productivityGrowthYoy: 2.6 },
+      { year: 2022, unemploymentRate: 2.9, underemploymentRate: 4.8, laborForceParticipation: 63.9, sahmIndicatorValue: 0.06, sahmTriggered: false, jobOpeningsPerUnemployed: 1.05, wageGrowthYoy: 4.9, productivityGrowthYoy: 1.8 },
+      { year: 2023, unemploymentRate: 2.7, underemploymentRate: 4.5, laborForceParticipation: 64.3, sahmIndicatorValue: 0.08, sahmTriggered: false, jobOpeningsPerUnemployed: 1.02, wageGrowthYoy: 3.8, productivityGrowthYoy: 2.0 },
+      { year: 2024, unemploymentRate: 2.8, underemploymentRate: 4.6, laborForceParticipation: 64.4, sahmIndicatorValue: 0.12, sahmTriggered: false, jobOpeningsPerUnemployed: 0.98, wageGrowthYoy: 3.5, productivityGrowthYoy: 2.2 },
+      { year: 2026, unemploymentRate: 2.7, underemploymentRate: 4.5, laborForceParticipation: 64.5, sahmIndicatorValue: 0.10, sahmTriggered: false, jobOpeningsPerUnemployed: 0.95, wageGrowthYoy: 3.4, productivityGrowthYoy: 2.3 },
+    ],
+  },
+  {
+    countryCode: 'ITA',
+    countryName: 'Italy',
+    flag: '🇮🇹',
+    currentUnemployment: 6.8,
+    unemployment12mLow: 6.5,
+    sahmValue: 0.25,
+    sahmStatus: 'tranquil',
+    laborTightness: 'slack',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 9.5, underemploymentRate: 14.8, laborForceParticipation: 64.2, sahmIndicatorValue: 0.22, sahmTriggered: false, jobOpeningsPerUnemployed: 0.42, wageGrowthYoy: 1.6, productivityGrowthYoy: 0.9 },
+      { year: 2022, unemploymentRate: 8.1, underemploymentRate: 13.0, laborForceParticipation: 65.5, sahmIndicatorValue: 0.08, sahmTriggered: false, jobOpeningsPerUnemployed: 0.58, wageGrowthYoy: 2.8, productivityGrowthYoy: -0.4 },
+      { year: 2023, unemploymentRate: 7.7, underemploymentRate: 12.2, laborForceParticipation: 66.1, sahmIndicatorValue: 0.15, sahmTriggered: false, jobOpeningsPerUnemployed: 0.56, wageGrowthYoy: 3.2, productivityGrowthYoy: -0.2 },
+      { year: 2024, unemploymentRate: 7.0, underemploymentRate: 11.4, laborForceParticipation: 66.5, sahmIndicatorValue: 0.20, sahmTriggered: false, jobOpeningsPerUnemployed: 0.54, wageGrowthYoy: 3.0, productivityGrowthYoy: 0.1 },
+      { year: 2026, unemploymentRate: 6.8, underemploymentRate: 11.0, laborForceParticipation: 66.8, sahmIndicatorValue: 0.25, sahmTriggered: false, jobOpeningsPerUnemployed: 0.52, wageGrowthYoy: 2.9, productivityGrowthYoy: 0.3 },
+    ],
+  },
+  {
+    countryCode: 'ESP',
+    countryName: 'Spain',
+    flag: '🇪🇸',
+    currentUnemployment: 11.2,
+    unemployment12mLow: 11.2,
+    sahmValue: 0.05,
+    sahmStatus: 'tranquil',
+    laborTightness: 'slack',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 14.8, underemploymentRate: 20.5, laborForceParticipation: 57.8, sahmIndicatorValue: 0.25, sahmTriggered: false, jobOpeningsPerUnemployed: 0.30, wageGrowthYoy: 2.1, productivityGrowthYoy: 0.5 },
+      { year: 2022, unemploymentRate: 12.9, underemploymentRate: 18.2, laborForceParticipation: 58.5, sahmIndicatorValue: 0.08, sahmTriggered: false, jobOpeningsPerUnemployed: 0.40, wageGrowthYoy: 3.4, productivityGrowthYoy: 0.2 },
+      { year: 2023, unemploymentRate: 12.1, underemploymentRate: 17.0, laborForceParticipation: 59.0, sahmIndicatorValue: 0.12, sahmTriggered: false, jobOpeningsPerUnemployed: 0.42, wageGrowthYoy: 4.8, productivityGrowthYoy: 0.6 },
+      { year: 2024, unemploymentRate: 11.5, underemploymentRate: 16.2, laborForceParticipation: 59.2, sahmIndicatorValue: 0.08, sahmTriggered: false, jobOpeningsPerUnemployed: 0.44, wageGrowthYoy: 4.2, productivityGrowthYoy: 0.8 },
+      { year: 2026, unemploymentRate: 11.2, underemploymentRate: 15.8, laborForceParticipation: 59.4, sahmIndicatorValue: 0.05, sahmTriggered: false, jobOpeningsPerUnemployed: 0.42, wageGrowthYoy: 3.8, productivityGrowthYoy: 0.9 },
+    ],
+  },
+  {
+    countryCode: 'BRA',
+    countryName: 'Brazil',
+    flag: '🇧🇷',
+    currentUnemployment: 6.9,
+    unemployment12mLow: 6.6,
+    sahmValue: 0.22,
+    sahmStatus: 'tranquil',
+    laborTightness: 'balanced',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 13.2, underemploymentRate: 24.5, laborForceParticipation: 61.2, sahmIndicatorValue: 0.35, sahmTriggered: false, jobOpeningsPerUnemployed: 0.32, wageGrowthYoy: 4.5, productivityGrowthYoy: 0.8 },
+      { year: 2022, unemploymentRate: 9.3, underemploymentRate: 19.2, laborForceParticipation: 62.0, sahmIndicatorValue: 0.06, sahmTriggered: false, jobOpeningsPerUnemployed: 0.45, wageGrowthYoy: 7.8, productivityGrowthYoy: 1.2 },
+      { year: 2023, unemploymentRate: 7.8, underemploymentRate: 17.5, laborForceParticipation: 62.1, sahmIndicatorValue: 0.15, sahmTriggered: false, jobOpeningsPerUnemployed: 0.46, wageGrowthYoy: 6.8, productivityGrowthYoy: 1.4 },
+      { year: 2024, unemploymentRate: 7.1, underemploymentRate: 16.8, laborForceParticipation: 62.2, sahmIndicatorValue: 0.18, sahmTriggered: false, jobOpeningsPerUnemployed: 0.48, wageGrowthYoy: 6.5, productivityGrowthYoy: 1.6 },
+      { year: 2026, unemploymentRate: 6.9, underemploymentRate: 16.4, laborForceParticipation: 62.3, sahmIndicatorValue: 0.22, sahmTriggered: false, jobOpeningsPerUnemployed: 0.48, wageGrowthYoy: 6.2, productivityGrowthYoy: 1.5 },
+    ],
+  },
+  {
+    countryCode: 'CHN',
+    countryName: 'China',
+    flag: '🇨🇳',
+    currentUnemployment: 5.1,
+    unemployment12mLow: 5.0,
+    sahmValue: 0.10,
+    sahmStatus: 'tranquil',
+    laborTightness: 'slack',
+    historicalSeries: [
+      { year: 2021, unemploymentRate: 5.1, underemploymentRate: 7.2, laborForceParticipation: 68.2, sahmIndicatorValue: 0.12, sahmTriggered: false, jobOpeningsPerUnemployed: 0.95, wageGrowthYoy: 6.5, productivityGrowthYoy: 5.8 },
+      { year: 2022, unemploymentRate: 5.5, underemploymentRate: 8.0, laborForceParticipation: 67.9, sahmIndicatorValue: 0.25, sahmTriggered: false, jobOpeningsPerUnemployed: 0.85, wageGrowthYoy: 5.2, productivityGrowthYoy: 3.5 },
+      { year: 2023, unemploymentRate: 5.2, underemploymentRate: 7.6, laborForceParticipation: 68.0, sahmIndicatorValue: 0.15, sahmTriggered: false, jobOpeningsPerUnemployed: 0.84, wageGrowthYoy: 5.0, productivityGrowthYoy: 4.8 },
+      { year: 2024, unemploymentRate: 5.1, underemploymentRate: 7.5, laborForceParticipation: 67.9, sahmIndicatorValue: 0.10, sahmTriggered: false, jobOpeningsPerUnemployed: 0.83, wageGrowthYoy: 4.6, productivityGrowthYoy: 4.4 },
+      { year: 2026, unemploymentRate: 5.1, underemploymentRate: 7.4, laborForceParticipation: 67.8, sahmIndicatorValue: 0.10, sahmTriggered: false, jobOpeningsPerUnemployed: 0.82, wageGrowthYoy: 4.5, productivityGrowthYoy: 4.2 },
+    ],
+  },
 ];
+
+/**
+ * Resolves standard labor metrics for a country code in a given year.
+ * If year is omitted or no exact match is found, the latest profile metrics are returned.
+ */
+export function getLaborMetricsForCountry(countryCode: string, year?: number): LaborMarketMetrics | null {
+  const profile = SOVEREIGN_LABOR_PROFILES.find((p) => p.countryCode === countryCode);
+  if (!profile) return null;
+
+  if (year !== undefined) {
+    const historical = profile.historicalSeries.find((h) => h.year === year);
+    if (historical) {
+      return {
+        unemploymentRate: historical.unemploymentRate,
+        underemploymentRate: historical.underemploymentRate,
+        laborForceParticipation: historical.laborForceParticipation,
+        sahmIndicatorValue: historical.sahmIndicatorValue,
+        sahmStatus: classifySahmStatus(historical.sahmIndicatorValue),
+        jobOpeningsPerUnemployed: historical.jobOpeningsPerUnemployed,
+        wageGrowthYoy: historical.wageGrowthYoy,
+        productivityGrowthYoy: historical.productivityGrowthYoy,
+      };
+    }
+  }
+
+  // Fallback to latest available observation
+  const latest = profile.historicalSeries[profile.historicalSeries.length - 1];
+  return {
+    unemploymentRate: profile.currentUnemployment,
+    underemploymentRate: latest?.underemploymentRate,
+    laborForceParticipation: latest?.laborForceParticipation,
+    sahmIndicatorValue: profile.sahmValue,
+    sahmStatus: profile.sahmStatus,
+    jobOpeningsPerUnemployed: latest?.jobOpeningsPerUnemployed,
+    wageGrowthYoy: latest?.wageGrowthYoy,
+    productivityGrowthYoy: latest?.productivityGrowthYoy,
+  };
+}
 
 /**
  * Historical Phillips Curve Coordinates (Unemployment Rate vs CPI Inflation Rate)

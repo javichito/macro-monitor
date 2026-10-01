@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { COUNTRIES_DATA } from '../../data/country-metrics';
+import { getLaborMetricsForCountry } from '../../data/labor-market-data';
 import { CountryProfile, CountryYearMetric, CurrencyPerspective } from '../../lib/types';
 import { formatCurrency, formatPercent, adjustValue } from '../../lib/formatters';
 import {
@@ -18,6 +19,7 @@ import {
   CheckCircle2,
   Share2,
   Check,
+  Users,
 } from 'lucide-react';
 
 interface CountryComparisonProps {
@@ -170,7 +172,19 @@ export function CountryComparison({
   const skewB = metricsB.medianWealthUSD > 0 ? metricsB.wealthPerAdultUSD / metricsB.medianWealthUSD : 1;
 
   /*
-   * Derive contextual insights automatically so users understand the root causes of divergent living standards.
+   * Resolve high-frequency labor dynamics (U-3, LFPR, Sahm Rule, wage growth) for both sovereigns.
+   */
+  const laborA = useMemo(
+    () => metricsA.labor || getLaborMetricsForCountry(countryA.code, selectedYear),
+    [metricsA, countryA.code, selectedYear]
+  );
+  const laborB = useMemo(
+    () => metricsB.labor || getLaborMetricsForCountry(countryB.code, selectedYear),
+    [metricsB, countryB.code, selectedYear]
+  );
+
+  /*
+   * Derive contextual insights automatically so users understand the root causes of divergent living standards and labor regimes.
    */
   const narrative = useMemo(() => {
     const higherMedian = adjMedianWealthA >= adjMedianWealthB ? countryA : countryB;
@@ -180,9 +194,6 @@ export function CountryComparison({
       Math.max(1, Math.min(adjMedianWealthA, adjMedianWealthB))
     ).toFixed(1);
 
-    const higherMean = adjMeanWealthA >= adjMeanWealthB ? countryA : countryB;
-    const lowerMean = adjMeanWealthA >= adjMeanWealthB ? countryB : countryA;
-
     const moreEqual = metricsA.gini <= metricsB.gini ? countryA : countryB;
     const moreUnequal = metricsA.gini <= metricsB.gini ? countryB : countryA;
 
@@ -191,43 +202,59 @@ export function CountryComparison({
     const morePropertyCentric =
       metricsA.assetMix.nonFinancialShare >= metricsB.assetMix.nonFinancialShare ? countryA : countryB;
 
+    let laborSummary = 'Labor dynamics for both sovereigns are currently in line with historical baseline levels.';
+    if (laborA && laborB) {
+      const lowerUnemp = laborA.unemploymentRate <= laborB.unemploymentRate ? countryA : countryB;
+      const lowerRate = Math.min(laborA.unemploymentRate, laborB.unemploymentRate);
+      const higherRate = Math.max(laborA.unemploymentRate, laborB.unemploymentRate);
+      const sahmRisk =
+        laborA.sahmStatus === 'triggered' || laborB.sahmStatus === 'triggered'
+          ? 'Sahm Rule recession threshold (≥ 0.50%) has triggered, signaling macroeconomic contraction.'
+          : laborA.sahmStatus === 'elevated' || laborB.sahmStatus === 'elevated'
+          ? 'Claudia Sahm indicator is elevated (≥ 0.30%), warranting pre-recession vigilance.'
+          : 'Both sovereigns exhibit tranquil Sahm Rule indicators (< 0.30%) with expanding employment.';
+
+      laborSummary = `${lowerUnemp.name} enjoys lower headline unemployment (${formatPercent(lowerRate)} vs. ${formatPercent(higherRate)}). ${sahmRisk}`;
+    }
+
     return {
       medianComparison: `${higherMedian.name}'s median citizen owns ${medianMultiple}x more net wealth than ${lowerMedian.name}'s typical adult (${formatCurrency(Math.max(adjMedianWealthA, adjMedianWealthB), { compact: true })} vs. ${formatCurrency(Math.min(adjMedianWealthA, adjMedianWealthB), { compact: true })}).`,
       inequalityComparison: `${moreEqual.name} exhibits a flatter wealth distribution (Gini ${metricsA.gini <= metricsB.gini ? metricsA.gini.toFixed(2) : metricsB.gini.toFixed(2)} vs. ${metricsA.gini <= metricsB.gini ? metricsB.gini.toFixed(2) : metricsA.gini.toFixed(2)}), whereas ${moreUnequal.name} exhibits stronger capital concentration at the apex.`,
       assetStructure: `${moreFinancialized.name} households lean heavily toward financial assets (${Math.round(Math.max(metricsA.assetMix.financialShare, metricsB.assetMix.financialShare))}% of gross wealth in stocks, bonds & pensions), while ${morePropertyCentric.name} wealth is predominantly anchored in physical real estate & land (${Math.round(Math.max(metricsA.assetMix.nonFinancialShare, metricsB.assetMix.nonFinancialShare))}%).`,
+      laborSummary,
     };
-  }, [adjMeanWealthA, adjMeanWealthB, adjMedianWealthA, adjMedianWealthB, countryA, countryB, metricsA, metricsB]);
+  }, [adjMeanWealthA, adjMeanWealthB, adjMedianWealthA, adjMedianWealthB, countryA, countryB, metricsA, metricsB, laborA, laborB]);
 
   return (
     <section id="country-comparison" className="space-y-6">
       {/* Header card with presets */}
       <div className="apple-card p-5 sm:p-6 transition-all duration-300">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-white/[0.08]">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-200 dark:border-white/[0.08]">
           <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-400/30 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-300 mb-2 shadow-inner">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-400/30 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-700 dark:text-sky-300 mb-2 shadow-inner">
               <Scale className="h-3.5 w-3.5" />
               <span>Head-to-Head Macro Comparison</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
               Sovereign Balance Sheet Duel ({selectedYear})
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl font-normal leading-relaxed">
-              Compare two sovereign nations side-by-side across wealth per adult, median distribution, debt solvency, and household asset allocations.
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-2xl font-normal leading-relaxed">
+              Compare two sovereign nations side-by-side across wealth per adult, median distribution, debt solvency, household asset allocations, and labor market dynamics.
             </p>
           </div>
 
           {/* Quick Duel Presets & Share Link */}
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between gap-3">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-300">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-300">
                 Curated Comparisons:
               </span>
               <button
                 onClick={handleCopyDeepLink}
                 className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all border shadow-sm cursor-pointer active:scale-95 ${
                   hasCopiedLink
-                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40'
-                    : 'bg-white/[0.08] hover:bg-white/[0.14] text-white border-white/[0.15]'
+                    ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-400/40'
+                    : 'bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.08] dark:hover:bg-white/[0.14] text-slate-800 dark:text-white border-slate-200 dark:border-white/[0.15]'
                 }`}
                 title="Copy shareable link to this sovereign duel"
                 aria-label="Copy shareable link"
@@ -257,8 +284,8 @@ export function CountryComparison({
                     onClick={() => handleApplyPreset(p)}
                     className={`rounded-full px-3 py-1 text-xs font-medium border transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? 'bg-white text-black border-white shadow-md font-semibold'
-                        : 'bg-white/[0.05] text-slate-300 border-white/[0.08] hover:bg-white/[0.12] hover:text-white'
+                        ? 'bg-slate-900 text-white dark:bg-white dark:text-black border-slate-900 dark:border-white shadow-md font-semibold'
+                        : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200 dark:bg-white/[0.05] dark:text-slate-300 dark:border-white/[0.08] dark:hover:bg-white/[0.12] dark:hover:text-white'
                     }`}
                   >
                     {p.name}
@@ -440,45 +467,45 @@ export function CountryComparison({
       <div className="apple-card p-5 sm:p-6 transition-all duration-300">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2.5">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/15 text-sky-400 border border-sky-500/25">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/25">
                 <Layers className="h-4 w-4" />
               </div>
               Household Balance Sheet &amp; Asset Allocation Duel
             </h3>
-            <p className="text-xs text-slate-300 mt-1 font-normal">
+            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-normal">
               How households construct their net worth: Financial market claims vs. Tangible physical real estate vs. Debt encumbrance.
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs flex-wrap">
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-slate-300">
-              <span className="h-2 w-2 rounded-full bg-sky-400" />
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] text-slate-700 dark:text-slate-300">
+              <span className="h-2 w-2 rounded-full bg-sky-500" />
               <span>Financial Assets</span>
             </div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-slate-300">
-              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] text-slate-700 dark:text-slate-300">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
               <span>Real Estate</span>
             </div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-slate-300">
-              <span className="h-2 w-2 rounded-full bg-rose-400" />
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] text-slate-700 dark:text-slate-300">
+              <span className="h-2 w-2 rounded-full bg-rose-500" />
               <span>Household Debt</span>
             </div>
           </div>
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-2xl border border-white/[0.10] bg-white/[0.035] p-4 sm:p-5">
-            <div className="flex items-center justify-between text-sm mb-2.5 font-semibold text-white">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.10] bg-slate-100/70 dark:bg-white/[0.035] p-4 sm:p-5">
+            <div className="flex items-center justify-between text-sm mb-2.5 font-semibold text-slate-900 dark:text-white">
               <span className="flex items-center gap-2">
                 <span>{countryA.flag}</span>
                 <span>{countryA.name} Asset Composition</span>
               </span>
-              <span className="text-xs text-slate-300 font-medium">
+              <span className="text-xs text-slate-500 dark:text-slate-300 font-medium">
                 Debt Burden: {formatPercent(metricsA.assetMix.debtShareOfGross)} of gross assets
               </span>
             </div>
 
-            <div className="h-3 w-full rounded-full bg-white/[0.08] overflow-hidden flex shadow-inner">
+            <div className="h-3 w-full rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden flex shadow-inner">
               <div
                 className="h-full bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-500"
                 style={{ width: `${metricsA.assetMix.financialShare}%` }}
@@ -537,6 +564,97 @@ export function CountryComparison({
         </div>
       </div>
 
+      {/* Labor Market Dynamics & Claudia Sahm Recession Duel */}
+      <div className="apple-card p-5 sm:p-6 transition-all duration-300 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/25">
+                <Users className="h-4 w-4" />
+              </div>
+              Labor Market Health &amp; Claudia Sahm Recession Duel
+            </h3>
+            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-normal">
+              Comparing headline unemployment (U-3), labor force participation (LFPR), Sahm Rule recession momentum, wage pressures, and labor market tightness.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <MetricBattleCard
+            title="Unemployment Rate (U-3)"
+            description="Headline civilian unemployment percentage"
+            valA={laborA ? formatPercent(laborA.unemploymentRate) : 'N/A'}
+            valB={laborB ? formatPercent(laborB.unemploymentRate) : 'N/A'}
+            rawA={laborA?.unemploymentRate ?? 99}
+            rawB={laborB?.unemploymentRate ?? 99}
+            flagA={countryA.flag}
+            flagB={countryB.flag}
+            isHigherBetter={false}
+          />
+
+          <MetricBattleCard
+            title="Labor Force Participation (LFPR)"
+            description="Active workforce share of civilian working-age population"
+            valA={laborA?.laborForceParticipation ? formatPercent(laborA.laborForceParticipation) : 'N/A'}
+            valB={laborB?.laborForceParticipation ? formatPercent(laborB.laborForceParticipation) : 'N/A'}
+            rawA={laborA?.laborForceParticipation ?? 0}
+            rawB={laborB?.laborForceParticipation ?? 0}
+            flagA={countryA.flag}
+            flagB={countryB.flag}
+            isHigherBetter={true}
+          />
+
+          <MetricBattleCard
+            title="Claudia Sahm Recession Delta"
+            description="Delta vs 12m trailing low. Triggers recession at ≥ 0.50%"
+            valA={laborA?.sahmIndicatorValue !== undefined ? `+${laborA.sahmIndicatorValue.toFixed(2)}%` : 'N/A'}
+            valB={laborB?.sahmIndicatorValue !== undefined ? `+${laborB.sahmIndicatorValue.toFixed(2)}%` : 'N/A'}
+            rawA={laborA?.sahmIndicatorValue ?? 99}
+            rawB={laborB?.sahmIndicatorValue ?? 99}
+            flagA={countryA.flag}
+            flagB={countryB.flag}
+            isHigherBetter={false}
+          />
+
+          <MetricBattleCard
+            title="Labor Tightness (V/U Ratio)"
+            description="Ratio of job vacancies per unemployed job seeker"
+            valA={laborA?.jobOpeningsPerUnemployed !== undefined ? `${laborA.jobOpeningsPerUnemployed.toFixed(2)}x` : 'N/A'}
+            valB={laborB?.jobOpeningsPerUnemployed !== undefined ? `${laborB.jobOpeningsPerUnemployed.toFixed(2)}x` : 'N/A'}
+            rawA={laborA?.jobOpeningsPerUnemployed ?? 0}
+            rawB={laborB?.jobOpeningsPerUnemployed ?? 0}
+            flagA={countryA.flag}
+            flagB={countryB.flag}
+            isHigherBetter={true}
+          />
+
+          <MetricBattleCard
+            title="Annual Wage Growth (YoY)"
+            description="Average nominal wage / hourly earnings annual growth"
+            valA={laborA?.wageGrowthYoy !== undefined ? formatPercent(laborA.wageGrowthYoy) : 'N/A'}
+            valB={laborB?.wageGrowthYoy !== undefined ? formatPercent(laborB.wageGrowthYoy) : 'N/A'}
+            rawA={laborA?.wageGrowthYoy ?? 0}
+            rawB={laborB?.wageGrowthYoy ?? 0}
+            flagA={countryA.flag}
+            flagB={countryB.flag}
+            isHigherBetter={true}
+          />
+
+          <MetricBattleCard
+            title="Labor Productivity Growth (YoY)"
+            description="Output per worker-hour annual efficiency gain"
+            valA={laborA?.productivityGrowthYoy !== undefined ? formatPercent(laborA.productivityGrowthYoy) : 'N/A'}
+            valB={laborB?.productivityGrowthYoy !== undefined ? formatPercent(laborB.productivityGrowthYoy) : 'N/A'}
+            rawA={laborA?.productivityGrowthYoy ?? 0}
+            rawB={laborB?.productivityGrowthYoy ?? 0}
+            flagA={countryA.flag}
+            flagB={countryB.flag}
+            isHigherBetter={true}
+          />
+        </div>
+      </div>
+
       {/* Automated Macro Narrative Synthesis */}
       <div className="apple-card p-5 sm:p-6 shadow-2xl border-slate-200/80 dark:border-white/[0.12] bg-gradient-to-br from-white/80 via-white/50 to-sky-500/[0.05] dark:from-white/[0.05] dark:via-white/[0.02] dark:to-sky-500/[0.04]">
         <div className="flex items-center gap-2.5 mb-3">
@@ -548,7 +666,7 @@ export function CountryComparison({
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs sm:text-sm leading-relaxed">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 text-xs sm:text-sm leading-relaxed">
           <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] bg-slate-100/70 dark:bg-white/[0.035] p-4">
             <div className="font-semibold text-sky-700 dark:text-sky-300 mb-1.5 flex items-center gap-1.5">
               <CheckCircle2 className="h-4 w-4" /> Middle-Class Living Standards
@@ -568,6 +686,13 @@ export function CountryComparison({
               <CheckCircle2 className="h-4 w-4" /> Balance Sheet Composition
             </div>
             <p className="font-normal text-slate-700 dark:text-slate-300">{narrative.assetStructure}</p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] bg-slate-100/70 dark:bg-white/[0.035] p-4">
+            <div className="font-semibold text-rose-700 dark:text-rose-300 mb-1.5 flex items-center gap-1.5">
+              <CheckCircle2 className="h-4 w-4" /> Labor Market &amp; Sahm Signal
+            </div>
+            <p className="font-normal text-slate-700 dark:text-slate-300">{narrative.laborSummary}</p>
           </div>
         </div>
       </div>
@@ -598,25 +723,26 @@ function MetricBattleCard({
   flagB,
   isHigherBetter,
 }: MetricBattleCardProps) {
-  const isBetterA = isHigherBetter ? rawA > rawB : rawA < rawB;
-  const isBetterB = isHigherBetter ? rawB > rawA : rawB < rawA;
-  const isTie = rawA === rawB;
+  const hasValidComparison = valA !== 'N/A' && valB !== 'N/A';
+  const isBetterA = hasValidComparison && (isHigherBetter ? rawA > rawB : rawA < rawB);
+  const isBetterB = hasValidComparison && (isHigherBetter ? rawB > rawA : rawB < rawA);
+  const isTie = !hasValidComparison || rawA === rawB;
 
   /*
    * Visual differential proportion (0 to 100).
    * Calculates normalized ratio to display on the comparative duel meter.
    */
   const total = rawA + rawB;
-  const percentA = total > 0 ? Math.round((rawA / total) * 100) : 50;
+  const percentA = hasValidComparison && total > 0 ? Math.round((Math.max(0, rawA) / total) * 100) : 50;
   const percentB = 100 - percentA;
 
   return (
     <div className="apple-card apple-card-hover p-4.5 flex flex-col justify-between">
       <div>
         <div className="flex items-start justify-between mb-1">
-          <h4 className="text-xs sm:text-sm font-semibold text-white tracking-tight">{title}</h4>
+          <h4 className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white tracking-tight">{title}</h4>
         </div>
-        <p className="text-[11px] text-slate-400 line-clamp-2 leading-tight mb-3 font-normal">
+        <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 leading-tight mb-3 font-normal">
           {description}
         </p>
       </div>

@@ -129,4 +129,25 @@ describe('CountryComparison Component', () => {
     expect(screen.getByText(/Sovereign Balance Sheet Duel \(2000\)/)).toBeDefined();
     expect(screen.getAllByText(/Japan/).length).toBeGreaterThanOrEqual(1);
   });
+
+  it('renders Labor Market Health & Claudia Sahm Recession Duel with key metrics and narrative', () => {
+    render(
+      <CountryComparison
+        selectedYear={2026}
+        currencyPerspective="nominal"
+        initialCountryCodeA="USA"
+        initialCountryCodeB="DEU"
+      />
+    );
+
+    expect(screen.getByText(/Labor Market Health & Claudia Sahm Recession Duel/)).toBeDefined();
+    expect(screen.getByText('Unemployment Rate (U-3)')).toBeDefined();
+    expect(screen.getByText('Labor Force Participation (LFPR)')).toBeDefined();
+    expect(screen.getByText('Claudia Sahm Recession Delta')).toBeDefined();
+    expect(screen.getByText('Labor Tightness (V/U Ratio)')).toBeDefined();
+    expect(screen.getByText('Annual Wage Growth (YoY)')).toBeDefined();
+    expect(screen.getByText('Labor Productivity Growth (YoY)')).toBeDefined();
+    expect(screen.getByText(/Labor Market & Sahm Signal/)).toBeDefined();
+  });
 });
+

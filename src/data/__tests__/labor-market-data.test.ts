@@ -5,6 +5,7 @@ import {
   US_LABOR_HISTORY,
   SOVEREIGN_LABOR_PROFILES,
   HISTORICAL_PHILLIPS_CURVE_POINTS,
+  getLaborMetricsForCountry,
 } from '../labor-market-data';
 
 describe('Labor Market Dynamics & Claudia Sahm Rule Dataset', () => {
@@ -41,13 +42,30 @@ describe('Labor Market Dynamics & Claudia Sahm Rule Dataset', () => {
     }
   });
 
-  it('contains multi-country labor profiles with complete historical series', () => {
-    expect(SOVEREIGN_LABOR_PROFILES.length).toBeGreaterThanOrEqual(4);
-    for (const profile of SOVEREIGN_LABOR_PROFILES) {
-      expect(profile.currentUnemployment).toBeGreaterThan(0);
-      expect(profile.unemployment12mLow).toBeLessThanOrEqual(profile.currentUnemployment);
-      expect(profile.historicalSeries.length).toBeGreaterThan(0);
+  it('contains multi-country labor profiles with complete historical series for 13 global economies', () => {
+    expect(SOVEREIGN_LABOR_PROFILES.length).toBeGreaterThanOrEqual(13);
+    const expectedCountries = ['USA', 'DEU', 'GBR', 'JPN', 'CAN', 'FRA', 'AUS', 'CHE', 'KOR', 'ITA', 'ESP', 'BRA', 'CHN'];
+    for (const code of expectedCountries) {
+      const profile = SOVEREIGN_LABOR_PROFILES.find((p) => p.countryCode === code);
+      expect(profile).toBeDefined();
+      expect(profile!.currentUnemployment).toBeGreaterThan(0);
+      expect(profile!.unemployment12mLow).toBeLessThanOrEqual(profile!.currentUnemployment);
+      expect(profile!.historicalSeries.length).toBeGreaterThanOrEqual(5);
     }
+  });
+
+  it('resolves labor metrics by country and optional year using getLaborMetricsForCountry', () => {
+    const us2022 = getLaborMetricsForCountry('USA', 2022);
+    expect(us2022).not.toBeNull();
+    expect(us2022!.unemploymentRate).toBe(3.6);
+    expect(us2022!.wageGrowthYoy).toBe(5.4);
+
+    const ausCurrent = getLaborMetricsForCountry('AUS');
+    expect(ausCurrent).not.toBeNull();
+    expect(ausCurrent!.unemploymentRate).toBe(4.1);
+
+    const unknown = getLaborMetricsForCountry('XYZ');
+    expect(unknown).toBeNull();
   });
 
   it('contains historical Phillips curve observations spanning all 5 eras', () => {
@@ -58,3 +76,4 @@ describe('Labor Market Dynamics & Claudia Sahm Rule Dataset', () => {
     }
   });
 });
+

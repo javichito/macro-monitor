@@ -56,6 +56,17 @@ export interface GlobalAssetYear {
   liabilityBreakdown?: SubAssetCategory[];
 }
 
+export interface LaborMarketMetrics {
+  unemploymentRate: number;
+  underemploymentRate?: number;
+  laborForceParticipation?: number;
+  sahmIndicatorValue?: number;
+  sahmStatus?: 'tranquil' | 'elevated' | 'triggered';
+  jobOpeningsPerUnemployed?: number;
+  wageGrowthYoy?: number;
+  productivityGrowthYoy?: number;
+}
+
 export interface CountryYearMetric {
   totalWealthTrillion: number;
   wealthPerAdultUSD: number;
@@ -70,6 +81,7 @@ export interface CountryYearMetric {
     nonFinancialShare: number;
     debtShareOfGross: number;
   };
+  labor?: LaborMarketMetrics;
 }
 
 export interface CountryProfile {

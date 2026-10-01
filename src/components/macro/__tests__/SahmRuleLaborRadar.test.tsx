@@ -22,14 +22,21 @@ describe('SahmRuleLaborRadar Component', () => {
     expect(screen.getByText('Wage Growth YoY')).toBeDefined();
   });
 
-  it('allows switching sovereign labor profile (USA, DEU, GBR, JPN)', () => {
+  it('allows switching sovereign labor profile across 13 global economies', () => {
     render(<SahmRuleLaborRadar />);
 
     const deuBtn = screen.getByRole('button', { name: /DEU/i });
     fireEvent.click(deuBtn);
-
     expect(screen.getByText('6.1%')).toBeDefined();
     expect(screen.getByText(/Elevated/i)).toBeDefined();
+
+    const fraBtn = screen.getByRole('button', { name: /FRA/i });
+    fireEvent.click(fraBtn);
+    expect(screen.getByText('7.4%')).toBeDefined();
+
+    const ausBtn = screen.getByRole('button', { name: /AUS/i });
+    fireEvent.click(ausBtn);
+    expect(screen.getByText('4.1%')).toBeDefined();
   });
 
   it('allows toggling between Sahm & Labor Stack and Phillips Curve views', () => {
