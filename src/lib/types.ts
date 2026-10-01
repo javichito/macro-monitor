@@ -290,3 +290,45 @@ export interface PhillipsCurvePoint {
   note: string;
 }
 
+export interface InflationComponentYear {
+  year: number;
+  headlineCpi: number;
+  coreCpi: number;
+  supercoreCpi: number;
+  shelterOer: number;
+  coreGoods: number;
+  energy: number;
+  food: number;
+  ppiFinalDemand: number;
+  ppiCpiSpread: number;
+}
+
+export type InflationRegimeTag =
+  | 'deflationary'
+  | 'goods-disinflation'
+  | 'sticky-supercore'
+  | 'broad-stagflationary'
+  | 'target-equilibrium';
+
+export interface SovereignInflationProfile {
+  countryCode: string;
+  countryName: string;
+  flag: string;
+  currency: string;
+  headlineYoY: number;
+  coreYoY: number;
+  supercoreYoY: number;
+  shelterYoY: number;
+  coreGoodsYoY: number;
+  ppiYoY: number;
+  regime: InflationRegimeTag;
+  basketWeights: {
+    shelterWeight: number;
+    supercoreWeight: number;
+    coreGoodsWeight: number;
+    foodWeight: number;
+    energyWeight: number;
+  };
+  historicalSeries: InflationComponentYear[];
+}
+

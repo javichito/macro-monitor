@@ -10,17 +10,19 @@ import { FiscalDominanceSimulator } from '../../components/macro/FiscalDominance
 import { YieldCurveMonitor } from '../../components/macro/YieldCurveMonitor';
 import { MacroRegimeClock } from '../../components/macro/MacroRegimeClock';
 import { SahmRuleLaborRadar } from '../../components/macro/SahmRuleLaborRadar';
+import { InflationAnatomyRadar } from '../../components/macro/InflationAnatomyRadar';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import {
   BarChart3,
   Compass,
   Activity,
   Users,
+  TrendingUp,
   Landmark,
   Layers,
 } from 'lucide-react';
 
-type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'labor' | 'liquidity';
+type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'labor' | 'inflation' | 'liquidity';
 
 export default function MacroPage() {
   const [activeTab, setActiveTab] = useState<MacroSectionTab>('all');
@@ -30,7 +32,7 @@ export default function MacroPage() {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab') as MacroSectionTab;
-    if (tabParam && ['all', 'regimes', 'yields', 'labor', 'liquidity'].includes(tabParam)) {
+    if (tabParam && ['all', 'regimes', 'yields', 'labor', 'inflation', 'liquidity'].includes(tabParam)) {
       setActiveTab(tabParam);
     }
   }, []);
@@ -98,6 +100,17 @@ export default function MacroPage() {
             <span>Sahm &amp; Labor</span>
           </button>
           <button
+            onClick={() => setActiveTab('inflation')}
+            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+              activeTab === 'inflation'
+                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
+                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+            }`}
+          >
+            <TrendingUp className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+            <span>Inflation Anatomy</span>
+          </button>
+          <button
             onClick={() => setActiveTab('liquidity')}
             className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
               activeTab === 'liquidity'
@@ -122,6 +135,9 @@ export default function MacroPage() {
       {/* Labor Market Dynamics & Claudia Sahm Recession Radar */}
       {(activeTab === 'all' || activeTab === 'labor') && <SahmRuleLaborRadar />}
 
+      {/* Inflation Anatomy: Beyond Headline CPI */}
+      {(activeTab === 'all' || activeTab === 'inflation') && <InflationAnatomyRadar />}
+
       {/* Central Bank Liquidity Radar */}
       {(activeTab === 'all' || activeTab === 'liquidity') && (
         <>
@@ -135,7 +151,7 @@ export default function MacroPage() {
       {(activeTab === 'all' || activeTab === 'liquidity') && <MacroTrendChart />}
 
       {/* Plain English Guides */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <PlainEnglishCard
           title="Why does an Inverted Yield Curve predict recessions?"
           summary="Normally, investors demand higher interest to lock up money for 10 years than for 3 months. When this flips, the curve 'inverts'."
@@ -157,6 +173,14 @@ export default function MacroPage() {
           summary="Invented by Federal Reserve economist Claudia Sahm, this rule identifies the precise moment a cooling labor market turns into a recessionary cascade."
           detail="When the 3-month average unemployment rate rises +0.50% above its minimum over the prior 12 months, a recession has begun. It works because job cuts cause workers to cut spending, reducing revenues for businesses who then lay off more workers in a self-reinforcing cycle."
           takeaway="Unlike GDP which is reported months late with major revisions, the Sahm Rule relies on immediate monthly payroll data with zero historical false alarms."
+          defaultExpanded={false}
+        />
+
+        <PlainEnglishCard
+          title="Why do central banks target 'Supercore' over headline inflation?"
+          summary="Headline CPI includes food and energy shocks that interest rates cannot fix. Supercore isolates wage-sensitive domestic services."
+          detail="Coined by Jerome Powell, Supercore (core services excluding housing/shelter) strips out globally determined goods and the 12-to-18-month contractual survey lag of shelter. It answers whether local service wages are creating a self-sustaining wage-price spiral."
+          takeaway="If Supercore stays above 3%, central banks will keep interest rates higher for longer even if headline inflation temporarily drops due to cheaper oil."
           defaultExpanded={false}
         />
       </div>

@@ -128,6 +128,7 @@ async function runSync() {
     'src/data/yield-curve-data.ts',
     'src/data/macro-regimes-data.ts',
     'src/data/labor-market-data.ts',
+    'src/data/inflation-anatomy-data.ts',
     'src/data/latest-liquidity-status.json',
     'src/data/latest-yield-status.json',
   ];
@@ -144,6 +145,7 @@ async function runSync() {
   console.log('\n3. Ingestion & Invariant Verification Summary:');
   console.log(`   - Checked series: Global GDP, Global Inflation, Sovereign Debt, FX Reserves`);
   console.log(`   - Tier 1 additions: Term Structure Curves, 4-Quadrant Regimes, Sahm Rule & Labor Radar`);
+  console.log(`   - Inflation Anatomy: Headline vs. Core, Supercore (Services ex-Shelter), Shelter/OER, PPI Lead Indicator`);
   console.log(`   - Pipeline status: HEALTHY (Zero data corruption, all bounds satisfied)\n`);
 }
 
