@@ -174,12 +174,13 @@ export function InflationAnatomyRadar() {
         {/* Action Controls */}
         <div className="flex flex-wrap items-center gap-2.5 self-start lg:self-auto">
           {/* Sovereign Pills */}
-          <div className="flex rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
+          <div className="flex flex-wrap items-center gap-1 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs max-w-xl">
             {SOVEREIGN_INFLATION_PROFILES.map((p) => (
               <button
                 key={p.countryCode}
                 onClick={() => setSelectedCountryCode(p.countryCode)}
-                className={`flex items-center gap-1.5 rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
+                title={`${p.countryName} (${p.countryCode})`}
+                className={`flex items-center gap-1.5 rounded-xl px-2.5 py-1 font-semibold transition-all cursor-pointer ${
                   selectedCountryCode === p.countryCode
                     ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-bold'
                     : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'

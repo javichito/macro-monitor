@@ -6,6 +6,7 @@ import {
   calculateComponentContribution,
   classifyInflationRegime,
   getPipelinePressureSignal,
+  getInflationProfileForCountry,
 } from '../inflation-anatomy-data';
 
 describe('Inflation Anatomy & Granular Decomposition Dataset', () => {
@@ -66,14 +67,14 @@ describe('Inflation Anatomy & Granular Decomposition Dataset', () => {
     expect(classifyInflationRegime(2.3, 2.4, 2.7, 2.2)).toBe('target-equilibrium');
   });
 
-  it('includes multi-sovereign inflation profiles with complete series and regional basket weights', () => {
-    expect(SOVEREIGN_INFLATION_PROFILES.length).toBeGreaterThanOrEqual(4);
-    const expectedCodes = ['USA', 'DEU', 'GBR', 'JPN'];
+  it('includes multi-sovereign inflation profiles with complete series and regional basket weights for 13 economies', () => {
+    expect(SOVEREIGN_INFLATION_PROFILES.length).toBeGreaterThanOrEqual(13);
+    const expectedCodes = ['USA', 'DEU', 'GBR', 'JPN', 'CAN', 'FRA', 'AUS', 'CHE', 'KOR', 'ITA', 'ESP', 'BRA', 'CHN'];
 
     for (const code of expectedCodes) {
       const profile = SOVEREIGN_INFLATION_PROFILES.find((p) => p.countryCode === code);
       expect(profile).toBeDefined();
-      expect(profile!.headlineYoY).toBeGreaterThan(0);
+      expect(profile!.headlineYoY).toBeGreaterThanOrEqual(0);
       expect(profile!.historicalSeries.length).toBeGreaterThanOrEqual(5);
 
       const totalWeight =
@@ -84,5 +85,19 @@ describe('Inflation Anatomy & Granular Decomposition Dataset', () => {
         profile!.basketWeights.energyWeight;
       expect(Math.round(totalWeight)).toBe(100);
     }
+  });
+
+  it('resolves inflation profiles by country code via getInflationProfileForCountry', () => {
+    const can = getInflationProfileForCountry('CAN');
+    expect(can).not.toBeNull();
+    expect(can!.currency).toBe('CAD');
+    expect(can!.shelterYoY).toBe(5.1);
+
+    const chn = getInflationProfileForCountry('CHN');
+    expect(chn).not.toBeNull();
+    expect(chn!.regime).toBe('deflationary');
+
+    const unknown = getInflationProfileForCountry('XYZ');
+    expect(unknown).toBeNull();
   });
 });

@@ -38,6 +38,14 @@ describe('InflationAnatomyRadar Component', () => {
     const gbrBtn = screen.getByRole('button', { name: /GBR/i });
     fireEvent.click(gbrBtn);
     expect(screen.getByText(/Sticky Supercore/i)).toBeDefined();
+
+    const chnBtn = screen.getByRole('button', { name: /CHN/i });
+    fireEvent.click(chnBtn);
+    expect(screen.getByText(/Deflationary Contraction/i)).toBeDefined();
+
+    const canBtn = screen.getByRole('button', { name: /CAN/i });
+    fireEvent.click(canBtn);
+    expect(screen.getAllByText('5.1%').length).toBeGreaterThanOrEqual(1);
   });
 
   it('allows toggling between Decomposition Stack, Supercore & Services, and Upstream PPI tabs', () => {
