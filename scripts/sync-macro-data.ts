@@ -129,8 +129,10 @@ async function runSync() {
     'src/data/macro-regimes-data.ts',
     'src/data/labor-market-data.ts',
     'src/data/inflation-anatomy-data.ts',
+    'src/data/leading-indicators-data.ts',
     'src/data/latest-liquidity-status.json',
     'src/data/latest-yield-status.json',
+    'src/data/latest-nowcast-status.json',
   ];
 
   for (const relPath of datasetFiles) {

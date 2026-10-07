@@ -1,0 +1,42 @@
+name: Semi-Weekly Nowcast & Leading Indicators Sync
+
+on:
+  schedule:
+    # Run at 21:00 UTC (5:00 PM Eastern Time) every Tuesday and Friday
+    # to capture mid-week Atlanta Fed GDPNow model revisions and monthly PMI/LEI releases
+    - cron: '0 21 * * 2,5'
+  workflow_dispatch:
+    # Allows on-demand manual trigger from the GitHub Actions dashboard
+
+jobs:
+  sync-nowcast:
+    name: Sync & Validate Nowcasting Telemetry
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Leading Indicators & Nowcast Evaluator
+        run: npm run data:nowcast
+
+      - name: Validate Accounting Invariants & Bounds
+        run: npx vitest run src/data/__tests__/leading-indicators-data.test.ts
+
+      - name: Commit Updated Nowcast Status (if changed)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/latest-nowcast-status.json
+          git diff --staged --quiet || (git commit -m "chore(data): automated nowcast & leading indicators sync [skip ci]" && git push origin main)

@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-10-07T21:24:20.765Z",
+  "currentQuarter": "2026-Q3",
+  "gdpNowEstimate": 2.7,
+  "nyFedEstimate": 2.3,
+  "blueChipConsensus": 1.9,
+  "trailingOfficialGdp": 3,
+  "consensusSurprise": 0.8,
+  "pmiSummary": {
+    "globalComposite": 52.6,
+    "usComposite": 53.8,
+    "eurozoneComposite": 50.4,
+    "chinaComposite": 51.8,
+    "globalStatus": "expansion",
+    "orderBacklogRatio": 1.11
+  },
+  "leiSummary": {
+    "indexLevel": 100.4,
+    "sixMonthAnnualizedGrowth": -2.8,
+    "diffusionIndex": 50,
+    "signalStatus": "warning"
+  },
+  "activeAlerts": [
+    {
+      "id": "lei-warning-corridor",
+      "level": "WARNING",
+      "headline": "⚠️ LEI in Contraction Warning Corridor: -2.8% Annualized",
+      "body": "Index is contracting but remains above the -4.0% formal recession trigger. Diffusion stands at 50%."
+    },
+    {
+      "id": "gdpnow-consensus-surprise",
+      "level": "EXPANSION",
+      "headline": "🚀 GDPNow Surpasses Consensus by 0.8%",
+      "body": "High-frequency hard data models current quarter growth at +2.7%, substantially diverging from surveyor consensus (+1.9%)."
+    },
+    {
+      "id": "dual-speed-divergence",
+      "level": "INFO",
+      "headline": "🔄 Dual-Speed Divergence: US Services (54.9) Outpaces Factory PMI (49.4)",
+      "body": "Order backlogs and retail services remain expansionary while capital-goods manufacturing navigates elevated financing costs."
+    }
+  ]
+}

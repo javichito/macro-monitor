@@ -332,3 +332,114 @@ export interface SovereignInflationProfile {
   historicalSeries: InflationComponentYear[];
 }
 
+/* =========================================================================
+ * Tier 2: Leading Indicators & High-Frequency Nowcasting Types
+ * ========================================================================= */
+
+export type PmiExpansionStatus = 'expansion' | 'contraction' | 'stagnation';
+
+export interface PmiHistoricalPoint {
+  period: string; // ISO year-quarter or year-month e.g. '2024-Q3'
+  manufacturing: number;
+  services: number;
+  composite: number;
+  newOrders?: number;
+  inventories?: number;
+}
+
+export interface SovereignPmiProfile {
+  economyCode: 'GLOBAL' | 'USA' | 'EA' | 'CHN' | 'GBR' | 'JPN';
+  name: string;
+  flag: string;
+  surveyProvider: string;
+  currentManufacturing: number;
+  currentServices: number;
+  currentComposite: number;
+  momChangeManufacturing: number;
+  momChangeServices: number;
+  manufacturingStatus: PmiExpansionStatus;
+  servicesStatus: PmiExpansionStatus;
+  compositeStatus: PmiExpansionStatus;
+  newOrdersToInventoryRatio: number; // Backlog acceleration proxy
+  subIndices: {
+    newOrders: number;
+    output: number;
+    employment: number;
+    supplierDeliveries: number;
+    inputPrices: number;
+  };
+  historicalSeries: PmiHistoricalPoint[];
+  macroNote: string;
+}
+
+export type LeiSignalStatus = 'expansion' | 'warning' | 'recession_signal';
+
+export interface LeiComponent {
+  id: string;
+  name: string;
+  category: 'financial' | 'expectations' | 'labor_manufacturing' | 'housing_orders';
+  latestValue: string;
+  sixMonthChangePct: number;
+  netContribution: 'positive' | 'negative' | 'neutral';
+  weightPct: number;
+  description: string;
+  leadingMechanism: string;
+}
+
+export interface LeiHistoricalPoint {
+  date: string;
+  indexLevel: number;
+  sixMonthAnnualizedGrowth: number;
+  isRecessionSignal: boolean;
+  diffusionIndex: number;
+}
+
+export interface ConferenceBoardLeiProfile {
+  currentIndexLevel: number;
+  momChangePct: number;
+  sixMonthAnnualizedGrowthPct: number;
+  signalStatus: LeiSignalStatus;
+  diffusionIndex: number;
+  components: LeiComponent[];
+  historicalSeries: LeiHistoricalPoint[];
+  threeDRuleNote: string;
+}
+
+export interface GdpNowcastSectorContribution {
+  personalConsumption: number;
+  privateInvestment: number;
+  governmentSpending: number;
+  netExports: number;
+}
+
+export interface GdpNowcastEvolutionPoint {
+  date: string;
+  estimate: number;
+  catalyst: string;
+  impact: number;
+}
+
+export interface GdpNowcastQuarterSeries {
+  quarter: string;
+  atlantaFedGdpNow: number;
+  nyFedNowcast: number;
+  blueChipConsensus: number;
+  officialBeaGdp: number | null;
+  isQuarterClosed: boolean;
+}
+
+export interface GdpNowcastingProfile {
+  currentQuarter: string;
+  gdpNowEstimate: number;
+  nyFedEstimate: number;
+  blueChipConsensus: number;
+  trailingOfficialGdp: number;
+  trailingOfficialQuarter: string;
+  officialReleaseLagDays: number;
+  lastNowcastUpdate: string;
+  sectorContributions: GdpNowcastSectorContribution;
+  revisionEvolution: GdpNowcastEvolutionPoint[];
+  quarterlyComparison: GdpNowcastQuarterSeries[];
+  methodologyNote: string;
+}
+

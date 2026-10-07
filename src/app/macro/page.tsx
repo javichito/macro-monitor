@@ -11,6 +11,7 @@ import { YieldCurveMonitor } from '../../components/macro/YieldCurveMonitor';
 import { MacroRegimeClock } from '../../components/macro/MacroRegimeClock';
 import { SahmRuleLaborRadar } from '../../components/macro/SahmRuleLaborRadar';
 import { InflationAnatomyRadar } from '../../components/macro/InflationAnatomyRadar';
+import { LeadingIndicatorsRadar } from '../../components/macro/LeadingIndicatorsRadar';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import {
   BarChart3,
@@ -20,9 +21,10 @@ import {
   TrendingUp,
   Landmark,
   Layers,
+  Zap,
 } from 'lucide-react';
 
-type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'labor' | 'inflation' | 'liquidity';
+type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'leading' | 'labor' | 'inflation' | 'liquidity';
 
 export default function MacroPage() {
   const [activeTab, setActiveTab] = useState<MacroSectionTab>('all');
@@ -32,7 +34,7 @@ export default function MacroPage() {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab') as MacroSectionTab;
-    if (tabParam && ['all', 'regimes', 'yields', 'labor', 'inflation', 'liquidity'].includes(tabParam)) {
+    if (tabParam && ['all', 'regimes', 'yields', 'leading', 'labor', 'inflation', 'liquidity'].includes(tabParam)) {
       setActiveTab(tabParam);
     }
   }, []);
@@ -50,7 +52,7 @@ export default function MacroPage() {
             The Global Economic Engine
           </h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
-            Monitor sovereign yield curve inversions, real-time macro regimes (Dalio growth-inflation clock), Claudia Sahm labor recession triggers, and central bank liquidity mechanics.
+            Monitor sovereign yield curve inversions, high-frequency GDP nowcasting and PMI diffusion, real-time macro regimes (Dalio growth-inflation clock), Claudia Sahm labor triggers, and central bank liquidity mechanics.
           </p>
         </div>
 
@@ -87,6 +89,17 @@ export default function MacroPage() {
           >
             <Activity className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
             <span>Yield Curves</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('leading')}
+            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+              activeTab === 'leading'
+                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
+                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+            }`}
+          >
+            <Zap className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
+            <span>Leading &amp; Nowcast</span>
           </button>
           <button
             onClick={() => setActiveTab('labor')}
@@ -132,6 +145,9 @@ export default function MacroPage() {
       {/* Sovereign Yield Curve Monitor & Inversion Tracker */}
       {(activeTab === 'all' || activeTab === 'yields') && <YieldCurveMonitor />}
 
+      {/* Leading Indicators & High-Frequency Nowcasting Radar */}
+      {(activeTab === 'all' || activeTab === 'leading') && <LeadingIndicatorsRadar />}
+
       {/* Labor Market Dynamics & Claudia Sahm Recession Radar */}
       {(activeTab === 'all' || activeTab === 'labor') && <SahmRuleLaborRadar />}
 
@@ -151,13 +167,37 @@ export default function MacroPage() {
       {(activeTab === 'all' || activeTab === 'liquidity') && <MacroTrendChart />}
 
       {/* Plain English Guides */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <PlainEnglishCard
+          title="Why does high-frequency GDP Nowcasting beat official releases?"
+          summary="Official GDP releases are lagging statistics published up to 90 days after quarter-end, whereas nowcasting updates daily from incoming reports."
+          detail="The Bureau of Economic Analysis (BEA) publishes Advance GDP ~30 days after a quarter finishes, followed by Second and Final revisions that frequently alter the headline growth by full percentage points. Atlanta Fed GDPNow is a pure mathematical model with zero subjective forecasting—it tracks hard incoming prints like retail sales, durable goods shipments, and net trade to gauge actual real-time quarterly momentum as it unfolds."
+          takeaway="Nowcasting eliminates the lag blind spot, allowing investors to trade real-time growth reality rather than looking in the rear-view mirror."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="How does the PMI 50-threshold signal business cycle inflections?"
+          summary="Purchasing Managers' Indices (PMIs) are diffusion metrics where 50.0 is the mathematical line between economic expansion and contraction."
+          detail="Derived from monthly surveys sent to corporate purchasing executives, PMIs capture whether business activity, new order backlogs, and employment are expanding (>50) or contracting (<50). Because executives order raw materials months before finished products are shipped, manufacturing PMIs regularly lead official industrial production by 3 to 6 months."
+          takeaway="Pay special attention to the New Orders-to-Inventories ratio: when it exceeds 1.0, manufacturing acceleration is imminent."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="What is the Conference Board LEI 10-component 3D recession rule?"
+          summary="The Conference Board tracks 10 forward-looking financial and operational components to anticipate cyclical economic peaks and troughs."
+          detail="The LEI aggregates manufacturing hours, jobless claims, new orders, building permits, credit conditions, stock prices, consumer expectations, and the yield curve spread. The 3D rule tests for Duration (months of consecutive contraction), Depth (6-month annualized growth dropping below -4.0%), and Diffusion (majority of components falling). When all three criteria are met, an economic recession has followed with remarkable historical consistency."
+          takeaway="Even if trailing GDP appears positive, a sustained drop in the 10 LEI components indicates structural friction accumulating beneath the surface."
+          defaultExpanded={false}
+        />
+
         <PlainEnglishCard
           title="Why does an Inverted Yield Curve predict recessions?"
           summary="Normally, investors demand higher interest to lock up money for 10 years than for 3 months. When this flips, the curve 'inverts'."
           detail="Yield curve inversions happen when central banks tighten short-term interest rates aggressively to break inflation, while bond investors foresee growth stalling and buy long bonds to lock in safe yields. Every US recession since 1955 was preceded by an inversion."
           takeaway="Pay closest attention when the curve 'un-inverts' (re-steepens), as that transition historically marks the onset of recessions as rate cuts begin."
-          defaultExpanded={true}
+          defaultExpanded={false}
         />
 
         <PlainEnglishCard
@@ -173,14 +213,6 @@ export default function MacroPage() {
           summary="Invented by Federal Reserve economist Claudia Sahm, this rule identifies the precise moment a cooling labor market turns into a recessionary cascade."
           detail="When the 3-month average unemployment rate rises +0.50% above its minimum over the prior 12 months, a recession has begun. It works because job cuts cause workers to cut spending, reducing revenues for businesses who then lay off more workers in a self-reinforcing cycle."
           takeaway="Unlike GDP which is reported months late with major revisions, the Sahm Rule relies on immediate monthly payroll data with zero historical false alarms."
-          defaultExpanded={false}
-        />
-
-        <PlainEnglishCard
-          title="Why do central banks target 'Supercore' over headline inflation?"
-          summary="Headline CPI includes food and energy shocks that interest rates cannot fix. Supercore isolates wage-sensitive domestic services."
-          detail="Coined by Jerome Powell, Supercore (core services excluding housing/shelter) strips out globally determined goods and the 12-to-18-month contractual survey lag of shelter. It answers whether local service wages are creating a self-sustaining wage-price spiral."
-          takeaway="If Supercore stays above 3%, central banks will keep interest rates higher for longer even if headline inflation temporarily drops due to cheaper oil."
           defaultExpanded={false}
         />
       </div>
