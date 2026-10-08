@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-10-08T20:37:30.603Z",
+  "totalEventsTracked": 22,
+  "upcomingEventsCount": 11,
+  "releasedEventsCount": 11,
+  "beatCount": 5,
+  "missCount": 4,
+  "inLineCount": 2,
+  "beatRatioPct": 55.6,
+  "cesiSummary": {
+    "usIndex": 28.4,
+    "eurozoneIndex": -14.2,
+    "globalIndex": 11.8
+  },
+  "nextHighImpactRelease": {
+    "id": "usa-nfp-sep-2026",
+    "title": "US Non-Farm Payrolls",
+    "flag": "🇺🇸",
+    "scheduledDate": "2026-10-09T12:30:00Z",
+    "category": "labor"
+  },
+  "activeBlackoutAlerts": []
+}

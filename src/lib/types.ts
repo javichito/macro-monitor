@@ -639,3 +639,129 @@ export interface EvaluatedExternalSectorState {
   }>;
 }
 
+export type EconomicReleaseCategory = 'central_bank' | 'inflation' | 'labor' | 'growth' | 'activity';
+export type ReleaseImportance = 'tier1' | 'tier2' | 'tier3';
+export type SurpriseDirection = 'beat' | 'miss' | 'in_line';
+export type EconomicEventStatus = 'scheduled' | 'released';
+
+export interface HistoricalReleaseCheckpoint {
+  date: string;
+  period: string;
+  actual: number;
+  consensus: number;
+  surpriseDelta: number;
+  direction: SurpriseDirection;
+}
+
+export interface EconomicReleaseEvent {
+  id: string;
+  title: string;
+  countryCode: 'USA' | 'EMU' | 'GBR' | 'JPN' | 'CHN';
+  countryName: string;
+  flag: string;
+  category: EconomicReleaseCategory;
+  importance: ReleaseImportance;
+  scheduledDate: string;
+  period: string;
+  status: EconomicEventStatus;
+  previous: number | string | null;
+  consensus: number | string | null;
+  actual: number | string | null;
+  unit: string;
+  surpriseDelta: number | null;
+  surpriseNormalized: number | null;
+  direction: SurpriseDirection | null;
+  marketImpactSummary: string;
+  description: string;
+  frequency: string;
+  source: string;
+  historicalTrackRecord?: HistoricalReleaseCheckpoint[];
+}
+
+export interface SurpriseIndexHistoricalPoint {
+  date: string;
+  usSurprise: number;
+  eurozoneSurprise: number;
+  globalSurprise: number;
+}
+
+export interface SurpriseCategoryBreakdown {
+  category: EconomicReleaseCategory;
+  categoryLabel: string;
+  netScore: number;
+  beatCount: number;
+  missCount: number;
+  inLineCount: number;
+}
+
+export interface SurpriseIndexProfile {
+  region: 'US' | 'Eurozone' | 'Global';
+  currentIndex: number;
+  previousIndex: number;
+  oneMonthChange: number;
+  status: 'strong_positive' | 'moderate_positive' | 'neutral' | 'moderate_negative' | 'strong_negative';
+  statusLabel: string;
+  interpretation: string;
+  beatRatioPct: number;
+  topPositiveDrivers: string[];
+  topNegativeDrags: string[];
+  categoryBreakdown: SurpriseCategoryBreakdown[];
+  history: SurpriseIndexHistoricalPoint[];
+}
+
+export interface CentralBankMeeting {
+  id: string;
+  institution: 'Federal Reserve' | 'European Central Bank' | 'Bank of England' | 'Bank of Japan';
+  code: 'FOMC' | 'ECB' | 'BOE' | 'BOJ';
+  flag: string;
+  date: string;
+  policyRateCurrent: number;
+  expectedAction: 'hold' | 'cut_25' | 'cut_50' | 'hike_25';
+  marketPricedProbabilities: {
+    cut: number;
+    hold: number;
+    hike: number;
+  };
+  isBlackoutActive: boolean;
+  blackoutStart: string;
+  blackoutEnd: string;
+  significance: string;
+}
+
+export interface CalendarFilterOptions {
+  countryCode?: 'ALL' | 'USA' | 'EMU' | 'GBR' | 'JPN' | 'CHN';
+  category?: 'ALL' | EconomicReleaseCategory;
+  importance?: 'ALL' | ReleaseImportance;
+  status?: 'ALL' | EconomicEventStatus;
+  searchQuery?: string;
+}
+
+export interface EvaluatedCalendarState {
+  timestamp: string;
+  totalEventsTracked: number;
+  upcomingEventsCount: number;
+  releasedEventsCount: number;
+  beatCount: number;
+  missCount: number;
+  inLineCount: number;
+  beatRatioPct: number;
+  cesiSummary: {
+    usIndex: number;
+    eurozoneIndex: number;
+    globalIndex: number;
+  };
+  nextHighImpactRelease: {
+    id: string;
+    title: string;
+    flag: string;
+    scheduledDate: string;
+    category: EconomicReleaseCategory;
+  } | null;
+  activeBlackoutAlerts: Array<{
+    institution: string;
+    headline: string;
+    body: string;
+    endDate: string;
+  }>;
+}
+

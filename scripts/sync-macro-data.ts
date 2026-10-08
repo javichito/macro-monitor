@@ -135,6 +135,8 @@ async function runSync() {
     'src/data/latest-yield-status.json',
     'src/data/latest-nowcast-status.json',
     'src/data/latest-external-status.json',
+    'src/data/macro-calendar-data.ts',
+    'src/data/latest-calendar-status.json',
   ];
 
   for (const relPath of datasetFiles) {
@@ -151,6 +153,7 @@ async function runSync() {
   console.log(`   - Tier 1 additions: Term Structure Curves, 4-Quadrant Regimes, Sahm Rule & Labor Radar`);
   console.log(`   - Inflation Anatomy: Headline vs. Core, Supercore (Services ex-Shelter), Shelter/OER, PPI Lead Indicator`);
   console.log(`   - External Sector: Current Account & Trade Balances, DXY & REER Valuations, GSCPI Supply Pressure, TIC Capital Flows`);
+  console.log(`   - Calendar & Surprise: FOMC/ECB Meeting Schedules, Consensus vs. Actual Deltas, Citi Economic Surprise Index (CESI)`);
   console.log(`   - Pipeline status: HEALTHY (Zero data corruption, all bounds satisfied)\n`);
 }
 

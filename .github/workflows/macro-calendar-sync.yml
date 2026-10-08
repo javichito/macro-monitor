@@ -1,0 +1,42 @@
+name: Weekly Macroeconomic Calendar & Surprise Index Sync
+
+on:
+  schedule:
+    # Run twice weekly (Monday and Friday at 06:00 UTC) to ingest new economic releases,
+    # consensus updates, and pre-meeting central bank blackout periods
+    - cron: '0 6 * * 1,5'
+  workflow_dispatch:
+    # Allows manual trigger on-demand from GitHub Actions
+
+jobs:
+  sync-macro-calendar:
+    name: Sync & Validate Macro Calendar & Surprise Telemetry
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Calendar & Surprise Evaluator
+        run: npm run data:calendar
+
+      - name: Validate Accounting Invariants & Bounds
+        run: npx vitest run src/data/__tests__/macro-calendar-data.test.ts
+
+      - name: Commit Updated Calendar Status (if changed)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/latest-calendar-status.json
+          git diff --staged --quiet || (git commit -m "chore(data): automated macro calendar & surprise index sync [skip ci]" && git push origin main)

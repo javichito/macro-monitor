@@ -11,7 +11,8 @@
     "test:watch": "vitest",
     "data:sync": "node --experimental-strip-types scripts/sync-macro-data.ts",
     "data:nowcast": "node --experimental-strip-types scripts/sync-leading-indicators.ts",
-    "data:external": "node --experimental-strip-types scripts/sync-external-sector.ts"
+    "data:external": "node --experimental-strip-types scripts/sync-external-sector.ts",
+    "data:calendar": "node --experimental-strip-types scripts/sync-macro-calendar.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

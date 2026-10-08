@@ -13,6 +13,7 @@ import { SahmRuleLaborRadar } from '../../components/macro/SahmRuleLaborRadar';
 import { InflationAnatomyRadar } from '../../components/macro/InflationAnatomyRadar';
 import { LeadingIndicatorsRadar } from '../../components/macro/LeadingIndicatorsRadar';
 import { ExternalSectorRadar } from '../../components/macro/ExternalSectorRadar';
+import { MacroCalendarRadar } from '../../components/macro/MacroCalendarRadar';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import {
   BarChart3,
@@ -24,9 +25,10 @@ import {
   Layers,
   Zap,
   Globe2,
+  Calendar,
 } from 'lucide-react';
 
-type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'leading' | 'labor' | 'inflation' | 'liquidity' | 'external';
+type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'leading' | 'labor' | 'inflation' | 'external' | 'calendar' | 'liquidity';
 
 export default function MacroPage() {
   const [activeTab, setActiveTab] = useState<MacroSectionTab>('all');
@@ -36,7 +38,7 @@ export default function MacroPage() {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab') as MacroSectionTab;
-    if (tabParam && ['all', 'regimes', 'yields', 'leading', 'labor', 'inflation', 'liquidity', 'external'].includes(tabParam)) {
+    if (tabParam && ['all', 'regimes', 'yields', 'leading', 'labor', 'inflation', 'external', 'calendar', 'liquidity'].includes(tabParam)) {
       setActiveTab(tabParam);
     }
   }, []);
@@ -137,6 +139,17 @@ export default function MacroPage() {
             <span>External &amp; FX</span>
           </button>
           <button
+            onClick={() => setActiveTab('calendar')}
+            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+              activeTab === 'calendar'
+                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
+                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+            }`}
+          >
+            <Calendar className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+            <span>Calendar &amp; Surprise</span>
+          </button>
+          <button
             onClick={() => setActiveTab('liquidity')}
             className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
               activeTab === 'liquidity'
@@ -170,6 +183,9 @@ export default function MacroPage() {
       {/* External Sector, Balance of Payments & FX Strength */}
       {(activeTab === 'all' || activeTab === 'external') && <ExternalSectorRadar />}
 
+      {/* Macroeconomic Calendar & Citi Economic Surprise Index (CESI) */}
+      {(activeTab === 'all' || activeTab === 'calendar') && <MacroCalendarRadar />}
+
       {/* Central Bank Liquidity Radar */}
       {(activeTab === 'all' || activeTab === 'liquidity') && (
         <>
@@ -185,11 +201,35 @@ export default function MacroPage() {
       {/* Plain English Guides */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <PlainEnglishCard
+          title="Why do financial markets reprice on the Surprise Delta rather than absolute levels?"
+          summary="Asset prices already discount median consensus forecasts; only the unexpected divergence between actual results and consensus forces instantaneous curve repositioning."
+          detail="In efficient financial markets, all publicly available information and surveyed economist forecasts are already embedded into bond yields, swap curves, and equity valuation multiples before a data release. If US GDP prints at a solid 2.5%, but the consensus expectation was 3.0%, the release is fundamentally a growth contraction shock (-0.5% negative surprise delta). Investors must immediately reprice terminal interest rate expectations lower, causing Treasury yields to drop and cyclical equities to sell off—even though absolute growth remains positive."
+          takeaway="Never trade the headline absolute number alone; trade the direction and magnitude of the expectation delta relative to consensus."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="What is the Citi Economic Surprise Index (CESI) and why is it a powerful contrarian signal?"
+          summary="CESI measures whether incoming macroeconomic reports are systematically beating or trailing economist projections, oscillating in predictable mean-reverting waves."
+          detail="Created by Citigroup, the Economic Surprise Index weights standard deviation deltas across dozens of high-frequency releases over a rolling 90-day exponential decay window. When CESI spikes to extreme positive peaks (> +50), economists become excessively euphoric and raise bar estimates to unrealistic levels, setting the stage for future downside disappointments and bond market rallies. Conversely, when CESI plunges below -50, consensus expectations become overly pessimistic, creating prime conditions for positive upside surprises that spark equity and risk-asset rebounds."
+          takeaway="Extreme CESI readings (> +50 or < -50) are high-probability contrarian inflection points for interest rate and equity sector rotations."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="How do Central Bank Blackout Periods affect market volatility ahead of policy decisions?"
+          summary="Statutory silence windows eliminate forward guidance commentary, leaving markets hypersensitive to incoming economic data surprises."
+          detail="The Federal Reserve enforces a strict communication blackout beginning the second Saturday before an FOMC meeting and lasting until the Thursday after the decision. During this fortnight, Fed Governors and regional Fed Presidents cannot give speeches, interview with financial media, or drop policy hints. Because market participants cannot rely on official guidance to interpret late-breaking data, high-impact releases that fall during blackout windows (like Non-Farm Payrolls or CPI) trigger heightened intraday volatility across FX and Treasury markets."
+          takeaway="Data surprises that hit during central bank blackout periods generate amplified price reactions because policymakers cannot steer expectations."
+          defaultExpanded={false}
+        />
+
+        <PlainEnglishCard
           title="Why does a persistent Current Account deficit threaten sovereign debt sustainability?"
           summary="An economy consuming more than it produces must borrow the difference from abroad, accumulating foreign liabilities that require continuous refinancing."
           detail="The Current Account equals national savings minus domestic investment (S - I). When an economy runs persistent deficits (like the US at -3.4% of GDP or UK at -3.2%), it must attract hundreds of billions in foreign capital annually. If paired with an elevated fiscal deficit (the 'Twin Deficit' phenomenon), the sovereign becomes dependent on foreign central bank and institutional purchases of its government debt. If foreign appetite wanes or geopolitical fragmentation accelerates de-dollarization, the country faces upward yield spikes, currency depreciation, or sudden-stop capital outflows."
           takeaway="Track the Twin Deficit gap: when combined deficits exceed -8% of GDP, sovereign debt rollover requires growing real interest rate concessions."
-          defaultExpanded={true}
+          defaultExpanded={false}
         />
 
         <PlainEnglishCard
