@@ -46,7 +46,7 @@ export default function MacroPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="border-b border-slate-200 dark:border-white/[0.08] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="border-b border-slate-200 dark:border-white/[0.08] pb-6 space-y-5">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/[0.12] bg-slate-100 dark:bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-200 mb-3 shadow-inner">
             <BarChart3 className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
@@ -55,111 +55,113 @@ export default function MacroPage() {
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
             The Global Economic Engine
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-3xl font-normal leading-relaxed">
             Monitor sovereign yield curve inversions, high-frequency GDP nowcasting and PMI diffusion, real-time macro regimes (Dalio growth-inflation clock), Claudia Sahm labor triggers, external sector balances, and central bank liquidity mechanics.
           </p>
         </div>
 
-        {/* Section Navigation Tabs */}
-        <div className="flex flex-wrap items-center rounded-full p-1 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] shadow-inner text-xs self-start md:self-auto shrink-0">
-          <button
-            onClick={() => setActiveTab('all')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'all'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <span>All Intelligence</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('regimes')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'regimes'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Compass className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>Regimes</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('yields')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'yields'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Activity className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
-            <span>Yield Curves</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('leading')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'leading'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Zap className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
-            <span>Leading &amp; Nowcast</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('labor')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'labor'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Users className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-            <span>Sahm &amp; Labor</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('inflation')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'inflation'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <TrendingUp className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
-            <span>Inflation Anatomy</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('external')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'external'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Globe2 className="h-3.5 w-3.5 text-cyan-600 dark:text-cyan-400" />
-            <span>External &amp; FX</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('calendar')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'calendar'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Calendar className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
-            <span>Calendar &amp; Surprise</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('liquidity')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeTab === 'liquidity'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Landmark className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
-            <span>Liquidity &amp; Fiscal</span>
-          </button>
+        {/* Section Navigation Tabs: stacked horizontally beneath title to allow full width for both elements */}
+        <div className="overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pt-1">
+          <div className="inline-flex items-center gap-1.5 rounded-2xl p-1.5 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] shadow-inner text-xs whitespace-nowrap">
+            <button
+              onClick={() => setActiveTab('all')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'all'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <span>All Intelligence</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('regimes')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'regimes'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Compass className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Regimes</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('yields')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'yields'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Activity className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
+              <span>Yield Curves</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('leading')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'leading'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Zap className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
+              <span>Leading &amp; Nowcast</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('labor')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'labor'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Users className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+              <span>Sahm &amp; Labor</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('inflation')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'inflation'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <TrendingUp className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+              <span>Inflation Anatomy</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('external')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'external'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Globe2 className="h-3.5 w-3.5 text-cyan-600 dark:text-cyan-400" />
+              <span>External &amp; FX</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('calendar')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'calendar'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Calendar className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+              <span>Calendar &amp; Surprise</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('liquidity')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'liquidity'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Landmark className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+              <span>Liquidity &amp; Fiscal</span>
+            </button>
+          </div>
         </div>
       </div>
 

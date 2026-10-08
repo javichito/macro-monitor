@@ -51,7 +51,7 @@ export default function OverviewPage() {
     <div className="space-y-8">
       {/* Hero header with Apple high-contrast clarity */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 pb-6 border-b border-white/[0.08]">
-        <div>
+        <div className="flex-1 min-w-0">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-200 mb-3 shadow-inner">
             <Globe2 className="h-3.5 w-3.5 text-sky-400" />
             <span>Macroeconomic &amp; Wealth Intelligence</span>
