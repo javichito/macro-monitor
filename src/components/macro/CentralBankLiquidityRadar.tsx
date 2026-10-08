@@ -22,6 +22,7 @@ import {
   CentralBankProfile,
 } from '../../data/central-bank-liquidity-data';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   Activity,
   ArrowUpRight,
@@ -305,38 +306,122 @@ export function CentralBankLiquidityRadar() {
             </p>
           </div>
 
-          {/* Metric View Tabs */}
-          <div className="flex flex-wrap items-center gap-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
-            <button
-              onClick={() => setActiveTab('stack')}
-              className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
+          {/* Metric View Tabs & Data Export */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex flex-wrap items-center gap-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
+              <button
+                onClick={() => setActiveTab('stack')}
+                className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
+                  activeTab === 'stack'
+                    ? 'bg-sky-500 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Big 4 Stack ($T)
+              </button>
+              <button
+                onClick={() => setActiveTab('lead-lag')}
+                className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
+                  activeTab === 'lead-lag'
+                    ? 'bg-sky-500 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Lead-Lag vs Assets
+              </button>
+              <button
+                onClick={() => setActiveTab('us-net')}
+                className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
+                  activeTab === 'us-net'
+                    ? 'bg-sky-500 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                US Net Liquidity
+              </button>
+            </div>
+
+            {/* One-click Data Export for Researchers & Journalists */}
+            <DataExportMenu
+              title={`Central Bank Liquidity Radar [${
                 activeTab === 'stack'
-                  ? 'bg-sky-500 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              Big 4 Stack ($T)
-            </button>
-            <button
-              onClick={() => setActiveTab('lead-lag')}
-              className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
-                activeTab === 'lead-lag'
-                  ? 'bg-sky-500 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              Lead-Lag vs Assets
-            </button>
-            <button
-              onClick={() => setActiveTab('us-net')}
-              className={`rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
-                activeTab === 'us-net'
-                  ? 'bg-sky-500 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              US Net Liquidity
-            </button>
+                  ? 'Big 4 Balance Sheet Stack'
+                  : activeTab === 'lead-lag'
+                  ? `Lead-Lag vs ${selectedAsset.toUpperCase()}`
+                  : 'US Net Liquidity'
+              }]`}
+              filename={`central-bank-liquidity-${activeTab}`}
+              data={() =>
+                activeTab === 'stack'
+                  ? GLOBAL_LIQUIDITY_HISTORY.map((h) => ({
+                      date: h.date,
+                      label: h.label,
+                      fedAssetsUsdTrillion: h.fedAssetsUsd,
+                      ecbAssetsUsdTrillion: h.ecbAssetsUsd,
+                      pbocAssetsUsdTrillion: h.pbocAssetsUsd,
+                      bojAssetsUsdTrillion: h.bojAssetsUsd,
+                      totalBig4UsdTrillion: h.totalBig4Usd,
+                      impulse30dPercent: h.impulse30dPercent,
+                      regime: h.regime,
+                    }))
+                  : activeTab === 'lead-lag'
+                  ? normalizedLeadLagData.map((d) => ({
+                      date: d.date,
+                      label: d.label,
+                      normalizedLiquidityBase100: d.normalizedLiquidity,
+                      assetIndexBase100: d.selectedAssetValue,
+                      rawAssetPrice: d.rawAssetPrice,
+                    }))
+                  : GLOBAL_LIQUIDITY_HISTORY.map((h) => ({
+                      date: h.date,
+                      label: h.label,
+                      fedAssetsUsdTrillion: h.fedAssetsUsd,
+                      usNetLiquidityTrillion: h.usNetLiquidityUsd,
+                      impulse30dPercent: h.impulse30dPercent,
+                      regime: h.regime,
+                    }))
+              }
+              columns={
+                activeTab === 'stack'
+                  ? [
+                      { key: 'date', label: 'Date' },
+                      { key: 'label', label: 'Period' },
+                      { key: 'fedAssetsUsdTrillion', label: 'Fed Assets ($T)' },
+                      { key: 'ecbAssetsUsdTrillion', label: 'ECB Assets ($T)' },
+                      { key: 'pbocAssetsUsdTrillion', label: 'PBOC Assets ($T)' },
+                      { key: 'bojAssetsUsdTrillion', label: 'BOJ Assets ($T)' },
+                      { key: 'totalBig4UsdTrillion', label: 'Total Big 4 Assets ($T)' },
+                      { key: 'impulse30dPercent', label: '30d Impulse (%)' },
+                      { key: 'regime', label: 'Regime' },
+                    ]
+                  : activeTab === 'lead-lag'
+                  ? [
+                      { key: 'date', label: 'Date' },
+                      { key: 'normalizedLiquidityBase100', label: 'Big 4 Liquidity (Base 100)' },
+                      { key: 'assetIndexBase100', label: `${selectedAsset.toUpperCase()} Index (Base 100)` },
+                      { key: 'rawAssetPrice', label: 'Asset Market Price' },
+                    ]
+                  : [
+                      { key: 'date', label: 'Date' },
+                      { key: 'label', label: 'Period' },
+                      { key: 'fedAssetsUsdTrillion', label: 'Fed Total Assets ($T)' },
+                      { key: 'usNetLiquidityTrillion', label: 'US Net Liquidity ($T)' },
+                      { key: 'impulse30dPercent', label: '30d Impulse (%)' },
+                      { key: 'regime', label: 'Regime' },
+                    ]
+              }
+              metadata={{
+                description:
+                  activeTab === 'stack'
+                    ? 'Combined balance sheet expansion and contraction of Federal Reserve, ECB, PBOC, and BOJ.'
+                    : activeTab === 'lead-lag'
+                    ? `Normalized lead-lag correlation showing central bank liquidity leading ${selectedAsset.toUpperCase()}.`
+                    : 'US Net Financial Liquidity = Fed Assets minus TGA minus Reverse Repo facility.',
+                source: 'Federal Reserve H.4.1, ECB Weekly Financial Statement, People Bank of China, Bank of Japan',
+                activeTab,
+                selectedAsset: activeTab === 'lead-lag' ? selectedAsset : undefined,
+              }}
+            />
           </div>
         </div>
 

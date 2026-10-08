@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { GlobalWealthYear, CurrencyPerspective } from '../../lib/types';
 import { formatCurrency, formatPercent, formatNumber, adjustValue } from '../../lib/formatters';
+import { DataExportMenu } from '../common/DataExportMenu';
 import { Users, DollarSign, Layers } from 'lucide-react';
 
 interface WealthPyramidProps {
@@ -33,7 +34,7 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
             Comparing the share of world adult population against the share of world wealth held.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs">
+        <div className="flex flex-wrap items-center gap-2 text-xs">
           <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-slate-300">
             <span className="h-2 w-2 rounded-full bg-sky-400"></span>
             <span>% of Adults</span>
@@ -42,6 +43,41 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
             <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
             <span>% of Total Wealth</span>
           </div>
+
+          {/* One-click Data Export for Researchers & Journalists */}
+          <DataExportMenu
+            title={`Global Wealth Pyramid (${data.year})`}
+            filename={`global-wealth-pyramid-${data.year}`}
+            data={() =>
+              data.tiers.map((t) => ({
+                bracket: t.bracket,
+                adultsMillion: t.adultsMillion,
+                adultsSharePercent: Number((t.adultsShare * 100).toFixed(2)),
+                wealthTrillion: adjustValue(t.wealthTrillion, data.year, currencyPerspective),
+                wealthSharePercent: Number((t.wealthShare * 100).toFixed(2)),
+                averageWealthPerAdult: Math.round(
+                  (adjustValue(t.wealthTrillion, data.year, currencyPerspective) * 1_000_000_000_000) /
+                    (t.adultsMillion * 1_000_000)
+                ),
+              }))
+            }
+            columns={[
+              { key: 'bracket', label: 'Wealth Bracket Tier' },
+              { key: 'adultsMillion', label: 'Adults (Millions)' },
+              { key: 'adultsSharePercent', label: 'Share of Adult Population (%)' },
+              { key: 'wealthTrillion', label: `Aggregate Wealth ($T ${currencyPerspective.toUpperCase()})` },
+              { key: 'wealthSharePercent', label: 'Share of Global Wealth (%)' },
+              { key: 'averageWealthPerAdult', label: 'Average Wealth per Adult ($)' },
+            ]}
+            metadata={{
+              description: `Distribution of global private net worth across wealth tiers in ${data.year}.`,
+              source: 'UBS Global Wealth Databook, Credit Suisse',
+              perspective: `${currencyPerspective.toUpperCase()} USD`,
+              year: data.year,
+              totalWealthTrillion: adjustValue(data.totalWealthTrillion, data.year, currencyPerspective),
+              adultPopulationBillions: data.adultPopulationBillions,
+            }}
+          />
         </div>
       </div>
 

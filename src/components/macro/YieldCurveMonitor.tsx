@@ -19,6 +19,7 @@ import {
 } from '../../data/yield-curve-data';
 import { formatPercent } from '../../lib/formatters';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   Activity,
   AlertTriangle,
@@ -147,6 +148,58 @@ export function YieldCurveMonitor() {
               1980–2026 Spreads
             </button>
           </div>
+
+          {/* One-click Data Export for Researchers & Journalists */}
+          <DataExportMenu
+            title={`Sovereign Yield Curve [${selectedSovereign} - ${activeTab === 'term-structure' ? 'Term Structure' : 'Historical Spreads'}]`}
+            filename={`yield-curve-${selectedSovereign.toLowerCase()}-${activeTab}`}
+            data={() =>
+              activeTab === 'term-structure'
+                ? mergedCurveData.map((d) => ({
+                    sovereign: selectedSovereign,
+                    tenor: d.tenor,
+                    currentYieldPercent: d.current,
+                    yieldOneYearAgoPercent: d.oneYearAgo,
+                    preInversionYieldPercent: d.preInversion,
+                  }))
+                : HISTORICAL_YIELD_SPREADS.map((s) => ({
+                    year: s.year,
+                    spread10Y2YPercent: s.us10Y2YSpread,
+                    spread10Y3MPercent: s.us10Y3MSpread,
+                    nominal10YYieldPercent: s.us10YNominal,
+                    isInverted: s.isInverted ? 'Yes' : 'No',
+                    isRecession: s.isRecession ? 'Yes' : 'No',
+                  }))
+            }
+            columns={
+              activeTab === 'term-structure'
+                ? [
+                    { key: 'sovereign', label: 'Sovereign' },
+                    { key: 'tenor', label: 'Maturity Tenor' },
+                    { key: 'currentYieldPercent', label: 'Current Yield (%)' },
+                    { key: 'yieldOneYearAgoPercent', label: '1-Year Ago Yield (%)' },
+                    { key: 'preInversionYieldPercent', label: 'Pre-Inversion Benchmark Yield (%)' },
+                  ]
+                : [
+                    { key: 'year', label: 'Year' },
+                    { key: 'spread10Y2YPercent', label: '10Y – 2Y Spread (%)' },
+                    { key: 'spread10Y3MPercent', label: '10Y – 3M Spread (%)' },
+                    { key: 'nominal10YYieldPercent', label: '10Y Nominal Yield (%)' },
+                    { key: 'isInverted', label: 'Curve Inverted' },
+                    { key: 'isRecession', label: 'US Recession Period' },
+                  ]
+            }
+            metadata={{
+              description:
+                activeTab === 'term-structure'
+                  ? `Sovereign benchmark yield curve across tenors for ${curveData.name}.`
+                  : 'Historical US Treasury term premium and yield curve inversion spreads.',
+              source: 'Federal Reserve Bank of St. Louis (FRED), US Department of the Treasury, Bundesbank, MOF Japan',
+              sovereign: selectedSovereign,
+              viewTab: activeTab,
+              unit: 'Percent (%)',
+            }}
+          />
         </div>
       </div>
 

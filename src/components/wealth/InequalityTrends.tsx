@@ -14,6 +14,7 @@ import {
 } from 'recharts';
 import { GLOBAL_WEALTH_HISTORY } from '../../data/global-wealth';
 import { formatPercent } from '../../lib/formatters';
+import { DataExportMenu } from '../common/DataExportMenu';
 import { TrendingUp, ShieldAlert } from 'lucide-react';
 
 export function InequalityTrends() {
@@ -41,28 +42,50 @@ export function InequalityTrends() {
           </p>
         </div>
 
-        {/* View toggle */}
-        <div className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1 text-xs">
-          <button
-            onClick={() => setViewMode('shares')}
-            className={`rounded-full px-3 py-1 font-medium transition-all ${
-              viewMode === 'shares'
-                ? 'bg-white/20 text-white shadow-sm'
-                : 'text-white/60 hover:text-white'
-            }`}
-          >
-            Tier Shares (%)
-          </button>
-          <button
-            onClick={() => setViewMode('gini')}
-            className={`rounded-full px-3 py-1 font-medium transition-all ${
-              viewMode === 'gini'
-                ? 'bg-white/20 text-white shadow-sm'
-                : 'text-white/60 hover:text-white'
-            }`}
-          >
-            Gini Coefficient
-          </button>
+        <div className="flex items-center gap-2.5 self-start sm:self-auto">
+          {/* View toggle */}
+          <div className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1 text-xs">
+            <button
+              onClick={() => setViewMode('shares')}
+              className={`rounded-full px-3 py-1 font-medium transition-all ${
+                viewMode === 'shares'
+                  ? 'bg-white/20 text-white shadow-sm'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              Tier Shares (%)
+            </button>
+            <button
+              onClick={() => setViewMode('gini')}
+              className={`rounded-full px-3 py-1 font-medium transition-all ${
+                viewMode === 'gini'
+                  ? 'bg-white/20 text-white shadow-sm'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              Gini Coefficient
+            </button>
+          </div>
+
+          {/* One-click Data Export for Researchers & Journalists */}
+          <DataExportMenu
+            title="Global Wealth Inequality Trajectory (1980–2026)"
+            filename="wealth-inequality-trajectory-1980-2026"
+            data={chartData}
+            columns={[
+              { key: 'year', label: 'Year' },
+              { key: 'top1', label: 'Top 1% Wealth Share (%)' },
+              { key: 'top10', label: 'Top 10% Wealth Share (%)' },
+              { key: 'middle40', label: 'Middle 40% Wealth Share (%)' },
+              { key: 'bottom50', label: 'Bottom 50% Wealth Share (%)' },
+              { key: 'gini', label: 'Gini Coefficient (0–1)' },
+            ]}
+            metadata={{
+              description: 'Historical wealth concentration across population tiers and Gini coefficient.',
+              source: 'Credit Suisse / UBS Global Wealth Databook, World Inequality Database (WID)',
+              unit: 'Percentage of global wealth (%) and Gini coefficient (0-1)',
+            }}
+          />
         </div>
       </div>
 

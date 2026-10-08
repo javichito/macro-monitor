@@ -21,6 +21,7 @@ import {
   classifySahmStatus,
 } from '../../data/labor-market-data';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   Users,
   AlertOctagon,
@@ -142,6 +143,67 @@ export function SahmRuleLaborRadar() {
               Phillips Curve
             </button>
           </div>
+
+          {/* One-click Data Export for Researchers & Journalists */}
+          <DataExportMenu
+            title={`Labor Market & Claudia Sahm Recession Radar [${laborProfile.countryName} - ${
+              activeView === 'sahm-gauge' ? 'Sahm Rule Indicator History' : 'Phillips Curve Coordinates'
+            }]`}
+            filename={`labor-market-sahm-${laborProfile.countryCode.toLowerCase()}-${activeView}`}
+            data={() =>
+              activeView === 'sahm-gauge'
+                ? US_LABOR_HISTORY.map((h) => ({
+                    year: h.year,
+                    unemploymentRatePercent: h.unemploymentRate,
+                    underemploymentRatePercent: h.underemploymentRate,
+                    laborForceParticipationPercent: h.laborForceParticipation,
+                    sahmIndicatorDeltaPercent: h.sahmIndicatorValue,
+                    sahmTriggered: h.sahmTriggered ? 'Yes' : 'No',
+                    jobOpeningsPerUnemployedRatio: h.jobOpeningsPerUnemployed,
+                    wageGrowthYoyPercent: h.wageGrowthYoy,
+                    productivityGrowthYoyPercent: h.productivityGrowthYoy,
+                  }))
+                : filteredPhillipsPoints.map((p) => ({
+                    year: p.year,
+                    era: p.era,
+                    unemploymentRatePercent: p.unemployment,
+                    inflationRatePercent: p.inflation,
+                    macroMilestone: p.note,
+                  }))
+            }
+            columns={
+              activeView === 'sahm-gauge'
+                ? [
+                    { key: 'year', label: 'Year' },
+                    { key: 'unemploymentRatePercent', label: 'Unemployment Rate (%)' },
+                    { key: 'underemploymentRatePercent', label: 'Underemployment U-6 (%)' },
+                    { key: 'laborForceParticipationPercent', label: 'Labor Force Participation (%)' },
+                    { key: 'sahmIndicatorDeltaPercent', label: 'Claudia Sahm Indicator (% pts)' },
+                    { key: 'sahmTriggered', label: 'Sahm Rule Triggered (≥ 0.50%)' },
+                    { key: 'jobOpeningsPerUnemployedRatio', label: 'Job Openings per Jobseeker (Ratio)' },
+                    { key: 'wageGrowthYoyPercent', label: 'Wage Growth YoY (%)' },
+                    { key: 'productivityGrowthYoyPercent', label: 'Labor Productivity YoY (%)' },
+                  ]
+                : [
+                    { key: 'year', label: 'Year' },
+                    { key: 'era', label: 'Decade Era' },
+                    { key: 'unemploymentRatePercent', label: 'Unemployment Rate (%)' },
+                    { key: 'inflationRatePercent', label: 'CPI Inflation Rate (%)' },
+                    { key: 'macroMilestone', label: 'Macro Regime Context' },
+                  ]
+            }
+            metadata={{
+              description:
+                activeView === 'sahm-gauge'
+                  ? 'High-frequency labor dynamics and the Claudia Sahm 0.50% recession inflection rule.'
+                  : 'Empirical Phillips Curve trade-off between unemployment and inflation across economic eras.',
+              source: 'Bureau of Labor Statistics (BLS), Federal Reserve Bank of St. Louis (FRED)',
+              country: laborProfile.countryName,
+              countryCode: laborProfile.countryCode,
+              activeView,
+              eraFilter: activeView === 'phillips-curve' ? activeEra : undefined,
+            }}
+          />
         </div>
       </div>
 

@@ -23,6 +23,7 @@ import {
   calculateNowcastSurprise,
 } from '../../data/leading-indicators-data';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   Gauge,
   Zap,
@@ -154,52 +155,159 @@ export function LeadingIndicatorsRadar() {
           </p>
         </div>
 
-        {/* Navigation View Switcher */}
-        <div className="flex flex-wrap items-center rounded-full p-1 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] shadow-inner text-xs self-start lg:self-auto shrink-0">
-          <button
-            onClick={() => setActiveView('pmi')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+        {/* Navigation View Switcher & Data Export */}
+        <div className="flex flex-wrap items-center gap-2.5 self-start lg:self-auto shrink-0">
+          <div className="flex flex-wrap items-center rounded-full p-1 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] shadow-inner text-xs">
+            <button
+              onClick={() => setActiveView('pmi')}
+              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeView === 'pmi'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+              }`}
+            >
+              <Gauge className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
+              <span>PMI Radar (50-Mark)</span>
+            </button>
+            <button
+              onClick={() => setActiveView('lei')}
+              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeView === 'lei'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+              }`}
+            >
+              <Layers className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+              <span>Conference Board LEI</span>
+            </button>
+            <button
+              onClick={() => setActiveView('nowcast')}
+              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeView === 'nowcast'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+              }`}
+            >
+              <Sparkles className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Atlanta Fed GDPNow</span>
+            </button>
+            <button
+              onClick={() => setActiveView('overview')}
+              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeView === 'overview'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+              }`}
+            >
+              <Clock className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+              <span>Summary Synthesis</span>
+            </button>
+          </div>
+
+          {/* One-click Data Export for Researchers & Journalists */}
+          <DataExportMenu
+            title={`Leading Indicators Radar [${
               activeView === 'pmi'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Gauge className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
-            <span>PMI Radar (50-Mark)</span>
-          </button>
-          <button
-            onClick={() => setActiveView('lei')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeView === 'lei'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Layers className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
-            <span>Conference Board LEI</span>
-          </button>
-          <button
-            onClick={() => setActiveView('nowcast')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeView === 'nowcast'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Sparkles className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>Atlanta Fed GDPNow</span>
-          </button>
-          <button
-            onClick={() => setActiveView('overview')}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
-              activeView === 'overview'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
-            }`}
-          >
-            <Clock className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-            <span>Summary Synthesis</span>
-          </button>
+                ? `PMI Diffusion Radar (${pmiProfile.name})`
+                : activeView === 'lei'
+                ? 'Conference Board 10-Component LEI'
+                : activeView === 'nowcast'
+                ? 'Atlanta Fed GDPNow vs Consensus Tracker'
+                : 'Global Leading Indicators Synthesis'
+            }]`}
+            filename={`leading-indicators-${activeView}`}
+            data={() =>
+              activeView === 'pmi'
+                ? pmiProfile.historicalSeries.map((h) => ({
+                    period: h.period,
+                    manufacturingPmi: h.manufacturing,
+                    servicesPmi: h.services,
+                    compositePmi: h.composite,
+                    newOrdersIndex: h.newOrders ?? '',
+                    inventoriesIndex: h.inventories ?? '',
+                  }))
+                : activeView === 'lei'
+                ? LEI_TEN_COMPONENTS.map((c) => ({
+                    id: c.id,
+                    name: c.name,
+                    category: c.category,
+                    latestValue: c.latestValue,
+                    sixMonthChangePct: c.sixMonthChangePct,
+                    netContribution: c.netContribution,
+                    weightPct: c.weightPct,
+                    leadingMechanism: c.leadingMechanism,
+                  }))
+                : activeView === 'nowcast'
+                ? GDP_NOWCAST_DATA.quarterlyComparison.map((q) => ({
+                    quarter: q.quarter,
+                    atlantaFedGdpNowPercent: q.atlantaFedGdpNow,
+                    nyFedNowcastPercent: q.nyFedNowcast,
+                    blueChipConsensusPercent: q.blueChipConsensus,
+                    officialBeaGdpPercent: q.officialBeaGdp ?? '',
+                  }))
+                : SOVEREIGN_PMI_PROFILES.map((p) => ({
+                    economyCode: p.economyCode,
+                    economyName: p.name,
+                    manufacturingPmi: p.currentManufacturing,
+                    servicesPmi: p.currentServices,
+                    compositePmi: p.currentComposite,
+                    manufacturingStatus: p.manufacturingStatus,
+                    servicesStatus: p.servicesStatus,
+                    compositeStatus: p.compositeStatus,
+                  }))
+            }
+            columns={
+              activeView === 'pmi'
+                ? [
+                    { key: 'period', label: 'Period' },
+                    { key: 'manufacturingPmi', label: 'Manufacturing PMI (Diffusion 50)' },
+                    { key: 'servicesPmi', label: 'Services PMI (Diffusion 50)' },
+                    { key: 'compositePmi', label: 'Composite PMI (Diffusion 50)' },
+                    { key: 'newOrdersIndex', label: 'New Orders Sub-Index' },
+                    { key: 'inventoriesIndex', label: 'Inventories Sub-Index' },
+                  ]
+                : activeView === 'lei'
+                ? [
+                    { key: 'name', label: 'Component Name' },
+                    { key: 'category', label: 'Category' },
+                    { key: 'latestValue', label: 'Latest Print' },
+                    { key: 'sixMonthChangePct', label: '6-Month Annualized Growth (%)' },
+                    { key: 'netContribution', label: 'Net Contribution' },
+                    { key: 'weightPct', label: 'Basket Weight (%)' },
+                    { key: 'leadingMechanism', label: 'Leading Mechanism' },
+                  ]
+                : activeView === 'nowcast'
+                ? [
+                    { key: 'quarter', label: 'Quarter' },
+                    { key: 'atlantaFedGdpNowPercent', label: 'Atlanta Fed GDPNow Estimate (%)' },
+                    { key: 'nyFedNowcastPercent', label: 'NY Fed Staff Nowcast (%)' },
+                    { key: 'blueChipConsensusPercent', label: 'Blue Chip Consensus Survey (%)' },
+                    { key: 'officialBeaGdpPercent', label: 'BEA Final Reported Print (%)' },
+                  ]
+                : [
+                    { key: 'economyCode', label: 'Code' },
+                    { key: 'economyName', label: 'Economy' },
+                    { key: 'manufacturingPmi', label: 'Manufacturing PMI' },
+                    { key: 'servicesPmi', label: 'Services PMI' },
+                    { key: 'compositePmi', label: 'Composite PMI' },
+                    { key: 'manufacturingStatus', label: 'Manufacturing Status' },
+                    { key: 'servicesStatus', label: 'Services Status' },
+                    { key: 'compositeStatus', label: 'Composite Status' },
+                  ]
+            }
+            metadata={{
+              description:
+                activeView === 'pmi'
+                  ? `S&P Global / ISM Purchasing Managers' Index (PMI) surveys for ${pmiProfile.name}.`
+                  : activeView === 'lei'
+                  ? 'The Conference Board Leading Economic Index (LEI) 10 forward-looking cyclical components.'
+                  : activeView === 'nowcast'
+                  ? 'Federal Reserve Bank of Atlanta GDPNow mathematical real-time GDP estimate vs consensus.'
+                  : 'Synthesized global leading indicators overview across major trading economies.',
+              source: 'S&P Global / ISM, The Conference Board, Federal Reserve Bank of Atlanta',
+              activeView,
+            }}
+          />
         </div>
       </div>
 

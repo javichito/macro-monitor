@@ -14,6 +14,7 @@ import { GLOBAL_ASSET_HISTORY } from '../../data/asset-breakdown';
 import { AssetCategory, CurrencyPerspective } from '../../lib/types';
 import { adjustValue, formatCurrency, formatPercent } from '../../lib/formatters';
 import { SubAssetDetailModal } from './SubAssetDetailModal';
+import { DataExportMenu } from '../common/DataExportMenu';
 import { Layers, PieChart, ChevronRight, ShieldAlert, ArrowUpRight } from 'lucide-react';
 
 interface AssetEvolutionChartProps {
@@ -224,6 +225,40 @@ export function AssetEvolutionChart({
                 Share (%)
               </button>
             </div>
+
+            {/* One-click Data Export for Researchers & Journalists */}
+            <DataExportMenu
+              title={`Global Asset Allocation Stack (1980–2026) [${granularity === 'macro' ? 'Macro Classes' : 'Sub-Sectors'}]`}
+              filename={`global-asset-allocation-${granularity}-${viewType}`}
+              data={chartData}
+              columns={
+                granularity === 'macro'
+                  ? [
+                      { key: 'year', label: 'Year' },
+                      { key: 'realEstate', label: viewType === 'share' ? 'Real Estate (%)' : 'Real Estate ($T)' },
+                      { key: 'equities', label: viewType === 'share' ? 'Equities (%)' : 'Equities ($T)' },
+                      { key: 'bonds', label: viewType === 'share' ? 'Bonds & Pensions (%)' : 'Bonds & Pensions ($T)' },
+                      { key: 'cash', label: viewType === 'share' ? 'Cash & Deposits (%)' : 'Cash & Deposits ($T)' },
+                      { key: 'gold', label: viewType === 'share' ? 'Gold & Commodities (%)' : 'Gold & Commodities ($T)' },
+                      { key: 'crypto', label: viewType === 'share' ? 'Digital Assets & Crypto (%)' : 'Digital Assets & Crypto ($T)' },
+                    ]
+                  : [
+                      { key: 'year', label: 'Year' },
+                      ...SUB_AREAS.map((a) => ({
+                        key: a.key,
+                        label: viewType === 'share' ? `${a.name} (%)` : `${a.name} ($T)`,
+                      })),
+                    ]
+              }
+              metadata={{
+                description: 'Longitudinal global asset allocation across tangible property and contractual financial claims.',
+                source: 'Credit Suisse / UBS Global Wealth Report, Federal Reserve Flow of Funds, BIS, World Gold Council',
+                perspective: `${currencyPerspective.toUpperCase()} USD`,
+                unit: viewType === 'share' ? 'Percentage share of total gross assets (%)' : 'Trillion USD',
+                granularity,
+                viewType,
+              }}
+            />
           </div>
         </div>
 

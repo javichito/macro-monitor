@@ -21,6 +21,7 @@ import {
   Check,
   Users,
 } from 'lucide-react';
+import { DataExportMenu } from '../common/DataExportMenu';
 
 interface CountryComparisonProps {
   selectedYear: number;
@@ -271,6 +272,62 @@ export function CountryComparison({
                   </>
                 )}
               </button>
+
+              {/* One-click Data Export for Researchers & Journalists */}
+              <DataExportMenu
+                title={`Sovereign Duel: ${countryA.name} vs ${countryB.name} (${selectedYear})`}
+                filename={`sovereign-duel-${countryA.code.toLowerCase()}-vs-${countryB.code.toLowerCase()}-${selectedYear}`}
+                data={() => [
+                  {
+                    code: countryA.code,
+                    name: countryA.name,
+                    region: countryA.region,
+                    meanWealthPerAdultUsd: Math.round(adjMeanWealthA),
+                    medianWealthPerAdultUsd: Math.round(adjMedianWealthA),
+                    totalWealthTrillionUsd: Number((adjTotalWealthA / 1_000_000_000_000).toFixed(2)),
+                    debtToGdpPercent: metricsA.debtToGdp,
+                    giniCoefficient: metricsA.gini,
+                    financialAssetSharePercent: metricsA.assetMix.financialShare,
+                    nonFinancialAssetSharePercent: metricsA.assetMix.nonFinancialShare,
+                    unemploymentRatePercent: laborA?.unemploymentRate ?? '',
+                    sahmIndicatorPercent: laborA?.sahmIndicatorValue ?? '',
+                  },
+                  {
+                    code: countryB.code,
+                    name: countryB.name,
+                    region: countryB.region,
+                    meanWealthPerAdultUsd: Math.round(adjMeanWealthB),
+                    medianWealthPerAdultUsd: Math.round(adjMedianWealthB),
+                    totalWealthTrillionUsd: Number((adjTotalWealthB / 1_000_000_000_000).toFixed(2)),
+                    debtToGdpPercent: metricsB.debtToGdp,
+                    giniCoefficient: metricsB.gini,
+                    financialAssetSharePercent: metricsB.assetMix.financialShare,
+                    nonFinancialAssetSharePercent: metricsB.assetMix.nonFinancialShare,
+                    unemploymentRatePercent: laborB?.unemploymentRate ?? '',
+                    sahmIndicatorPercent: laborB?.sahmIndicatorValue ?? '',
+                  },
+                ]}
+                columns={[
+                  { key: 'code', label: 'Country Code' },
+                  { key: 'name', label: 'Country' },
+                  { key: 'region', label: 'Region' },
+                  { key: 'meanWealthPerAdultUsd', label: `Mean Wealth per Adult ($ ${currencyPerspective.toUpperCase()})` },
+                  { key: 'medianWealthPerAdultUsd', label: `Median Wealth per Adult ($ ${currencyPerspective.toUpperCase()})` },
+                  { key: 'totalWealthTrillionUsd', label: `Total Private Wealth ($T ${currencyPerspective.toUpperCase()})` },
+                  { key: 'debtToGdpPercent', label: 'Debt-to-GDP (%)' },
+                  { key: 'giniCoefficient', label: 'Gini Coefficient (0–1)' },
+                  { key: 'financialAssetSharePercent', label: 'Financial Assets Share (%)' },
+                  { key: 'nonFinancialAssetSharePercent', label: 'Real Estate & Physical Assets Share (%)' },
+                  { key: 'unemploymentRatePercent', label: 'Unemployment Rate (%)' },
+                  { key: 'sahmIndicatorPercent', label: 'Sahm Rule Metric (%)' },
+                ]}
+                metadata={{
+                  description: `Head-to-head macroeconomic balance sheet comparison between ${countryA.name} and ${countryB.name}.`,
+                  source: 'UBS Global Wealth Databook, IMF, World Bank, FRED',
+                  year: selectedYear,
+                  perspective: `${currencyPerspective.toUpperCase()} USD`,
+                }}
+              />
             </div>
             <div className="flex flex-wrap gap-1.5">
               {DUEL_PRESETS.map((p) => {

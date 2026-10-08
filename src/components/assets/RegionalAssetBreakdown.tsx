@@ -40,6 +40,7 @@ import {
   Info,
   Layers,
 } from 'lucide-react';
+import { DataExportMenu } from '../common/DataExportMenu';
 
 interface RegionalAssetBreakdownProps {
   currencyPerspective: CurrencyPerspective;
@@ -288,28 +289,47 @@ export function RegionalAssetBreakdown({
               </button>
             </div>
 
-            {/* Units Toggle ($T vs %) */}
-            <div className="inline-flex rounded-xl bg-slate-100 dark:bg-white/[0.05] p-1 border border-slate-200 dark:border-white/[0.08] text-xs font-medium self-start sm:self-auto">
-              <button
-                onClick={() => setUnitType('trillion')}
-                className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                  unitType === 'trillion'
-                    ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white font-semibold shadow-sm'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                Total Value ($T)
-              </button>
-              <button
-                onClick={() => setUnitType('share')}
-                className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                  unitType === 'share'
-                    ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white font-semibold shadow-sm'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                Share of Total (%)
-              </button>
+            {/* Units Toggle ($T vs %) & Data Export */}
+            <div className="flex items-center gap-2.5 self-start sm:self-auto">
+              <div className="inline-flex rounded-xl bg-slate-100 dark:bg-white/[0.05] p-1 border border-slate-200 dark:border-white/[0.08] text-xs font-medium">
+                <button
+                  onClick={() => setUnitType('trillion')}
+                  className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
+                    unitType === 'trillion'
+                      ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white font-semibold shadow-sm'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  Total Value ($T)
+                </button>
+                <button
+                  onClick={() => setUnitType('share')}
+                  className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
+                    unitType === 'share'
+                      ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white font-semibold shadow-sm'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  Share of Total (%)
+                </button>
+              </div>
+
+              {/* One-click Data Export for Researchers & Journalists */}
+              <DataExportMenu
+                title={`Regional Asset Breakdown (1980–2026) [${viewMode === 'by-region' ? 'By Region Portfolio' : 'By Asset Class Distribution'}]`}
+                filename={`regional-asset-breakdown-${viewMode}-${unitType}`}
+                data={chartData}
+                metadata={{
+                  description: 'Historical regional wealth and asset composition across major economic zones.',
+                  source: 'UBS Global Wealth Report, BIS, Regional Central Banks',
+                  perspective: `${currencyPerspective.toUpperCase()} USD`,
+                  unit: unitType === 'share' ? 'Percentage share (%)' : 'Trillion USD',
+                  viewMode,
+                  unitType,
+                  selectedRegion,
+                  selectedAssetClass,
+                }}
+              />
             </div>
           </div>
 

@@ -28,6 +28,7 @@ import {
 } from '../../data/macro-calendar-data';
 import latestCalendarStatus from '../../data/latest-calendar-status.json';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 import type {
   EconomicReleaseEvent,
   EconomicReleaseCategory,
@@ -316,6 +317,107 @@ export function MacroCalendarRadar() {
           <Landmark className="h-3.5 w-3.5" />
           <span>Central Bank Blackout &amp; Policy Path</span>
         </button>
+
+        {/* One-click Data Export for Researchers & Journalists */}
+        <div className="ml-auto">
+          <DataExportMenu
+            title={`Macro Calendar & Economic Surprise [${
+              activeTab === 'cesi'
+                ? `Citi Economic Surprise Index (${selectedCesiRegion})`
+                : activeTab === 'central_banks'
+                ? 'Central Bank Rate Decisions & Blackout Dates'
+                : 'Economic Release Calendar & Surprise Deltas'
+            }]`}
+            filename={`macro-calendar-${activeTab}`}
+            data={() =>
+              activeTab === 'cesi'
+                ? activeCesiProfile.history.map((h) => ({
+                    date: h.date,
+                    usSurprise: h.usSurprise,
+                    eurozoneSurprise: h.eurozoneSurprise,
+                    globalSurprise: h.globalSurprise,
+                  }))
+                : activeTab === 'central_banks'
+                ? CENTRAL_BANK_MEETINGS_2026.map((m) => ({
+                    id: m.id,
+                    institution: m.institution,
+                    code: m.code,
+                    date: m.date,
+                    policyRateCurrentPercent: m.policyRateCurrent,
+                    expectedAction: m.expectedAction,
+                    marketPricedCutPct: m.marketPricedProbabilities.cut,
+                    marketPricedHoldPct: m.marketPricedProbabilities.hold,
+                    marketPricedHikePct: m.marketPricedProbabilities.hike,
+                    blackoutStart: m.blackoutStart,
+                    blackoutEnd: m.blackoutEnd,
+                    significance: m.significance,
+                  }))
+                : filteredEvents.map((e) => ({
+                    id: e.id,
+                    countryCode: e.countryCode,
+                    title: e.title,
+                    category: e.category,
+                    importance: e.importance,
+                    scheduledDate: e.scheduledDate,
+                    period: e.period,
+                    actual: e.actual ?? '',
+                    consensus: e.consensus ?? '',
+                    previous: e.previous ?? '',
+                    surpriseDelta: e.surpriseDelta ?? '',
+                    surpriseNormalized: e.surpriseNormalized ?? '',
+                    direction: e.direction ?? '',
+                    status: e.status,
+                    unit: e.unit,
+                  }))
+            }
+            columns={
+              activeTab === 'cesi'
+                ? [
+                    { key: 'date', label: 'Date' },
+                    { key: 'usSurprise', label: 'US Citi Economic Surprise Index' },
+                    { key: 'eurozoneSurprise', label: 'Eurozone Citi Economic Surprise Index' },
+                    { key: 'globalSurprise', label: 'Global Citi Economic Surprise Index' },
+                  ]
+                : activeTab === 'central_banks'
+                ? [
+                    { key: 'institution', label: 'Central Bank' },
+                    { key: 'code', label: 'Meeting Identifier' },
+                    { key: 'date', label: 'Meeting Date' },
+                    { key: 'policyRateCurrentPercent', label: 'Current Policy Rate (%)' },
+                    { key: 'expectedAction', label: 'Priced Action' },
+                    { key: 'marketPricedCutPct', label: 'Market Probability Cut (%)' },
+                    { key: 'marketPricedHoldPct', label: 'Market Probability Hold (%)' },
+                    { key: 'blackoutStart', label: 'Blackout Starts' },
+                    { key: 'blackoutEnd', label: 'Blackout Ends' },
+                    { key: 'significance', label: 'Significance & Focus' },
+                  ]
+                : [
+                    { key: 'scheduledDate', label: 'Release Date' },
+                    { key: 'countryCode', label: 'Country' },
+                    { key: 'title', label: 'Indicator / Release' },
+                    { key: 'category', label: 'Category' },
+                    { key: 'importance', label: 'Impact Tier' },
+                    { key: 'actual', label: 'Actual Print' },
+                    { key: 'consensus', label: 'Consensus Survey' },
+                    { key: 'previous', label: 'Prior Period' },
+                    { key: 'surpriseDelta', label: 'Surprise Delta' },
+                    { key: 'surpriseNormalized', label: 'Normalized Surprise (σ)' },
+                    { key: 'direction', label: 'Direction' },
+                    { key: 'unit', label: 'Unit' },
+                  ]
+            }
+            metadata={{
+              description:
+                activeTab === 'cesi'
+                  ? 'Citi Economic Surprise Index historical standard-deviation beats and misses.'
+                  : activeTab === 'central_banks'
+                  ? 'Central bank meeting schedule, interest rate expectations, and statutory blackout windows.'
+                  : 'High-frequency macroeconomic indicator calendar with consensus expectations and outcome deltas.',
+              source: 'Citigroup, Federal Reserve, ECB, Bureau of Labor Statistics, Census Bureau',
+              activeTab,
+            }}
+          />
+        </div>
       </div>
 
       {/* =========================================================================

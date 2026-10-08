@@ -25,6 +25,7 @@ import {
 } from '../../data/external-sector-data';
 import latestExternalStatus from '../../data/latest-external-status.json';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   Globe2,
   Ship,
@@ -176,63 +177,179 @@ export function ExternalSectorRadar() {
             </p>
           </div>
 
-          {/* Tab Navigation Controls */}
-          <div className="flex flex-wrap items-center gap-1.5 rounded-xl bg-slate-100 dark:bg-white/[0.04] p-1 border border-slate-200 dark:border-white/[0.08] text-xs self-start lg:self-auto shrink-0">
-            <button
-              onClick={() => setActiveTab('overview')}
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
-                activeTab === 'overview'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Layers className="h-3.5 w-3.5" />
-              <span>Overview</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('bop')}
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
-                activeTab === 'bop'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Scale className="h-3.5 w-3.5" />
-              <span>Current Account &amp; BoP</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('fx-reer')}
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
-                activeTab === 'fx-reer'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Coins className="h-3.5 w-3.5" />
-              <span>DXY &amp; REER FX</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('gscpi')}
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
-                activeTab === 'gscpi'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Ship className="h-3.5 w-3.5" />
-              <span>GSCPI Supply Chain</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('capital-flows')}
-              className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
-                activeTab === 'capital-flows'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Landmark className="h-3.5 w-3.5" />
-              <span>TIC Capital Flows</span>
-            </button>
+          {/* Tab Navigation Controls & Data Export */}
+          <div className="flex flex-wrap items-center gap-2.5 self-start lg:self-auto shrink-0">
+            <div className="flex flex-wrap items-center gap-1.5 rounded-xl bg-slate-100 dark:bg-white/[0.04] p-1 border border-slate-200 dark:border-white/[0.08] text-xs">
+              <button
+                onClick={() => setActiveTab('overview')}
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
+                  activeTab === 'overview'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Layers className="h-3.5 w-3.5" />
+                <span>Overview</span>
+              </button>
+              <button
+                onClick={() => setActiveTab('bop')}
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
+                  activeTab === 'bop'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Scale className="h-3.5 w-3.5" />
+                <span>Current Account &amp; BoP</span>
+              </button>
+              <button
+                onClick={() => setActiveTab('fx-reer')}
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
+                  activeTab === 'fx-reer'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Coins className="h-3.5 w-3.5" />
+                <span>DXY &amp; REER FX</span>
+              </button>
+              <button
+                onClick={() => setActiveTab('gscpi')}
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
+                  activeTab === 'gscpi'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Ship className="h-3.5 w-3.5" />
+                <span>GSCPI Supply Chain</span>
+              </button>
+              <button
+                onClick={() => setActiveTab('capital-flows')}
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
+                  activeTab === 'capital-flows'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <Landmark className="h-3.5 w-3.5" />
+                <span>TIC Capital Flows</span>
+              </button>
+            </div>
+
+            {/* One-click Data Export for Researchers & Journalists */}
+            <DataExportMenu
+              title={`External Sector Radar [${
+                activeTab === 'overview' || activeTab === 'bop'
+                  ? 'Current Account & Balance of Payments'
+                  : activeTab === 'fx-reer'
+                  ? 'REER Real Effective Exchange Rates'
+                  : activeTab === 'gscpi'
+                  ? 'NY Fed Global Supply Chain Pressure Index'
+                  : 'US TIC Foreign Treasury Capital Flows'
+              }]`}
+              filename={`external-sector-${activeTab}`}
+              data={() =>
+                activeTab === 'overview' || activeTab === 'bop'
+                  ? CURRENT_ACCOUNT_PROFILES.map((p) => ({
+                      countryCode: p.countryCode,
+                      countryName: p.countryName,
+                      bloc: p.bloc,
+                      currentAccountPercentGdp: p.currentAccountPercentGdp,
+                      fiscalBalancePercentGdp: p.fiscalBalancePercentGdp,
+                      twinDeficitGapPercent: calculateTwinDeficitGap(p.fiscalBalancePercentGdp, p.currentAccountPercentGdp),
+                      tradeBalanceBillionUSD: p.tradeBalanceBillionUSD,
+                      fxReservesBillionUSD: p.fxReservesBillionUSD,
+                      externalDebtToGdp: p.externalDebtToGdp,
+                      solvencyRiskLevel: p.solvencyRiskLevel,
+                    }))
+                  : activeTab === 'fx-reer'
+                  ? REER_CURRENCY_PROFILES.map((r) => ({
+                      currencyCode: r.currencyCode,
+                      currencyName: r.currencyName,
+                      countryName: r.countryName,
+                      currentReer: r.currentReer,
+                      tenYearAverageReer: r.tenYearAverageReer,
+                      valuationDeviationPct: r.valuationDeviationPct,
+                      valuationStatus: r.valuationStatus,
+                      devaluationRiskScore: r.devaluationRiskScore,
+                      keyDriver: r.keyDriver,
+                    }))
+                  : activeTab === 'gscpi'
+                  ? GSCPI_PROFILE_DATA.historicalSeries.map((g) => ({
+                      period: g.period,
+                      stdDevLevel: g.stdDevLevel,
+                      headlineCpiLaggedLead: g.headlineCpiLaggedLead,
+                      eventAnnotation: g.eventAnnotation ?? '',
+                    }))
+                  : CAPITAL_FLOWS_TIC_DATA.holders.map((h) => ({
+                      countryCode: h.countryCode,
+                      countryName: h.countryName,
+                      holdingsBillionUSD: h.holdingsBillionUSD,
+                      twelveMonthChangeBillionUSD: h.twelveMonthChangeBillionUSD,
+                      shareOfForeignHoldingsPct: h.shareOfForeignHoldingsPct,
+                      shareOfTotalUsDebtPct: h.shareOfTotalUsDebtPct,
+                      dominantHolderType: h.dominantHolderType,
+                      strategicDirection: h.strategicDirection,
+                    }))
+              }
+              columns={
+                activeTab === 'overview' || activeTab === 'bop'
+                  ? [
+                      { key: 'countryCode', label: 'Country Code' },
+                      { key: 'countryName', label: 'Country' },
+                      { key: 'bloc', label: 'Coalition Bloc' },
+                      { key: 'currentAccountPercentGdp', label: 'Current Account (% of GDP)' },
+                      { key: 'fiscalBalancePercentGdp', label: 'Fiscal Balance (% of GDP)' },
+                      { key: 'twinDeficitGapPercent', label: 'Twin Deficit Gap (% of GDP)' },
+                      { key: 'tradeBalanceBillionUSD', label: 'Trade Balance ($B USD)' },
+                      { key: 'fxReservesBillionUSD', label: 'Foreign FX Reserves ($B USD)' },
+                      { key: 'externalDebtToGdp', label: 'External Debt (% of GDP)' },
+                      { key: 'solvencyRiskLevel', label: 'Solvency Risk Level' },
+                    ]
+                  : activeTab === 'fx-reer'
+                  ? [
+                      { key: 'currencyCode', label: 'Currency Code' },
+                      { key: 'currencyName', label: 'Currency' },
+                      { key: 'countryName', label: 'Country' },
+                      { key: 'currentReer', label: 'Current REER Index' },
+                      { key: 'tenYearAverageReer', label: '10-Year Mean Baseline' },
+                      { key: 'valuationDeviationPct', label: 'Valuation Gap (%)' },
+                      { key: 'valuationStatus', label: 'Valuation Regime' },
+                      { key: 'devaluationRiskScore', label: 'Devaluation Risk Score (0-100)' },
+                      { key: 'keyDriver', label: 'Key Driver' },
+                    ]
+                  : activeTab === 'gscpi'
+                  ? [
+                      { key: 'period', label: 'Period' },
+                      { key: 'stdDevLevel', label: 'GSCPI (Standard Deviations)' },
+                      { key: 'headlineCpiLaggedLead', label: 'Lagged Inflation Transmission (%)' },
+                      { key: 'eventAnnotation', label: 'Macro Event' },
+                    ]
+                  : [
+                      { key: 'countryCode', label: 'Country Code' },
+                      { key: 'countryName', label: 'Foreign Sovereign / Jurisdiction' },
+                      { key: 'holdingsBillionUSD', label: 'US Treasuries Held ($B USD)' },
+                      { key: 'twelveMonthChangeBillionUSD', label: '12-Month Net Change ($B USD)' },
+                      { key: 'shareOfForeignHoldingsPct', label: 'Share of Foreign Total (%)' },
+                      { key: 'shareOfTotalUsDebtPct', label: 'Share of Total US Debt (%)' },
+                      { key: 'dominantHolderType', label: 'Holder Classification' },
+                      { key: 'strategicDirection', label: 'Strategic Trajectory' },
+                    ]
+              }
+              metadata={{
+                description:
+                  activeTab === 'overview' || activeTab === 'bop'
+                    ? 'Current Account and Balance of Payments data including trade surpluses and twin deficits.'
+                    : activeTab === 'fx-reer'
+                    ? 'BIS Real Effective Exchange Rates adjusted for multilateral inflation differentials.'
+                    : activeTab === 'gscpi'
+                    ? 'Federal Reserve Bank of New York Global Supply Chain Pressure Index.'
+                    : 'US Treasury International Capital (TIC) foreign sovereign debt ownership statistics.',
+                source: 'Bank for International Settlements (BIS), IMF BoP, NY Fed, US Treasury TIC',
+                activeTab,
+              }}
+            />
           </div>
         </div>
 

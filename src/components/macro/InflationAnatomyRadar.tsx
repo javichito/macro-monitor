@@ -21,6 +21,7 @@ import {
   getPipelinePressureSignal,
 } from '../../data/inflation-anatomy-data';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   TrendingUp,
   Layers,
@@ -225,6 +226,92 @@ export function InflationAnatomyRadar() {
               Upstream PPI vs. CPI
             </button>
           </div>
+
+          {/* One-click Data Export for Researchers & Journalists */}
+          <DataExportMenu
+            title={`Inflation Anatomy [${profile.countryName} - ${
+              activeTab === 'decomposition'
+                ? 'Component Decomposition'
+                : activeTab === 'supercore-radar'
+                ? 'Cross-Country Supercore Comparison'
+                : 'Upstream PPI vs Headline CPI'
+            }]`}
+            filename={`inflation-anatomy-${profile.countryCode.toLowerCase()}-${activeTab}`}
+            data={() =>
+              activeTab === 'decomposition'
+                ? US_INFLATION_HISTORY.map((h) => ({
+                    year: h.year,
+                    headlineCpiPercent: h.headlineCpi,
+                    coreCpiPercent: h.coreCpi,
+                    supercoreCpiPercent: h.supercoreCpi,
+                    shelterOerPercent: h.shelterOer,
+                    coreGoodsPercent: h.coreGoods,
+                    energyPercent: h.energy,
+                    foodPercent: h.food,
+                  }))
+                : activeTab === 'supercore-radar'
+                ? SOVEREIGN_INFLATION_PROFILES.map((p) => ({
+                    countryCode: p.countryCode,
+                    countryName: p.countryName,
+                    headlineCpiPercent: p.headlineYoY,
+                    coreCpiPercent: p.coreYoY,
+                    supercoreCpiPercent: p.supercoreYoY,
+                    shelterOerPercent: p.shelterYoY,
+                    goodsInflationPercent: p.coreGoodsYoY,
+                    ppiPercent: p.ppiYoY,
+                    regime: p.regime,
+                  }))
+                : US_INFLATION_HISTORY.map((h) => ({
+                    year: h.year,
+                    headlineCpiPercent: h.headlineCpi,
+                    ppiFinalDemandPercent: h.ppiFinalDemand,
+                    pipelinePressureSpreadPercent: h.ppiCpiSpread,
+                  }))
+            }
+            columns={
+              activeTab === 'decomposition'
+                ? [
+                    { key: 'year', label: 'Year' },
+                    { key: 'headlineCpiPercent', label: 'Headline CPI (%)' },
+                    { key: 'coreCpiPercent', label: 'Core CPI (%)' },
+                    { key: 'supercoreCpiPercent', label: 'Supercore CPI (%)' },
+                    { key: 'shelterOerPercent', label: 'Shelter / OER (%)' },
+                    { key: 'coreGoodsPercent', label: 'Core Goods (%)' },
+                    { key: 'energyPercent', label: 'Energy (%)' },
+                    { key: 'foodPercent', label: 'Food (%)' },
+                  ]
+                : activeTab === 'supercore-radar'
+                ? [
+                    { key: 'countryCode', label: 'Country Code' },
+                    { key: 'countryName', label: 'Economy' },
+                    { key: 'headlineCpiPercent', label: 'Headline CPI (%)' },
+                    { key: 'coreCpiPercent', label: 'Core CPI (%)' },
+                    { key: 'supercoreCpiPercent', label: 'Supercore CPI (%)' },
+                    { key: 'shelterOerPercent', label: 'Shelter (%)' },
+                    { key: 'goodsInflationPercent', label: 'Goods (%)' },
+                    { key: 'ppiPercent', label: 'PPI Final Demand (%)' },
+                    { key: 'regime', label: 'Inflation Regime' },
+                  ]
+                : [
+                    { key: 'year', label: 'Year' },
+                    { key: 'headlineCpiPercent', label: 'Headline CPI (%)' },
+                    { key: 'ppiFinalDemandPercent', label: 'Producer Price PPI Final Demand (%)' },
+                    { key: 'pipelinePressureSpreadPercent', label: 'Pipeline Spread (PPI - CPI %)' },
+                  ]
+            }
+            metadata={{
+              description:
+                activeTab === 'decomposition'
+                  ? 'Historical breakdown of consumer price index inflation into shelter, services, goods, and commodities.'
+                  : activeTab === 'supercore-radar'
+                  ? 'Comparative cross-country inflation metrics and services supercore stickiness.'
+                  : 'Upstream wholesale producer prices leading consumer inflation.',
+              source: 'Bureau of Labor Statistics (BLS), Eurostat, Statistics Bureau Japan, ONS UK',
+              country: profile.countryName,
+              activeTab,
+              unit: 'Year-over-Year Percentage Change (%)',
+            }}
+          />
         </div>
       </div>
 

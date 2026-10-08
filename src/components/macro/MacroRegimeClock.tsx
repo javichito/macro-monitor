@@ -6,6 +6,7 @@ import {
   REGIME_PLAYBOOKS,
 } from '../../data/macro-regimes-data';
 import { MacroQuadrant } from '../../lib/types';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   Compass,
   Layers,
@@ -87,6 +88,37 @@ export function MacroRegimeClock() {
             <Sparkles className="h-3 w-3" />
             <span>Trail {showHistoricalTrail ? 'On' : 'Off'}</span>
           </button>
+
+          {/* One-click Data Export for Researchers & Journalists */}
+          <DataExportMenu
+            title="Macro Regime Matrix & Business Cycle Clock (4-Quadrant Framework)"
+            filename="macro-regime-clock-matrix"
+            data={() =>
+              ECONOMY_REGIME_POINTS.map((e) => ({
+                countryCode: e.code,
+                countryName: e.name,
+                activeQuadrant: e.currentCoordinates.quadrant,
+                growthMomentumScore: e.currentCoordinates.growthMomentum,
+                inflationMomentumScore: e.currentCoordinates.inflationMomentum,
+                regimeDescription: e.currentCoordinates.label,
+                recommendedAssetStance: REGIME_PLAYBOOKS[e.currentCoordinates.quadrant]?.label || '',
+              }))
+            }
+            columns={[
+              { key: 'countryCode', label: 'Country Code' },
+              { key: 'countryName', label: 'Country Name' },
+              { key: 'activeQuadrant', label: 'Macro Quadrant' },
+              { key: 'growthMomentumScore', label: 'Growth Momentum (-100 to +100)' },
+              { key: 'inflationMomentumScore', label: 'Inflation Momentum (-100 to +100)' },
+              { key: 'regimeDescription', label: 'Regime Description' },
+              { key: 'recommendedAssetStance', label: 'Asset Allocation Playbook' },
+            ]}
+            metadata={{
+              description: 'Ray Dalio 4-quadrant growth vs inflation momentum coordinates and regime classifications.',
+              source: 'Bridgewater Associates All Weather framework, OECD CLI, IMF World Economic Outlook',
+              totalEconomiesTracked: ECONOMY_REGIME_POINTS.length,
+            }}
+          />
         </div>
       </div>
 

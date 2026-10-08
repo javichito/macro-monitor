@@ -19,6 +19,7 @@ import { MACRO_TRENDS_HISTORY, ECONOMIC_MILESTONES } from '../../data/macro-tren
 import { BarChart3, Landmark, Percent, DollarSign, Award } from 'lucide-react';
 import { formatPercent } from '../../lib/formatters';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 
 type TabType = 'debt-gdp' | 'rates' | 'reserves' | 'inflation';
 
@@ -53,48 +54,121 @@ export function MacroTrendChart() {
             </p>
           </div>
 
-          {/* Metric tabs */}
-          <div className="flex flex-wrap gap-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
-            <button
-              onClick={() => setActiveTab('debt-gdp')}
-              className={`rounded-full px-3 py-1 font-medium transition-all cursor-pointer ${
+          {/* Metric tabs & Data Export */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex flex-wrap gap-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
+              <button
+                onClick={() => setActiveTab('debt-gdp')}
+                className={`rounded-full px-3 py-1 font-medium transition-all cursor-pointer ${
+                  activeTab === 'debt-gdp'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
+                }`}
+              >
+                Debt vs GDP
+              </button>
+              <button
+                onClick={() => setActiveTab('rates')}
+                className={`rounded-full px-3 py-1 font-medium transition-all cursor-pointer ${
+                  activeTab === 'rates'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
+                }`}
+              >
+                Central Bank Rates
+              </button>
+              <button
+                onClick={() => setActiveTab('reserves')}
+                className={`rounded-full px-3 py-1 font-medium transition-all cursor-pointer ${
+                  activeTab === 'reserves'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
+                }`}
+              >
+                FX & Gold Reserves
+              </button>
+              <button
+                onClick={() => setActiveTab('inflation')}
+                className={`rounded-full px-3 py-1 font-medium transition-all cursor-pointer ${
+                  activeTab === 'inflation'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
+                }`}
+              >
+                Global Inflation
+              </button>
+            </div>
+
+            {/* One-click Data Export for Researchers & Journalists */}
+            <DataExportMenu
+              title={`Global Macro Engine (1980–2026) [${
                 activeTab === 'debt-gdp'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
-              }`}
-            >
-              Debt vs GDP
-            </button>
-            <button
-              onClick={() => setActiveTab('rates')}
-              className={`rounded-full px-3 py-1 font-medium transition-all cursor-pointer ${
-                activeTab === 'rates'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
-              }`}
-            >
-              Central Bank Rates
-            </button>
-            <button
-              onClick={() => setActiveTab('reserves')}
-              className={`rounded-full px-3 py-1 font-medium transition-all cursor-pointer ${
-                activeTab === 'reserves'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
-              }`}
-            >
-              FX & Gold Reserves
-            </button>
-            <button
-              onClick={() => setActiveTab('inflation')}
-              className={`rounded-full px-3 py-1 font-medium transition-all cursor-pointer ${
-                activeTab === 'inflation'
-                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
-              }`}
-            >
-              Global Inflation
-            </button>
+                  ? 'Debt vs GDP'
+                  : activeTab === 'rates'
+                  ? 'Central Bank Rates'
+                  : activeTab === 'reserves'
+                  ? 'FX & Gold Reserves'
+                  : 'Global Inflation'
+              }]`}
+              filename={`macro-trends-${activeTab}`}
+              data={() =>
+                MACRO_TRENDS_HISTORY.map((m) => ({
+                  year: m.year,
+                  globalDebtTrillionUsd: m.globalDebtTrillion,
+                  globalGdpTrillionUsd: m.globalGdpTrillion,
+                  globalDebtToGdpPercent: m.globalDebtToGdp,
+                  fedRatePercent: m.centralBankRates.fed,
+                  ecbRatePercent: m.centralBankRates.ecb,
+                  bojRatePercent: m.centralBankRates.boj,
+                  pbocRatePercent: m.centralBankRates.pboc,
+                  boeRatePercent: m.centralBankRates.boe,
+                  usdReserveSharePercent: m.currencyReserves.usd,
+                  eurReserveSharePercent: m.currencyReserves.eur,
+                  cnyReserveSharePercent: m.currencyReserves.cny,
+                  jpyReserveSharePercent: m.currencyReserves.jpy,
+                  goldAndOtherReserveSharePercent: m.currencyReserves.goldAndOther,
+                  globalInflationRatePercent: m.globalInflationRate,
+                  usCpiIndexBase100: m.usCpiIndex,
+                }))
+              }
+              columns={
+                activeTab === 'debt-gdp'
+                  ? [
+                      { key: 'year', label: 'Year' },
+                      { key: 'globalDebtTrillionUsd', label: 'Total Global Debt ($T)' },
+                      { key: 'globalGdpTrillionUsd', label: 'World Annual GDP ($T)' },
+                      { key: 'globalDebtToGdpPercent', label: 'Debt-to-GDP Ratio (%)' },
+                    ]
+                  : activeTab === 'rates'
+                  ? [
+                      { key: 'year', label: 'Year' },
+                      { key: 'fedRatePercent', label: 'Federal Reserve Policy Rate (%)' },
+                      { key: 'ecbRatePercent', label: 'ECB Policy Rate (%)' },
+                      { key: 'bojRatePercent', label: 'Bank of Japan Policy Rate (%)' },
+                      { key: 'pbocRatePercent', label: 'People’s Bank of China Rate (%)' },
+                      { key: 'boeRatePercent', label: 'Bank of England Rate (%)' },
+                    ]
+                  : activeTab === 'reserves'
+                  ? [
+                      { key: 'year', label: 'Year' },
+                      { key: 'usdReserveSharePercent', label: 'USD Reserve Share (%)' },
+                      { key: 'eurReserveSharePercent', label: 'EUR Reserve Share (%)' },
+                      { key: 'goldAndOtherReserveSharePercent', label: 'Gold & Others Share (%)' },
+                      { key: 'jpyReserveSharePercent', label: 'JPY Reserve Share (%)' },
+                      { key: 'cnyReserveSharePercent', label: 'CNY Reserve Share (%)' },
+                    ]
+                  : [
+                      { key: 'year', label: 'Year' },
+                      { key: 'globalInflationRatePercent', label: 'Global Inflation Rate (%)' },
+                      { key: 'usCpiIndexBase100', label: 'US CPI Index (Base 100 in 2000)' },
+                    ]
+              }
+              metadata={{
+                description: 'Historical macroeconomic time series tracking debt, monetary policy, reserves, and inflation cycles.',
+                source: 'IMF World Economic Outlook, BIS, Federal Reserve, World Gold Council',
+                activeTab,
+              }}
+            />
           </div>
         </div>
 

@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { COUNTRIES_DATA } from '../../data/country-metrics';
 import { CountryProfile, CurrencyPerspective } from '../../lib/types';
 import { adjustValue, formatCurrency, formatPercent } from '../../lib/formatters';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   ArrowUpDown,
   Search,
@@ -162,20 +163,61 @@ export function CountryRankingsTable({
             />
           </div>
 
-          <select
-            value={selectedRegion}
-            onChange={(e) => setSelectedRegion(e.target.value)}
-            className="py-1.5 px-3 text-xs rounded-full bg-white/[0.06] border border-white/[0.10] text-slate-200 focus:outline-none focus:border-sky-400 cursor-pointer"
-          >
-            <option value="all" className="bg-[#121622] text-white">All Regions</option>
-            {regions.filter((r) => r !== 'all').map((r) => (
-              <option key={r} value={r} className="bg-[#121622] text-white">
-                {r}
-              </option>
-            ))}
-          </select>
+            <select
+              value={selectedRegion}
+              onChange={(e) => setSelectedRegion(e.target.value)}
+              className="py-1.5 px-3 text-xs rounded-full bg-white/[0.06] border border-white/[0.10] text-slate-200 focus:outline-none focus:border-sky-400 cursor-pointer"
+            >
+              <option value="all" className="bg-[#121622] text-white">All Regions</option>
+              {regions.filter((r) => r !== 'all').map((r) => (
+                <option key={r} value={r} className="bg-[#121622] text-white">
+                  {r}
+                </option>
+              ))}
+            </select>
+
+            {/* One-click Data Export for Researchers & Journalists */}
+            <DataExportMenu
+              title={`Global Sovereign Wealth & Macro League Table (${selectedYear})`}
+              filename={`sovereign-league-table-${selectedYear}`}
+              data={() =>
+                filteredAndSortedData.map((row, index) => ({
+                  rank: index + 1,
+                  code: row.country.code,
+                  name: row.country.name,
+                  region: row.country.region,
+                  meanWealthPerAdultUsd: Math.round(row.adjMean),
+                  medianWealthPerAdultUsd: Math.round(row.adjMedian),
+                  totalWealthTrillionUsd: Number(row.adjTotal.toFixed(2)),
+                  debtToGdpPercent: Number(row.debtToGdp.toFixed(1)),
+                  giniCoefficient: Number(row.gini.toFixed(3)),
+                  gdpTrillionUsd: row.metrics?.gdpTrillionUSD || 0,
+                  inflationRatePercent: row.metrics?.inflationRate || 0,
+                }))
+              }
+              columns={[
+                { key: 'rank', label: 'Rank #' },
+                { key: 'code', label: 'Country Code' },
+                { key: 'name', label: 'Country Name' },
+                { key: 'region', label: 'Region' },
+                { key: 'meanWealthPerAdultUsd', label: `Mean Wealth per Adult ($ ${currencyPerspective.toUpperCase()})` },
+                { key: 'medianWealthPerAdultUsd', label: `Median Wealth per Adult ($ ${currencyPerspective.toUpperCase()})` },
+                { key: 'totalWealthTrillionUsd', label: `Total Private Wealth ($T ${currencyPerspective.toUpperCase()})` },
+                { key: 'debtToGdpPercent', label: 'Debt-to-GDP (%)' },
+                { key: 'giniCoefficient', label: 'Gini Coefficient (0–1)' },
+                { key: 'gdpTrillionUsd', label: 'GDP ($ Trillion)' },
+                { key: 'inflationRatePercent', label: 'Inflation Rate (%)' },
+              ]}
+              metadata={{
+                description: `Cross-country macro rankings across ${filteredAndSortedData.length} sovereign economies.`,
+                source: 'UBS Global Wealth Databook, IMF, World Bank, Federal Reserve',
+                year: selectedYear,
+                perspective: `${currencyPerspective.toUpperCase()} USD`,
+                totalCountries: filteredAndSortedData.length,
+              }}
+            />
+          </div>
         </div>
-      </div>
 
       {/* Responsive Sortable Table */}
       <div className="overflow-x-auto no-scrollbar rounded-2xl border border-white/[0.08]">

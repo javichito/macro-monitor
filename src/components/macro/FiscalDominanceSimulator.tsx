@@ -22,6 +22,7 @@ import {
   calculateFinancialRepressionMetrics,
 } from '../../data/fiscal-dominance-data';
 import { useThemeMode } from '../../context/AppContext';
+import { DataExportMenu } from '../common/DataExportMenu';
 import {
   Scale,
   TrendingDown,
@@ -611,28 +612,76 @@ export function FiscalDominanceSimulator() {
             </p>
           </div>
 
-          {/* Metric View Tabs */}
-          <div className="flex items-center gap-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
-            <button
-              onClick={() => setActiveMetricTab('debt')}
-              className={`rounded-full px-3 py-1 font-medium transition-all ${
-                activeMetricTab === 'debt'
-                  ? 'bg-sky-500 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              Debt-to-GDP (%)
-            </button>
-            <button
-              onClick={() => setActiveMetricTab('interest')}
-              className={`rounded-full px-3 py-1 font-medium transition-all ${
-                activeMetricTab === 'interest'
-                  ? 'bg-sky-500 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              Annual Interest Outlays ($T)
-            </button>
+          {/* Metric View Tabs & Data Export */}
+          <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
+              <button
+                onClick={() => setActiveMetricTab('debt')}
+                className={`rounded-full px-3 py-1 font-medium transition-all ${
+                  activeMetricTab === 'debt'
+                    ? 'bg-sky-500 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Debt-to-GDP (%)
+              </button>
+              <button
+                onClick={() => setActiveMetricTab('interest')}
+                className={`rounded-full px-3 py-1 font-medium transition-all ${
+                  activeMetricTab === 'interest'
+                    ? 'bg-sky-500 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Annual Interest Outlays ($T)
+              </button>
+            </div>
+
+            {/* One-click Data Export for Researchers & Journalists */}
+            <DataExportMenu
+              title={`${currentProfile.name} 10-Year Solvency Simulation (2026–2036)`}
+              filename={`fiscal-dominance-simulation-${currentProfile.code.toLowerCase()}`}
+              data={() =>
+                trajectory.map((p) => ({
+                  year: p.year,
+                  debtToGdpPercent: p.debtToGdp,
+                  totalDebtTrillionUsd: p.totalDebtTrillion,
+                  gdpTrillionUsd: p.gdpTrillion,
+                  effectiveInterestRatePercent: p.effectiveInterestRate,
+                  netInterestExpenseTrillionUsd: p.netInterestExpenseTrillion,
+                  netInterestExpensePercentGdp: p.netInterestExpensePercentGdp,
+                  interestToTaxRevenuePercent: p.interestToTaxRevenuePercent,
+                  rMinusGPercent: p.rMinusG,
+                  riskZone: p.zone,
+                  isTippingPointYear: p.isTippingPoint ? 'Yes' : 'No',
+                }))
+              }
+              columns={[
+                { key: 'year', label: 'Year' },
+                { key: 'debtToGdpPercent', label: 'Debt-to-GDP (%)' },
+                { key: 'totalDebtTrillionUsd', label: 'Total Sovereign Debt ($T)' },
+                { key: 'gdpTrillionUsd', label: 'Nominal GDP ($T)' },
+                { key: 'effectiveInterestRatePercent', label: 'Effective Coupon (%)' },
+                { key: 'netInterestExpenseTrillionUsd', label: 'Net Interest Outlays ($T)' },
+                { key: 'netInterestExpensePercentGdp', label: 'Interest-to-GDP (%)' },
+                { key: 'interestToTaxRevenuePercent', label: 'Interest-to-Tax Ratio (%)' },
+                { key: 'rMinusGPercent', label: 'r − g Snowball Spread (%)' },
+                { key: 'riskZone', label: 'Risk Regime Zone' },
+                { key: 'isTippingPointYear', label: 'Discretionary Tipping Point' },
+              ]}
+              metadata={{
+                description: `Simulated 10-year sovereign debt trajectory under active policy levers and scenario: ${activeScenarioId}.`,
+                source: 'Macro Monitor Fiscal Solvency Engine, IMF World Economic Outlook, CBO, Eurostat',
+                country: currentProfile.name,
+                countryCode: currentProfile.code,
+                scenario: activeScenarioId,
+                bondYield: `${params.bondYield}%`,
+                primaryDeficit: `${params.primaryDeficit}%`,
+                realGrowth: `${params.realGrowth}%`,
+                inflation: `${params.inflation}%`,
+                tippingPointYear: tippingPointYear || 'None through 2036',
+              }}
+            />
           </div>
         </div>
 
