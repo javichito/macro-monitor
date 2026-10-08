@@ -182,8 +182,10 @@ export function CountryRankingsTable({
         <table className="w-full text-left text-xs">
           <thead className="bg-white/[0.04] border-b border-white/[0.08] text-slate-300 font-semibold uppercase tracking-wider">
             <tr>
-              <th className="py-3 px-3.5 text-center w-12">#</th>
+              <th scope="col" className="py-3 px-3.5 text-center w-12">#</th>
               <th
+                scope="col"
+                aria-sort={sortField === 'name' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('name')}
                 className="py-3 px-4 cursor-pointer hover:text-white transition-colors"
               >
@@ -193,6 +195,8 @@ export function CountryRankingsTable({
                 </div>
               </th>
               <th
+                scope="col"
+                aria-sort={sortField === 'medianWealth' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('medianWealth')}
                 className="py-3 px-4 cursor-pointer hover:text-white transition-colors text-right"
               >
@@ -202,6 +206,8 @@ export function CountryRankingsTable({
                 </div>
               </th>
               <th
+                scope="col"
+                aria-sort={sortField === 'meanWealth' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('meanWealth')}
                 className="py-3 px-4 cursor-pointer hover:text-white transition-colors text-right hidden sm:table-cell"
               >
@@ -211,6 +217,8 @@ export function CountryRankingsTable({
                 </div>
               </th>
               <th
+                scope="col"
+                aria-sort={sortField === 'skew' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('skew')}
                 className="py-3 px-3 cursor-pointer hover:text-white transition-colors text-right hidden md:table-cell"
                 title="Inequality Skew = Mean Wealth / Median Wealth"
@@ -221,6 +229,8 @@ export function CountryRankingsTable({
                 </div>
               </th>
               <th
+                scope="col"
+                aria-sort={sortField === 'totalWealth' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('totalWealth')}
                 className="py-3 px-4 cursor-pointer hover:text-white transition-colors text-right"
               >
@@ -230,6 +240,8 @@ export function CountryRankingsTable({
                 </div>
               </th>
               <th
+                scope="col"
+                aria-sort={sortField === 'debtToGdp' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('debtToGdp')}
                 className="py-3 px-3.5 cursor-pointer hover:text-white transition-colors text-right hidden lg:table-cell"
               >
@@ -239,6 +251,8 @@ export function CountryRankingsTable({
                 </div>
               </th>
               <th
+                scope="col"
+                aria-sort={sortField === 'gini' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('gini')}
                 className="py-3 px-3.5 cursor-pointer hover:text-white transition-colors text-right hidden lg:table-cell"
               >
@@ -248,7 +262,7 @@ export function CountryRankingsTable({
                 </div>
               </th>
               {onSelectCountryForDuel && (
-                <th className="py-3 px-4 text-center">Duel</th>
+                <th scope="col" className="py-3 px-4 text-center">Duel</th>
               )}
             </tr>
           </thead>

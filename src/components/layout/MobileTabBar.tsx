@@ -36,7 +36,8 @@ export function MobileTabBar() {
             <Link
               key={tab.href}
               href={tab.href}
-              className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 active:scale-90 min-w-[56px] ${
+              aria-current={isActive ? 'page' : undefined}
+              className={`flex flex-col items-center justify-center py-1.5 px-2.5 rounded-xl transition-all duration-150 active:scale-90 min-w-[56px] min-h-[44px] ${
                 isActive
                   ? 'text-sky-500 dark:text-sky-400 font-semibold'
                   : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'

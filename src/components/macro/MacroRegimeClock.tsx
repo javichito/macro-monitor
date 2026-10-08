@@ -95,9 +95,11 @@ export function MacroRegimeClock() {
         {/* Quadrant Background Panels */}
         <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
           {/* Top Left: Stagflation */}
-          <div
+          <button
+            type="button"
+            aria-pressed={activeQuadrantTab === 'stagflation'}
             onClick={() => setActiveQuadrantTab('stagflation')}
-            className={`border-r border-b border-slate-200/80 dark:border-white/[0.08] transition-all p-3 sm:p-4 cursor-pointer flex flex-col justify-start items-start ${
+            className={`border-r border-b border-slate-200/80 dark:border-white/[0.08] transition-all p-3 sm:p-4 cursor-pointer flex flex-col justify-start items-start text-left ${
               activeQuadrantTab === 'stagflation'
                 ? 'bg-rose-100/70 dark:bg-rose-500/[0.14] ring-1 ring-inset ring-rose-400/40'
                 : 'bg-rose-50/40 dark:bg-rose-500/[0.03] hover:bg-rose-100/50 dark:hover:bg-white/[0.02]'
@@ -109,10 +111,12 @@ export function MacroRegimeClock() {
             <span className="text-[10px] text-slate-600 dark:text-slate-400 hidden sm:inline">
               Growth Decelerating (▼) • Inflation Accelerating (▲)
             </span>
-          </div>
+          </button>
 
           {/* Top Right: Reflation */}
-          <div
+          <button
+            type="button"
+            aria-pressed={activeQuadrantTab === 'reflation'}
             onClick={() => setActiveQuadrantTab('reflation')}
             className={`border-b border-slate-200/80 dark:border-white/[0.08] transition-all p-3 sm:p-4 cursor-pointer flex flex-col justify-start items-end text-right ${
               activeQuadrantTab === 'reflation'
@@ -126,12 +130,14 @@ export function MacroRegimeClock() {
             <span className="text-[10px] text-slate-600 dark:text-slate-400 hidden sm:inline">
               Growth Accelerating (▲) • Inflation Accelerating (▲)
             </span>
-          </div>
+          </button>
 
           {/* Bottom Left: Deflation */}
-          <div
+          <button
+            type="button"
+            aria-pressed={activeQuadrantTab === 'deflation'}
             onClick={() => setActiveQuadrantTab('deflation')}
-            className={`border-r border-slate-200/80 dark:border-white/[0.08] transition-all p-3 sm:p-4 cursor-pointer flex flex-col justify-end items-start ${
+            className={`border-r border-slate-200/80 dark:border-white/[0.08] transition-all p-3 sm:p-4 cursor-pointer flex flex-col justify-end items-start text-left ${
               activeQuadrantTab === 'deflation'
                 ? 'bg-indigo-100/70 dark:bg-indigo-500/[0.14] ring-1 ring-inset ring-indigo-400/40'
                 : 'bg-indigo-50/40 dark:bg-indigo-500/[0.03] hover:bg-indigo-100/50 dark:hover:bg-white/[0.02]'
@@ -143,10 +149,12 @@ export function MacroRegimeClock() {
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
               Quadrant 4: Deflation
             </span>
-          </div>
+          </button>
 
           {/* Bottom Right: Goldilocks */}
-          <div
+          <button
+            type="button"
+            aria-pressed={activeQuadrantTab === 'goldilocks'}
             onClick={() => setActiveQuadrantTab('goldilocks')}
             className={`transition-all p-3 sm:p-4 cursor-pointer flex flex-col justify-end items-end text-right ${
               activeQuadrantTab === 'goldilocks'
@@ -160,7 +168,7 @@ export function MacroRegimeClock() {
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
               Quadrant 1: Goldilocks
             </span>
-          </div>
+          </button>
         </div>
 
         {/* Center Crosshairs */}

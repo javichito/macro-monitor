@@ -51,12 +51,14 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
           const adjustedWealthTrillion = adjustValue(tier.wealthTrillion, data.year, currencyPerspective);
 
           return (
-            <div
+            <button
               key={tier.bracket}
+              type="button"
+              aria-expanded={isSelected}
               onClick={() => setActiveBracket((curr) => (curr === tier.bracket ? null : tier.bracket))}
               onMouseEnter={() => setActiveBracket(tier.bracket)}
               onMouseLeave={() => setActiveBracket(null)}
-              className={`rounded-2xl border p-4 sm:p-4.5 transition-all duration-200 cursor-pointer ${
+              className={`w-full text-left rounded-2xl border p-4 sm:p-4.5 transition-all duration-200 cursor-pointer ${
                 isSelected
                   ? 'border-white/25 bg-white/[0.08] shadow-xl shadow-black/40 ring-1 ring-white/15'
                   : 'border-white/[0.08] bg-white/[0.03] hover:border-white/[0.15] hover:bg-white/[0.055]'
@@ -159,7 +161,7 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
                   )}
                 </div>
               )}
-            </div>
+            </button>
           );
         })}
       </div>

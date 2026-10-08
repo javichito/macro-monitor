@@ -49,7 +49,7 @@ describe('WealthPyramid Component', () => {
     render(<WealthPyramid data={wealth2026} currencyPerspective="nominal" />);
 
     const apexTierLabel = screen.getByText('> $100M');
-    const tierCard = apexTierLabel.closest('div[class*="cursor-pointer"]');
+    const tierCard = apexTierLabel.closest('button, div[class*="cursor-pointer"]');
     expect(tierCard).toBeDefined();
 
     if (tierCard) {

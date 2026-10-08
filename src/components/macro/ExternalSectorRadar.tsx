@@ -871,10 +871,12 @@ export function ExternalSectorRadar() {
               {REER_CURRENCY_PROFILES.map((cur) => {
                 const isOvervalued = cur.valuationDeviationPct > 0;
                 return (
-                  <div
+                  <button
                     key={cur.currencyCode}
+                    type="button"
+                    aria-pressed={selectedCurrencyCode === cur.currencyCode}
                     onClick={() => setSelectedCurrencyCode(cur.currencyCode)}
-                    className={`p-4 rounded-xl border transition-all cursor-pointer ${
+                    className={`p-4 rounded-xl border transition-all cursor-pointer text-left w-full ${
                       selectedCurrencyCode === cur.currencyCode
                         ? 'border-sky-500 bg-sky-500/10'
                         : 'border-slate-200 dark:border-white/[0.06] bg-slate-50 dark:bg-white/[0.02] hover:border-slate-300 dark:hover:border-white/[0.12]'
@@ -915,7 +917,7 @@ export function ExternalSectorRadar() {
                     <p className="mt-3 text-[10px] text-slate-500 dark:text-slate-400 line-clamp-2">
                       {cur.keyDriver}
                     </p>
-                  </div>
+                  </button>
                 );
               })}
             </div>

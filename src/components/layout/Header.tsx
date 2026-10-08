@@ -74,10 +74,17 @@ export function Header() {
         {/* Action Controls: Currency Perspective & Appearance Mode */}
         <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           {/* Currency Perspective Switcher: Apple segmented control */}
-          <div className="flex items-center rounded-full p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs">
+          <div
+            role="radiogroup"
+            aria-label="Currency valuation perspective"
+            className="flex items-center rounded-full p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs"
+          >
             {(['nominal', 'real', 'ppp'] as CurrencyPerspective[]).map((mode) => (
               <button
                 key={mode}
+                type="button"
+                role="radio"
+                aria-checked={currencyPerspective === mode}
                 onClick={() => setCurrencyPerspective(mode)}
                 title={
                   mode === 'nominal'
@@ -86,7 +93,7 @@ export function Header() {
                     ? 'Real USD: Inflation-adjusted to constant 2026 purchasing power'
                     : 'PPP: Purchasing Power Parity adjusted for local basket costs'
                 }
-                className={`rounded-full px-1.5 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-semibold transition-all duration-200 uppercase tracking-wider ${
+                className={`rounded-full px-2 sm:px-3 py-1 sm:py-1 text-[10px] sm:text-[11px] font-semibold transition-all duration-200 uppercase tracking-wider min-h-[32px] flex items-center justify-center ${
                   currencyPerspective === mode
                     ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                     : 'text-slate-400 hover:text-slate-200'
@@ -100,47 +107,54 @@ export function Header() {
 
           {/* Theme Mode Switcher: Apple segmented control (System / Light / Dark) */}
           <div
-            className="flex items-center rounded-full p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs shrink-0"
+            role="radiogroup"
             aria-label="Appearance Mode"
+            className="flex items-center rounded-full p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs shrink-0"
           >
             <button
               type="button"
+              role="radio"
+              aria-checked={themePreference === 'system'}
               onClick={() => setThemePreference('system')}
               aria-label="Auto System Theme"
               title="System: Follow device settings automatically"
-              className={`rounded-full p-1 sm:p-1.5 transition-all duration-200 ${
+              className={`rounded-full p-1.5 sm:p-2 min-h-[32px] min-w-[32px] flex items-center justify-center transition-all duration-200 ${
                 themePreference === 'system'
                   ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              <Monitor className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+              <Monitor className="h-3.5 w-3.5" />
             </button>
             <button
               type="button"
+              role="radio"
+              aria-checked={themePreference === 'light'}
               onClick={() => setThemePreference('light')}
               aria-label="Light Mode"
               title="Light Mode"
-              className={`rounded-full p-1 sm:p-1.5 transition-all duration-200 ${
+              className={`rounded-full p-1.5 sm:p-2 min-h-[32px] min-w-[32px] flex items-center justify-center transition-all duration-200 ${
                 themePreference === 'light'
                   ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              <Sun className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+              <Sun className="h-3.5 w-3.5" />
             </button>
             <button
               type="button"
+              role="radio"
+              aria-checked={themePreference === 'dark'}
               onClick={() => setThemePreference('dark')}
               aria-label="Dark Mode"
               title="Dark Mode"
-              className={`rounded-full p-1 sm:p-1.5 transition-all duration-200 ${
+              className={`rounded-full p-1.5 sm:p-2 min-h-[32px] min-w-[32px] flex items-center justify-center transition-all duration-200 ${
                 themePreference === 'dark'
                   ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              <Moon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+              <Moon className="h-3.5 w-3.5" />
             </button>
           </div>
         </div>

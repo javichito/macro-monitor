@@ -42,7 +42,12 @@ export function SubAssetDetailModal({
   const subCategories = category.subCategories || [];
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sub-asset-modal-title"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6"
+    >
       {/* Dimmed backdrop */}
       <div
         className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
@@ -60,7 +65,7 @@ export function SubAssetDetailModal({
             />
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">{category.name}</h3>
+                <h3 id="sub-asset-modal-title" className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">{category.name}</h3>
                 <span className="rounded-full bg-slate-100 dark:bg-white/[0.08] px-2.5 py-0.5 text-[11px] font-semibold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/[0.12]">
                   {formatPercent(category.sharePercent)} of World Wealth
                 </span>
@@ -72,7 +77,9 @@ export function SubAssetDetailModal({
           </div>
 
           <button
+            type="button"
             onClick={onClose}
+            aria-label="Close dialog"
             className="rounded-full p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] transition-colors cursor-pointer"
             title="Close dialog"
           >

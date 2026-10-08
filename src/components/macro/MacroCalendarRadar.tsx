@@ -561,9 +561,9 @@ export function MacroCalendarRadar() {
                       </div>
 
                       {/* Expand Chevron */}
-                      <button className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                      <span aria-hidden="true" className="text-slate-400">
                         {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                      </button>
+                      </span>
                     </div>
                   </div>
 

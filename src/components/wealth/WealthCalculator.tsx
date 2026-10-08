@@ -45,13 +45,14 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
         {/* Input panel */}
         <div className="lg:col-span-6 space-y-4">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-1.5">
+            <label htmlFor="country-select" className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-1.5">
               Select Your Country
             </label>
             <select
+              id="country-select"
               value={selectedCountryCode}
               onChange={(e) => setSelectedCountryCode(e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm font-medium text-white focus:border-[#0a84ff] focus:outline-none transition-colors"
+              className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm font-medium text-white focus:border-[#0a84ff] transition-colors"
             >
               {COUNTRIES_DATA.map((c) => (
                 <option key={c.code} value={c.code} className="bg-[#12141c] text-white">
@@ -63,7 +64,7 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
 
           <div>
             <div className="flex justify-between items-center mb-1.5">
-              <label className="text-xs font-semibold uppercase tracking-wider text-white/60">
+              <label htmlFor="net-worth-input" className="text-xs font-semibold uppercase tracking-wider text-white/60">
                 Your Estimated Net Worth (USD)
               </label>
               <span className="text-xs text-white/40">Assets minus all debts</span>
@@ -73,12 +74,14 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
                 <DollarSign className="h-4 w-4" />
               </div>
               <input
+                id="net-worth-input"
                 type="number"
+                inputMode="decimal"
                 min="0"
                 step="1000"
                 value={netWorth}
                 onChange={(e) => setNetWorth(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-xl border border-white/10 bg-white/[0.05] pl-9 pr-4 py-2.5 text-sm text-white font-mono font-medium focus:border-[#0a84ff] focus:outline-none transition-colors"
+                className="w-full rounded-xl border border-white/10 bg-white/[0.05] pl-9 pr-4 py-2.5 text-sm text-white font-mono font-medium focus:border-[#0a84ff] transition-colors"
               />
             </div>
           </div>
@@ -107,8 +110,12 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
           </div>
         </div>
 
-        {/* Results display panel */}
-        <div className="lg:col-span-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 flex flex-col justify-between backdrop-blur-md">
+        {/* Results display panel with live region announcements for dynamic calculations */}
+        <div
+          aria-live="polite"
+          aria-atomic="true"
+          className="lg:col-span-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 flex flex-col justify-between backdrop-blur-md"
+        >
           <div>
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold text-white/60 uppercase tracking-wider">

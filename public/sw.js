@@ -6,19 +6,72 @@
  * and weekly H.4.1 balance sheet updates directly to iOS Safari (PWA) and desktop browsers.
  */
 
+const CACHE_NAME = 'macro-monitor-v1';
+const CORE_ASSETS = [
+  '/macro-monitor/',
+  '/macro-monitor/manifest.json',
+  '/macro-monitor/icon.svg',
+];
+
 self.addEventListener('install', (event) => {
   /*
    * Activate immediately without waiting for existing tabs to close,
-   * ensuring users receive push notification capability on first visit.
+   * pre-caching core shell assets for offline standalone launch.
    */
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(CORE_ASSETS).catch((err) => {
+        console.warn('Pre-cache skipped during install:', err);
+      });
+    })
+  );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   /*
-   * Take immediate control of all open client pages within scope.
+   * Take immediate control of all open client pages and prune legacy caches.
    */
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
+});
+
+/*
+ * Stale-while-revalidate fetch handler for resilient offline execution
+ */
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
+  const url = new URL(event.request.url);
+  // Only handle requests within the app's scope
+  if (!url.pathname.startsWith('/macro-monitor')) return;
+
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      const fetchPromise = fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, clone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => cachedResponse);
+
+      return cachedResponse || fetchPromise;
+    })
+  );
 });
 
 self.addEventListener('push', (event) => {

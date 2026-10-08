@@ -75,6 +75,28 @@
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
   }
+
+  /*
+   * Accessible focus ring for keyboard navigation without affecting mouse clicks (WCAG 2.4.7).
+   */
+  :focus-visible {
+    outline: 2px solid var(--apple-blue);
+    outline-offset: 2px;
+  }
+}
+
+/*
+ * Respect user preferences for reduced motion (WCAG 2.3.3).
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /*
