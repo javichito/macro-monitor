@@ -443,3 +443,199 @@ export interface GdpNowcastingProfile {
   methodologyNote: string;
 }
 
+/* =========================================================================
+ * Tier 3: External Sector, Balance of Payments & FX Strength Types
+ * ========================================================================= */
+
+export type EconomyBlocId = 'g7' | 'brics' | 'other' | 'financial_center';
+
+export interface CurrentAccountProfile {
+  countryCode: string;
+  countryName: string;
+  flag: string;
+  bloc: EconomyBlocId;
+  currentAccountPercentGdp: number;
+  currentAccountBillionUSD: number;
+  tradeBalanceBillionUSD: number;
+  tradeBalancePercentGdp: number;
+  goodsBalanceBillionUSD: number;
+  servicesBalanceBillionUSD: number;
+  fiscalBalancePercentGdp: number;
+  externalDebtToGdp: number;
+  fxReservesBillionUSD: number;
+  importCoverMonths: number;
+  twinDeficitWarning: boolean;
+  solvencyRiskLevel: 'low' | 'moderate' | 'elevated' | 'critical';
+  historicalSeries: Array<{
+    year: number;
+    currentAccountPercentGdp: number;
+    tradeBalanceBillionUSD: number;
+    fxReservesBillionUSD: number;
+    externalDebtToGdp: number;
+  }>;
+  macroNote: string;
+}
+
+export interface DxyComponent {
+  currencyCode: 'EUR' | 'JPY' | 'GBP' | 'CAD' | 'SEK' | 'CHF';
+  currencyName: string;
+  weightPercent: number;
+  spotRate: number;
+  ytdChangePct: number;
+  description: string;
+}
+
+export interface DxyHistoricalPoint {
+  date: string;
+  dxyLevel: number;
+  reerUsd: number;
+  regime: string;
+}
+
+export interface DxyProfile {
+  currentIndex: number;
+  fiftyTwoWeekHigh: number;
+  fiftyTwoWeekLow: number;
+  ytdChangePct: number;
+  dollarRegime: 'smile_flight_to_safety' | 'rate_differential_driven' | 'twin_deficit_headwind' | 'neutral';
+  regimeDescription: string;
+  components: DxyComponent[];
+  historicalSeries: DxyHistoricalPoint[];
+}
+
+export type ReerValuationStatus =
+  | 'deeply_overvalued'
+  | 'moderately_overvalued'
+  | 'fairly_valued'
+  | 'moderately_undervalued'
+  | 'deeply_undervalued';
+
+export interface ReerCurrencyProfile {
+  currencyCode: string;
+  currencyName: string;
+  countryName: string;
+  flag: string;
+  bloc: EconomyBlocId;
+  currentReer: number;
+  tenYearAverageReer: number;
+  valuationDeviationPct: number;
+  valuationStatus: ReerValuationStatus;
+  devaluationRiskScore: number;
+  devaluationRiskCategory: 'low' | 'moderate' | 'elevated' | 'severe';
+  historicalSeries: Array<{
+    year: number;
+    reer: number;
+    valuationDeviation: number;
+  }>;
+  keyDriver: string;
+}
+
+export interface GscpiComponent {
+  id: string;
+  name: string;
+  category: 'shipping_rates' | 'air_freight' | 'delivery_times' | 'backlogs_inventories';
+  currentValueStdDev: number;
+  trend: 'tightening' | 'easing' | 'neutral';
+  weightDescription: string;
+  description: string;
+}
+
+export interface GscpiHistoricalPoint {
+  period: string;
+  stdDevLevel: number;
+  headlineCpiLaggedLead: number;
+  eventAnnotation?: string;
+}
+
+export interface GscpiProfile {
+  currentStdDev: number;
+  status: 'extreme_stress' | 'elevated_pressure' | 'normal' | 'expansionary_slack';
+  statusDescription: string;
+  historicalPercentile: number;
+  inflationTransmissionHorizonMonths: number;
+  components: GscpiComponent[];
+  historicalSeries: GscpiHistoricalPoint[];
+  methodologyNote: string;
+}
+
+export interface TicHolderProfile {
+  countryCode: string;
+  countryName: string;
+  flag: string;
+  bloc: EconomyBlocId;
+  holdingsBillionUSD: number;
+  twelveMonthChangeBillionUSD: number;
+  shareOfForeignHoldingsPct: number;
+  shareOfTotalUsDebtPct: number;
+  dominantHolderType: 'foreign_official_reserve' | 'private_offshore_custody' | 'institutional';
+  strategicDirection: 'accumulating' | 'stable' | 'divesting';
+  rationale: string;
+}
+
+export interface ForeignDebtHoldingsSeries {
+  year: number;
+  totalMarketableDebtTrillion: number;
+  totalForeignHoldingsTrillion: number;
+  foreignSharePct: number;
+  foreignOfficialHoldingsTrillion: number;
+  foreignPrivateHoldingsTrillion: number;
+  foreignOfficialSharePct: number;
+  chinaHoldingsBillion: number;
+  japanHoldingsBillion: number;
+}
+
+export interface ReserveDiversificationSeries {
+  year: number;
+  usdSharePct: number;
+  eurSharePct: number;
+  goldSharePct: number;
+  otherCurrenciesPct: number;
+}
+
+export interface CapitalFlowsProfile {
+  totalForeignHoldingsBillion: number;
+  latestNetForeignFlowMonthlyBillion: number;
+  foreignShareOfUsDebtPct: number;
+  foreignOfficialSharePct: number;
+  chinaHoldingsBillion: number;
+  japanHoldingsBillion: number;
+  holders: TicHolderProfile[];
+  historicalOwnership: ForeignDebtHoldingsSeries[];
+  reserveDiversification: ReserveDiversificationSeries[];
+  deDollarizationInsight: string;
+}
+
+export interface EvaluatedExternalSectorState {
+  timestamp: string;
+  dxySummary: {
+    currentIndex: number;
+    regime: string;
+    ytdChangePct: number;
+  };
+  gscpiSummary: {
+    currentStdDev: number;
+    status: string;
+    historicalPercentile: number;
+  };
+  currentAccountAlerts: Array<{
+    id: string;
+    countryCode: string;
+    level: 'CRITICAL' | 'WARNING' | 'SURPLUS';
+    headline: string;
+    body: string;
+  }>;
+  reerExtremeAlerts: Array<{
+    id: string;
+    currencyCode: string;
+    level: 'OVERVALUED' | 'UNDERVALUED';
+    headline: string;
+    body: string;
+  }>;
+  ticFlowAlerts: Array<{
+    id: string;
+    level: 'DIVERSIFICATION' | 'FLOW_SURGE';
+    headline: string;
+    body: string;
+  }>;
+}
+

@@ -130,9 +130,11 @@ async function runSync() {
     'src/data/labor-market-data.ts',
     'src/data/inflation-anatomy-data.ts',
     'src/data/leading-indicators-data.ts',
+    'src/data/external-sector-data.ts',
     'src/data/latest-liquidity-status.json',
     'src/data/latest-yield-status.json',
     'src/data/latest-nowcast-status.json',
+    'src/data/latest-external-status.json',
   ];
 
   for (const relPath of datasetFiles) {
@@ -148,6 +150,7 @@ async function runSync() {
   console.log(`   - Checked series: Global GDP, Global Inflation, Sovereign Debt, FX Reserves`);
   console.log(`   - Tier 1 additions: Term Structure Curves, 4-Quadrant Regimes, Sahm Rule & Labor Radar`);
   console.log(`   - Inflation Anatomy: Headline vs. Core, Supercore (Services ex-Shelter), Shelter/OER, PPI Lead Indicator`);
+  console.log(`   - External Sector: Current Account & Trade Balances, DXY & REER Valuations, GSCPI Supply Pressure, TIC Capital Flows`);
   console.log(`   - Pipeline status: HEALTHY (Zero data corruption, all bounds satisfied)\n`);
 }
 

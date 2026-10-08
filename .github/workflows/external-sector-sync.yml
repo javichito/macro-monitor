@@ -1,0 +1,42 @@
+name: Monthly External Sector & Sovereign Capital Flows Sync
+
+on:
+  schedule:
+    # Run on the 16th of each month at 21:00 UTC (capturing monthly US Treasury TIC
+    # and NY Fed GSCPI data releases published mid-month)
+    - cron: '0 21 16 * *'
+  workflow_dispatch:
+    # Allows manual trigger on-demand from the GitHub Actions tab
+
+jobs:
+  sync-external-sector:
+    name: Sync & Validate External Sector Telemetry
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run External Sector & FX Evaluator
+        run: npm run data:external
+
+      - name: Validate Accounting Invariants & Bounds
+        run: npx vitest run src/data/__tests__/external-sector-data.test.ts
+
+      - name: Commit Updated External Status (if changed)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/latest-external-status.json
+          git diff --staged --quiet || (git commit -m "chore(data): automated external sector & TIC capital flow sync [skip ci]" && git push origin main)

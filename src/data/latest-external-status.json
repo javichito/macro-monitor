@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-10-08T20:11:15.147Z",
+  "dxySummary": {
+    "currentIndex": 103.8,
+    "regime": "Rate Differential & Growth Divergence",
+    "ytdChangePct": 2.4
+  },
+  "gscpiSummary": {
+    "currentStdDev": 0.28,
+    "status": "normal",
+    "historicalPercentile": 58.4
+  },
+  "currentAccountAlerts": [
+    {
+      "id": "us-twin-deficit-strain",
+      "countryCode": "USA",
+      "level": "CRITICAL",
+      "headline": "⚠️ US Combined Twin Deficit at -9.8% of GDP ($1.85T Annual Absorptive Need)",
+      "body": "A current account deficit of -3.4% combined with a fiscal shortfall of -6.4% demands continuous foreign debt absorption amid shrinking foreign official reserve shares."
+    },
+    {
+      "id": "china-record-manufacturing-surplus",
+      "countryCode": "CHN",
+      "level": "SURPLUS",
+      "headline": "🚢 China Goods Trade Surplus Hits $915.2B Annually",
+      "body": "Unprecedented manufacturing competitiveness generates over $900B net trade surplus, funneled into strategic commodities, gold reserves, and non-USD bilateral trade clearing."
+    },
+    {
+      "id": "uk-external-funding-gap",
+      "countryCode": "GBR",
+      "level": "WARNING",
+      "headline": "⚠️ UK Twin Deficit at -7.5% of GDP",
+      "body": "Structural current account deficit (-3.2%) and elevated government financing needs require persistent global capital inflows to stabilize Sterling."
+    }
+  ],
+  "reerExtremeAlerts": [
+    {
+      "id": "jpy-reer-undervaluation",
+      "currencyCode": "JPY",
+      "level": "UNDERVALUED",
+      "headline": "📉 Japanese Yen at Extreme Historical Undervaluation: -22.9% vs 10Y REER Mean",
+      "body": "Real effective purchasing power sits at multi-decade lows (68.2), generating massive domestic import inflation while fueling export corporate profits."
+    },
+    {
+      "id": "usd-reer-stretch",
+      "currencyCode": "USD",
+      "level": "OVERVALUED",
+      "headline": "📈 US Dollar Real Effective Valuation Stretched: +13% Over 10Y Equilibrium",
+      "body": "High real yield premiums sustain elevated dollar valuations, creating headwinds for emerging market dollar-denominated debt service."
+    }
+  ],
+  "ticFlowAlerts": [
+    {
+      "id": "china-treasury-reduction-gold-pivot",
+      "level": "DIVERSIFICATION",
+      "headline": "🏦 China US Treasury Holdings Drop Below $770B; Official Gold Share Rises to 18.4%",
+      "body": "Foreign central banks account for just 44.5% of foreign Treasury holdings (down from 75% in 2010), accelerating sovereign reserve diversification across the BRICS+ coalition."
+    },
+    {
+      "id": "foreign-debt-ownership-dilution",
+      "level": "FLOW_SURGE",
+      "headline": "📊 Foreign Ownership Share of US Marketable Debt Diluted to 23.4%",
+      "body": "With total marketable Treasuries crossing $36.4T, domestic US financial institutions and private asset managers bear an unprecedented share of new debt issuance."
+    }
+  ]
+}

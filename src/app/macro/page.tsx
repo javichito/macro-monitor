@@ -12,6 +12,7 @@ import { MacroRegimeClock } from '../../components/macro/MacroRegimeClock';
 import { SahmRuleLaborRadar } from '../../components/macro/SahmRuleLaborRadar';
 import { InflationAnatomyRadar } from '../../components/macro/InflationAnatomyRadar';
 import { LeadingIndicatorsRadar } from '../../components/macro/LeadingIndicatorsRadar';
+import { ExternalSectorRadar } from '../../components/macro/ExternalSectorRadar';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import {
   BarChart3,
@@ -22,9 +23,10 @@ import {
   Landmark,
   Layers,
   Zap,
+  Globe2,
 } from 'lucide-react';
 
-type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'leading' | 'labor' | 'inflation' | 'liquidity';
+type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'leading' | 'labor' | 'inflation' | 'liquidity' | 'external';
 
 export default function MacroPage() {
   const [activeTab, setActiveTab] = useState<MacroSectionTab>('all');
@@ -34,7 +36,7 @@ export default function MacroPage() {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab') as MacroSectionTab;
-    if (tabParam && ['all', 'regimes', 'yields', 'leading', 'labor', 'inflation', 'liquidity'].includes(tabParam)) {
+    if (tabParam && ['all', 'regimes', 'yields', 'leading', 'labor', 'inflation', 'liquidity', 'external'].includes(tabParam)) {
       setActiveTab(tabParam);
     }
   }, []);
@@ -52,7 +54,7 @@ export default function MacroPage() {
             The Global Economic Engine
           </h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
-            Monitor sovereign yield curve inversions, high-frequency GDP nowcasting and PMI diffusion, real-time macro regimes (Dalio growth-inflation clock), Claudia Sahm labor triggers, and central bank liquidity mechanics.
+            Monitor sovereign yield curve inversions, high-frequency GDP nowcasting and PMI diffusion, real-time macro regimes (Dalio growth-inflation clock), Claudia Sahm labor triggers, external sector balances, and central bank liquidity mechanics.
           </p>
         </div>
 
@@ -124,6 +126,17 @@ export default function MacroPage() {
             <span>Inflation Anatomy</span>
           </button>
           <button
+            onClick={() => setActiveTab('external')}
+            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+              activeTab === 'external'
+                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black'
+                : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+            }`}
+          >
+            <Globe2 className="h-3.5 w-3.5 text-cyan-600 dark:text-cyan-400" />
+            <span>External &amp; FX</span>
+          </button>
+          <button
             onClick={() => setActiveTab('liquidity')}
             className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-all cursor-pointer ${
               activeTab === 'liquidity'
@@ -154,6 +167,9 @@ export default function MacroPage() {
       {/* Inflation Anatomy: Beyond Headline CPI */}
       {(activeTab === 'all' || activeTab === 'inflation') && <InflationAnatomyRadar />}
 
+      {/* External Sector, Balance of Payments & FX Strength */}
+      {(activeTab === 'all' || activeTab === 'external') && <ExternalSectorRadar />}
+
       {/* Central Bank Liquidity Radar */}
       {(activeTab === 'all' || activeTab === 'liquidity') && (
         <>
@@ -168,6 +184,37 @@ export default function MacroPage() {
 
       {/* Plain English Guides */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <PlainEnglishCard
+          title="Why does a persistent Current Account deficit threaten sovereign debt sustainability?"
+          summary="An economy consuming more than it produces must borrow the difference from abroad, accumulating foreign liabilities that require continuous refinancing."
+          detail="The Current Account equals national savings minus domestic investment (S - I). When an economy runs persistent deficits (like the US at -3.4% of GDP or UK at -3.2%), it must attract hundreds of billions in foreign capital annually. If paired with an elevated fiscal deficit (the 'Twin Deficit' phenomenon), the sovereign becomes dependent on foreign central bank and institutional purchases of its government debt. If foreign appetite wanes or geopolitical fragmentation accelerates de-dollarization, the country faces upward yield spikes, currency depreciation, or sudden-stop capital outflows."
+          takeaway="Track the Twin Deficit gap: when combined deficits exceed -8% of GDP, sovereign debt rollover requires growing real interest rate concessions."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="What is Real Effective Exchange Rate (REER) and how does it spot currency overvaluation?"
+          summary="REER measures a currency's purchasing power against a trade-weighted basket of foreign currencies, adjusted for inflation differentials."
+          detail="Nominal exchange rates (like USD/JPY or EUR/USD) only compare two currencies at market prices without accounting for domestic inflation. The Bank for International Settlements (BIS) REER calculates trade-weighted multi-lateral competitiveness. When a country's REER drifts +10% to +15% above its 10-year mean (e.g. the US Dollar), its exports become artificially expensive and domestic imports cheapen, worsening the trade deficit. Conversely, when REER drops -20% below equilibrium (e.g. the Japanese Yen), severe currency undervaluation stimulates export profits but imports massive inflation on food and energy."
+          takeaway="REER mean-reversion is a powerful multi-year gravitational force: extreme overvaluations historically precede major cyclical dollar contractions."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="How does the NY Fed GSCPI quantify supply-driven inflation bottlenecks?"
+          summary="The Global Supply Chain Pressure Index strips out consumer demand to isolate pure logistical gridlock across global ocean, air, and factory channels."
+          detail="Constructed by the Federal Reserve Bank of New York, GSCPI synthesizes 27 cross-border indicators—including Baltic Dry raw bulk rates, Harpex container costs, air cargo yields, and PMI supplier delivery times across seven major economies. Because shipping delays and freight spikes lead finished goods prices, GSCPI serves as a 3-to-6 month leading indicator for producer price inflation (PPI). During the 2021 supply chain crisis, GSCPI spiked to a record +4.32σ, directly igniting the 2022 global inflation wave."
+          takeaway="When GSCPI trades within ±0.5σ, supply chains are neutral. Spikes above +1.0σ signal imminent goods inflation regardless of central bank policy rates."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="What is US TIC data and why does foreign central bank de-dollarization matter?"
+          summary="Treasury International Capital (TIC) data tracks every dollar of US sovereign debt owned by foreign central banks, sovereign wealth funds, and private investors."
+          detail="Historically, foreign central banks (especially China and Japan) recycled their massive merchandise trade surpluses directly back into US Treasuries. However, since the 2010s and particularly after the 2022 freezing of Russian foreign reserves, sovereign central banks have reduced their share of US debt from >75% of foreign holdings down to 44.5%. China's Treasury portfolio has shrunk from $1.3T down to ~$768B, with capital reallocated into physical gold and bilateral non-dollar trade settlement. This forces the US Treasury to rely on domestic banks, money market funds, and private hedge funds to absorb record sovereign issuance."
+          takeaway="Foreign share of US debt has dropped from 43% to ~23%, reducing foreign subsidies of US deficit financing and increasing sensitivity to domestic yield spikes."
+          defaultExpanded={false}
+        />
         <PlainEnglishCard
           title="Why does high-frequency GDP Nowcasting beat official releases?"
           summary="Official GDP releases are lagging statistics published up to 90 days after quarter-end, whereas nowcasting updates daily from incoming reports."
