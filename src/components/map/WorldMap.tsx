@@ -31,12 +31,22 @@ interface RegionPreset {
   pan: { x: number; y: number };
 }
 
+/*
+ * Regional presets focus on continent and economic bloc centroid clusters.
+ * The SVG viewBox is 960x500 (center point 480, 250).
+ * With transform `translate(pan.x, pan.y) scale(zoom)`, screen coordinate (Sx, Sy)
+ * maps to: Sx = zoom * X + pan.x, Sy = zoom * Y + pan.y.
+ * To center focus coordinate (TargetX, TargetY) at (480, 250):
+ * pan.x = 480 - zoom * TargetX
+ * pan.y = 250 - zoom * TargetY
+ */
 const REGION_PRESETS: Record<string, RegionPreset> = {
   global: { name: 'World', zoom: 1, pan: { x: 0, y: 0 } },
-  americas: { name: 'Americas', zoom: 1.8, pan: { x: 300, y: -20 } },
-  europe: { name: 'Europe', zoom: 2.8, pan: { x: -380, y: 150 } },
-  asia: { name: 'Asia-Pacific', zoom: 2.0, pan: { x: -500, y: 0 } },
-  mea: { name: 'Middle East & Africa', zoom: 2.2, pan: { x: -280, y: -50 } },
+  americas: { name: 'Americas', zoom: 1.45, pan: { x: 74, y: -90 } },
+  europe: { name: 'Europe', zoom: 2.7, pan: { x: -885, y: 20 } },
+  asia: { name: 'Asia-Pacific', zoom: 1.55, pan: { x: -710, y: -115 } },
+  africa: { name: 'Africa', zoom: 1.85, pan: { x: -500, y: -205 } },
+  mea: { name: 'Middle East & Africa', zoom: 1.65, pan: { x: -430, y: -120 } },
 };
 
 export function WorldMap({
@@ -158,6 +168,7 @@ export function WorldMap({
 
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [activeRegion, setActiveRegion] = useState<string>('global');
   const [isDragging, setIsDragging] = useState(false);
 
   const svgRef = React.useRef<SVGSVGElement | null>(null);
@@ -165,17 +176,39 @@ export function WorldMap({
   const dragStartRef = React.useRef({ x: 0, y: 0 });
   const hasMovedRef = React.useRef(false);
 
+  /*
+   * Zooms in or out while anchoring the viewpoint at the center of the viewport (480, 250),
+   * preventing the map from drifting toward the top-left origin (0, 0) during zoom.
+   */
   const handleZoom = (delta: number) => {
-    setZoom((prev) => {
-      const next = Math.min(4.5, Math.max(1, Math.round((prev + delta) * 10) / 10));
-      if (next === 1) setPan({ x: 0, y: 0 });
-      return next;
+    setZoom((prevZoom) => {
+      const nextZoom = Math.min(4.5, Math.max(1, Math.round((prevZoom + delta) * 10) / 10));
+      if (nextZoom === prevZoom) return prevZoom;
+      if (nextZoom === 1) {
+        setPan({ x: 0, y: 0 });
+        setActiveRegion('global');
+      } else {
+        setActiveRegion('');
+        setPan((prevPan) => {
+          const ratio = nextZoom / prevZoom;
+          const nextPanX = 480 - ratio * (480 - prevPan.x);
+          const nextPanY = 250 - ratio * (250 - prevPan.y);
+          const maxPanX = Math.max(300, (nextZoom - 1) * 480 + 300);
+          const maxPanY = Math.max(200, (nextZoom - 1) * 250 + 200);
+          return {
+            x: Math.max(-maxPanX, Math.min(maxPanX, Math.round(nextPanX))),
+            y: Math.max(-maxPanY, Math.min(maxPanY, Math.round(nextPanY))),
+          };
+        });
+      }
+      return nextZoom;
     });
   };
 
   const handleResetZoom = () => {
     setZoom(1);
     setPan({ x: 0, y: 0 });
+    setActiveRegion('global');
   };
 
   /*
@@ -198,6 +231,7 @@ export function WorldMap({
 
     if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
       hasMovedRef.current = true;
+      setActiveRegion('');
     }
 
     dragStartRef.current = { x: e.clientX, y: e.clientY };
@@ -232,10 +266,27 @@ export function WorldMap({
   const handleWheel = (e: React.WheelEvent<SVGSVGElement>) => {
     e.preventDefault();
     const delta = e.deltaY < 0 ? 0.25 : -0.25;
-    setZoom((prev) => {
-      const next = Math.min(4.5, Math.max(1, Math.round((prev + delta) * 10) / 10));
-      if (next === 1) setPan({ x: 0, y: 0 });
-      return next;
+    setZoom((prevZoom) => {
+      const nextZoom = Math.min(4.5, Math.max(1, Math.round((prevZoom + delta) * 10) / 10));
+      if (nextZoom === prevZoom) return prevZoom;
+      if (nextZoom === 1) {
+        setPan({ x: 0, y: 0 });
+        setActiveRegion('global');
+      } else {
+        setActiveRegion('');
+        setPan((prevPan) => {
+          const ratio = nextZoom / prevZoom;
+          const nextPanX = 480 - ratio * (480 - prevPan.x);
+          const nextPanY = 250 - ratio * (250 - prevPan.y);
+          const maxPanX = Math.max(300, (nextZoom - 1) * 480 + 300);
+          const maxPanY = Math.max(200, (nextZoom - 1) * 250 + 200);
+          return {
+            x: Math.max(-maxPanX, Math.min(maxPanX, Math.round(nextPanX))),
+            y: Math.max(-maxPanY, Math.min(maxPanY, Math.round(nextPanY))),
+          };
+        });
+      }
+      return nextZoom;
     });
   };
 
@@ -310,18 +361,30 @@ export function WorldMap({
 
             {/* Regional Focus Quick Jumps */}
             <div className="flex items-center gap-1.5 text-[11px] overflow-x-auto no-scrollbar max-w-full py-0.5">
-              {Object.entries(REGION_PRESETS).map(([key, preset]) => (
-                <button
-                  key={key}
-                  onClick={() => {
-                    setZoom(preset.zoom);
-                    setPan(preset.pan);
-                  }}
-                  className="rounded-full px-2.5 py-1 border border-white/[0.08] bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.10] transition-colors cursor-pointer shrink-0 whitespace-nowrap active:scale-95"
-                >
-                  {preset.name}
-                </button>
-              ))}
+              {Object.entries(REGION_PRESETS).map(([key, preset]) => {
+                const isActive = activeRegion === key;
+                return (
+                  <button
+                    key={key}
+                    onClick={() => {
+                      setActiveRegion(key);
+                      setZoom(preset.zoom);
+                      setPan(preset.pan);
+                    }}
+                    className={`rounded-full px-2.5 py-1 border transition-all duration-150 cursor-pointer shrink-0 whitespace-nowrap active:scale-95 ${
+                      isActive
+                        ? isLight
+                          ? 'border-sky-500 bg-sky-500 text-white font-semibold shadow-sm'
+                          : 'border-sky-400/50 bg-sky-500/20 text-sky-200 font-semibold shadow-sm'
+                        : isLight
+                        ? 'border-slate-300 bg-white/70 text-slate-700 hover:text-slate-900 hover:bg-white'
+                        : 'border-white/[0.08] bg-white/[0.04] text-slate-300 hover:text-white hover:bg-white/[0.10]'
+                    }`}
+                  >
+                    {preset.name}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
