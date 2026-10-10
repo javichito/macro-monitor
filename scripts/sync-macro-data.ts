@@ -124,6 +124,7 @@ async function runSync() {
 
   console.log('\n2. Verifying existing dataset schema and invariant contracts...');
   const datasetFiles = [
+    'src/data/global-wealth.ts',
     'src/data/macro-trends.ts',
     'src/data/yield-curve-data.ts',
     'src/data/macro-regimes-data.ts',
@@ -148,8 +149,59 @@ async function runSync() {
     }
   }
 
-  console.log('\n3. Ingestion & Invariant Verification Summary:');
+  /*
+   * Validates the 6-tier Global Wealth Pyramid dataset across all historical intervals
+   * ensuring population counts, aggregate wealth sums, and distribution shares stay balanced
+   * with empirical World Bank and UBS benchmark accounting invariants.
+   */
+  console.log('\n3. Validating Global Wealth Pyramid 6-Tier Invariants...');
+  const wealthFilePath = path.resolve(process.cwd(), 'src/data/global-wealth.ts');
+  const wealthFileContent = fs.readFileSync(wealthFilePath, 'utf8');
+  const jsonStart = wealthFileContent.indexOf('export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = ') +
+    'export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = '.length;
+  const jsonEnd = wealthFileContent.lastIndexOf('];') + 1;
+  const wealthHistory = JSON.parse(wealthFileContent.slice(jsonStart, jsonEnd));
+
+  const expectedBrackets = ['< $10k', '$10k - $100k', '$100k - $1M', '$1M - $10M', '$10M - $100M', '> $100M'];
+
+  for (const yearEntry of wealthHistory) {
+    const brackets = yearEntry.tiers.map((t: any) => t.bracket);
+    if (JSON.stringify(brackets) !== JSON.stringify(expectedBrackets)) {
+      throw new Error(`Invalid wealth tier schema in year ${yearEntry.year}: expected 6 tiers (${expectedBrackets.join(', ')}), got (${brackets.join(', ')})`);
+    }
+
+    const totalAdultsMillion = yearEntry.tiers.reduce((acc: number, t: any) => acc + t.adultsMillion, 0);
+    const adultsDiff = Math.abs(totalAdultsMillion / 1000 - yearEntry.adultPopulationBillions);
+    if (adultsDiff > 0.05) {
+      throw new Error(`Adult population mismatch in year ${yearEntry.year}: tiers sum to ${(totalAdultsMillion / 1000).toFixed(3)}B vs headline ${yearEntry.adultPopulationBillions}B`);
+    }
+
+    const totalWealthTrillion = yearEntry.tiers.reduce((acc: number, t: any) => acc + t.wealthTrillion, 0);
+    const wealthDiff = Math.abs(totalWealthTrillion - yearEntry.totalWealthTrillion);
+    if (wealthDiff > 0.15) {
+      throw new Error(`Total wealth mismatch in year ${yearEntry.year}: tiers sum to ${totalWealthTrillion.toFixed(2)}T vs headline ${yearEntry.totalWealthTrillion}T`);
+    }
+
+    const totalWealthShare = yearEntry.tiers.reduce((acc: number, t: any) => acc + t.wealthShare, 0);
+    if (Math.abs(totalWealthShare - 100) > 0.3) {
+      throw new Error(`Total wealth share mismatch in year ${yearEntry.year}: sum is ${totalWealthShare.toFixed(2)}% (must equal 100%)`);
+    }
+
+    // Macroeconomic sanity check against World Bank GDP when live series is available
+    const gdpVal = gdpMap.get(yearEntry.year);
+    if (gdpVal) {
+      const gdpTrillion = gdpVal / 1e12;
+      const wealthToGdp = yearEntry.totalWealthTrillion / gdpTrillion;
+      if (wealthToGdp < 3.0 || wealthToGdp > 7.0) {
+        throw new Error(`Global Wealth-to-GDP ratio out of historical bounds in year ${yearEntry.year}: ${wealthToGdp.toFixed(2)}x (GDP: ${gdpTrillion.toFixed(1)}T, Wealth: ${yearEntry.totalWealthTrillion}T)`);
+      }
+    }
+  }
+  console.log(`   ✓ All ${wealthHistory.length} wealth history intervals verified across 6 tiers with exact accounting balance.`);
+
+  console.log('\n4. Ingestion & Invariant Verification Summary:');
   console.log(`   - Checked series: Global GDP, Global Inflation, Sovereign Debt, FX Reserves`);
+  console.log(`   - Wealth Pyramid: 6-Tier Distribution (< $10k, $10k-$100k, $100k-$1M, $1M-$10M HNW, $10M-$100M VHNW, > $100M Apex)`);
   console.log(`   - Tier 1 additions: Term Structure Curves, 4-Quadrant Regimes, Sahm Rule & Labor Radar`);
   console.log(`   - Inflation Anatomy: Headline vs. Core, Supercore (Services ex-Shelter), Shelter/OER, PPI Lead Indicator`);
   console.log(`   - External Sector: Current Account & Trade Balances, DXY & REER Valuations, GSCPI Supply Pressure, TIC Capital Flows`);

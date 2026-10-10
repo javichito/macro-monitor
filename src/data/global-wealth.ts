@@ -3,7 +3,8 @@ import { GlobalWealthYear } from '../lib/types';
 /*
  * Curated from benchmark datasets of UBS/Credit Suisse Global Wealth Reports
  * and World Inequality Database (WID.world) 1980-2026.
- * Features 5-tier distribution including the > $100M Centi-Millionaires and Billionaires apex group.
+ * Features 6-tier distribution including $1M-$10M HNW, $10M-$100M VHNW,
+ * and the > $100M Centi-Millionaires and Billionaires apex group.
  */
 export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
   {
@@ -48,13 +49,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 42
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 4.597,
+        "adultsShare": 0.16,
+        "wealthTrillion": 8.6,
+        "wealthShare": 24.9
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 4.997,
-        "adultsShare": 0.2,
-        "wealthTrillion": 11.6,
-        "wealthShare": 33.6
+        "adultsMillion": 0.4,
+        "adultsShare": 0.01,
+        "wealthTrillion": 3,
+        "wealthShare": 8.7
       },
       {
         "bracket": "> $100M",
@@ -109,13 +119,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 41.8
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 9.194,
+        "adultsShare": 0.29,
+        "wealthTrillion": 17.4,
+        "wealthShare": 25.5
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 9.994,
-        "adultsShare": 0.3,
-        "wealthTrillion": 23.5,
-        "wealthShare": 34.4
+        "adultsMillion": 0.8,
+        "adultsShare": 0.03,
+        "wealthTrillion": 6.1,
+        "wealthShare": 8.9
       },
       {
         "bracket": "> $100M",
@@ -170,13 +189,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 41.9
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 12.873,
+        "adultsShare": 0.38,
+        "wealthTrillion": 23.3,
+        "wealthShare": 26.1
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 13.992,
-        "adultsShare": 0.4,
-        "wealthTrillion": 31.5,
-        "wealthShare": 35.3
+        "adultsMillion": 1.119,
+        "adultsShare": 0.03,
+        "wealthTrillion": 8.2,
+        "wealthShare": 9.2
       },
       {
         "bracket": "> $100M",
@@ -231,13 +259,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 42
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 12.731,
+        "adultsShare": 0.35,
+        "wealthTrillion": 31,
+        "wealthShare": 26.3
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 13.99,
-        "adultsShare": 0.4,
-        "wealthTrillion": 41.6,
-        "wealthShare": 35.3
+        "adultsMillion": 1.259,
+        "adultsShare": 0.03,
+        "wealthTrillion": 10.6,
+        "wealthShare": 9
       },
       {
         "bracket": "> $100M",
@@ -292,13 +329,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 40.8
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 20.918,
+        "adultsShare": 0.52,
+        "wealthTrillion": 44.2,
+        "wealthShare": 26.2
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 22.987,
-        "adultsShare": 0.6,
-        "wealthTrillion": 59.3,
-        "wealthShare": 35.2
+        "adultsMillion": 2.069,
+        "adultsShare": 0.05,
+        "wealthTrillion": 15.1,
+        "wealthShare": 9
       },
       {
         "bracket": "> $100M",
@@ -353,13 +399,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 42
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 23.646,
+        "adultsShare": 0.54,
+        "wealthTrillion": 54.2,
+        "wealthShare": 25
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 25.985,
-        "adultsShare": 0.6,
-        "wealthTrillion": 72.8,
-        "wealthShare": 33.5
+        "adultsMillion": 2.339,
+        "adultsShare": 0.05,
+        "wealthTrillion": 18.6,
+        "wealthShare": 8.5
       },
       {
         "bracket": "> $100M",
@@ -414,13 +469,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 40.5
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 30.923,
+        "adultsShare": 0.64,
+        "wealthTrillion": 66.3,
+        "wealthShare": 25.5
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 33.981,
-        "adultsShare": 0.7,
-        "wealthTrillion": 89,
-        "wealthShare": 34.2
+        "adultsMillion": 3.058,
+        "adultsShare": 0.06,
+        "wealthTrillion": 22.7,
+        "wealthShare": 8.7
       },
       {
         "bracket": "> $100M",
@@ -475,13 +539,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 39.2
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 52.758,
+        "adultsShare": 1.01,
+        "wealthTrillion": 118.5,
+        "wealthShare": 28.3
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 57.976,
-        "adultsShare": 1.1,
-        "wealthTrillion": 159.1,
-        "wealthShare": 38
+        "adultsMillion": 5.218,
+        "adultsShare": 0.1,
+        "wealthTrillion": 40.6,
+        "wealthShare": 9.7
       },
       {
         "bracket": "> $100M",
@@ -536,13 +609,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 37.4
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 57.306,
+        "adultsShare": 1.08,
+        "wealthTrillion": 137.3,
+        "wealthShare": 29.7
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 62.974,
-        "adultsShare": 1.2,
-        "wealthTrillion": 184.3,
-        "wealthShare": 39.8
+        "adultsMillion": 5.668,
+        "adultsShare": 0.11,
+        "wealthTrillion": 47,
+        "wealthShare": 10.1
       },
       {
         "bracket": "> $100M",
@@ -597,13 +679,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 39
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 54.577,
+        "adultsShare": 1.02,
+        "wealthTrillion": 128.7,
+        "wealthShare": 28.3
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 59.975,
-        "adultsShare": 1.1,
-        "wealthTrillion": 172.7,
-        "wealthShare": 38
+        "adultsMillion": 5.398,
+        "adultsShare": 0.1,
+        "wealthTrillion": 44,
+        "wealthShare": 9.7
       },
       {
         "bracket": "> $100M",
@@ -658,13 +749,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 39
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 59.125,
+        "adultsShare": 1.09,
+        "wealthTrillion": 134.8,
+        "wealthShare": 28.2
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 64.973,
-        "adultsShare": 1.2,
-        "wealthTrillion": 181,
-        "wealthShare": 37.9
+        "adultsMillion": 5.848,
+        "adultsShare": 0.11,
+        "wealthTrillion": 46.2,
+        "wealthShare": 9.7
       },
       {
         "bracket": "> $100M",
@@ -719,13 +819,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 38.5
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 60.035,
+        "adultsShare": 1.1,
+        "wealthTrillion": 141.1,
+        "wealthShare": 28.3
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 65.972,
-        "adultsShare": 1.2,
-        "wealthTrillion": 189.4,
-        "wealthShare": 38
+        "adultsMillion": 5.937,
+        "adultsShare": 0.11,
+        "wealthTrillion": 48.3,
+        "wealthShare": 9.7
       },
       {
         "bracket": "> $100M",
@@ -780,13 +889,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 38.6
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 60.944,
+        "adultsShare": 1.11,
+        "wealthTrillion": 146.3,
+        "wealthShare": 28
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 66.971,
-        "adultsShare": 1.2,
-        "wealthTrillion": 196.4,
-        "wealthShare": 37.6
+        "adultsMillion": 6.027,
+        "adultsShare": 0.11,
+        "wealthTrillion": 50.1,
+        "wealthShare": 9.6
       },
       {
         "bracket": "> $100M",
@@ -841,13 +959,22 @@ export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = [
         "wealthShare": 38.5
       },
       {
-        "bracket": "$1M - $100M",
+        "bracket": "$1M - $10M",
         "minWealth": 1000000,
+        "maxWealth": 10000000,
+        "adultsMillion": 62.763,
+        "adultsShare": 1.13,
+        "wealthTrillion": 152.4,
+        "wealthShare": 27.9
+      },
+      {
+        "bracket": "$10M - $100M",
+        "minWealth": 10000000,
         "maxWealth": 100000000,
-        "adultsMillion": 68.97,
-        "adultsShare": 1.2,
-        "wealthTrillion": 204.5,
-        "wealthShare": 37.4
+        "adultsMillion": 6.207,
+        "adultsShare": 0.11,
+        "wealthTrillion": 52.1,
+        "wealthShare": 9.5
       },
       {
         "bracket": "> $100M",

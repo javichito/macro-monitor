@@ -106,6 +106,10 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
                     className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${
                       tier.bracket === '> $100M'
                         ? 'bg-amber-500/20 text-amber-200 border-amber-400/40 shadow-sm'
+                        : tier.bracket === '$10M - $100M'
+                        ? 'bg-purple-500/20 text-purple-200 border-purple-400/40 shadow-sm'
+                        : tier.bracket === '$1M - $10M'
+                        ? 'bg-sky-500/20 text-sky-200 border-sky-400/40 shadow-sm'
                         : 'bg-white/[0.08] text-slate-200 border-white/[0.12]'
                     }`}
                   >
@@ -114,6 +118,16 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
                   {tier.bracket === '> $100M' && (
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-300 border border-amber-400/30">
                       Apex
+                    </span>
+                  )}
+                  {tier.bracket === '$10M - $100M' && (
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-purple-400/15 text-purple-300 border border-purple-400/30">
+                      VHNW
+                    </span>
+                  )}
+                  {tier.bracket === '$1M - $10M' && (
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-sky-400/15 text-sky-300 border border-sky-400/30">
+                      HNW
                     </span>
                   )}
                   <span className="text-xs text-slate-300 hidden sm:inline font-medium">
@@ -168,6 +182,16 @@ export function WealthPyramid({ data, currencyPerspective }: WealthPyramidProps)
                   {tier.bracket === '> $100M' && (
                     <p>
                       <strong>Ultra-High-Net-Worth (Centi-Millionaires &amp; Billionaires):</strong> An ultra-exclusive apex group of roughly {formatNumber(Math.round(tier.adultsMillion * 1_000_000))} individuals (&lt; 0.01% of global adults) controlling {formatPercent(tier.wealthShare)} of all private net wealth on Earth (${formatCurrency(adjustedWealthTrillion * 1_000_000_000_000, { compact: true })}). This tier encompasses sovereign-scale holdings, listed tech equity, and private conglomerates.
+                    </p>
+                  )}
+                  {tier.bracket === '$10M - $100M' && (
+                    <p>
+                      <strong>Very-High-Net-Worth (Multi-Millionaires &amp; Family Offices):</strong> Comprises only {formatPercent(tier.adultsShare)} of global adults ({formatNumber(tier.adultsMillion)}M individuals), commanding {formatPercent(tier.wealthShare)} of global wealth (${formatCurrency(adjustedWealthTrillion * 1_000_000_000_000, { compact: true })}). Represents owners of mid-sized private corporations, principal real estate portfolios, family offices, and private equity partners.
+                    </p>
+                  )}
+                  {tier.bracket === '$1M - $10M' && (
+                    <p>
+                      <strong>High-Net-Worth Individuals (Millionaires):</strong> Comprises {formatPercent(tier.adultsShare)} of global adults ({formatNumber(tier.adultsMillion)}M individuals) controlling {formatPercent(tier.wealthShare)} of global wealth (${formatCurrency(adjustedWealthTrillion * 1_000_000_000_000, { compact: true })}). Represents senior executives, successful entrepreneurs, specialized professionals, and substantial prime real estate owners.
                     </p>
                   )}
                   {tier.bracket === '$1M - $100M' && (
