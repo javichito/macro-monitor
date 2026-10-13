@@ -139,13 +139,13 @@ export function CountryRankingsTable({
   return (
     <div className="apple-card p-5 sm:p-6 space-y-5">
       {/* Table Header & Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-white/[0.08]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-white/[0.08]">
         <div>
-          <h3 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <Scale className="h-5 w-5 text-sky-400" />
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+            <Scale className="h-5 w-5 text-sky-500 dark:text-sky-400" />
             Global Sovereign League Table ({selectedYear})
           </h3>
-          <p className="text-xs text-slate-300 mt-1 font-normal">
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-normal">
             Ranked macro comparison of {COUNTRIES_DATA.length} major economies across average, median, debt, and inequality metrics.
           </p>
         </div>
@@ -159,18 +159,18 @@ export function CountryRankingsTable({
               placeholder="Search country..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 pr-3.5 py-1.5 text-xs rounded-full bg-white/[0.06] border border-white/[0.10] text-white placeholder-slate-400 focus:outline-none focus:border-sky-400 transition-colors w-36 sm:w-48"
+              className="pl-8 pr-3.5 py-1.5 text-xs rounded-full bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-sky-500 transition-colors w-36 sm:w-48"
             />
           </div>
 
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="py-1.5 px-3 text-xs rounded-full bg-white/[0.06] border border-white/[0.10] text-slate-200 focus:outline-none focus:border-sky-400 cursor-pointer"
+              className="py-1.5 px-3 text-xs rounded-full bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500 cursor-pointer"
             >
-              <option value="all" className="bg-[#121622] text-white">All Regions</option>
+              <option value="all" className="bg-white dark:bg-[#121622] text-slate-900 dark:text-white">All Regions</option>
               {regions.filter((r) => r !== 'all').map((r) => (
-                <option key={r} value={r} className="bg-[#121622] text-white">
+                <option key={r} value={r} className="bg-white dark:bg-[#121622] text-slate-900 dark:text-white">
                   {r}
                 </option>
               ))}
@@ -220,16 +220,16 @@ export function CountryRankingsTable({
         </div>
 
       {/* Responsive Sortable Table */}
-      <div className="overflow-x-auto no-scrollbar rounded-2xl border border-white/[0.08]">
+      <div className="overflow-x-auto no-scrollbar rounded-2xl border border-slate-200 dark:border-white/[0.08]">
         <table className="w-full text-left text-xs">
-          <thead className="bg-white/[0.04] border-b border-white/[0.08] text-slate-300 font-semibold uppercase tracking-wider">
+          <thead className="bg-slate-50 dark:bg-white/[0.04] border-b border-slate-200 dark:border-white/[0.08] text-slate-600 dark:text-slate-300 font-semibold uppercase tracking-wider">
             <tr>
-              <th scope="col" className="py-3 px-3.5 text-center w-12">#</th>
+              <th scope="col" className="py-3 px-3.5 text-center w-12 text-slate-500 dark:text-slate-400">#</th>
               <th
                 scope="col"
                 aria-sort={sortField === 'name' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('name')}
-                className="py-3 px-4 cursor-pointer hover:text-white transition-colors"
+                className="py-3 px-4 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 <div className="flex items-center gap-1.5">
                   <span>Country</span>
@@ -240,7 +240,7 @@ export function CountryRankingsTable({
                 scope="col"
                 aria-sort={sortField === 'medianWealth' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('medianWealth')}
-                className="py-3 px-4 cursor-pointer hover:text-white transition-colors text-right"
+                className="py-3 px-4 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right"
               >
                 <div className="flex items-center justify-end gap-1.5">
                   <span>Median Wealth</span>
@@ -251,7 +251,7 @@ export function CountryRankingsTable({
                 scope="col"
                 aria-sort={sortField === 'meanWealth' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('meanWealth')}
-                className="py-3 px-4 cursor-pointer hover:text-white transition-colors text-right hidden sm:table-cell"
+                className="py-3 px-4 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right hidden sm:table-cell"
               >
                 <div className="flex items-center justify-end gap-1.5">
                   <span>Mean Wealth</span>
@@ -262,7 +262,7 @@ export function CountryRankingsTable({
                 scope="col"
                 aria-sort={sortField === 'skew' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('skew')}
-                className="py-3 px-3 cursor-pointer hover:text-white transition-colors text-right hidden md:table-cell"
+                className="py-3 px-3 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right hidden md:table-cell"
                 title="Inequality Skew = Mean Wealth / Median Wealth"
               >
                 <div className="flex items-center justify-end gap-1.5">
@@ -274,7 +274,7 @@ export function CountryRankingsTable({
                 scope="col"
                 aria-sort={sortField === 'totalWealth' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('totalWealth')}
-                className="py-3 px-4 cursor-pointer hover:text-white transition-colors text-right"
+                className="py-3 px-4 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right"
               >
                 <div className="flex items-center justify-end gap-1.5">
                   <span>Total ($T)</span>
@@ -285,7 +285,7 @@ export function CountryRankingsTable({
                 scope="col"
                 aria-sort={sortField === 'debtToGdp' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('debtToGdp')}
-                className="py-3 px-3.5 cursor-pointer hover:text-white transition-colors text-right hidden lg:table-cell"
+                className="py-3 px-3.5 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right hidden lg:table-cell"
               >
                 <div className="flex items-center justify-end gap-1.5">
                   <span>Debt/GDP</span>
@@ -296,7 +296,7 @@ export function CountryRankingsTable({
                 scope="col"
                 aria-sort={sortField === 'gini' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                 onClick={() => handleSort('gini')}
-                className="py-3 px-3.5 cursor-pointer hover:text-white transition-colors text-right hidden lg:table-cell"
+                className="py-3 px-3.5 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right hidden lg:table-cell"
               >
                 <div className="flex items-center justify-end gap-1.5">
                   <span>Gini</span>
@@ -308,71 +308,71 @@ export function CountryRankingsTable({
               )}
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/[0.05]">
+          <tbody className="divide-y divide-slate-200 dark:divide-white/[0.05]">
             {filteredAndSortedData.map((row, index) => (
               <tr
                 key={row.country.code}
-                className="hover:bg-white/[0.04] transition-colors group"
+                className="hover:bg-slate-50/80 dark:hover:bg-white/[0.04] transition-colors group"
               >
-                <td className="py-3 px-3.5 text-center font-mono text-slate-400 text-[11px]">
+                <td className="py-3 px-3.5 text-center font-mono text-slate-500 dark:text-slate-400 text-[11px]">
                   {index + 1}
                 </td>
-                <td className="py-3 px-4 font-medium text-white">
+                <td className="py-3 px-4 font-medium text-slate-900 dark:text-white">
                   <div className="flex items-center gap-2.5">
                     <span className="text-xl shrink-0">{row.country.flag}</span>
                     <div>
                       <span className="font-semibold block tracking-tight">
                         {row.country.name}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono block">
+                      <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono block">
                         {row.country.region}
                       </span>
                     </div>
                   </div>
                 </td>
-                <td className="py-3 px-4 text-right font-bold text-emerald-400">
+                <td className="py-3 px-4 text-right font-bold text-emerald-600 dark:text-emerald-400">
                   {formatCurrency(row.adjMedian, { compact: true })}
                 </td>
-                <td className="py-3 px-4 text-right font-medium text-slate-200 hidden sm:table-cell">
+                <td className="py-3 px-4 text-right font-medium text-slate-700 dark:text-slate-200 hidden sm:table-cell">
                   {formatCurrency(row.adjMean, { compact: true })}
                 </td>
-                <td className="py-3 px-3 text-right font-mono text-slate-300 hidden md:table-cell">
+                <td className="py-3 px-3 text-right font-mono text-slate-700 dark:text-slate-300 hidden md:table-cell">
                   <span
                     className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${
                       row.skew > 3.5
-                        ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                        ? 'bg-rose-100 text-rose-800 border border-rose-300 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/30'
                         : row.skew > 2.0
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                        : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                        ? 'bg-amber-100 text-amber-800 border border-amber-300 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30'
+                        : 'bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30'
                     }`}
                   >
                     {row.skew.toFixed(2)}x
                   </span>
                 </td>
-                <td className="py-3 px-4 text-right font-mono text-white font-semibold">
+                <td className="py-3 px-4 text-right font-mono text-slate-900 dark:text-white font-semibold">
                   ${row.adjTotal.toFixed(1)}T
                 </td>
-                <td className="py-3 px-3.5 text-right font-mono text-slate-300 hidden lg:table-cell">
+                <td className="py-3 px-3.5 text-right font-mono text-slate-700 dark:text-slate-300 hidden lg:table-cell">
                   <span
                     className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${
                       row.debtToGdp > 150
-                        ? 'bg-rose-500/20 text-rose-300'
+                        ? 'bg-rose-100 text-rose-800 dark:bg-rose-500/20 dark:text-rose-300'
                         : row.debtToGdp > 80
-                        ? 'bg-amber-500/20 text-amber-300'
-                        : 'bg-emerald-500/20 text-emerald-300'
+                        ? 'bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-300'
+                        : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300'
                     }`}
                   >
                     {row.debtToGdp}%
                   </span>
                 </td>
-                <td className="py-3 px-3.5 text-right font-mono text-slate-300 hidden lg:table-cell">
+                <td className="py-3 px-3.5 text-right font-mono text-slate-700 dark:text-slate-300 hidden lg:table-cell">
                   {row.gini.toFixed(2)}
                 </td>
                 {onSelectCountryForDuel && (
                   <td className="py-3 px-4 text-center">
                     <button
                       onClick={() => onSelectCountryForDuel(row.country.code)}
-                      className="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-white/[0.06] hover:bg-sky-500/20 hover:text-sky-300 border border-white/[0.10] hover:border-sky-400/40 transition-all cursor-pointer inline-flex items-center gap-1 active:scale-95"
+                      className="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-slate-100 hover:bg-sky-100 text-slate-700 hover:text-sky-800 dark:bg-white/[0.06] dark:hover:bg-sky-500/20 dark:text-slate-200 dark:hover:text-sky-300 border border-slate-200 dark:border-white/[0.10] hover:border-sky-300 dark:hover:border-sky-400/40 transition-all cursor-pointer inline-flex items-center gap-1 active:scale-95"
                       title={`Launch Head-to-Head Duel for ${row.country.name}`}
                     >
                       <span>Duel</span>

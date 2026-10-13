@@ -14,11 +14,26 @@ import {
 } from 'recharts';
 import { GLOBAL_WEALTH_HISTORY } from '../../data/global-wealth';
 import { formatPercent } from '../../lib/formatters';
+import { useThemeMode } from '../../context/AppContext';
 import { DataExportMenu } from '../common/DataExportMenu';
 import { TrendingUp, ShieldAlert } from 'lucide-react';
 
 export function InequalityTrends() {
+  const theme = useThemeMode();
+  const isDark = theme === 'dark';
   const [viewMode, setViewMode] = useState<'shares' | 'gini'>('shares');
+
+  const tooltipStyle = {
+    backgroundColor: isDark ? '#0f131c' : '#ffffff',
+    borderColor: isDark ? '#242b3d' : '#e2e8f0',
+    borderRadius: '0.5rem',
+    fontSize: '12px',
+    color: isDark ? '#f8fafc' : '#0f172a',
+    boxShadow: isDark ? '0 8px 32px rgba(0,0,0,0.5)' : '0 8px 24px rgba(0,0,0,0.08)',
+  };
+
+  const gridStroke = isDark ? '#1e2433' : 'rgba(0, 0, 0, 0.08)';
+  const axisStroke = isDark ? '#64748b' : '#94a3b8';
 
   const chartData = GLOBAL_WEALTH_HISTORY.map((item) => ({
     year: item.year,
@@ -33,24 +48,24 @@ export function InequalityTrends() {
     <div className="apple-card p-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h3 className="text-base font-semibold text-white tracking-tight flex items-center gap-2">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
             <TrendingUp className="h-4 w-4 text-[#30d158]" />
             Wealth Inequality Trajectory (1980–2026)
           </h3>
-          <p className="text-xs text-white/60 mt-0.5">
+          <p className="text-xs text-slate-500 dark:text-white/60 mt-0.5">
             Tracking how wealth concentration shifted between the Top 1%, Middle 40%, and Bottom 50%.
           </p>
         </div>
 
         <div className="flex items-center gap-2.5 self-start sm:self-auto">
           {/* View toggle */}
-          <div className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1 text-xs">
+          <div className="flex items-center rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
             <button
               onClick={() => setViewMode('shares')}
               className={`rounded-full px-3 py-1 font-medium transition-all ${
                 viewMode === 'shares'
-                  ? 'bg-white/20 text-white shadow-sm'
-                  : 'text-white/60 hover:text-white'
+                  ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white shadow-sm'
+                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Tier Shares (%)
@@ -59,8 +74,8 @@ export function InequalityTrends() {
               onClick={() => setViewMode('gini')}
               className={`rounded-full px-3 py-1 font-medium transition-all ${
                 viewMode === 'gini'
-                  ? 'bg-white/20 text-white shadow-sm'
-                  : 'text-white/60 hover:text-white'
+                  ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white shadow-sm'
+                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Gini Coefficient
@@ -107,22 +122,16 @@ export function InequalityTrends() {
                   <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e2433" vertical={false} />
-              <XAxis dataKey="year" stroke="#64748b" tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} vertical={false} />
+              <XAxis dataKey="year" stroke={axisStroke} tick={{ fontSize: 11 }} />
               <YAxis
-                stroke="#64748b"
+                stroke={axisStroke}
                 tick={{ fontSize: 11 }}
                 domain={[0, 90]}
                 tickFormatter={(v) => `${v}%`}
               />
               <Tooltip
-                contentStyle={{
-                  backgroundColor: '#0f131c',
-                  borderColor: '#242b3d',
-                  borderRadius: '0.5rem',
-                  fontSize: '12px',
-                  color: '#f8fafc',
-                }}
+                contentStyle={tooltipStyle}
                 formatter={(value: any, name: any) => {
                   const labels: Record<string, string> = {
                     top1: 'Top 1% Share',
@@ -160,22 +169,16 @@ export function InequalityTrends() {
             </AreaChart>
           ) : (
             <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e2433" vertical={false} />
-              <XAxis dataKey="year" stroke="#64748b" tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} vertical={false} />
+              <XAxis dataKey="year" stroke={axisStroke} tick={{ fontSize: 11 }} />
               <YAxis
-                stroke="#64748b"
+                stroke={axisStroke}
                 tick={{ fontSize: 11 }}
                 domain={[0.85, 0.92]}
                 tickFormatter={(v) => v.toFixed(3)}
               />
               <Tooltip
-                contentStyle={{
-                  backgroundColor: '#0f131c',
-                  borderColor: '#242b3d',
-                  borderRadius: '0.5rem',
-                  fontSize: '12px',
-                  color: '#f8fafc',
-                }}
+                contentStyle={tooltipStyle}
                 formatter={(val: any) => [Number(val).toFixed(3), 'Global Wealth Gini']}
               />
               <Line
@@ -191,28 +194,28 @@ export function InequalityTrends() {
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-white/[0.08] pt-4">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-slate-200 dark:border-white/[0.08] pt-4">
         {viewMode === 'shares' ? (
           <>
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[#ff9f0a]"></span>
-              <span className="text-white/70">Top 10% Share (~83.7%)</span>
+              <span className="text-slate-600 dark:text-white/70">Top 10% Share (~83.7%)</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[#ff453a]"></span>
-              <span className="text-white/70">Top 1% Share (~45.4%)</span>
+              <span className="text-slate-600 dark:text-white/70">Top 1% Share (~45.4%)</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[#64d2ff]"></span>
-              <span className="text-white/70">Middle 40% Share (~14.8%)</span>
+              <span className="text-slate-600 dark:text-white/70">Middle 40% Share (~14.8%)</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-white/40"></span>
-              <span className="text-white/70">Bottom 50% Share (~1.5%)</span>
+              <span className="h-2 w-2 rounded-full bg-slate-400 dark:bg-white/40"></span>
+              <span className="text-slate-600 dark:text-white/70">Bottom 50% Share (~1.5%)</span>
             </div>
           </>
         ) : (
-          <div className="text-white/60">
+          <div className="text-slate-600 dark:text-white/60">
             A Gini coefficient of 1.0 represents total inequality (one person holding all wealth).
             Global wealth Gini softened from 0.912 in 1980 to 0.877 in 2026 as emerging markets expanded their asset base.
           </div>

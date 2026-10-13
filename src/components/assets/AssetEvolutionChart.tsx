@@ -15,6 +15,7 @@ import { AssetCategory, CurrencyPerspective } from '../../lib/types';
 import { adjustValue, formatCurrency, formatPercent } from '../../lib/formatters';
 import { SubAssetDetailModal } from './SubAssetDetailModal';
 import { DataExportMenu } from '../common/DataExportMenu';
+import { useThemeMode } from '../../context/AppContext';
 import { Layers, PieChart, ChevronRight, ShieldAlert, ArrowUpRight } from 'lucide-react';
 
 interface AssetEvolutionChartProps {
@@ -73,6 +74,20 @@ export function AssetEvolutionChart({
   const [viewType, setViewType] = useState<'trillion' | 'share'>('trillion');
   const [granularity, setGranularity] = useState<'macro' | 'sub'>('macro');
   const [selectedCategoryForModal, setSelectedCategoryForModal] = useState<AssetCategory | null>(null);
+  const theme = useThemeMode();
+  const isDark = theme === 'dark';
+
+  const gridStroke = isDark ? '#1e2433' : '#e2e8f0';
+  const axisStroke = isDark ? '#64748b' : '#94a3b8';
+  const tooltipStyle = {
+    backgroundColor: isDark ? 'rgba(12, 16, 24, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+    backdropFilter: 'blur(20px)',
+    borderColor: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.1)',
+    borderRadius: '1rem',
+    boxShadow: isDark ? '0 16px 36px rgba(0,0,0,0.5)' : '0 16px 36px rgba(0,0,0,0.1)',
+    fontSize: '12px',
+    color: isDark ? '#fff' : '#0f172a',
+  };
 
   const activeYearData =
     GLOBAL_ASSET_HISTORY.find((y) => y.year === selectedYear) ||
@@ -166,26 +181,26 @@ export function AssetEvolutionChart({
       <div className="apple-card p-5 sm:p-6 transition-all duration-300">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2.5">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/15 text-sky-400 border border-sky-500/25">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/15 text-sky-500 dark:text-sky-400 border border-sky-500/25">
                 <Layers className="h-4 w-4" />
               </div>
               Global Asset Allocation Stack (1980–2026)
             </h3>
-            <p className="text-xs text-slate-300 mt-1 font-normal">
+            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-normal">
               Visualizing how human wealth is distributed across tangible property and contractual financial claims.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
             {/* Granularity switch: Apple segmented control */}
-            <div className="flex rounded-full p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs">
+            <div className="flex rounded-full p-1 bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] shadow-inner text-xs">
               <button
                 onClick={() => setGranularity('macro')}
                 className={`rounded-full px-3 py-1 font-semibold transition-all duration-200 cursor-pointer ${
                   granularity === 'macro'
-                    ? 'bg-white text-black shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-slate-900 dark:text-black shadow-md'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Macro Classes (6)
@@ -194,8 +209,8 @@ export function AssetEvolutionChart({
                 onClick={() => setGranularity('sub')}
                 className={`rounded-full px-3 py-1 font-semibold transition-all duration-200 cursor-pointer ${
                   granularity === 'sub'
-                    ? 'bg-white text-black shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-slate-900 dark:text-black shadow-md'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Sub-Sectors (18)
@@ -203,13 +218,13 @@ export function AssetEvolutionChart({
             </div>
 
             {/* Value vs Share Switch: Apple segmented control */}
-            <div className="flex rounded-full p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs">
+            <div className="flex rounded-full p-1 bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] shadow-inner text-xs">
               <button
                 onClick={() => setViewType('trillion')}
                 className={`rounded-full px-3 py-1 font-semibold transition-all duration-200 cursor-pointer ${
                   viewType === 'trillion'
-                    ? 'bg-white text-black shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-slate-900 dark:text-black shadow-md'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Valuation ($T)
@@ -218,8 +233,8 @@ export function AssetEvolutionChart({
                 onClick={() => setViewType('share')}
                 className={`rounded-full px-3 py-1 font-semibold transition-all duration-200 cursor-pointer ${
                   viewType === 'share'
-                    ? 'bg-white text-black shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-slate-900 dark:text-black shadow-md'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Share (%)
@@ -292,24 +307,16 @@ export function AssetEvolutionChart({
                   <stop offset="95%" stopColor="#a855f7" stopOpacity={0.2} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e2433" vertical={false} />
-              <XAxis dataKey="year" stroke="#64748b" tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} vertical={false} />
+              <XAxis dataKey="year" stroke={axisStroke} tick={{ fontSize: 11 }} />
               <YAxis
-                stroke="#64748b"
+                stroke={axisStroke}
                 tick={{ fontSize: 11 }}
                 domain={viewType === 'share' ? [0, 100] : ['auto', 'auto']}
                 tickFormatter={(v) => (viewType === 'share' ? `${v}%` : `$${v}T`)}
               />
               <Tooltip
-                contentStyle={{
-                  backgroundColor: 'rgba(12, 16, 24, 0.9)',
-                  backdropFilter: 'blur(20px)',
-                  borderColor: 'rgba(255, 255, 255, 0.12)',
-                  borderRadius: '1rem',
-                  boxShadow: '0 16px 36px rgba(0,0,0,0.5)',
-                  fontSize: '12px',
-                  color: '#fff',
-                }}
+                contentStyle={tooltipStyle}
                 formatter={(val: any, name: any) => [
                   viewType === 'share' ? `${val}%` : `$${Number(val).toFixed(1)}T`,
                   name,
@@ -342,11 +349,11 @@ export function AssetEvolutionChart({
       {/* Primary Asset Classes Grid with Sub-Sector Drilldowns */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h4 className="text-sm sm:text-base font-bold text-white tracking-tight flex items-center gap-2">
-            <PieChart className="h-4 w-4 text-sky-400" />
+          <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+            <PieChart className="h-4 w-4 text-sky-500 dark:text-sky-400" />
             Asset Class Breakdown ({activeYearData.year})
           </h4>
-          <span className="text-xs text-slate-300">
+          <span className="text-xs text-slate-600 dark:text-slate-300">
             Click any card to inspect its sub-sector composition
           </span>
         </div>
@@ -364,37 +371,37 @@ export function AssetEvolutionChart({
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="flex items-center gap-2 font-bold text-sm text-white group-hover:text-sky-300 transition-colors">
+                    <span className="flex items-center gap-2 font-bold text-sm text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-300 transition-colors">
                       <span
                         className="h-2.5 w-2.5 rounded-full"
                         style={{ backgroundColor: cat.color }}
                       />
                       {cat.name}
                     </span>
-                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white/[0.08] text-slate-200 border border-white/[0.12]">
+                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/[0.08] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/[0.12]">
                       {formatPercent(cat.sharePercent)}
                     </span>
                   </div>
 
-                  <div className="text-2xl font-bold tracking-tight text-white mt-1">
+                  <div className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
                     {formatCurrency(adjustedVal * 1_000_000_000_000, { compact: true })}
                   </div>
 
-                  <p className="text-xs text-slate-300 mt-2 leading-relaxed line-clamp-2 font-normal">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed line-clamp-2 font-normal">
                     {cat.description}
                   </p>
                 </div>
 
                 {/* Sub-sector preview segmented bar */}
-                <div className="mt-4 pt-3 border-t border-white/[0.08]">
-                  <div className="flex items-center justify-between text-[11px] text-slate-300 mb-1.5 font-medium">
+                <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/[0.08]">
+                  <div className="flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-300 mb-1.5 font-medium">
                     <span>Sub-Sectors:</span>
-                    <span className="text-sky-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                    <span className="text-sky-600 dark:text-sky-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
                       Inspect {subCategories.length} sectors <ChevronRight className="h-3 w-3" />
                     </span>
                   </div>
 
-                  <div className="h-2 w-full rounded-full bg-white/[0.08] overflow-hidden flex shadow-inner">
+                  <div className="h-2 w-full rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden flex shadow-inner">
                     {subCategories.map((sub) => (
                       <div
                         key={sub.id}
@@ -407,7 +414,7 @@ export function AssetEvolutionChart({
                     ))}
                   </div>
 
-                  <div className="mt-1.5 flex justify-between text-[10px] text-slate-400">
+                  <div className="mt-1.5 flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
                     {subCategories.slice(0, 3).map((sub) => (
                       <span key={sub.id} className="truncate max-w-[90px]">
                         {sub.name.split(' ')[0]} ({sub.shareOfParentPercent}%)

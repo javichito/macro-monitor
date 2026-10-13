@@ -32,10 +32,10 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
           <Compass className="h-5 w-5" />
         </div>
         <div>
-          <h3 className="text-base font-semibold text-white tracking-tight">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight">
             Where Do You Stand? (Personal Wealth Positioner)
           </h3>
-          <p className="text-xs text-white/60">
+          <p className="text-xs text-slate-500 dark:text-white/60">
             Discover your exact percentile standing nationally and globally based on 2026 wealth data.
           </p>
         </div>
@@ -45,17 +45,17 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
         {/* Input panel */}
         <div className="lg:col-span-6 space-y-4">
           <div>
-            <label htmlFor="country-select" className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-1.5">
+            <label htmlFor="country-select" className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-white/60 mb-1.5">
               Select Your Country
             </label>
             <select
               id="country-select"
               value={selectedCountryCode}
               onChange={(e) => setSelectedCountryCode(e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm font-medium text-white focus:border-[#0a84ff] transition-colors"
+              className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-2.5 text-sm font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] transition-colors"
             >
               {COUNTRIES_DATA.map((c) => (
-                <option key={c.code} value={c.code} className="bg-[#12141c] text-white">
+                <option key={c.code} value={c.code} className="bg-white dark:bg-[#12141c] text-slate-900 dark:text-white">
                   {c.flag} {c.name}
                 </option>
               ))}
@@ -64,13 +64,13 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
 
           <div>
             <div className="flex justify-between items-center mb-1.5">
-              <label htmlFor="net-worth-input" className="text-xs font-semibold uppercase tracking-wider text-white/60">
+              <label htmlFor="net-worth-input" className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-white/60">
                 Your Estimated Net Worth (USD)
               </label>
-              <span className="text-xs text-white/40">Assets minus all debts</span>
+              <span className="text-xs text-slate-400 dark:text-white/40">Assets minus all debts</span>
             </div>
             <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-white/40">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400 dark:text-white/40">
                 <DollarSign className="h-4 w-4" />
               </div>
               <input
@@ -81,14 +81,14 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
                 step="1000"
                 value={netWorth}
                 onChange={(e) => setNetWorth(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-xl border border-white/10 bg-white/[0.05] pl-9 pr-4 py-2.5 text-sm text-white font-mono font-medium focus:border-[#0a84ff] transition-colors"
+                className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] pl-9 pr-4 py-2.5 text-sm text-slate-900 dark:text-white font-mono font-medium focus:border-[#0a84ff] transition-colors"
               />
             </div>
           </div>
 
           {/* Quick preset chips */}
           <div>
-            <span className="text-[11px] font-semibold text-white/50 uppercase tracking-wider block mb-2">
+            <span className="text-[11px] font-semibold text-slate-500 dark:text-white/50 uppercase tracking-wider block mb-2">
               Quick Test Presets
             </span>
             <div className="flex flex-wrap gap-1.5">
@@ -99,8 +99,8 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
                   onClick={() => setNetWorth(val)}
                   className={`px-3 py-1 text-xs font-medium rounded-full border transition-all ${
                     netWorth === val
-                      ? 'bg-[#30d158]/20 text-[#30d158] border-[#30d158]/40 shadow-sm'
-                      : 'border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/[0.08] hover:text-white'
+                      ? 'bg-emerald-500/15 text-emerald-700 dark:text-[#30d158] border-emerald-500/40 shadow-sm'
+                      : 'border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.04] text-slate-600 dark:text-white/70 hover:bg-slate-200/80 dark:hover:bg-white/[0.08] hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   {formatCurrency(val, { compact: true })}
@@ -114,64 +114,64 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
         <div
           aria-live="polite"
           aria-atomic="true"
-          className="lg:col-span-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 flex flex-col justify-between backdrop-blur-md"
+          className="lg:col-span-6 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-100/50 dark:bg-white/[0.03] p-5 sm:p-6 flex flex-col justify-between backdrop-blur-md"
         >
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-white/60 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-slate-600 dark:text-white/60 uppercase tracking-wider">
                 National Standing in {selectedCountry.name}
               </span>
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#30d158]/20 text-[#30d158] border border-[#30d158]/30">
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-[#30d158] border border-emerald-500/30">
                 {result.bracketName}
               </span>
             </div>
 
             <div className="mt-4 flex items-baseline gap-2">
-              <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+              <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                 {formatPercent(result.percentile, 1)}
               </span>
-              <span className="text-sm font-medium text-white/50">percentile</span>
+              <span className="text-sm font-medium text-slate-500 dark:text-white/50">percentile</span>
             </div>
 
-            <p className="text-xs text-white/75 mt-2.5 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-white/75 mt-2.5 leading-relaxed">
               {result.summary}
             </p>
           </div>
 
           {/* Comparative metrics */}
-          <div className="grid grid-cols-2 gap-3 mt-5 pt-4 border-t border-white/[0.08]">
-            <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
-              <span className="text-[11px] font-medium text-white/50 block">vs National Median</span>
-              <span className="text-base font-bold text-white tracking-tight mt-0.5 block">
+          <div className="grid grid-cols-2 gap-3 mt-5 pt-4 border-t border-slate-200 dark:border-white/[0.08]">
+            <div className="rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/[0.04] p-3 shadow-sm">
+              <span className="text-[11px] font-medium text-slate-500 dark:text-white/50 block">vs National Median</span>
+              <span className="text-base font-bold text-slate-900 dark:text-white tracking-tight mt-0.5 block">
                 {result.countryMedianRatio}x
               </span>
-              <span className="text-[10px] text-white/40 block mt-0.5">
+              <span className="text-[10px] text-slate-400 dark:text-white/40 block mt-0.5">
                 Median: {formatCurrency(latestMetric.medianWealthUSD, { compact: true })}
               </span>
             </div>
 
-            <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
-              <span className="text-[11px] font-medium text-white/50 block">vs Global Median</span>
-              <span className="text-base font-bold text-[#30d158] tracking-tight mt-0.5 block">
+            <div className="rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/[0.04] p-3 shadow-sm">
+              <span className="text-[11px] font-medium text-slate-500 dark:text-white/50 block">vs Global Median</span>
+              <span className="text-base font-bold text-emerald-600 dark:text-[#30d158] tracking-tight mt-0.5 block">
                 {result.globalMedianRatio}x
               </span>
-              <span className="text-[10px] text-white/40 block mt-0.5">
+              <span className="text-[10px] text-slate-400 dark:text-white/40 block mt-0.5">
                 Global: $9,450
               </span>
             </div>
           </div>
 
           {/* Benchmark thresholds */}
-          <div className="mt-4 text-[11px] text-white/60 space-y-1.5">
+          <div className="mt-4 text-[11px] text-slate-600 dark:text-white/60 space-y-1.5">
             <div className="flex justify-between">
               <span>Top 10% in {selectedCountry.name} begins at:</span>
-              <span className="font-semibold text-white">
+              <span className="font-semibold text-slate-900 dark:text-white">
                 {formatCurrency(result.thresholds.top10Percent, { compact: true })}
               </span>
             </div>
             <div className="flex justify-between">
               <span>Top 1% in {selectedCountry.name} begins at:</span>
-              <span className="font-semibold text-white">
+              <span className="font-semibold text-slate-900 dark:text-white">
                 {formatCurrency(result.thresholds.top1Percent, { compact: true })}
               </span>
             </div>
@@ -181,7 +181,7 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
             <button
               type="button"
               onClick={onSwitchToPpp}
-              className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] py-2 text-xs font-semibold text-white/80 hover:bg-white/[0.08] hover:text-white transition-colors"
+              className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/[0.04] py-2 text-xs font-semibold text-slate-700 dark:text-white/80 hover:bg-slate-100 dark:hover:bg-white/[0.08] hover:text-slate-900 dark:hover:text-white transition-colors shadow-sm"
             >
               <Globe2 className="h-3.5 w-3.5 text-[#0a84ff]" />
               <span>Compare what this buys abroad (PPP Converter) &rarr;</span>

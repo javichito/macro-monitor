@@ -22,15 +22,15 @@ export default function WealthPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="border-b border-white/[0.08] pb-6">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-200 mb-3 shadow-inner">
-          <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
+      <div className="border-b border-slate-200 dark:border-white/[0.08] pb-6">
+        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/[0.12] bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-200 mb-3 shadow-inner">
+          <TrendingUp className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
           <span>Wealth Distribution &amp; Inequality</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
           Who Holds the Wealth of the World?
         </h1>
-        <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
           Track the distribution of private wealth across population tiers, understand the historical evolution of the wealth gap, and discover where your household sits on the global and national spectrum.
         </p>
       </div>
@@ -64,17 +64,17 @@ export default function WealthPage() {
       <div className="pt-4 space-y-4">
         {/* Segmented Pill Selector */}
         <div className="flex items-center justify-between flex-wrap gap-3">
-          <div className="flex rounded-full border border-white/10 bg-white/[0.04] p-1 backdrop-blur-md">
+          <div className="flex rounded-full border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.04] p-1 backdrop-blur-md">
             <button
               type="button"
               onClick={() => setCalculatorView('percentile')}
               className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
                 calculatorView === 'percentile'
-                  ? 'bg-white text-black shadow-sm'
-                  : 'text-white/70 hover:text-white hover:bg-white/[0.06]'
+                  ? 'bg-white dark:bg-white text-slate-900 dark:text-black shadow-sm'
+                  : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.06]'
               }`}
             >
-              <Compass className="h-3.5 w-3.5" />
+              <Compass className="h-3.5 w-3.5 text-emerald-600 dark:text-inherit" />
               <span>Percentile Positioner</span>
             </button>
             <button
@@ -82,16 +82,16 @@ export default function WealthPage() {
               onClick={() => setCalculatorView('ppp')}
               className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
                 calculatorView === 'ppp'
-                  ? 'bg-white text-black shadow-sm'
-                  : 'text-white/70 hover:text-white hover:bg-white/[0.06]'
+                  ? 'bg-white dark:bg-white text-slate-900 dark:text-black shadow-sm'
+                  : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.06]'
               }`}
             >
-              <Globe2 className="h-3.5 w-3.5" />
+              <Globe2 className="h-3.5 w-3.5 text-sky-600 dark:text-inherit" />
               <span>PPP Cost-of-Living Converter</span>
             </button>
           </div>
 
-          <span className="text-xs text-white/50 hidden sm:inline-block">
+          <span className="text-xs text-slate-500 dark:text-white/50 hidden sm:inline-block">
             {calculatorView === 'percentile'
               ? 'Calculate domestic & global wealth percentile'
               : 'Calculate real purchasing power across 31 economies'}

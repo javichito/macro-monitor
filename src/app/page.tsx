@@ -50,23 +50,23 @@ export default function OverviewPage() {
   return (
     <div className="space-y-8">
       {/* Hero header with Apple high-contrast clarity */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 pb-6 border-b border-white/[0.08]">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 pb-6 border-b border-slate-200 dark:border-white/[0.08]">
         <div className="flex-1 min-w-0">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-200 mb-3 shadow-inner">
-            <Globe2 className="h-3.5 w-3.5 text-sky-400" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/[0.12] bg-slate-100 dark:bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-200 mb-3 shadow-inner">
+            <Globe2 className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
             <span>Macroeconomic &amp; Wealth Intelligence</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
             The Financial State of Planet Earth
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
             A minimalist observatory designed to help everyday citizens understand global wealth accumulation, asset concentration, and macroeconomic cycles over time.
           </p>
         </div>
 
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-xs text-slate-300 self-start md:self-auto">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] text-xs text-slate-600 dark:text-slate-300 self-start md:self-auto">
           <span>Perspective:</span>
-          <span className="font-semibold text-white uppercase tracking-wider">
+          <span className="font-semibold text-slate-900 dark:text-white uppercase tracking-wider">
             {currencyPerspective} USD
           </span>
         </div>
@@ -79,64 +79,64 @@ export default function OverviewPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
         {/* Total Wealth Card */}
         <div className="apple-card apple-card-hover p-5 sm:p-6 relative overflow-hidden group">
-          <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-            <span className="uppercase tracking-wider font-semibold text-slate-300">Total Global Wealth</span>
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 shadow-sm">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span className="uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300">Total Global Wealth</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/25 shadow-sm">
               <Coins className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-1">
+          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
             {formatCurrency(adjustedWealthTrillion * 1_000_000_000_000, { compact: true })}
           </div>
-          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
             Combined net worth of all {currentWealth.adultPopulationBillions.toFixed(2)}B adults on Earth.
           </p>
         </div>
 
         {/* Global GDP Card */}
         <div className="apple-card apple-card-hover p-5 sm:p-6 relative overflow-hidden group">
-          <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-            <span className="uppercase tracking-wider font-semibold text-slate-300">World Annual GDP</span>
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500/15 text-sky-300 border border-sky-500/25 shadow-sm">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span className="uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300">World Annual GDP</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500/15 text-sky-600 dark:text-sky-300 border border-sky-500/25 shadow-sm">
               <TrendingUp className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-1">
+          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
             {formatCurrency(adjustedGdpTrillion * 1_000_000_000_000, { compact: true })}
           </div>
-          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
             Annual economic production of goods and services worldwide.
           </p>
         </div>
 
         {/* Median Adult Wealth */}
         <div className="apple-card apple-card-hover p-5 sm:p-6 relative overflow-hidden group">
-          <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-            <span className="uppercase tracking-wider font-semibold text-slate-300">Median Adult Wealth</span>
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/25 shadow-sm">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span className="uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300">Median Adult Wealth</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/25 shadow-sm">
               <Scale className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-1">
+          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
             {formatCurrency(adjustedMedian, { compact: true })}
           </div>
-          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
             50% of the world owns less than this, 50% owns more.
           </p>
         </div>
 
         {/* Global Debt Load */}
         <div className="apple-card apple-card-hover p-5 sm:p-6 relative overflow-hidden group">
-          <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-            <span className="uppercase tracking-wider font-semibold text-slate-300">Global Debt Ratio</span>
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-rose-500/15 text-rose-300 border border-rose-500/25 shadow-sm">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+            <span className="uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300">Global Debt Ratio</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-rose-500/15 text-rose-600 dark:text-rose-300 border border-rose-500/25 shadow-sm">
               <ShieldCheck className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-1">
+          <div className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
             {formatPercent(currentMacro.globalDebtToGdp)}
           </div>
-          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
             Total debt ({formatCurrency(currentMacro.globalDebtTrillion * 1_000_000_000_000, { compact: true })}) relative to world GDP.
           </p>
         </div>
@@ -154,13 +154,13 @@ export default function OverviewPage() {
       {/* Wealth Pyramid Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2.5">
-            <TrendingUp className="h-5 w-5 text-emerald-400" />
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+            <TrendingUp className="h-5 w-5 text-emerald-500 dark:text-emerald-400" />
             Global Wealth Concentration ({selectedYear})
           </h2>
           <Link
             href="/wealth"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.10] border border-white/[0.08] text-xs font-semibold text-slate-200 hover:text-white transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.05] dark:hover:bg-white/[0.10] border border-slate-200 dark:border-white/[0.08] text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-all shadow-sm"
           >
             <span>Explore Inequality &amp; Calculator</span>
             <ArrowRight className="h-3.5 w-3.5" />
@@ -172,13 +172,13 @@ export default function OverviewPage() {
       {/* Asset Stack Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2.5">
-            <Layers className="h-5 w-5 text-sky-400" />
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+            <Layers className="h-5 w-5 text-sky-500 dark:text-sky-400" />
             Asset Class Breakdown
           </h2>
           <Link
             href="/assets"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.10] border border-white/[0.08] text-xs font-semibold text-slate-200 hover:text-white transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.05] dark:hover:bg-white/[0.10] border border-slate-200 dark:border-white/[0.08] text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-all shadow-sm"
           >
             <span>Deep Dive Assets</span>
             <ArrowRight className="h-3.5 w-3.5" />

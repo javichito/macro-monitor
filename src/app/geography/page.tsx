@@ -49,28 +49,28 @@ export default function GeographyPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="border-b border-white/[0.08] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="border-b border-slate-200 dark:border-white/[0.08] pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div className="flex-1 min-w-0">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-200 mb-3 shadow-inner">
-            <MapPin className="h-3.5 w-3.5 text-sky-400" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/[0.12] bg-slate-100 dark:bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-200 mb-3 shadow-inner">
+            <MapPin className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
             <span>Geographic &amp; Coalition Intelligence</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
             World Wealth &amp; Sovereign Comparison
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
             Interact with global heatmaps, rank economies in the sovereign league table, and run head-to-head macro balance sheet duels.
           </p>
         </div>
 
         {/* Apple Segmented View Switcher */}
-        <div className="flex items-center rounded-full p-1 bg-white/[0.06] border border-white/[0.10] shadow-inner text-xs self-start md:self-auto shrink-0">
+        <div className="flex items-center rounded-full p-1 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] shadow-inner text-xs self-start md:self-auto shrink-0">
           <button
             onClick={() => setActiveTab('map-duel')}
             className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === 'map-duel'
-                ? 'bg-white text-black shadow-md'
-                : 'text-slate-300 hover:text-white'
+                ? 'bg-white text-slate-900 dark:text-black shadow-md'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <GitCompare className="h-3.5 w-3.5" />
@@ -80,8 +80,8 @@ export default function GeographyPage() {
             onClick={() => setActiveTab('league-table')}
             className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-semibold transition-all duration-200 cursor-pointer ${
               activeTab === 'league-table'
-                ? 'bg-white text-black shadow-md'
-                : 'text-slate-300 hover:text-white'
+                ? 'bg-white text-slate-900 dark:text-black shadow-md'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <Trophy className="h-3.5 w-3.5" />
