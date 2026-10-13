@@ -298,7 +298,7 @@ export function CrossAssetRatioStudio() {
               </span>
               <span className="text-sm font-mono font-semibold text-sky-600 dark:text-sky-400">
                 {activeModel.numerator.prefix}
-                {activeModel.numerator.currentValue.toLocaleString()}
+                {activeModel.numerator.currentValue.toLocaleString('en-US')}
                 {activeModel.numerator.suffix}
               </span>
             </div>
@@ -315,7 +315,7 @@ export function CrossAssetRatioStudio() {
               </span>
               <span className="text-sm font-mono font-semibold text-amber-600 dark:text-amber-400">
                 {activeModel.denominator.prefix}
-                {activeModel.denominator.currentValue.toLocaleString()}
+                {activeModel.denominator.currentValue.toLocaleString('en-US')}
                 {activeModel.denominator.suffix}
               </span>
             </div>
@@ -452,7 +452,7 @@ export function CrossAssetRatioStudio() {
                             {activeModel.numerator.name}:{' '}
                             <span className="font-mono text-white">
                               {activeModel.numerator.prefix}
-                              {data.numeratorValue.toLocaleString()}
+                              {data.numeratorValue.toLocaleString('en-US')}
                               {activeModel.numerator.suffix}
                             </span>
                           </div>
@@ -460,7 +460,7 @@ export function CrossAssetRatioStudio() {
                             {activeModel.denominator.name}:{' '}
                             <span className="font-mono text-white">
                               {activeModel.denominator.prefix}
-                              {data.denominatorValue.toLocaleString()}
+                              {data.denominatorValue.toLocaleString('en-US')}
                               {activeModel.denominator.suffix}
                             </span>
                           </div>
@@ -535,13 +535,13 @@ export function CrossAssetRatioStudio() {
                           <div className="text-sky-400">
                             {activeModel.numerator.name}: {data.normNumerator} pts (
                             {activeModel.numerator.prefix}
-                            {data.numeratorValue.toLocaleString()}
+                            {data.numeratorValue.toLocaleString('en-US')}
                             {activeModel.numerator.suffix})
                           </div>
                           <div className="text-amber-400">
                             {activeModel.denominator.name}: {data.normDenominator} pts (
                             {activeModel.denominator.prefix}
-                            {data.denominatorValue.toLocaleString()}
+                            {data.denominatorValue.toLocaleString('en-US')}
                             {activeModel.denominator.suffix})
                           </div>
                         </div>

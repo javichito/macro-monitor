@@ -265,8 +265,8 @@ export function MarketPulseTicker() {
               {/* 52-Week Range Bar */}
               <div className="mt-6 pt-4 border-t border-white/[0.08]">
                 <div className="flex justify-between items-center text-xs text-white/60 mb-1.5 font-mono">
-                  <span>52W Low: {selectedBenchmark.prefix}{selectedBenchmark.low52w.toLocaleString()}{selectedBenchmark.suffix}</span>
-                  <span>52W High: {selectedBenchmark.prefix}{selectedBenchmark.high52w.toLocaleString()}{selectedBenchmark.suffix}</span>
+                  <span>52W Low: {selectedBenchmark.prefix}{selectedBenchmark.low52w.toLocaleString('en-US')}{selectedBenchmark.suffix}</span>
+                  <span>52W High: {selectedBenchmark.prefix}{selectedBenchmark.high52w.toLocaleString('en-US')}{selectedBenchmark.suffix}</span>
                 </div>
                 <div className="h-2 w-full rounded-full bg-white/[0.08] relative overflow-hidden">
                   {(() => {

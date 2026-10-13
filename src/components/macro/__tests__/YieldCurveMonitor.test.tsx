@@ -47,4 +47,17 @@ describe('YieldCurveMonitor Component', () => {
     fireEvent.click(termTab);
     expect(screen.getAllByText('10Y – 2Y Spread').length).toBeGreaterThan(0);
   });
+
+  it('allows toggling to the Yield Curve 3D Surface view', () => {
+    render(<YieldCurveMonitor />);
+
+    const surface3DTab = screen.getByRole('button', { name: /Yield Curve 3D Surface/i });
+    expect(surface3DTab).toBeDefined();
+
+    fireEvent.click(surface3DTab);
+
+    // 3D Surface controls should be rendered
+    expect(screen.getByRole('button', { name: /3D Iso/i })).toBeDefined();
+    expect(screen.getByTitle(/Play Historical Curve Sweep/i)).toBeDefined();
+  });
 });

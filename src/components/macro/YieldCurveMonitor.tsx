@@ -17,6 +17,8 @@ import {
   HISTORICAL_YIELD_SPREADS,
   calculateRecessionProbability,
 } from '../../data/yield-curve-data';
+import { SOVEREIGN_SURFACES } from '../../data/yield-curve-3d-data';
+import { YieldCurve3DSurface } from './YieldCurve3DSurface';
 import { formatPercent } from '../../lib/formatters';
 import { useThemeMode } from '../../context/AppContext';
 import { DataExportMenu } from '../common/DataExportMenu';
@@ -29,6 +31,7 @@ import {
   TrendingDown,
   Info,
   Calendar,
+  Box,
 } from 'lucide-react';
 
 export function YieldCurveMonitor() {
@@ -36,7 +39,7 @@ export function YieldCurveMonitor() {
   const isDark = theme === 'dark';
 
   const [selectedSovereign, setSelectedSovereign] = useState<'USA' | 'DEU' | 'JPN' | 'GBR'>('USA');
-  const [activeTab, setActiveTab] = useState<'term-structure' | 'historical-spreads'>('term-structure');
+  const [activeTab, setActiveTab] = useState<'term-structure' | 'historical-spreads' | '3d-surface'>('term-structure');
 
   const curveData =
     SOVEREIGN_YIELD_CURVES.find((c) => c.sovereignCode === selectedSovereign) ||
@@ -147,14 +150,52 @@ export function YieldCurveMonitor() {
             >
               1980–2026 Spreads
             </button>
+            <button
+              onClick={() => setActiveTab('3d-surface')}
+              className={`flex items-center gap-1.5 rounded-full px-3 py-1 font-semibold transition-all cursor-pointer ${
+                activeTab === '3d-surface'
+                  ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
+              }`}
+            >
+              <Box className="h-3.5 w-3.5 text-sky-500" />
+              <span>Yield Curve 3D Surface</span>
+            </button>
           </div>
 
           {/* One-click Data Export for Researchers & Journalists */}
           <DataExportMenu
-            title={`Sovereign Yield Curve [${selectedSovereign} - ${activeTab === 'term-structure' ? 'Term Structure' : 'Historical Spreads'}]`}
+            title={`Sovereign Yield Curve [${selectedSovereign} - ${
+              activeTab === '3d-surface'
+                ? '3D Term Surface'
+                : activeTab === 'term-structure'
+                ? 'Term Structure'
+                : 'Historical Spreads'
+            }]`}
             filename={`yield-curve-${selectedSovereign.toLowerCase()}-${activeTab}`}
-            data={() =>
-              activeTab === 'term-structure'
+            data={() => {
+              if (activeTab === '3d-surface') {
+                const surfaceData = SOVEREIGN_SURFACES[selectedSovereign].longterm;
+                const rows: any[] = [];
+                surfaceData.slices.forEach((slice) => {
+                  slice.curve.forEach((point) => {
+                    rows.push({
+                      sovereign: selectedSovereign,
+                      dateLabel: slice.dateLabel,
+                      year: slice.year,
+                      tenor: point.tenor,
+                      tenorMonths: point.tenorMonths,
+                      yieldPercent: point.yieldPercent,
+                      spread10Y2Y: slice.spread10Y2Y,
+                      spread10Y3M: slice.spread10Y3M,
+                      isInverted: slice.isInverted ? 'Yes' : 'No',
+                      macroEvent: slice.macroEvent || '',
+                    });
+                  });
+                });
+                return rows;
+              }
+              return activeTab === 'term-structure'
                 ? mergedCurveData.map((d) => ({
                     sovereign: selectedSovereign,
                     tenor: d.tenor,
@@ -169,10 +210,23 @@ export function YieldCurveMonitor() {
                     nominal10YYieldPercent: s.us10YNominal,
                     isInverted: s.isInverted ? 'Yes' : 'No',
                     isRecession: s.isRecession ? 'Yes' : 'No',
-                  }))
-            }
+                  }));
+            }}
             columns={
-              activeTab === 'term-structure'
+              activeTab === '3d-surface'
+                ? [
+                    { key: 'sovereign', label: 'Sovereign' },
+                    { key: 'dateLabel', label: 'Time Horizon' },
+                    { key: 'year', label: 'Year' },
+                    { key: 'tenor', label: 'Maturity Tenor' },
+                    { key: 'tenorMonths', label: 'Tenor Months' },
+                    { key: 'yieldPercent', label: 'Yield (%)' },
+                    { key: 'spread10Y2Y', label: '10Y–2Y Spread (%)' },
+                    { key: 'spread10Y3M', label: '10Y–3M Spread (%)' },
+                    { key: 'isInverted', label: 'Inverted' },
+                    { key: 'macroEvent', label: 'Macro Event' },
+                  ]
+                : activeTab === 'term-structure'
                 ? [
                     { key: 'sovereign', label: 'Sovereign' },
                     { key: 'tenor', label: 'Maturity Tenor' },
@@ -191,7 +245,9 @@ export function YieldCurveMonitor() {
             }
             metadata={{
               description:
-                activeTab === 'term-structure'
+                activeTab === '3d-surface'
+                  ? `3D Term structure historical evolution surface for ${curveData.name}.`
+                  : activeTab === 'term-structure'
                   ? `Sovereign benchmark yield curve across tenors for ${curveData.name}.`
                   : 'Historical US Treasury term premium and yield curve inversion spreads.',
               source: 'Federal Reserve Bank of St. Louis (FRED), US Department of the Treasury, Bundesbank, MOF Japan',
@@ -290,159 +346,166 @@ export function YieldCurveMonitor() {
         </div>
       </div>
 
-      {/* Main Chart Area */}
-      <div className="h-72 sm:h-80 w-full pt-2">
-        <ResponsiveContainer width="100%" height="100%">
-          {activeTab === 'term-structure' ? (
-            <LineChart
-              data={mergedCurveData}
-              margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
-            >
-              <CartesianGrid
-                strokeDasharray="3 3"
-                stroke={isDark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.06)'}
-              />
-              <XAxis
-                dataKey="tenor"
-                stroke={isDark ? 'rgba(255,255,255,0.45)' : '#64748b'}
-                fontSize={11}
-                tickLine={false}
-              />
-              <YAxis
-                stroke={isDark ? 'rgba(255,255,255,0.45)' : '#64748b'}
-                fontSize={11}
-                tickLine={false}
-                tickFormatter={(val) => `${val}%`}
-                domain={['auto', 'auto']}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: isDark ? 'rgba(10, 10, 15, 0.95)' : '#ffffff',
-                  border: isDark ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(15, 23, 42, 0.12)',
-                  borderRadius: '12px',
-                  boxShadow: isDark ? '0 8px 32px rgba(0,0,0,0.5)' : '0 8px 24px rgba(15, 23, 42, 0.08)',
-                  fontSize: '12px',
-                  color: isDark ? '#ffffff' : '#0f172a',
-                }}
-                formatter={(val: any) => [`${Number(val).toFixed(2)}%`]}
-              />
-              <Legend
-                verticalAlign="top"
-                height={36}
-                formatter={(val) => (
-                  <span className="text-xs text-slate-600 dark:text-slate-300 capitalize font-medium">{val}</span>
-                )}
-              />
-              <Line
-                name="Current Par Curve (2026)"
-                type="monotone"
-                dataKey="current"
-                stroke="#0284c7"
-                strokeWidth={3}
-                dot={{ r: 4, fill: '#0284c7' }}
-                activeDot={{ r: 6 }}
-              />
-              <Line
-                name="One Year Ago"
-                type="monotone"
-                dataKey="oneYearAgo"
-                stroke={isDark ? 'rgba(255,255,255,0.4)' : '#64748b'}
-                strokeWidth={1.5}
-                strokeDasharray="4 4"
-                dot={false}
-              />
-              {curveData.curvePreInversion && (
+      {/* Main Chart Area: Render 3D Surface when activeTab === '3d-surface', else 2D Recharts */}
+      {activeTab === '3d-surface' ? (
+        <YieldCurve3DSurface
+          selectedSovereign={selectedSovereign}
+          onSelectSovereign={setSelectedSovereign}
+        />
+      ) : (
+        <div className="h-72 sm:h-80 w-full pt-2">
+          <ResponsiveContainer width="100%" height="100%">
+            {activeTab === 'term-structure' ? (
+              <LineChart
+                data={mergedCurveData}
+                margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={isDark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.06)'}
+                />
+                <XAxis
+                  dataKey="tenor"
+                  stroke={isDark ? 'rgba(255,255,255,0.45)' : '#64748b'}
+                  fontSize={11}
+                  tickLine={false}
+                />
+                <YAxis
+                  stroke={isDark ? 'rgba(255,255,255,0.45)' : '#64748b'}
+                  fontSize={11}
+                  tickLine={false}
+                  tickFormatter={(val) => `${val}%`}
+                  domain={['auto', 'auto']}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: isDark ? 'rgba(10, 10, 15, 0.95)' : '#ffffff',
+                    border: isDark ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(15, 23, 42, 0.12)',
+                    borderRadius: '12px',
+                    boxShadow: isDark ? '0 8px 32px rgba(0,0,0,0.5)' : '0 8px 24px rgba(15, 23, 42, 0.08)',
+                    fontSize: '12px',
+                    color: isDark ? '#ffffff' : '#0f172a',
+                  }}
+                  formatter={(val: any) => [`${Number(val).toFixed(2)}%`]}
+                />
+                <Legend
+                  verticalAlign="top"
+                  height={36}
+                  formatter={(val) => (
+                    <span className="text-xs text-slate-600 dark:text-slate-300 capitalize font-medium">{val}</span>
+                  )}
+                />
                 <Line
-                  name="Pre-Tightening (ZIRP Baseline)"
+                  name="Current Par Curve (2026)"
                   type="monotone"
-                  dataKey="preInversion"
-                  stroke="#a855f7"
+                  dataKey="current"
+                  stroke="#0284c7"
+                  strokeWidth={3}
+                  dot={{ r: 4, fill: '#0284c7' }}
+                  activeDot={{ r: 6 }}
+                />
+                <Line
+                  name="One Year Ago"
+                  type="monotone"
+                  dataKey="oneYearAgo"
+                  stroke={isDark ? 'rgba(255,255,255,0.4)' : '#64748b'}
                   strokeWidth={1.5}
-                  strokeDasharray="2 2"
+                  strokeDasharray="4 4"
                   dot={false}
                 />
-              )}
-            </LineChart>
-          ) : (
-            <LineChart
-              data={HISTORICAL_YIELD_SPREADS}
-              margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
-            >
-              <CartesianGrid
-                strokeDasharray="3 3"
-                stroke={isDark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.06)'}
-              />
-              <XAxis
-                dataKey="year"
-                stroke={isDark ? 'rgba(255,255,255,0.45)' : '#64748b'}
-                fontSize={11}
-                tickLine={false}
-              />
-              <YAxis
-                stroke={isDark ? 'rgba(255,255,255,0.45)' : '#64748b'}
-                fontSize={11}
-                tickLine={false}
-                tickFormatter={(val) => `${val}%`}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: isDark ? 'rgba(10, 10, 15, 0.95)' : '#ffffff',
-                  border: isDark ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(15, 23, 42, 0.12)',
-                  borderRadius: '12px',
-                  boxShadow: isDark ? '0 8px 32px rgba(0,0,0,0.5)' : '0 8px 24px rgba(15, 23, 42, 0.08)',
-                  fontSize: '12px',
-                  color: isDark ? '#ffffff' : '#0f172a',
-                }}
-                formatter={(val: any) => [`${Number(val).toFixed(2)}%`]}
-              />
-              <Legend
-                verticalAlign="top"
-                height={36}
-                formatter={(val) => (
-                  <span className="text-xs text-slate-600 dark:text-slate-300 font-medium">{val}</span>
+                {curveData.curvePreInversion && (
+                  <Line
+                    name="Pre-Tightening (ZIRP Baseline)"
+                    type="monotone"
+                    dataKey="preInversion"
+                    stroke="#a855f7"
+                    strokeWidth={1.5}
+                    strokeDasharray="2 2"
+                    dot={false}
+                  />
                 )}
-              />
-              <ReferenceLine
-                y={0}
-                stroke="#f43f5e"
-                strokeWidth={1.5}
-                strokeDasharray="3 3"
-                label={{
-                  value: 'Inversion Threshold (0.0%)',
-                  fill: '#f43f5e',
-                  fontSize: 10,
-                  position: 'insideTopRight',
-                }}
-              />
-              <Line
-                name="10Y – 2Y Spread"
-                type="monotone"
-                dataKey="us10Y2YSpread"
-                stroke="#0284c7"
-                strokeWidth={2}
-                dot={{ r: 3 }}
-              />
-              <Line
-                name="10Y – 3M Spread"
-                type="monotone"
-                dataKey="us10Y3MSpread"
-                stroke="#d97706"
-                strokeWidth={1.5}
-                strokeDasharray="4 4"
-                dot={{ r: 2 }}
-              />
-              <Line
-                name="10Y Real TIPS Yield"
-                type="monotone"
-                dataKey="us10YRealTIPS"
-                stroke="#059669"
-                strokeWidth={1.5}
-                dot={false}
-              />
-            </LineChart>
-          )}
-        </ResponsiveContainer>
-      </div>
+              </LineChart>
+            ) : (
+              <LineChart
+                data={HISTORICAL_YIELD_SPREADS}
+                margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={isDark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.06)'}
+                />
+                <XAxis
+                  dataKey="year"
+                  stroke={isDark ? 'rgba(255,255,255,0.45)' : '#64748b'}
+                  fontSize={11}
+                  tickLine={false}
+                />
+                <YAxis
+                  stroke={isDark ? 'rgba(255,255,255,0.45)' : '#64748b'}
+                  fontSize={11}
+                  tickLine={false}
+                  tickFormatter={(val) => `${val}%`}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: isDark ? 'rgba(10, 10, 15, 0.95)' : '#ffffff',
+                    border: isDark ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(15, 23, 42, 0.12)',
+                    borderRadius: '12px',
+                    boxShadow: isDark ? '0 8px 32px rgba(0,0,0,0.5)' : '0 8px 24px rgba(15, 23, 42, 0.08)',
+                    fontSize: '12px',
+                    color: isDark ? '#ffffff' : '#0f172a',
+                  }}
+                  formatter={(val: any) => [`${Number(val).toFixed(2)}%`]}
+                />
+                <Legend
+                  verticalAlign="top"
+                  height={36}
+                  formatter={(val) => (
+                    <span className="text-xs text-slate-600 dark:text-slate-300 font-medium">{val}</span>
+                  )}
+                />
+                <ReferenceLine
+                  y={0}
+                  stroke="#f43f5e"
+                  strokeWidth={1.5}
+                  strokeDasharray="3 3"
+                  label={{
+                    value: 'Inversion Threshold (0.0%)',
+                    fill: '#f43f5e',
+                    fontSize: 10,
+                    position: 'insideTopRight',
+                  }}
+                />
+                <Line
+                  name="10Y – 2Y Spread"
+                  type="monotone"
+                  dataKey="us10Y2YSpread"
+                  stroke="#0284c7"
+                  strokeWidth={2}
+                  dot={{ r: 3 }}
+                />
+                <Line
+                  name="10Y – 3M Spread"
+                  type="monotone"
+                  dataKey="us10Y3MSpread"
+                  stroke="#d97706"
+                  strokeWidth={1.5}
+                  strokeDasharray="4 4"
+                  dot={{ r: 2 }}
+                />
+                <Line
+                  name="10Y Real TIPS Yield"
+                  type="monotone"
+                  dataKey="us10YRealTIPS"
+                  stroke="#059669"
+                  strokeWidth={1.5}
+                  dot={false}
+                />
+              </LineChart>
+            )}
+          </ResponsiveContainer>
+        </div>
+      )}
 
       {/* Sovereign Context Footer */}
       <div className="rounded-xl p-3.5 bg-slate-50/70 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] text-xs text-slate-600 dark:text-slate-300 flex items-start gap-2.5">

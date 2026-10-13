@@ -67,13 +67,13 @@ export function CentralBankLiquidityRadar() {
       const normalizedGold = (point.goldPriceUsd / basePoint.goldPriceUsd) * 100;
 
       let selectedAssetValue = normalizedBtc;
-      let rawAssetPrice = `$${point.bitcoinPrice.toLocaleString()}`;
+      let rawAssetPrice = `$${point.bitcoinPrice.toLocaleString('en-US')}`;
       if (selectedAsset === 'sp500') {
         selectedAssetValue = normalizedSp500;
-        rawAssetPrice = `${point.sp500Price.toLocaleString()} pts`;
+        rawAssetPrice = `${point.sp500Price.toLocaleString('en-US')} pts`;
       } else if (selectedAsset === 'gold') {
         selectedAssetValue = normalizedGold;
-        rawAssetPrice = `$${point.goldPriceUsd.toLocaleString()}/oz`;
+        rawAssetPrice = `$${point.goldPriceUsd.toLocaleString('en-US')}/oz`;
       }
 
       return {

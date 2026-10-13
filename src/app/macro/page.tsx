@@ -58,7 +58,7 @@ export default function MacroPage() {
             The Global Economic Engine
           </h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-3xl font-normal leading-relaxed">
-            Monitor sovereign yield curve inversions, high-frequency GDP nowcasting and PMI diffusion, real-time macro regimes (Dalio growth-inflation clock), Claudia Sahm labor triggers, external sector balances, and central bank liquidity mechanics.
+            Monitor sovereign yield curve inversions and 3D term structure evolution surfaces, high-frequency GDP nowcasting and PMI diffusion, real-time macro regimes (Dalio growth-inflation clock), Claudia Sahm labor triggers, external sector balances, and central bank liquidity mechanics.
           </p>
         </div>
 

@@ -227,6 +227,38 @@ export interface HistoricalYieldSpreadYear {
   isRecession: boolean;
 }
 
+// 3D Yield Curve Surface definitions for mapping time vs maturity vs yield
+export interface YieldCurveSurfacePoint {
+  tenor: string;
+  tenorMonths: number;
+  yieldPercent: number;
+}
+
+export interface YieldCurveSurfaceSlice {
+  dateLabel: string;
+  year: number;
+  month?: number;
+  quarter?: string;
+  curve: YieldCurveSurfacePoint[];
+  spread10Y2Y: number;
+  spread10Y3M: number;
+  isInverted: boolean;
+  macroEvent?: string;
+}
+
+export interface YieldCurveSurfaceDataset {
+  sovereignCode: 'USA' | 'DEU' | 'JPN' | 'GBR';
+  name: string;
+  flag: string;
+  currency: string;
+  tenors: string[];
+  tenorMonths: number[];
+  slices: YieldCurveSurfaceSlice[];
+  minYield: number;
+  maxYield: number;
+  description: string;
+}
+
 export type MacroQuadrant = 'goldilocks' | 'reflation' | 'stagflation' | 'deflation';
 
 export interface RegimeCoordinates {

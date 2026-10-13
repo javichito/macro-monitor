@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import { AppProvider } from '../context/AppContext';
 import { Header } from '../components/layout/Header';
@@ -41,10 +42,12 @@ export default function RootLayout({
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/*
-         * Inline script executes synchronously before browser paints to prevent
-         * light/dark flash of unstyled content (FOUC) on cold starts.
+         * Next.js beforeInteractive strategy executes synchronously prior to first-party scripts
+         * to eliminate dark/light theme flash of unstyled content while complying with React 19 script hoisting.
          */}
-        <script
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {

@@ -199,7 +199,7 @@ export function calculatePppConversion(
     summary = 'Baseline domestic purchasing parity (1.00x).';
   } else if (costDifferencePercent < 0) {
     const savings = Math.abs(costDifferencePercent);
-    summary = `Consumer prices are ${savings}% lower. Your capital stretches ${purchasingMultiplier}x further, commanding the equivalent of a $${equivalentAmount.toLocaleString()} local lifestyle.`;
+    summary = `Consumer prices are ${savings}% lower. Your capital stretches ${purchasingMultiplier}x further, commanding the equivalent of a $${equivalentAmount.toLocaleString('en-US')} local lifestyle.`;
   } else {
     summary = `Consumer prices are ${costDifferencePercent}% higher. Maintaining an equivalent standard of living requires approximately ${costOfLivingRatio}x your current capital allocation.`;
   }
