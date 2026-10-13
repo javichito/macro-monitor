@@ -31,7 +31,15 @@
    - Foreign exchange reserve diversification (USD, EUR, CNY, JPY, GBP, and Gold).
    - Critical macroeconomic milestones from the Volcker anti-inflation shock and 1987 Black Monday to the 2024–2026 post-inflation rate normalization.
 
-6. **"In Plain English" Educational System**
+6. **Analytical Cross-Asset Ratio Studio & Data Portability**
+   - **Macro Ratio Sandbox**: Interactive relative-value modeling isolating real cyclical growth and geopolitical dislocations from monetary debasement.
+     - **Copper / Gold Ratio**: Real manufacturing and electrification demand vs. safe-haven sovereign default hedging.
+     - **S&P 500 / M2 Money Supply**: Productive equity earnings multiple expansion vs. fiat currency dilution.
+     - **Gold / Oil Ratio**: Geopolitical stress and bullion reserve accumulation vs. physical energy cost-of-production.
+   - **What-If Scenario Sandbox**: Live parameter sliders, historical percentile rank calculator, and preset institutional stress scenarios.
+   - **Data Portability**: RFC 4180 CSV export (with Excel UTF-8 BOM), structured JSON with methodology metadata, and one-click clipboard copying.
+
+7. **"In Plain English" Educational System**
    - Contextual collapsible guides breaking down complex economic concepts (e.g., Median vs. Mean, Gini coefficient, Debt-to-GDP ratio) into plain, intuitive analogies.
 
 ---

@@ -14,6 +14,7 @@ import { InflationAnatomyRadar } from '../../components/macro/InflationAnatomyRa
 import { LeadingIndicatorsRadar } from '../../components/macro/LeadingIndicatorsRadar';
 import { ExternalSectorRadar } from '../../components/macro/ExternalSectorRadar';
 import { MacroCalendarRadar } from '../../components/macro/MacroCalendarRadar';
+import { CrossAssetRatioStudio } from '../../components/macro/CrossAssetRatioStudio';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import {
   BarChart3,
@@ -26,9 +27,10 @@ import {
   Zap,
   Globe2,
   Calendar,
+  Scale,
 } from 'lucide-react';
 
-type MacroSectionTab = 'all' | 'regimes' | 'yields' | 'leading' | 'labor' | 'inflation' | 'external' | 'calendar' | 'liquidity';
+type MacroSectionTab = 'all' | 'regimes' | 'ratios' | 'yields' | 'leading' | 'labor' | 'inflation' | 'external' | 'calendar' | 'liquidity';
 
 export default function MacroPage() {
   const [activeTab, setActiveTab] = useState<MacroSectionTab>('all');
@@ -38,7 +40,7 @@ export default function MacroPage() {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab') as MacroSectionTab;
-    if (tabParam && ['all', 'regimes', 'yields', 'leading', 'labor', 'inflation', 'external', 'calendar', 'liquidity'].includes(tabParam)) {
+    if (tabParam && ['all', 'regimes', 'ratios', 'yields', 'leading', 'labor', 'inflation', 'external', 'calendar', 'liquidity'].includes(tabParam)) {
       setActiveTab(tabParam);
     }
   }, []);
@@ -83,6 +85,17 @@ export default function MacroPage() {
             >
               <Compass className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
               <span>Regimes</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('ratios')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'ratios'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Scale className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
+              <span>Cross-Asset Ratios</span>
             </button>
             <button
               onClick={() => setActiveTab('yields')}
@@ -170,6 +183,9 @@ export default function MacroPage() {
       {/* 4-Quadrant Macro Regime Matrix & Business Cycle Clock */}
       {(activeTab === 'all' || activeTab === 'regimes') && <MacroRegimeClock />}
 
+      {/* Analytical Cross-Asset Ratio Studio & Macro Sandbox */}
+      {(activeTab === 'all' || activeTab === 'ratios') && <CrossAssetRatioStudio />}
+
       {/* Sovereign Yield Curve Monitor & Inversion Tracker */}
       {(activeTab === 'all' || activeTab === 'yields') && <YieldCurveMonitor />}
 
@@ -202,6 +218,14 @@ export default function MacroPage() {
 
       {/* Plain English Guides */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <PlainEnglishCard
+          title="Why do Cross-Asset Ratios reveal macroeconomic truths that nominal asset prices conceal?"
+          summary="Nominal prices reflect both real economic value and fiat currency dilution; structural ratios eliminate monetary noise to expose pure cyclical shifts."
+          detail="If the S&P 500 triples over a decade but broad M2 money supply also triples, an investor's equity portfolio has not expanded real productive purchasing power—it has simply preserved value against fiat dilution. Similarly, Doctor Copper measures physical manufacturing and energy transition demand, while Spot Gold hedges sovereign debt debasement. Dividing Copper by Gold strips away monetary debasement and reveals whether real industrial growth is accelerating or decelerating."
+          takeaway="Never evaluate asset prices in isolation; analyze cross-asset relative prices (Copper/Gold, S&P/M2, Gold/Oil) to distinguish real growth from currency debasement."
+          defaultExpanded={true}
+        />
+
         <PlainEnglishCard
           title="Why do financial markets reprice on the Surprise Delta rather than absolute levels?"
           summary="Asset prices already discount median consensus forecasts; only the unexpected divergence between actual results and consensus forces instantaneous curve repositioning."

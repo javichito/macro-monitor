@@ -138,6 +138,7 @@ async function runSync() {
     'src/data/latest-external-status.json',
     'src/data/macro-calendar-data.ts',
     'src/data/latest-calendar-status.json',
+    'src/data/cross-asset-ratios-data.ts',
   ];
 
   for (const relPath of datasetFiles) {
