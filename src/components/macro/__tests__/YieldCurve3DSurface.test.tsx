@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { YieldCurve3DSurface } from '../YieldCurve3DSurface';
 
 // Mock Canvas 2D context in JSDOM for testing canvas component lifecycle and interactions
@@ -23,14 +23,11 @@ beforeAll(() => {
 });
 
 describe('YieldCurve3DSurface Component', () => {
-  it('renders canvas, sovereign selector pills, and camera presets', () => {
-    render(<YieldCurve3DSurface />);
+  it('renders canvas, 3D camera presets, palette, and mesh style controls', () => {
+    render(<YieldCurve3DSurface selectedSovereign="USA" />);
 
-    // Sovereign pills
-    expect(screen.getByRole('button', { name: /USA/i })).toBeDefined();
-    expect(screen.getByRole('button', { name: /DEU/i })).toBeDefined();
-    expect(screen.getByRole('button', { name: /JPN/i })).toBeDefined();
-    expect(screen.getByRole('button', { name: /GBR/i })).toBeDefined();
+    // Sovereign HUD badge in canvas viewport
+    expect(screen.getByText(/United States Treasury/i)).toBeDefined();
 
     // Camera preset buttons
     expect(screen.getByRole('button', { name: /3D Iso/i })).toBeDefined();
@@ -58,12 +55,11 @@ describe('YieldCurve3DSurface Component', () => {
     expect(screen.getByTitle(/Play Historical Curve Sweep/i)).toBeDefined();
   });
 
-  it('switches sovereign and updates displayed country name', () => {
-    render(<YieldCurve3DSurface />);
+  it('renders sovereign contextual HUD badge based on selectedSovereign prop', () => {
+    const { rerender } = render(<YieldCurve3DSurface selectedSovereign="USA" />);
+    expect(screen.getByText(/United States Treasury/i)).toBeDefined();
 
-    const jpnBtn = screen.getByRole('button', { name: /JPN/i });
-    fireEvent.click(jpnBtn);
-
+    rerender(<YieldCurve3DSurface selectedSovereign="JPN" />);
     expect(screen.getByText(/Japanese Government Bond/i)).toBeDefined();
   });
 

@@ -9,7 +9,6 @@ import {
 } from '../../data/yield-curve-3d-data';
 import { YieldCurveSurfaceDataset, YieldCurveSurfaceSlice } from '../../lib/types';
 import { useThemeMode } from '../../context/AppContext';
-import { DataExportMenu } from '../common/DataExportMenu';
 import {
   Activity,
   Play,
@@ -18,11 +17,7 @@ import {
   Compass,
   Layers,
   Palette,
-  Eye,
-  Sliders,
   Calendar,
-  AlertTriangle,
-  CheckCircle2,
   Maximize2,
   Info,
 } from 'lucide-react';
@@ -50,7 +45,6 @@ interface QuadFace {
 
 interface YieldCurve3DSurfaceProps {
   selectedSovereign?: 'USA' | 'DEU' | 'JPN' | 'GBR';
-  onSelectSovereign?: (sovereign: 'USA' | 'DEU' | 'JPN' | 'GBR') => void;
 }
 
 type CameraPreset = 'isometric' | 'tenor-profile' | 'time-profile' | 'contour-top';
@@ -58,13 +52,12 @@ type RenderStyle = 'shaded-wire' | 'shaded' | 'wireframe';
 
 export function YieldCurve3DSurface({
   selectedSovereign = 'USA',
-  onSelectSovereign,
 }: YieldCurve3DSurfaceProps) {
   const theme = useThemeMode();
   const isDark = theme === 'dark';
 
   // State controls for datasets and views
-  const [sovereign, setSovereign] = useState<'USA' | 'DEU' | 'JPN' | 'GBR'>(selectedSovereign);
+  const sovereign = selectedSovereign;
   const [resolutionMode, setResolutionMode] = useState<'longterm' | 'modern'>('longterm');
   const [palette, setPalette] = useState<SurfaceColorPalette>('thermal');
   const [renderStyle, setRenderStyle] = useState<RenderStyle>('shaded-wire');
@@ -75,18 +68,6 @@ export function YieldCurve3DSurface({
   const [isAutoRotating, setIsAutoRotating] = useState<boolean>(false);
   const [activeSliceIndex, setActiveSliceIndex] = useState<number>(0);
   const [hoveredNode, setHoveredNode] = useState<{ timeIdx: number; tenorIdx: number } | null>(null);
-
-  // Synchronize internal sovereign state with parent props if provided
-  useEffect(() => {
-    setSovereign(selectedSovereign);
-  }, [selectedSovereign]);
-
-  const handleSovereignChange = (code: 'USA' | 'DEU' | 'JPN' | 'GBR') => {
-    setSovereign(code);
-    if (onSelectSovereign) {
-      onSelectSovereign(code);
-    }
-  };
 
   // Resolve current active dataset based on sovereign and resolution
   const dataset: YieldCurveSurfaceDataset = useMemo(() => {
@@ -680,56 +661,52 @@ export function YieldCurve3DSurface({
 
   return (
     <div className="space-y-4">
-      {/* Top Controls Bar: Sovereign, Resolution, Palettes, Presets */}
+      {/* Top Controls Bar: Time Horizon, Camera Angles, Palettes, Mesh Mode */}
       <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-slate-50/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08]">
-        {/* Left cluster: Sovereign & Resolution */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Sovereign issuer switcher */}
-          <div className="flex rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-0.5 text-xs">
-            {(['USA', 'DEU', 'JPN', 'GBR'] as const).map((code) => (
-              <button
-                key={code}
-                onClick={() => handleSovereignChange(code)}
-                className={`flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition-all cursor-pointer ${
-                  sovereign === code
-                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
-                }`}
-              >
-                <span>{SOVEREIGN_SURFACES[code].longterm.flag}</span>
-                <span>{code}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Time Resolution mode (Only USA has dedicated high-res modern cycle) */}
-          {sovereign === 'USA' && (
-            <div className="flex rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-0.5 text-xs">
-              <button
-                onClick={() => setResolutionMode('longterm')}
-                className={`rounded-full px-2.5 py-1 font-medium transition-all cursor-pointer ${
-                  resolutionMode === 'longterm'
-                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white font-semibold'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
-                }`}
-              >
-                1990–2026 Cycle
-              </button>
-              <button
-                onClick={() => setResolutionMode('modern')}
-                className={`rounded-full px-2.5 py-1 font-medium transition-all cursor-pointer ${
-                  resolutionMode === 'modern'
-                    ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white font-semibold'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
-                }`}
-              >
-                2020–2026 Modern
-              </button>
+        {/* Left cluster: Time Horizon Selector or Historical Span Indicator */}
+        <div className="flex items-center gap-2">
+          {sovereign === 'USA' ? (
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+                Time Horizon:
+              </span>
+              <div className="flex rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-0.5 text-xs">
+                <button
+                  onClick={() => setResolutionMode('longterm')}
+                  className={`rounded-full px-2.5 py-1 font-medium transition-all cursor-pointer ${
+                    resolutionMode === 'longterm'
+                      ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white font-semibold'
+                      : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
+                  }`}
+                >
+                  1990–2026 Cycle
+                </button>
+                <button
+                  onClick={() => setResolutionMode('modern')}
+                  className={`rounded-full px-2.5 py-1 font-medium transition-all cursor-pointer ${
+                    resolutionMode === 'modern'
+                      ? 'bg-white text-slate-900 shadow-sm dark:bg-white/20 dark:text-white font-semibold'
+                      : 'text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white'
+                  }`}
+                >
+                  2020–2026 Modern
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-300">
+              <Calendar className="h-3.5 w-3.5 text-sky-500" />
+              <span className="font-semibold text-slate-800 dark:text-slate-200">
+                Multi-Decade Sovereign Term Evolution
+              </span>
+              <span className="text-slate-400 font-mono text-[11px]">
+                ({dataset.slices[0]?.dateLabel}–{dataset.slices[dataset.slices.length - 1]?.dateLabel})
+              </span>
             </div>
           )}
         </div>
 
-        {/* Right cluster: Camera Presets, Color Palette, Export */}
+        {/* Right cluster: Camera Presets, Color Palette, Render Style */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Camera Presets */}
           <div className="flex items-center gap-1 text-xs">
@@ -812,53 +789,6 @@ export function YieldCurve3DSurface({
               <option value="wireframe">Wireframe Only</option>
             </select>
           </div>
-
-          {/* Export Surface Matrix Data */}
-          <DataExportMenu
-            title={`Yield Curve 3D Surface [${sovereign} - ${dataset.name}]`}
-            filename={`yield-curve-3d-${sovereign.toLowerCase()}-${resolutionMode}`}
-            data={() => {
-              const rows: any[] = [];
-              dataset.slices.forEach((slice) => {
-                slice.curve.forEach((point) => {
-                  rows.push({
-                    sovereign,
-                    dateLabel: slice.dateLabel,
-                    year: slice.year,
-                    quarter: slice.quarter || '',
-                    tenor: point.tenor,
-                    tenorMonths: point.tenorMonths,
-                    yieldPercent: point.yieldPercent,
-                    spread10Y2Y: slice.spread10Y2Y,
-                    spread10Y3M: slice.spread10Y3M,
-                    isInverted: slice.isInverted ? 'Yes' : 'No',
-                    macroEvent: slice.macroEvent || '',
-                  });
-                });
-              });
-              return rows;
-            }}
-            columns={[
-              { key: 'sovereign', label: 'Sovereign' },
-              { key: 'dateLabel', label: 'Time Horizon' },
-              { key: 'year', label: 'Year' },
-              { key: 'quarter', label: 'Quarter' },
-              { key: 'tenor', label: 'Maturity Tenor' },
-              { key: 'tenorMonths', label: 'Tenor Months' },
-              { key: 'yieldPercent', label: 'Yield (%)' },
-              { key: 'spread10Y2Y', label: '10Y-2Y Spread (%)' },
-              { key: 'spread10Y3M', label: '10Y-3M Spread (%)' },
-              { key: 'isInverted', label: 'Inverted' },
-              { key: 'macroEvent', label: 'Macro Transmission Context' },
-            ]}
-            metadata={{
-              description: `3D time-vs-tenor yield curve surface plot data for ${dataset.name}.`,
-              source: 'Federal Reserve Bank of St. Louis, US Treasury, Deutsche Bundesbank, Bank of Japan, Bank of England',
-              sovereign,
-              resolutionMode,
-              unit: 'Percent (%)',
-            }}
-          />
         </div>
       </div>
 

@@ -350,7 +350,6 @@ export function YieldCurveMonitor() {
       {activeTab === '3d-surface' ? (
         <YieldCurve3DSurface
           selectedSovereign={selectedSovereign}
-          onSelectSovereign={setSelectedSovereign}
         />
       ) : (
         <div className="h-72 sm:h-80 w-full pt-2">
