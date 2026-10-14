@@ -15,6 +15,7 @@ import { LeadingIndicatorsRadar } from '../../components/macro/LeadingIndicators
 import { ExternalSectorRadar } from '../../components/macro/ExternalSectorRadar';
 import { MacroCalendarRadar } from '../../components/macro/MacroCalendarRadar';
 import { CrossAssetRatioStudio } from '../../components/macro/CrossAssetRatioStudio';
+import { CreditMarketRadar } from '../../components/macro/CreditMarketRadar';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import {
   BarChart3,
@@ -28,9 +29,21 @@ import {
   Globe2,
   Calendar,
   Scale,
+  ShieldAlert,
 } from 'lucide-react';
 
-type MacroSectionTab = 'all' | 'regimes' | 'ratios' | 'yields' | 'leading' | 'labor' | 'inflation' | 'external' | 'calendar' | 'liquidity';
+type MacroSectionTab =
+  | 'all'
+  | 'regimes'
+  | 'ratios'
+  | 'yields'
+  | 'credit'
+  | 'leading'
+  | 'labor'
+  | 'inflation'
+  | 'external'
+  | 'calendar'
+  | 'liquidity';
 
 export default function MacroPage() {
   const [activeTab, setActiveTab] = useState<MacroSectionTab>('all');
@@ -42,8 +55,25 @@ export default function MacroPage() {
     const tabParam = params.get('tab') as MacroSectionTab;
     const hash = window.location.hash;
 
-    if (tabParam && ['all', 'regimes', 'ratios', 'yields', 'leading', 'labor', 'inflation', 'external', 'calendar', 'liquidity'].includes(tabParam)) {
+    if (
+      tabParam &&
+      [
+        'all',
+        'regimes',
+        'ratios',
+        'yields',
+        'credit',
+        'leading',
+        'labor',
+        'inflation',
+        'external',
+        'calendar',
+        'liquidity',
+      ].includes(tabParam)
+    ) {
       setActiveTab(tabParam);
+    } else if (hash.includes('credit') || params.has('credit_view') || params.has('cmr_view')) {
+      setActiveTab('credit');
     } else if (hash.includes('fiscal') || params.has('fds_c') || params.has('fds_country')) {
       setActiveTab('liquidity');
     } else if (hash.includes('ratio') || params.has('car_r') || params.has('car_ratio')) {
@@ -113,6 +143,17 @@ export default function MacroPage() {
             >
               <Activity className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
               <span>Yield Curves</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('credit')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'credit'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <ShieldAlert className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+              <span>Credit &amp; Spreads</span>
             </button>
             <button
               onClick={() => setActiveTab('leading')}
@@ -194,6 +235,9 @@ export default function MacroPage() {
 
       {/* Sovereign Yield Curve Monitor & Inversion Tracker */}
       {(activeTab === 'all' || activeTab === 'yields') && <YieldCurveMonitor />}
+
+      {/* Corporate Credit Spreads, Financial Conditions & Bank Lending */}
+      {(activeTab === 'all' || activeTab === 'credit') && <CreditMarketRadar />}
 
       {/* Leading Indicators & High-Frequency Nowcasting Radar */}
       {(activeTab === 'all' || activeTab === 'leading') && <LeadingIndicatorsRadar />}
@@ -332,6 +376,30 @@ export default function MacroPage() {
           summary="Invented by Federal Reserve economist Claudia Sahm, this rule identifies the precise moment a cooling labor market turns into a recessionary cascade."
           detail="When the 3-month average unemployment rate rises +0.50% above its minimum over the prior 12 months, a recession has begun. It works because job cuts cause workers to cut spending, reducing revenues for businesses who then lay off more workers in a self-reinforcing cycle."
           takeaway="Unlike GDP which is reported months late with major revisions, the Sahm Rule relies on immediate monthly payroll data with zero historical false alarms."
+          defaultExpanded={false}
+        />
+
+        <PlainEnglishCard
+          title="Why do Option-Adjusted Credit Spreads (OAS) lead equity bear markets?"
+          summary="Bond investors sit higher in the capital stack than equity holders and scrutinize balance sheet solvency first; widening credit spreads signal default distress before earnings drop."
+          detail="When a corporation runs into refinancing trouble, its bondholders face loss of principal while equity holders face total wipeout. High-Yield Option-Adjusted Spreads (OAS) strip out embedded prepayment or call options to measure the exact risk premium demanded over US Treasuries. In 2000, 2007, and late 2019, credit spreads blew out months before equities peaked, because institutional credit traders were already cutting off debt rollover lines."
+          takeaway="When High Yield OAS widens past 500 bps, trim cyclical equity risk regardless of trailing earnings growth."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="How can Financial Conditions be 'Loose' when Central Bank Policy Rates are high?"
+          summary="The Chicago Fed NFCI proves that central bank base rates are only one fraction of real economic funding; soaring equity prices and tight corporate bond spreads can completely negate rate hikes."
+          detail="The Federal Reserve directly controls only the overnight Fed Funds rate. However, real financial conditions depend on 105 separate indicators—including credit spreads, mortgage borrowing, corporate equity valuations, and exchange rates. If the Fed keeps base rates at 5.0% but corporate spreads compress to record lows (318 bps) and stock markets reach record valuations, companies can easily raise equity capital and refinance debt, meaning broader financial conditions remain highly stimulative."
+          takeaway="Never assume a high policy rate automatically restrains the economy; track the NFCI to see whether capital markets are stimulating or restricting real activity."
+          defaultExpanded={false}
+        />
+
+        <PlainEnglishCard
+          title="What is the Fed SLOOS and why does commercial bank tightening predict corporate layoffs?"
+          summary="The Senior Loan Officer Opinion Survey measures whether banks are closing their credit windows to businesses, directly starving payroll funding 2 to 4 quarters ahead."
+          detail="Conducted quarterly by the Federal Reserve Board, the SLOOS surveys senior executives at ~80 large domestic banks. Because small and medium businesses rely on bank credit lines to finance inventory, payroll, and capital equipment, a net tightening percentage above +30% to +40% invariably forces companies to freeze hiring and initiate layoffs within 6 to 12 months."
+          takeaway="Watch net tightening standards for C&I loans: when SLOOS spikes above +40%, an economic downturn is mathematically locked in."
           defaultExpanded={false}
         />
       </div>

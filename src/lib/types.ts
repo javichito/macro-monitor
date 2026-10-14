@@ -797,3 +797,91 @@ export interface EvaluatedCalendarState {
   }>;
 }
 
+/* =========================================================================
+ * Tier 4: Corporate Credit Spreads, Financial Conditions & Bank Lending
+ * ========================================================================= */
+
+export type CreditStressLevel = 'compressed' | 'normal' | 'elevated' | 'distress' | 'crisis';
+export type FinancialConditionsRegime = 'extremely_loose' | 'loose' | 'neutral' | 'tight' | 'restrictive';
+export type CreditRatingTier = 'AAA_AA' | 'A' | 'BBB' | 'BB' | 'B' | 'CCC_LOWER';
+
+export interface CreditRatingSpread {
+  tier: CreditRatingTier;
+  label: string;
+  category: 'Investment Grade' | 'High Yield' | 'Distressed';
+  oasBps: number;
+  effectiveYieldPercent: number;
+  benchmarkSpreadVs10Y: number;
+  historicalPercentile: number;
+  defaultRate12mPct: number;
+  marketShareDebtPct: number;
+  riskDescription: string;
+}
+
+export interface CreditMarketHistoricalPoint {
+  date: string;
+  year: number;
+  usHighYieldOasBps: number;
+  usInvestmentGradeOasBps: number;
+  usBbbOasBps: number;
+  us10YYieldPercent: number;
+  chicagoFedNfci: number;
+  nfciRiskSubindex: number;
+  nfciCreditSubindex: number;
+  nfciLeverageSubindex: number;
+  sloosNetTighteningPct: number;
+  sloosLoanDemandPct: number;
+  isRecession: boolean;
+  eventAnnotation?: string;
+}
+
+export interface SloosSectorBreakdown {
+  sectorId: string;
+  sectorName: string;
+  category: 'commercial' | 'real_estate' | 'consumer';
+  netTighteningPct: number;
+  loanDemandNetPct: number;
+  status: 'easing' | 'neutral' | 'tightening' | 'severe_tightening';
+  commentary: string;
+}
+
+export interface CreditMarketOverview {
+  currentDate: string;
+  highYieldOas: {
+    currentBps: number;
+    fiftyTwoWeekHighBps: number;
+    fiftyTwoWeekLowBps: number;
+    historicalPercentile: number;
+    stressLevel: CreditStressLevel;
+    effectiveYieldPct: number;
+    summary: string;
+  };
+  investmentGradeOas: {
+    currentBps: number;
+    bbbFallenAngelSpreadBps: number;
+    stressLevel: CreditStressLevel;
+    effectiveYieldPct: number;
+    summary: string;
+  };
+  financialConditions: {
+    currentNfci: number;
+    regime: FinancialConditionsRegime;
+    adjustedNfci: number;
+    riskSubindex: number;
+    creditSubindex: number;
+    leverageSubindex: number;
+    trend3Month: 'easing' | 'tightening' | 'stable';
+    summary: string;
+  };
+  bankLending: {
+    currentNetTighteningPct: number;
+    cAndIDemandNetPct: number;
+    creTighteningPct: number;
+    cyclePhase: 'expansionary_credit' | 'selective_lending' | 'credit_crunch';
+    summary: string;
+  };
+  ratingTiers: CreditRatingSpread[];
+  sloosBreakdown: SloosSectorBreakdown[];
+  historicalSeries: CreditMarketHistoricalPoint[];
+}
+
