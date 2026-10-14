@@ -6,7 +6,7 @@ import { calculateWealthPercentile } from '../../lib/calculations';
 import { formatCurrency, formatPercent } from '../../lib/formatters';
 import { UserCheck, Compass, Sparkles, DollarSign, Globe2, CheckCircle2 } from 'lucide-react';
 import { ShareDeepLinkMenu } from '../common/ShareDeepLinkMenu';
-import { deserializeWealthCalculator } from '../../lib/deep-link';
+import { deserializeWealthCalculator, useDeepLinkSync } from '../../lib/deep-link';
 
 interface WealthCalculatorProps {
   onSwitchToPpp?: () => void;
@@ -16,6 +16,7 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
   const [netWorth, setNetWorth] = useState<number>(65000);
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>('USA');
   const [isHydratedFromDeepLink, setIsHydratedFromDeepLink] = useState<boolean>(false);
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
   /*
    * Hydrate wealth assumptions from deep-link URL hashes or query strings
@@ -29,7 +30,21 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
       setNetWorth(restored.netWorth);
       setIsHydratedFromDeepLink(true);
     }
+    setIsInitialized(true);
   }, []);
+
+  /*
+   * Update browser address bar in real-time as users adjust wealth inputs or countries
+   * so direct copying from the browser URL bar captures the current simulation state.
+   */
+  useDeepLinkSync(
+    'wealth',
+    {
+      country: selectedCountryCode,
+      netWorth,
+    },
+    isInitialized
+  );
 
   const selectedCountry = COUNTRIES_DATA.find((c) => c.code === selectedCountryCode) || COUNTRIES_DATA[0];
   const latestMetric = selectedCountry.history[2026] || selectedCountry.history[2025];

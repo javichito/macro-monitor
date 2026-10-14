@@ -6,6 +6,7 @@
  * and shareable URL hashes or query strings.
  */
 
+import { useEffect } from 'react';
 import { SOVEREIGN_FISCAL_PROFILES } from '../data/fiscal-dominance-data';
 import { COUNTRIES_DATA } from '../data/country-metrics';
 
@@ -568,4 +569,67 @@ export async function copySimulatorLinkToClipboard(url: string): Promise<boolean
   }
 
   return false;
+}
+
+/**
+ * Updates the browser's address bar without reloading or triggering browser history bloat.
+ * Uses history.replaceState so copying from the address bar or bookmarking reflects live parameters.
+ */
+export function updateBrowserUrl(
+  simulator: SimulatorDeepLinkType,
+  state: any,
+  options?: { format?: 'hash' | 'query' }
+): void {
+  if (typeof window === 'undefined') return;
+
+  try {
+    const newUrl = buildSimulatorUrl({
+      simulator,
+      state,
+      format: options?.format ?? 'hash',
+    });
+
+    /*
+     * Only invoke replaceState if the target URL differs from the current location
+     * to avoid redundant DOM history operations during rapid user interactions.
+     */
+    if (window.location.href !== newUrl) {
+      window.history.replaceState(window.history.state, '', newUrl);
+    }
+  } catch {
+    /*
+     * Gracefully handle security restrictions in cross-origin sandboxes
+     * or third-party embedded webviews.
+     */
+  }
+}
+
+/**
+ * React hook that continuously synchronizes simulator state into the browser's URL address bar.
+ * Debounces rapid slider adjustments to preserve 60fps rendering performance.
+ */
+export function useDeepLinkSync<T>(
+  simulator: SimulatorDeepLinkType,
+  state: T,
+  isReady: boolean = true,
+  options?: { format?: 'hash' | 'query'; debounceMs?: number }
+): void {
+  const debounceMs = options?.debounceMs ?? 150;
+  const format = options?.format ?? 'hash';
+
+  useEffect(() => {
+    if (!isReady || typeof window === 'undefined') return;
+
+    /*
+     * Debounce state synchronization so rapid slider drags (e.g. bond yields or deficits)
+     * do not flood the browser history API or cause frame drops during animation.
+     */
+    const timer = setTimeout(() => {
+      updateBrowserUrl(simulator, state, { format });
+    }, debounceMs);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [simulator, state, isReady, format, debounceMs]);
 }

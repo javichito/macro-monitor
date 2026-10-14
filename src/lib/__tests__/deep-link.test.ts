@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { renderHook, act } from '@testing-library/react';
 import {
   serializeFiscalDominance,
   deserializeFiscalDominance,
@@ -11,6 +12,8 @@ import {
   buildSimulatorUrl,
   copySimulatorLinkToClipboard,
   extractParamsFromUrl,
+  updateBrowserUrl,
+  useDeepLinkSync,
   FiscalDominanceState,
   WealthCalculatorState,
   PppConverterState,
@@ -254,6 +257,81 @@ describe('Deep-Link State Serialization Engine', () => {
       const success = await copySimulatorLinkToClipboard('https://macro-monitor.app/test');
       expect(success).toBe(true);
       expect(mockWriteText).toHaveBeenCalledWith('https://macro-monitor.app/test');
+    });
+  });
+
+  describe('updateBrowserUrl and useDeepLinkSync', () => {
+    it('updates window.history.replaceState with the serialized URL', () => {
+      const replaceStateSpy = vi.spyOn(window.history, 'replaceState');
+
+      updateBrowserUrl('wealth', { country: 'FRA', netWorth: 220000 });
+
+      expect(replaceStateSpy).toHaveBeenCalled();
+      const lastCall = replaceStateSpy.mock.calls[replaceStateSpy.mock.calls.length - 1];
+      expect(lastCall[2]).toContain('#wealth-calculator?');
+      expect(lastCall[2]).toContain('c=FRA');
+      expect(lastCall[2]).toContain('nw=220000');
+
+      replaceStateSpy.mockRestore();
+    });
+
+    it('debounces live address bar updates in useDeepLinkSync hook', async () => {
+      vi.useFakeTimers();
+      const replaceStateSpy = vi.spyOn(window.history, 'replaceState');
+
+      const { rerender } = renderHook(
+        ({ state }) => useDeepLinkSync('fiscal', state, true, { debounceMs: 100 }),
+        {
+          initialProps: {
+            state: {
+              country: 'USA',
+              scenario: 'custom',
+              bondYield: 4.5,
+              primaryDeficit: 5.0,
+              realGrowth: 2.0,
+              inflation: 2.5,
+            },
+          },
+        }
+      );
+
+      // Fast slider movement: change yield twice in quick succession
+      rerender({
+        state: {
+          country: 'USA',
+          scenario: 'custom',
+          bondYield: 4.8,
+          primaryDeficit: 5.0,
+          realGrowth: 2.0,
+          inflation: 2.5,
+        },
+      });
+
+      rerender({
+        state: {
+          country: 'USA',
+          scenario: 'custom',
+          bondYield: 5.2,
+          primaryDeficit: 5.0,
+          realGrowth: 2.0,
+          inflation: 2.5,
+        },
+      });
+
+      // Before timer ticks, history has not been flooded
+      expect(replaceStateSpy).not.toHaveBeenCalled();
+
+      // Fast-forward debounce interval
+      act(() => {
+        vi.advanceTimersByTime(150);
+      });
+
+      expect(replaceStateSpy).toHaveBeenCalledTimes(1);
+      const targetUrl = replaceStateSpy.mock.calls[0][2] as string;
+      expect(targetUrl).toContain('y=5.20');
+
+      replaceStateSpy.mockRestore();
+      vi.useRealTimers();
     });
   });
 });

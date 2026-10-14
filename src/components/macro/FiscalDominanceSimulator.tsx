@@ -24,7 +24,7 @@ import {
 import { useThemeMode } from '../../context/AppContext';
 import { DataExportMenu } from '../common/DataExportMenu';
 import { ShareDeepLinkMenu } from '../common/ShareDeepLinkMenu';
-import { deserializeFiscalDominance } from '../../lib/deep-link';
+import { deserializeFiscalDominance, useDeepLinkSync } from '../../lib/deep-link';
 import {
   Scale,
   TrendingDown,
@@ -69,6 +69,7 @@ export function FiscalDominanceSimulator() {
   const [activeScenarioId, setActiveScenarioId] = useState<string>('baseline');
   const [activeMetricTab, setActiveMetricTab] = useState<'debt' | 'interest'>('debt');
   const [isHydratedFromDeepLink, setIsHydratedFromDeepLink] = useState<boolean>(false);
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
   // Active sovereign baseline configuration
   const currentProfile = useMemo(() => {
@@ -107,7 +108,26 @@ export function FiscalDominanceSimulator() {
       }
       setIsHydratedFromDeepLink(true);
     }
+    setIsInitialized(true);
   }, []);
+
+  /*
+   * Continuously synchronize live slider and country adjustments to the browser address bar
+   * so researchers can copy the URL straight from the browser bar at any time without clicking share.
+   */
+  useDeepLinkSync(
+    'fiscal',
+    {
+      country: selectedCountryCode,
+      scenario: activeScenarioId,
+      bondYield: params.bondYield,
+      primaryDeficit: params.primaryDeficit,
+      realGrowth: params.realGrowth,
+      inflation: params.inflation,
+      metricTab: activeMetricTab,
+    },
+    isInitialized
+  );
 
   // Switch sovereign country profile and reset parameters to its baseline
   const handleSelectCountry = (country: SovereignFiscalProfile) => {

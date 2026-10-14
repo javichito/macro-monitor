@@ -22,7 +22,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { ShareDeepLinkMenu } from '../common/ShareDeepLinkMenu';
-import { deserializePppConverter } from '../../lib/deep-link';
+import { deserializePppConverter, useDeepLinkSync } from '../../lib/deep-link';
 
 export function PppConverter() {
   const [netWorth, setNetWorth] = useState<number>(100000);
@@ -32,6 +32,7 @@ export function PppConverter() {
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
   const [isHydratedFromDeepLink, setIsHydratedFromDeepLink] = useState<boolean>(false);
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
   /*
    * Hydrate geo-arbitrage conversion inputs from deep-link URL hashes or query strings
@@ -46,7 +47,22 @@ export function PppConverter() {
       setNetWorth(restored.netWorth);
       setIsHydratedFromDeepLink(true);
     }
+    setIsInitialized(true);
   }, []);
+
+  /*
+   * Synchronize purchasing power assumptions to the browser URL bar
+   * so users can copy the URL directly from the address bar to share.
+   */
+  useDeepLinkSync(
+    'ppp',
+    {
+      fromCountry: fromCountryCode,
+      toCountry: toCountryCode,
+      netWorth,
+    },
+    isInitialized
+  );
 
   const fromCountry =
     COUNTRIES_DATA.find((c) => c.code === fromCountryCode) || COUNTRIES_DATA[0];

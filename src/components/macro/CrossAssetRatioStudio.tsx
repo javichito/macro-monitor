@@ -22,7 +22,7 @@ import {
 import { useThemeMode } from '../../context/AppContext';
 import { DataExportMenu } from '../common/DataExportMenu';
 import { ShareDeepLinkMenu } from '../common/ShareDeepLinkMenu';
-import { deserializeCrossAssetRatio } from '../../lib/deep-link';
+import { deserializeCrossAssetRatio, useDeepLinkSync } from '../../lib/deep-link';
 import {
   Scale,
   TrendingUp,
@@ -57,6 +57,7 @@ export function CrossAssetRatioStudio() {
   // Interactive Sandbox state: user can simulate custom numerator and denominator values
   const [simNumerator, setSimNumerator] = useState<number>(activeModel.numerator.currentValue);
   const [simDenominator, setSimDenominator] = useState<number>(activeModel.denominator.currentValue);
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
   /*
    * Hydrate Cross-Asset Ratio Studio state from deep-link URL hashes or query strings
@@ -72,7 +73,24 @@ export function CrossAssetRatioStudio() {
       if (restored.viewMode) setChartViewMode(restored.viewMode);
       if (restored.timeWindow) setTimeWindow(restored.timeWindow);
     }
+    setIsInitialized(true);
   }, []);
+
+  /*
+   * Keep browser address bar in sync with active ratio sandbox modifications
+   * so copying the address bar URL shares the exact state.
+   */
+  useDeepLinkSync(
+    'ratios',
+    {
+      ratio: activeRatioKey,
+      numerator: simNumerator,
+      denominator: simDenominator,
+      viewMode: chartViewMode,
+      timeWindow,
+    },
+    isInitialized
+  );
 
   // Sync simulator sliders whenever switching between ratios
   const handleRatioSwitch = (newKey: RatioKey) => {
