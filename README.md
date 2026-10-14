@@ -56,7 +56,7 @@
 
 ## Getting Started
 
-Ensure Node.js (v22+ or v26+) is available in your PATH:
+Ensure Node.js v26 is selected (or run `nvm use` to automatically pick up `.nvmrc`):
 
 ```bash
 # Install dependencies
