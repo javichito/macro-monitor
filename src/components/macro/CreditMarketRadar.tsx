@@ -52,6 +52,13 @@ export function CreditMarketRadar() {
   const [activeView, setActiveView] = useState<CreditRadarView>('oas');
   const [selectedRegion, setSelectedRegion] = useState<CreditRegionId>('GLOBAL');
   const [compareGlobalRegions, setCompareGlobalRegions] = useState<boolean>(true);
+  const [seriesVisibility, setSeriesVisibility] = useState({
+    usHy: true,
+    euroHy: true,
+    emCorp: true,
+    globalAgg: true,
+    usIg: false,
+  });
 
   // Sync initial tab and region state from URL parameters to support deep links
   useEffect(() => {
@@ -347,7 +354,29 @@ export function CreditMarketRadar() {
         {activeView === 'oas' && (
           <div className="flex items-center gap-2">
             <button
-              onClick={() => setCompareGlobalRegions(!compareGlobalRegions)}
+              onClick={() => {
+                const nextCompare = !compareGlobalRegions;
+                setCompareGlobalRegions(nextCompare);
+                if (nextCompare) {
+                  // In multi-region comparison mode, make all primary regional curves visible
+                  setSeriesVisibility((prev) => ({
+                    ...prev,
+                    usHy: true,
+                    euroHy: true,
+                    emCorp: true,
+                    globalAgg: true,
+                  }));
+                } else {
+                  // In single-region focus mode, isolate the currently selected regional benchmark
+                  setSeriesVisibility({
+                    usHy: selectedRegion === 'USA',
+                    euroHy: selectedRegion === 'EUR',
+                    emCorp: selectedRegion === 'EM',
+                    globalAgg: selectedRegion === 'GLOBAL',
+                    usIg: false,
+                  });
+                }
+              }}
               className={`text-xs px-3 py-1.5 rounded-xl font-semibold border transition-all cursor-pointer flex items-center gap-1.5 ${
                 compareGlobalRegions
                   ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/25'
@@ -376,19 +405,72 @@ export function CreditMarketRadar() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-xs">
-              <span className="inline-flex items-center gap-1 text-[11px] text-rose-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-rose-500"></span> US High Yield
-              </span>
-              <span className="inline-flex items-center gap-1 text-[11px] text-sky-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-sky-500"></span> Euro High Yield
-              </span>
-              <span className="inline-flex items-center gap-1 text-[11px] text-amber-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-amber-500"></span> EM Corporate
-              </span>
-              <span className="inline-flex items-center gap-1 text-[11px] text-emerald-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-emerald-500"></span> Global Agg
-              </span>
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <button
+                type="button"
+                onClick={() => setSeriesVisibility((prev) => ({ ...prev, usHy: !prev.usHy }))}
+                aria-label="Toggle US High Yield series"
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-semibold transition-all cursor-pointer ${
+                  seriesVisibility.usHy
+                    ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/25 shadow-xs'
+                    : 'bg-slate-100 dark:bg-white/[0.04] text-slate-400 dark:text-slate-500 border-slate-200 dark:border-white/[0.06] line-through opacity-60'
+                }`}
+              >
+                <span className={`h-2 w-2 rounded-full ${seriesVisibility.usHy ? 'bg-rose-500' : 'bg-slate-400'}`}></span>
+                <span>US High Yield</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setSeriesVisibility((prev) => ({ ...prev, euroHy: !prev.euroHy }))}
+                aria-label="Toggle Euro High Yield series"
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-semibold transition-all cursor-pointer ${
+                  seriesVisibility.euroHy
+                    ? 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/25 shadow-xs'
+                    : 'bg-slate-100 dark:bg-white/[0.04] text-slate-400 dark:text-slate-500 border-slate-200 dark:border-white/[0.06] line-through opacity-60'
+                }`}
+              >
+                <span className={`h-2 w-2 rounded-full ${seriesVisibility.euroHy ? 'bg-sky-500' : 'bg-slate-400'}`}></span>
+                <span>Euro High Yield</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setSeriesVisibility((prev) => ({ ...prev, emCorp: !prev.emCorp }))}
+                aria-label="Toggle EM Corporate series"
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-semibold transition-all cursor-pointer ${
+                  seriesVisibility.emCorp
+                    ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25 shadow-xs'
+                    : 'bg-slate-100 dark:bg-white/[0.04] text-slate-400 dark:text-slate-500 border-slate-200 dark:border-white/[0.06] line-through opacity-60'
+                }`}
+              >
+                <span className={`h-2 w-2 rounded-full ${seriesVisibility.emCorp ? 'bg-amber-500' : 'bg-slate-400'}`}></span>
+                <span>EM Corporate</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setSeriesVisibility((prev) => ({ ...prev, globalAgg: !prev.globalAgg }))}
+                aria-label="Toggle Global Corporate OAS series"
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-semibold transition-all cursor-pointer ${
+                  seriesVisibility.globalAgg
+                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25 shadow-xs'
+                    : 'bg-slate-100 dark:bg-white/[0.04] text-slate-400 dark:text-slate-500 border-slate-200 dark:border-white/[0.06] line-through opacity-60'
+                }`}
+              >
+                <span className={`h-2 w-2 rounded-full ${seriesVisibility.globalAgg ? 'bg-emerald-500' : 'bg-slate-400'}`}></span>
+                <span>Global Agg</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setSeriesVisibility((prev) => ({ ...prev, usIg: !prev.usIg }))}
+                aria-label="Toggle US Investment Grade series"
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-semibold transition-all cursor-pointer ${
+                  seriesVisibility.usIg
+                    ? 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/25 shadow-xs'
+                    : 'bg-slate-100 dark:bg-white/[0.04] text-slate-400 dark:text-slate-500 border-slate-200 dark:border-white/[0.06] opacity-60'
+                }`}
+              >
+                <span className={`h-2 w-2 rounded-full ${seriesVisibility.usIg ? 'bg-purple-500' : 'bg-slate-400'}`}></span>
+                <span>US IG</span>
+              </button>
             </div>
           </div>
 
@@ -428,22 +510,36 @@ export function CreditMarketRadar() {
                             </span>
                           </div>
                           <div className="space-y-1 pt-1 font-mono">
-                            <div className="flex justify-between text-rose-500 font-semibold">
-                              <span>US High Yield:</span>
-                              <span>{data.usHighYieldOasBps} bps</span>
-                            </div>
-                            <div className="flex justify-between text-sky-500 font-semibold">
-                              <span>Euro High Yield:</span>
-                              <span>{data.euroHighYieldOasBps} bps</span>
-                            </div>
-                            <div className="flex justify-between text-amber-500 font-semibold">
-                              <span>EM Corporate:</span>
-                              <span>{data.emCorporateOasBps} bps</span>
-                            </div>
-                            <div className="flex justify-between text-emerald-500 font-semibold">
-                              <span>Global Agg:</span>
-                              <span>{data.globalCorporateOasBps} bps</span>
-                            </div>
+                            {seriesVisibility.usHy && (
+                              <div className="flex justify-between text-rose-500 font-semibold">
+                                <span>US High Yield:</span>
+                                <span>{data.usHighYieldOasBps} bps</span>
+                              </div>
+                            )}
+                            {seriesVisibility.euroHy && (
+                              <div className="flex justify-between text-sky-500 font-semibold">
+                                <span>Euro High Yield:</span>
+                                <span>{data.euroHighYieldOasBps} bps</span>
+                              </div>
+                            )}
+                            {seriesVisibility.emCorp && (
+                              <div className="flex justify-between text-amber-500 font-semibold">
+                                <span>EM Corporate:</span>
+                                <span>{data.emCorporateOasBps} bps</span>
+                              </div>
+                            )}
+                            {seriesVisibility.globalAgg && (
+                              <div className="flex justify-between text-emerald-500 font-semibold">
+                                <span>Global Agg:</span>
+                                <span>{data.globalCorporateOasBps} bps</span>
+                              </div>
+                            )}
+                            {seriesVisibility.usIg && (
+                              <div className="flex justify-between text-purple-500 font-semibold">
+                                <span>US Inv. Grade:</span>
+                                <span>{data.usInvestmentGradeOasBps} bps</span>
+                              </div>
+                            )}
                           </div>
                           {data.eventAnnotation && (
                             <div className="mt-2 pt-1.5 border-t border-slate-100 dark:border-white/5 text-[11px] text-slate-500 dark:text-slate-400 italic font-sans">
@@ -481,43 +577,63 @@ export function CreditMarketRadar() {
                   }}
                 />
 
-                <Line
-                  type="monotone"
-                  dataKey="usHighYieldOasBps"
-                  name="US High Yield"
-                  stroke="#f43f5e"
-                  strokeWidth={2.5}
-                  dot={{ r: 2.5, fill: '#f43f5e' }}
-                  activeDot={{ r: 5 }}
-                />
-                {compareGlobalRegions && (
-                  <>
-                    <Line
-                      type="monotone"
-                      dataKey="euroHighYieldOasBps"
-                      name="Euro High Yield"
-                      stroke="#0ea5e9"
-                      strokeWidth={2}
-                      dot={false}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="emCorporateOasBps"
-                      name="EM Corporate"
-                      stroke="#f59e0b"
-                      strokeWidth={1.75}
-                      strokeDasharray="3 3"
-                      dot={false}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="globalCorporateOasBps"
-                      name="Global Agg"
-                      stroke="#10b981"
-                      strokeWidth={1.75}
-                      dot={false}
-                    />
-                  </>
+                {/* Recharts React 19 compatibility: Direct children without JSX fragment wrappers to allow internal toArray() discovery */}
+                {seriesVisibility.usHy && (
+                  <Line
+                    type="monotone"
+                    dataKey="usHighYieldOasBps"
+                    name="US High Yield"
+                    stroke="#f43f5e"
+                    strokeWidth={2.5}
+                    dot={{ r: 2.5, fill: '#f43f5e' }}
+                    activeDot={{ r: 5 }}
+                  />
+                )}
+                {seriesVisibility.euroHy && (
+                  <Line
+                    type="monotone"
+                    dataKey="euroHighYieldOasBps"
+                    name="Euro High Yield"
+                    stroke="#0ea5e9"
+                    strokeWidth={2}
+                    dot={{ r: 2.5, fill: '#0ea5e9' }}
+                    activeDot={{ r: 5 }}
+                  />
+                )}
+                {seriesVisibility.emCorp && (
+                  <Line
+                    type="monotone"
+                    dataKey="emCorporateOasBps"
+                    name="EM Corporate"
+                    stroke="#f59e0b"
+                    strokeWidth={1.75}
+                    strokeDasharray="3 3"
+                    dot={{ r: 2.5, fill: '#f59e0b' }}
+                    activeDot={{ r: 5 }}
+                  />
+                )}
+                {seriesVisibility.globalAgg && (
+                  <Line
+                    type="monotone"
+                    dataKey="globalCorporateOasBps"
+                    name="Global Agg"
+                    stroke="#10b981"
+                    strokeWidth={1.75}
+                    dot={{ r: 2.5, fill: '#10b981' }}
+                    activeDot={{ r: 5 }}
+                  />
+                )}
+                {seriesVisibility.usIg && (
+                  <Line
+                    type="monotone"
+                    dataKey="usInvestmentGradeOasBps"
+                    name="US Inv. Grade"
+                    stroke="#a855f7"
+                    strokeWidth={1.75}
+                    strokeDasharray="4 4"
+                    dot={{ r: 2, fill: '#a855f7' }}
+                    activeDot={{ r: 4 }}
+                  />
                 )}
               </LineChart>
             </ResponsiveContainer>

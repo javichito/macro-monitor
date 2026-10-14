@@ -87,4 +87,28 @@ describe('CreditMarketRadar Component', () => {
     fireEvent.click(toggleBtn);
     expect(screen.getByRole('button', { name: /Focus Active Region/i })).toBeDefined();
   });
+
+  it('renders interactive series legend buttons and toggles their active state', () => {
+    render(<CreditMarketRadar />);
+
+    const usHyBtn = screen.getByRole('button', { name: /Toggle US High Yield series/i });
+    const euroHyBtn = screen.getByRole('button', { name: /Toggle Euro High Yield series/i });
+    const emCorpBtn = screen.getByRole('button', { name: /Toggle EM Corporate series/i });
+    const globalAggBtn = screen.getByRole('button', { name: /Toggle Global Corporate OAS series/i });
+    const usIgBtn = screen.getByRole('button', { name: /Toggle US Investment Grade series/i });
+
+    expect(usHyBtn).toBeDefined();
+    expect(euroHyBtn).toBeDefined();
+    expect(emCorpBtn).toBeDefined();
+    expect(globalAggBtn).toBeDefined();
+    expect(usIgBtn).toBeDefined();
+
+    // Toggle US High Yield off and verify class state changes
+    fireEvent.click(usHyBtn);
+    expect(usHyBtn.className).toContain('line-through');
+
+    // Toggle US High Yield back on
+    fireEvent.click(usHyBtn);
+    expect(usHyBtn.className).not.toContain('line-through');
+  });
 });

@@ -83,13 +83,18 @@ describe('Recharts Children Discovery & Fragment Guard', () => {
     }
 
     const tsxFiles = getTsxFiles(componentsDir);
-    const fragmentInsideRegex = /<AreaChart[\s\S]*?>[\s\S]*?(?:<>|<React\.Fragment>)[\s\S]*?<\/(?:AreaChart)>/;
+    const chartBlockRegex = /<(AreaChart|LineChart|BarChart|ComposedChart)\b[\s\S]*?>([\s\S]*?)<\/\1>/g;
 
     for (const file of tsxFiles) {
       const content = fs.readFileSync(file, 'utf-8');
       if (content.includes("from 'recharts'")) {
-        const hasFragment = fragmentInsideRegex.test(content);
-        expect(hasFragment).toBe(false);
+        let match: RegExpExecArray | null;
+        while ((match = chartBlockRegex.exec(content)) !== null) {
+          // Strip JSX comments from chart inner content to prevent false matches in code annotations
+          const innerWithoutComments = match[2].replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
+          const hasFragment = /<>|<React\.Fragment>/.test(innerWithoutComments);
+          expect(hasFragment, `File ${file} contains a JSX fragment wrapper inside <${match[1]}>`).toBe(false);
+        }
       }
     }
   });
