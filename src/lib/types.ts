@@ -804,6 +804,7 @@ export interface EvaluatedCalendarState {
 export type CreditStressLevel = 'compressed' | 'normal' | 'elevated' | 'distress' | 'crisis';
 export type FinancialConditionsRegime = 'extremely_loose' | 'loose' | 'neutral' | 'tight' | 'restrictive';
 export type CreditRatingTier = 'AAA_AA' | 'A' | 'BBB' | 'BB' | 'B' | 'CCC_LOWER';
+export type CreditRegionId = 'GLOBAL' | 'USA' | 'EUR' | 'EM';
 
 export interface CreditRatingSpread {
   tier: CreditRatingTier;
@@ -818,23 +819,6 @@ export interface CreditRatingSpread {
   riskDescription: string;
 }
 
-export interface CreditMarketHistoricalPoint {
-  date: string;
-  year: number;
-  usHighYieldOasBps: number;
-  usInvestmentGradeOasBps: number;
-  usBbbOasBps: number;
-  us10YYieldPercent: number;
-  chicagoFedNfci: number;
-  nfciRiskSubindex: number;
-  nfciCreditSubindex: number;
-  nfciLeverageSubindex: number;
-  sloosNetTighteningPct: number;
-  sloosLoanDemandPct: number;
-  isRecession: boolean;
-  eventAnnotation?: string;
-}
-
 export interface SloosSectorBreakdown {
   sectorId: string;
   sectorName: string;
@@ -845,8 +829,91 @@ export interface SloosSectorBreakdown {
   commentary: string;
 }
 
+export interface RegionalCreditProfile {
+  regionId: CreditRegionId;
+  name: string;
+  shortName: string;
+  flag: string;
+  currency: string;
+  benchmarkTenor: string;
+  highYieldOasBps: number;
+  investmentGradeOasBps: number;
+  bbbSpreadBps: number;
+  effectiveHighYieldPct: number;
+  effectiveIgYieldPct: number;
+  stressLevel: CreditStressLevel;
+  historicalPercentile: number;
+  fciIndex: number;
+  fciRegime: FinancialConditionsRegime;
+  bankLendingNetTighteningPct: number;
+  surveyName: string;
+  ratingTiers: CreditRatingSpread[];
+  lendingSectors: SloosSectorBreakdown[];
+  macroNote: string;
+}
+
+export interface CreditMarketHistoricalPoint {
+  date: string;
+  year: number;
+  usHighYieldOasBps: number;
+  usInvestmentGradeOasBps: number;
+  usBbbOasBps: number;
+  us10YYieldPercent: number;
+  euroHighYieldOasBps: number;
+  euroInvestmentGradeOasBps: number;
+  emCorporateOasBps: number;
+  globalCorporateOasBps: number;
+  chicagoFedNfci: number;
+  euroCiss: number;
+  globalFci: number;
+  nfciRiskSubindex: number;
+  nfciCreditSubindex: number;
+  nfciLeverageSubindex: number;
+  sloosNetTighteningPct: number;
+  ecbBlsNetTighteningPct: number;
+  sloosLoanDemandPct: number;
+  isRecession: boolean;
+  eventAnnotation?: string;
+}
+
+export interface EvaluatedCreditState {
+  timestamp: string;
+  globalSummary: {
+    globalCorporateOasBps: number;
+    globalFciIndex: number;
+    creditCyclePhase: string;
+    stressLevel: CreditStressLevel;
+  };
+  regions: Record<
+    CreditRegionId,
+    {
+      highYieldOasBps: number;
+      investmentGradeOasBps: number;
+      fciIndex: number;
+      bankLendingTighteningPct: number;
+      stressLevel: CreditStressLevel;
+    }
+  >;
+  activeAlerts: Array<{
+    id: string;
+    regionId: CreditRegionId;
+    level: 'CRITICAL' | 'WARNING' | 'BENIGN' | 'COMPRESSED';
+    headline: string;
+    body: string;
+  }>;
+}
+
 export interface CreditMarketOverview {
   currentDate: string;
+  regions: Record<CreditRegionId, RegionalCreditProfile>;
+  globalAggregate: {
+    globalCorporateOasBps: number;
+    globalHighYieldOasBps: number;
+    globalFciIndex: number;
+    stressLevel: CreditStressLevel;
+    effectiveYieldPct: number;
+    summary: string;
+  };
   highYieldOas: {
     currentBps: number;
     fiftyTwoWeekHighBps: number;
@@ -884,4 +951,5 @@ export interface CreditMarketOverview {
   sloosBreakdown: SloosSectorBreakdown[];
   historicalSeries: CreditMarketHistoricalPoint[];
 }
+
 

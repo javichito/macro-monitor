@@ -1,0 +1,62 @@
+{
+  "timestamp": "2026-10-14T20:51:53.278Z",
+  "globalSummary": {
+    "globalCorporateOasBps": 345,
+    "globalFciIndex": -0.35,
+    "creditCyclePhase": "Selective Lending & Private Credit Expansion",
+    "stressLevel": "normal"
+  },
+  "regions": {
+    "GLOBAL": {
+      "highYieldOasBps": 345,
+      "investmentGradeOasBps": 112,
+      "fciIndex": -0.35,
+      "bankLendingTighteningPct": 3.2,
+      "stressLevel": "normal"
+    },
+    "USA": {
+      "highYieldOasBps": 318,
+      "investmentGradeOasBps": 92,
+      "fciIndex": -0.52,
+      "bankLendingTighteningPct": 2.1,
+      "stressLevel": "compressed"
+    },
+    "EUR": {
+      "highYieldOasBps": 358,
+      "investmentGradeOasBps": 118,
+      "fciIndex": 0.12,
+      "bankLendingTighteningPct": 3.4,
+      "stressLevel": "normal"
+    },
+    "EM": {
+      "highYieldOasBps": 442,
+      "investmentGradeOasBps": 198,
+      "fciIndex": -0.18,
+      "bankLendingTighteningPct": 4.8,
+      "stressLevel": "normal"
+    }
+  },
+  "activeAlerts": [
+    {
+      "id": "global-spread-compression",
+      "regionId": "GLOBAL",
+      "level": "COMPRESSED",
+      "headline": "🌐 Global Corporate Spreads Compressed at 345 bps",
+      "body": "Global High Yield risk premiums trade near the 20th historical percentile. Ample alternative private credit liquidity ($1.7T) buffers corporate debt rollover across the US, Europe, and Asia."
+    },
+    {
+      "id": "us-fallen-angel-buffer",
+      "regionId": "USA",
+      "level": "BENIGN",
+      "headline": "🛡️ US High Yield OAS Tightly Anchored at 318 bps",
+      "body": "Over 51% of the US corporate bond market resides in BBB tier; current narrow spreads denote minimal forced-selling downgrade risk into junk status."
+    },
+    {
+      "id": "bank-lending-stabilization",
+      "regionId": "GLOBAL",
+      "level": "BENIGN",
+      "headline": "🏦 Global Commercial Bank Underwriting Standards Stabilizing",
+      "body": "US SLOOS (+2.1%) and Eurozone BLS (+3.4%) confirm commercial bank lending standards have normalized following the 2023 regional banking shocks."
+    }
+  ]
+}

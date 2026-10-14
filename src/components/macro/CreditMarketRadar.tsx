@@ -17,12 +17,13 @@ import {
 } from 'recharts';
 import {
   CREDIT_MARKET_OVERVIEW,
-  CREDIT_RATING_SPREADS,
+  REGIONAL_CREDIT_PROFILES,
   HISTORICAL_CREDIT_SERIES,
-  SLOOS_SECTOR_BREAKDOWNS,
   getCreditStressLabel,
   getNfciRegimeLabel,
+  getLatestCreditState,
 } from '../../data/credit-market-data';
+import { CreditRegionId } from '../../lib/types';
 import { useThemeMode } from '../../context/AppContext';
 import { DataExportMenu } from '../common/DataExportMenu';
 import {
@@ -39,6 +40,7 @@ import {
   BarChart3,
   Scale,
   Sparkles,
+  Globe2,
 } from 'lucide-react';
 
 type CreditRadarView = 'oas' | 'nfci' | 'sloos' | 'tiers';
@@ -48,43 +50,61 @@ export function CreditMarketRadar() {
   const isDark = theme === 'dark';
 
   const [activeView, setActiveView] = useState<CreditRadarView>('oas');
-  const [selectedRatingTier, setSelectedRatingTier] = useState<string | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<CreditRegionId>('GLOBAL');
+  const [compareGlobalRegions, setCompareGlobalRegions] = useState<boolean>(true);
 
-  // Sync initial tab state from URL parameters to support deep links and shared references
+  // Sync initial tab and region state from URL parameters to support deep links
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const viewParam = params.get('credit_view') as CreditRadarView;
+    const regionParam = params.get('credit_region')?.toUpperCase() as CreditRegionId;
+
     if (viewParam && ['oas', 'nfci', 'sloos', 'tiers'].includes(viewParam)) {
       setActiveView(viewParam);
     }
+    if (regionParam && ['GLOBAL', 'USA', 'EUR', 'EM'].includes(regionParam)) {
+      setSelectedRegion(regionParam);
+    }
   }, []);
 
-  const hyStress = useMemo(
-    () => getCreditStressLabel(CREDIT_MARKET_OVERVIEW.highYieldOas.currentBps),
-    []
+  const latestState = useMemo(() => getLatestCreditState(), []);
+  const activeProfile = REGIONAL_CREDIT_PROFILES[selectedRegion];
+
+  const regionStress = useMemo(
+    () => getCreditStressLabel(activeProfile.highYieldOasBps),
+    [activeProfile.highYieldOasBps]
   );
 
-  const nfciRegime = useMemo(
-    () => getNfciRegimeLabel(CREDIT_MARKET_OVERVIEW.financialConditions.currentNfci),
-    []
+  const regionNfciRegime = useMemo(
+    () => getNfciRegimeLabel(activeProfile.fciIndex),
+    [activeProfile.fciIndex]
   );
+
+  // Filter live alerts for the selected region or global scope
+  const visibleAlerts = useMemo(() => {
+    return latestState.activeAlerts.filter(
+      (alert) => selectedRegion === 'GLOBAL' || alert.regionId === selectedRegion || alert.regionId === 'GLOBAL'
+    );
+  }, [latestState.activeAlerts, selectedRegion]);
 
   // Format historical series for CSV/JSON exports
   const exportColumns = useMemo(
     () => [
       { key: 'date', label: 'Date' },
       { key: 'year', label: 'Year' },
+      { key: 'globalCorporateOasBps', label: 'Global Corporate OAS (bps)' },
       { key: 'usHighYieldOasBps', label: 'US High Yield OAS (bps)' },
-      { key: 'usInvestmentGradeOasBps', label: 'US Investment Grade OAS (bps)' },
-      { key: 'usBbbOasBps', label: 'US BBB OAS (bps)' },
-      { key: 'us10YYieldPercent', label: 'US 10Y Treasury Yield (%)' },
+      { key: 'euroHighYieldOasBps', label: 'Euro High Yield OAS (bps)' },
+      { key: 'emCorporateOasBps', label: 'EM Corporate OAS (bps)' },
+      { key: 'usInvestmentGradeOasBps', label: 'US IG OAS (bps)' },
+      { key: 'euroInvestmentGradeOasBps', label: 'Euro IG OAS (bps)' },
+      { key: 'us10YYieldPercent', label: 'US 10Y Yield (%)' },
       { key: 'chicagoFedNfci', label: 'Chicago Fed NFCI' },
-      { key: 'nfciRiskSubindex', label: 'NFCI Risk Sub-Index' },
-      { key: 'nfciCreditSubindex', label: 'NFCI Credit Sub-Index' },
-      { key: 'nfciLeverageSubindex', label: 'NFCI Leverage Sub-Index' },
-      { key: 'sloosNetTighteningPct', label: 'Fed SLOOS C&I Net Tightening (%)' },
-      { key: 'sloosLoanDemandPct', label: 'Fed SLOOS C&I Loan Demand (%)' },
+      { key: 'euroCiss', label: 'ECB CISS Index' },
+      { key: 'globalFci', label: 'Global FCI Index' },
+      { key: 'sloosNetTighteningPct', label: 'Fed SLOOS Net Tightening (%)' },
+      { key: 'ecbBlsNetTighteningPct', label: 'ECB BLS Net Tightening (%)' },
       { key: 'eventAnnotation', label: 'Macro Event / Regime' },
     ],
     []
@@ -98,52 +118,108 @@ export function CreditMarketRadar() {
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-2 rounded-full border border-rose-500/20 bg-rose-500/10 px-3 py-0.5 text-xs font-semibold text-rose-600 dark:text-rose-400">
               <ShieldAlert className="h-3.5 w-3.5" />
-              <span>Credit &amp; Solvency Intelligence</span>
+              <span>Global Credit &amp; Solvency Intelligence</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Corporate Credit Spreads &amp; Financial Conditions
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+              <span>Corporate Credit Spreads &amp; Financial Conditions</span>
+              <span className="text-xl sm:text-2xl">{activeProfile.flag}</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-              Track Option-Adjusted Spreads (OAS) across corporate credit tiers, the Chicago Fed National Financial Conditions Index (NFCI), and Federal Reserve Senior Loan Officer bank lending standards (SLOOS).
+              Cross-border tracking of Option-Adjusted Spreads (OAS) across the US, Eurozone, and Emerging Markets, alongside the Chicago Fed NFCI, ECB Systemic Stress (CISS), and Bank Lending Surveys (SLOOS &amp; BLS).
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 self-start lg:self-center">
+            {/* Region Selector Switcher */}
+            <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] text-xs">
+              {(['GLOBAL', 'USA', 'EUR', 'EM'] as CreditRegionId[]).map((regId) => {
+                const reg = REGIONAL_CREDIT_PROFILES[regId];
+                const isSelected = selectedRegion === regId;
+                return (
+                  <button
+                    key={regId}
+                    onClick={() => setSelectedRegion(regId)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
+                      isSelected
+                        ? 'bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black font-bold'
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+                    }`}
+                  >
+                    <span>{reg.flag}</span>
+                    <span className="hidden sm:inline">{reg.shortName}</span>
+                  </button>
+                );
+              })}
+            </div>
+
             <DataExportMenu
               data={HISTORICAL_CREDIT_SERIES}
               columns={exportColumns}
-              filename="credit-spreads-financial-conditions-history"
-              title="Corporate Credit Spreads & Financial Conditions History (2000-2026)"
+              filename="global-credit-spreads-financial-conditions"
+              title="Global Corporate Credit Spreads & Financial Conditions History (2000-2026)"
               metadata={{
-                source: 'Federal Reserve Board (SLOOS), Federal Reserve Bank of Chicago (NFCI), ICE BofA (OAS)',
-                methodology: 'Option-Adjusted Spreads remove embedded call option distortions to measure pure corporate default risk premiums against duration-matched Treasuries.',
+                source: 'ICE BofA (US & Euro OAS), J.P. Morgan (CEMBI), Federal Reserve (SLOOS & NFCI), European Central Bank (BLS & CISS)',
+                methodology: 'Option-Adjusted Spreads isolate pure default risk premiums across sovereign benchmark curves.',
               }}
             />
           </div>
         </div>
 
-        {/* 4 Primary Hero KPI Cards */}
+        {/* Live Evaluated Telemetry Alerts Banner */}
+        {visibleAlerts.length > 0 && (
+          <div className="mt-5 pt-4 border-t border-slate-200 dark:border-white/[0.08] space-y-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+              <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+              <span>Automated Telemetry Alerts ({latestState.timestamp.slice(0, 10)})</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {visibleAlerts.map((alert) => (
+                <div
+                  key={alert.id}
+                  className={`p-3 rounded-xl border text-xs space-y-1 ${
+                    alert.level === 'CRITICAL'
+                      ? 'bg-rose-500/[0.08] border-rose-500/30 text-rose-900 dark:text-rose-200'
+                      : alert.level === 'WARNING'
+                      ? 'bg-amber-500/[0.08] border-amber-500/30 text-amber-900 dark:text-amber-200'
+                      : alert.level === 'COMPRESSED'
+                      ? 'bg-emerald-500/[0.08] border-emerald-500/30 text-emerald-900 dark:text-emerald-200'
+                      : 'bg-sky-500/[0.08] border-sky-500/30 text-sky-900 dark:text-sky-200'
+                  }`}
+                >
+                  <div className="font-bold">{alert.headline}</div>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed opacity-90">
+                    {alert.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 4 Primary Hero KPI Cards (Dynamically Adapting to Selected Region) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-200 dark:border-white/[0.08]">
-          {/* Card 1: High-Yield OAS */}
+          {/* Card 1: Regional High Yield OAS */}
           <div className="bg-slate-50 dark:bg-white/[0.03] p-4 rounded-2xl border border-slate-200 dark:border-white/[0.08] relative group">
             <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5">
-              <span className="font-semibold uppercase tracking-wider text-[11px]">US High Yield OAS</span>
-              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border ${hyStress.badgeClass}`}>
-                {hyStress.label}
+              <span className="font-semibold uppercase tracking-wider text-[11px]">
+                {activeProfile.shortName} High Yield OAS
+              </span>
+              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border ${regionStress.badgeClass}`}>
+                {regionStress.label}
               </span>
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                {CREDIT_MARKET_OVERVIEW.highYieldOas.currentBps}
+                {activeProfile.highYieldOasBps}
               </span>
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">bps</span>
             </div>
             <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-              <span>Yield: {CREDIT_MARKET_OVERVIEW.highYieldOas.effectiveYieldPct}%</span>
-              <span>{CREDIT_MARKET_OVERVIEW.highYieldOas.historicalPercentile}th Percentile</span>
+              <span>Yield: {activeProfile.effectiveHighYieldPct}%</span>
+              <span>{activeProfile.historicalPercentile}th Percentile</span>
             </div>
-            <div className="mt-1.5 text-[10px] text-slate-400 dark:text-slate-500">
-              52W Range: {CREDIT_MARKET_OVERVIEW.highYieldOas.fiftyTwoWeekLowBps} – {CREDIT_MARKET_OVERVIEW.highYieldOas.fiftyTwoWeekHighBps} bps
+            <div className="mt-1.5 text-[10px] text-slate-400 dark:text-slate-500 truncate">
+              {activeProfile.benchmarkTenor}
             </div>
           </div>
 
@@ -157,60 +233,63 @@ export function CreditMarketRadar() {
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                {CREDIT_MARKET_OVERVIEW.investmentGradeOas.currentBps}
+                {activeProfile.investmentGradeOasBps}
               </span>
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">bps</span>
             </div>
             <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-              <span>Effective Yield: {CREDIT_MARKET_OVERVIEW.investmentGradeOas.effectiveYieldPct}%</span>
+              <span>Effective Yield: {activeProfile.effectiveIgYieldPct}%</span>
             </div>
             <div className="mt-1.5 text-[10px] text-slate-500 dark:text-slate-400 font-medium">
-              BBB Frontier: <span className="font-semibold text-slate-700 dark:text-slate-300">{CREDIT_MARKET_OVERVIEW.investmentGradeOas.bbbFallenAngelSpreadBps} bps</span>
+              BBB Frontier: <span className="font-semibold text-slate-700 dark:text-slate-300">{activeProfile.bbbSpreadBps} bps</span>
             </div>
           </div>
 
-          {/* Card 3: Chicago Fed NFCI */}
+          {/* Card 3: Regional Financial Conditions Index */}
           <div className="bg-slate-50 dark:bg-white/[0.03] p-4 rounded-2xl border border-slate-200 dark:border-white/[0.08] relative group">
             <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5">
-              <span className="font-semibold uppercase tracking-wider text-[11px]">Chicago Fed NFCI</span>
-              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border ${nfciRegime.badgeClass}`}>
-                {nfciRegime.label}
+              <span className="font-semibold uppercase tracking-wider text-[11px]">
+                {selectedRegion === 'USA' ? 'Chicago Fed NFCI' : selectedRegion === 'EUR' ? 'ECB CISS Index' : 'Financial Conditions'}
+              </span>
+              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border ${regionNfciRegime.badgeClass}`}>
+                {regionNfciRegime.label}
               </span>
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 tracking-tight">
-                {CREDIT_MARKET_OVERVIEW.financialConditions.currentNfci > 0 ? `+${CREDIT_MARKET_OVERVIEW.financialConditions.currentNfci.toFixed(2)}` : CREDIT_MARKET_OVERVIEW.financialConditions.currentNfci.toFixed(2)}
+                {activeProfile.fciIndex > 0 ? `+${activeProfile.fciIndex.toFixed(2)}` : activeProfile.fciIndex.toFixed(2)}
               </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400">(0.0 = Avg)</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">
+                {selectedRegion === 'EUR' ? '(0 to 1 scale)' : '(0.0 = Avg)'}
+              </span>
             </div>
-            <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-              <span>Risk: {CREDIT_MARKET_OVERVIEW.financialConditions.riskSubindex}</span>
-              <span>Credit: {CREDIT_MARKET_OVERVIEW.financialConditions.creditSubindex}</span>
+            <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+              <span>Regime: <strong className="text-slate-700 dark:text-slate-300 capitalize">{activeProfile.fciRegime.replace('_', ' ')}</strong></span>
             </div>
-            <div className="mt-1.5 text-[10px] text-slate-400 dark:text-slate-500">
-              Adjusted NFCI: {CREDIT_MARKET_OVERVIEW.financialConditions.adjustedNfci.toFixed(2)}
+            <div className="mt-1.5 text-[10px] text-slate-400 dark:text-slate-500 truncate">
+              {selectedRegion === 'USA' ? '105 Financial Indicators' : selectedRegion === 'EUR' ? 'Euro Systemic Stress Gauge' : 'Cross-border Aggregate'}
             </div>
           </div>
 
-          {/* Card 4: Fed SLOOS Bank Tightening */}
+          {/* Card 4: Bank Lending Standards */}
           <div className="bg-slate-50 dark:bg-white/[0.03] p-4 rounded-2xl border border-slate-200 dark:border-white/[0.08] relative group">
             <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5">
-              <span className="font-semibold uppercase tracking-wider text-[11px]">Fed SLOOS Net Tightening</span>
+              <span className="font-semibold uppercase tracking-wider text-[11px]">Bank Tightening</span>
               <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
-                Neutralizing
+                Stabilized
               </span>
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                +{CREDIT_MARKET_OVERVIEW.bankLending.currentNetTighteningPct}%
+                +{activeProfile.bankLendingNetTighteningPct}%
               </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400">C&amp;I Net</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">Net %</span>
             </div>
-            <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-              <span>Loan Demand: +{CREDIT_MARKET_OVERVIEW.bankLending.cAndIDemandNetPct}%</span>
+            <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 truncate">
+              <span>{activeProfile.surveyName}</span>
             </div>
-            <div className="mt-1.5 text-[10px] text-amber-600 dark:text-amber-400 font-medium">
-              CRE Tightening: +{CREDIT_MARKET_OVERVIEW.bankLending.creTighteningPct}%
+            <div className="mt-1.5 text-[10px] text-slate-400 dark:text-slate-500 truncate">
+              Corporate &amp; Enterprise Underwriting
             </div>
           </div>
         </div>
@@ -239,7 +318,7 @@ export function CreditMarketRadar() {
             }`}
           >
             <BarChart3 className="h-3.5 w-3.5 text-cyan-500" />
-            <span>Financial Conditions (NFCI)</span>
+            <span>Financial Conditions (FCI)</span>
           </button>
           <button
             onClick={() => setActiveView('sloos')}
@@ -250,7 +329,7 @@ export function CreditMarketRadar() {
             }`}
           >
             <Building2 className="h-3.5 w-3.5 text-amber-500" />
-            <span>Bank Lending (SLOOS)</span>
+            <span>Bank Lending Standards</span>
           </button>
           <button
             onClick={() => setActiveView('tiers')}
@@ -265,12 +344,24 @@ export function CreditMarketRadar() {
           </button>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 font-mono">
-          <span>Range: 2000–2026</span>
-        </div>
+        {activeView === 'oas' && (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCompareGlobalRegions(!compareGlobalRegions)}
+              className={`text-xs px-3 py-1.5 rounded-xl font-semibold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                compareGlobalRegions
+                  ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/25'
+                  : 'bg-slate-100 dark:bg-white/[0.05] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-white/[0.08]'
+              }`}
+            >
+              <Globe2 className="h-3.5 w-3.5" />
+              <span>{compareGlobalRegions ? 'Comparing All Regions' : 'Focus Active Region'}</span>
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* View 1: Credit Spreads (OAS vs Treasuries) */}
+      {/* View 1: Credit Spreads (OAS) */}
       {activeView === 'oas' && (
         <div className="apple-card p-6 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -279,19 +370,24 @@ export function CreditMarketRadar() {
                 <span>Multi-Decade Option-Adjusted Spread Trajectory</span>
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Comparing High Yield risk premium (ICE BofA US HY OAS) vs. Investment Grade and US 10-Year Treasury Yields.
+                {compareGlobalRegions
+                  ? 'Cross-border comparison: US High Yield, Euro High Yield, Emerging Markets, and Global Corporate OAS.'
+                  : `Focused view on ${activeProfile.name} corporate credit risk premium.`}
               </p>
             </div>
 
-            <div className="flex items-center gap-2 text-xs">
+            <div className="flex flex-wrap items-center gap-3 text-xs">
               <span className="inline-flex items-center gap-1 text-[11px] text-rose-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-rose-500"></span> High Yield OAS
+                <span className="h-2 w-2 rounded-full bg-rose-500"></span> US High Yield
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] text-sky-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-sky-500"></span> IG OAS
+                <span className="h-2 w-2 rounded-full bg-sky-500"></span> Euro High Yield
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] text-amber-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-amber-500"></span> 10Y Yield (x100)
+                <span className="h-2 w-2 rounded-full bg-amber-500"></span> EM Corporate
+              </span>
+              <span className="inline-flex items-center gap-1 text-[11px] text-emerald-500 font-semibold">
+                <span className="h-2 w-2 rounded-full bg-emerald-500"></span> Global Agg
               </span>
             </div>
           </div>
@@ -333,20 +429,20 @@ export function CreditMarketRadar() {
                           </div>
                           <div className="space-y-1 pt-1 font-mono">
                             <div className="flex justify-between text-rose-500 font-semibold">
-                              <span>US High Yield OAS:</span>
+                              <span>US High Yield:</span>
                               <span>{data.usHighYieldOasBps} bps</span>
                             </div>
                             <div className="flex justify-between text-sky-500 font-semibold">
-                              <span>US Investment Grade:</span>
-                              <span>{data.usInvestmentGradeOasBps} bps</span>
-                            </div>
-                            <div className="flex justify-between text-slate-600 dark:text-slate-300">
-                              <span>BBB Spread:</span>
-                              <span>{data.usBbbOasBps} bps</span>
+                              <span>Euro High Yield:</span>
+                              <span>{data.euroHighYieldOasBps} bps</span>
                             </div>
                             <div className="flex justify-between text-amber-500 font-semibold">
-                              <span>US 10Y Benchmark:</span>
-                              <span>{data.us10YYieldPercent}%</span>
+                              <span>EM Corporate:</span>
+                              <span>{data.emCorporateOasBps} bps</span>
+                            </div>
+                            <div className="flex justify-between text-emerald-500 font-semibold">
+                              <span>Global Agg:</span>
+                              <span>{data.globalCorporateOasBps} bps</span>
                             </div>
                           </div>
                           {data.eventAnnotation && (
@@ -388,20 +484,41 @@ export function CreditMarketRadar() {
                 <Line
                   type="monotone"
                   dataKey="usHighYieldOasBps"
-                  name="High Yield OAS"
+                  name="US High Yield"
                   stroke="#f43f5e"
                   strokeWidth={2.5}
-                  dot={{ r: 3, fill: '#f43f5e' }}
-                  activeDot={{ r: 6 }}
+                  dot={{ r: 2.5, fill: '#f43f5e' }}
+                  activeDot={{ r: 5 }}
                 />
-                <Line
-                  type="monotone"
-                  dataKey="usInvestmentGradeOasBps"
-                  name="Investment Grade OAS"
-                  stroke="#0ea5e9"
-                  strokeWidth={1.75}
-                  dot={false}
-                />
+                {compareGlobalRegions && (
+                  <>
+                    <Line
+                      type="monotone"
+                      dataKey="euroHighYieldOasBps"
+                      name="Euro High Yield"
+                      stroke="#0ea5e9"
+                      strokeWidth={2}
+                      dot={false}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="emCorporateOasBps"
+                      name="EM Corporate"
+                      stroke="#f59e0b"
+                      strokeWidth={1.75}
+                      strokeDasharray="3 3"
+                      dot={false}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="globalCorporateOasBps"
+                      name="Global Agg"
+                      stroke="#10b981"
+                      strokeWidth={1.75}
+                      dot={false}
+                    />
+                  </>
+                )}
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -410,37 +527,35 @@ export function CreditMarketRadar() {
           <div className="p-4 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] text-xs text-slate-600 dark:text-slate-300 leading-relaxed space-y-2">
             <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
               <Info className="h-4 w-4 text-sky-500" />
-              <span>Macro Signal: Why is High Yield OAS compressed while Policy Rates remain high?</span>
+              <span>Cross-Border Dynamic: {activeProfile.name}</span>
             </div>
-            <p>
-              In historical tightening cycles, Fed rate hikes typically force corporate credit spreads wider as debt service ratios escalate. In the 2024–2026 regime, US High Yield OAS compressed to ~318 bps because corporations aggressively termed out their debt in 2020–2021 at sub-4% fixed coupons, corporate cash balances remain elevated, and the surge of institutional <strong>Private Credit ($1.7T+)</strong> has absorbed riskier middle-market refinancings that previously triggered public bond sell-offs.
-            </p>
+            <p>{activeProfile.macroNote}</p>
           </div>
         </div>
       )}
 
-      {/* View 2: Financial Conditions (Chicago Fed NFCI) */}
+      {/* View 2: Financial Conditions (FCI & CISS) */}
       {activeView === 'nfci' && (
         <div className="apple-card p-6 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <span>Chicago Fed National Financial Conditions Index (NFCI)</span>
+                <span>Global Financial Conditions &amp; Systemic Stress Indices</span>
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Synthesizes 105 indicators of financial activity across money markets, debt, equity, and banking. 0.0 is the long-term baseline.
+                Comparing Chicago Fed NFCI (US), ECB Composite Indicator of Systemic Stress (CISS), and the Global Financial Conditions Index.
               </p>
             </div>
 
-            <div className="flex items-center gap-2 text-xs">
+            <div className="flex items-center gap-3 text-xs">
               <span className="inline-flex items-center gap-1 text-[11px] text-emerald-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-emerald-500"></span> Headline NFCI
-              </span>
-              <span className="inline-flex items-center gap-1 text-[11px] text-rose-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-rose-500"></span> Risk Sub-Index
+                <span className="h-2 w-2 rounded-full bg-emerald-500"></span> Chicago Fed NFCI
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] text-sky-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-sky-500"></span> Credit Sub-Index
+                <span className="h-2 w-2 rounded-full bg-sky-500"></span> ECB CISS (x5)
+              </span>
+              <span className="inline-flex items-center gap-1 text-[11px] text-purple-500 font-semibold">
+                <span className="h-2 w-2 rounded-full bg-purple-500"></span> Global FCI
               </span>
             </div>
           </div>
@@ -481,20 +596,16 @@ export function CreditMarketRadar() {
                           </div>
                           <div className="space-y-1 pt-1 font-mono">
                             <div className="flex justify-between text-emerald-600 dark:text-emerald-400 font-semibold">
-                              <span>Headline NFCI:</span>
+                              <span>Chicago Fed NFCI:</span>
                               <span>{data.chicagoFedNfci.toFixed(2)}</span>
                             </div>
-                            <div className="flex justify-between text-rose-500 font-semibold">
-                              <span>Risk Sub-Index:</span>
-                              <span>{data.nfciRiskSubindex.toFixed(2)}</span>
-                            </div>
                             <div className="flex justify-between text-sky-500 font-semibold">
-                              <span>Credit Sub-Index:</span>
-                              <span>{data.nfciCreditSubindex.toFixed(2)}</span>
+                              <span>Eurozone ECB CISS:</span>
+                              <span>{data.euroCiss.toFixed(2)}</span>
                             </div>
                             <div className="flex justify-between text-purple-500 font-semibold">
-                              <span>Leverage Sub-Index:</span>
-                              <span>{data.nfciLeverageSubindex.toFixed(2)}</span>
+                              <span>Global FCI:</span>
+                              <span>{data.globalFci.toFixed(2)}</span>
                             </div>
                           </div>
                         </div>
@@ -504,7 +615,6 @@ export function CreditMarketRadar() {
                   }}
                 />
 
-                {/* 0.0 Equilibrium Baseline */}
                 <ReferenceLine
                   y={0.0}
                   stroke={isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)'}
@@ -520,87 +630,93 @@ export function CreditMarketRadar() {
                 <Line
                   type="monotone"
                   dataKey="chicagoFedNfci"
-                  name="Headline NFCI"
+                  name="US NFCI"
                   stroke="#10b981"
                   strokeWidth={2.5}
-                  dot={{ r: 3, fill: '#10b981' }}
-                  activeDot={{ r: 6 }}
+                  dot={{ r: 2.5, fill: '#10b981' }}
+                  activeDot={{ r: 5 }}
                 />
                 <Line
                   type="monotone"
-                  dataKey="nfciRiskSubindex"
-                  name="Risk Sub-Index"
-                  stroke="#f43f5e"
-                  strokeWidth={1.5}
-                  strokeDasharray="4 4"
+                  dataKey="euroCiss"
+                  name="Euro CISS"
+                  stroke="#0ea5e9"
+                  strokeWidth={2}
                   dot={false}
                 />
                 <Line
                   type="monotone"
-                  dataKey="nfciCreditSubindex"
-                  name="Credit Sub-Index"
-                  stroke="#0ea5e9"
-                  strokeWidth={1.5}
+                  dataKey="globalFci"
+                  name="Global FCI"
+                  stroke="#a855f7"
+                  strokeWidth={1.75}
+                  strokeDasharray="4 4"
                   dot={false}
                 />
               </LineChart>
             </ResponsiveContainer>
           </div>
 
-          {/* Sub-Index Breakdown Cards */}
+          {/* Regional Indicator Profiles */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06]">
-              <span className="text-xs font-semibold uppercase tracking-wider text-rose-500 block">Risk Sub-Index</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 block">
+                US Chicago Fed NFCI
+              </span>
               <span className="text-lg font-bold text-slate-900 dark:text-white block mt-0.5">
-                {CREDIT_MARKET_OVERVIEW.financialConditions.riskSubindex}
+                {CREDIT_MARKET_OVERVIEW.financialConditions.currentNfci}
               </span>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                Gauges volatility and funding risk across equities and interbank markets. Deep negative reading signals placid market liquidity.
+                Aggregates 105 indicators spanning money markets, equity multiple expansion, and shadow banking repo leverage.
               </p>
             </div>
 
             <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06]">
-              <span className="text-xs font-semibold uppercase tracking-wider text-sky-500 block">Credit Sub-Index</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-sky-500 block">
+                Eurozone ECB CISS
+              </span>
               <span className="text-lg font-bold text-slate-900 dark:text-white block mt-0.5">
-                {CREDIT_MARKET_OVERVIEW.financialConditions.creditSubindex}
+                {REGIONAL_CREDIT_PROFILES.EUR.fciIndex}
               </span>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                Measures availability and borrowing constraints across commercial paper, municipal debt, and syndicated loans.
+                European Central Bank Composite Indicator of Systemic Stress (0 to 1). Readings below 0.25 indicate orderly financial market transmission.
               </p>
             </div>
 
             <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06]">
-              <span className="text-xs font-semibold uppercase tracking-wider text-purple-500 block">Leverage Sub-Index</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-purple-500 block">
+                Global Aggregate FCI
+              </span>
               <span className="text-lg font-bold text-slate-900 dark:text-white block mt-0.5">
-                {CREDIT_MARKET_OVERVIEW.financialConditions.leverageSubindex}
+                {REGIONAL_CREDIT_PROFILES.GLOBAL.fciIndex}
               </span>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                Captures debt relative to equity valuations. Rising equity market capitalizations mechanically lower financial leverage ratios.
+                Weighted composite reflecting multi-lateral exchange rates, cross-border corporate OAS, and central bank liquidity easing cycles.
               </p>
             </div>
           </div>
         </div>
       )}
 
-      {/* View 3: Bank Lending Standards (Fed SLOOS) */}
+      {/* View 3: Bank Lending Standards (SLOOS & BLS) */}
       {activeView === 'sloos' && (
         <div className="apple-card p-6 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <span>Federal Reserve SLOOS: Bank Underwriting &amp; Credit Demand</span>
+                <span>International Bank Lending Surveys: US SLOOS vs. Eurozone BLS</span>
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Senior Loan Officer Opinion Survey net percentage of domestic banks tightening standards vs. reporting stronger loan demand.
+                Net percentage of commercial banks tightening underwriting standards for enterprise loans across major global jurisdictions.
               </p>
             </div>
 
-            <div className="flex items-center gap-2 text-xs">
+            <div className="flex items-center gap-3 text-xs">
               <span className="inline-flex items-center gap-1 text-[11px] text-amber-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-amber-500"></span> Net Tightening Standards (%)
+                <span className="h-2 w-2 rounded-full bg-amber-500"></span> US Fed SLOOS (%)
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] text-sky-500 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-sky-500"></span> Net Loan Demand (%)
+                <span className="h-2 w-2 rounded-full bg-sky-500"></span> Eurozone ECB BLS (%)
               </span>
             </div>
           </div>
@@ -638,19 +754,14 @@ export function CreditMarketRadar() {
                           </div>
                           <div className="space-y-1 pt-1 font-mono">
                             <div className="flex justify-between text-amber-500 font-semibold">
-                              <span>Net Tightening:</span>
+                              <span>US SLOOS Net:</span>
                               <span>{data.sloosNetTighteningPct > 0 ? `+${data.sloosNetTighteningPct}%` : `${data.sloosNetTighteningPct}%`}</span>
                             </div>
                             <div className="flex justify-between text-sky-500 font-semibold">
-                              <span>Loan Demand:</span>
-                              <span>{data.sloosLoanDemandPct > 0 ? `+${data.sloosLoanDemandPct}%` : `${data.sloosLoanDemandPct}%`}</span>
+                              <span>Eurozone BLS Net:</span>
+                              <span>{data.ecbBlsNetTighteningPct > 0 ? `+${data.ecbBlsNetTighteningPct}%` : `${data.ecbBlsNetTighteningPct}%`}</span>
                             </div>
                           </div>
-                          {data.eventAnnotation && (
-                            <div className="mt-2 pt-1 border-t border-slate-100 dark:border-white/5 text-[11px] text-slate-500 dark:text-slate-400 font-sans">
-                              {data.eventAnnotation}
-                            </div>
-                          )}
                         </div>
                       );
                     }
@@ -673,25 +784,19 @@ export function CreditMarketRadar() {
                     position: 'insideTopLeft',
                   }}
                 />
-                <Bar dataKey="sloosNetTighteningPct" name="Net Tightening Standards (%)">
-                  {HISTORICAL_CREDIT_SERIES.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={entry.sloosNetTighteningPct > 35 ? '#ef4444' : entry.sloosNetTighteningPct > 10 ? '#f59e0b' : '#10b981'}
-                    />
-                  ))}
-                </Bar>
+                <Bar dataKey="sloosNetTighteningPct" name="US SLOOS Net (%)" fill="#f59e0b" />
+                <Bar dataKey="ecbBlsNetTighteningPct" name="Eurozone BLS Net (%)" fill="#0ea5e9" />
               </BarChart>
             </ResponsiveContainer>
           </div>
 
-          {/* Granular Sector Breakdown List */}
+          {/* Granular Sector Breakdown List for Selected Region */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Current Lending Conditions by Asset Class
+              Lending Standards by Sector ({activeProfile.name})
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-              {SLOOS_SECTOR_BREAKDOWNS.map((sec) => (
+              {activeProfile.lendingSectors.map((sec) => (
                 <div
                   key={sec.sectorId}
                   className="p-4 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] space-y-2"
@@ -728,13 +833,13 @@ export function CreditMarketRadar() {
         </div>
       )}
 
-      {/* View 4: Corporate Rating Tier Matrix & Default Risk */}
+      {/* View 4: Corporate Rating Tier Matrix */}
       {activeView === 'tiers' && (
         <div className="apple-card p-6 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <span>Corporate Credit Rating Spread &amp; Default Matrix</span>
+                <span>Corporate Credit Rating Spread &amp; Default Matrix: {activeProfile.name}</span>
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Current Option-Adjusted Spreads (OAS), effective yields, 12-month default rates, and debt market shares across credit rating tiers.
@@ -742,7 +847,7 @@ export function CreditMarketRadar() {
             </div>
 
             <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 font-mono">
-              <span>Benchmark: US 10Y Yield at 4.19%</span>
+              <span>Benchmark: {activeProfile.benchmarkTenor}</span>
             </div>
           </div>
 
@@ -754,14 +859,14 @@ export function CreditMarketRadar() {
                   <th className="py-3 px-3">Category</th>
                   <th className="py-3 px-3 text-right">OAS (bps)</th>
                   <th className="py-3 px-3 text-right">Yield (%)</th>
-                  <th className="py-3 px-3 text-right">10Y Delta</th>
+                  <th className="py-3 px-3 text-right">Delta vs Gov</th>
                   <th className="py-3 px-3 text-right">Default Rate (12M)</th>
                   <th className="py-3 px-3 text-right">Market Share</th>
                   <th className="py-3 px-4">Credit Profile &amp; Risk Driver</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-white/[0.04]">
-                {CREDIT_RATING_SPREADS.map((tier) => {
+                {activeProfile.ratingTiers.map((tier) => {
                   const isBbb = tier.tier === 'BBB';
                   const isCcc = tier.tier === 'CCC_LOWER';
                   return (
@@ -827,7 +932,7 @@ export function CreditMarketRadar() {
               <span>The "Fallen Angel" Mechanism Explained</span>
             </span>
             <p className="leading-relaxed text-[11px] text-slate-600 dark:text-slate-300">
-              BBB-rated corporate bonds represent <strong>51.3% of the entire US Investment Grade corporate bond universe</strong> ($4.2T+). Many institutional pension funds, insurance companies, and sovereign wealth mandates are legally prohibited from holding speculative-grade (High Yield) debt. If a macroeconomic downturn triggers mass credit downgrades from BBB to BB ("Fallen Angels"), these institutions are forced to liquidate immediately, causing massive secondary market price dislocations.
+              BBB-rated corporate bonds represent <strong>over 45% to 51% of all corporate investment-grade debt worldwide</strong> ($8.5T+ globally). When institutional pension mandates, insurance funds, and sovereign reserve managers are legally restricted to Investment Grade, a downgrade across the BBB/BB boundary forces non-discretionary liquidation, inducing steep price gaps in secondary debt markets.
             </p>
           </div>
         </div>

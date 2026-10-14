@@ -1,0 +1,42 @@
+name: Weekly Global Corporate Credit & Financial Conditions Sync
+
+on:
+  schedule:
+    # Run every Friday at 22:00 UTC (after US & European market close)
+    # to capture latest weekly ICE BofA OAS prints, Chicago Fed NFCI, and quarterly bank lending updates
+    - cron: '0 22 * * 5'
+  workflow_dispatch:
+    # Allows manual trigger on-demand from the GitHub Actions tab
+
+jobs:
+  sync-credit-data:
+    name: Sync & Validate Global Credit Telemetry
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Global Credit & Bank Lending Evaluator
+        run: npm run data:credit
+
+      - name: Validate Accounting Invariants & Bounds
+        run: npx vitest run src/data/__tests__/credit-market-data.test.ts
+
+      - name: Commit Updated Credit Status (if changed)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/latest-credit-status.json
+          git diff --staged --quiet || (git commit -m "chore(data): automated global credit spreads & NFCI sync [skip ci]" && git push origin main)
