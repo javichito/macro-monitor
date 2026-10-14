@@ -953,8 +953,8 @@ export function HousingMacroRadar() {
       {activeView === 'global' && (
         <div className="space-y-6">
           {/* Country Selector Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {(['USA', 'GBR', 'CAN', 'AUS', 'EUR', 'JPN'] as HousingRegionId[]).map((regId) => {
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2.5">
+            {(Object.keys(REGIONAL_HOUSING_PROFILES) as HousingRegionId[]).map((regId) => {
               const reg = REGIONAL_HOUSING_PROFILES[regId];
               const isSelected = selectedCountry === regId;
 

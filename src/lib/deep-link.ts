@@ -51,7 +51,23 @@ export interface BondVolatilityState {
 
 export interface HousingMacroState {
   view: 'affordability' | 'rates' | 'real_prices' | 'global';
-  region?: 'USA' | 'EUR' | 'GBR' | 'CAN' | 'AUS' | 'JPN';
+  region?:
+    | 'USA'
+    | 'EUR'
+    | 'GBR'
+    | 'CAN'
+    | 'AUS'
+    | 'JPN'
+    | 'CHN'
+    | 'DEU'
+    | 'FRA'
+    | 'KOR'
+    | 'SWE'
+    | 'NZL'
+    | 'CHE'
+    | 'SGP'
+    | 'ESP'
+    | 'NLD';
   timeWindow?: 'all' | '10y' | '5y';
   simRate?: number;
   simPrice?: number;
@@ -636,16 +652,26 @@ export function deserializeHousingMacro(input?: string): HousingMacroState | nul
     ? (viewParam as 'affordability' | 'rates' | 'real_prices' | 'global')
     : 'affordability';
 
-  const validRegions: ('USA' | 'EUR' | 'GBR' | 'CAN' | 'AUS' | 'JPN')[] = [
+  const validRegions: NonNullable<HousingMacroState['region']>[] = [
     'USA',
     'EUR',
     'GBR',
     'CAN',
     'AUS',
     'JPN',
+    'CHN',
+    'DEU',
+    'FRA',
+    'KOR',
+    'SWE',
+    'NZL',
+    'CHE',
+    'SGP',
+    'ESP',
+    'NLD',
   ];
   const region = validRegions.includes((regionParam || '').toUpperCase() as any)
-    ? ((regionParam || '').toUpperCase() as 'USA' | 'EUR' | 'GBR' | 'CAN' | 'AUS' | 'JPN')
+    ? ((regionParam || '').toUpperCase() as NonNullable<HousingMacroState['region']>)
     : 'USA';
 
   const timeWindow = (params.get('housing_w') || params.get('w') || 'all') as 'all' | '10y' | '5y';

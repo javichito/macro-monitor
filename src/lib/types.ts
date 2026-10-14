@@ -1068,7 +1068,23 @@ export interface BondVolatilityOverview {
 // Housing Macro & Affordability Dynamics Types
 // -----------------------------------------------------------------------------
 
-export type HousingRegionId = 'USA' | 'EUR' | 'GBR' | 'CAN' | 'AUS' | 'JPN';
+export type HousingRegionId =
+  | 'USA'
+  | 'EUR'
+  | 'GBR'
+  | 'CAN'
+  | 'AUS'
+  | 'JPN'
+  | 'CHN'
+  | 'DEU'
+  | 'FRA'
+  | 'KOR'
+  | 'SWE'
+  | 'NZL'
+  | 'CHE'
+  | 'SGP'
+  | 'ESP'
+  | 'NLD';
 
 export type HousingAffordabilityRegime =
   | 'severely_unaffordable'

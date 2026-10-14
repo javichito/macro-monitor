@@ -84,6 +84,9 @@ describe('HousingMacroRadar Component', () => {
     expect(screen.getAllByText(/Canada/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Australia/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Japan/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/China/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Germany/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Switzerland/i).length).toBeGreaterThan(0);
   });
 
   it('switches selected country in Global view and updates transmission profile', () => {

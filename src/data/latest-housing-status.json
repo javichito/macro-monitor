@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-14T21:57:00.529Z",
+  "timestamp": "2026-10-14T22:04:01.300Z",
   "asOfDate": "2026",
   "globalContext": {
     "totalRealEstateWealthTrillion": 332.8,
@@ -66,6 +66,76 @@
       "priceToIncome": 7.5,
       "hai": 104.2,
       "debtToGdp": 68.2
+    },
+    "CHN": {
+      "benchmarkRate": 3.15,
+      "structure": "fixed_medium_reset",
+      "priceToIncome": 15.08,
+      "hai": 58.5,
+      "debtToGdp": 62.4
+    },
+    "DEU": {
+      "benchmarkRate": 3.75,
+      "structure": "fixed_long",
+      "priceToIncome": 7.16,
+      "hai": 92.8,
+      "debtToGdp": 54.1
+    },
+    "FRA": {
+      "benchmarkRate": 3.55,
+      "structure": "fixed_long",
+      "priceToIncome": 6.71,
+      "hai": 97.4,
+      "debtToGdp": 65.8
+    },
+    "KOR": {
+      "benchmarkRate": 4.15,
+      "structure": "variable",
+      "priceToIncome": 7.9,
+      "hai": 88.2,
+      "debtToGdp": 100.5
+    },
+    "SWE": {
+      "benchmarkRate": 3.9,
+      "structure": "variable",
+      "priceToIncome": 6.97,
+      "hai": 86.5,
+      "debtToGdp": 88.2
+    },
+    "NZL": {
+      "benchmarkRate": 5.65,
+      "structure": "fixed_medium_reset",
+      "priceToIncome": 7.97,
+      "hai": 68.4,
+      "debtToGdp": 94.6
+    },
+    "CHE": {
+      "benchmarkRate": 1.85,
+      "structure": "fixed_long",
+      "priceToIncome": 8.74,
+      "hai": 112.5,
+      "debtToGdp": 126.8
+    },
+    "SGP": {
+      "benchmarkRate": 3.25,
+      "structure": "variable",
+      "priceToIncome": 4.77,
+      "hai": 128.4,
+      "debtToGdp": 48.6
+    },
+    "ESP": {
+      "benchmarkRate": 3.35,
+      "structure": "fixed_medium_reset",
+      "priceToIncome": 6,
+      "hai": 94.2,
+      "debtToGdp": 49.8
+    },
+    "NLD": {
+      "benchmarkRate": 3.85,
+      "structure": "fixed_long",
+      "priceToIncome": 8.37,
+      "hai": 78.6,
+      "debtToGdp": 92.4
     }
   },
   "activeAlerts": [

@@ -110,7 +110,7 @@ describe('Housing Macro & Affordability Dynamics Dataset', () => {
   });
 
   describe('Cross-Country Regional Profiles', () => {
-    it('contains valid structural configurations for all 6 target economies', () => {
+    it('contains valid structural configurations for all 16 target economies', () => {
       const countries: (keyof typeof REGIONAL_HOUSING_PROFILES)[] = [
         'USA',
         'GBR',
@@ -118,7 +118,19 @@ describe('Housing Macro & Affordability Dynamics Dataset', () => {
         'AUS',
         'EUR',
         'JPN',
+        'CHN',
+        'DEU',
+        'FRA',
+        'KOR',
+        'SWE',
+        'NZL',
+        'CHE',
+        'SGP',
+        'ESP',
+        'NLD',
       ];
+
+      expect(Object.keys(REGIONAL_HOUSING_PROFILES).length).toBe(16);
 
       for (const country of countries) {
         const profile = REGIONAL_HOUSING_PROFILES[country];
@@ -126,7 +138,7 @@ describe('Housing Macro & Affordability Dynamics Dataset', () => {
         expect(profile.benchmarkMortgageRate).toBeGreaterThan(0);
         expect(profile.priceToIncomeRatio).toBeGreaterThan(3);
         expect(profile.householdDebtToGdpPct).toBeGreaterThan(30);
-        expect(profile.homeownershipRatePct).toBeGreaterThan(50);
+        expect(profile.homeownershipRatePct).toBeGreaterThan(30);
         expect(profile.macroTransmissionNote.length).toBeGreaterThan(20);
       }
     });
