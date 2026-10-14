@@ -9,6 +9,10 @@ import {
   deserializePppConverter,
   serializeCrossAssetRatio,
   deserializeCrossAssetRatio,
+  serializeBondVolatility,
+  deserializeBondVolatility,
+  serializeHousingMacro,
+  deserializeHousingMacro,
   buildSimulatorUrl,
   copySimulatorLinkToClipboard,
   extractParamsFromUrl,
@@ -18,6 +22,8 @@ import {
   WealthCalculatorState,
   PppConverterState,
   CrossAssetRatioState,
+  BondVolatilityState,
+  HousingMacroState,
 } from '../deep-link';
 
 describe('Deep-Link State Serialization Engine', () => {
@@ -204,6 +210,139 @@ describe('Deep-Link State Serialization Engine', () => {
       expect(parsed?.denominator).toBe(2800);
       expect(parsed?.viewMode).toBe('normalized');
       expect(parsed?.timeWindow).toBe('5y');
+    });
+  });
+
+  describe('Bond Volatility & Collateral Plumbing Radar', () => {
+    const sampleVolatility: BondVolatilityState = {
+      view: 'vix_move',
+      region: 'USA',
+      timeWindow: '3y',
+      simMove: 125.0,
+      simVix: 18.5,
+    };
+
+    it('serializes and deserializes Bond Volatility Radar state in hash format', () => {
+      const hash = serializeBondVolatility(sampleVolatility, 'hash');
+      expect(hash).toContain('#bond-volatility?');
+      expect(hash).toContain('v=vix_move');
+      expect(hash).toContain('reg=USA');
+      expect(hash).toContain('w=3y');
+      expect(hash).toContain('m=125.0');
+      expect(hash).toContain('vx=18.5');
+
+      const url = `https://macro-monitor.app/macro${hash}`;
+      const parsed = deserializeBondVolatility(url);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.view).toBe('vix_move');
+      expect(parsed?.region).toBe('USA');
+      expect(parsed?.timeWindow).toBe('3y');
+      expect(parsed?.simMove).toBe(125.0);
+      expect(parsed?.simVix).toBe(18.5);
+    });
+
+    it('serializes and deserializes in query string format', () => {
+      const query = serializeBondVolatility(sampleVolatility, 'query');
+      expect(query).toContain('bvp_view=vix_move');
+      expect(query).toContain('bvp_region=USA');
+      expect(query).toContain('bvp_w=3y');
+      expect(query).toContain('bvp_move=125.0');
+      expect(query).toContain('bvp_vix=18.5');
+
+      const url = `https://macro-monitor.app/macro?tab=volatility&${query}`;
+      const parsed = deserializeBondVolatility(url);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.view).toBe('vix_move');
+      expect(parsed?.region).toBe('USA');
+      expect(parsed?.simMove).toBe(125.0);
+      expect(parsed?.simVix).toBe(18.5);
+    });
+
+    it('builds a canonical shareable URL with tab=volatility and hash', () => {
+      const url = buildSimulatorUrl({
+        simulator: 'volatility',
+        state: sampleVolatility,
+        format: 'hash',
+        customOrigin: 'https://macro-monitor.com',
+        customPathname: '/macro',
+      });
+
+      expect(url).toContain('https://macro-monitor.com/macro?tab=volatility#bond-volatility?');
+      expect(url).toContain('v=vix_move');
+      expect(url).toContain('reg=USA');
+    });
+  });
+
+  describe('Housing Macro & Affordability Dynamics', () => {
+    const sampleHousing: HousingMacroState = {
+      view: 'affordability',
+      region: 'USA',
+      timeWindow: '10y',
+      simRate: 6.75,
+      simPrice: 425000,
+      simIncome: 95000,
+    };
+
+    it('serializes housing state to URL hash format with concise parameters', () => {
+      const hash = serializeHousingMacro(sampleHousing, 'hash');
+      expect(hash).toContain('#housing-radar?');
+      expect(hash).toContain('v=affordability');
+      expect(hash).toContain('reg=USA');
+      expect(hash).toContain('w=10y');
+      expect(hash).toContain('r=6.75');
+      expect(hash).toContain('p=425000');
+      expect(hash).toContain('inc=95000');
+    });
+
+    it('serializes housing state to query string format with prefixed parameters', () => {
+      const query = serializeHousingMacro(sampleHousing, 'query');
+      expect(query).not.toContain('#');
+      expect(query).toContain('housing_view=affordability');
+      expect(query).toContain('housing_region=USA');
+      expect(query).toContain('housing_w=10y');
+      expect(query).toContain('housing_r=6.75');
+      expect(query).toContain('housing_p=425000');
+      expect(query).toContain('housing_inc=95000');
+    });
+
+    it('deserializes housing parameters from hash fragment', () => {
+      const url = 'https://macro-monitor.app/macro#housing-radar?v=rates&reg=GBR&w=5y&r=5.25';
+      const parsed = deserializeHousingMacro(url);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.view).toBe('rates');
+      expect(parsed?.region).toBe('GBR');
+      expect(parsed?.timeWindow).toBe('5y');
+      expect(parsed?.simRate).toBe(5.25);
+    });
+
+    it('deserializes housing parameters from query string', () => {
+      const url =
+        'https://macro-monitor.app/macro?tab=housing&housing_view=real_prices&housing_region=CAN&housing_r=5.15&housing_p=650000&housing_inc=85000';
+      const parsed = deserializeHousingMacro(url);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.view).toBe('real_prices');
+      expect(parsed?.region).toBe('CAN');
+      expect(parsed?.simRate).toBe(5.15);
+      expect(parsed?.simPrice).toBe(650000);
+      expect(parsed?.simIncome).toBe(85000);
+    });
+
+    it('builds canonical shareable URL with tab=housing and hash', () => {
+      const url = buildSimulatorUrl({
+        simulator: 'housing',
+        state: sampleHousing,
+        format: 'hash',
+        customOrigin: 'https://macro-monitor.com',
+        customPathname: '/macro',
+      });
+
+      expect(url).toContain('https://macro-monitor.com/macro?tab=housing#housing-radar?');
+      expect(url).toContain('v=affordability');
+      expect(url).toContain('r=6.75');
     });
   });
 

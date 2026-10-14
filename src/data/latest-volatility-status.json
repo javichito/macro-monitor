@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-10-14T21:38:52.472Z",
+  "moveIndex": 108.5,
+  "vixIndex": 15.8,
+  "vixMoveRatio": 1.46,
+  "vixMoveRegime": "moderate_complacency",
+  "moveStressLevel": "elevated",
+  "collateralHealthScore": 74.2,
+  "termStructureSlope": "contango",
+  "regions": {
+    "GLOBAL": {
+      "sovereignVolIndex": 98.8,
+      "repoSpreadBps": 12,
+      "primaryDealerHaircutPct": 2.5,
+      "healthScore": 74,
+      "stressLevel": "normal"
+    },
+    "USA": {
+      "sovereignVolIndex": 108.5,
+      "repoSpreadBps": 8,
+      "primaryDealerHaircutPct": 2,
+      "healthScore": 76,
+      "stressLevel": "elevated"
+    },
+    "EUR": {
+      "sovereignVolIndex": 84.2,
+      "repoSpreadBps": -18,
+      "primaryDealerHaircutPct": 2,
+      "healthScore": 82,
+      "stressLevel": "normal"
+    },
+    "GBR": {
+      "sovereignVolIndex": 114.5,
+      "repoSpreadBps": 14,
+      "primaryDealerHaircutPct": 3,
+      "healthScore": 68,
+      "stressLevel": "elevated"
+    },
+    "JPN": {
+      "sovereignVolIndex": 78.6,
+      "repoSpreadBps": 6,
+      "primaryDealerHaircutPct": 1.5,
+      "healthScore": 85,
+      "stressLevel": "compressed"
+    }
+  },
+  "activeAlerts": [
+    {
+      "id": "move-elevated-warning",
+      "level": "WARNING",
+      "headline": "⚠️ ICE BofA MOVE Index Elevated: 108.5 pts",
+      "body": "Treasury volatility remains above its historical tranquil norm (70-90 pts), signaling dealer balance sheet sensitivity and fiscal supply absorption friction."
+    },
+    {
+      "id": "vix-move-complacency-gap",
+      "level": "COMPLACENCY",
+      "headline": "⚠️ Equity Complacency vs. Bond Turbulence (Ratio: 1.46)",
+      "body": "S&P 500 VIX sits comfortably at 15.8 while Treasury options price substantial rate path variance. Historically, sustained divergences precede equity multiple compression."
+    },
+    {
+      "id": "bund-repo-specialness",
+      "level": "INFO",
+      "headline": "ℹ️ Eurozone Collateral Scarcity Premium: -18 bps",
+      "body": "German Bund repo rates trade substantially below ESTER as institutional market participants pay a premium to secure pristine AAA sovereign collateral for CCP margins."
+    }
+  ]
+}

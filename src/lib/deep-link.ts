@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { SOVEREIGN_FISCAL_PROFILES } from '../data/fiscal-dominance-data';
 import { COUNTRIES_DATA } from '../data/country-metrics';
 
-export type SimulatorDeepLinkType = 'fiscal' | 'wealth' | 'ppp' | 'ratios';
+export type SimulatorDeepLinkType = 'fiscal' | 'wealth' | 'ppp' | 'ratios' | 'volatility' | 'housing';
 
 export interface FiscalDominanceState {
   country: string;
@@ -39,6 +39,23 @@ export interface CrossAssetRatioState {
   denominator: number;
   viewMode?: 'ratio' | 'normalized';
   timeWindow?: 'all' | '15y' | '5y';
+}
+
+export interface BondVolatilityState {
+  view: 'move' | 'vix_move' | 'plumbing' | 'crises';
+  region: 'GLOBAL' | 'USA' | 'EUR' | 'GBR' | 'JPN';
+  timeWindow?: '1y' | '3y' | '5y' | 'all';
+  simMove?: number;
+  simVix?: number;
+}
+
+export interface HousingMacroState {
+  view: 'affordability' | 'rates' | 'real_prices' | 'global';
+  region?: 'USA' | 'EUR' | 'GBR' | 'CAN' | 'AUS' | 'JPN';
+  timeWindow?: 'all' | '10y' | '5y';
+  simRate?: number;
+  simPrice?: number;
+  simIncome?: number;
 }
 
 /**
@@ -453,6 +470,201 @@ export function deserializeCrossAssetRatio(input?: string): CrossAssetRatioState
 }
 
 // -----------------------------------------------------------------------------
+// Bond Volatility & Collateral Plumbing Serialization & Deserialization
+// -----------------------------------------------------------------------------
+
+export function serializeBondVolatility(
+  state: BondVolatilityState,
+  format: 'hash' | 'query' = 'hash'
+): string {
+  const p = new URLSearchParams();
+  if (format === 'hash') {
+    p.set('v', state.view);
+    p.set('reg', state.region);
+    if (state.timeWindow) p.set('w', state.timeWindow);
+    if (state.simMove !== undefined) p.set('m', state.simMove.toFixed(1));
+    if (state.simVix !== undefined) p.set('vx', state.simVix.toFixed(1));
+    return `#bond-volatility?${p.toString()}`;
+  } else {
+    p.set('bvp_view', state.view);
+    p.set('bvp_region', state.region);
+    if (state.timeWindow) p.set('bvp_w', state.timeWindow);
+    if (state.simMove !== undefined) p.set('bvp_move', state.simMove.toFixed(1));
+    if (state.simVix !== undefined) p.set('bvp_vix', state.simVix.toFixed(1));
+    return p.toString();
+  }
+}
+
+export function deserializeBondVolatility(input?: string): BondVolatilityState | null {
+  const params = extractParamsFromUrl(input);
+
+  const viewParam =
+    params.get('bvp_view') ||
+    params.get('bvp_v') ||
+    params.get('v') ||
+    params.get('view');
+
+  const regionParam =
+    params.get('bvp_region') ||
+    params.get('bvp_reg') ||
+    params.get('reg') ||
+    params.get('region');
+
+  const moveParam =
+    params.get('bvp_move') ||
+    params.get('bvp_m') ||
+    params.get('m') ||
+    params.get('move');
+
+  const vixParam =
+    params.get('bvp_vix') ||
+    params.get('bvp_vx') ||
+    params.get('vx') ||
+    params.get('vix');
+
+  if (!viewParam && !regionParam && !moveParam && !vixParam) {
+    return null;
+  }
+
+  const validViews: ('move' | 'vix_move' | 'plumbing' | 'crises')[] = [
+    'move',
+    'vix_move',
+    'plumbing',
+    'crises',
+  ];
+  const view = validViews.includes(viewParam as any)
+    ? (viewParam as 'move' | 'vix_move' | 'plumbing' | 'crises')
+    : 'move';
+
+  const validRegions: ('GLOBAL' | 'USA' | 'EUR' | 'GBR' | 'JPN')[] = [
+    'GLOBAL',
+    'USA',
+    'EUR',
+    'GBR',
+    'JPN',
+  ];
+  const region = validRegions.includes((regionParam || '').toUpperCase() as any)
+    ? ((regionParam || '').toUpperCase() as 'GLOBAL' | 'USA' | 'EUR' | 'GBR' | 'JPN')
+    : 'USA';
+
+  const timeWindow = (params.get('bvp_w') || params.get('w') || 'all') as '1y' | '3y' | '5y' | 'all';
+
+  const simMove = moveParam ? parseBoundedNumber(moveParam, 40, 300, 108.5) : undefined;
+  const simVix = vixParam ? parseBoundedNumber(vixParam, 8, 120, 15.8) : undefined;
+
+  return {
+    view,
+    region,
+    timeWindow,
+    simMove: simMove !== undefined ? Number(simMove.toFixed(1)) : undefined,
+    simVix: simVix !== undefined ? Number(simVix.toFixed(1)) : undefined,
+  };
+}
+
+// -----------------------------------------------------------------------------
+// Housing Macro & Affordability Dynamics Serialization & Deserialization
+// -----------------------------------------------------------------------------
+
+export function serializeHousingMacro(
+  state: HousingMacroState,
+  format: 'hash' | 'query' = 'hash'
+): string {
+  const p = new URLSearchParams();
+  if (format === 'hash') {
+    p.set('v', state.view);
+    if (state.region) p.set('reg', state.region);
+    if (state.timeWindow) p.set('w', state.timeWindow);
+    if (state.simRate !== undefined) p.set('r', state.simRate.toFixed(2));
+    if (state.simPrice !== undefined) p.set('p', Math.round(state.simPrice).toString());
+    if (state.simIncome !== undefined) p.set('inc', Math.round(state.simIncome).toString());
+    return `#housing-radar?${p.toString()}`;
+  } else {
+    p.set('housing_view', state.view);
+    if (state.region) p.set('housing_region', state.region);
+    if (state.timeWindow) p.set('housing_w', state.timeWindow);
+    if (state.simRate !== undefined) p.set('housing_r', state.simRate.toFixed(2));
+    if (state.simPrice !== undefined) p.set('housing_p', Math.round(state.simPrice).toString());
+    if (state.simIncome !== undefined) p.set('housing_inc', Math.round(state.simIncome).toString());
+    return p.toString();
+  }
+}
+
+export function deserializeHousingMacro(input?: string): HousingMacroState | null {
+  const params = extractParamsFromUrl(input);
+
+  const viewParam =
+    params.get('housing_view') ||
+    params.get('housing_v') ||
+    params.get('v') ||
+    params.get('view');
+
+  const regionParam =
+    params.get('housing_region') ||
+    params.get('housing_reg') ||
+    params.get('reg') ||
+    params.get('region');
+
+  const rateParam =
+    params.get('housing_r') ||
+    params.get('housing_rate') ||
+    params.get('r') ||
+    params.get('rate');
+
+  const priceParam =
+    params.get('housing_p') ||
+    params.get('housing_price') ||
+    params.get('p') ||
+    params.get('price');
+
+  const incomeParam =
+    params.get('housing_inc') ||
+    params.get('housing_income') ||
+    params.get('inc') ||
+    params.get('income');
+
+  if (!viewParam && !regionParam && !rateParam && !priceParam && !incomeParam) {
+    return null;
+  }
+
+  const validViews: ('affordability' | 'rates' | 'real_prices' | 'global')[] = [
+    'affordability',
+    'rates',
+    'real_prices',
+    'global',
+  ];
+  const view = validViews.includes(viewParam as any)
+    ? (viewParam as 'affordability' | 'rates' | 'real_prices' | 'global')
+    : 'affordability';
+
+  const validRegions: ('USA' | 'EUR' | 'GBR' | 'CAN' | 'AUS' | 'JPN')[] = [
+    'USA',
+    'EUR',
+    'GBR',
+    'CAN',
+    'AUS',
+    'JPN',
+  ];
+  const region = validRegions.includes((regionParam || '').toUpperCase() as any)
+    ? ((regionParam || '').toUpperCase() as 'USA' | 'EUR' | 'GBR' | 'CAN' | 'AUS' | 'JPN')
+    : 'USA';
+
+  const timeWindow = (params.get('housing_w') || params.get('w') || 'all') as 'all' | '10y' | '5y';
+
+  const simRate = rateParam ? parseBoundedNumber(rateParam, 1.0, 20.0, 6.45) : undefined;
+  const simPrice = priceParam ? parseBoundedNumber(priceParam, 50000, 2500000, 428000) : undefined;
+  const simIncome = incomeParam ? parseBoundedNumber(incomeParam, 15000, 500000, 104500) : undefined;
+
+  return {
+    view,
+    region,
+    timeWindow,
+    simRate: simRate !== undefined ? Number(simRate.toFixed(2)) : undefined,
+    simPrice: simPrice !== undefined ? Math.round(simPrice) : undefined,
+    simIncome: simIncome !== undefined ? Math.round(simIncome) : undefined,
+  };
+}
+
+// -----------------------------------------------------------------------------
 // Universal URL Construction & Clipboard Helpers
 // -----------------------------------------------------------------------------
 
@@ -485,7 +697,13 @@ export function buildSimulatorUrl({
   } else {
     if (!origin) origin = 'https://macro-monitor.app';
     if (!pathname) {
-      pathname = simulator === 'fiscal' || simulator === 'ratios' ? '/macro' : '/wealth';
+      pathname =
+        simulator === 'fiscal' ||
+        simulator === 'ratios' ||
+        simulator === 'volatility' ||
+        simulator === 'housing'
+          ? '/macro'
+          : '/wealth';
     }
   }
 
@@ -527,6 +745,24 @@ export function buildSimulatorUrl({
       const q = new URLSearchParams(serializeCrossAssetRatio(state, 'query'));
       q.forEach((v, k) => url.searchParams.set(k, v));
       url.hash = 'ratio-studio';
+    }
+  } else if (simulator === 'volatility') {
+    url.searchParams.set('tab', 'volatility');
+    if (format === 'hash') {
+      url.hash = serializeBondVolatility(state, 'hash').replace(/^#/, '');
+    } else {
+      const q = new URLSearchParams(serializeBondVolatility(state, 'query'));
+      q.forEach((v, k) => url.searchParams.set(k, v));
+      url.hash = 'bond-volatility';
+    }
+  } else if (simulator === 'housing') {
+    url.searchParams.set('tab', 'housing');
+    if (format === 'hash') {
+      url.hash = serializeHousingMacro(state, 'hash').replace(/^#/, '');
+    } else {
+      const q = new URLSearchParams(serializeHousingMacro(state, 'query'));
+      q.forEach((v, k) => url.searchParams.set(k, v));
+      url.hash = 'housing-radar';
     }
   }
 

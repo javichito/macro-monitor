@@ -11,7 +11,7 @@ import { MARKET_BENCHMARKS } from '../../../data/market-pulse';
  */
 
 describe('MarketPulseTicker Component', () => {
-  it('renders all 7 macro benchmarks in the ticker strip', () => {
+  it('renders all macro benchmarks in the ticker strip including MOVE and VIX', () => {
     render(<MarketPulseTicker />);
 
     expect(screen.getByText('Live Pulse')).toBeDefined();
@@ -19,6 +19,9 @@ describe('MarketPulseTicker Component', () => {
     for (const b of MARKET_BENCHMARKS) {
       expect(screen.getByText(b.symbol)).toBeDefined();
     }
+
+    expect(screen.getByText('MOVE')).toBeDefined();
+    expect(screen.getByText('VIX')).toBeDefined();
   });
 
   it('formats benchmark prices and units accurately', () => {

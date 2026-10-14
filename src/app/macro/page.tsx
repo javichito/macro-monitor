@@ -16,6 +16,8 @@ import { ExternalSectorRadar } from '../../components/macro/ExternalSectorRadar'
 import { MacroCalendarRadar } from '../../components/macro/MacroCalendarRadar';
 import { CrossAssetRatioStudio } from '../../components/macro/CrossAssetRatioStudio';
 import { CreditMarketRadar } from '../../components/macro/CreditMarketRadar';
+import { BondVolatilityPlumbingRadar } from '../../components/macro/BondVolatilityPlumbingRadar';
+import { HousingMacroRadar } from '../../components/macro/HousingMacroRadar';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import {
   BarChart3,
@@ -30,6 +32,8 @@ import {
   Calendar,
   Scale,
   ShieldAlert,
+  Flame,
+  Home,
 } from 'lucide-react';
 
 type MacroSectionTab =
@@ -38,6 +42,8 @@ type MacroSectionTab =
   | 'ratios'
   | 'yields'
   | 'credit'
+  | 'volatility'
+  | 'housing'
   | 'leading'
   | 'labor'
   | 'inflation'
@@ -63,6 +69,8 @@ export default function MacroPage() {
         'ratios',
         'yields',
         'credit',
+        'volatility',
+        'housing',
         'leading',
         'labor',
         'inflation',
@@ -72,6 +80,21 @@ export default function MacroPage() {
       ].includes(tabParam)
     ) {
       setActiveTab(tabParam);
+    } else if (
+      hash.includes('volatility') ||
+      hash.includes('plumbing') ||
+      params.has('bvp_view') ||
+      params.has('bvp_region') ||
+      params.has('bvp_move')
+    ) {
+      setActiveTab('volatility');
+    } else if (
+      hash.includes('housing') ||
+      params.has('housing_view') ||
+      params.has('housing_region') ||
+      params.has('housing_r')
+    ) {
+      setActiveTab('housing');
     } else if (hash.includes('credit') || params.has('credit_view') || params.has('cmr_view')) {
       setActiveTab('credit');
     } else if (hash.includes('fiscal') || params.has('fds_c') || params.has('fds_country')) {
@@ -154,6 +177,28 @@ export default function MacroPage() {
             >
               <ShieldAlert className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
               <span>Credit &amp; Spreads</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('volatility')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'volatility'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Flame className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+              <span>Bond Vol &amp; Collateral</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('housing')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'housing'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Home className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Housing &amp; Affordability</span>
             </button>
             <button
               onClick={() => setActiveTab('leading')}
@@ -239,6 +284,12 @@ export default function MacroPage() {
       {/* Corporate Credit Spreads, Financial Conditions & Bank Lending */}
       {(activeTab === 'all' || activeTab === 'credit') && <CreditMarketRadar />}
 
+      {/* Bond Market Volatility & Collateral Plumbing */}
+      {(activeTab === 'all' || activeTab === 'volatility') && <BondVolatilityPlumbingRadar />}
+
+      {/* Housing Macro & Affordability Dynamics */}
+      {(activeTab === 'all' || activeTab === 'housing') && <HousingMacroRadar />}
+
       {/* Leading Indicators & High-Frequency Nowcasting Radar */}
       {(activeTab === 'all' || activeTab === 'leading') && <LeadingIndicatorsRadar />}
 
@@ -268,6 +319,54 @@ export default function MacroPage() {
 
       {/* Plain English Guides */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <PlainEnglishCard
+          title="Why does the Housing Affordability Index (HAI) dictate cyclical macroeconomic inflection points?"
+          summary="An HAI below 100 locks median-income families out of conventional home purchases, freezing entry-level transaction volumes and triggering consumer demand drag."
+          detail="Created by the National Association of Realtors (NAR), the Housing Affordability Index measures whether a median-income family earns enough to qualify for a conventional 30-year mortgage on a median-priced home at prevailing interest rates (assuming 20% down and a 25% debt-to-income underwriting standard). When mortgage rates spiked from 3% to 7.8% while home prices remained sticky, HAI plunged from 175 down into the 80-95 deficit range. Because residential housing is the largest asset on household balance sheets, affordability deficits directly crowd out disposable discretionary consumption."
+          takeaway="Track the 100 parity line: an HAI below 100 signals systemic consumer shelter strain; readings above 130 represent generational real estate entry points."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="How do 30-Year Fixed Mortgages create the 'Lock-in Effect' (Golden Handcuffs) on housing supply?"
+          summary="When market rates double above locked-in debt on existing homes, owners refuse to list, creating an artificial inventory shortage that defies rate hikes."
+          detail="In economies dominated by 30-year fixed mortgages (like the United States), over 82% of outstanding mortgages are locked in below 5%, and tens of millions are locked sub-3.5% from the 2020–2021 refinancing wave. If an existing owner sells their home to buy another at identical value, their borrowing rate jumps from ~3.9% to ~6.5%, increasing their monthly payment by >60%. This rate disparity forms 'golden handcuffs', paralyzing existing home sales and causing nominal prices to stay elevated even amidst severe affordability deficits."
+          takeaway="Rate hikes fail to bring down nominal home prices when fixed debt freezes secondary listing supply."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="Why must Real Home Prices be evaluated after deflating by CPI?"
+          summary="Nominal home price records frequently disguise stagnant purchasing power when cumulative fiat inflation outpaces property appreciation."
+          detail="The S&P CoreLogic Case-Shiller index tracks repeat home sales in nominal dollars. While nominal indices have marched to all-time highs above 330, cumulative Consumer Price Index (CPI) inflation has expanded over +90% since 2000. Deflating nominal prices by CPI reveals that real housing purchasing power peaked in 2024 and has since plateaued. Nominal appreciation during high-inflation regimes represents monetary currency debasement rather than genuine wealth expansion."
+          takeaway="Always evaluate real (CPI-deflated) property prices to separate genuine productive real estate gains from monetary currency debasement."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="Why is the ICE BofA MOVE Index the ultimate canary in the financial coal mine?"
+          summary="Often called the 'VIX of the bond market', MOVE measures implied volatility in sovereign US Treasuries, which underpin global repo markets, mortgage pricing, and derivatives collateral."
+          detail="While equity markets can hallucinate calm during late-cycle runs, bond markets trade on mathematical balance sheet capacity and cash settlement certainty. Because US Treasuries serve as foundational pristine collateral across the entire banking system, spikes in MOVE above 120-140 force primary dealers to contract balance sheet capacity, hike repo haircuts, and call in margins. The March 2020 Treasury basis dislocation and the 2022 UK Gilt crisis both proved that when sovereign bond volatility explodes, foundational debt plumbing freezes and requires emergency central bank liquidity backstops."
+          takeaway="When MOVE crosses 120, treat financial conditions as fragile; above 140, emergency central bank intervention is imminent."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="What is the VIX/MOVE Ratio and how does it detect dangerous equity complacency?"
+          summary="The VIX/MOVE ratio compares stock market fear to bond market turbulence; depressed readings reveal that equity investors are dangerously oblivious to collateral strain."
+          detail="Stock and bond options do not always trade in sync. When bond yields are roiled by massive sovereign deficit issuance or rate path uncertainty (elevated MOVE) but equity option implied volatility remains pinned at historic lows (suppressed VIX < 16), the VIX/MOVE ratio plunges below 1.20-1.50. This cross-market divergence historically acts as a reliable precursor to violent equity corrections, because Treasury collateral margin calls and elevated discount rates inevitably cascade into equity valuation multiples."
+          takeaway="A depressed VIX/MOVE ratio (< 1.20) signals extreme equity vulnerability to bond market volatility spillover."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="How do Repo Haircuts and the Treasury Basis Trade trigger collateral liquidation spirals?"
+          summary="Hedge funds use 30x to 50x repo leverage in cash-futures basis trades; when bond volatility spikes, clearinghouses raise haircuts, forcing immediate collateral dumping."
+          detail="Relative-value macro hedge funds exploit minute price gaps between cash Treasury bonds and Treasury futures. To make this profitable, funds borrow in the overnight repo market with 30x-50x leverage. When Treasury volatility surges, primary dealers and clearinghouses raise repo haircuts from 1.5% to 3-5%+ and demand immediate variation margin. Funds that cannot post cash must fire-sell cash Treasuries into a market with retreating dealer bids, sparking a recursive liquidation spiral that freezes sovereign debt markets."
+          takeaway="High leverage in repo markets turns modest rate volatility into existential collateral plumbing panics."
+          defaultExpanded={true}
+        />
+
         <PlainEnglishCard
           title="Why do Cross-Asset Ratios reveal macroeconomic truths that nominal asset prices conceal?"
           summary="Nominal prices reflect both real economic value and fiat currency dilution; structural ratios eliminate monetary noise to expose pure cyclical shifts."

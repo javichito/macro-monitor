@@ -16,7 +16,9 @@
     "data:nowcast": "node --experimental-strip-types scripts/sync-leading-indicators.ts",
     "data:external": "node --experimental-strip-types scripts/sync-external-sector.ts",
     "data:calendar": "node --experimental-strip-types scripts/sync-macro-calendar.ts",
-    "data:credit": "node --experimental-strip-types scripts/sync-credit-data.ts"
+    "data:credit": "node --experimental-strip-types scripts/sync-credit-data.ts",
+    "data:collateral": "node --experimental-strip-types scripts/sync-collateral-data.ts",
+    "data:housing": "node --experimental-strip-types scripts/sync-housing-data.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

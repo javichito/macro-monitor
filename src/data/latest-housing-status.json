@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-10-14T21:57:00.529Z",
+  "asOfDate": "2026",
+  "globalContext": {
+    "totalRealEstateWealthTrillion": 332.8,
+    "worldGrossAssetSharePercent": 58.2,
+    "primaryTransmissionChannel": "Mortgage Interest Rate Transmission to Household Disposable Cash Flow & Housing Secondary Inventory Velocity"
+  },
+  "metrics": {
+    "usHousingAffordabilityIndex": 101.1,
+    "affordabilityRegime": "fairly_affordable",
+    "mortgage30YFixedRate": 6.45,
+    "treasury10YYield": 4.05,
+    "mortgageSpreadBps": 240,
+    "effectiveExistingMortgageRate": 3.92,
+    "lockInSpreadPct": 2.53,
+    "nominalCaseShillerIndex": 336.5,
+    "nominalFhfaIndex": 343.2,
+    "cpiIndex": 192.1,
+    "realCaseShillerIndex": 175.2,
+    "realPriceAthDeltaPct": -1.1,
+    "medianHomePriceUsd": 428000,
+    "medianHouseholdIncomeUsd": 104500,
+    "monthlyMortgagePaymentUsd": 2153,
+    "annualQualifyingIncomeUsd": 103342
+  },
+  "internationalBenchmarks": {
+    "USA": {
+      "benchmarkRate": 6.65,
+      "structure": "fixed_long",
+      "priceToIncome": 5.18,
+      "hai": 92.4,
+      "debtToGdp": 74.2
+    },
+    "GBR": {
+      "benchmarkRate": 4.85,
+      "structure": "fixed_medium_reset",
+      "priceToIncome": 7.81,
+      "hai": 79.5,
+      "debtToGdp": 81.5
+    },
+    "CAN": {
+      "benchmarkRate": 5.15,
+      "structure": "fixed_medium_reset",
+      "priceToIncome": 8.58,
+      "hai": 71.2,
+      "debtToGdp": 102.1
+    },
+    "AUS": {
+      "benchmarkRate": 6.25,
+      "structure": "variable",
+      "priceToIncome": 8.06,
+      "hai": 74.8,
+      "debtToGdp": 111.4
+    },
+    "EUR": {
+      "benchmarkRate": 3.6,
+      "structure": "fixed_long",
+      "priceToIncome": 6.97,
+      "hai": 96.1,
+      "debtToGdp": 53.4
+    },
+    "JPN": {
+      "benchmarkRate": 1.35,
+      "structure": "variable",
+      "priceToIncome": 7.5,
+      "hai": 104.2,
+      "debtToGdp": 68.2
+    }
+  },
+  "activeAlerts": [
+    {
+      "id": "lock-in-freeze",
+      "level": "CRITICAL",
+      "headline": "🔒 \"Golden Handcuffs\" Supply Freeze: +2.53% Rate Disconnect",
+      "body": "New 30Y mortgage originations (6.45%) exceed effective locked-in rates on outstanding debt (3.92%) by 2.53 percentage points. Existing homeowners cannot move without forfeiting low-rate debt, paralyzing housing inventory."
+    },
+    {
+      "id": "hai-benign",
+      "level": "BENIGN",
+      "headline": "✅ Affordability Normalized: HAI at 101.1",
+      "body": "Median household purchasing power is aligned with or exceeds conventional qualifying income thresholds for median-priced housing."
+    },
+    {
+      "id": "mbs-spread-blowout",
+      "level": "WARNING",
+      "headline": "⚡ Mortgage Basis Dislocation: 240 bps Spread over 10Y Treasury",
+      "body": "The spread between 30Y fixed mortgages and 10Y Treasuries (240 bps vs historical ~170 bps norm) remains elevated due to Fed MBS balance sheet runoff (QT) and prepayment volatility risk."
+    },
+    {
+      "id": "real-vs-nominal",
+      "level": "INFO",
+      "headline": "📊 Real vs Nominal Divergence: Real Home Prices -1.1% vs Peak",
+      "body": "While nominal Case-Shiller sits near all-time records (336.5), deflating property by cumulative CPI inflation reveals real purchasing power has plateaued at 175.2."
+    }
+  ]
+}

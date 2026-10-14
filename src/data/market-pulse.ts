@@ -157,4 +157,43 @@ export const MARKET_BENCHMARKS: MarketBenchmark[] = [
       'Historically, total global financial asset valuations expand in tandem with broad M2 fiat credit creation.',
     sparkline: [103.5, 103.8, 104.0, 103.9, 104.1, 104.2, 104.4],
   },
+  {
+    id: 'move',
+    symbol: 'MOVE',
+    name: 'ICE BofA MOVE Index',
+    category: 'rates',
+    price: 108.50,
+    changePercent: 1.25,
+    changeAbsolute: 1.34,
+    prefix: '',
+    suffix: ' pts',
+    decimals: 2,
+    high52w: 142.80,
+    low52w: 88.50,
+    macroSignificance:
+      'Often called the "VIX of the bond market", tracking implied volatility in US Treasury options. Because sovereign bonds serve as the foundational collateral for repo markets, derivatives, and mortgage pricing, spikes above 120–140 signal severe liquidity stress and systemic fragility (e.g. the March 2020 Treasury basis dislocation and 2022 UK Gilt crisis).',
+    correlationNote:
+      'Spikes in MOVE force primary dealer balance sheet contraction and repo haircut hikes, directly reducing collateral velocity across global financial markets.',
+    sparkline: [104.2, 105.8, 107.1, 106.4, 107.9, 107.5, 108.5],
+  },
+  {
+    id: 'vix',
+    symbol: 'VIX',
+    name: 'Cboe Volatility Index',
+    category: 'equity',
+    price: 15.80,
+    changePercent: -2.47,
+    changeAbsolute: -0.40,
+    prefix: '',
+    suffix: ' pts',
+    decimals: 2,
+    high52w: 65.70,
+    low52w: 11.80,
+    macroSignificance:
+      'Measures 30-day expected stock market volatility derived from S&P 500 options. Tracking the VIX/MOVE ratio illuminates whether equity investors are dangerously complacent relative to bond market turbulence.',
+    correlationNote:
+      'When MOVE is elevated while VIX is suppressed, cross-market complacency reaches extreme fragility, historically preceding sharp equity multiple contractions.',
+    sparkline: [16.8, 16.5, 16.1, 16.3, 15.9, 16.0, 15.8],
+  },
 ];
+

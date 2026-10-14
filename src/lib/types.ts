@@ -952,4 +952,207 @@ export interface CreditMarketOverview {
   historicalSeries: CreditMarketHistoricalPoint[];
 }
 
+// -----------------------------------------------------------------------------
+// Bond Market Volatility & Collateral Plumbing Types
+// -----------------------------------------------------------------------------
+
+export type BondVolatilityRegionId = 'GLOBAL' | 'USA' | 'EUR' | 'GBR' | 'JPN';
+
+export type MoveStressLevel = 'compressed' | 'normal' | 'elevated' | 'severe' | 'crisis';
+
+export type VixMoveRegime =
+  | 'extreme_complacency'
+  | 'moderate_complacency'
+  | 'balanced'
+  | 'bond_calm_equity_fear'
+  | 'systemic_panic';
+
+export interface EquityVolTermStructurePoint {
+  tenor: '9D' | '30D' | '3M' | '6M' | '1Y';
+  label: string;
+  symbol: string;
+  value: number;
+  impliedDailyMovePct: number;
+  regime: 'contango' | 'backwardation';
+}
+
+export interface HistoricalCrisisCase {
+  id: string;
+  title: string;
+  date: string;
+  peakMove: number;
+  peakVix: number;
+  vixMoveRatio: number;
+  summary: string;
+  collateralMechanism: string;
+  policyIntervention: string;
+}
+
+export interface RegionalCollateralProfile {
+  regionId: BondVolatilityRegionId;
+  name: string;
+  sovereignBondBenchmark: string;
+  sovereignVolIndex: number;
+  volatilityLabel: string;
+  repoRatePct: number;
+  policyRatePct: number;
+  repoSpreadBps: number;
+  primaryDealerHaircutPct: number;
+  collateralVelocityMultiplier: number;
+  collateralScarcityBps: number;
+  failsToDeliverBillion: number;
+  healthScore: number;
+  stressLevel: MoveStressLevel;
+  keyVulnerabilityNote: string;
+}
+
+export interface HistoricalBondVolatilityPoint {
+  date: string;
+  moveIndex: number;
+  vixIndex: number;
+  vixMoveRatio: number;
+  euroSovVol: number;
+  giltSovVol: number;
+  jgbSovVol: number;
+  repoHaircutPct: number;
+  collateralStressIndex: number;
+  notableEvent?: string;
+}
+
+export interface EvaluatedBondVolatilityState {
+  timestamp: string;
+  moveIndex: number;
+  vixIndex: number;
+  vixMoveRatio: number;
+  vixMoveRegime: VixMoveRegime;
+  moveStressLevel: MoveStressLevel;
+  collateralHealthScore: number;
+  termStructureSlope: 'contango' | 'backwardation' | 'flat';
+  regions: Record<
+    BondVolatilityRegionId,
+    {
+      sovereignVolIndex: number;
+      repoSpreadBps: number;
+      primaryDealerHaircutPct: number;
+      healthScore: number;
+      stressLevel: MoveStressLevel;
+    }
+  >;
+  activeAlerts: Array<{
+    id: string;
+    level: 'CRITICAL' | 'WARNING' | 'COMPLACENCY' | 'INFO';
+    headline: string;
+    body: string;
+  }>;
+}
+
+export interface BondVolatilityOverview {
+  currentDate: string;
+  latestMove: number;
+  move52wHigh: number;
+  move52wLow: number;
+  latestVix: number;
+  vix52wHigh: number;
+  vix52wLow: number;
+  vixMoveRatio: number;
+  regime: VixMoveRegime;
+  stressLevel: MoveStressLevel;
+  globalCollateralHealthScore: number;
+  termStructure: EquityVolTermStructurePoint[];
+  regions: Record<BondVolatilityRegionId, RegionalCollateralProfile>;
+  crises: HistoricalCrisisCase[];
+  historicalSeries: HistoricalBondVolatilityPoint[];
+}
+
+// -----------------------------------------------------------------------------
+// Housing Macro & Affordability Dynamics Types
+// -----------------------------------------------------------------------------
+
+export type HousingRegionId = 'USA' | 'EUR' | 'GBR' | 'CAN' | 'AUS' | 'JPN';
+
+export type HousingAffordabilityRegime =
+  | 'severely_unaffordable'
+  | 'unaffordable'
+  | 'fairly_affordable'
+  | 'highly_affordable';
+
+export type MortgageTransmissionType = 'fixed_long' | 'fixed_medium_reset' | 'variable';
+
+export interface RealHomePriceSeriesPoint {
+  date: string;
+  year: number;
+  nominalCaseShiller: number;
+  nominalFhfa: number;
+  cpiIndex: number;
+  realCaseShiller: number;
+  realFhfa: number;
+  medianHomePriceUsd: number;
+  medianFamilyIncomeUsd: number;
+  mortgageRate30Y: number;
+  treasury10Y: number;
+  mortgageSpreadBps: number;
+  effectiveMortgageRate: number;
+  hai: number;
+  monthlyMortgagePayment: number;
+  qualifyingIncome: number;
+  housingPaymentShareOfIncome: number;
+  eventNote?: string;
+}
+
+export interface RegionalHousingProfile {
+  regionId: HousingRegionId;
+  name: string;
+  flag: string;
+  currencySymbol: string;
+  benchmarkMortgageRate: number;
+  benchmarkRateLabel: string;
+  mortgageStructure: MortgageTransmissionType;
+  rateTransmissionSpeed: 'rapid' | 'moderate' | 'delayed_slow';
+  medianHomePriceLocal: number;
+  medianHouseholdIncomeLocal: number;
+  priceToIncomeRatio: number;
+  hai: number;
+  householdDebtToGdpPct: number;
+  realPriceChange5YPct: number;
+  homeownershipRatePct: number;
+  macroTransmissionNote: string;
+}
+
+export interface HousingMacroOverview {
+  currentDate: string;
+  currentHai: number;
+  haiRegime: HousingAffordabilityRegime;
+  currentMortgage30Y: number;
+  mortgageSpreadBps: number;
+  treasury10Y: number;
+  effectiveExistingMortgageRate: number;
+  lockInSpreadPct: number;
+  currentNominalCaseShiller: number;
+  currentRealCaseShiller: number;
+  realCaseShillerPeakYear: number;
+  realPriceAllTimeHighDeltaPct: number;
+  totalGlobalRealEstateWealthTrillion: number;
+  regions: Record<HousingRegionId, RegionalHousingProfile>;
+  historicalSeries: RealHomePriceSeriesPoint[];
+}
+
+export interface EvaluatedHousingState {
+  timestamp: string;
+  hai: number;
+  haiRegime: HousingAffordabilityRegime;
+  mortgageRate30Y: number;
+  mortgageSpreadBps: number;
+  lockInSpreadPct: number;
+  realCaseShiller: number;
+  nominalCaseShiller: number;
+  activeAlerts: Array<{
+    id: string;
+    level: 'CRITICAL' | 'WARNING' | 'BENIGN' | 'INFO';
+    headline: string;
+    body: string;
+  }>;
+}
+
+
+
 
