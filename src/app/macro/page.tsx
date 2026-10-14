@@ -35,13 +35,19 @@ type MacroSectionTab = 'all' | 'regimes' | 'ratios' | 'yields' | 'leading' | 'la
 export default function MacroPage() {
   const [activeTab, setActiveTab] = useState<MacroSectionTab>('all');
 
-  // Deep-link hydration from query parameters for external bookmarking
+  // Deep-link hydration from query parameters and hash anchors for external bookmarking
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab') as MacroSectionTab;
+    const hash = window.location.hash;
+
     if (tabParam && ['all', 'regimes', 'ratios', 'yields', 'leading', 'labor', 'inflation', 'external', 'calendar', 'liquidity'].includes(tabParam)) {
       setActiveTab(tabParam);
+    } else if (hash.includes('fiscal') || params.has('fds_c') || params.has('fds_country')) {
+      setActiveTab('liquidity');
+    } else if (hash.includes('ratio') || params.has('car_r') || params.has('car_ratio')) {
+      setActiveTab('ratios');
     }
   }, []);
 

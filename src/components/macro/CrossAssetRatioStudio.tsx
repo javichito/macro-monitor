@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   LineChart,
   Line,
@@ -21,6 +21,8 @@ import {
 } from '../../data/cross-asset-ratios-data';
 import { useThemeMode } from '../../context/AppContext';
 import { DataExportMenu } from '../common/DataExportMenu';
+import { ShareDeepLinkMenu } from '../common/ShareDeepLinkMenu';
+import { deserializeCrossAssetRatio } from '../../lib/deep-link';
 import {
   Scale,
   TrendingUp,
@@ -55,6 +57,22 @@ export function CrossAssetRatioStudio() {
   // Interactive Sandbox state: user can simulate custom numerator and denominator values
   const [simNumerator, setSimNumerator] = useState<number>(activeModel.numerator.currentValue);
   const [simDenominator, setSimDenominator] = useState<number>(activeModel.denominator.currentValue);
+
+  /*
+   * Hydrate Cross-Asset Ratio Studio state from deep-link URL hashes or query strings
+   * so custom market sandbox configurations can be circulated among macro analysts.
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const restored = deserializeCrossAssetRatio();
+    if (restored) {
+      setActiveRatioKey(restored.ratio);
+      setSimNumerator(restored.numerator);
+      setSimDenominator(restored.denominator);
+      if (restored.viewMode) setChartViewMode(restored.viewMode);
+      if (restored.timeWindow) setTimeWindow(restored.timeWindow);
+    }
+  }, []);
 
   // Sync simulator sliders whenever switching between ratios
   const handleRatioSwitch = (newKey: RatioKey) => {
@@ -129,7 +147,7 @@ export function CrossAssetRatioStudio() {
   }, []);
 
   return (
-    <section className="space-y-6">
+    <section id="ratio-studio" className="space-y-6">
       {/* Studio Header & Meta */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 sm:p-6 rounded-2xl bg-white dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm">
         <div className="space-y-1.5">
@@ -145,8 +163,19 @@ export function CrossAssetRatioStudio() {
           </p>
         </div>
 
-        {/* Global Data Portability Export Menu */}
-        <div className="flex items-center gap-2 shrink-0">
+        {/* Global Data Portability & Deep Link Sharing */}
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <ShareDeepLinkMenu
+            simulator="ratios"
+            state={{
+              ratio: activeRatioKey,
+              numerator: simNumerator,
+              denominator: simDenominator,
+              viewMode: chartViewMode,
+              timeWindow,
+            }}
+            label="Share Ratio Studio"
+          />
           <DataExportMenu
             filename={`cross-asset-ratios-${activeRatioKey}`}
             title={`${activeModel.name} Historical Dataset`}

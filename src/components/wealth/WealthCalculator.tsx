@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { COUNTRIES_DATA } from '../../data/country-metrics';
 import { calculateWealthPercentile } from '../../lib/calculations';
 import { formatCurrency, formatPercent } from '../../lib/formatters';
-import { UserCheck, Compass, Sparkles, DollarSign, Globe2 } from 'lucide-react';
+import { UserCheck, Compass, Sparkles, DollarSign, Globe2, CheckCircle2 } from 'lucide-react';
+import { ShareDeepLinkMenu } from '../common/ShareDeepLinkMenu';
+import { deserializeWealthCalculator } from '../../lib/deep-link';
 
 interface WealthCalculatorProps {
   onSwitchToPpp?: () => void;
@@ -13,6 +15,21 @@ interface WealthCalculatorProps {
 export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) {
   const [netWorth, setNetWorth] = useState<number>(65000);
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>('USA');
+  const [isHydratedFromDeepLink, setIsHydratedFromDeepLink] = useState<boolean>(false);
+
+  /*
+   * Hydrate wealth assumptions from deep-link URL hashes or query strings
+   * so users can circulate and bookmark specific wealth positioning scenarios.
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const restored = deserializeWealthCalculator();
+    if (restored) {
+      setSelectedCountryCode(restored.country);
+      setNetWorth(restored.netWorth);
+      setIsHydratedFromDeepLink(true);
+    }
+  }, []);
 
   const selectedCountry = COUNTRIES_DATA.find((c) => c.code === selectedCountryCode) || COUNTRIES_DATA[0];
   const latestMetric = selectedCountry.history[2026] || selectedCountry.history[2025];
@@ -26,20 +43,49 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
   const quickPresets = [5000, 25000, 75000, 200000, 500000, 1200000];
 
   return (
-    <div className="apple-card p-6 sm:p-7 relative overflow-hidden">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#30d158]/15 text-[#30d158] border border-[#30d158]/30 shadow-sm">
-          <Compass className="h-5 w-5" />
+    <div id="wealth-calculator" className="apple-card p-6 sm:p-7 relative overflow-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#30d158]/15 text-[#30d158] border border-[#30d158]/30 shadow-sm">
+            <Compass className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight">
+              Where Do You Stand? (Personal Wealth Positioner)
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-white/60">
+              Discover your exact percentile standing nationally and globally based on 2026 wealth data.
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight">
-            Where Do You Stand? (Personal Wealth Positioner)
-          </h3>
-          <p className="text-xs text-slate-500 dark:text-white/60">
-            Discover your exact percentile standing nationally and globally based on 2026 wealth data.
-          </p>
-        </div>
+
+        <ShareDeepLinkMenu
+          simulator="wealth"
+          state={{
+            country: selectedCountryCode,
+            netWorth,
+          }}
+          label="Share Assumptions"
+        />
       </div>
+
+      {isHydratedFromDeepLink && (
+        <div className="mb-5 flex items-center justify-between gap-3 p-3 rounded-xl bg-emerald-500/10 border border-emerald-400/20 text-xs text-emerald-800 dark:text-emerald-300">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
+            <span>
+              <strong>Shared Scenario Loaded:</strong> Positioned for {selectedCountry.name} with {formatCurrency(netWorth)} net worth.
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsHydratedFromDeepLink(false)}
+            className="text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white text-xs underline cursor-pointer"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Input panel */}

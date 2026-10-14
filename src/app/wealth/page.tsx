@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { TimelineControls } from '../../components/layout/TimelineControls';
 import { GLOBAL_WEALTH_HISTORY } from '../../data/global-wealth';
@@ -10,10 +10,28 @@ import { WealthCalculator } from '../../components/wealth/WealthCalculator';
 import { PppConverter } from '../../components/wealth/PppConverter';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import { TrendingUp, Scale, Compass, Globe2 } from 'lucide-react';
+import { extractParamsFromUrl } from '../../lib/deep-link';
 
 export default function WealthPage() {
   const { selectedYear, currencyPerspective } = useApp();
   const [calculatorView, setCalculatorView] = useState<'percentile' | 'ppp'>('percentile');
+
+  /*
+   * Hydrate calculator view from URL query parameters or hash anchors
+   * so users clicking a shared PPP or percentile link land directly on the relevant tool.
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = extractParamsFromUrl();
+    const hash = window.location.hash;
+    const calcParam = params.get('calc');
+
+    if (calcParam === 'ppp' || hash.includes('ppp') || params.has('ppp_f') || params.has('ppp_amount')) {
+      setCalculatorView('ppp');
+    } else if (calcParam === 'percentile' || hash.includes('wealth') || params.has('wc_c') || params.has('wc_nw')) {
+      setCalculatorView('percentile');
+    }
+  }, []);
 
   const currentWealth =
     GLOBAL_WEALTH_HISTORY.find((w) => w.year === selectedYear) ||

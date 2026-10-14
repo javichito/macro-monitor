@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   AreaChart,
   Area,
@@ -23,6 +23,8 @@ import {
 } from '../../data/fiscal-dominance-data';
 import { useThemeMode } from '../../context/AppContext';
 import { DataExportMenu } from '../common/DataExportMenu';
+import { ShareDeepLinkMenu } from '../common/ShareDeepLinkMenu';
+import { deserializeFiscalDominance } from '../../lib/deep-link';
 import {
   Scale,
   TrendingDown,
@@ -66,6 +68,7 @@ export function FiscalDominanceSimulator() {
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>('USA');
   const [activeScenarioId, setActiveScenarioId] = useState<string>('baseline');
   const [activeMetricTab, setActiveMetricTab] = useState<'debt' | 'interest'>('debt');
+  const [isHydratedFromDeepLink, setIsHydratedFromDeepLink] = useState<boolean>(false);
 
   // Active sovereign baseline configuration
   const currentProfile = useMemo(() => {
@@ -82,6 +85,29 @@ export function FiscalDominanceSimulator() {
     realGrowth: currentProfile.realGdpGrowth,
     inflation: currentProfile.inflationRate,
   });
+
+  /*
+   * Hydrate simulator state from deep-link URL hashes or query strings
+   * so economists, journalists, and traders can directly share exact stress-test configurations.
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const restored = deserializeFiscalDominance();
+    if (restored) {
+      setSelectedCountryCode(restored.country);
+      setActiveScenarioId(restored.scenario);
+      setParams({
+        bondYield: restored.bondYield,
+        primaryDeficit: restored.primaryDeficit,
+        realGrowth: restored.realGrowth,
+        inflation: restored.inflation,
+      });
+      if (restored.metricTab) {
+        setActiveMetricTab(restored.metricTab);
+      }
+      setIsHydratedFromDeepLink(true);
+    }
+  }, []);
 
   // Switch sovereign country profile and reset parameters to its baseline
   const handleSelectCountry = (country: SovereignFiscalProfile) => {
@@ -171,15 +197,49 @@ export function FiscalDominanceSimulator() {
             </p>
           </div>
 
-          <button
-            onClick={handleResetToBaseline}
-            className="inline-flex items-center gap-1.5 self-start sm:self-center px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/10 transition-colors shadow-sm"
-            title="Reset parameters to official baseline"
-          >
-            <RotateCcw className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
-            <span>Reset Baseline</span>
-          </button>
+          <div className="flex flex-wrap items-center gap-2 self-start sm:self-center">
+            <ShareDeepLinkMenu
+              simulator="fiscal"
+              state={{
+                country: selectedCountryCode,
+                scenario: activeScenarioId,
+                bondYield: params.bondYield,
+                primaryDeficit: params.primaryDeficit,
+                realGrowth: params.realGrowth,
+                inflation: params.inflation,
+                metricTab: activeMetricTab,
+              }}
+              label="Share Simulation"
+            />
+            <button
+              onClick={handleResetToBaseline}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/10 transition-colors shadow-sm cursor-pointer"
+              title="Reset parameters to official baseline"
+            >
+              <RotateCcw className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
+              <span>Reset Baseline</span>
+            </button>
+          </div>
         </div>
+
+        {/* Deep-Link Hydration Confirmation Pill */}
+        {isHydratedFromDeepLink && (
+          <div className="mt-4 flex items-center justify-between gap-3 p-3 rounded-xl bg-sky-500/10 border border-sky-400/20 text-xs text-sky-700 dark:text-sky-300">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-sky-500 shrink-0" />
+              <span>
+                <strong>Shared Simulation Active:</strong> Modeling {currentProfile.name} with custom assumptions ({params.bondYield}% Yield, {params.primaryDeficit}% Deficit, {params.realGrowth}% Growth, {params.inflation}% Inflation).
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsHydratedFromDeepLink(false)}
+              className="text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white text-xs underline cursor-pointer"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
 
         {/* Sovereign Profile Selector Strip */}
         <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/[0.08]">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { FiscalDominanceSimulator } from '../FiscalDominanceSimulator';
 import {
   SOVEREIGN_FISCAL_PROFILES,
@@ -108,6 +108,45 @@ describe('FiscalDominanceSimulator Component', () => {
 
     fireEvent.click(debtTab);
     expect(debtTab.className).toContain('bg-sky-500');
+  });
+
+  it('hydrates custom fiscal simulation state from deep-link URL hash', () => {
+    // Simulate navigation with URL hash containing custom Italy stress-test parameters
+    const originalHash = window.location.hash;
+    window.location.hash = '#fiscal-simulator?c=ITA&s=custom&y=5.80&d=4.90&g=1.10&i=2.80&m=interest';
+
+    render(<FiscalDominanceSimulator />);
+
+    expect(screen.getByText('Italy 10-Year Solvency Trajectory (2026–2036)')).toBeDefined();
+    expect(screen.getByText(/Shared Simulation Active:/i)).toBeDefined();
+    expect(screen.getByText(/5.8% Yield/i)).toBeDefined();
+
+    // Clean up window hash after test execution
+    window.location.hash = originalHash;
+  });
+
+  it('renders Share Simulation menu and copies deep link to clipboard', async () => {
+    let copiedText = '';
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: (text: string) => {
+          copiedText = text;
+          return Promise.resolve();
+        },
+      },
+    });
+
+    render(<FiscalDominanceSimulator />);
+
+    const shareButton = screen.getByRole('button', { name: /Share Simulation/i });
+    expect(shareButton).toBeDefined();
+
+    await act(async () => {
+      fireEvent.click(shareButton);
+    });
+
+    expect(copiedText).toContain('#fiscal-simulator?');
+    expect(copiedText).toContain('c=USA');
   });
 });
 

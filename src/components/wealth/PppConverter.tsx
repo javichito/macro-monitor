@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { COUNTRIES_DATA } from '../../data/country-metrics';
 import {
   calculatePppConversion,
@@ -19,7 +19,10 @@ import {
   Search,
   Globe2,
   Sparkles,
+  CheckCircle2,
 } from 'lucide-react';
+import { ShareDeepLinkMenu } from '../common/ShareDeepLinkMenu';
+import { deserializePppConverter } from '../../lib/deep-link';
 
 export function PppConverter() {
   const [netWorth, setNetWorth] = useState<number>(100000);
@@ -28,6 +31,22 @@ export function PppConverter() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
+  const [isHydratedFromDeepLink, setIsHydratedFromDeepLink] = useState<boolean>(false);
+
+  /*
+   * Hydrate geo-arbitrage conversion inputs from deep-link URL hashes or query strings
+   * so cross-border purchasing comparisons can be shared as active presets.
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const restored = deserializePppConverter();
+    if (restored) {
+      setFromCountryCode(restored.fromCountry);
+      setToCountryCode(restored.toCountry);
+      setNetWorth(restored.netWorth);
+      setIsHydratedFromDeepLink(true);
+    }
+  }, []);
 
   const fromCountry =
     COUNTRIES_DATA.find((c) => c.code === fromCountryCode) || COUNTRIES_DATA[0];
@@ -99,7 +118,7 @@ export function PppConverter() {
   const isCheaper = conversion.costDifferencePercent < 0;
 
   return (
-    <div className="apple-card p-6 sm:p-7 relative overflow-hidden" data-testid="ppp-converter">
+    <div id="ppp-converter" className="apple-card p-6 sm:p-7 relative overflow-hidden" data-testid="ppp-converter">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
@@ -116,11 +135,40 @@ export function PppConverter() {
           </div>
         </div>
 
-        <div className="inline-flex items-center gap-1.5 self-start sm:self-auto rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 px-3 py-1 text-xs text-slate-700 dark:text-white/70">
-          <Sparkles className="h-3.5 w-3.5 text-amber-500 dark:text-[#ffd60a]" />
-          <span>World Bank ICP 2026 Model</span>
+        <div className="flex flex-wrap items-center gap-2 self-start sm:self-center">
+          <ShareDeepLinkMenu
+            simulator="ppp"
+            state={{
+              fromCountry: fromCountryCode,
+              toCountry: toCountryCode,
+              netWorth,
+            }}
+            label="Share Comparison"
+          />
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 px-3 py-1 text-xs text-slate-700 dark:text-white/70">
+            <Sparkles className="h-3.5 w-3.5 text-amber-500 dark:text-[#ffd60a]" />
+            <span>World Bank ICP 2026 Model</span>
+          </div>
         </div>
       </div>
+
+      {isHydratedFromDeepLink && (
+        <div className="mb-5 flex items-center justify-between gap-3 p-3 rounded-xl bg-sky-500/10 border border-sky-400/20 text-xs text-sky-800 dark:text-sky-300">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="h-4 w-4 text-sky-500 shrink-0" />
+            <span>
+              <strong>Shared Scenario Loaded:</strong> Converting {formatCurrency(netWorth)} from {fromCountry.name} to {toCountry.name}.
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsHydratedFromDeepLink(false)}
+            className="text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white text-xs underline cursor-pointer"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
 
       {/* Main Interactive Controls */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
