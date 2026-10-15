@@ -113,7 +113,7 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
               id="country-select"
               value={selectedCountryCode}
               onChange={(e) => setSelectedCountryCode(e.target.value)}
-              className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-2.5 text-sm font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] transition-colors"
+              className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-2.5 text-base sm:text-sm font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] transition-colors"
             >
               {COUNTRIES_DATA.map((c) => (
                 <option key={c.code} value={c.code} className="bg-white dark:bg-[#12141c] text-slate-900 dark:text-white">
@@ -142,12 +142,12 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
                 step="1000"
                 value={netWorth}
                 onChange={(e) => setNetWorth(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] pl-9 pr-4 py-2.5 text-sm text-slate-900 dark:text-white font-mono font-medium focus:border-[#0a84ff] transition-colors"
+                className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] pl-9 pr-4 py-2.5 text-base sm:text-sm text-slate-900 dark:text-white font-mono font-medium focus:border-[#0a84ff] transition-colors"
               />
             </div>
           </div>
 
-          {/* Quick preset chips */}
+          {/* Quick preset chips with touch-friendly 36px targets */}
           <div>
             <span className="text-[11px] font-semibold text-slate-500 dark:text-white/50 uppercase tracking-wider block mb-2">
               Quick Test Presets
@@ -158,7 +158,7 @@ export function WealthCalculator({ onSwitchToPpp }: WealthCalculatorProps = {}) 
                   key={val}
                   type="button"
                   onClick={() => setNetWorth(val)}
-                  className={`px-3 py-1 text-xs font-medium rounded-full border transition-all ${
+                  className={`px-3 py-1.5 min-h-[36px] flex items-center justify-center text-xs font-medium rounded-full border transition-all active:scale-95 ${
                     netWorth === val
                       ? 'bg-emerald-500/15 text-emerald-700 dark:text-[#30d158] border-emerald-500/40 shadow-sm'
                       : 'border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.04] text-slate-600 dark:text-white/70 hover:bg-slate-200/80 dark:hover:bg-white/[0.08] hover:text-slate-900 dark:hover:text-white'

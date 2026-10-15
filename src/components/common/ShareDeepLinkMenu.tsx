@@ -71,13 +71,32 @@ export function ShareDeepLinkMenu({
         format,
       });
 
+      /*
+       * On mobile touch devices with Web Share API support, invoke the native OS share sheet
+       * for instantaneous sharing to Messages, AirDrop, or WhatsApp.
+       */
+      if (typeof navigator !== 'undefined' && navigator.share && window.innerWidth < 640) {
+        try {
+          await navigator.share({
+            title: `MacroMonitor: ${label}`,
+            text: `Explore this macroeconomic scenario on MacroMonitor:`,
+            url,
+          });
+          setCopiedFormat(format);
+          setTimeout(() => setCopiedFormat(null), 2200);
+          return;
+        } catch (err: any) {
+          if (err.name === 'AbortError') return;
+        }
+      }
+
       const success = await copySimulatorLinkToClipboard(url);
       if (success) {
         setCopiedFormat(format);
         setTimeout(() => setCopiedFormat(null), 2200);
       }
     },
-    [simulator, state]
+    [simulator, state, label]
   );
 
   const hashUrlPreview = buildSimulatorUrl({ simulator, state, format: 'hash' });
@@ -90,7 +109,7 @@ export function ShareDeepLinkMenu({
         <button
           type="button"
           onClick={() => handleCopy('hash')}
-          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer active:scale-95 ${
+          className={`inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] rounded-full text-xs font-semibold transition-all cursor-pointer active:scale-95 ${
             copiedFormat
               ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300'
               : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/[0.10]'
@@ -114,7 +133,7 @@ export function ShareDeepLinkMenu({
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className={`px-1.5 py-1.5 rounded-full text-slate-500 hover:text-slate-900 dark:text-white/60 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/[0.10] transition-colors cursor-pointer ${
+          className={`px-2 py-1.5 min-h-[36px] flex items-center justify-center rounded-full text-slate-500 hover:text-slate-900 dark:text-white/60 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/[0.10] transition-colors cursor-pointer active:scale-95 ${
             isOpen ? 'bg-slate-200/80 dark:bg-white/[0.15]' : ''
           }`}
           title="Choose link format (Hash vs Query String)"
@@ -125,12 +144,12 @@ export function ShareDeepLinkMenu({
         </button>
       </div>
 
-      {/* Format Selection Dropdown Popover */}
+      {/* Format Selection Dropdown Popover with safe screen boundary containment */}
       {isOpen && (
         <div
           role="menu"
           aria-orientation="vertical"
-          className="absolute right-0 top-full mt-2 z-50 w-80 rounded-2xl border border-slate-200 dark:border-white/[0.15] bg-white/95 dark:bg-[#12141c]/95 p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-100"
+          className="absolute right-0 top-full mt-2 z-50 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-slate-200 dark:border-white/[0.15] bg-white/95 dark:bg-[#12141c]/95 p-3 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-100"
         >
           <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-white/50 mb-2 px-1">
             Shareable Deep-Link Formats

@@ -72,7 +72,7 @@ export function Header() {
         </nav>
 
         {/* Action Controls: Currency Perspective & Appearance Mode */}
-        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Currency Perspective Switcher: Apple segmented control */}
           <div
             role="radiogroup"
@@ -93,7 +93,7 @@ export function Header() {
                     ? 'Real USD: Inflation-adjusted to constant 2026 purchasing power'
                     : 'PPP: Purchasing Power Parity adjusted for local basket costs'
                 }
-                className={`rounded-full px-2 sm:px-3 py-1 sm:py-1 text-[10px] sm:text-[11px] font-semibold transition-all duration-200 uppercase tracking-wider min-h-[32px] flex items-center justify-center ${
+                className={`rounded-full px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold transition-all duration-200 uppercase tracking-wider min-h-[36px] min-w-[34px] sm:min-h-[32px] sm:min-w-0 flex items-center justify-center active:scale-95 ${
                   currencyPerspective === mode
                     ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                     : 'text-slate-400 hover:text-slate-200'
@@ -118,7 +118,7 @@ export function Header() {
               onClick={() => setThemePreference('system')}
               aria-label="Auto System Theme"
               title="System: Follow device settings automatically"
-              className={`rounded-full p-1.5 sm:p-2 min-h-[32px] min-w-[32px] flex items-center justify-center transition-all duration-200 ${
+              className={`rounded-full p-1.5 sm:p-2 min-h-[36px] min-w-[36px] sm:min-h-[32px] sm:min-w-[32px] flex items-center justify-center transition-all duration-200 active:scale-95 ${
                 themePreference === 'system'
                   ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                   : 'text-slate-400 hover:text-slate-200'
@@ -133,7 +133,7 @@ export function Header() {
               onClick={() => setThemePreference('light')}
               aria-label="Light Mode"
               title="Light Mode"
-              className={`rounded-full p-1.5 sm:p-2 min-h-[32px] min-w-[32px] flex items-center justify-center transition-all duration-200 ${
+              className={`rounded-full p-1.5 sm:p-2 min-h-[36px] min-w-[36px] sm:min-h-[32px] sm:min-w-[32px] flex items-center justify-center transition-all duration-200 active:scale-95 ${
                 themePreference === 'light'
                   ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                   : 'text-slate-400 hover:text-slate-200'
@@ -148,7 +148,7 @@ export function Header() {
               onClick={() => setThemePreference('dark')}
               aria-label="Dark Mode"
               title="Dark Mode"
-              className={`rounded-full p-1.5 sm:p-2 min-h-[32px] min-w-[32px] flex items-center justify-center transition-all duration-200 ${
+              className={`rounded-full p-1.5 sm:p-2 min-h-[36px] min-w-[36px] sm:min-h-[32px] sm:min-w-[32px] flex items-center justify-center transition-all duration-200 active:scale-95 ${
                 themePreference === 'dark'
                   ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
                   : 'text-slate-400 hover:text-slate-200'

@@ -36,6 +36,7 @@ import {
   ShieldAlert,
   Flame,
   Home,
+  ArrowUp,
 } from 'lucide-react';
 
 type MacroSectionTab =
@@ -145,8 +146,8 @@ export default function MacroPage() {
           </p>
         </div>
 
-        {/* Section Navigation Tabs: stacked horizontally beneath title to allow full width for both elements */}
-        <div className="overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pt-1">
+        {/* Section Navigation Tabs: stacked horizontally beneath title with mobile gradient scroll mask */}
+        <div className="overflow-x-auto no-scrollbar scroll-mask-x sm:[mask-image:none] -mx-4 px-4 sm:mx-0 sm:px-0 pt-1">
           <div className="inline-flex items-center gap-1.5 rounded-2xl p-1.5 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] shadow-inner text-xs whitespace-nowrap">
             <button
               onClick={() => setActiveTab('all')}
@@ -603,6 +604,19 @@ export default function MacroPage() {
           takeaway="Track the $150B ON RRP floor: once depleted, sovereign debt issuance directly drains commercial bank liquidity."
           defaultExpanded={false}
         />
+      </div>
+
+      {/* Mobile Floating Back to Top Button */}
+      <div className="fixed bottom-20 right-4 z-30 sm:hidden">
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-900/90 dark:bg-white/90 text-white dark:text-black text-xs font-semibold shadow-lg backdrop-blur-md border border-white/20 active:scale-90 transition-all cursor-pointer"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="h-3.5 w-3.5" />
+          <span>Top</span>
+        </button>
       </div>
     </div>
   );

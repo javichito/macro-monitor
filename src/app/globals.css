@@ -120,6 +120,15 @@
 }
 
 /*
+ * Gradients at horizontal edges signal to touch users that additional content
+ * exists beyond the viewport boundary without relying on heavy scrollbars.
+ */
+.scroll-mask-x {
+  mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent 100%);
+}
+
+/*
  * Apple Frosted Glass & Specular Depth
  */
 .apple-card {

@@ -170,6 +170,7 @@ export function WorldMap({
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [activeRegion, setActiveRegion] = useState<string>('global');
   const [isDragging, setIsDragging] = useState(false);
+  const [isMapTouchActive, setIsMapTouchActive] = useState(false);
 
   const svgRef = React.useRef<SVGSVGElement | null>(null);
   const isDraggingRef = React.useRef(false);
@@ -213,10 +214,14 @@ export function WorldMap({
 
   /*
    * Captures pointer coordinates for fluid 60fps drag navigation.
-   * Tracks distance to distinguish deliberate click selection from map panning.
+   * On mobile touch screens, we verify touch pan mode is active so users can
+   * scroll down the page naturally without getting trapped in the map viewport.
    */
   const handlePointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
     if (e.button !== 0 && e.pointerType === 'mouse') return;
+    if (e.pointerType === 'touch' && !isMapTouchActive) {
+      return;
+    }
     isDraggingRef.current = true;
     hasMovedRef.current = false;
     dragStartRef.current = { x: e.clientX, y: e.clientY };
@@ -396,7 +401,7 @@ export function WorldMap({
                 : 'border-white/[0.08] bg-[#06080e]'
             }`}
           >
-            {/* Zoom Controls */}
+            {/* Zoom Controls with touch-friendly 38px tap boundaries */}
             <div
               className={`absolute top-3 right-3 z-10 flex flex-col items-center gap-1 rounded-full border p-1 shadow-lg backdrop-blur-xl ${
                 isLight
@@ -405,31 +410,37 @@ export function WorldMap({
               }`}
             >
               <button
-                onClick={() => handleZoom(0.5)}
-                className={`rounded-full p-1.5 transition-colors ${
+                onClick={() => {
+                  handleZoom(0.5);
+                  setIsMapTouchActive(true);
+                }}
+                className={`rounded-full p-2 sm:p-1.5 transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center active:scale-95 ${
                   isLight ? 'hover:bg-slate-200 text-slate-700' : 'hover:bg-white/20 text-slate-200'
                 }`}
                 title="Zoom In"
               >
-                <Plus className="h-3.5 w-3.5" />
+                <Plus className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
               </button>
               <button
-                onClick={() => handleZoom(-0.5)}
-                className={`rounded-full p-1.5 transition-colors ${
+                onClick={() => {
+                  handleZoom(-0.5);
+                  setIsMapTouchActive(true);
+                }}
+                className={`rounded-full p-2 sm:p-1.5 transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center active:scale-95 ${
                   isLight ? 'hover:bg-slate-200 text-slate-700' : 'hover:bg-white/20 text-slate-200'
                 }`}
                 title="Zoom Out"
               >
-                <Minus className="h-3.5 w-3.5" />
+                <Minus className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
               </button>
               <button
                 onClick={handleResetZoom}
-                className={`rounded-full p-1.5 transition-colors ${
+                className={`rounded-full p-2 sm:p-1.5 transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center active:scale-95 ${
                   isLight ? 'hover:bg-slate-200 text-slate-700' : 'hover:bg-white/20 text-slate-200'
                 }`}
                 title="Reset View"
               >
-                <RotateCcw className="h-3.5 w-3.5" />
+                <RotateCcw className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
               </button>
               <span
                 className={`text-[9px] font-mono border-t pt-1 px-1 ${
@@ -440,7 +451,7 @@ export function WorldMap({
               </span>
             </div>
 
-            {/* Drag & zoom guidance badge */}
+            {/* Desktop Drag & zoom guidance badge */}
             <div
               className={`absolute bottom-3 left-3 z-10 hidden sm:flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[11px] backdrop-blur pointer-events-none shadow-sm ${
                 isLight
@@ -451,6 +462,22 @@ export function WorldMap({
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
               <span>Drag canvas to pan • Scroll or buttons to zoom</span>
             </div>
+
+            {/* Mobile Touch Map Pan vs Page Scroll toggle */}
+            <button
+              type="button"
+              onClick={() => setIsMapTouchActive((prev) => !prev)}
+              className={`absolute bottom-3 left-3 z-10 flex sm:hidden items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold backdrop-blur-xl border shadow-md transition-all active:scale-95 ${
+                isMapTouchActive
+                  ? 'bg-sky-500 text-white border-sky-400'
+                  : isLight
+                  ? 'bg-white/90 text-slate-800 border-slate-300'
+                  : 'bg-black/75 text-slate-200 border-white/20'
+              }`}
+            >
+              <span className={`h-2 w-2 rounded-full ${isMapTouchActive ? 'bg-white animate-pulse' : 'bg-emerald-400'}`} />
+              <span>{isMapTouchActive ? 'Lock to Scroll Page' : 'Tap to Pan Map'}</span>
+            </button>
 
             <svg
               ref={svgRef}
@@ -463,7 +490,7 @@ export function WorldMap({
               className={`w-full h-full select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
               style={{
                 filter: isLight ? 'drop-shadow(0 2px 6px rgba(0,0,0,0.15))' : 'drop-shadow(0 2px 8px rgba(0,0,0,0.6))',
-                touchAction: 'none',
+                touchAction: isMapTouchActive ? 'none' : 'pan-y',
               }}
             >
               <defs>

@@ -74,7 +74,14 @@ export function InstallPrompt() {
   if (!showPrompt) return null;
 
   return (
-    <div className="fixed bottom-20 left-3 right-3 sm:bottom-6 sm:left-auto sm:right-6 z-50 max-w-sm mx-auto sm:mx-0 animate-in fade-in slide-in-from-bottom-5 duration-300">
+    <div
+      className="fixed left-3 right-3 sm:bottom-6 sm:left-auto sm:right-6 z-50 max-w-sm mx-auto sm:mx-0 animate-in fade-in slide-in-from-bottom-5 duration-300"
+      style={{
+        bottom: typeof window !== 'undefined' && window.innerWidth < 640
+          ? 'calc(max(env(safe-area-inset-bottom, 0px), 8px) + 64px)'
+          : undefined,
+      }}
+    >
       <div className="p-3.5 sm:p-4 bg-white/95 dark:bg-[#0e121b]/95 border border-slate-200 dark:border-white/[0.16] shadow-2xl backdrop-blur-2xl rounded-2xl relative text-slate-800 dark:text-slate-100">
         <button
           onClick={handleDismiss}

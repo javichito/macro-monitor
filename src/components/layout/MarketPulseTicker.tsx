@@ -126,9 +126,9 @@ export function MarketPulseTicker() {
             </span>
           </div>
 
-          {/* Marquee / Scrollable Benchmarks Container */}
+          {/* Marquee / Scrollable Benchmarks Container with horizontal gradient mask on mobile */}
           {!isCollapsed && (
-            <div className="flex-1 overflow-x-auto no-scrollbar flex items-center gap-2 sm:gap-4 py-0.5 px-1 scroll-smooth">
+            <div className="flex-1 overflow-x-auto no-scrollbar scroll-mask-x sm:[mask-image:none] flex items-center gap-2 sm:gap-4 py-0.5 px-1 scroll-smooth">
               {MARKET_BENCHMARKS.map((b) => {
                 const isPositive = b.changePercent >= 0;
                 return (
@@ -136,7 +136,7 @@ export function MarketPulseTicker() {
                     key={b.id}
                     type="button"
                     onClick={() => setSelectedBenchmark(b)}
-                    className="flex shrink-0 items-center gap-2 rounded-lg px-2 py-1 text-xs hover:bg-white/[0.08] transition-colors group cursor-pointer focus:outline-none focus:ring-1 focus:ring-white/20"
+                    className="flex shrink-0 items-center gap-2 rounded-lg px-2.5 py-1 text-xs hover:bg-white/[0.08] transition-colors group cursor-pointer focus:outline-none focus:ring-1 focus:ring-white/20 active:scale-95"
                     title={`Click to view macro intelligence for ${b.name}`}
                   >
                     <span className="font-semibold text-white/90 group-hover:text-white transition-colors">
@@ -192,7 +192,7 @@ export function MarketPulseTicker() {
         </div>
       </div>
 
-      {/* Detail Modal: Rendered via portal to document.body to break out of header backdrop-filter stacking context */}
+      {/* Detail Modal: Rendered as native Apple bottom-sheet on mobile and centered card on desktop */}
       {mounted &&
         selectedBenchmark &&
         createPortal(
@@ -200,18 +200,21 @@ export function MarketPulseTicker() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-benchmark-title"
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl overflow-y-auto animate-in fade-in duration-200"
+            className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-xl overflow-y-auto animate-in fade-in duration-200"
             onClick={() => setSelectedBenchmark(null)}
           >
             <div
-              className="apple-card max-w-lg w-full p-6 sm:p-7 relative border border-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] bg-[#0b0e17] my-auto"
+              className="apple-card max-w-lg w-full p-6 sm:p-7 relative border border-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] bg-[#0b0e17] rounded-t-3xl sm:rounded-2xl max-h-[90vh] overflow-y-auto my-0 sm:my-auto pb-8 sm:pb-7 safe-bottom"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Bottom-sheet drag indicator pill on mobile */}
+              <div className="w-12 h-1 bg-white/20 rounded-full mx-auto mb-4 sm:hidden" />
+
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setSelectedBenchmark(null)}
-                className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.15] transition-colors focus:outline-none"
+                className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.15] transition-colors focus:outline-none active:scale-95 cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="h-4 w-4" />

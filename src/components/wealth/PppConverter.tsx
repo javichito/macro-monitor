@@ -197,7 +197,7 @@ export function PppConverter() {
             aria-label="Origin Country"
             value={fromCountryCode}
             onChange={(e) => setFromCountryCode(e.target.value)}
-            className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-2.5 text-sm font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] focus:outline-none transition-colors"
+            className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-2.5 text-base sm:text-sm font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] focus:outline-none transition-colors"
           >
             {COUNTRIES_DATA.map((c) => (
               <option key={c.code} value={c.code} className="bg-white dark:bg-[#12141c] text-slate-900 dark:text-white">
@@ -213,7 +213,7 @@ export function PppConverter() {
             type="button"
             onClick={handleSwap}
             aria-label="Swap origin and target countries"
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] text-slate-600 dark:text-white/70 hover:bg-slate-200/80 dark:hover:bg-white/[0.1] hover:text-slate-900 dark:hover:text-white transition-all active:scale-95"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] text-slate-600 dark:text-white/70 hover:bg-slate-200/80 dark:hover:bg-white/[0.1] hover:text-slate-900 dark:hover:text-white transition-all active:scale-95 cursor-pointer"
             title="Swap origin and destination countries"
           >
             <ArrowRightLeft className="h-4 w-4" />
@@ -229,7 +229,7 @@ export function PppConverter() {
             aria-label="Destination Country"
             value={toCountryCode}
             onChange={(e) => setToCountryCode(e.target.value)}
-            className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-2.5 text-sm font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] focus:outline-none transition-colors"
+            className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-2.5 text-base sm:text-sm font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] focus:outline-none transition-colors"
           >
             {COUNTRIES_DATA.map((c) => (
               <option key={c.code} value={c.code} className="bg-white dark:bg-[#12141c] text-slate-900 dark:text-white">
@@ -250,12 +250,13 @@ export function PppConverter() {
             </div>
             <input
               type="number"
+              inputMode="decimal"
               min="0"
               step="5000"
               aria-label="Capital or Net Worth in USD"
               value={netWorth}
               onChange={(e) => setNetWorth(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] pl-9 pr-3.5 py-2.5 text-sm font-mono font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] focus:outline-none transition-colors"
+              className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] pl-9 pr-3.5 py-2.5 text-base sm:text-sm font-mono font-medium text-slate-900 dark:text-white focus:border-[#0a84ff] focus:outline-none transition-colors"
             />
           </div>
         </div>
@@ -272,7 +273,7 @@ export function PppConverter() {
               key={val}
               type="button"
               onClick={() => setNetWorth(val)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-all ${
+              className={`px-3 py-1.5 min-h-[36px] flex items-center justify-center text-xs font-medium rounded-full border transition-all active:scale-95 ${
                 netWorth === val
                   ? 'bg-[#0a84ff]/20 text-[#0071e3] dark:text-[#0a84ff] border-[#0a84ff]/40 shadow-sm'
                   : 'border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.04] text-slate-600 dark:text-white/70 hover:bg-slate-200/80 dark:hover:bg-white/[0.08] hover:text-slate-900 dark:hover:text-white'
@@ -408,7 +409,7 @@ export function PppConverter() {
                 placeholder="Search country..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] pl-8 pr-3 py-1.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:border-[#0a84ff] focus:outline-none transition-colors"
+                className="rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.05] pl-8 pr-3 py-1.5 text-base sm:text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 focus:border-[#0a84ff] focus:outline-none transition-colors"
               />
             </div>
 
@@ -422,7 +423,7 @@ export function PppConverter() {
           </div>
         </div>
 
-        {/* Region Filter Pills */}
+        {/* Region Filter Pills with horizontal scroll indicator */}
         <div className="flex flex-wrap gap-1.5 mb-4">
           {regions.map((reg) => (
             <button
@@ -440,8 +441,14 @@ export function PppConverter() {
           ))}
         </div>
 
-        {/* Sovereign Table */}
-        <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-white/10">
+        {/* Mobile horizontal scroll cue */}
+        <div className="sm:hidden flex items-center justify-between text-[11px] text-slate-500 dark:text-white/50 px-1 mb-2">
+          <span>Ranked 31 economies</span>
+          <span>Swipe table &rarr;</span>
+        </div>
+
+        {/* Sovereign Table with edge gradient mask on mobile */}
+        <div className="overflow-x-auto no-scrollbar scroll-mask-x sm:[mask-image:none] rounded-xl border border-slate-200 dark:border-white/10">
           <table className="w-full text-left text-xs text-slate-700 dark:text-white/80">
             <thead className="bg-slate-100/80 dark:bg-white/[0.04] text-[11px] uppercase tracking-wider text-slate-500 dark:text-white/50 border-b border-slate-200 dark:border-white/10">
               <tr>

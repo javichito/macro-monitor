@@ -59,8 +59,8 @@ export function TimelineControls() {
           {isPlayingTimeline ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 translate-x-0.5 fill-current" />}
         </button>
 
-        {/* Custom Apple-styled range scrubber */}
-        <div className="relative flex-1 py-1">
+        {/* Custom Apple-styled range scrubber with generous touch targets */}
+        <div className="relative flex-1 py-2 sm:py-1">
           <div className="relative h-2.5 w-full rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden">
             {/* Active progress fill */}
             <div
@@ -69,6 +69,7 @@ export function TimelineControls() {
             />
           </div>
 
+          {/* Expanded 40px touch hit-box to ensure thumbs scrub smoothly on mobile without mis-taps */}
           <input
             type="range"
             min={0}
@@ -78,7 +79,7 @@ export function TimelineControls() {
               const idx = Number(e.target.value);
               setSelectedYear(availableYears[idx]);
             }}
-            className="absolute inset-0 h-full w-full opacity-0 cursor-pointer"
+            className="absolute inset-x-0 -top-2.5 -bottom-2.5 h-10 w-full opacity-0 cursor-pointer touch-none"
             aria-label="Select timeline year"
           />
 
@@ -107,17 +108,19 @@ export function TimelineControls() {
           </div>
         </div>
 
-        {/* Reset to present button: Apple glass pill */}
+        {/* Reset to present button: Apple glass pill with mobile-responsive label */}
         <button
           onClick={() => {
             setIsPlayingTimeline(false);
             setSelectedYear(2026);
           }}
-          className="hidden sm:flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3.5 py-2 rounded-full bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/[0.10] hover:border-slate-300 dark:hover:border-white/[0.20] transition-all shadow-sm active:scale-95"
+          className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-2.5 sm:px-3.5 py-2 rounded-full bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/[0.10] hover:border-slate-300 dark:hover:border-white/[0.20] transition-all shadow-sm active:scale-95 shrink-0"
           title="Reset to 2026"
+          aria-label="Reset to 2026"
         >
           <RotateCcw className="h-3 w-3" />
-          <span>Latest (2026)</span>
+          <span className="hidden sm:inline">Latest (2026)</span>
+          <span className="sm:hidden text-[10px] font-semibold">2026</span>
         </button>
       </div>
     </div>

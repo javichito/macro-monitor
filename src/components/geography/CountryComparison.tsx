@@ -105,13 +105,32 @@ export function CountryComparison({
     }
   }, [initialCountryCodeB]);
 
-  const handleCopyDeepLink = () => {
+  const handleCopyDeepLink = async () => {
     if (typeof window === 'undefined') return;
     const url = new URL(window.location.href);
     url.searchParams.set('a', countryCodeA);
     url.searchParams.set('b', countryCodeB);
     url.searchParams.set('year', String(selectedYear));
     url.searchParams.set('currency', currencyPerspective);
+
+    /*
+     * On mobile touch devices, invoke the native OS share sheet for immediate sharing
+     * without having to paste into a messaging application.
+     */
+    if (typeof navigator !== 'undefined' && navigator.share && window.innerWidth < 640) {
+      try {
+        await navigator.share({
+          title: `Macro Duel: ${countryA.name} vs. ${countryB.name}`,
+          text: `Compare macroeconomic balance sheets between ${countryA.name} and ${countryB.name} on MacroMonitor:`,
+          url: url.toString(),
+        });
+        setHasCopiedLink(true);
+        setTimeout(() => setHasCopiedLink(false), 2200);
+        return;
+      } catch (err: any) {
+        if (err.name === 'AbortError') return;
+      }
+    }
 
     navigator.clipboard.writeText(url.toString()).then(() => {
       setHasCopiedLink(true);
@@ -369,7 +388,7 @@ export function CountryComparison({
                 <select
                   value={countryCodeA}
                   onChange={(e) => setCountryCodeA(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 dark:border-white/[0.12] bg-white dark:bg-[#0c1017] px-3.5 py-2.5 text-sm font-semibold text-slate-900 dark:text-white focus:border-sky-400 focus:outline-none cursor-pointer"
+                  className="w-full rounded-xl border border-slate-200 dark:border-white/[0.12] bg-white dark:bg-[#0c1017] px-3.5 py-2.5 text-base sm:text-sm font-semibold text-slate-900 dark:text-white focus:border-sky-400 focus:outline-none cursor-pointer"
                 >
                   {COUNTRIES_DATA.map((c) => (
                     <option key={`a-${c.code}`} value={c.code} disabled={c.code === countryCodeB}>
@@ -407,7 +426,7 @@ export function CountryComparison({
                 <select
                   value={countryCodeB}
                   onChange={(e) => setCountryCodeB(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 dark:border-white/[0.12] bg-white dark:bg-[#0c1017] px-3.5 py-2.5 text-sm font-semibold text-slate-900 dark:text-white focus:border-emerald-400 focus:outline-none cursor-pointer"
+                  className="w-full rounded-xl border border-slate-200 dark:border-white/[0.12] bg-white dark:bg-[#0c1017] px-3.5 py-2.5 text-base sm:text-sm font-semibold text-slate-900 dark:text-white focus:border-emerald-400 focus:outline-none cursor-pointer"
                 >
                   {COUNTRIES_DATA.map((c) => (
                     <option key={`b-${c.code}`} value={c.code} disabled={c.code === countryCodeA}>

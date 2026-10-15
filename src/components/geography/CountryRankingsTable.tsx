@@ -159,68 +159,74 @@ export function CountryRankingsTable({
               placeholder="Search country..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 pr-3.5 py-1.5 text-xs rounded-full bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-sky-500 transition-colors w-36 sm:w-48"
+              className="pl-8 pr-3.5 py-1.5 text-base sm:text-xs rounded-full bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-sky-500 transition-colors w-40 sm:w-48"
             />
           </div>
 
-            <select
-              value={selectedRegion}
-              onChange={(e) => setSelectedRegion(e.target.value)}
-              className="py-1.5 px-3 text-xs rounded-full bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500 cursor-pointer"
-            >
-              <option value="all" className="bg-white dark:bg-[#121622] text-slate-900 dark:text-white">All Regions</option>
-              {regions.filter((r) => r !== 'all').map((r) => (
-                <option key={r} value={r} className="bg-white dark:bg-[#121622] text-slate-900 dark:text-white">
-                  {r}
-                </option>
-              ))}
-            </select>
+          <select
+            value={selectedRegion}
+            onChange={(e) => setSelectedRegion(e.target.value)}
+            className="py-1.5 px-3 text-base sm:text-xs rounded-full bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500 cursor-pointer"
+          >
+            <option value="all" className="bg-white dark:bg-[#121622] text-slate-900 dark:text-white">All Regions</option>
+            {regions.filter((r) => r !== 'all').map((r) => (
+              <option key={r} value={r} className="bg-white dark:bg-[#121622] text-slate-900 dark:text-white">
+                {r}
+              </option>
+            ))}
+          </select>
 
-            {/* One-click Data Export for Researchers & Journalists */}
-            <DataExportMenu
-              title={`Global Sovereign Wealth & Macro League Table (${selectedYear})`}
-              filename={`sovereign-league-table-${selectedYear}`}
-              data={() =>
-                filteredAndSortedData.map((row, index) => ({
-                  rank: index + 1,
-                  code: row.country.code,
-                  name: row.country.name,
-                  region: row.country.region,
-                  meanWealthPerAdultUsd: Math.round(row.adjMean),
-                  medianWealthPerAdultUsd: Math.round(row.adjMedian),
-                  totalWealthTrillionUsd: Number(row.adjTotal.toFixed(2)),
-                  debtToGdpPercent: Number(row.debtToGdp.toFixed(1)),
-                  giniCoefficient: Number(row.gini.toFixed(3)),
-                  gdpTrillionUsd: row.metrics?.gdpTrillionUSD || 0,
-                  inflationRatePercent: row.metrics?.inflationRate || 0,
-                }))
-              }
-              columns={[
-                { key: 'rank', label: 'Rank #' },
-                { key: 'code', label: 'Country Code' },
-                { key: 'name', label: 'Country Name' },
-                { key: 'region', label: 'Region' },
-                { key: 'meanWealthPerAdultUsd', label: `Mean Wealth per Adult ($ ${currencyPerspective.toUpperCase()})` },
-                { key: 'medianWealthPerAdultUsd', label: `Median Wealth per Adult ($ ${currencyPerspective.toUpperCase()})` },
-                { key: 'totalWealthTrillionUsd', label: `Total Private Wealth ($T ${currencyPerspective.toUpperCase()})` },
-                { key: 'debtToGdpPercent', label: 'Debt-to-GDP (%)' },
-                { key: 'giniCoefficient', label: 'Gini Coefficient (0–1)' },
-                { key: 'gdpTrillionUsd', label: 'GDP ($ Trillion)' },
-                { key: 'inflationRatePercent', label: 'Inflation Rate (%)' },
-              ]}
-              metadata={{
-                description: `Cross-country macro rankings across ${filteredAndSortedData.length} sovereign economies.`,
-                source: 'UBS Global Wealth Databook, IMF, World Bank, Federal Reserve',
-                year: selectedYear,
-                perspective: `${currencyPerspective.toUpperCase()} USD`,
-                totalCountries: filteredAndSortedData.length,
-              }}
-            />
-          </div>
+          {/* One-click Data Export for Researchers & Journalists */}
+          <DataExportMenu
+            title={`Global Sovereign Wealth & Macro League Table (${selectedYear})`}
+            filename={`sovereign-league-table-${selectedYear}`}
+            data={() =>
+              filteredAndSortedData.map((row, index) => ({
+                rank: index + 1,
+                code: row.country.code,
+                name: row.country.name,
+                region: row.country.region,
+                meanWealthPerAdultUsd: Math.round(row.adjMean),
+                medianWealthPerAdultUsd: Math.round(row.adjMedian),
+                totalWealthTrillionUsd: Number(row.adjTotal.toFixed(2)),
+                debtToGdpPercent: Number(row.debtToGdp.toFixed(1)),
+                giniCoefficient: Number(row.gini.toFixed(3)),
+                gdpTrillionUsd: row.metrics?.gdpTrillionUSD || 0,
+                inflationRatePercent: row.metrics?.inflationRate || 0,
+              }))
+            }
+            columns={[
+              { key: 'rank', label: 'Rank #' },
+              { key: 'code', label: 'Country Code' },
+              { key: 'name', label: 'Country Name' },
+              { key: 'region', label: 'Region' },
+              { key: 'meanWealthPerAdultUsd', label: `Mean Wealth per Adult ($ ${currencyPerspective.toUpperCase()})` },
+              { key: 'medianWealthPerAdultUsd', label: `Median Wealth per Adult ($ ${currencyPerspective.toUpperCase()})` },
+              { key: 'totalWealthTrillionUsd', label: `Total Private Wealth ($T ${currencyPerspective.toUpperCase()})` },
+              { key: 'debtToGdpPercent', label: 'Debt-to-GDP (%)' },
+              { key: 'giniCoefficient', label: 'Gini Coefficient (0–1)' },
+              { key: 'gdpTrillionUsd', label: 'GDP ($ Trillion)' },
+              { key: 'inflationRatePercent', label: 'Inflation Rate (%)' },
+            ]}
+            metadata={{
+              description: `Cross-country macro rankings across ${filteredAndSortedData.length} sovereign economies.`,
+              source: 'UBS Global Wealth Databook, IMF, World Bank, Federal Reserve',
+              year: selectedYear,
+              perspective: `${currencyPerspective.toUpperCase()} USD`,
+              totalCountries: filteredAndSortedData.length,
+            }}
+          />
         </div>
+      </div>
 
-      {/* Responsive Sortable Table */}
-      <div className="overflow-x-auto no-scrollbar rounded-2xl border border-slate-200 dark:border-white/[0.08]">
+      {/* Mobile horizontal scroll cue */}
+      <div className="sm:hidden flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 px-1 -mb-2">
+        <span>Showing {filteredAndSortedData.length} economies</span>
+        <span>Swipe horizontally &rarr;</span>
+      </div>
+
+      {/* Responsive Sortable Table with edge gradient mask on mobile */}
+      <div className="overflow-x-auto no-scrollbar scroll-mask-x sm:[mask-image:none] rounded-2xl border border-slate-200 dark:border-white/[0.08]">
         <table className="w-full text-left text-xs">
           <thead className="bg-slate-50 dark:bg-white/[0.04] border-b border-slate-200 dark:border-white/[0.08] text-slate-600 dark:text-slate-300 font-semibold uppercase tracking-wider">
             <tr>
@@ -318,17 +324,36 @@ export function CountryRankingsTable({
                   {index + 1}
                 </td>
                 <td className="py-3 px-4 font-medium text-slate-900 dark:text-white">
-                  <div className="flex items-center gap-2.5">
-                    <span className="text-xl shrink-0">{row.country.flag}</span>
-                    <div>
-                      <span className="font-semibold block tracking-tight">
-                        {row.country.name}
-                      </span>
-                      <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono block">
-                        {row.country.region}
-                      </span>
+                  {onSelectCountryForDuel ? (
+                    <button
+                      type="button"
+                      onClick={() => onSelectCountryForDuel(row.country.code)}
+                      className="flex items-center gap-2.5 text-left group/country cursor-pointer"
+                      title={`Tap to compare ${row.country.name} in Sovereign Duel`}
+                    >
+                      <span className="text-xl shrink-0 group-hover/country:scale-110 transition-transform">{row.country.flag}</span>
+                      <div>
+                        <span className="font-semibold block tracking-tight group-hover/country:text-sky-600 dark:group-hover/country:text-sky-400 transition-colors">
+                          {row.country.name}
+                        </span>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono block">
+                          {row.country.region}
+                        </span>
+                      </div>
+                    </button>
+                  ) : (
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-xl shrink-0">{row.country.flag}</span>
+                      <div>
+                        <span className="font-semibold block tracking-tight">
+                          {row.country.name}
+                        </span>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono block">
+                          {row.country.region}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </td>
                 <td className="py-3 px-4 text-right font-bold text-emerald-600 dark:text-emerald-400">
                   {formatCurrency(row.adjMedian, { compact: true })}
