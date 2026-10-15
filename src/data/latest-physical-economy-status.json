@@ -1,0 +1,70 @@
+{
+  "timestamp": "2026-10-15T18:51:49.827Z",
+  "asOfDate": "2026",
+  "energyMetrics": {
+    "latestEnergyBurdenPctGdp": 6.1,
+    "energyRegime": "moderate",
+    "brentCrudeUsd": 74.8,
+    "recessionDangerThresholdPct": 8,
+    "recessionCrisisThresholdPct": 10,
+    "annualEnergyBillTrillionUsd": 7.09,
+    "oilExpenditurePctGdp": 2.4,
+    "cleanAndElectricExpenditurePctGdp": 2.3,
+    "energyIntensityIndex": 50.1
+  },
+  "tradeMetrics": {
+    "worldTradeToGdpPct": 57.2,
+    "peakTradeToGdpPct": 61,
+    "tradeDeltaFromPeakPct": -3.8,
+    "geoeconomicFragmentationIndex": 85,
+    "averageGlobalTariffRatePct": 4.9,
+    "deglobalizationPhase": "geoeconomic_fragmentation"
+  },
+  "demographicMetrics": {
+    "globalWorkingAgeGrowthPct": 0.78,
+    "globalOldAgeDependencyRatio": 16.2,
+    "projectedWorldDependencyRatio2050": 25.2,
+    "criticalContractions": [
+      {
+        "country": "CHN",
+        "workingAgeGrowthPct": -0.45,
+        "dependencyRatio": 22.8
+      },
+      {
+        "country": "DEU",
+        "workingAgeGrowthPct": -0.55,
+        "dependencyRatio": 38.5
+      },
+      {
+        "country": "JPN",
+        "workingAgeGrowthPct": -0.75,
+        "dependencyRatio": 53.8
+      },
+      {
+        "country": "KOR",
+        "workingAgeGrowthPct": -1.1,
+        "dependencyRatio": 27.5
+      }
+    ]
+  },
+  "activeAlerts": [
+    {
+      "id": "energy-benign-status",
+      "level": "BENIGN",
+      "headline": "✅ Energy Burden Manageable: 6.1% of World GDP (Brent at $74.8/bbl)",
+      "body": "Current energy expenditure is comfortably below the 8.0% recession warning threshold, providing a stable tailwind to the global physical economy."
+    },
+    {
+      "id": "deglobalization-fragmentation",
+      "level": "INFO",
+      "headline": "📉 Deglobalization / Fragmentation: Trade at 57.2% (-3.8% vs 2008 Peak)",
+      "body": "World trade peaked as a share of GDP in 2008 (61.0%). Active geoeconomic fragmentation, tariff escalation, and friendshoring policies have permanently plateaued cross-border merchandise intensity."
+    },
+    {
+      "id": "demographic-cliff-strain",
+      "level": "WARNING",
+      "headline": "⏳ Secular Demographic Cliff: Working-Age Contraction in China, Japan & EU",
+      "body": "Working-age populations are contracting across China (-0.45% p.a.), Germany (-0.55% p.a.), and Japan (-0.75% p.a.). Rising old-age dependency ratios cement permanent fiscal dominance and age-related entitlement liabilities."
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import { WealthPyramid } from '../../components/wealth/WealthPyramid';
 import { InequalityTrends } from '../../components/wealth/InequalityTrends';
 import { WealthCalculator } from '../../components/wealth/WealthCalculator';
 import { PppConverter } from '../../components/wealth/PppConverter';
+import { HouseholdVulnerabilityRadar } from '../../components/wealth/HouseholdVulnerabilityRadar';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import { TrendingUp, Scale, Compass, Globe2 } from 'lucide-react';
 import { extractParamsFromUrl } from '../../lib/deep-link';
@@ -77,6 +78,17 @@ export default function WealthPage() {
         takeaway="A household with $150,000 has middle-class purchasing power in high-cost hubs like Zurich or San Francisco, but upper-echelon purchasing power in Spain, Japan, or India. True economic freedom is a function of both your capital and where you spend it."
         defaultExpanded={false}
       />
+
+      <PlainEnglishCard
+        title="Why does top-level median wealth mask dangerous consumer cash-flow vulnerability?"
+        summary="Median wealth measures the static stock of accumulated assets (e.g. illiquid home equity or locked pensions), but cannot pay monthly credit card bills or auto loan payments when cash flow is exhausted."
+        detail="Over 60% of US mortgage holders locked in sub-4% rates during 2020-21, keeping aggregate mortgage debt service low. However, the bottom 50% wealth tier holds only 2.6% of national wealth, has completely depleted post-pandemic excess savings buffers, and is now burdened by 22%+ credit card APRs—pushing bottom-tier delinquency to 8.4%."
+        takeaway="Macroeconomic solvency requires both asset wealth and monthly cash-flow cushion. Tracking the Debt Service Ratio (DSR), savings rate, and delinquency canary in the bottom 50% gives the earliest signal of credit cycle contractions."
+        defaultExpanded={false}
+      />
+
+      {/* Household Balance Sheets & Consumer Vulnerability Radar */}
+      <HouseholdVulnerabilityRadar />
 
       {/* Interactive Tool Suite */}
       <div className="pt-4 space-y-4">

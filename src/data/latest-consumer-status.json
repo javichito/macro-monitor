@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-10-15T18:49:52.907Z",
+  "asOfDate": "2026-Q1",
+  "globalContext": {
+    "totalHouseholdDebtTrillionUSD": 58.4,
+    "bottom50WealthSharePct": 2.6,
+    "primaryTransmissionChannel": "Revolving credit card APR spike (21.5%+) and excess savings buffer exhaustion in non-asset owning cohorts."
+  },
+  "metrics": {
+    "debtServiceRatioTotal": 9.85,
+    "debtServiceMortgageShare": 3.98,
+    "debtServiceConsumerShare": 5.87,
+    "financialObligationRatio": 14.55,
+    "personalSavingsRate": 3.9,
+    "excessSavingsStatus": "depleted",
+    "delinquencyCreditCards": 3.26,
+    "delinquencyAutoLoans": 2.9,
+    "delinquencyBottom50Tier": 8.41,
+    "delinquencyTop10Tier": 1.11,
+    "overallRegime": "strained_cash_flow"
+  },
+  "internationalBenchmarks": {
+    "USA": {
+      "dsr": 9.85,
+      "savingsRate": 3.9,
+      "delinquency": 3.26,
+      "debtToIncome": 99
+    },
+    "CAN": {
+      "dsr": 14.9,
+      "savingsRate": 5.4,
+      "delinquency": 2.85,
+      "debtToIncome": 178.5
+    },
+    "AUS": {
+      "dsr": 15.2,
+      "savingsRate": 2.8,
+      "delinquency": 2.4,
+      "debtToIncome": 185
+    },
+    "GBR": {
+      "dsr": 11.8,
+      "savingsRate": 9.8,
+      "delinquency": 2.7,
+      "debtToIncome": 135.2
+    },
+    "EUR": {
+      "dsr": 8.8,
+      "savingsRate": 14.6,
+      "delinquency": 1.8,
+      "debtToIncome": 88.5
+    },
+    "DEU": {
+      "dsr": 7.9,
+      "savingsRate": 11.2,
+      "delinquency": 1.2,
+      "debtToIncome": 82
+    },
+    "FRA": {
+      "dsr": 9.2,
+      "savingsRate": 17.1,
+      "delinquency": 1.45,
+      "debtToIncome": 98
+    },
+    "JPN": {
+      "dsr": 7.4,
+      "savingsRate": 4.1,
+      "delinquency": 1.1,
+      "debtToIncome": 68.4
+    },
+    "KOR": {
+      "dsr": 14.5,
+      "savingsRate": 6.8,
+      "delinquency": 2.95,
+      "debtToIncome": 198.2
+    },
+    "SWE": {
+      "dsr": 12.8,
+      "savingsRate": 13.5,
+      "delinquency": 2.1,
+      "debtToIncome": 188
+    },
+    "CHE": {
+      "dsr": 10.4,
+      "savingsRate": 19.2,
+      "delinquency": 0.85,
+      "debtToIncome": 128
+    },
+    "CHN": {
+      "dsr": 10.8,
+      "savingsRate": 32.5,
+      "delinquency": 2.65,
+      "debtToIncome": 142
+    }
+  },
+  "activeAlerts": [
+    {
+      "id": "tier-divergence",
+      "level": "CRITICAL",
+      "headline": "🚨 Bottom 50% Wealth Tier Canary: 8.41% Credit Card Delinquency",
+      "body": "While top-level median wealth appears stable, excess savings buffers for the bottom 80% are fully depleted. High APR (21.5%+) revolving credit card debt is driving serious delinquencies to multi-year highs in lower wealth cohorts."
+    },
+    {
+      "id": "consumer-dsr-strain",
+      "level": "WARNING",
+      "headline": "⚡ Consumer Credit DSR at 5.87%: Multi-Decade Pressure Point",
+      "body": "While fixed-rate mortgages insulate existing homeowners (Mortgage DSR: 3.98%), non-mortgage borrowing obligations (credit cards, auto financing) have surged as a share of disposable income."
+    },
+    {
+      "id": "savings-depleted",
+      "level": "WARNING",
+      "headline": "📉 Personal Savings Rate at 3.9%: Depleted Cash Cushions",
+      "body": "US consumers are saving only 3.9% of disposable income, well below the pre-pandemic historical norm (7.4%), signaling that consumer spending relies heavily on debt expansion."
+    }
+  ]
+}

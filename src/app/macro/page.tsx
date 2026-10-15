@@ -18,6 +18,8 @@ import { CrossAssetRatioStudio } from '../../components/macro/CrossAssetRatioStu
 import { CreditMarketRadar } from '../../components/macro/CreditMarketRadar';
 import { BondVolatilityPlumbingRadar } from '../../components/macro/BondVolatilityPlumbingRadar';
 import { HousingMacroRadar } from '../../components/macro/HousingMacroRadar';
+import { MonetaryMechanicsRadar } from '../../components/macro/MonetaryMechanicsRadar';
+import { PhysicalEconomyRadar } from '../../components/macro/PhysicalEconomyRadar';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
 import {
   BarChart3,
@@ -44,12 +46,14 @@ type MacroSectionTab =
   | 'credit'
   | 'volatility'
   | 'housing'
+  | 'physical'
   | 'leading'
   | 'labor'
   | 'inflation'
   | 'external'
   | 'calendar'
-  | 'liquidity';
+  | 'liquidity'
+  | 'mechanics';
 
 export default function MacroPage() {
   const [activeTab, setActiveTab] = useState<MacroSectionTab>('all');
@@ -71,15 +75,35 @@ export default function MacroPage() {
         'credit',
         'volatility',
         'housing',
+        'physical',
         'leading',
         'labor',
         'inflation',
         'external',
         'calendar',
         'liquidity',
+        'mechanics',
       ].includes(tabParam)
     ) {
       setActiveTab(tabParam);
+    } else if (
+      hash.includes('physical') ||
+      hash.includes('energy') ||
+      hash.includes('deglobalization') ||
+      params.has('pe_view') ||
+      params.has('pe_region') ||
+      params.has('pe_oil')
+    ) {
+      setActiveTab('physical');
+    } else if (
+      hash.includes('monetary-mechanics') ||
+      hash.includes('velocity') ||
+      hash.includes('issuance') ||
+      params.has('mm_view') ||
+      params.has('mm_bill') ||
+      params.has('mm_vdel')
+    ) {
+      setActiveTab('mechanics');
     } else if (
       hash.includes('volatility') ||
       hash.includes('plumbing') ||
@@ -201,6 +225,17 @@ export default function MacroPage() {
               <span>Housing &amp; Affordability</span>
             </button>
             <button
+              onClick={() => setActiveTab('physical')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'physical'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Zap className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
+              <span>Physical, Energy &amp; Deglob</span>
+            </button>
+            <button
               onClick={() => setActiveTab('leading')}
               className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
                 activeTab === 'leading'
@@ -266,6 +301,17 @@ export default function MacroPage() {
               <Landmark className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
               <span>Liquidity &amp; Fiscal</span>
             </button>
+            <button
+              onClick={() => setActiveTab('mechanics')}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                activeTab === 'mechanics'
+                  ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+              }`}
+            >
+              <Layers className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+              <span>Velocity &amp; Issuance</span>
+            </button>
           </div>
         </div>
       </div>
@@ -289,6 +335,9 @@ export default function MacroPage() {
 
       {/* Housing Macro & Affordability Dynamics */}
       {(activeTab === 'all' || activeTab === 'housing') && <HousingMacroRadar />}
+
+      {/* Physical Economy, Energy Burden & Deglobalization */}
+      {(activeTab === 'all' || activeTab === 'physical') && <PhysicalEconomyRadar />}
 
       {/* Leading Indicators & High-Frequency Nowcasting Radar */}
       {(activeTab === 'all' || activeTab === 'leading') && <LeadingIndicatorsRadar />}
@@ -314,11 +363,40 @@ export default function MacroPage() {
         </>
       )}
 
+      {/* Monetary Velocity & Sovereign Debt Issuance Mechanics */}
+      {(activeTab === 'all' || activeTab === 'mechanics' || activeTab === 'liquidity') && (
+        <MonetaryMechanicsRadar />
+      )}
+
       {/* Historical Macro Trend Visualizer */}
       {(activeTab === 'all' || activeTab === 'liquidity') && <MacroTrendChart />}
 
       {/* Plain English Guides */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <PlainEnglishCard
+          title="Why does Global Energy Expenditure exceeding 8%–10% of World GDP trigger global recessions?"
+          summary="Energy is the non-negotiable master resource of the physical economy; when its expenditure crosses 8% to 10% of global GDP, it acts as a regressive global consumption tax that historically precedes almost every modern recession."
+          detail="Unlike discretionary consumer goods, primary energy (crude oil, natural gas, coal, power) cannot be substituted in the short run. When oil prices spike and primary energy absorbs >8% of world GDP, trillions of dollars in purchasing power are forcibly transferred from consumers and manufacturing corporations to commodity petrostates with low marginal propensity to spend. In 1974 (10.4%), 1980 (11.8%), 2008 (8.8%), and 2022 (8.4%), this energy tax drained household discretionary cash flow, compressed corporate operating margins, and forced central banks to tighten into supply shocks, triggering widespread global contractions."
+          takeaway="Track the 8.0% warning and 10.0% crisis lines: crossing 8% indicates late-cycle vulnerability; crossing 10% signals imminent global economic contraction."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="How did the 2008 peak in Global Trade-to-GDP (~61%) mark the transition to geoeconomic fragmentation and friendshoring?"
+          summary="World merchandise and services trade peaked at 61% of GDP in 2008, bringing the Hyperglobalization era to an end in favor of supply chain resilience, tariff walls, and friendshoring."
+          detail="Between 1990 and 2008, cross-border trade expanded at more than twice the pace of global GDP, powered by the fall of the Soviet bloc, the founding of the WTO, and China's 2001 accession. Following the 2008 Global Financial Crisis, multinational corporations reached the limits of just-in-time offshoring. Geopolitical tensions, US-China tariff barriers (Section 301), semiconductor export bans, and European energy security shocks accelerated friendshoring and nearshoring (e.g. Mexico, Vietnam, India), stabilizing global trade-to-GDP around 57%–58%."
+          takeaway="The peak in trade openness proves globalization has shifted from lowest-cost arbitrage to security-first resilience, raising structural baseline inflation."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="Why does the Secular Demographic Cliff in China, Japan, and Europe cement permanent fiscal dominance?"
+          summary="The irreversible contraction of working-age populations (ages 15-64) caps potential real GDP growth and drives structural fiscal dominance as sovereign pension and healthcare liabilities balloon."
+          detail="In demographic frontier societies like Japan (53.8 dependents per 100 workers), South Korea (fertility 0.72), and China (workforce shrinking by 4-5 million annually since 2015), the ratio of tax-paying workers to benefit-drawing retirees has collapsed. Because age-related entitlement liabilities (pensions and healthcare) exceed 200%–350% of GDP across the OECD, governments cannot balance budgets through taxation alone. This demographic imbalance creates permanent structural deficits, forcing central banks into ongoing debt monetization and financial repression to prevent sovereign insolvency."
+          takeaway="Contracting workforces structurally suppress real potential GDP growth while mathematically enforcing sovereign fiscal dominance and debt monetization."
+          defaultExpanded={true}
+        />
+
         <PlainEnglishCard
           title="Why does the Housing Affordability Index (HAI) dictate cyclical macroeconomic inflection points?"
           summary="An HAI below 100 locks median-income families out of conventional home purchases, freezing entry-level transaction volumes and triggering consumer demand drag."
@@ -499,6 +577,30 @@ export default function MacroPage() {
           summary="The Senior Loan Officer Opinion Survey measures whether banks are closing their credit windows to businesses, directly starving payroll funding 2 to 4 quarters ahead."
           detail="Conducted quarterly by the Federal Reserve Board, the SLOOS surveys senior executives at ~80 large domestic banks. Because small and medium businesses rely on bank credit lines to finance inventory, payroll, and capital equipment, a net tightening percentage above +30% to +40% invariably forces companies to freeze hiring and initiate layoffs within 6 to 12 months."
           takeaway="Watch net tightening standards for C&I loans: when SLOOS spikes above +40%, an economic downturn is mathematically locked in."
+          defaultExpanded={false}
+        />
+
+        <PlainEnglishCard
+          title="Why did trillions in 2010s QE fail to spark consumer inflation? (The Velocity Collapse)"
+          summary="QE swapped bonds for commercial bank reserves rather than giving cash to consumers; collapsing money velocity completely neutralized monetary base expansion."
+          detail="According to the classical Equation of Exchange (M * V = P * Y), nominal economic transactions equal the money supply multiplied by the speed at which it circulates. In the post-2008 QE era, the Federal Reserve paid Interest on Reserve Balances (IORB), incentivizing commercial banks to park excess liquidity safely at the central bank rather than lending it into the physical economy. Because private credit growth stalled and money velocity plummeted from 1.95 to 1.43, trillions of printed base dollars inflated asset prices on Wall Street while consumer price inflation (CPI) languished below the 2% target for an entire decade."
+          takeaway="Balance sheet expansion without money velocity creates asset price bubbles, not consumer price inflation."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="How does tilting Treasury issuance toward T-Bills act as 'Shadow QE' on 10-year bond yields?"
+          summary="By flooding the market with short-term bills instead of 10Y/30Y coupons, the Treasury removes duration risk and pulls idle cash from the Fed Overnight Reverse Repo (ON RRP) facility."
+          detail="When government deficits reach trillions of dollars, funding them through conventional 10-year and 30-year bond auctions absorbs massive dealer balance sheet capacity, causing term premiums and long-term interest rates to spike. In late 2023, the US Treasury addressed this by shifting gross issuance heavily into short-term Treasury Bills (>65% of net auctions, pushing bills to 21.6% of marketable debt). Money Market Funds funded these purchases by withdrawing cash from the Fed's ON RRP facility, providing an estimated 30 to 50 bps of term premium relief on 10-year Treasuries without draining bank reserves."
+          takeaway="Issuing T-Bills instead of long bonds suppresses 10-year yields like central bank bond-buying, but only as long as reverse repo cash buffers exist."
+          defaultExpanded={true}
+        />
+
+        <PlainEnglishCard
+          title="What happens to bank reserves and financial conditions when the ON RRP facility hits zero?"
+          summary="When reverse repo cash is exhausted, new Treasury bill auctions must pull liquidity directly from commercial bank deposits, tightening systemic financial conditions."
+          detail="Between 2022 and 2026, the Federal Reserve's Overnight Reverse Repo (ON RRP) facility acted as a multi-trillion dollar shock absorber, dropping from $2.55T to under $150B as Money Market Funds bought Treasury Bills. However, once ON RRP is depleted to its structural floor, Treasury bill issuance can no longer be absorbed by idle cash. Money funds must either offer higher yields to pull deposits out of commercial banks or primary dealers must finance bills using bank credit lines. This directly shrinks bank reserves, increases repo volatility, and turns debt issuance into a contractionary liquidity drain."
+          takeaway="Track the $150B ON RRP floor: once depleted, sovereign debt issuance directly drains commercial bank liquidity."
           defaultExpanded={false}
         />
       </div>

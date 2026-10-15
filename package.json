@@ -18,7 +18,10 @@
     "data:calendar": "node --experimental-strip-types scripts/sync-macro-calendar.ts",
     "data:credit": "node --experimental-strip-types scripts/sync-credit-data.ts",
     "data:collateral": "node --experimental-strip-types scripts/sync-collateral-data.ts",
-    "data:housing": "node --experimental-strip-types scripts/sync-housing-data.ts"
+    "data:housing": "node --experimental-strip-types scripts/sync-housing-data.ts",
+    "data:consumer": "node --experimental-strip-types scripts/sync-consumer-data.ts",
+    "data:mechanics": "node --experimental-strip-types scripts/sync-monetary-mechanics.ts",
+    "data:physical": "node --experimental-strip-types scripts/sync-physical-economy.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

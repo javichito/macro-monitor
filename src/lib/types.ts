@@ -1169,6 +1169,367 @@ export interface EvaluatedHousingState {
   }>;
 }
 
+// -----------------------------------------------------------------------------
+// Monetary Velocity & Debt Issuance Mechanics Types
+// -----------------------------------------------------------------------------
 
+export type MonetaryMechanicsRegionId = 'USA' | 'EUR' | 'GBR' | 'JPN' | 'CHN' | 'GLOBAL';
 
+export type VelocityRegimeType =
+  | 'qe_disinflation_trap'
+  | 'stimulus_rebound'
+  | 'normalization'
+  | 'overheated_velocity'
+  | 'deflationary_stall';
+
+export type IssuanceTiltRegime =
+  | 'heavy_tbill_shadow_qe'
+  | 'tbac_neutral_balance'
+  | 'coupon_heavy_duration_shock';
+
+export interface MonetaryVelocitySeriesPoint {
+  date: string;
+  year: number;
+  quarter: string;
+  nominalGdpTrillionUsd: number;
+  m2MoneySupplyTrillionUsd: number;
+  velocity: number;
+  velocityYoYPct: number;
+  m2GrowthYoYPct: number;
+  cpiInflationYoY: number;
+  regime: VelocityRegimeType;
+  historicalContext: string;
+}
+
+export interface TreasuryIssuanceSeriesPoint {
+  date: string;
+  year: number;
+  quarter: string;
+  tBillsOutstandingTrillionUsd: number;
+  couponsOutstandingTrillionUsd: number;
+  totalMarketableDebtTrillionUsd: number;
+  tBillSharePct: number;
+  tbacTargetMaxPct: number;
+  tbacTargetMinPct: number;
+  grossIssuanceBillSharePct: number;
+  estimatedTermPremiumSuppressionBps: number;
+  tenYearYield: number;
+  onRrpBalanceTrillionUsd: number;
+  regime: IssuanceTiltRegime;
+  policyNote: string;
+}
+
+export interface RegionalMonetaryProfile {
+  regionId: MonetaryMechanicsRegionId;
+  name: string;
+  flag: string;
+  currencyCode: string;
+  currencySymbol: string;
+  nominalGdpTrillion: number;
+  m2MoneySupplyTrillion: number;
+  currentVelocity: number;
+  velocity3YTrendPct: number;
+  velocityAllTimePeak: number;
+  velocityAllTimeLow: number;
+  totalDebtTrillion: number;
+  shortTermBillsPct: number;
+  mediumLongCouponsPct: number;
+  tbillTargetOptimalRange: [number, number];
+  shadowQeEstimatedBps: number;
+  monetaryTransmissionNote: string;
+}
+
+export interface MonetaryMechanicsOverview {
+  currentDate: string;
+  latestUsVelocity: number;
+  usVelocityYoYDelta: number;
+  latestUsM2Trillion: number;
+  latestUsNominalGdpTrillion: number;
+  currentTBillSharePct: number;
+  tbacGuidelineRange: [number, number];
+  estimatedTermPremiumSuppressionBps: number;
+  onRrpBalanceBillion: number;
+  rrpDepletedRiskScore: number;
+  regions: Record<MonetaryMechanicsRegionId, RegionalMonetaryProfile>;
+  velocityHistory: MonetaryVelocitySeriesPoint[];
+  issuanceHistory: TreasuryIssuanceSeriesPoint[];
+}
+
+export interface EvaluatedMonetaryMechanicsState {
+  timestamp: string;
+  usVelocity: number;
+  usVelocityRegime: VelocityRegimeType;
+  tBillSharePct: number;
+  issuanceRegime: IssuanceTiltRegime;
+  termPremiumSuppressionBps: number;
+  activeAlerts: Array<{
+    id: string;
+    level: 'CRITICAL' | 'WARNING' | 'OPPORTUNITY' | 'INFO';
+    headline: string;
+    body: string;
+  }>;
+}
+
+// -----------------------------------------------------------------------------
+// Household Balance Sheets & Consumer Vulnerability Types
+// -----------------------------------------------------------------------------
+
+export type ConsumerRegionId =
+  | 'USA'
+  | 'EUR'
+  | 'GBR'
+  | 'CAN'
+  | 'AUS'
+  | 'JPN'
+  | 'DEU'
+  | 'FRA'
+  | 'KOR'
+  | 'SWE'
+  | 'CHE'
+  | 'CHN';
+
+export type WealthTierId = 'all' | 'bottom50' | 'middle40' | 'top10' | 'top1';
+
+export type CashFlowResilienceRegime =
+  | 'severe_vulnerability'
+  | 'strained_cash_flow'
+  | 'moderate_cushion'
+  | 'robust_resilience';
+
+export type ExcessSavingsBufferStatus = 'depleted' | 'strained' | 'moderate' | 'surplus';
+
+export interface HistoricalConsumerPoint {
+  date: string;
+  year: number;
+  debtServiceRatioTotal: number;
+  debtServiceMortgageShare: number;
+  debtServiceConsumerShare: number;
+  financialObligationRatio: number;
+  personalSavingsRate: number;
+  excessSavingsBufferBillionsUsd: number;
+  delinquencyCreditCards: number;
+  delinquencyAutoLoans: number;
+  delinquencyBottom50Tier: number;
+  delinquencyTop10Tier: number;
+  realWageGrowthYoy: number;
+  disposableIncomeTrillionsUsd: number;
+  householdDebtToIncomePct: number;
+  eventNote?: string;
+}
+
+export interface RegionalConsumerProfile {
+  regionId: ConsumerRegionId;
+  name: string;
+  flag: string;
+  currencySymbol: string;
+  debtServiceRatio: number;
+  debtServiceMortgageShare: number;
+  debtServiceConsumerShare: number;
+  dsrHistoricalNorm: number;
+  personalSavingsRate: number;
+  savingsRatePrePandemicNorm: number;
+  excessSavingsBufferStatus: ExcessSavingsBufferStatus;
+  creditCardDelinquency: number;
+  autoLoanDelinquency: number;
+  bottom50DelinquencyRate: number;
+  top10DelinquencyRate: number;
+  householdDebtToIncome: number;
+  resilienceRegime: CashFlowResilienceRegime;
+  transmissionChannel: string;
+  macroSummary: string;
+}
+
+export interface WealthTierBreakdown {
+  tier: WealthTierId;
+  name: string;
+  shareOfHouseholdsPct: number;
+  shareOfWealthPct: number;
+  medianNetWorthUsd: number;
+  debtServiceRatio: number;
+  savingsRate: number;
+  creditCardDelinquencyRate: number;
+  autoDelinquencyRate: number;
+  vulnerabilityIndex: number;
+  vulnerabilityDescription: string;
+}
+
+export interface ConsumerVulnerabilityOverview {
+  currentDate: string;
+  usDsrTotal: number;
+  usDsrMortgage: number;
+  usDsrConsumer: number;
+  usSavingsRate: number;
+  usExcessSavingsBufferBillions: number;
+  usCreditCardDelinquency: number;
+  usAutoLoanDelinquency: number;
+  usBottom50Delinquency: number;
+  overallRegime: CashFlowResilienceRegime;
+  regions: Record<ConsumerRegionId, RegionalConsumerProfile>;
+  wealthTiers: Record<WealthTierId, WealthTierBreakdown>;
+  historicalSeries: HistoricalConsumerPoint[];
+  alerts: Array<{
+    id: string;
+    level: 'CRITICAL' | 'WARNING' | 'BENIGN' | 'INFO';
+    headline: string;
+    body: string;
+  }>;
+}
+
+export interface EvaluatedConsumerState {
+  timestamp: string;
+  debtServiceRatio: number;
+  savingsRate: number;
+  creditCardDelinquency: number;
+  autoLoanDelinquency: number;
+  resilienceRegime: CashFlowResilienceRegime;
+  excessSavingsStatus: ExcessSavingsBufferStatus;
+  activeAlerts: Array<{
+    id: string;
+    level: 'CRITICAL' | 'WARNING' | 'BENIGN' | 'INFO';
+    headline: string;
+    body: string;
+  }>;
+}
+
+// -----------------------------------------------------------------------------
+// Physical Economy, Energy & Deglobalization Types
+// -----------------------------------------------------------------------------
+
+export type PhysicalEconomyRegionId =
+  | 'GLOBAL'
+  | 'USA'
+  | 'EUR'
+  | 'CHN'
+  | 'JPN'
+  | 'DEU'
+  | 'GBR'
+  | 'IND'
+  | 'KOR';
+
+export type EnergyBurdenRegime =
+  | 'benign'              // < 6.0% GDP: Economic tailwind, low input cost friction
+  | 'moderate'            // 6.0% - 8.0% GDP: Neutral, manageable drag
+  | 'elevated_warning'    // 8.0% - 10.0% GDP: Severe friction, warning threshold
+  | 'recessionary_crisis'; // > 10.0% GDP: Global recession trigger (1974, 1980)
+
+export type DeglobalizationPhase =
+  | 'pre_wto'                   // 1970 - 1990: Cold War & pre-multilateral trade expansion
+  | 'hyperglobalization'        // 1991 - 2008: Peak Globalization, WTO expansion & China accession
+  | 'slowbalization'            // 2009 - 2017: Trade-to-GDP stagnation post-GFC
+  | 'geoeconomic_fragmentation'; // 2018 - Present: Tariffs, friendshoring, nearshoring & export controls
+
+export type DemographicPhase =
+  | 'demographic_dividend'  // Rapidly growing working-age share, low dependency
+  | 'aging_transition'     // Working-age expansion plateauing, dependency rising
+  | 'severe_aging'         // Working-age workforce shrinking, dependency 30-45
+  | 'demographic_cliff';    // Hyper-aged society, dependency >45, accelerating fiscal dominance
+
+export interface HistoricalPhysicalEconomyPoint {
+  date: string;
+  year: number;
+  worldGdpTrillionUsd: number;
+  brentCrudeUsd: number;
+  globalEnergyExpenditurePctGdp: number;
+  crudeOilExpenditurePctGdp: number;
+  cleanAndElectricExpenditurePctGdp: number;
+  energyIntensityIndex: number; // 1980 = 100
+  annualEnergyBillTrillionUsd: number;
+  energyRegime: EnergyBurdenRegime;
+  
+  // Trade & Deglobalization
+  worldTradeToGdpPct: number;
+  geoeconomicFragmentationIndex: number; // 0 to 100
+  averageGlobalTariffRatePct: number;
+  deglobalizationPhase: DeglobalizationPhase;
+
+  // Demographics
+  globalWorkingAgeGrowthPct: number;
+  globalOldAgeDependencyRatio: number;
+  
+  eventNote?: string;
+}
+
+export interface RegionalEnergyProfile {
+  energyExpenditurePercentGdp: number;
+  energyNetImportDependencePct: number;
+  vulnerabilityToOilShock: 'extreme' | 'high' | 'moderate' | 'low' | 'beneficiary';
+  oilSharePct: number;
+  gasSharePct: number;
+  coalSharePct: number;
+  nuclearSharePct: number;
+  renewablesSharePct: number;
+  renewablesPct?: number;
+  energyIntensityGdpDelta5YPct: number;
+}
+
+export interface RegionalTradeProfile {
+  tradeToGdpPct: number;
+  peakTradeRatioPct: number;
+  peakTradeYear: number;
+  tradeBalancePercentGdp: number;
+  tariffFrictionIndex: number;
+  friendshoringExposure: 'aggressive' | 'moderate' | 'resilient' | 'vulnerable';
+  strategicSupplyChainVulnerability: string;
+}
+
+export interface RegionalDemographicProfile {
+  workingAgeGrowthPct: number;
+  oldAgeDependencyRatio: number;
+  workingAgePeakYear: number;
+  medianAge: number;
+  fertilityRate: number;
+  projectedDependencyRatio2040: number;
+  projectedDependencyRatio2050: number;
+  pensionHealthcareLiabilityGdpPct: number;
+  demographicPhase: DemographicPhase;
+  macroTransmissionNote: string;
+}
+
+export interface RegionalPhysicalEconomyProfile {
+  regionId: PhysicalEconomyRegionId;
+  name: string;
+  flag: string;
+  energy: RegionalEnergyProfile;
+  trade: RegionalTradeProfile;
+  demographics: RegionalDemographicProfile;
+}
+
+export interface PhysicalEconomyOverview {
+  currentDate: string;
+  latestEnergyBurdenPctGdp: number;
+  energyRegime: EnergyBurdenRegime;
+  brentCrudeUsd: number;
+  recessionDangerThresholdPct: number; // 8.0%
+  recessionCrisisThresholdPct: number; // 10.0%
+  
+  latestWorldTradeToGdpPct: number;
+  peakTradeToGdpPct: number; // 61.0% in 2008
+  tradeDeltaFromPeakPct: number;
+  currentFragmentationIndex: number;
+  deglobalizationPhase: DeglobalizationPhase;
+
+  globalWorkingAgeGrowthPct: number;
+  globalOldAgeDependencyRatio: number;
+  projectedWorldDependencyRatio2050: number;
+
+  regions: Record<PhysicalEconomyRegionId, RegionalPhysicalEconomyProfile>;
+  historicalSeries: HistoricalPhysicalEconomyPoint[];
+}
+
+export interface EvaluatedPhysicalEconomyState {
+  timestamp: string;
+  energyBurdenPctGdp: number;
+  energyRegime: EnergyBurdenRegime;
+  tradeToGdpPct: number;
+  tradeDeltaFromPeakPct: number;
+  fragmentationIndex: number;
+  globalWorkingAgeGrowthPct: number;
+  globalOldAgeDependencyRatio: number;
+  activeAlerts: Array<{
+    id: string;
+    level: 'CRITICAL' | 'WARNING' | 'BENIGN' | 'INFO';
+    headline: string;
+    body: string;
+  }>;
+}
 

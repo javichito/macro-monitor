@@ -1,0 +1,41 @@
+name: Weekly Physical Economy, Energy & Deglobalization Sync
+
+on:
+  schedule:
+    # Run every Monday at 06:00 UTC right before weekly commodity and macroeconomic trading opens
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    # Allows manual trigger on-demand from the GitHub Actions tab
+
+jobs:
+  sync-physical-economy:
+    name: Sync & Validate Physical Economy Telemetry
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 26
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Physical Economy, Energy & Deglobalization Evaluator
+        run: npm run data:physical
+
+      - name: Validate Accounting Invariants & Bounds
+        run: npx vitest run src/data/__tests__/physical-economy-data.test.ts
+
+      - name: Commit Updated Physical Economy Status (if changed)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/latest-physical-economy-status.json
+          git diff --staged --quiet || (git commit -m "chore(data): automated physical economy, energy & deglobalization sync [skip ci]" && git push origin main)

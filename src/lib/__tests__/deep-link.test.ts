@@ -13,6 +13,12 @@ import {
   deserializeBondVolatility,
   serializeHousingMacro,
   deserializeHousingMacro,
+  serializePhysicalEconomy,
+  deserializePhysicalEconomy,
+  serializeConsumerVulnerability,
+  deserializeConsumerVulnerability,
+  serializeMonetaryMechanics,
+  deserializeMonetaryMechanics,
   buildSimulatorUrl,
   copySimulatorLinkToClipboard,
   extractParamsFromUrl,
@@ -24,6 +30,9 @@ import {
   CrossAssetRatioState,
   BondVolatilityState,
   HousingMacroState,
+  PhysicalEconomyState,
+  ConsumerVulnerabilityState,
+  MonetaryMechanicsState,
 } from '../deep-link';
 
 describe('Deep-Link State Serialization Engine', () => {
@@ -346,6 +355,153 @@ describe('Deep-Link State Serialization Engine', () => {
     });
   });
 
+  describe('Physical Economy, Energy & Deglobalization', () => {
+    const samplePhysical: PhysicalEconomyState = {
+      view: 'energy',
+      region: 'GLOBAL',
+      timeWindow: 'all',
+      simOilPrice: 85.0,
+      simTariffRate: 6.5,
+      simRetirementAge: 67,
+    };
+
+    it('serializes physical economy state to URL hash format with concise parameters', () => {
+      const hash = serializePhysicalEconomy(samplePhysical, 'hash');
+      expect(hash).toContain('#physical-radar?');
+      expect(hash).toContain('v=energy');
+      expect(hash).toContain('reg=GLOBAL');
+      expect(hash).toContain('w=all');
+      expect(hash).toContain('oil=85.0');
+      expect(hash).toContain('tf=6.5');
+      expect(hash).toContain('ret=67');
+    });
+
+    it('serializes physical economy state to query string format with prefixed parameters', () => {
+      const query = serializePhysicalEconomy(samplePhysical, 'query');
+      expect(query).toContain('pe_view=energy');
+      expect(query).toContain('pe_region=GLOBAL');
+      expect(query).toContain('pe_w=all');
+      expect(query).toContain('pe_oil=85.0');
+      expect(query).toContain('pe_tf=6.5');
+      expect(query).toContain('pe_ret=67');
+    });
+
+    it('deserializes physical economy state from hash parameters', () => {
+      const url = 'https://macro-monitor.app/macro#physical-radar?v=deglobalization&reg=CHN&oil=92.5&tf=8.0&ret=66';
+      const parsed = deserializePhysicalEconomy(url);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.view).toBe('deglobalization');
+      expect(parsed?.region).toBe('CHN');
+      expect(parsed?.simOilPrice).toBe(92.5);
+      expect(parsed?.simTariffRate).toBe(8.0);
+      expect(parsed?.simRetirementAge).toBe(66);
+    });
+
+    it('deserializes physical economy state from query parameters', () => {
+      const url = 'https://macro-monitor.app/macro?tab=physical&pe_view=demographics&pe_region=JPN&pe_oil=65.0&pe_ret=68';
+      const parsed = deserializePhysicalEconomy(url);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.view).toBe('demographics');
+      expect(parsed?.region).toBe('JPN');
+      expect(parsed?.simOilPrice).toBe(65.0);
+      expect(parsed?.simRetirementAge).toBe(68);
+    });
+
+    it('builds canonical shareable URL with tab=physical and hash', () => {
+      const url = buildSimulatorUrl({
+        simulator: 'physical',
+        state: samplePhysical,
+        format: 'hash',
+        customOrigin: 'https://macro-monitor.com',
+        customPathname: '/macro',
+      });
+
+      expect(url).toContain('https://macro-monitor.com/macro?tab=physical#physical-radar?');
+      expect(url).toContain('v=energy');
+      expect(url).toContain('oil=85.0');
+    });
+  });
+
+  describe('Household Balance Sheets & Consumer Vulnerability Simulator', () => {
+    const sampleConsumer: ConsumerVulnerabilityState = {
+      view: 'dsr',
+      region: 'CAN',
+      tier: 'bottom50',
+      timeWindow: '5y',
+      simIncome: -3.5,
+      simRateBps: 150,
+      simInflation: 2.5,
+    };
+
+    it('serializes consumer vulnerability state to hash format', () => {
+      const hash = serializeConsumerVulnerability(sampleConsumer, 'hash');
+      expect(hash).toContain('#consumer-radar?');
+      expect(hash).toContain('v=dsr');
+      expect(hash).toContain('reg=CAN');
+      expect(hash).toContain('tier=bottom50');
+      expect(hash).toContain('w=5y');
+      expect(hash).toContain('inc=-3.5');
+      expect(hash).toContain('rate=150');
+      expect(hash).toContain('inf=2.5');
+    });
+
+    it('serializes consumer vulnerability state to query string format', () => {
+      const query = serializeConsumerVulnerability(sampleConsumer, 'query');
+      expect(query).toContain('cvr_view=dsr');
+      expect(query).toContain('cvr_region=CAN');
+      expect(query).toContain('cvr_tier=bottom50');
+      expect(query).toContain('cvr_w=5y');
+      expect(query).toContain('cvr_inc=-3.5');
+      expect(query).toContain('cvr_rate=150');
+      expect(query).toContain('cvr_inf=2.5');
+    });
+
+    it('deserializes consumer vulnerability state from hash parameters', () => {
+      const url =
+        'https://macro-monitor.app/wealth#consumer-radar?v=delinquency&reg=AUS&tier=bottom50&w=10y&inc=-2.0&rate=200&inf=3.0';
+      const parsed = deserializeConsumerVulnerability(url);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.view).toBe('delinquency');
+      expect(parsed?.region).toBe('AUS');
+      expect(parsed?.tier).toBe('bottom50');
+      expect(parsed?.timeWindow).toBe('10y');
+      expect(parsed?.simIncome).toBe(-2.0);
+      expect(parsed?.simRateBps).toBe(200);
+      expect(parsed?.simInflation).toBe(3.0);
+    });
+
+    it('deserializes consumer vulnerability state from query parameters', () => {
+      const url =
+        'https://macro-monitor.app/wealth?calc=consumer&cvr_view=savings&cvr_region=GBR&cvr_tier=top10&cvr_inc=1.5&cvr_rate=-50';
+      const parsed = deserializeConsumerVulnerability(url);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.view).toBe('savings');
+      expect(parsed?.region).toBe('GBR');
+      expect(parsed?.tier).toBe('top10');
+      expect(parsed?.simIncome).toBe(1.5);
+      expect(parsed?.simRateBps).toBe(-50);
+    });
+
+    it('builds canonical shareable URL with calc=consumer and hash', () => {
+      const url = buildSimulatorUrl({
+        simulator: 'consumer',
+        state: sampleConsumer,
+        format: 'hash',
+        customOrigin: 'https://macro-monitor.com',
+        customPathname: '/wealth',
+      });
+
+      expect(url).toContain('https://macro-monitor.com/wealth?calc=consumer#consumer-radar?');
+      expect(url).toContain('v=dsr');
+      expect(url).toContain('reg=CAN');
+      expect(url).toContain('tier=bottom50');
+    });
+  });
+
   describe('buildSimulatorUrl', () => {
     it('constructs a shareable URL with correct page tabs and hash serialization', () => {
       const fiscalUrl = buildSimulatorUrl({
@@ -473,4 +629,70 @@ describe('Deep-Link State Serialization Engine', () => {
       vi.useRealTimers();
     });
   });
+
+  describe('Monetary Velocity & Debt Issuance Mechanics', () => {
+    const sampleState: MonetaryMechanicsState = {
+      view: 'simulation',
+      region: 'USA',
+      timeWindow: '5y',
+      simBillShare: 23.5,
+      simVelocityDelta: 4.5,
+      simM2Growth: 8.0,
+    };
+
+    it('serializes monetary mechanics state to URL hash format with concise parameters', () => {
+      const hash = serializeMonetaryMechanics(sampleState, 'hash');
+      expect(hash).toContain('#monetary-mechanics?');
+      expect(hash).toContain('v=simulation');
+      expect(hash).toContain('reg=USA');
+      expect(hash).toContain('w=5y');
+      expect(hash).toContain('bill=23.5');
+      expect(hash).toContain('vdel=4.5');
+      expect(hash).toContain('m2=8.0');
+    });
+
+    it('serializes monetary mechanics state to query string format with prefixed parameters', () => {
+      const query = serializeMonetaryMechanics(sampleState, 'query');
+      expect(query).toContain('mm_view=simulation');
+      expect(query).toContain('mm_reg=USA');
+      expect(query).toContain('mm_w=5y');
+      expect(query).toContain('mm_bill=23.5');
+      expect(query).toContain('mm_vdel=4.5');
+      expect(query).toContain('mm_m2=8.0');
+    });
+
+    it('deserializes monetary mechanics state from URL query and hash formats', () => {
+      const fromHash = deserializeMonetaryMechanics(
+        'https://macro-monitor.app/macro#monetary-mechanics?v=issuance&reg=EUR&w=10y&bill=18.5&vdel=-2.0&m2=4.0'
+      );
+      expect(fromHash).not.toBeNull();
+      expect(fromHash?.view).toBe('issuance');
+      expect(fromHash?.region).toBe('EUR');
+      expect(fromHash?.timeWindow).toBe('10y');
+      expect(fromHash?.simBillShare).toBe(18.5);
+      expect(fromHash?.simVelocityDelta).toBe(-2.0);
+      expect(fromHash?.simM2Growth).toBe(4.0);
+
+      const fromQuery = deserializeMonetaryMechanics(
+        'https://macro-monitor.app/macro?tab=mechanics&mm_view=velocity&mm_reg=GBR&mm_bill=14.0'
+      );
+      expect(fromQuery).not.toBeNull();
+      expect(fromQuery?.view).toBe('velocity');
+      expect(fromQuery?.region).toBe('GBR');
+      expect(fromQuery?.simBillShare).toBe(14.0);
+    });
+
+    it('builds canonical simulator URL for mechanics with tab=mechanics query', () => {
+      const url = buildSimulatorUrl({
+        simulator: 'mechanics',
+        state: sampleState,
+        format: 'hash',
+        customOrigin: 'https://macro-monitor.app',
+        customPathname: '/macro',
+      });
+      expect(url).toContain('https://macro-monitor.app/macro?tab=mechanics#monetary-mechanics?');
+      expect(url).toContain('bill=23.5');
+    });
+  });
 });
+

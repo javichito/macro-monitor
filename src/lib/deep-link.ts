@@ -9,8 +9,46 @@
 import { useEffect } from 'react';
 import { SOVEREIGN_FISCAL_PROFILES } from '../data/fiscal-dominance-data';
 import { COUNTRIES_DATA } from '../data/country-metrics';
+import { ConsumerRegionId, WealthTierId, PhysicalEconomyRegionId } from './types';
 
-export type SimulatorDeepLinkType = 'fiscal' | 'wealth' | 'ppp' | 'ratios' | 'volatility' | 'housing';
+export type SimulatorDeepLinkType =
+  | 'fiscal'
+  | 'wealth'
+  | 'ppp'
+  | 'ratios'
+  | 'volatility'
+  | 'housing'
+  | 'consumer'
+  | 'mechanics'
+  | 'physical';
+
+export interface PhysicalEconomyState {
+  view: 'overview' | 'energy' | 'deglobalization' | 'demographics';
+  region?: PhysicalEconomyRegionId;
+  timeWindow?: 'all' | '20y' | '10y';
+  simOilPrice?: number;
+  simTariffRate?: number;
+  simRetirementAge?: number;
+}
+
+export interface MonetaryMechanicsState {
+  view: 'velocity' | 'issuance' | 'regimes' | 'simulation';
+  region: 'USA' | 'EUR' | 'GBR' | 'JPN' | 'CHN' | 'GLOBAL';
+  timeWindow?: 'all' | '10y' | '5y' | '3y';
+  simBillShare?: number;
+  simVelocityDelta?: number;
+  simM2Growth?: number;
+}
+
+export interface ConsumerVulnerabilityState {
+  view: 'overview' | 'dsr' | 'savings' | 'delinquency' | 'tiers' | 'global';
+  region?: ConsumerRegionId;
+  tier?: WealthTierId;
+  timeWindow?: 'all' | '10y' | '5y';
+  simIncome?: number;
+  simRateBps?: number;
+  simInflation?: number;
+}
 
 export interface FiscalDominanceState {
   country: string;
@@ -691,6 +729,336 @@ export function deserializeHousingMacro(input?: string): HousingMacroState | nul
 }
 
 // -----------------------------------------------------------------------------
+// Household Balance Sheets & Consumer Vulnerability Serialization & Deserialization
+// -----------------------------------------------------------------------------
+
+export function serializeConsumerVulnerability(
+  state: ConsumerVulnerabilityState,
+  format: 'hash' | 'query' = 'hash'
+): string {
+  const p = new URLSearchParams();
+  if (format === 'hash') {
+    p.set('v', state.view);
+    if (state.region) p.set('reg', state.region);
+    if (state.tier) p.set('tier', state.tier);
+    if (state.timeWindow) p.set('w', state.timeWindow);
+    if (state.simIncome !== undefined) p.set('inc', state.simIncome.toFixed(1));
+    if (state.simRateBps !== undefined) p.set('rate', Math.round(state.simRateBps).toString());
+    if (state.simInflation !== undefined) p.set('inf', state.simInflation.toFixed(1));
+    return `#consumer-radar?${p.toString()}`;
+  } else {
+    p.set('cvr_view', state.view);
+    if (state.region) p.set('cvr_region', state.region);
+    if (state.tier) p.set('cvr_tier', state.tier);
+    if (state.timeWindow) p.set('cvr_w', state.timeWindow);
+    if (state.simIncome !== undefined) p.set('cvr_inc', state.simIncome.toFixed(1));
+    if (state.simRateBps !== undefined) p.set('cvr_rate', Math.round(state.simRateBps).toString());
+    if (state.simInflation !== undefined) p.set('cvr_inf', state.simInflation.toFixed(1));
+    return p.toString();
+  }
+}
+
+export function deserializeConsumerVulnerability(input?: string): ConsumerVulnerabilityState | null {
+  const params = extractParamsFromUrl(input);
+
+  const viewParam =
+    params.get('cvr_view') ||
+    params.get('cvr_v') ||
+    params.get('v') ||
+    params.get('view');
+
+  const regionParam =
+    params.get('cvr_region') ||
+    params.get('cvr_reg') ||
+    params.get('reg') ||
+    params.get('region');
+
+  const tierParam =
+    params.get('cvr_tier') ||
+    params.get('cvr_t') ||
+    params.get('tier') ||
+    params.get('t');
+
+  const incomeParam =
+    params.get('cvr_inc') ||
+    params.get('cvr_income') ||
+    params.get('inc') ||
+    params.get('income');
+
+  const rateParam =
+    params.get('cvr_rate') ||
+    params.get('cvr_r') ||
+    params.get('rate') ||
+    params.get('rateBps');
+
+  const inflationParam =
+    params.get('cvr_inf') ||
+    params.get('cvr_inflation') ||
+    params.get('inf') ||
+    params.get('inflation');
+
+  if (!viewParam && !regionParam && !tierParam && !incomeParam && !rateParam && !inflationParam) {
+    return null;
+  }
+
+  const validViews: ('overview' | 'dsr' | 'savings' | 'delinquency' | 'tiers' | 'global')[] = [
+    'overview',
+    'dsr',
+    'savings',
+    'delinquency',
+    'tiers',
+    'global',
+  ];
+  const view = validViews.includes(viewParam as any)
+    ? (viewParam as ConsumerVulnerabilityState['view'])
+    : 'overview';
+
+  const validRegions: ConsumerRegionId[] = [
+    'USA',
+    'EUR',
+    'GBR',
+    'CAN',
+    'AUS',
+    'JPN',
+    'DEU',
+    'FRA',
+    'KOR',
+    'SWE',
+    'CHE',
+    'CHN',
+  ];
+  const region = validRegions.includes((regionParam || '').toUpperCase() as any)
+    ? ((regionParam || '').toUpperCase() as ConsumerRegionId)
+    : 'USA';
+
+  const validTiers: WealthTierId[] = ['all', 'bottom50', 'middle40', 'top10', 'top1'];
+  const tier = validTiers.includes(tierParam as any)
+    ? (tierParam as WealthTierId)
+    : 'bottom50';
+
+  const timeWindow = (params.get('cvr_w') || params.get('w') || 'all') as 'all' | '10y' | '5y';
+
+  const simIncome = incomeParam ? parseBoundedNumber(incomeParam, -20.0, 20.0, 0.0) : undefined;
+  const simRateBps = rateParam ? parseBoundedNumber(rateParam, -500, 500, 0) : undefined;
+  const simInflation = inflationParam ? parseBoundedNumber(inflationParam, -5.0, 15.0, 0.0) : undefined;
+
+  return {
+    view,
+    region,
+    tier,
+    timeWindow,
+    simIncome: simIncome !== undefined ? Number(simIncome.toFixed(1)) : undefined,
+    simRateBps: simRateBps !== undefined ? Math.round(simRateBps) : undefined,
+    simInflation: simInflation !== undefined ? Number(simInflation.toFixed(1)) : undefined,
+  };
+}
+
+// -----------------------------------------------------------------------------
+// Monetary Velocity & Debt Issuance Mechanics Serialization & Deserialization
+// -----------------------------------------------------------------------------
+
+export function serializeMonetaryMechanics(
+  state: MonetaryMechanicsState,
+  format: 'hash' | 'query' = 'hash'
+): string {
+  const p = new URLSearchParams();
+  if (format === 'hash') {
+    p.set('v', state.view);
+    if (state.region) p.set('reg', state.region);
+    if (state.timeWindow) p.set('w', state.timeWindow);
+    if (state.simBillShare !== undefined) p.set('bill', state.simBillShare.toFixed(1));
+    if (state.simVelocityDelta !== undefined) p.set('vdel', state.simVelocityDelta.toFixed(1));
+    if (state.simM2Growth !== undefined) p.set('m2', state.simM2Growth.toFixed(1));
+    return `#monetary-mechanics?${p.toString()}`;
+  } else {
+    p.set('mm_view', state.view);
+    if (state.region) p.set('mm_reg', state.region);
+    if (state.timeWindow) p.set('mm_w', state.timeWindow);
+    if (state.simBillShare !== undefined) p.set('mm_bill', state.simBillShare.toFixed(1));
+    if (state.simVelocityDelta !== undefined) p.set('mm_vdel', state.simVelocityDelta.toFixed(1));
+    if (state.simM2Growth !== undefined) p.set('mm_m2', state.simM2Growth.toFixed(1));
+    return p.toString();
+  }
+}
+
+export function deserializeMonetaryMechanics(input?: string): MonetaryMechanicsState | null {
+  const params = extractParamsFromUrl(input);
+
+  const viewParam =
+    params.get('mm_view') ||
+    params.get('mm_v') ||
+    params.get('v') ||
+    params.get('view');
+
+  const regionParam =
+    params.get('mm_reg') ||
+    params.get('mm_region') ||
+    params.get('reg') ||
+    params.get('region');
+
+  const billParam =
+    params.get('mm_bill') ||
+    params.get('bill') ||
+    params.get('tbill');
+
+  const vdelParam =
+    params.get('mm_vdel') ||
+    params.get('vdel') ||
+    params.get('v_delta');
+
+  const m2Param =
+    params.get('mm_m2') ||
+    params.get('m2') ||
+    params.get('m2_growth');
+
+  if (!viewParam && !regionParam && !billParam && !vdelParam && !m2Param) {
+    return null;
+  }
+
+  const validViews: ('velocity' | 'issuance' | 'regimes' | 'simulation')[] = [
+    'velocity',
+    'issuance',
+    'regimes',
+    'simulation',
+  ];
+  const view = validViews.includes(viewParam as any)
+    ? (viewParam as MonetaryMechanicsState['view'])
+    : 'velocity';
+
+  const validRegions: MonetaryMechanicsState['region'][] = [
+    'USA',
+    'EUR',
+    'GBR',
+    'JPN',
+    'CHN',
+    'GLOBAL',
+  ];
+  const region = validRegions.includes((regionParam || '').toUpperCase() as any)
+    ? ((regionParam || '').toUpperCase() as MonetaryMechanicsState['region'])
+    : 'USA';
+
+  const timeWindow = (params.get('mm_w') || params.get('w') || 'all') as 'all' | '10y' | '5y' | '3y';
+
+  const simBillShare = billParam ? parseBoundedNumber(billParam, 5.0, 60.0, 21.6) : undefined;
+  const simVelocityDelta = vdelParam ? parseBoundedNumber(vdelParam, -20.0, 25.0, 0.0) : undefined;
+  const simM2Growth = m2Param ? parseBoundedNumber(m2Param, -15.0, 30.0, 0.6) : undefined;
+
+  return {
+    view,
+    region,
+    timeWindow,
+    simBillShare: simBillShare !== undefined ? Number(simBillShare.toFixed(1)) : undefined,
+    simVelocityDelta: simVelocityDelta !== undefined ? Number(simVelocityDelta.toFixed(1)) : undefined,
+    simM2Growth: simM2Growth !== undefined ? Number(simM2Growth.toFixed(1)) : undefined,
+  };
+}
+
+// -----------------------------------------------------------------------------
+// Physical Economy, Energy & Deglobalization Serialization & Deserialization
+// -----------------------------------------------------------------------------
+
+export function serializePhysicalEconomy(
+  state: PhysicalEconomyState,
+  format: 'hash' | 'query' = 'hash'
+): string {
+  const p = new URLSearchParams();
+  if (format === 'hash') {
+    p.set('v', state.view);
+    if (state.region) p.set('reg', state.region);
+    if (state.timeWindow) p.set('w', state.timeWindow);
+    if (state.simOilPrice !== undefined) p.set('oil', state.simOilPrice.toFixed(1));
+    if (state.simTariffRate !== undefined) p.set('tf', state.simTariffRate.toFixed(1));
+    if (state.simRetirementAge !== undefined) p.set('ret', Math.round(state.simRetirementAge).toString());
+    return `#physical-radar?${p.toString()}`;
+  } else {
+    p.set('pe_view', state.view);
+    if (state.region) p.set('pe_region', state.region);
+    if (state.timeWindow) p.set('pe_w', state.timeWindow);
+    if (state.simOilPrice !== undefined) p.set('pe_oil', state.simOilPrice.toFixed(1));
+    if (state.simTariffRate !== undefined) p.set('pe_tf', state.simTariffRate.toFixed(1));
+    if (state.simRetirementAge !== undefined) p.set('pe_ret', Math.round(state.simRetirementAge).toString());
+    return p.toString();
+  }
+}
+
+export function deserializePhysicalEconomy(input?: string): PhysicalEconomyState | null {
+  const params = extractParamsFromUrl(input);
+
+  const viewParam =
+    params.get('pe_view') ||
+    params.get('pe_v') ||
+    params.get('v') ||
+    params.get('view');
+
+  const regionParam =
+    params.get('pe_region') ||
+    params.get('pe_reg') ||
+    params.get('reg') ||
+    params.get('region');
+
+  const oilParam =
+    params.get('pe_oil') ||
+    params.get('oil') ||
+    params.get('brent');
+
+  const tariffParam =
+    params.get('pe_tf') ||
+    params.get('pe_tariff') ||
+    params.get('tf') ||
+    params.get('tariff');
+
+  const retirementParam =
+    params.get('pe_ret') ||
+    params.get('pe_retirement') ||
+    params.get('ret') ||
+    params.get('retirement');
+
+  if (!viewParam && !regionParam && !oilParam && !tariffParam && !retirementParam) {
+    return null;
+  }
+
+  const validViews: ('overview' | 'energy' | 'deglobalization' | 'demographics')[] = [
+    'overview',
+    'energy',
+    'deglobalization',
+    'demographics',
+  ];
+  const view = validViews.includes(viewParam as any)
+    ? (viewParam as 'overview' | 'energy' | 'deglobalization' | 'demographics')
+    : 'overview';
+
+  const validRegions: NonNullable<PhysicalEconomyState['region']>[] = [
+    'GLOBAL',
+    'USA',
+    'EUR',
+    'CHN',
+    'JPN',
+    'DEU',
+    'GBR',
+    'IND',
+    'KOR',
+  ];
+  const region = validRegions.includes((regionParam || '').toUpperCase() as any)
+    ? ((regionParam || '').toUpperCase() as NonNullable<PhysicalEconomyState['region']>)
+    : 'GLOBAL';
+
+  const timeWindow = (params.get('pe_w') || params.get('w') || 'all') as 'all' | '20y' | '10y';
+
+  const simOilPrice = oilParam ? parseBoundedNumber(oilParam, 20.0, 250.0, 74.8) : undefined;
+  const simTariffRate = tariffParam ? parseBoundedNumber(tariffParam, 0.0, 35.0, 4.9) : undefined;
+  const simRetirementAge = retirementParam ? parseBoundedNumber(retirementParam, 60, 75, 65) : undefined;
+
+  return {
+    view,
+    region,
+    timeWindow,
+    simOilPrice: simOilPrice !== undefined ? Number(simOilPrice.toFixed(1)) : undefined,
+    simTariffRate: simTariffRate !== undefined ? Number(simTariffRate.toFixed(1)) : undefined,
+    simRetirementAge: simRetirementAge !== undefined ? Math.round(simRetirementAge) : undefined,
+  };
+}
+
+// -----------------------------------------------------------------------------
 // Universal URL Construction & Clipboard Helpers
 // -----------------------------------------------------------------------------
 
@@ -727,7 +1095,9 @@ export function buildSimulatorUrl({
         simulator === 'fiscal' ||
         simulator === 'ratios' ||
         simulator === 'volatility' ||
-        simulator === 'housing'
+        simulator === 'housing' ||
+        simulator === 'mechanics' ||
+        simulator === 'physical'
           ? '/macro'
           : '/wealth';
     }
@@ -789,6 +1159,33 @@ export function buildSimulatorUrl({
       const q = new URLSearchParams(serializeHousingMacro(state, 'query'));
       q.forEach((v, k) => url.searchParams.set(k, v));
       url.hash = 'housing-radar';
+    }
+  } else if (simulator === 'consumer') {
+    url.searchParams.set('calc', 'consumer');
+    if (format === 'hash') {
+      url.hash = serializeConsumerVulnerability(state, 'hash').replace(/^#/, '');
+    } else {
+      const q = new URLSearchParams(serializeConsumerVulnerability(state, 'query'));
+      q.forEach((v, k) => url.searchParams.set(k, v));
+      url.hash = 'consumer-radar';
+    }
+  } else if (simulator === 'mechanics') {
+    url.searchParams.set('tab', 'mechanics');
+    if (format === 'hash') {
+      url.hash = serializeMonetaryMechanics(state, 'hash').replace(/^#/, '');
+    } else {
+      const q = new URLSearchParams(serializeMonetaryMechanics(state, 'query'));
+      q.forEach((v, k) => url.searchParams.set(k, v));
+      url.hash = 'monetary-mechanics';
+    }
+  } else if (simulator === 'physical') {
+    url.searchParams.set('tab', 'physical');
+    if (format === 'hash') {
+      url.hash = serializePhysicalEconomy(state, 'hash').replace(/^#/, '');
+    } else {
+      const q = new URLSearchParams(serializePhysicalEconomy(state, 'query'));
+      q.forEach((v, k) => url.searchParams.set(k, v));
+      url.hash = 'physical-radar';
     }
   }
 

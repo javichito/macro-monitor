@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-10-15T18:50:11.899Z",
+  "asOfDate": "2026-Q1",
+  "globalContext": {
+    "framework": "Equation of Exchange (M * V = P * Y) & Sovereign Debt Issuance Duration Profiling",
+    "primaryTransmissionChannel": "T-Bill Issuance Tilt Drains ON RRP and Suppresses 10Y Term Premium; Velocity Acceleration Dictates Real CPI Pass-Through of Central Bank Balance Sheet Expansion"
+  },
+  "metrics": {
+    "usVelocity": 1.368,
+    "usVelocityYoYDelta": 0.028,
+    "usNominalGdpTrillion": 29.35,
+    "usM2Trillion": 21.45,
+    "usVelocityRegime": "normalization",
+    "tBillsOutstandingTrillionUsd": 6.08,
+    "couponsOutstandingTrillionUsd": 22.12,
+    "totalMarketableDebtTrillionUsd": 28.2,
+    "tBillSharePct": 21.56,
+    "tbacTargetMinPct": 15,
+    "tbacTargetMaxPct": 20,
+    "grossIssuanceBillSharePct": 64.2,
+    "estimatedTermPremiumSuppressionBps": 34,
+    "tenYearYield": 4.08,
+    "onRrpBalanceBillion": 142.5,
+    "rrpDepletedRiskScore": 82
+  },
+  "internationalProfiles": {
+    "USA": {
+      "nominalGdpTrillion": 29.35,
+      "m2Trillion": 21.45,
+      "velocity": 1.368,
+      "totalDebtTrillion": 28.2,
+      "tBillSharePct": 21.56,
+      "shadowQeEstimatedBps": -34
+    },
+    "EUR": {
+      "nominalGdpTrillion": 16.52,
+      "m2Trillion": 17.15,
+      "velocity": 0.963,
+      "totalDebtTrillion": 14.1,
+      "tBillSharePct": 12.4,
+      "shadowQeEstimatedBps": -10
+    },
+    "GBR": {
+      "nominalGdpTrillion": 3.48,
+      "m2Trillion": 3.88,
+      "velocity": 0.897,
+      "totalDebtTrillion": 3.32,
+      "tBillSharePct": 4.8,
+      "shadowQeEstimatedBps": 5
+    },
+    "JPN": {
+      "nominalGdpTrillion": 4.02,
+      "m2Trillion": 8.35,
+      "velocity": 0.481,
+      "totalDebtTrillion": 10.45,
+      "tBillSharePct": 16.2,
+      "shadowQeEstimatedBps": -15
+    },
+    "CHN": {
+      "nominalGdpTrillion": 18.25,
+      "m2Trillion": 42.45,
+      "velocity": 0.43,
+      "totalDebtTrillion": 15.6,
+      "tBillSharePct": 14,
+      "shadowQeEstimatedBps": -8
+    },
+    "GLOBAL": {
+      "nominalGdpTrillion": 112.5,
+      "m2Trillion": 134.2,
+      "velocity": 0.838,
+      "totalDebtTrillion": 98.4,
+      "tBillSharePct": 17.8,
+      "shadowQeEstimatedBps": -22
+    }
+  },
+  "activeAlerts": [
+    {
+      "id": "tbill-shadow-qe-active",
+      "level": "OPPORTUNITY",
+      "headline": "⚡ Shadow QE Active: T-Bills at 21.6% of Marketable Debt",
+      "body": "US Treasury issuance mix exceeds the TBAC 15-20% guideline band, keeping an estimated 3.4 bps of term premium suppressed on the 10-Year Treasury bond."
+    },
+    {
+      "id": "on-rrp-buffer-depletion",
+      "level": "WARNING",
+      "headline": "⚠️ ON RRP Buffer Critical: $142.5B Remaining",
+      "body": "Money Market Funds have nearly exhausted idle reverse repo cash to absorb T-Bills. Ongoing bill reliance will now drain commercial bank reserves."
+    },
+    {
+      "id": "m2-velocity-rebound",
+      "level": "INFO",
+      "headline": "📈 M2 Velocity Consolidates at 1.368 After Historic 1.12 Trough",
+      "body": "Unlike the 2010s post-GFC disinflationary trap where velocity collapsed to 1.43, post-pandemic money circulation remains firm, sustaining core inflation resilience."
+    }
+  ]
+}
