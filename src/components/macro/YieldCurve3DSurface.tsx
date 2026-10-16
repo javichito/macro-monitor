@@ -78,6 +78,22 @@ export function YieldCurve3DSurface({
     return sovereignData.longterm;
   }, [sovereign, resolutionMode]);
 
+  // Precompute dynamic yield bounds once per dataset so high-frequency drag/hover frames avoid redundant full-grid scans
+  const { minYield, yieldSpan } = useMemo(() => {
+    let min = dataset.minYield;
+    let max = dataset.maxYield;
+    dataset.slices.forEach((s) => {
+      s.curve.forEach((pt) => {
+        if (pt.yieldPercent < min) min = pt.yieldPercent;
+        if (pt.yieldPercent > max) max = pt.yieldPercent;
+      });
+    });
+    return {
+      minYield: min,
+      yieldSpan: Math.max(0.1, max - min),
+    };
+  }, [dataset]);
+
   // Keep active slice index bounded when switching datasets
   useEffect(() => {
     if (activeSliceIndex >= dataset.slices.length) {
@@ -88,6 +104,7 @@ export function YieldCurve3DSurface({
   // Canvas and interaction references
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const renderSceneRef = useRef<(() => void) | null>(null);
 
   // 3D camera angles in radians (azimuth theta and pitch phi)
   const cameraRef = useRef<{
@@ -130,6 +147,7 @@ export function YieldCurve3DSurface({
         cameraRef.current = { theta: 0, phi: Math.PI / 2.05, zoom: 1.1 };
         break;
     }
+    renderSceneRef.current?.();
   };
 
   // Playback timer to sweep time across historical yield curves
@@ -200,21 +218,18 @@ export function YieldCurve3DSurface({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const render = () => {
-      // Gentle auto-rotation to facilitate multi-angle visual comprehension without manual dragging
-      if (isAutoRotating) {
-        cameraRef.current.theta += 0.005;
-      }
-
+    const drawFrame = () => {
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
-      const displayWidth = Math.floor(rect.width);
-      const displayHeight = Math.floor(rect.height);
+      const displayWidth = Math.floor(rect.width) || 640;
+      const displayHeight = Math.floor(rect.height) || 420;
+      const targetWidth = Math.floor(displayWidth * dpr);
+      const targetHeight = Math.floor(displayHeight * dpr);
 
-      // Prevent canvas blurriness on Retina/High-DPI displays
-      if (canvas.width !== displayWidth * dpr || canvas.height !== displayHeight * dpr) {
-        canvas.width = displayWidth * dpr;
-        canvas.height = displayHeight * dpr;
+      // Prevent canvas blurriness on Retina/High-DPI displays without reallocating on fractional DPR
+      if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
       }
 
       ctx.save();
@@ -228,17 +243,6 @@ export function YieldCurve3DSurface({
       const slices = dataset.slices;
       const numSlices = slices.length;
       const numTenors = dataset.tenors.length;
-
-      // Compute dynamic yield range for normalization across the surface
-      let minYield = dataset.minYield;
-      let maxYield = dataset.maxYield;
-      slices.forEach((s) => {
-        s.curve.forEach((pt) => {
-          if (pt.yieldPercent < minYield) minYield = pt.yieldPercent;
-          if (pt.yieldPercent > maxYield) maxYield = pt.yieldPercent;
-        });
-      });
-      const yieldSpan = Math.max(0.1, maxYield - minYield);
 
       // Map grid indices into normalized 3D world bounding box [-1, 1]
       const grid3D: Point3D[][] = [];
@@ -499,30 +503,87 @@ export function YieldCurve3DSurface({
       }
 
       ctx.restore();
+    };
+
+    renderSceneRef.current = drawFrame;
+
+    const renderLoop = () => {
+      // Gentle auto-rotation to facilitate multi-angle visual comprehension without manual dragging
+      if (isAutoRotating) {
+        cameraRef.current.theta += 0.005;
+      }
+
+      drawFrame();
 
       if (isAutoRotating) {
-        animationFrameId = requestAnimationFrame(render);
+        animationFrameId = requestAnimationFrame(renderLoop);
       }
     };
 
-    render();
+    const handleOrbitChange = () => {
+      drawFrame();
+    };
 
-    // Clean up animation frame when rotation state alters or component unmounts
+    canvas.addEventListener('orbit-change', handleOrbitChange);
+    renderLoop();
+
+    // Clean up animation frame and custom event listener when rotation state alters or component unmounts
     return () => {
+      canvas.removeEventListener('orbit-change', handleOrbitChange);
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
     };
   }, [
     dataset,
+    minYield,
+    yieldSpan,
     palette,
     renderStyle,
     isDark,
     isAutoRotating,
     activeSliceIndex,
     hoveredNode,
+    cameraPreset,
     project3D,
   ]);
+
+  const applyOrbitDelta = useCallback((clientX: number, clientY: number) => {
+    const deltaX = clientX - mouseStateRef.current.lastX;
+    const deltaY = clientY - mouseStateRef.current.lastY;
+    if (deltaX === 0 && deltaY === 0) return;
+
+    mouseStateRef.current.lastX = clientX;
+    mouseStateRef.current.lastY = clientY;
+
+    cameraRef.current.theta += deltaX * 0.008;
+    // Clamp elevation angle to prevent inverted gimbal-lock perspective
+    cameraRef.current.phi = Math.max(
+      0.05,
+      Math.min(Math.PI / 2.05, cameraRef.current.phi + deltaY * 0.008)
+    );
+
+    renderSceneRef.current?.();
+  }, []);
+
+  // Keep orbital drag active even if the user's pointer momentarily leaves the canvas boundary
+  useEffect(() => {
+    const handleWindowMouseMove = (e: MouseEvent) => {
+      if (!mouseStateRef.current.isDragging) return;
+      applyOrbitDelta(e.clientX, e.clientY);
+    };
+
+    const handleWindowMouseUp = () => {
+      mouseStateRef.current.isDragging = false;
+    };
+
+    window.addEventListener('mousemove', handleWindowMouseMove);
+    window.addEventListener('mouseup', handleWindowMouseUp);
+    return () => {
+      window.removeEventListener('mousemove', handleWindowMouseMove);
+      window.removeEventListener('mouseup', handleWindowMouseUp);
+    };
+  }, [applyOrbitDelta]);
 
   // Mouse and touch interaction handlers for 3D camera orbital movement
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -531,6 +592,9 @@ export function YieldCurve3DSurface({
       lastX: e.clientX,
       lastY: e.clientY,
     };
+    if (hoveredNode) {
+      setHoveredNode(null);
+    }
     if (isAutoRotating) {
       setIsAutoRotating(false); // Cease auto-rotation when user takes manual control
     }
@@ -542,24 +606,7 @@ export function YieldCurve3DSurface({
 
     // Handle 3D camera orbital drag
     if (mouseStateRef.current.isDragging) {
-      const deltaX = e.clientX - mouseStateRef.current.lastX;
-      const deltaY = e.clientY - mouseStateRef.current.lastY;
-      mouseStateRef.current.lastX = e.clientX;
-      mouseStateRef.current.lastY = e.clientY;
-
-      cameraRef.current.theta += deltaX * 0.008;
-      // Clamp elevation angle to prevent inverted gimbal-lock perspective
-      cameraRef.current.phi = Math.max(
-        0.05,
-        Math.min(Math.PI / 2.05, cameraRef.current.phi + deltaY * 0.008)
-      );
-
-      // Force canvas redraw
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        // Redraw triggered by state or requestAnimationFrame
-        canvas.dispatchEvent(new CustomEvent('orbit-change'));
-      }
+      applyOrbitDelta(e.clientX, e.clientY);
       return;
     }
 
@@ -574,16 +621,6 @@ export function YieldCurve3DSurface({
     const slices = dataset.slices;
     const numSlices = slices.length;
     const numTenors = dataset.tenors.length;
-
-    let minYield = dataset.minYield;
-    let maxYield = dataset.maxYield;
-    slices.forEach((s) => {
-      s.curve.forEach((pt) => {
-        if (pt.yieldPercent < minYield) minYield = pt.yieldPercent;
-        if (pt.yieldPercent > maxYield) maxYield = pt.yieldPercent;
-      });
-    });
-    const yieldSpan = Math.max(0.1, maxYield - minYield);
 
     let closestDist = 24; // Proximity threshold in pixels
     let foundNode: { timeIdx: number; tenorIdx: number } | null = null;
@@ -606,21 +643,39 @@ export function YieldCurve3DSurface({
       }
     }
 
-    setHoveredNode(foundNode);
+    setHoveredNode((prev) => {
+      if (!prev && !foundNode) return prev;
+      if (
+        prev &&
+        foundNode &&
+        prev.timeIdx === foundNode.timeIdx &&
+        prev.tenorIdx === foundNode.tenorIdx
+      ) {
+        return prev;
+      }
+      return foundNode;
+    });
   };
 
   const handleMouseUp = () => {
     mouseStateRef.current.isDragging = false;
   };
 
+  const handleMouseLeave = () => {
+    if (!mouseStateRef.current.isDragging && hoveredNode) {
+      setHoveredNode(null);
+    }
+  };
+
   const handleWheel = (e: React.WheelEvent<HTMLCanvasElement>) => {
     // Zoom in or out within safe bounding limits
-    e.preventDefault();
     const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
     cameraRef.current.zoom = Math.max(0.5, Math.min(2.5, cameraRef.current.zoom * zoomFactor));
 
-    // Clear hover node during fast zoom
-    setHoveredNode(null);
+    if (hoveredNode) {
+      setHoveredNode(null);
+    }
+    renderSceneRef.current?.();
   };
 
   // Touch gesture support for mobile devices
@@ -650,6 +705,7 @@ export function YieldCurve3DSurface({
         0.05,
         Math.min(Math.PI / 2.05, cameraRef.current.phi + deltaY * 0.01)
       );
+      renderSceneRef.current?.();
     }
   };
 
@@ -802,11 +858,11 @@ export function YieldCurve3DSurface({
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
           onWheel={handleWheel}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
-          className="w-full h-full block"
+          className="w-full h-full block touch-none"
         />
 
         {/* Viewport Floating HUD Overlays */}

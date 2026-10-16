@@ -96,4 +96,34 @@ describe('YieldCurve3DSurface Component', () => {
 
     expect(screen.getByTitle(/Pause Auto-Rotation/i)).toBeDefined();
   });
+
+  it('redraws the 3D surface continuously while dragging and when camera controls are used', () => {
+    const { container } = render(<YieldCurve3DSurface />);
+    const canvas = container.querySelector('canvas')!;
+    const ctx = canvas.getContext('2d')!;
+    const clearRectMock = ctx.clearRect as ReturnType<typeof vi.fn>;
+
+    clearRectMock.mockClear();
+
+    fireEvent.mouseDown(canvas, { clientX: 100, clientY: 100 });
+    fireEvent.mouseMove(canvas, { clientX: 140, clientY: 120 });
+    expect(clearRectMock).toHaveBeenCalledTimes(1);
+
+    // Dragging continues smoothly even if pointer leaves canvas bounds before mouseup
+    fireEvent.mouseLeave(canvas);
+    fireEvent.mouseMove(window, { clientX: 180, clientY: 150 });
+    expect(clearRectMock).toHaveBeenCalledTimes(2);
+
+    fireEvent.mouseUp(window);
+    fireEvent.mouseMove(window, { clientX: 220, clientY: 170 });
+    expect(clearRectMock).toHaveBeenCalledTimes(2);
+
+    // Scroll zoom and camera reset also redraw immediately
+    fireEvent.wheel(canvas, { deltaY: -100 });
+    expect(clearRectMock).toHaveBeenCalledTimes(3);
+
+    const resetBtn = screen.getByTitle(/Reset Camera Angle/i);
+    fireEvent.click(resetBtn);
+    expect(clearRectMock.mock.calls.length).toBeGreaterThanOrEqual(4);
+  });
 });
