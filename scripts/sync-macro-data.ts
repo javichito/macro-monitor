@@ -2,11 +2,12 @@
  * Automated Macroeconomic Data Ingestion & Sync Pipeline (Phase 2)
  *
  * Pulls authoritative public datasets from:
- * 1. World Bank Open Data API (Global GDP, Inflation, Debt)
- * 2. Federal Reserve Economic Data (FRED) API (US CPI, Fed Funds Rate)
+ * 1. World Bank Open Data API (Global & Sovereign GDP, Real GDP Growth, Inflation, Current Account, Unemployment, Demographics)
+ * 2. Federal Reserve Economic Data (FRED) API & Canonical Sovereign Telemetry
  *
- * Validates accounting identities and bounds before emitting updated TypeScript datasets.
- * Can be run manually or via scheduled GitHub Actions.
+ * Validates accounting identities, cross-dataset parity, and econometric bounds
+ * across global aggregates and all 46 modeled sovereign economies.
+ * Can be run manually (`npm run data:sync`) or via scheduled GitHub Actions (`.github/workflows/data-sync.yml`).
  */
 
 import * as fs from 'fs';
@@ -27,12 +28,18 @@ interface FetchedMacroIndicator {
   usCpiIndex?: number;
 }
 
+const EXPECTED_HISTORY_YEARS = [1980, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2022, 2024, 2025, 2026];
+
 /**
  * Fetch indicator time series from the World Bank REST API.
- * The World Bank API is free, unauthenticated, and provides multi-decade global aggregates.
+ * The World Bank API is free, unauthenticated, and provides multi-decade global and sovereign series.
  * Indicator examples:
  * - NY.GDP.MKTP.CD: GDP (current US$)
+ * - NY.GDP.MKTP.KD.ZG: GDP growth (annual %)
  * - FP.CPI.TOTL.ZG: Inflation, consumer prices (annual %)
+ * - BN.CAB.XOKA.GD.ZS: Current account balance (% of GDP)
+ * - SL.UEM.TOTL.ZS: Unemployment, total (% of total labor force)
+ * - SP.POP.DPND.OL: Age dependency ratio, old (% of working-age population)
  */
 async function fetchWorldBankIndicator(
   countryCode: string,
@@ -49,7 +56,7 @@ async function fetchWorldBankIndicator(
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      console.warn(`[WorldBank API] Warning: HTTP ${response.status} for ${indicatorCode}`);
+      console.warn(`[WorldBank API] Warning: HTTP ${response.status} for ${countryCode}/${indicatorCode}`);
       return result;
     }
 
@@ -64,14 +71,14 @@ async function fetchWorldBankIndicator(
       }
     }
   } catch (error: any) {
-    console.warn(`[WorldBank API] Notice: Network fetch failed (${error.message}). Relying on verified canonical cache.`);
+    console.warn(`[WorldBank API] Notice: Network fetch failed for ${countryCode}/${indicatorCode} (${error.message}). Relying on verified canonical cache.`);
   }
 
   return result;
 }
 
 /**
- * Validates incoming data against structural economic bounds.
+ * Validates incoming global data against structural economic bounds.
  * Prevents corrupted data from entering the production build.
  */
 function validateMacroBounds(year: number, data: FetchedMacroIndicator): boolean {
@@ -86,19 +93,93 @@ function validateMacroBounds(year: number, data: FetchedMacroIndicator): boolean
   return true;
 }
 
+/**
+ * Validates per-country macroeconomic metrics across all 46 sovereign profiles
+ * to enforce accounting identities (GDP / GDP per capita = Population) and realistic bounds.
+ */
+function validateSovereignCountryDataset() {
+  const countryFilePath = path.resolve(process.cwd(), 'src/data/country-metrics.ts');
+  const countryContent = fs.readFileSync(countryFilePath, 'utf8');
+  const cStartMarker = 'export const COUNTRIES_DATA: CountryProfile[] = ';
+  const cStart = countryContent.indexOf(cStartMarker) + cStartMarker.length;
+  const cEndMarker = '];\n\n/*\n * Economic blocs';
+  const cEnd = countryContent.indexOf(cEndMarker) + 1;
+  const countries = JSON.parse(countryContent.slice(cStart, cEnd));
+
+  if (countries.length < 46) {
+    throw new Error(`Expected at least 46 modeled sovereigns in country-metrics.ts, found ${countries.length}`);
+  }
+
+  for (const country of countries) {
+    for (const yr of EXPECTED_HISTORY_YEARS) {
+      const m = country.history[String(yr)];
+      if (!m) {
+        throw new Error(`Missing year ${yr} in country-metrics.ts for ${country.code} (${country.name})`);
+      }
+
+      // Check core and extended macro bounds
+      if (!Number.isFinite(m.realGdpGrowth) || m.realGdpGrowth < -30 || m.realGdpGrowth > 30) {
+        throw new Error(`Invalid realGdpGrowth for ${country.code} in ${yr}: ${m.realGdpGrowth}`);
+      }
+      if (!Number.isFinite(m.policyRate) || m.policyRate < -2 || m.policyRate > 150) {
+        throw new Error(`Invalid policyRate for ${country.code} in ${yr}: ${m.policyRate}`);
+      }
+      if (!Number.isFinite(m.bondYield10Y) || m.bondYield10Y < -2 || m.bondYield10Y > 120) {
+        throw new Error(`Invalid bondYield10Y for ${country.code} in ${yr}: ${m.bondYield10Y}`);
+      }
+      if (!Number.isFinite(m.currentAccountPercentGdp) || m.currentAccountPercentGdp < -35 || m.currentAccountPercentGdp > 45) {
+        throw new Error(`Invalid currentAccountPercentGdp for ${country.code} in ${yr}: ${m.currentAccountPercentGdp}`);
+      }
+      if (!Number.isFinite(m.fiscalBalancePercentGdp) || m.fiscalBalancePercentGdp < -30 || m.fiscalBalancePercentGdp > 35) {
+        throw new Error(`Invalid fiscalBalancePercentGdp for ${country.code} in ${yr}: ${m.fiscalBalancePercentGdp}`);
+      }
+      if (!Number.isFinite(m.fxReservesBillionUSD) || m.fxReservesBillionUSD < 0 || m.fxReservesBillionUSD > 6000) {
+        throw new Error(`Invalid fxReservesBillionUSD for ${country.code} in ${yr}: ${m.fxReservesBillionUSD}`);
+      }
+      if (!Number.isFinite(m.populationMillion) || m.populationMillion <= 0 || m.populationMillion > 2000) {
+        throw new Error(`Invalid populationMillion for ${country.code} in ${yr}: ${m.populationMillion}`);
+      }
+      if (!Number.isFinite(m.oldAgeDependencyRatio) || m.oldAgeDependencyRatio < 2 || m.oldAgeDependencyRatio > 75) {
+        throw new Error(`Invalid oldAgeDependencyRatio for ${country.code} in ${yr}: ${m.oldAgeDependencyRatio}`);
+      }
+
+      // Verify GDP / GDP-per-capita = Population accounting identity within rounding tolerance
+      const impliedPop = (m.gdpTrillionUSD * 1_000_000) / m.gdpPerCapitaUSD;
+      const relDiff = Math.abs(impliedPop - m.populationMillion) / Math.max(1, impliedPop);
+      if (relDiff > 0.12) {
+        throw new Error(
+          `Population accounting identity drift for ${country.code} in ${yr}: recorded ${m.populationMillion}M vs implied ${impliedPop.toFixed(1)}M`
+        );
+      }
+
+      // Verify embedded labor metrics exist and are valid
+      if (!m.labor || !Number.isFinite(m.labor.unemploymentRate) || m.labor.unemploymentRate <= 0) {
+        throw new Error(`Missing or invalid labor metrics for ${country.code} in ${yr}`);
+      }
+    }
+  }
+
+  return countries.length;
+}
+
 async function runSync() {
   console.log('========================================================');
   console.log(' MacroMonitor: Automated Macroeconomic Ingestion Pipeline');
   console.log('========================================================\n');
 
-  console.log('1. Fetching World Bank Global Indicators (World Aggregate: WLD)...');
-  const [gdpMap, inflationMap] = await Promise.all([
+  console.log('1. Fetching World Bank Global & Sovereign Indicators...');
+  const [gdpMap, inflationMap, usGrowthMap, usCaMap, usDepMap] = await Promise.all([
     fetchWorldBankIndicator('WLD', 'NY.GDP.MKTP.CD'),
     fetchWorldBankIndicator('WLD', 'FP.CPI.TOTL.ZG'),
+    fetchWorldBankIndicator('USA', 'NY.GDP.MKTP.KD.ZG'),
+    fetchWorldBankIndicator('USA', 'BN.CAB.XOKA.GD.ZS'),
+    fetchWorldBankIndicator('USA', 'SP.POP.DPND.OL'),
   ]);
 
-  console.log(`   - Retrieved ${gdpMap.size} annual GDP checkpoints.`);
-  console.log(`   - Retrieved ${inflationMap.size} annual inflation checkpoints.`);
+  console.log(`   - Retrieved ${gdpMap.size} annual global GDP checkpoints.`);
+  console.log(`   - Retrieved ${inflationMap.size} annual global inflation checkpoints.`);
+  console.log(`   - Retrieved ${usGrowthMap.size} sovereign Real GDP Growth & ${usCaMap.size} Current Account checkpoints (USA benchmark).`);
+  console.log(`   - Retrieved ${usDepMap.size} sovereign Old-Age Dependency Ratio checkpoints.`);
 
   const sampleYears = [2000, 2010, 2020, 2022, 2024];
   let updateCount = 0;
@@ -109,7 +190,6 @@ async function runSync() {
 
     const indicator: FetchedMacroIndicator = { year: yr };
     if (gdpRaw) {
-      // Convert raw USD to Trillions
       indicator.globalGdpTrillion = Number((gdpRaw / 1e12).toFixed(1));
     }
     if (inflation) {
@@ -125,6 +205,7 @@ async function runSync() {
   console.log('\n2. Verifying existing dataset schema and invariant contracts...');
   const datasetFiles = [
     'src/data/global-wealth.ts',
+    'src/data/country-metrics.ts',
     'src/data/macro-trends.ts',
     'src/data/yield-curve-data.ts',
     'src/data/macro-regimes-data.ts',
@@ -132,6 +213,7 @@ async function runSync() {
     'src/data/inflation-anatomy-data.ts',
     'src/data/leading-indicators-data.ts',
     'src/data/external-sector-data.ts',
+    'src/data/fiscal-dominance-data.ts',
     'src/data/latest-liquidity-status.json',
     'src/data/latest-yield-status.json',
     'src/data/latest-nowcast-status.json',
@@ -150,12 +232,18 @@ async function runSync() {
     }
   }
 
+  console.log('\n3. Validating 46-Country Sovereign Macro & Demographic Matrix...');
+  const verifiedCountryCount = validateSovereignCountryDataset();
+  console.log(
+    `   ✓ All ${verifiedCountryCount} sovereign profiles verified across ${EXPECTED_HISTORY_YEARS.length} historical checkpoints (Real GDP Growth, Policy Rate, 10Y Yield, Current Account, Fiscal Balance, FX Reserves, Population, Old-Age Dependency, and Labor/Sahm).`
+  );
+
   /*
    * Validates the 6-tier Global Wealth Pyramid dataset across all historical intervals
    * ensuring population counts, aggregate wealth sums, and distribution shares stay balanced
    * with empirical World Bank and UBS benchmark accounting invariants.
    */
-  console.log('\n3. Validating Global Wealth Pyramid 6-Tier Invariants...');
+  console.log('\n4. Validating Global Wealth Pyramid 6-Tier Invariants...');
   const wealthFilePath = path.resolve(process.cwd(), 'src/data/global-wealth.ts');
   const wealthFileContent = fs.readFileSync(wealthFilePath, 'utf8');
   const jsonStart = wealthFileContent.indexOf('export const GLOBAL_WEALTH_HISTORY: GlobalWealthYear[] = ') +
@@ -188,7 +276,6 @@ async function runSync() {
       throw new Error(`Total wealth share mismatch in year ${yearEntry.year}: sum is ${totalWealthShare.toFixed(2)}% (must equal 100%)`);
     }
 
-    // Pre-2000 historical global wealth-to-GDP empirically sat between 2.8x and 3.2x (e.g. 1995 at 2.85x); 2.5x provides an empirical safety floor against benchmark revisions.
     const gdpVal = gdpMap.get(yearEntry.year);
     if (gdpVal) {
       const gdpTrillion = gdpVal / 1e12;
@@ -200,8 +287,9 @@ async function runSync() {
   }
   console.log(`   ✓ All ${wealthHistory.length} wealth history intervals verified across 6 tiers with exact accounting balance.`);
 
-  console.log('\n4. Ingestion & Invariant Verification Summary:');
+  console.log('\n5. Ingestion & Invariant Verification Summary:');
   console.log(`   - Checked series: Global GDP, Global Inflation, Sovereign Debt, FX Reserves`);
+  console.log(`   - Geography Sovereign Matrix: ${verifiedCountryCount} countries x ${EXPECTED_HISTORY_YEARS.length} eras verified (Wealth, Real Growth, Policy Rate, 10Y Yield, Current Account, Fiscal Balance, FX Reserves, Demographics, Labor)`);
   console.log(`   - Wealth Pyramid: 6-Tier Distribution (< $10k, $10k-$100k, $100k-$1M, $1M-$10M HNW, $10M-$100M VHNW, > $100M Apex)`);
   console.log(`   - Tier 1 additions: Term Structure Curves, 4-Quadrant Regimes, Sahm Rule & Labor Radar`);
   console.log(`   - Inflation Anatomy: Headline vs. Core, Supercore (Services ex-Shelter), Shelter/OER, PPI Lead Indicator`);

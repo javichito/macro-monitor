@@ -76,6 +76,14 @@ export interface CountryYearMetric {
   inflationRate: number;
   debtToGdp: number;
   gini: number;
+  realGdpGrowth: number;
+  policyRate: number;
+  bondYield10Y: number;
+  currentAccountPercentGdp: number;
+  fiscalBalancePercentGdp: number;
+  fxReservesBillionUSD: number;
+  populationMillion: number;
+  oldAgeDependencyRatio: number;
   assetMix: {
     financialShare: number;
     nonFinancialShare: number;

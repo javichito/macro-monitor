@@ -149,5 +149,29 @@ describe('CountryComparison Component', () => {
     expect(screen.getByText('Labor Productivity Growth (YoY)')).toBeDefined();
     expect(screen.getByText(/Labor Market & Sahm Signal/)).toBeDefined();
   });
+
+  it('renders expanded macroeconomic, monetary, fiscal, external, and demographic duel cards', () => {
+    render(
+      <CountryComparison
+        selectedYear={2026}
+        currencyPerspective="nominal"
+        initialCountryCodeA="IND"
+        initialCountryCodeB="BRA"
+      />
+    );
+
+    expect(screen.getByText('Real GDP Growth Rate (YoY)')).toBeDefined();
+    expect(screen.getByText('Central Bank Policy Rate')).toBeDefined();
+    expect(screen.getByText('10-Year Sovereign Bond Yield')).toBeDefined();
+    expect(screen.getByText('Current Account (% of GDP)')).toBeDefined();
+    expect(screen.getByText('Fiscal Balance (% of GDP)')).toBeDefined();
+    expect(screen.getByText('FX & Gold Reserves')).toBeDefined();
+    expect(screen.getByText('Old-Age Dependency Ratio')).toBeDefined();
+    expect(screen.getByText('Total Population Scale')).toBeDefined();
+    expect(screen.getByText('Unemployment Rate (U-3)')).toBeDefined();
+  });
 });
+
+
+
 

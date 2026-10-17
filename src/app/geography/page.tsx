@@ -3,11 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { TimelineControls } from '../../components/layout/TimelineControls';
-import { WorldMap } from '../../components/map/WorldMap';
-import { CountryComparison } from '../../components/geography/CountryComparison';
-import { CountryRankingsTable } from '../../components/geography/CountryRankingsTable';
+import { WorldMap, MapMetricType, VALID_MAP_METRICS, REGION_PRESETS } from '../../components/map/WorldMap';
+import { CountryComparison, DuelLens, VALID_DUEL_LENSES } from '../../components/geography/CountryComparison';
+import {
+  CountryRankingsTable,
+  LeagueSortField,
+  VALID_LEAGUE_SORT_FIELDS,
+  LeagueTableLens,
+  VALID_LEAGUE_TABLE_LENSES,
+  SortDirection,
+} from '../../components/geography/CountryRankingsTable';
 import { PlainEnglishCard } from '../../components/explainers/PlainEnglishCard';
-import { MapPin, Globe, Trophy, GitCompare } from 'lucide-react';
+import { Trophy, GitCompare } from 'lucide-react';
+import { COUNTRIES_DATA, ECONOMIC_BLOCS } from '../../data/country-metrics';
 
 export default function GeographyPage() {
   const {
@@ -20,24 +28,150 @@ export default function GeographyPage() {
   const [activeTab, setActiveTab] = useState<'map-duel' | 'league-table'>('map-duel');
   const [duelCountryA, setDuelCountryA] = useState('USA');
   const [duelCountryB, setDuelCountryB] = useState('CHN');
+  const [duelLens, setDuelLens] = useState<DuelLens>('all');
 
-  // Hydrate deep link params from URL if present
+  const [mapMetric, setMapMetric] = useState<MapMetricType>('wealthPerAdult');
+  const [mapCountryCode, setMapCountryCode] = useState<string>('USA');
+  const [mapBlocId, setMapBlocId] = useState<string>('g7');
+  const [mapRegion, setMapRegion] = useState<string>('global');
+
+  const [leagueSortField, setLeagueSortField] = useState<LeagueSortField>('medianWealth');
+  const [leagueSortDir, setLeagueSortDir] = useState<SortDirection>('desc');
+  const [leagueRegionFilter, setLeagueRegionFilter] = useState<string>('all');
+  const [leagueTableLens, setLeagueTableLens] = useState<LeagueTableLens>('overview');
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  // Hydrate deep link params from URL if present on initial mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
-    const countryA = params.get('a');
-    const countryB = params.get('b');
-    const tabParam = params.get('tab');
+    const validCountryCodes = new Set(COUNTRIES_DATA.map((c) => c.code));
+    const validBlocIds = new Set(ECONOMIC_BLOCS.map((b) => b.id));
 
-    if (countryA) setDuelCountryA(countryA.toUpperCase());
-    if (countryB) setDuelCountryB(countryB.toUpperCase());
+    const countryA = params.get('a')?.toUpperCase();
+    const countryB = params.get('b')?.toUpperCase();
+    const tabParam = params.get('tab');
+    const lensParam = params.get('lens') as DuelLens | null;
+    const metricParam = params.get('metric') as MapMetricType | null;
+    const countryParam = params.get('country')?.toUpperCase();
+    const blocParam = params.get('bloc')?.toLowerCase();
+    const regionParam = params.get('region')?.toLowerCase();
+    const sortParam = params.get('sort') as LeagueSortField | null;
+    const dirParam = params.get('dir') as SortDirection | null;
+    const filterRegionParam = params.get('filterRegion');
+    const tableLensParam = params.get('tableLens') as LeagueTableLens | null;
+
+    if (countryA && validCountryCodes.has(countryA)) setDuelCountryA(countryA);
+    if (countryB && validCountryCodes.has(countryB)) setDuelCountryB(countryB);
     if (tabParam === 'rankings' || tabParam === 'league-table') {
       setActiveTab('league-table');
+    } else if (tabParam === 'map-duel') {
+      setActiveTab('map-duel');
     }
+
+    if (lensParam && VALID_DUEL_LENSES.includes(lensParam)) {
+      setDuelLens(lensParam);
+    }
+    if (metricParam && VALID_MAP_METRICS.includes(metricParam)) {
+      setMapMetric(metricParam);
+    }
+    if (countryParam && validCountryCodes.has(countryParam)) {
+      setMapCountryCode(countryParam);
+    }
+    if (blocParam && validBlocIds.has(blocParam)) {
+      setMapBlocId(blocParam);
+    }
+    if (regionParam && REGION_PRESETS[regionParam]) {
+      setMapRegion(regionParam);
+    }
+    if (sortParam && VALID_LEAGUE_SORT_FIELDS.includes(sortParam)) {
+      setLeagueSortField(sortParam);
+    }
+    if (dirParam === 'asc' || dirParam === 'desc') {
+      setLeagueSortDir(dirParam);
+    }
+    if (filterRegionParam) {
+      setLeagueRegionFilter(filterRegionParam);
+    }
+    if (tableLensParam && VALID_LEAGUE_TABLE_LENSES.includes(tableLensParam)) {
+      setLeagueTableLens(tableLensParam);
+    }
+
+    setIsHydrated(true);
   }, []);
 
+  /*
+   * Continuously synchronize interactive Geography state into the browser URL query parameters
+   * so any clickable tab, map metric, country selection, duel matchup, analytical lens,
+   * or league table sort/filter is immediately shareable from the address bar.
+   */
+  useEffect(() => {
+    if (!isHydrated || typeof window === 'undefined') return;
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', activeTab);
+      url.searchParams.set('year', String(selectedYear));
+      url.searchParams.set('currency', currencyPerspective);
+      url.searchParams.set('granularity', granularity);
+
+      if (activeTab === 'map-duel') {
+        url.searchParams.set('a', duelCountryA);
+        url.searchParams.set('b', duelCountryB);
+        url.searchParams.set('lens', duelLens);
+        url.searchParams.set('metric', mapMetric);
+        url.searchParams.set('country', mapCountryCode);
+        if (granularity === 'bloc') {
+          url.searchParams.set('bloc', mapBlocId);
+        } else {
+          url.searchParams.delete('bloc');
+        }
+        if (mapRegion && mapRegion !== 'global') {
+          url.searchParams.set('region', mapRegion);
+        } else {
+          url.searchParams.delete('region');
+        }
+      } else {
+        url.searchParams.set('tableLens', leagueTableLens);
+        url.searchParams.set('sort', leagueSortField);
+        url.searchParams.set('dir', leagueSortDir);
+        if (leagueRegionFilter !== 'all') {
+          url.searchParams.set('filterRegion', leagueRegionFilter);
+        } else {
+          url.searchParams.delete('filterRegion');
+        }
+      }
+
+      if (window.location.href !== url.toString()) {
+        window.history.replaceState(window.history.state, '', url.toString());
+      }
+    } catch {
+      // Fail gracefully in restricted webviews
+    }
+  }, [
+    isHydrated,
+    activeTab,
+    selectedYear,
+    currencyPerspective,
+    granularity,
+    duelCountryA,
+    duelCountryB,
+    duelLens,
+    mapMetric,
+    mapCountryCode,
+    mapBlocId,
+    mapRegion,
+    leagueTableLens,
+    leagueSortField,
+    leagueSortDir,
+    leagueRegionFilter,
+  ]);
+
   const handleSelectForDuel = (code: string) => {
+    if (code === duelCountryB) {
+      setDuelCountryB(duelCountryA);
+    }
     setDuelCountryA(code);
+    setMapCountryCode(code);
     setActiveTab('map-duel');
     // Smooth scroll down to the duel arena
     setTimeout(() => {
@@ -62,7 +196,7 @@ export default function GeographyPage() {
             How Do Nations Stack Up Against Each Other?
           </h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2.5 max-w-2xl font-normal leading-relaxed">
-            Click any nation on the map to inspect its balance sheet, pit two superpowers head-to-head in the duel arena, or sort the global league table.
+            Click any nation on the map to inspect its balance sheet across 15 macro layers, pit two superpowers head-to-head across 22 indicators in the duel arena, or sort the 46-country global league table.
           </p>
         </div>
 
@@ -105,7 +239,18 @@ export default function GeographyPage() {
             currencyPerspective={currencyPerspective}
             granularity={granularity}
             onGranularityChange={setGranularity}
+            activeMetric={mapMetric}
+            onMetricChange={setMapMetric}
+            selectedCountryCode={mapCountryCode}
+            onSelectCountryChange={setMapCountryCode}
+            selectedBlocId={mapBlocId}
+            onSelectBlocChange={setMapBlocId}
+            activeRegion={mapRegion}
+            onRegionChange={setMapRegion}
             onCompareCountry={(code) => {
+              if (code === duelCountryB) {
+                setDuelCountryB(duelCountryA);
+              }
               setDuelCountryA(code);
               const el = document.getElementById('country-comparison');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -118,6 +263,12 @@ export default function GeographyPage() {
             currencyPerspective={currencyPerspective}
             initialCountryCodeA={duelCountryA}
             initialCountryCodeB={duelCountryB}
+            onCountriesChange={(codeA, codeB) => {
+              setDuelCountryA(codeA);
+              setDuelCountryB(codeB);
+            }}
+            activeLens={duelLens}
+            onLensChange={setDuelLens}
           />
         </>
       ) : (
@@ -126,6 +277,16 @@ export default function GeographyPage() {
           selectedYear={selectedYear}
           currencyPerspective={currencyPerspective}
           onSelectCountryForDuel={handleSelectForDuel}
+          sortField={leagueSortField}
+          sortDirection={leagueSortDir}
+          onSortChange={(field, dir) => {
+            setLeagueSortField(field);
+            setLeagueSortDir(dir);
+          }}
+          selectedRegion={leagueRegionFilter}
+          onRegionFilterChange={setLeagueRegionFilter}
+          activeTableLens={leagueTableLens}
+          onTableLensChange={setLeagueTableLens}
         />
       )}
 

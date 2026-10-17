@@ -31,10 +31,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 13.5,
         "debtToGdp": 32,
         "gini": 0.76,
+        "realGdpGrowth": -0.3,
+        "policyRate": 11.48,
+        "bondYield10Y": 10.13,
+        "currentAccountPercentGdp": 0,
+        "fiscalBalancePercentGdp": -5.2,
+        "fxReservesBillionUSD": 9.7,
+        "populationMillion": 227.5,
+        "oldAgeDependencyRatio": 13.1,
         "assetMix": {
           "financialShare": 61.5,
           "nonFinancialShare": 52,
           "debtShareOfGross": 13.5
+        },
+        "labor": {
+          "unemploymentRate": 5.8,
+          "underemploymentRate": 9.9,
+          "laborForceParticipation": 62.2,
+          "sahmIndicatorValue": 1.15,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.88,
+          "wageGrowthYoy": 9.6,
+          "productivityGrowthYoy": 1.3
         }
       },
       "1990": {
@@ -46,10 +64,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.4,
         "debtToGdp": 56,
         "gini": 0.78,
+        "realGdpGrowth": 2.4,
+        "policyRate": 5.25,
+        "bondYield10Y": 5.25,
+        "currentAccountPercentGdp": -1.3,
+        "fiscalBalancePercentGdp": -5.6,
+        "fxReservesBillionUSD": 24.2,
+        "populationMillion": 249.5,
+        "oldAgeDependencyRatio": 15.3,
         "assetMix": {
           "financialShare": 64.8,
           "nonFinancialShare": 49.2,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 8.7,
+          "laborForceParticipation": 62.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.99,
+          "wageGrowthYoy": 5.1,
+          "productivityGrowthYoy": 2.2
         }
       },
       "1995": {
@@ -61,10 +97,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.8,
         "debtToGdp": 65,
         "gini": 0.79,
+        "realGdpGrowth": 2.9,
+        "policyRate": 5.65,
+        "bondYield10Y": 5.85,
+        "currentAccountPercentGdp": -1.5,
+        "fiscalBalancePercentGdp": -5.9,
+        "fxReservesBillionUSD": 38.7,
+        "populationMillion": 266.3,
+        "oldAgeDependencyRatio": 17,
         "assetMix": {
           "financialShare": 66.2,
           "nonFinancialShare": 47.8,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 9,
+          "laborForceParticipation": 62.3,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.97,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2000": {
@@ -76,10 +130,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.4,
         "debtToGdp": 55,
         "gini": 0.81,
+        "realGdpGrowth": 4.1,
+        "policyRate": 5.45,
+        "bondYield10Y": 5.65,
+        "currentAccountPercentGdp": -3.9,
+        "fiscalBalancePercentGdp": 2.3,
+        "fxReservesBillionUSD": 58.1,
+        "populationMillion": 282.1,
+        "oldAgeDependencyRatio": 18.7,
         "assetMix": {
           "financialShare": 68.2,
           "nonFinancialShare": 46.1,
           "debtShareOfGross": 14.3
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 7.8,
+          "laborForceParticipation": 62.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.08,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 2.8
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 51.5,
+        "wealthPerAdultUSD": 233400,
+        "medianWealthUSD": 48150,
+        "gdpTrillionUSD": 12.65,
+        "gdpPerCapitaUSD": 42395,
+        "inflationRate": 2.5,
+        "debtToGdp": 70.5,
+        "gini": 0.83,
+        "realGdpGrowth": 3,
+        "policyRate": 3.85,
+        "bondYield10Y": 4.45,
+        "currentAccountPercentGdp": -5.6,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 108.9,
+        "populationMillion": 298.4,
+        "oldAgeDependencyRatio": 20.4,
+        "assetMix": {
+          "financialShare": 69.3,
+          "nonFinancialShare": 45.5,
+          "debtShareOfGross": 14.8
+        },
+        "labor": {
+          "unemploymentRate": 4.5,
+          "underemploymentRate": 8.2,
+          "laborForceParticipation": 62.5,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.04,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2010": {
@@ -91,10 +196,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.6,
         "debtToGdp": 86,
         "gini": 0.85,
+        "realGdpGrowth": 2.5,
+        "policyRate": 1.45,
+        "bondYield10Y": 3.45,
+        "currentAccountPercentGdp": -3,
+        "fiscalBalancePercentGdp": -9.2,
+        "fxReservesBillionUSD": 174.2,
+        "populationMillion": 310.6,
+        "oldAgeDependencyRatio": 22.2,
         "assetMix": {
           "financialShare": 70.4,
           "nonFinancialShare": 44.8,
           "debtShareOfGross": 15.2
+        },
+        "labor": {
+          "unemploymentRate": 6.6,
+          "underemploymentRate": 11,
+          "laborForceParticipation": 62,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.79,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 2.2
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 93.25,
+        "wealthPerAdultUSD": 378400,
+        "medianWealthUSD": 65650,
+        "gdpTrillionUSD": 18.06,
+        "gdpPerCapitaUSD": 56025,
+        "inflationRate": 1.4,
+        "debtToGdp": 107,
+        "gini": 0.85,
+        "realGdpGrowth": 2.4,
+        "policyRate": 1.65,
+        "bondYield10Y": 2.85,
+        "currentAccountPercentGdp": -3.2,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 205.7,
+        "populationMillion": 322.4,
+        "oldAgeDependencyRatio": 24.1,
+        "assetMix": {
+          "financialShare": 71.6,
+          "nonFinancialShare": 42.2,
+          "debtShareOfGross": 13.8
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 8.7,
+          "laborForceParticipation": 62.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.99,
+          "wageGrowthYoy": 2.9,
+          "productivityGrowthYoy": 2.2
         }
       },
       "2020": {
@@ -106,10 +262,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.2,
         "debtToGdp": 128,
         "gini": 0.85,
+        "realGdpGrowth": -3.7,
+        "policyRate": 1.05,
+        "bondYield10Y": 1.85,
+        "currentAccountPercentGdp": -3.1,
+        "fiscalBalancePercentGdp": -12.6,
+        "fxReservesBillionUSD": 227.5,
+        "populationMillion": 331.2,
+        "oldAgeDependencyRatio": 26.1,
         "assetMix": {
           "financialShare": 72.8,
           "nonFinancialShare": 39.5,
           "debtShareOfGross": 12.3
+        },
+        "labor": {
+          "unemploymentRate": 8.1,
+          "underemploymentRate": 13,
+          "laborForceParticipation": 61.6,
+          "sahmIndicatorValue": 8.42,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.61,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 0.1
         }
       },
       "2022": {
@@ -121,10 +295,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8,
         "debtToGdp": 121,
         "gini": 0.83,
+        "realGdpGrowth": 2.7,
+        "policyRate": 3.85,
+        "bondYield10Y": 3.95,
+        "currentAccountPercentGdp": -3.8,
+        "fiscalBalancePercentGdp": -6,
+        "fxReservesBillionUSD": 232.3,
+        "populationMillion": 333.3,
+        "oldAgeDependencyRatio": 27,
         "assetMix": {
           "financialShare": 71.5,
           "nonFinancialShare": 40.8,
           "debtShareOfGross": 12.3
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 7.1,
+          "laborForceParticipation": 62.7,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.14,
+          "wageGrowthYoy": 6.5,
+          "productivityGrowthYoy": 2.3
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 152.2,
+        "wealthPerAdultUSD": 573933,
+        "medianWealthUSD": 114833,
+        "gdpTrillionUSD": 27.91,
+        "gdpPerCapitaUSD": 82243,
+        "inflationRate": 4.5,
+        "debtToGdp": 122.7,
+        "gini": 0.83,
+        "realGdpGrowth": 2.2,
+        "policyRate": 5,
+        "bondYield10Y": 4.4,
+        "currentAccountPercentGdp": -3.3,
+        "fiscalBalancePercentGdp": -6.6,
+        "fxReservesBillionUSD": 237.2,
+        "populationMillion": 339.4,
+        "oldAgeDependencyRatio": 27.8,
+        "assetMix": {
+          "financialShare": 71.9,
+          "nonFinancialShare": 40.3,
+          "debtShareOfGross": 12.2
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 7.6,
+          "laborForceParticipation": 62.6,
+          "sahmIndicatorValue": 0.25,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.09,
+          "wageGrowthYoy": 4.6,
+          "productivityGrowthYoy": 2.1
         }
       },
       "2025": {
@@ -136,10 +361,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.8,
         "debtToGdp": 123.5,
         "gini": 0.83,
+        "realGdpGrowth": 2.1,
+        "policyRate": 4.5,
+        "bondYield10Y": 4.3,
+        "currentAccountPercentGdp": -3.4,
+        "fiscalBalancePercentGdp": -6.5,
+        "fxReservesBillionUSD": 239.6,
+        "populationMillion": 342.1,
+        "oldAgeDependencyRatio": 28.1,
         "assetMix": {
           "financialShare": 72.1,
           "nonFinancialShare": 40.1,
           "debtShareOfGross": 12.2
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 7.6,
+          "laborForceParticipation": 62.6,
+          "sahmIndicatorValue": 0.22,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.09,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 2.1
         }
       },
       "2026": {
@@ -151,10 +394,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 124,
         "gini": 0.83,
+        "realGdpGrowth": 2.1,
+        "policyRate": 4.25,
+        "bondYield10Y": 4.25,
+        "currentAccountPercentGdp": -3.4,
+        "fiscalBalancePercentGdp": -6.4,
+        "fxReservesBillionUSD": 242,
+        "populationMillion": 343.3,
+        "oldAgeDependencyRatio": 28.4,
         "assetMix": {
           "financialShare": 72.4,
           "nonFinancialShare": 39.8,
           "debtShareOfGross": 12.2
+        },
+        "labor": {
+          "unemploymentRate": 4,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 62.6,
+          "sahmIndicatorValue": 0.2,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.1,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 2.1
         }
       }
     }
@@ -181,10 +442,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6,
         "debtToGdp": 15,
         "gini": 0.48,
+        "realGdpGrowth": 7.7,
+        "policyRate": 5.1,
+        "bondYield10Y": 4.5,
+        "currentAccountPercentGdp": 0.3,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 130.4,
+        "populationMillion": 974.4,
+        "oldAgeDependencyRatio": 10.5,
         "assetMix": {
           "financialShare": 24,
           "nonFinancialShare": 80,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 6.9,
+          "underemploymentRate": 9.8,
+          "laborForceParticipation": 67.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.6,
+          "wageGrowthYoy": 6.4,
+          "productivityGrowthYoy": 5.3
         }
       },
       "1990": {
@@ -196,10 +475,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.1,
         "debtToGdp": 19,
         "gini": 0.52,
+        "realGdpGrowth": 6,
+        "policyRate": 2.5,
+        "bondYield10Y": 3.15,
+        "currentAccountPercentGdp": 1.8,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 326,
+        "populationMillion": 1132.1,
+        "oldAgeDependencyRatio": 12.3,
         "assetMix": {
           "financialShare": 30,
           "nonFinancialShare": 74,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 6,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 67.6,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.71,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 4.7
         }
       },
       "1995": {
@@ -211,10 +508,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 17.1,
         "debtToGdp": 21,
         "gini": 0.55,
+        "realGdpGrowth": 10.3,
+        "policyRate": 2.9,
+        "bondYield10Y": 3.75,
+        "currentAccountPercentGdp": 2,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 521.6,
+        "populationMillion": 1196.7,
+        "oldAgeDependencyRatio": 13.7,
         "assetMix": {
           "financialShare": 34,
           "nonFinancialShare": 70,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 6.2,
+          "underemploymentRate": 8.9,
+          "laborForceParticipation": 67.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.69,
+          "wageGrowthYoy": 12.5,
+          "productivityGrowthYoy": 6.2
         }
       },
       "2000": {
@@ -226,10 +541,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.4,
         "debtToGdp": 23,
         "gini": 0.59,
+        "realGdpGrowth": 8.5,
+        "policyRate": 2.7,
+        "bondYield10Y": 3.55,
+        "currentAccountPercentGdp": 2.3,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 782.4,
+        "populationMillion": 1261.7,
+        "oldAgeDependencyRatio": 15,
         "assetMix": {
           "financialShare": 38,
           "nonFinancialShare": 67,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 7.7,
+          "laborForceParticipation": 67.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.8,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 5.6
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 14.45,
+        "wealthPerAdultUSD": 14510,
+        "medianWealthUSD": 6755,
+        "gdpTrillionUSD": 3.65,
+        "gdpPerCapitaUSD": 2755,
+        "inflationRate": 1.9,
+        "debtToGdp": 28.5,
+        "gini": 0.64,
+        "realGdpGrowth": 11,
+        "policyRate": 1.1,
+        "bondYield10Y": 2.35,
+        "currentAccountPercentGdp": 7.1,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 1467,
+        "populationMillion": 1324.9,
+        "oldAgeDependencyRatio": 16.4,
+        "assetMix": {
+          "financialShare": 41.5,
+          "nonFinancialShare": 64,
+          "debtShareOfGross": 5.5
+        },
+        "labor": {
+          "unemploymentRate": 5.6,
+          "underemploymentRate": 8.1,
+          "laborForceParticipation": 67.7,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.76,
+          "wageGrowthYoy": 4.2,
+          "productivityGrowthYoy": 6.5
         }
       },
       "2010": {
@@ -241,10 +607,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.3,
         "debtToGdp": 34,
         "gini": 0.68,
+        "realGdpGrowth": 10.4,
+        "policyRate": 0,
+        "bondYield10Y": 1.35,
+        "currentAccountPercentGdp": 4,
+        "fiscalBalancePercentGdp": -6.6,
+        "fxReservesBillionUSD": 2347.2,
+        "populationMillion": 1338.5,
+        "oldAgeDependencyRatio": 17.8,
         "assetMix": {
           "financialShare": 45,
           "nonFinancialShare": 61,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 7.7,
+          "underemploymentRate": 10.9,
+          "laborForceParticipation": 67.1,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 4.9,
+          "productivityGrowthYoy": 6.3
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 49.55,
+        "wealthPerAdultUSD": 45650,
+        "medianWealthUSD": 18975,
+        "gdpTrillionUSD": 10.39,
+        "gdpPerCapitaUSD": 7475,
+        "inflationRate": 2.8,
+        "debtToGdp": 51,
+        "gini": 0.69,
+        "realGdpGrowth": 7,
+        "policyRate": 0,
+        "bondYield10Y": 0.75,
+        "currentAccountPercentGdp": 2.5,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 2771,
+        "populationMillion": 1390,
+        "oldAgeDependencyRatio": 19.4,
+        "assetMix": {
+          "financialShare": 45.8,
+          "nonFinancialShare": 60.3,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 6,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 67.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.71,
+          "wageGrowthYoy": 4.7,
+          "productivityGrowthYoy": 5.1
         }
       },
       "2020": {
@@ -256,10 +673,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.4,
         "debtToGdp": 68,
         "gini": 0.7,
+        "realGdpGrowth": 2.2,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 2.6,
+        "fiscalBalancePercentGdp": -10,
+        "fxReservesBillionUSD": 3064.4,
+        "populationMillion": 1412.5,
+        "oldAgeDependencyRatio": 21,
         "assetMix": {
           "financialShare": 46.5,
           "nonFinancialShare": 59.5,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 7,
+          "underemploymentRate": 10,
+          "laborForceParticipation": 67.3,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.59,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 3.4
         }
       },
       "2022": {
@@ -271,10 +706,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2,
         "debtToGdp": 77,
         "gini": 0.7,
+        "realGdpGrowth": 5.1,
+        "policyRate": 1.1,
+        "bondYield10Y": 1.85,
+        "currentAccountPercentGdp": 1.9,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 3129.6,
+        "populationMillion": 1411.9,
+        "oldAgeDependencyRatio": 21.7,
         "assetMix": {
           "financialShare": 45.8,
           "nonFinancialShare": 60.5,
           "debtShareOfGross": 6.3
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7,
+          "laborForceParticipation": 67.9,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.86,
+          "wageGrowthYoy": 4.2,
+          "productivityGrowthYoy": 4.4
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 89.57,
+        "wealthPerAdultUSD": 79377,
+        "medianWealthUSD": 29357,
+        "gdpTrillionUSD": 19.22,
+        "gdpPerCapitaUSD": 13640,
+        "inflationRate": 1.4,
+        "debtToGdp": 81.1,
+        "gini": 0.69,
+        "realGdpGrowth": 4.6,
+        "policyRate": 2.25,
+        "bondYield10Y": 2.3,
+        "currentAccountPercentGdp": 2.4,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 3194.8,
+        "populationMillion": 1409.1,
+        "oldAgeDependencyRatio": 22.3,
+        "assetMix": {
+          "financialShare": 46.1,
+          "nonFinancialShare": 60,
+          "debtShareOfGross": 6.1
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 67.8,
+          "sahmIndicatorValue": 0.15,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.81,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 4.2
         }
       },
       "2025": {
@@ -286,10 +772,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.1,
         "debtToGdp": 83.2,
         "gini": 0.69,
+        "realGdpGrowth": 4.5,
+        "policyRate": 1.75,
+        "bondYield10Y": 2.2,
+        "currentAccountPercentGdp": 2.3,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 3227.4,
+        "populationMillion": 1407.8,
+        "oldAgeDependencyRatio": 22.6,
         "assetMix": {
           "financialShare": 46.2,
           "nonFinancialShare": 59.8,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 67.8,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.81,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 4.2
         }
       },
       "2026": {
@@ -301,10 +805,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.2,
         "debtToGdp": 85,
         "gini": 0.69,
+        "realGdpGrowth": 4.5,
+        "policyRate": 1.5,
+        "bondYield10Y": 2.15,
+        "currentAccountPercentGdp": 2.3,
+        "fiscalBalancePercentGdp": -3.8,
+        "fxReservesBillionUSD": 3260,
+        "populationMillion": 1404,
+        "oldAgeDependencyRatio": 22.8,
         "assetMix": {
           "financialShare": 46.5,
           "nonFinancialShare": 59.5,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 7.4,
+          "laborForceParticipation": 67.8,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.82,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 4.2
         }
       }
     }
@@ -332,10 +854,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.4,
         "debtToGdp": 30,
         "gini": 0.72,
+        "realGdpGrowth": 1,
+        "policyRate": 4.75,
+        "bondYield10Y": 4.05,
+        "currentAccountPercentGdp": 6,
+        "fiscalBalancePercentGdp": -0.6,
+        "fxReservesBillionUSD": 12.8,
+        "populationMillion": 78,
+        "oldAgeDependencyRatio": 17.4,
         "assetMix": {
           "financialShare": 44,
           "nonFinancialShare": 67,
           "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 7.9,
+          "underemploymentRate": 11.4,
+          "laborForceParticipation": 78.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.38,
+          "wageGrowthYoy": 5,
+          "productivityGrowthYoy": 0.5
         }
       },
       "1990": {
@@ -347,10 +887,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.7,
         "debtToGdp": 41,
         "gini": 0.74,
+        "realGdpGrowth": 0.9,
+        "policyRate": 3.75,
+        "bondYield10Y": 3.45,
+        "currentAccountPercentGdp": 3.3,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 32,
+        "populationMillion": 79.1,
+        "oldAgeDependencyRatio": 20.4,
         "assetMix": {
           "financialShare": 47,
           "nonFinancialShare": 65,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 7,
+          "underemploymentRate": 10.2,
+          "laborForceParticipation": 79,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.49,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 0.5
         }
       },
       "1995": {
@@ -362,10 +920,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 55,
         "gini": 0.75,
+        "realGdpGrowth": 1.4,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.05,
+        "currentAccountPercentGdp": 6.5,
+        "fiscalBalancePercentGdp": -1.3,
+        "fxReservesBillionUSD": 51.2,
+        "populationMillion": 81.7,
+        "oldAgeDependencyRatio": 22.7,
         "assetMix": {
           "financialShare": 48,
           "nonFinancialShare": 64.5,
           "debtShareOfGross": 12.5
+        },
+        "labor": {
+          "unemploymentRate": 7.2,
+          "underemploymentRate": 10.5,
+          "laborForceParticipation": 78.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 0.7
         }
       },
       "2000": {
@@ -377,10 +953,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.4,
         "debtToGdp": 59,
         "gini": 0.76,
+        "realGdpGrowth": 1.8,
+        "policyRate": 3.95,
+        "bondYield10Y": 3.85,
+        "currentAccountPercentGdp": -1.7,
+        "fiscalBalancePercentGdp": 0.4,
+        "fxReservesBillionUSD": 76.8,
+        "populationMillion": 82.2,
+        "oldAgeDependencyRatio": 24.9,
         "assetMix": {
           "financialShare": 49,
           "nonFinancialShare": 64,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 9.3,
+          "laborForceParticipation": 79.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.58,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 9.35,
+        "wealthPerAdultUSD": 137600,
+        "medianWealthUSD": 41500,
+        "gdpTrillionUSD": 2.69,
+        "gdpPerCapitaUSD": 32750,
+        "inflationRate": 1.3,
+        "debtToGdp": 70.5,
+        "gini": 0.77,
+        "realGdpGrowth": 1.5,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.65,
+        "currentAccountPercentGdp": 7,
+        "fiscalBalancePercentGdp": 0,
+        "fxReservesBillionUSD": 144,
+        "populationMillion": 82.1,
+        "oldAgeDependencyRatio": 27.2,
+        "assetMix": {
+          "financialShare": 49.8,
+          "nonFinancialShare": 63.3,
+          "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 6.6,
+          "underemploymentRate": 9.7,
+          "laborForceParticipation": 79.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.54,
+          "wageGrowthYoy": 2.7,
+          "productivityGrowthYoy": 0.7
         }
       },
       "2010": {
@@ -392,10 +1019,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.1,
         "debtToGdp": 82,
         "gini": 0.78,
+        "realGdpGrowth": 1,
+        "policyRate": 0,
+        "bondYield10Y": 1.65,
+        "currentAccountPercentGdp": 6.4,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 230.4,
+        "populationMillion": 81.9,
+        "oldAgeDependencyRatio": 29.5,
         "assetMix": {
           "financialShare": 50.5,
           "nonFinancialShare": 62.5,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 8.7,
+          "underemploymentRate": 12.5,
+          "laborForceParticipation": 78.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.29,
+          "wageGrowthYoy": 2.6,
+          "productivityGrowthYoy": 0.5
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 13.95,
+        "wealthPerAdultUSD": 202900,
+        "medianWealthUSD": 57150,
+        "gdpTrillionUSD": 3.66,
+        "gdpPerCapitaUSD": 44280,
+        "inflationRate": 0.8,
+        "debtToGdp": 75.4,
+        "gini": 0.79,
+        "realGdpGrowth": 0.9,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.05,
+        "currentAccountPercentGdp": 8.6,
+        "fiscalBalancePercentGdp": -0.4,
+        "fxReservesBillionUSD": 272,
+        "populationMillion": 82.7,
+        "oldAgeDependencyRatio": 32.1,
+        "assetMix": {
+          "financialShare": 50.9,
+          "nonFinancialShare": 61.9,
+          "debtShareOfGross": 12.7
+        },
+        "labor": {
+          "unemploymentRate": 7,
+          "underemploymentRate": 10.2,
+          "laborForceParticipation": 79,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.49,
+          "wageGrowthYoy": 2.5,
+          "productivityGrowthYoy": 0.5
         }
       },
       "2020": {
@@ -407,10 +1085,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.5,
         "debtToGdp": 68.7,
         "gini": 0.79,
+        "realGdpGrowth": -5.2,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 7.1,
+        "fiscalBalancePercentGdp": -8,
+        "fxReservesBillionUSD": 300.8,
+        "populationMillion": 83.2,
+        "oldAgeDependencyRatio": 34.8,
         "assetMix": {
           "financialShare": 51.2,
           "nonFinancialShare": 61.2,
           "debtShareOfGross": 12.4
+        },
+        "labor": {
+          "unemploymentRate": 8,
+          "underemploymentRate": 11.6,
+          "laborForceParticipation": 78.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.37,
+          "wageGrowthYoy": 2.3,
+          "productivityGrowthYoy": -1.6
         }
       },
       "2022": {
@@ -422,10 +1118,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.7,
         "debtToGdp": 66.1,
         "gini": 0.77,
+        "realGdpGrowth": 1.2,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.15,
+        "currentAccountPercentGdp": 4.2,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 307.2,
+        "populationMillion": 83.7,
+        "oldAgeDependencyRatio": 35.9,
         "assetMix": {
           "financialShare": 50.8,
           "nonFinancialShare": 61.8,
           "debtShareOfGross": 12.6
+        },
+        "labor": {
+          "unemploymentRate": 5.8,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 79.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.64,
+          "wageGrowthYoy": 6.8,
+          "productivityGrowthYoy": 0.6
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 18.67,
+        "wealthPerAdultUSD": 271727,
+        "medianWealthUSD": 71710,
+        "gdpTrillionUSD": 4.44,
+        "gdpPerCapitaUSD": 52773,
+        "inflationRate": 4.4,
+        "debtToGdp": 64.6,
+        "gini": 0.76,
+        "realGdpGrowth": 0.7,
+        "policyRate": 3.5,
+        "bondYield10Y": 2.6,
+        "currentAccountPercentGdp": 6.9,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 313.6,
+        "populationMillion": 84.1,
+        "oldAgeDependencyRatio": 37,
+        "assetMix": {
+          "financialShare": 51.3,
+          "nonFinancialShare": 61.3,
+          "debtShareOfGross": 12.5
+        },
+        "labor": {
+          "unemploymentRate": 6.2,
+          "underemploymentRate": 9.1,
+          "laborForceParticipation": 79.2,
+          "sahmIndicatorValue": 0.43,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.59,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 0.4
         }
       },
       "2025": {
@@ -437,10 +1184,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.3,
         "debtToGdp": 63.8,
         "gini": 0.76,
+        "realGdpGrowth": 0.6,
+        "policyRate": 3,
+        "bondYield10Y": 2.5,
+        "currentAccountPercentGdp": 6.8,
+        "fiscalBalancePercentGdp": -1.9,
+        "fxReservesBillionUSD": 316.8,
+        "populationMillion": 84.3,
+        "oldAgeDependencyRatio": 37.4,
         "assetMix": {
           "financialShare": 51.5,
           "nonFinancialShare": 61,
           "debtShareOfGross": 12.5
+        },
+        "labor": {
+          "unemploymentRate": 6.1,
+          "underemploymentRate": 9.1,
+          "laborForceParticipation": 79.2,
+          "sahmIndicatorValue": 0.4,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.59,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 0.4
         }
       },
       "2026": {
@@ -452,10 +1217,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.1,
         "debtToGdp": 63.2,
         "gini": 0.76,
+        "realGdpGrowth": 0.6,
+        "policyRate": 2.75,
+        "bondYield10Y": 2.45,
+        "currentAccountPercentGdp": 6.8,
+        "fiscalBalancePercentGdp": -1.8,
+        "fxReservesBillionUSD": 320,
+        "populationMillion": 84.5,
+        "oldAgeDependencyRatio": 37.8,
         "assetMix": {
           "financialShare": 51.8,
           "nonFinancialShare": 60.7,
           "debtShareOfGross": 12.5
+        },
+        "labor": {
+          "unemploymentRate": 6.1,
+          "underemploymentRate": 9,
+          "laborForceParticipation": 79.2,
+          "sahmIndicatorValue": 0.38,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.6,
+          "wageGrowthYoy": 3.2,
+          "productivityGrowthYoy": 0.4
         }
       }
     }
@@ -482,10 +1265,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 7.8,
         "debtToGdp": 52,
         "gini": 0.58,
+        "realGdpGrowth": 1.2,
+        "policyRate": 6.63,
+        "bondYield10Y": 5.85,
+        "currentAccountPercentGdp": 3,
+        "fiscalBalancePercentGdp": -2.2,
+        "fxReservesBillionUSD": 50,
+        "populationMillion": 117.1,
+        "oldAgeDependencyRatio": 23.4,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 54,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 6,
+          "laborForceParticipation": 81.5,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.04,
+          "wageGrowthYoy": 7.7,
+          "productivityGrowthYoy": 1.1
         }
       },
       "1990": {
@@ -497,10 +1298,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.1,
         "debtToGdp": 67,
         "gini": 0.6,
+        "realGdpGrowth": 5,
+        "policyRate": 2.17,
+        "bondYield10Y": 2.15,
+        "currentAccountPercentGdp": 3.3,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 125,
+        "populationMillion": 123.6,
+        "oldAgeDependencyRatio": 27.4,
         "assetMix": {
           "financialShare": 58,
           "nonFinancialShare": 53,
           "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 4.8,
+          "laborForceParticipation": 81.7,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.15,
+          "wageGrowthYoy": 5.1,
+          "productivityGrowthYoy": 2.5
         }
       },
       "1995": {
@@ -512,10 +1331,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.1,
         "debtToGdp": 95,
         "gini": 0.61,
+        "realGdpGrowth": 1.6,
+        "policyRate": 1.9,
+        "bondYield10Y": 2.75,
+        "currentAccountPercentGdp": 3.5,
+        "fiscalBalancePercentGdp": -2.9,
+        "fxReservesBillionUSD": 200,
+        "populationMillion": 125.6,
+        "oldAgeDependencyRatio": 30.5,
         "assetMix": {
           "financialShare": 60,
           "nonFinancialShare": 51,
           "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 3.6,
+          "underemploymentRate": 5.1,
+          "laborForceParticipation": 81.6,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.13,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2000": {
@@ -527,10 +1364,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.7,
         "debtToGdp": 136,
         "gini": 0.62,
+        "realGdpGrowth": 2,
+        "policyRate": 1.7,
+        "bondYield10Y": 2.55,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -1.2,
+        "fxReservesBillionUSD": 300,
+        "populationMillion": 126.9,
+        "oldAgeDependencyRatio": 33.5,
         "assetMix": {
           "financialShare": 61,
           "nonFinancialShare": 51,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 2.7,
+          "underemploymentRate": 3.9,
+          "laborForceParticipation": 81.9,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.24,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 21.85,
+        "wealthPerAdultUSD": 209200,
+        "medianWealthUSD": 113850,
+        "gdpTrillionUSD": 5.3,
+        "gdpPerCapitaUSD": 41520,
+        "inflationRate": -0.7,
+        "debtToGdp": 171.5,
+        "gini": 0.63,
+        "realGdpGrowth": 1.7,
+        "policyRate": 0.1,
+        "bondYield10Y": 1.35,
+        "currentAccountPercentGdp": 4,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 562.5,
+        "populationMillion": 127.6,
+        "oldAgeDependencyRatio": 36.6,
+        "assetMix": {
+          "financialShare": 61.8,
+          "nonFinancialShare": 50.3,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 3,
+          "underemploymentRate": 4.3,
+          "laborForceParticipation": 81.8,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.2,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2010": {
@@ -542,10 +1430,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.7,
         "debtToGdp": 207,
         "gini": 0.63,
+        "realGdpGrowth": 1.2,
+        "policyRate": 0,
+        "bondYield10Y": 0.35,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -6.2,
+        "fxReservesBillionUSD": 900,
+        "populationMillion": 128.1,
+        "oldAgeDependencyRatio": 39.6,
         "assetMix": {
           "financialShare": 62.5,
           "nonFinancialShare": 49.5,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 7.1,
+          "laborForceParticipation": 81.3,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 25.7,
+        "wealthPerAdultUSD": 244300,
+        "medianWealthUSD": 121650,
+        "gdpTrillionUSD": 5.37,
+        "gdpPerCapitaUSD": 42215,
+        "inflationRate": -0.3,
+        "debtToGdp": 233,
+        "gini": 0.64,
+        "realGdpGrowth": 1.1,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 4,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 1062.5,
+        "populationMillion": 127.2,
+        "oldAgeDependencyRatio": 43.2,
+        "assetMix": {
+          "financialShare": 63.3,
+          "nonFinancialShare": 48.3,
+          "debtShareOfGross": 11.5
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 4.8,
+          "laborForceParticipation": 81.7,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.15,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 1.1
         }
       },
       "2020": {
@@ -557,10 +1496,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0,
         "debtToGdp": 259,
         "gini": 0.64,
+        "realGdpGrowth": -5,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 4.1,
+        "fiscalBalancePercentGdp": -9.6,
+        "fxReservesBillionUSD": 1175,
+        "populationMillion": 126.3,
+        "oldAgeDependencyRatio": 46.7,
         "assetMix": {
           "financialShare": 64,
           "nonFinancialShare": 47,
           "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 4.4,
+          "underemploymentRate": 6.2,
+          "laborForceParticipation": 81.4,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.03,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": -1
         }
       },
       "2022": {
@@ -572,10 +1529,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 261,
         "gini": 0.65,
+        "realGdpGrowth": 1.4,
+        "policyRate": 0.1,
+        "bondYield10Y": 0.85,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 1200,
+        "populationMillion": 125.1,
+        "oldAgeDependencyRatio": 48.3,
         "assetMix": {
           "financialShare": 63.8,
           "nonFinancialShare": 47.4,
           "debtShareOfGross": 11.2
+        },
+        "labor": {
+          "unemploymentRate": 2.2,
+          "underemploymentRate": 3.3,
+          "laborForceParticipation": 82,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.3,
+          "wageGrowthYoy": 4.8,
+          "productivityGrowthYoy": 1.2
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 24.07,
+        "wealthPerAdultUSD": 230693,
+        "medianWealthUSD": 110893,
+        "gdpTrillionUSD": 4.35,
+        "gdpPerCapitaUSD": 35073,
+        "inflationRate": 2.3,
+        "debtToGdp": 257,
+        "gini": 0.64,
+        "realGdpGrowth": 0.9,
+        "policyRate": 1.25,
+        "bondYield10Y": 1.3,
+        "currentAccountPercentGdp": 3.9,
+        "fiscalBalancePercentGdp": -3.6,
+        "fxReservesBillionUSD": 1225,
+        "populationMillion": 124,
+        "oldAgeDependencyRatio": 49.8,
+        "assetMix": {
+          "financialShare": 64.1,
+          "nonFinancialShare": 47.1,
+          "debtShareOfGross": 11.2
+        },
+        "labor": {
+          "unemploymentRate": 2.6,
+          "underemploymentRate": 3.7,
+          "laborForceParticipation": 81.9,
+          "sahmIndicatorValue": 0.13,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.25,
+          "wageGrowthYoy": 4.7,
+          "productivityGrowthYoy": 1
         }
       },
       "2025": {
@@ -587,10 +1595,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.2,
         "debtToGdp": 255,
         "gini": 0.64,
+        "realGdpGrowth": 0.8,
+        "policyRate": 0.75,
+        "bondYield10Y": 1.2,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -3.5,
+        "fxReservesBillionUSD": 1237.5,
+        "populationMillion": 123.5,
+        "oldAgeDependencyRatio": 50.3,
         "assetMix": {
           "financialShare": 64.2,
           "nonFinancialShare": 47,
           "debtShareOfGross": 11.2
+        },
+        "labor": {
+          "unemploymentRate": 2.6,
+          "underemploymentRate": 3.7,
+          "laborForceParticipation": 81.9,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.25,
+          "wageGrowthYoy": 4.6,
+          "productivityGrowthYoy": 1
         }
       },
       "2026": {
@@ -602,10 +1628,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2,
         "debtToGdp": 252,
         "gini": 0.64,
+        "realGdpGrowth": 0.8,
+        "policyRate": 0.5,
+        "bondYield10Y": 1.15,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 1250,
+        "populationMillion": 122.8,
+        "oldAgeDependencyRatio": 50.8,
         "assetMix": {
           "financialShare": 64.5,
           "nonFinancialShare": 46.7,
           "debtShareOfGross": 11.2
+        },
+        "labor": {
+          "unemploymentRate": 2.5,
+          "underemploymentRate": 3.6,
+          "laborForceParticipation": 81.9,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.26,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 1
         }
       }
     }
@@ -632,10 +1676,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 18,
         "debtToGdp": 45,
         "gini": 0.66,
+        "realGdpGrowth": 1.6,
+        "policyRate": 15.3,
+        "bondYield10Y": 13.5,
+        "currentAccountPercentGdp": -4,
+        "fiscalBalancePercentGdp": -3.1,
+        "fxReservesBillionUSD": 7.4,
+        "populationMillion": 56.5,
+        "oldAgeDependencyRatio": 14.1,
         "assetMix": {
           "financialShare": 50,
           "nonFinancialShare": 60,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 6,
+          "underemploymentRate": 9.8,
+          "laborForceParticipation": 78,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 12.5,
+          "productivityGrowthYoy": 1
         }
       },
       "1990": {
@@ -647,10 +1709,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8,
         "debtToGdp": 31,
         "gini": 0.68,
+        "realGdpGrowth": 1.5,
+        "policyRate": 5.6,
+        "bondYield10Y": 5.2,
+        "currentAccountPercentGdp": -3.7,
+        "fiscalBalancePercentGdp": -3.5,
+        "fxReservesBillionUSD": 18.5,
+        "populationMillion": 57.1,
+        "oldAgeDependencyRatio": 16.5,
         "assetMix": {
           "financialShare": 52,
           "nonFinancialShare": 60,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 78.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.63,
+          "wageGrowthYoy": 7,
+          "productivityGrowthYoy": 1
         }
       },
       "1995": {
@@ -662,10 +1742,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.6,
         "debtToGdp": 39,
         "gini": 0.69,
+        "realGdpGrowth": 2,
+        "policyRate": 5.65,
+        "bondYield10Y": 5.8,
+        "currentAccountPercentGdp": -3.5,
+        "fiscalBalancePercentGdp": -3.8,
+        "fxReservesBillionUSD": 29.6,
+        "populationMillion": 58.2,
+        "oldAgeDependencyRatio": 18.4,
         "assetMix": {
           "financialShare": 53,
           "nonFinancialShare": 59.5,
           "debtShareOfGross": 12.5
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 8.9,
+          "laborForceParticipation": 78.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.61,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2000": {
@@ -677,10 +1775,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.2,
         "debtToGdp": 37,
         "gini": 0.7,
+        "realGdpGrowth": 2.4,
+        "policyRate": 5.45,
+        "bondYield10Y": 5.6,
+        "currentAccountPercentGdp": -3.2,
+        "fiscalBalancePercentGdp": -2.1,
+        "fxReservesBillionUSD": 44.4,
+        "populationMillion": 58.9,
+        "oldAgeDependencyRatio": 20.2,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 59,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 4.4,
+          "underemploymentRate": 7.7,
+          "laborForceParticipation": 78.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.72,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 9,
+        "wealthPerAdultUSD": 188450,
+        "medianWealthUSD": 87700,
+        "gdpTrillionUSD": 2.07,
+        "gdpPerCapitaUSD": 33800,
+        "inflationRate": 1.9,
+        "debtToGdp": 56.5,
+        "gini": 0.71,
+        "realGdpGrowth": 2.1,
+        "policyRate": 3.85,
+        "bondYield10Y": 4.4,
+        "currentAccountPercentGdp": -3,
+        "fiscalBalancePercentGdp": -2.5,
+        "fxReservesBillionUSD": 83.3,
+        "populationMillion": 61.2,
+        "oldAgeDependencyRatio": 22,
+        "assetMix": {
+          "financialShare": 53.5,
+          "nonFinancialShare": 60,
+          "debtShareOfGross": 13.5
+        },
+        "labor": {
+          "unemploymentRate": 4.7,
+          "underemploymentRate": 8.1,
+          "laborForceParticipation": 78.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.68,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2010": {
@@ -692,10 +1841,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 76,
         "gini": 0.72,
+        "realGdpGrowth": 1.6,
+        "policyRate": 1.45,
+        "bondYield10Y": 3.4,
+        "currentAccountPercentGdp": -3.6,
+        "fiscalBalancePercentGdp": -7.1,
+        "fxReservesBillionUSD": 133.2,
+        "populationMillion": 62.9,
+        "oldAgeDependencyRatio": 23.9,
         "assetMix": {
           "financialShare": 53,
           "nonFinancialShare": 61,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 6.8,
+          "underemploymentRate": 10.9,
+          "laborForceParticipation": 77.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.43,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 1
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 13.25,
+        "wealthPerAdultUSD": 259350,
+        "medianWealthUSD": 119250,
+        "gdpTrillionUSD": 2.6,
+        "gdpPerCapitaUSD": 39850,
+        "inflationRate": 1.7,
+        "debtToGdp": 90,
+        "gini": 0.72,
+        "realGdpGrowth": 1.5,
+        "policyRate": 1.65,
+        "bondYield10Y": 2.8,
+        "currentAccountPercentGdp": -3,
+        "fiscalBalancePercentGdp": -2.9,
+        "fxReservesBillionUSD": 157.3,
+        "populationMillion": 65.2,
+        "oldAgeDependencyRatio": 26,
+        "assetMix": {
+          "financialShare": 54,
+          "nonFinancialShare": 59.5,
+          "debtShareOfGross": 13.5
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 78.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.63,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 1
         }
       },
       "2020": {
@@ -707,10 +1907,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.9,
         "debtToGdp": 104,
         "gini": 0.71,
+        "realGdpGrowth": -4.6,
+        "policyRate": 1.05,
+        "bondYield10Y": 1.8,
+        "currentAccountPercentGdp": -2.9,
+        "fiscalBalancePercentGdp": -10.5,
+        "fxReservesBillionUSD": 173.9,
+        "populationMillion": 67.2,
+        "oldAgeDependencyRatio": 28.2,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 58,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 6.1,
+          "underemploymentRate": 10,
+          "laborForceParticipation": 77.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 3.1,
+          "productivityGrowthYoy": -1.1
         }
       },
       "2022": {
@@ -722,10 +1940,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 9.1,
         "debtToGdp": 101,
         "gini": 0.7,
+        "realGdpGrowth": 1.8,
+        "policyRate": 3.85,
+        "bondYield10Y": 3.9,
+        "currentAccountPercentGdp": -3.6,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 177.6,
+        "populationMillion": 67.3,
+        "oldAgeDependencyRatio": 29.1,
         "assetMix": {
           "financialShare": 54.5,
           "nonFinancialShare": 58.5,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 3.9,
+          "underemploymentRate": 7,
+          "laborForceParticipation": 78.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.78,
+          "wageGrowthYoy": 7.6,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 17.07,
+        "wealthPerAdultUSD": 319593,
+        "medianWealthUSD": 159940,
+        "gdpTrillionUSD": 3.35,
+        "gdpPerCapitaUSD": 49383,
+        "inflationRate": 4.7,
+        "debtToGdp": 99.9,
+        "gini": 0.7,
+        "realGdpGrowth": 1.3,
+        "policyRate": 5,
+        "bondYield10Y": 4.35,
+        "currentAccountPercentGdp": -3.1,
+        "fiscalBalancePercentGdp": -4.5,
+        "fxReservesBillionUSD": 181.3,
+        "populationMillion": 67.8,
+        "oldAgeDependencyRatio": 30,
+        "assetMix": {
+          "financialShare": 54.9,
+          "nonFinancialShare": 58.2,
+          "debtShareOfGross": 13.1
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 78.4,
+          "sahmIndicatorValue": 0.33,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.73,
+          "wageGrowthYoy": 5.2,
+          "productivityGrowthYoy": 0.9
         }
       },
       "2025": {
@@ -737,10 +2006,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 99.4,
         "gini": 0.7,
+        "realGdpGrowth": 1.2,
+        "policyRate": 4.5,
+        "bondYield10Y": 4.25,
+        "currentAccountPercentGdp": -3.2,
+        "fiscalBalancePercentGdp": -4.4,
+        "fxReservesBillionUSD": 183.2,
+        "populationMillion": 68.2,
+        "oldAgeDependencyRatio": 30.3,
         "assetMix": {
           "financialShare": 55.1,
           "nonFinancialShare": 58,
           "debtShareOfGross": 13.1
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 78.4,
+          "sahmIndicatorValue": 0.3,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.73,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 0.9
         }
       },
       "2026": {
@@ -752,10 +2039,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.2,
         "debtToGdp": 98.6,
         "gini": 0.7,
+        "realGdpGrowth": 1.2,
+        "policyRate": 4.25,
+        "bondYield10Y": 4.2,
+        "currentAccountPercentGdp": -3.2,
+        "fiscalBalancePercentGdp": -4.3,
+        "fxReservesBillionUSD": 185,
+        "populationMillion": 68.4,
+        "oldAgeDependencyRatio": 30.6,
         "assetMix": {
           "financialShare": 55.3,
           "nonFinancialShare": 57.8,
           "debtShareOfGross": 13.1
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 7.4,
+          "laborForceParticipation": 78.4,
+          "sahmIndicatorValue": 0.28,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.74,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 0.9
         }
       }
     }
@@ -782,10 +2087,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 11.3,
         "debtToGdp": 48,
         "gini": 0.7,
+        "realGdpGrowth": 7.2,
+        "policyRate": 9.61,
+        "bondYield10Y": 8.48,
+        "currentAccountPercentGdp": -2,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 28.2,
+        "populationMillion": 714.3,
+        "oldAgeDependencyRatio": 5,
         "assetMix": {
           "financialShare": 11,
           "nonFinancialShare": 91,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 6.7,
+          "underemploymentRate": 11.6,
+          "laborForceParticipation": 55,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.56,
+          "wageGrowthYoy": 12,
+          "productivityGrowthYoy": 5.5
         }
       },
       "1990": {
@@ -797,10 +2120,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 9,
         "debtToGdp": 68,
         "gini": 0.72,
+        "realGdpGrowth": 7.1,
+        "policyRate": 7.25,
+        "bondYield10Y": 7.85,
+        "currentAccountPercentGdp": -1.7,
+        "fiscalBalancePercentGdp": -4.3,
+        "fxReservesBillionUSD": 70.5,
+        "populationMillion": 869.6,
+        "oldAgeDependencyRatio": 5.8,
         "assetMix": {
           "financialShare": 12.5,
           "nonFinancialShare": 90,
           "debtShareOfGross": 2.5
+        },
+        "labor": {
+          "unemploymentRate": 5.8,
+          "underemploymentRate": 10.4,
+          "laborForceParticipation": 55.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.67,
+          "wageGrowthYoy": 10.8,
+          "productivityGrowthYoy": 5.5
         }
       },
       "1995": {
@@ -812,10 +2153,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 10.2,
         "debtToGdp": 69,
         "gini": 0.73,
+        "realGdpGrowth": 7.6,
+        "policyRate": 7.65,
+        "bondYield10Y": 8.45,
+        "currentAccountPercentGdp": -1.5,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 112.8,
+        "populationMillion": 962.6,
+        "oldAgeDependencyRatio": 6.5,
         "assetMix": {
           "financialShare": 13,
           "nonFinancialShare": 89.5,
           "debtShareOfGross": 2.5
+        },
+        "labor": {
+          "unemploymentRate": 6,
+          "underemploymentRate": 10.7,
+          "laborForceParticipation": 55.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.65,
+          "wageGrowthYoy": 11.4,
+          "productivityGrowthYoy": 5.7
         }
       },
       "2000": {
@@ -827,10 +2186,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4,
         "debtToGdp": 73,
         "gini": 0.74,
+        "realGdpGrowth": 8,
+        "policyRate": 7.45,
+        "bondYield10Y": 8.25,
+        "currentAccountPercentGdp": -1.2,
+        "fiscalBalancePercentGdp": -2.9,
+        "fxReservesBillionUSD": 169.2,
+        "populationMillion": 1060.9,
+        "oldAgeDependencyRatio": 7.1,
         "assetMix": {
           "financialShare": 14,
           "nonFinancialShare": 89,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 9.5,
+          "laborForceParticipation": 55.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.76,
+          "wageGrowthYoy": 8,
+          "productivityGrowthYoy": 5.8
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 2.65,
+        "wealthPerAdultUSD": 3690,
+        "medianWealthUSD": 1500,
+        "gdpTrillionUSD": 1.08,
+        "gdpPerCapitaUSD": 900,
+        "inflationRate": 8,
+        "debtToGdp": 69.5,
+        "gini": 0.78,
+        "realGdpGrowth": 9.2,
+        "policyRate": 5.85,
+        "bondYield10Y": 7.05,
+        "currentAccountPercentGdp": -1,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 317.3,
+        "populationMillion": 1200,
+        "oldAgeDependencyRatio": 7.8,
+        "assetMix": {
+          "financialShare": 15,
+          "nonFinancialShare": 88,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.4,
+          "underemploymentRate": 9.9,
+          "laborForceParticipation": 55.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.72,
+          "wageGrowthYoy": 10.2,
+          "productivityGrowthYoy": 6.2
         }
       },
       "2010": {
@@ -842,10 +2252,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 12,
         "debtToGdp": 66,
         "gini": 0.81,
+        "realGdpGrowth": 8.5,
+        "policyRate": 3.45,
+        "bondYield10Y": 6.05,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -7.9,
+        "fxReservesBillionUSD": 507.6,
+        "populationMillion": 1238,
+        "oldAgeDependencyRatio": 8.4,
         "assetMix": {
           "financialShare": 16,
           "nonFinancialShare": 87,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 7.5,
+          "underemploymentRate": 12.7,
+          "laborForceParticipation": 54.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 12.4,
+          "productivityGrowthYoy": 6
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 8.45,
+        "wealthPerAdultUSD": 9825,
+        "medianWealthUSD": 2800,
+        "gdpTrillionUSD": 2.17,
+        "gdpPerCapitaUSD": 1644,
+        "inflationRate": 9.1,
+        "debtToGdp": 77.3,
+        "gini": 0.82,
+        "realGdpGrowth": 7.1,
+        "policyRate": 3.65,
+        "bondYield10Y": 5.45,
+        "currentAccountPercentGdp": -1,
+        "fiscalBalancePercentGdp": -3.7,
+        "fxReservesBillionUSD": 599.3,
+        "populationMillion": 1320,
+        "oldAgeDependencyRatio": 9.2,
+        "assetMix": {
+          "financialShare": 17,
+          "nonFinancialShare": 86,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.8,
+          "underemploymentRate": 10.4,
+          "laborForceParticipation": 55.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.67,
+          "wageGrowthYoy": 10.8,
+          "productivityGrowthYoy": 5.5
         }
       },
       "2020": {
@@ -857,10 +2318,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.2,
         "debtToGdp": 88.5,
         "gini": 0.82,
+        "realGdpGrowth": 1,
+        "policyRate": 3.05,
+        "bondYield10Y": 4.45,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -11.3,
+        "fxReservesBillionUSD": 662.7,
+        "populationMillion": 1383.4,
+        "oldAgeDependencyRatio": 9.9,
         "assetMix": {
           "financialShare": 18,
           "nonFinancialShare": 85,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 6.8,
+          "underemploymentRate": 11.8,
+          "laborForceParticipation": 54.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.55,
+          "wageGrowthYoy": 9.2,
+          "productivityGrowthYoy": 3.4
         }
       },
       "2022": {
@@ -872,10 +2351,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.7,
         "debtToGdp": 83.1,
         "gini": 0.83,
+        "realGdpGrowth": 7.4,
+        "policyRate": 5.85,
+        "bondYield10Y": 6.55,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -4.7,
+        "fxReservesBillionUSD": 676.8,
+        "populationMillion": 1406.6,
+        "oldAgeDependencyRatio": 10.3,
         "assetMix": {
           "financialShare": 19.5,
           "nonFinancialShare": 83.5,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 8.8,
+          "laborForceParticipation": 55.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.82,
+          "wageGrowthYoy": 9.5,
+          "productivityGrowthYoy": 5.6
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 18.33,
+        "wealthPerAdultUSD": 19100,
+        "medianWealthUSD": 4330,
+        "gdpTrillionUSD": 3.98,
+        "gdpPerCapitaUSD": 2790,
+        "inflationRate": 5.2,
+        "debtToGdp": 81.7,
+        "gini": 0.82,
+        "realGdpGrowth": 6.9,
+        "policyRate": 7,
+        "bondYield10Y": 7,
+        "currentAccountPercentGdp": -1.1,
+        "fiscalBalancePercentGdp": -5.3,
+        "fxReservesBillionUSD": 690.9,
+        "populationMillion": 1426.5,
+        "oldAgeDependencyRatio": 10.6,
+        "assetMix": {
+          "financialShare": 20.5,
+          "nonFinancialShare": 82.5,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 9.3,
+          "laborForceParticipation": 55.4,
+          "sahmIndicatorValue": 0.17,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.77,
+          "wageGrowthYoy": 8.7,
+          "productivityGrowthYoy": 5.4
         }
       },
       "2025": {
@@ -887,10 +2417,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.5,
         "debtToGdp": 81,
         "gini": 0.82,
+        "realGdpGrowth": 6.8,
+        "policyRate": 6.5,
+        "bondYield10Y": 6.9,
+        "currentAccountPercentGdp": -1.2,
+        "fiscalBalancePercentGdp": -5.2,
+        "fxReservesBillionUSD": 698,
+        "populationMillion": 1436.2,
+        "oldAgeDependencyRatio": 10.7,
         "assetMix": {
           "financialShare": 21,
           "nonFinancialShare": 82,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 9.3,
+          "laborForceParticipation": 55.4,
+          "sahmIndicatorValue": 0.14,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.77,
+          "wageGrowthYoy": 8.3,
+          "productivityGrowthYoy": 5.4
         }
       },
       "2026": {
@@ -902,10 +2450,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.2,
         "debtToGdp": 80.2,
         "gini": 0.82,
+        "realGdpGrowth": 6.8,
+        "policyRate": 6.25,
+        "bondYield10Y": 6.85,
+        "currentAccountPercentGdp": -1.2,
+        "fiscalBalancePercentGdp": -5.1,
+        "fxReservesBillionUSD": 705,
+        "populationMillion": 1448.6,
+        "oldAgeDependencyRatio": 10.8,
         "assetMix": {
           "financialShare": 21.5,
           "nonFinancialShare": 81.5,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 9.2,
+          "laborForceParticipation": 55.4,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.78,
+          "wageGrowthYoy": 8.1,
+          "productivityGrowthYoy": 5.4
         }
       }
     }
@@ -933,10 +2499,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 13.6,
         "debtToGdp": 21,
         "gini": 0.67,
+        "realGdpGrowth": 1.5,
+        "policyRate": 11.56,
+        "bondYield10Y": 10.2,
+        "currentAccountPercentGdp": -1.9,
+        "fiscalBalancePercentGdp": -4.3,
+        "fxReservesBillionUSD": 10.2,
+        "populationMillion": 54.3,
+        "oldAgeDependencyRatio": 16.7,
         "assetMix": {
           "financialShare": 40,
           "nonFinancialShare": 68,
           "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 9.2,
+          "underemploymentRate": 13,
+          "laborForceParticipation": 73.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.36,
+          "wageGrowthYoy": 9.3,
+          "productivityGrowthYoy": 0.6
         }
       },
       "1990": {
@@ -948,10 +2532,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.4,
         "debtToGdp": 35,
         "gini": 0.68,
+        "realGdpGrowth": 1.4,
+        "policyRate": 3.75,
+        "bondYield10Y": 4.35,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -4.7,
+        "fxReservesBillionUSD": 25.5,
+        "populationMillion": 58.5,
+        "oldAgeDependencyRatio": 19.5,
         "assetMix": {
           "financialShare": 41.5,
           "nonFinancialShare": 67.5,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 11.8,
+          "laborForceParticipation": 74,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 0.6
         }
       },
       "1995": {
@@ -963,10 +2565,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 56,
         "gini": 0.68,
+        "realGdpGrowth": 1.9,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.95,
+        "currentAccountPercentGdp": -1.4,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 40.8,
+        "populationMillion": 59.3,
+        "oldAgeDependencyRatio": 21.7,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 67.5,
           "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 8.5,
+          "underemploymentRate": 12.1,
+          "laborForceParticipation": 73.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 0.8
         }
       },
       "2000": {
@@ -978,10 +2598,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.7,
         "debtToGdp": 59,
         "gini": 0.69,
+        "realGdpGrowth": 2.3,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.75,
+        "currentAccountPercentGdp": -1.1,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 61.2,
+        "populationMillion": 60.8,
+        "oldAgeDependencyRatio": 23.9,
         "assetMix": {
           "financialShare": 43,
           "nonFinancialShare": 67,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 7.6,
+          "underemploymentRate": 10.9,
+          "laborForceParticipation": 74.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.56,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 8.4,
+        "wealthPerAdultUSD": 177750,
+        "medianWealthUSD": 89150,
+        "gdpTrillionUSD": 2.01,
+        "gdpPerCapitaUSD": 31615,
+        "inflationRate": 1.6,
+        "debtToGdp": 72,
+        "gini": 0.7,
+        "realGdpGrowth": 2,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.55,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -3.7,
+        "fxReservesBillionUSD": 114.8,
+        "populationMillion": 63.6,
+        "oldAgeDependencyRatio": 26.1,
+        "assetMix": {
+          "financialShare": 42.5,
+          "nonFinancialShare": 68,
+          "debtShareOfGross": 10.5
+        },
+        "labor": {
+          "unemploymentRate": 7.9,
+          "underemploymentRate": 11.3,
+          "laborForceParticipation": 74.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 2.7,
+          "productivityGrowthYoy": 0.8
         }
       },
       "2010": {
@@ -993,10 +2664,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.5,
         "debtToGdp": 85,
         "gini": 0.7,
+        "realGdpGrowth": 1.5,
+        "policyRate": 0,
+        "bondYield10Y": 2.55,
+        "currentAccountPercentGdp": -1.5,
+        "fiscalBalancePercentGdp": -8.3,
+        "fxReservesBillionUSD": 183.6,
+        "populationMillion": 64.9,
+        "oldAgeDependencyRatio": 28.2,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 69,
           "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 10,
+          "underemploymentRate": 14.1,
+          "laborForceParticipation": 73.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.27,
+          "wageGrowthYoy": 2.7,
+          "productivityGrowthYoy": 0.6
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 13.55,
+        "wealthPerAdultUSD": 275000,
+        "medianWealthUSD": 134150,
+        "gdpTrillionUSD": 2.64,
+        "gdpPerCapitaUSD": 39850,
+        "inflationRate": 1,
+        "debtToGdp": 100,
+        "gini": 0.7,
+        "realGdpGrowth": 1.4,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.95,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -4.1,
+        "fxReservesBillionUSD": 216.8,
+        "populationMillion": 66.2,
+        "oldAgeDependencyRatio": 30.8,
+        "assetMix": {
+          "financialShare": 43,
+          "nonFinancialShare": 68.5,
+          "debtShareOfGross": 11.5
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 11.8,
+          "laborForceParticipation": 74,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 2.4,
+          "productivityGrowthYoy": 0.6
         }
       },
       "2020": {
@@ -1008,10 +2730,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.5,
         "debtToGdp": 115,
         "gini": 0.7,
+        "realGdpGrowth": -4.7,
+        "policyRate": 0,
+        "bondYield10Y": 0.95,
+        "currentAccountPercentGdp": -0.8,
+        "fiscalBalancePercentGdp": -11.7,
+        "fxReservesBillionUSD": 239.7,
+        "populationMillion": 67.4,
+        "oldAgeDependencyRatio": 33.3,
         "assetMix": {
           "financialShare": 44,
           "nonFinancialShare": 68,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 9.3,
+          "underemploymentRate": 13.2,
+          "laborForceParticipation": 73.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.35,
+          "wageGrowthYoy": 2.1,
+          "productivityGrowthYoy": -1.5
         }
       },
       "2022": {
@@ -1023,10 +2763,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.2,
         "debtToGdp": 111.8,
         "gini": 0.7,
+        "realGdpGrowth": 1.7,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.05,
+        "currentAccountPercentGdp": -1.5,
+        "fiscalBalancePercentGdp": -5.1,
+        "fxReservesBillionUSD": 244.8,
+        "populationMillion": 68,
+        "oldAgeDependencyRatio": 34.4,
         "assetMix": {
           "financialShare": 43.5,
           "nonFinancialShare": 68.5,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 7.1,
+          "underemploymentRate": 10.2,
+          "laborForceParticipation": 74.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.62,
+          "wageGrowthYoy": 4.7,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 16.7,
+        "wealthPerAdultUSD": 329410,
+        "medianWealthUSD": 142713,
+        "gdpTrillionUSD": 3.01,
+        "gdpPerCapitaUSD": 44093,
+        "inflationRate": 3.2,
+        "debtToGdp": 112.3,
+        "gini": 0.69,
+        "realGdpGrowth": 1.2,
+        "policyRate": 3.5,
+        "bondYield10Y": 3.5,
+        "currentAccountPercentGdp": -1,
+        "fiscalBalancePercentGdp": -5.7,
+        "fxReservesBillionUSD": 249.9,
+        "populationMillion": 68.3,
+        "oldAgeDependencyRatio": 35.5,
+        "assetMix": {
+          "financialShare": 44,
+          "nonFinancialShare": 68,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 7.5,
+          "underemploymentRate": 10.7,
+          "laborForceParticipation": 74.2,
+          "sahmIndicatorValue": 0.33,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.57,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 0.5
         }
       },
       "2025": {
@@ -1038,10 +2829,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.2,
         "debtToGdp": 112.5,
         "gini": 0.69,
+        "realGdpGrowth": 1.1,
+        "policyRate": 3,
+        "bondYield10Y": 3.4,
+        "currentAccountPercentGdp": -1.1,
+        "fiscalBalancePercentGdp": -5.6,
+        "fxReservesBillionUSD": 252.5,
+        "populationMillion": 68.3,
+        "oldAgeDependencyRatio": 35.8,
         "assetMix": {
           "financialShare": 44.2,
           "nonFinancialShare": 67.8,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 7.5,
+          "underemploymentRate": 10.7,
+          "laborForceParticipation": 74.2,
+          "sahmIndicatorValue": 0.3,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.57,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 0.5
         }
       },
       "2026": {
@@ -1053,10 +2862,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2,
         "debtToGdp": 112,
         "gini": 0.69,
+        "realGdpGrowth": 1.1,
+        "policyRate": 2.75,
+        "bondYield10Y": 3.35,
+        "currentAccountPercentGdp": -1.1,
+        "fiscalBalancePercentGdp": -5.5,
+        "fxReservesBillionUSD": 255,
+        "populationMillion": 68.6,
+        "oldAgeDependencyRatio": 36.2,
         "assetMix": {
           "financialShare": 44.5,
           "nonFinancialShare": 67.5,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 7.4,
+          "underemploymentRate": 10.6,
+          "laborForceParticipation": 74.2,
+          "sahmIndicatorValue": 0.28,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.58,
+          "wageGrowthYoy": 2.9,
+          "productivityGrowthYoy": 0.5
         }
       }
     }
@@ -1084,10 +2911,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 86.3,
         "debtToGdp": 40,
         "gini": 0.78,
+        "realGdpGrowth": 2.6,
+        "policyRate": 73.35,
+        "bondYield10Y": 64.72,
+        "currentAccountPercentGdp": -2.4,
+        "fiscalBalancePercentGdp": -6,
+        "fxReservesBillionUSD": 14.5,
+        "populationMillion": 123.7,
+        "oldAgeDependencyRatio": 7.2,
         "assetMix": {
           "financialShare": 30,
           "nonFinancialShare": 75,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 8.7,
+          "underemploymentRate": 18.8,
+          "laborForceParticipation": 61.9,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.26,
+          "wageGrowthYoy": 28.2,
+          "productivityGrowthYoy": 1.6
         }
       },
       "1990": {
@@ -1099,10 +2944,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2947,
         "debtToGdp": 50,
         "gini": 0.8,
+        "realGdpGrowth": 2.5,
+        "policyRate": 85,
+        "bondYield10Y": 75,
+        "currentAccountPercentGdp": -2.1,
+        "fiscalBalancePercentGdp": -6.4,
+        "fxReservesBillionUSD": 36.2,
+        "populationMillion": 149.4,
+        "oldAgeDependencyRatio": 8.4,
         "assetMix": {
           "financialShare": 32,
           "nonFinancialShare": 74,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 7.8,
+          "underemploymentRate": 17.6,
+          "laborForceParticipation": 62.1,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.37,
+          "wageGrowthYoy": 28.2,
+          "productivityGrowthYoy": 1.6
         }
       },
       "1995": {
@@ -1114,10 +2977,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 66,
         "debtToGdp": 58,
         "gini": 0.8,
+        "realGdpGrowth": 3,
+        "policyRate": 12.65,
+        "bondYield10Y": 13.8,
+        "currentAccountPercentGdp": -1.9,
+        "fiscalBalancePercentGdp": -6.7,
+        "fxReservesBillionUSD": 57.9,
+        "populationMillion": 161.1,
+        "oldAgeDependencyRatio": 9.4,
         "assetMix": {
           "financialShare": 34,
           "nonFinancialShare": 73,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 8,
+          "underemploymentRate": 17.9,
+          "laborForceParticipation": 62,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.35,
+          "wageGrowthYoy": 28.2,
+          "productivityGrowthYoy": 1.8
         }
       },
       "2000": {
@@ -1129,10 +3010,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 7,
         "debtToGdp": 65,
         "gini": 0.81,
+        "realGdpGrowth": 3.4,
+        "policyRate": 12.45,
+        "bondYield10Y": 13.6,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 86.9,
+        "populationMillion": 173.8,
+        "oldAgeDependencyRatio": 10.3,
         "assetMix": {
           "financialShare": 35,
           "nonFinancialShare": 72,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 7.1,
+          "underemploymentRate": 16.7,
+          "laborForceParticipation": 62.3,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.46,
+          "wageGrowthYoy": 8.7,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 2.25,
+        "wealthPerAdultUSD": 17550,
+        "medianWealthUSD": 3900,
+        "gdpTrillionUSD": 1.43,
+        "gdpPerCapitaUSD": 7510,
+        "inflationRate": 6,
+        "debtToGdp": 63,
+        "gini": 0.82,
+        "realGdpGrowth": 3.1,
+        "policyRate": 10.85,
+        "bondYield10Y": 12.4,
+        "currentAccountPercentGdp": -1.4,
+        "fiscalBalancePercentGdp": -5.4,
+        "fxReservesBillionUSD": 162.9,
+        "populationMillion": 190.4,
+        "oldAgeDependencyRatio": 11.2,
+        "assetMix": {
+          "financialShare": 37,
+          "nonFinancialShare": 70.5,
+          "debtShareOfGross": 7.5
+        },
+        "labor": {
+          "unemploymentRate": 7.4,
+          "underemploymentRate": 17.1,
+          "laborForceParticipation": 62.2,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.42,
+          "wageGrowthYoy": 8.1,
+          "productivityGrowthYoy": 1.8
         }
       },
       "2010": {
@@ -1144,10 +3076,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5,
         "debtToGdp": 61,
         "gini": 0.82,
+        "realGdpGrowth": 2.6,
+        "policyRate": 8.45,
+        "bondYield10Y": 11.4,
+        "currentAccountPercentGdp": -2,
+        "fiscalBalancePercentGdp": -10,
+        "fxReservesBillionUSD": 260.6,
+        "populationMillion": 195.9,
+        "oldAgeDependencyRatio": 12.2,
         "assetMix": {
           "financialShare": 39,
           "nonFinancialShare": 69,
           "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 9.5,
+          "underemploymentRate": 19.9,
+          "laborForceParticipation": 61.7,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.17,
+          "wageGrowthYoy": 7.6,
+          "productivityGrowthYoy": 1.6
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 3.35,
+        "wealthPerAdultUSD": 23050,
+        "medianWealthUSD": 4650,
+        "gdpTrillionUSD": 1.83,
+        "gdpPerCapitaUSD": 9045,
+        "inflationRate": 4.1,
+        "debtToGdp": 74.8,
+        "gini": 0.86,
+        "realGdpGrowth": 2.5,
+        "policyRate": 8.65,
+        "bondYield10Y": 10.8,
+        "currentAccountPercentGdp": -1.4,
+        "fiscalBalancePercentGdp": -5.8,
+        "fxReservesBillionUSD": 307.7,
+        "populationMillion": 202.3,
+        "oldAgeDependencyRatio": 13.3,
+        "assetMix": {
+          "financialShare": 40.5,
+          "nonFinancialShare": 68,
+          "debtShareOfGross": 8.5
+        },
+        "labor": {
+          "unemploymentRate": 7.8,
+          "underemploymentRate": 17.6,
+          "laborForceParticipation": 62.1,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.37,
+          "wageGrowthYoy": 7.1,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2020": {
@@ -1159,10 +3142,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.2,
         "debtToGdp": 88.6,
         "gini": 0.89,
+        "realGdpGrowth": -3.6,
+        "policyRate": 8.05,
+        "bondYield10Y": 9.8,
+        "currentAccountPercentGdp": -1.3,
+        "fiscalBalancePercentGdp": -13.4,
+        "fxReservesBillionUSD": 340.3,
+        "populationMillion": 212.9,
+        "oldAgeDependencyRatio": 14.4,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 67,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 8.8,
+          "underemploymentRate": 19,
+          "laborForceParticipation": 61.8,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.25,
+          "wageGrowthYoy": 6.6,
+          "productivityGrowthYoy": -0.5
         }
       },
       "2022": {
@@ -1174,10 +3175,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 9.3,
         "debtToGdp": 85.3,
         "gini": 0.88,
+        "realGdpGrowth": 2.8,
+        "policyRate": 10.85,
+        "bondYield10Y": 11.9,
+        "currentAccountPercentGdp": -2,
+        "fiscalBalancePercentGdp": -6.8,
+        "fxReservesBillionUSD": 347.5,
+        "populationMillion": 215.2,
+        "oldAgeDependencyRatio": 14.8,
         "assetMix": {
           "financialShare": 41.5,
           "nonFinancialShare": 67.5,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 6.6,
+          "underemploymentRate": 16,
+          "laborForceParticipation": 62.4,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 9.9,
+          "productivityGrowthYoy": 1.7
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 5.2,
+        "wealthPerAdultUSD": 32817,
+        "medianWealthUSD": 6500,
+        "gdpTrillionUSD": 2.18,
+        "gdpPerCapitaUSD": 10040,
+        "inflationRate": 5.8,
+        "debtToGdp": 86.3,
+        "gini": 0.87,
+        "realGdpGrowth": 2.3,
+        "policyRate": 12,
+        "bondYield10Y": 12.35,
+        "currentAccountPercentGdp": -1.5,
+        "fiscalBalancePercentGdp": -7.4,
+        "fxReservesBillionUSD": 354.8,
+        "populationMillion": 217.1,
+        "oldAgeDependencyRatio": 15.3,
+        "assetMix": {
+          "financialShare": 41.8,
+          "nonFinancialShare": 67.2,
+          "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 7,
+          "underemploymentRate": 16.5,
+          "laborForceParticipation": 62.3,
+          "sahmIndicatorValue": 0.27,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 8,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2025": {
@@ -1189,10 +3241,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.1,
         "debtToGdp": 86.8,
         "gini": 0.87,
+        "realGdpGrowth": 2.2,
+        "policyRate": 11.5,
+        "bondYield10Y": 12.25,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -7.3,
+        "fxReservesBillionUSD": 358.4,
+        "populationMillion": 217.9,
+        "oldAgeDependencyRatio": 15.4,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 67,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 7,
+          "underemploymentRate": 16.5,
+          "laborForceParticipation": 62.3,
+          "sahmIndicatorValue": 0.24,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 7.1,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2026": {
@@ -1204,10 +3274,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.8,
         "debtToGdp": 87.2,
         "gini": 0.87,
+        "realGdpGrowth": 2.2,
+        "policyRate": 11.25,
+        "bondYield10Y": 12.2,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -7.2,
+        "fxReservesBillionUSD": 362,
+        "populationMillion": 218.8,
+        "oldAgeDependencyRatio": 15.6,
         "assetMix": {
           "financialShare": 42.2,
           "nonFinancialShare": 66.8,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 6.9,
+          "underemploymentRate": 16.4,
+          "laborForceParticipation": 62.3,
+          "sahmIndicatorValue": 0.22,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.48,
+          "wageGrowthYoy": 6.9,
+          "productivityGrowthYoy": 1.5
         }
       }
     }
@@ -1235,10 +3323,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 10.2,
         "debtToGdp": 45,
         "gini": 0.69,
+        "realGdpGrowth": 1.8,
+        "policyRate": 8.67,
+        "bondYield10Y": 7.65,
+        "currentAccountPercentGdp": -1.4,
+        "fiscalBalancePercentGdp": -0.7,
+        "fxReservesBillionUSD": 4.8,
+        "populationMillion": 24.3,
+        "oldAgeDependencyRatio": 14,
         "assetMix": {
           "financialShare": 52,
           "nonFinancialShare": 62,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 8.2,
+          "underemploymentRate": 11,
+          "laborForceParticipation": 64.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.43,
+          "wageGrowthYoy": 8.4,
+          "productivityGrowthYoy": 0.8
         }
       },
       "1990": {
@@ -1250,10 +3356,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.8,
         "debtToGdp": 72,
         "gini": 0.7,
+        "realGdpGrowth": 1.7,
+        "policyRate": 4.25,
+        "bondYield10Y": 4.3,
+        "currentAccountPercentGdp": -1.1,
+        "fiscalBalancePercentGdp": -1.1,
+        "fxReservesBillionUSD": 12,
+        "populationMillion": 27.4,
+        "oldAgeDependencyRatio": 16.4,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 62,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 7.3,
+          "underemploymentRate": 9.8,
+          "laborForceParticipation": 65,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.54,
+          "wageGrowthYoy": 5.5,
+          "productivityGrowthYoy": 0.8
         }
       },
       "1995": {
@@ -1265,10 +3389,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.1,
         "debtToGdp": 100,
         "gini": 0.71,
+        "realGdpGrowth": 2.2,
+        "policyRate": 4.65,
+        "bondYield10Y": 4.9,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 19.2,
+        "populationMillion": 29.1,
+        "oldAgeDependencyRatio": 18.2,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 61.5,
           "debtShareOfGross": 16.5
+        },
+        "labor": {
+          "unemploymentRate": 7.5,
+          "underemploymentRate": 10.1,
+          "laborForceParticipation": 64.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 1
         }
       },
       "2000": {
@@ -1280,10 +3422,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.7,
         "debtToGdp": 82,
         "gini": 0.72,
+        "realGdpGrowth": 2.6,
+        "policyRate": 4.45,
+        "bondYield10Y": 4.7,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": 0.3,
+        "fxReservesBillionUSD": 28.8,
+        "populationMillion": 30.5,
+        "oldAgeDependencyRatio": 20.1,
         "assetMix": {
           "financialShare": 56,
           "nonFinancialShare": 61,
           "debtShareOfGross": 17
+        },
+        "labor": {
+          "unemploymentRate": 6.6,
+          "underemploymentRate": 8.9,
+          "laborForceParticipation": 65.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.63,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 4.65,
+        "wealthPerAdultUSD": 180600,
+        "medianWealthUSD": 72850,
+        "gdpTrillionUSD": 1.18,
+        "gdpPerCapitaUSD": 35855,
+        "inflationRate": 2.3,
+        "debtToGdp": 81.5,
+        "gini": 0.73,
+        "realGdpGrowth": 2.3,
+        "policyRate": 2.85,
+        "bondYield10Y": 3.5,
+        "currentAccountPercentGdp": -0.4,
+        "fiscalBalancePercentGdp": -0.1,
+        "fxReservesBillionUSD": 54,
+        "populationMillion": 32.9,
+        "oldAgeDependencyRatio": 21.9,
+        "assetMix": {
+          "financialShare": 55.5,
+          "nonFinancialShare": 63,
+          "debtShareOfGross": 18.5
+        },
+        "labor": {
+          "unemploymentRate": 6.9,
+          "underemploymentRate": 9.3,
+          "laborForceParticipation": 65.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.59,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 1
         }
       },
       "2010": {
@@ -1295,10 +3488,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 81,
         "gini": 0.73,
+        "realGdpGrowth": 1.8,
+        "policyRate": 0.45,
+        "bondYield10Y": 2.5,
+        "currentAccountPercentGdp": -1,
+        "fiscalBalancePercentGdp": -4.7,
+        "fxReservesBillionUSD": 86.4,
+        "populationMillion": 33.9,
+        "oldAgeDependencyRatio": 23.7,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 65,
           "debtShareOfGross": 20
+        },
+        "labor": {
+          "unemploymentRate": 9,
+          "underemploymentRate": 12.1,
+          "laborForceParticipation": 64.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.34,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 8.3,
+        "wealthPerAdultUSD": 291650,
+        "medianWealthUSD": 112050,
+        "gdpTrillionUSD": 1.63,
+        "gdpPerCapitaUSD": 45350,
+        "inflationRate": 1.3,
+        "debtToGdp": 99.4,
+        "gini": 0.73,
+        "realGdpGrowth": 1.7,
+        "policyRate": 0.65,
+        "bondYield10Y": 1.9,
+        "currentAccountPercentGdp": -0.4,
+        "fiscalBalancePercentGdp": -0.5,
+        "fxReservesBillionUSD": 102,
+        "populationMillion": 35.9,
+        "oldAgeDependencyRatio": 25.8,
+        "assetMix": {
+          "financialShare": 56,
+          "nonFinancialShare": 65,
+          "debtShareOfGross": 21
+        },
+        "labor": {
+          "unemploymentRate": 7.3,
+          "underemploymentRate": 9.8,
+          "laborForceParticipation": 65,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.54,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 0.8
         }
       },
       "2020": {
@@ -1310,10 +3554,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.7,
         "debtToGdp": 117.8,
         "gini": 0.72,
+        "realGdpGrowth": -4.4,
+        "policyRate": 0.05,
+        "bondYield10Y": 0.9,
+        "currentAccountPercentGdp": -0.3,
+        "fiscalBalancePercentGdp": -8.1,
+        "fxReservesBillionUSD": 112.8,
+        "populationMillion": 37.9,
+        "oldAgeDependencyRatio": 28,
         "assetMix": {
           "financialShare": 57,
           "nonFinancialShare": 65,
           "debtShareOfGross": 22
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 11.2,
+          "laborForceParticipation": 64.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.42,
+          "wageGrowthYoy": 3.2,
+          "productivityGrowthYoy": -1.3
         }
       },
       "2022": {
@@ -1325,10 +3587,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.8,
         "debtToGdp": 106.6,
         "gini": 0.72,
+        "realGdpGrowth": 2,
+        "policyRate": 2.85,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": -1,
+        "fiscalBalancePercentGdp": -1.5,
+        "fxReservesBillionUSD": 115.2,
+        "populationMillion": 38.9,
+        "oldAgeDependencyRatio": 28.9,
         "assetMix": {
           "financialShare": 56,
           "nonFinancialShare": 66,
           "debtShareOfGross": 22
+        },
+        "labor": {
+          "unemploymentRate": 6.1,
+          "underemploymentRate": 8.2,
+          "laborForceParticipation": 65.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.69,
+          "wageGrowthYoy": 6.6,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 12.3,
+        "wealthPerAdultUSD": 393193,
+        "medianWealthUSD": 147210,
+        "gdpTrillionUSD": 2.35,
+        "gdpPerCapitaUSD": 58657,
+        "inflationRate": 4,
+        "debtToGdp": 105,
+        "gini": 0.71,
+        "realGdpGrowth": 1.5,
+        "policyRate": 4,
+        "bondYield10Y": 3.45,
+        "currentAccountPercentGdp": -0.5,
+        "fiscalBalancePercentGdp": -2.1,
+        "fxReservesBillionUSD": 117.6,
+        "populationMillion": 40.1,
+        "oldAgeDependencyRatio": 29.8,
+        "assetMix": {
+          "financialShare": 56.3,
+          "nonFinancialShare": 65.7,
+          "debtShareOfGross": 22
+        },
+        "labor": {
+          "unemploymentRate": 6.5,
+          "underemploymentRate": 8.7,
+          "laborForceParticipation": 65.2,
+          "sahmIndicatorValue": 0.35,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.64,
+          "wageGrowthYoy": 5,
+          "productivityGrowthYoy": 0.7
         }
       },
       "2025": {
@@ -1340,10 +3653,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.6,
         "debtToGdp": 104.2,
         "gini": 0.71,
+        "realGdpGrowth": 1.4,
+        "policyRate": 3.5,
+        "bondYield10Y": 3.35,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 118.8,
+        "populationMillion": 40.5,
+        "oldAgeDependencyRatio": 30.1,
         "assetMix": {
           "financialShare": 56.5,
           "nonFinancialShare": 65.5,
           "debtShareOfGross": 22
+        },
+        "labor": {
+          "unemploymentRate": 6.5,
+          "underemploymentRate": 8.7,
+          "laborForceParticipation": 65.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.64,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 0.7
         }
       },
       "2026": {
@@ -1355,10 +3686,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.4,
         "debtToGdp": 103.5,
         "gini": 0.71,
+        "realGdpGrowth": 1.4,
+        "policyRate": 3.25,
+        "bondYield10Y": 3.3,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": -1.9,
+        "fxReservesBillionUSD": 120,
+        "populationMillion": 41,
+        "oldAgeDependencyRatio": 30.4,
         "assetMix": {
           "financialShare": 56.8,
           "nonFinancialShare": 65.2,
           "debtShareOfGross": 22
+        },
+        "labor": {
+          "unemploymentRate": 6.4,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 65.2,
+          "sahmIndicatorValue": 0.3,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.65,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 0.7
         }
       }
     }
@@ -1383,10 +3732,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 10.1,
         "debtToGdp": 24,
         "gini": 0.62,
+        "realGdpGrowth": 2,
+        "policyRate": 8.58,
+        "bondYield10Y": 7.57,
+        "currentAccountPercentGdp": 0,
+        "fiscalBalancePercentGdp": 0,
+        "fxReservesBillionUSD": 2.6,
+        "populationMillion": 14.5,
+        "oldAgeDependencyRatio": 12.5,
         "assetMix": {
           "financialShare": 40,
           "nonFinancialShare": 72,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 5.9,
+          "underemploymentRate": 9.3,
+          "laborForceParticipation": 66.6,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.88,
+          "wageGrowthYoy": 8,
+          "productivityGrowthYoy": 1.2
         }
       },
       "1990": {
@@ -1398,10 +3765,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 7.3,
         "debtToGdp": 16,
         "gini": 0.63,
+        "realGdpGrowth": 1.9,
+        "policyRate": 5.11,
+        "bondYield10Y": 5.15,
+        "currentAccountPercentGdp": 0.3,
+        "fiscalBalancePercentGdp": -0.4,
+        "fxReservesBillionUSD": 6.5,
+        "populationMillion": 17,
+        "oldAgeDependencyRatio": 14.7,
         "assetMix": {
           "financialShare": 41,
           "nonFinancialShare": 73,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 8.1,
+          "laborForceParticipation": 66.9,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.99,
+          "wageGrowthYoy": 6.4,
+          "productivityGrowthYoy": 1.2
         }
       },
       "1995": {
@@ -1413,10 +3798,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.6,
         "debtToGdp": 29,
         "gini": 0.64,
+        "realGdpGrowth": 2.4,
+        "policyRate": 5.5,
+        "bondYield10Y": 5.75,
+        "currentAccountPercentGdp": 0.5,
+        "fiscalBalancePercentGdp": -0.7,
+        "fxReservesBillionUSD": 10.3,
+        "populationMillion": 18.1,
+        "oldAgeDependencyRatio": 16.3,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 73,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 8.4,
+          "laborForceParticipation": 66.8,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.97,
+          "wageGrowthYoy": 5,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2000": {
@@ -1428,10 +3831,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.5,
         "debtToGdp": 19,
         "gini": 0.65,
+        "realGdpGrowth": 2.8,
+        "policyRate": 5.3,
+        "bondYield10Y": 5.55,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": 1,
+        "fxReservesBillionUSD": 15.5,
+        "populationMillion": 18.9,
+        "oldAgeDependencyRatio": 18,
         "assetMix": {
           "financialShare": 43,
           "nonFinancialShare": 72,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 7.2,
+          "laborForceParticipation": 67.1,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.08,
+          "wageGrowthYoy": 4.9,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 3.6,
+        "wealthPerAdultUSD": 222000,
+        "medianWealthUSD": 119000,
+        "gdpTrillionUSD": 0.77,
+        "gdpPerCapitaUSD": 36850,
+        "inflationRate": 3.7,
+        "debtToGdp": 19.5,
+        "gini": 0.65,
+        "realGdpGrowth": 2.5,
+        "policyRate": 3.7,
+        "bondYield10Y": 4.35,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": 0.6,
+        "fxReservesBillionUSD": 29,
+        "populationMillion": 20.9,
+        "oldAgeDependencyRatio": 19.6,
+        "assetMix": {
+          "financialShare": 42.5,
+          "nonFinancialShare": 73.5,
+          "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 7.6,
+          "laborForceParticipation": 67,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.04,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2010": {
@@ -1443,10 +3897,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.9,
         "debtToGdp": 20,
         "gini": 0.64,
+        "realGdpGrowth": 2,
+        "policyRate": 1.3,
+        "bondYield10Y": 3.35,
+        "currentAccountPercentGdp": 0.4,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 46.4,
+        "populationMillion": 21.9,
+        "oldAgeDependencyRatio": 21.2,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 75,
           "debtShareOfGross": 17
+        },
+        "labor": {
+          "unemploymentRate": 6.7,
+          "underemploymentRate": 10.4,
+          "laborForceParticipation": 66.4,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.79,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 1.2
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 7.25,
+        "wealthPerAdultUSD": 389500,
+        "medianWealthUSD": 212000,
+        "gdpTrillionUSD": 1.23,
+        "gdpPerCapitaUSD": 51915,
+        "inflationRate": 1.9,
+        "debtToGdp": 38.5,
+        "gini": 0.65,
+        "realGdpGrowth": 1.9,
+        "policyRate": 1.5,
+        "bondYield10Y": 2.75,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": 0.2,
+        "fxReservesBillionUSD": 54.8,
+        "populationMillion": 23.7,
+        "oldAgeDependencyRatio": 23.1,
+        "assetMix": {
+          "financialShare": 42,
+          "nonFinancialShare": 76,
+          "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 8.1,
+          "laborForceParticipation": 66.9,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.99,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2020": {
@@ -1458,10 +3963,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.8,
         "debtToGdp": 57,
         "gini": 0.66,
+        "realGdpGrowth": -4.2,
+        "policyRate": 0.9,
+        "bondYield10Y": 1.75,
+        "currentAccountPercentGdp": 1.1,
+        "fiscalBalancePercentGdp": -7.4,
+        "fxReservesBillionUSD": 60.6,
+        "populationMillion": 25.7,
+        "oldAgeDependencyRatio": 25,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 77,
           "debtShareOfGross": 19
+        },
+        "labor": {
+          "unemploymentRate": 6,
+          "underemploymentRate": 9.5,
+          "laborForceParticipation": 66.6,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.87,
+          "wageGrowthYoy": 2.9,
+          "productivityGrowthYoy": -0.9
         }
       },
       "2022": {
@@ -1473,10 +3996,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.6,
         "debtToGdp": 55.7,
         "gini": 0.66,
+        "realGdpGrowth": 2.2,
+        "policyRate": 3.7,
+        "bondYield10Y": 3.85,
+        "currentAccountPercentGdp": 0.4,
+        "fiscalBalancePercentGdp": -0.8,
+        "fxReservesBillionUSD": 61.9,
+        "populationMillion": 26.1,
+        "oldAgeDependencyRatio": 25.8,
         "assetMix": {
           "financialShare": 41.5,
           "nonFinancialShare": 77.5,
           "debtShareOfGross": 19
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6.5,
+          "laborForceParticipation": 67.2,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.14,
+          "wageGrowthYoy": 6.1,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 10.7,
+        "wealthPerAdultUSD": 528940,
+        "medianWealthUSD": 265817,
+        "gdpTrillionUSD": 1.86,
+        "gdpPerCapitaUSD": 69563,
+        "inflationRate": 4,
+        "debtToGdp": 54.2,
+        "gini": 0.65,
+        "realGdpGrowth": 1.7,
+        "policyRate": 4.85,
+        "bondYield10Y": 4.3,
+        "currentAccountPercentGdp": 0.9,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 63.2,
+        "populationMillion": 26.7,
+        "oldAgeDependencyRatio": 26.7,
+        "assetMix": {
+          "financialShare": 41.8,
+          "nonFinancialShare": 77.2,
+          "debtShareOfGross": 19
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 7,
+          "laborForceParticipation": 67.1,
+          "sahmIndicatorValue": 0.23,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.09,
+          "wageGrowthYoy": 4.6,
+          "productivityGrowthYoy": 1.1
         }
       },
       "2025": {
@@ -1488,10 +4062,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.7,
         "debtToGdp": 53.5,
         "gini": 0.65,
+        "realGdpGrowth": 1.6,
+        "policyRate": 4.35,
+        "bondYield10Y": 4.2,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": -1.3,
+        "fxReservesBillionUSD": 63.9,
+        "populationMillion": 27,
+        "oldAgeDependencyRatio": 26.9,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 77,
           "debtShareOfGross": 19
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 7,
+          "laborForceParticipation": 67.1,
+          "sahmIndicatorValue": 0.2,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.09,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 1.1
         }
       },
       "2026": {
@@ -1503,10 +4095,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 52.8,
         "gini": 0.65,
+        "realGdpGrowth": 1.6,
+        "policyRate": 4.1,
+        "bondYield10Y": 4.15,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": -1.2,
+        "fxReservesBillionUSD": 64.5,
+        "populationMillion": 27.4,
+        "oldAgeDependencyRatio": 27.2,
         "assetMix": {
           "financialShare": 42.2,
           "nonFinancialShare": 76.8,
           "debtShareOfGross": 19
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 6.9,
+          "laborForceParticipation": 67.1,
+          "sahmIndicatorValue": 0.18,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.1,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 1.1
         }
       }
     }
@@ -1533,10 +4143,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 13.8,
         "debtToGdp": 35,
         "gini": 0.81,
+        "realGdpGrowth": 1.9,
+        "policyRate": 11.73,
+        "bondYield10Y": 11.35,
+        "currentAccountPercentGdp": -2.9,
+        "fiscalBalancePercentGdp": -3.6,
+        "fxReservesBillionUSD": 2.6,
+        "populationMillion": 28.4,
+        "oldAgeDependencyRatio": 4.3,
         "assetMix": {
           "financialShare": 52,
           "nonFinancialShare": 58,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 33.6,
+          "underemploymentRate": 43.9,
+          "laborForceParticipation": 59.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 11,
+          "productivityGrowthYoy": 0.7
         }
       },
       "1990": {
@@ -1548,10 +4176,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 14.4,
         "debtToGdp": 39,
         "gini": 0.83,
+        "realGdpGrowth": 1.8,
+        "policyRate": 10.08,
+        "bondYield10Y": 10.85,
+        "currentAccountPercentGdp": -2.6,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 6.5,
+        "populationMillion": 35,
+        "oldAgeDependencyRatio": 5.1,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 56,
           "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 32.7,
+          "underemploymentRate": 42.7,
+          "laborForceParticipation": 59.6,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 11.3,
+          "productivityGrowthYoy": 0.7
         }
       },
       "1995": {
@@ -1563,10 +4209,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.7,
         "debtToGdp": 47,
         "gini": 0.83,
+        "realGdpGrowth": 2.3,
+        "policyRate": 8.9,
+        "bondYield10Y": 11.45,
+        "currentAccountPercentGdp": -2.4,
+        "fiscalBalancePercentGdp": -4.3,
+        "fxReservesBillionUSD": 10.4,
+        "populationMillion": 40,
+        "oldAgeDependencyRatio": 5.6,
         "assetMix": {
           "financialShare": 56,
           "nonFinancialShare": 55,
           "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 32.9,
+          "underemploymentRate": 43,
+          "laborForceParticipation": 59.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 8.2,
+          "productivityGrowthYoy": 0.9
         }
       },
       "2000": {
@@ -1578,10 +4242,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.4,
         "debtToGdp": 42,
         "gini": 0.84,
+        "realGdpGrowth": 2.7,
+        "policyRate": 8.7,
+        "bondYield10Y": 11.25,
+        "currentAccountPercentGdp": -2.1,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 15.6,
+        "populationMillion": 46.3,
+        "oldAgeDependencyRatio": 6.2,
         "assetMix": {
           "financialShare": 58,
           "nonFinancialShare": 54,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 32,
+          "underemploymentRate": 41.8,
+          "laborForceParticipation": 59.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.16,
+          "wageGrowthYoy": 6.4,
+          "productivityGrowthYoy": 1
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.53,
+        "wealthPerAdultUSD": 17500,
+        "medianWealthUSD": 3000,
+        "gdpTrillionUSD": 0.29,
+        "gdpPerCapitaUSD": 5650,
+        "inflationRate": 4.9,
+        "debtToGdp": 38.5,
+        "gini": 0.85,
+        "realGdpGrowth": 2.4,
+        "policyRate": 7.1,
+        "bondYield10Y": 10.05,
+        "currentAccountPercentGdp": -1.9,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 29.3,
+        "populationMillion": 51.3,
+        "oldAgeDependencyRatio": 6.8,
+        "assetMix": {
+          "financialShare": 61,
+          "nonFinancialShare": 51.5,
+          "debtShareOfGross": 12.5
+        },
+        "labor": {
+          "unemploymentRate": 32.3,
+          "underemploymentRate": 42.2,
+          "laborForceParticipation": 59.7,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 6.1,
+          "productivityGrowthYoy": 0.9
         }
       },
       "2010": {
@@ -1593,10 +4308,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.3,
         "debtToGdp": 35,
         "gini": 0.86,
+        "realGdpGrowth": 1.9,
+        "policyRate": 4.7,
+        "bondYield10Y": 9.05,
+        "currentAccountPercentGdp": -2.5,
+        "fiscalBalancePercentGdp": -7.6,
+        "fxReservesBillionUSD": 46.9,
+        "populationMillion": 52.1,
+        "oldAgeDependencyRatio": 7.3,
         "assetMix": {
           "financialShare": 64,
           "nonFinancialShare": 49,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 34.4,
+          "underemploymentRate": 45,
+          "laborForceParticipation": 59.2,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 5.8,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.74,
+        "wealthPerAdultUSD": 21100,
+        "medianWealthUSD": 4400,
+        "gdpTrillionUSD": 0.38,
+        "gdpPerCapitaUSD": 6860,
+        "inflationRate": 3.8,
+        "debtToGdp": 52,
+        "gini": 0.87,
+        "realGdpGrowth": 1.8,
+        "policyRate": 4.9,
+        "bondYield10Y": 8.45,
+        "currentAccountPercentGdp": -1.9,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 55.4,
+        "populationMillion": 55.4,
+        "oldAgeDependencyRatio": 8,
+        "assetMix": {
+          "financialShare": 65,
+          "nonFinancialShare": 48,
+          "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 32.7,
+          "underemploymentRate": 42.7,
+          "laborForceParticipation": 59.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 5.5,
+          "productivityGrowthYoy": 0.7
         }
       },
       "2020": {
@@ -1608,10 +4374,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.3,
         "debtToGdp": 69,
         "gini": 0.88,
+        "realGdpGrowth": -4.3,
+        "policyRate": 4.3,
+        "bondYield10Y": 7.45,
+        "currentAccountPercentGdp": -1.8,
+        "fiscalBalancePercentGdp": -11,
+        "fxReservesBillionUSD": 61.3,
+        "populationMillion": 60.1,
+        "oldAgeDependencyRatio": 8.6,
         "assetMix": {
           "financialShare": 66,
           "nonFinancialShare": 47,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 33.7,
+          "underemploymentRate": 44.1,
+          "laborForceParticipation": 59.3,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 5.2,
+          "productivityGrowthYoy": -1.4
         }
       },
       "2022": {
@@ -1623,10 +4407,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.9,
         "debtToGdp": 71,
         "gini": 0.88,
+        "realGdpGrowth": 2.1,
+        "policyRate": 7.1,
+        "bondYield10Y": 9.55,
+        "currentAccountPercentGdp": -2.5,
+        "fiscalBalancePercentGdp": -4.4,
+        "fxReservesBillionUSD": 62.6,
+        "populationMillion": 60.6,
+        "oldAgeDependencyRatio": 8.9,
         "assetMix": {
           "financialShare": 65.5,
           "nonFinancialShare": 47.5,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 31.5,
+          "underemploymentRate": 41.1,
+          "laborForceParticipation": 59.9,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.22,
+          "wageGrowthYoy": 7.2,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 0.92,
+        "wealthPerAdultUSD": 23060,
+        "medianWealthUSD": 5817,
+        "gdpTrillionUSD": 0.44,
+        "gdpPerCapitaUSD": 7203,
+        "inflationRate": 5.2,
+        "debtToGdp": 73.1,
+        "gini": 0.87,
+        "realGdpGrowth": 1.6,
+        "policyRate": 8.25,
+        "bondYield10Y": 10,
+        "currentAccountPercentGdp": -2,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 63.9,
+        "populationMillion": 61.1,
+        "oldAgeDependencyRatio": 9.2,
+        "assetMix": {
+          "financialShare": 65.8,
+          "nonFinancialShare": 47.2,
+          "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 31.9,
+          "underemploymentRate": 41.6,
+          "laborForceParticipation": 59.8,
+          "sahmIndicatorValue": 0.29,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.17,
+          "wageGrowthYoy": 6.3,
+          "productivityGrowthYoy": 0.6
         }
       },
       "2025": {
@@ -1638,10 +4473,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.4,
         "debtToGdp": 74.2,
         "gini": 0.87,
+        "realGdpGrowth": 1.5,
+        "policyRate": 7.75,
+        "bondYield10Y": 9.9,
+        "currentAccountPercentGdp": -2.1,
+        "fiscalBalancePercentGdp": -4.9,
+        "fxReservesBillionUSD": 64.5,
+        "populationMillion": 62,
+        "oldAgeDependencyRatio": 9.3,
         "assetMix": {
           "financialShare": 66,
           "nonFinancialShare": 47,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 31.9,
+          "underemploymentRate": 41.6,
+          "laborForceParticipation": 59.8,
+          "sahmIndicatorValue": 0.26,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.17,
+          "wageGrowthYoy": 5.8,
+          "productivityGrowthYoy": 0.6
         }
       },
       "2026": {
@@ -1653,10 +4506,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.1,
         "debtToGdp": 74.5,
         "gini": 0.87,
+        "realGdpGrowth": 1.5,
+        "policyRate": 7.5,
+        "bondYield10Y": 9.85,
+        "currentAccountPercentGdp": -2.1,
+        "fiscalBalancePercentGdp": -4.8,
+        "fxReservesBillionUSD": 65.2,
+        "populationMillion": 62.5,
+        "oldAgeDependencyRatio": 9.4,
         "assetMix": {
           "financialShare": 66.2,
           "nonFinancialShare": 46.8,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 31.8,
+          "underemploymentRate": 41.5,
+          "laborForceParticipation": 59.8,
+          "sahmIndicatorValue": 0.24,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.18,
+          "wageGrowthYoy": 5.7,
+          "productivityGrowthYoy": 0.6
         }
       }
     }
@@ -1684,10 +4555,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 21.2,
         "debtToGdp": 58,
         "gini": 0.65,
+        "realGdpGrowth": 1.1,
+        "policyRate": 18.02,
+        "bondYield10Y": 15.9,
+        "currentAccountPercentGdp": 0.6,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 10.6,
+        "populationMillion": 56.3,
+        "oldAgeDependencyRatio": 18.6,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 66,
           "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 8.6,
+          "underemploymentRate": 13.4,
+          "laborForceParticipation": 66.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.3,
+          "wageGrowthYoy": 13.2,
+          "productivityGrowthYoy": 0.4
         }
       },
       "1990": {
@@ -1699,10 +4588,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.5,
         "debtToGdp": 94,
         "gini": 0.66,
+        "realGdpGrowth": 1,
+        "policyRate": 4.55,
+        "bondYield10Y": 4.85,
+        "currentAccountPercentGdp": 0.9,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 26.5,
+        "populationMillion": 56.9,
+        "oldAgeDependencyRatio": 21.9,
         "assetMix": {
           "financialShare": 44.5,
           "nonFinancialShare": 64,
           "debtShareOfGross": 8.5
+        },
+        "labor": {
+          "unemploymentRate": 7.7,
+          "underemploymentRate": 12.2,
+          "laborForceParticipation": 66.6,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 5.1,
+          "productivityGrowthYoy": 0.4
         }
       },
       "1995": {
@@ -1714,10 +4621,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.4,
         "debtToGdp": 116,
         "gini": 0.67,
+        "realGdpGrowth": 1.5,
+        "policyRate": 4.15,
+        "bondYield10Y": 5.45,
+        "currentAccountPercentGdp": 1.1,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 42.4,
+        "populationMillion": 56.9,
+        "oldAgeDependencyRatio": 24.3,
         "assetMix": {
           "financialShare": 46,
           "nonFinancialShare": 63,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 7.9,
+          "underemploymentRate": 12.5,
+          "laborForceParticipation": 66.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.39,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 0.6
         }
       },
       "2000": {
@@ -1729,10 +4654,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.6,
         "debtToGdp": 105,
         "gini": 0.68,
+        "realGdpGrowth": 1.9,
+        "policyRate": 3.95,
+        "bondYield10Y": 5.25,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 63.6,
+        "populationMillion": 56.9,
+        "oldAgeDependencyRatio": 26.7,
         "assetMix": {
           "financialShare": 48,
           "nonFinancialShare": 61,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 7,
+          "underemploymentRate": 11.3,
+          "laborForceParticipation": 66.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.5,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 8.68,
+        "wealthPerAdultUSD": 178000,
+        "medianWealthUSD": 95250,
+        "gdpTrillionUSD": 1.63,
+        "gdpPerCapitaUSD": 27945,
+        "inflationRate": 2.1,
+        "debtToGdp": 112,
+        "gini": 0.69,
+        "realGdpGrowth": 1.6,
+        "policyRate": 2.35,
+        "bondYield10Y": 4.05,
+        "currentAccountPercentGdp": 1.6,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 119.3,
+        "populationMillion": 58.3,
+        "oldAgeDependencyRatio": 29.2,
+        "assetMix": {
+          "financialShare": 47.3,
+          "nonFinancialShare": 62,
+          "debtShareOfGross": 9.3
+        },
+        "labor": {
+          "unemploymentRate": 7.3,
+          "underemploymentRate": 11.7,
+          "laborForceParticipation": 66.7,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.46,
+          "wageGrowthYoy": 2.7,
+          "productivityGrowthYoy": 0.6
         }
       },
       "2010": {
@@ -1744,10 +4720,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.6,
         "debtToGdp": 119,
         "gini": 0.69,
+        "realGdpGrowth": 1.1,
+        "policyRate": 0,
+        "bondYield10Y": 3.05,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": -6.6,
+        "fxReservesBillionUSD": 190.8,
+        "populationMillion": 59.4,
+        "oldAgeDependencyRatio": 31.6,
         "assetMix": {
           "financialShare": 46.5,
           "nonFinancialShare": 63,
           "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 9.4,
+          "underemploymentRate": 14.5,
+          "laborForceParticipation": 66.1,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.21,
+          "wageGrowthYoy": 2.4,
+          "productivityGrowthYoy": 0.4
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 10.85,
+        "wealthPerAdultUSD": 221000,
+        "medianWealthUSD": 115000,
+        "gdpTrillionUSD": 2.01,
+        "gdpPerCapitaUSD": 33775,
+        "inflationRate": 0.8,
+        "debtToGdp": 137,
+        "gini": 0.7,
+        "realGdpGrowth": 1,
+        "policyRate": 0.15,
+        "bondYield10Y": 2.45,
+        "currentAccountPercentGdp": 1.6,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 225.3,
+        "populationMillion": 59.5,
+        "oldAgeDependencyRatio": 34.4,
+        "assetMix": {
+          "financialShare": 47.5,
+          "nonFinancialShare": 62,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 7.7,
+          "underemploymentRate": 12.2,
+          "laborForceParticipation": 66.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 2,
+          "productivityGrowthYoy": 0.4
         }
       },
       "2020": {
@@ -1759,10 +4786,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.1,
         "debtToGdp": 155,
         "gini": 0.7,
+        "realGdpGrowth": -5.1,
+        "policyRate": 0,
+        "bondYield10Y": 1.45,
+        "currentAccountPercentGdp": 1.7,
+        "fiscalBalancePercentGdp": -10,
+        "fxReservesBillionUSD": 249.1,
+        "populationMillion": 59.6,
+        "oldAgeDependencyRatio": 37.3,
         "assetMix": {
           "financialShare": 48.5,
           "nonFinancialShare": 61,
           "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 8.7,
+          "underemploymentRate": 13.6,
+          "laborForceParticipation": 66.3,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.29,
+          "wageGrowthYoy": 1.5,
+          "productivityGrowthYoy": -1.7
         }
       },
       "2022": {
@@ -1774,10 +4819,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.7,
         "debtToGdp": 144,
         "gini": 0.7,
+        "realGdpGrowth": 1.3,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.55,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 254.4,
+        "populationMillion": 59.1,
+        "oldAgeDependencyRatio": 38.5,
         "assetMix": {
           "financialShare": 47,
           "nonFinancialShare": 62.5,
           "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 6.5,
+          "underemploymentRate": 10.6,
+          "laborForceParticipation": 66.9,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.56,
+          "wageGrowthYoy": 6.3,
+          "productivityGrowthYoy": 0.5
         }
       },
       "2024": {
@@ -1789,10 +4852,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.3,
         "debtToGdp": 139,
         "gini": 0.7,
+        "realGdpGrowth": 0.8,
+        "policyRate": 3.5,
+        "bondYield10Y": 4,
+        "currentAccountPercentGdp": 1.5,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 259.7,
+        "populationMillion": 58.9,
+        "oldAgeDependencyRatio": 39.7,
         "assetMix": {
           "financialShare": 48,
           "nonFinancialShare": 61.5,
           "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 6.9,
+          "underemploymentRate": 11.1,
+          "laborForceParticipation": 66.8,
+          "sahmIndicatorValue": 0.3,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 2.2,
+          "productivityGrowthYoy": 0.3
         }
       },
       "2025": {
@@ -1804,10 +4885,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.6,
         "debtToGdp": 138.5,
         "gini": 0.7,
+        "realGdpGrowth": 0.7,
+        "policyRate": 3,
+        "bondYield10Y": 3.9,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 262.4,
+        "populationMillion": 58.7,
+        "oldAgeDependencyRatio": 40.1,
         "assetMix": {
           "financialShare": 48.5,
           "nonFinancialShare": 61,
           "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 6.9,
+          "underemploymentRate": 11.1,
+          "laborForceParticipation": 66.8,
+          "sahmIndicatorValue": 0.27,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 2.4,
+          "productivityGrowthYoy": 0.3
         }
       },
       "2026": {
@@ -1819,10 +4918,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 137.8,
         "gini": 0.7,
+        "realGdpGrowth": 0.7,
+        "policyRate": 2.75,
+        "bondYield10Y": 3.85,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": -3.8,
+        "fxReservesBillionUSD": 265,
+        "populationMillion": 58.6,
+        "oldAgeDependencyRatio": 40.5,
         "assetMix": {
           "financialShare": 49,
           "nonFinancialShare": 60.5,
           "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 6.8,
+          "underemploymentRate": 11,
+          "laborForceParticipation": 66.8,
+          "sahmIndicatorValue": 0.25,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 2.5,
+          "productivityGrowthYoy": 0.3
         }
       }
     }
@@ -1849,10 +4966,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 15.6,
         "debtToGdp": 16.8,
         "gini": 0.64,
+        "realGdpGrowth": 2.7,
+        "policyRate": 13.26,
+        "bondYield10Y": 11.7,
+        "currentAccountPercentGdp": 1.8,
+        "fiscalBalancePercentGdp": -1.8,
+        "fxReservesBillionUSD": 4.3,
+        "populationMillion": 37.4,
+        "oldAgeDependencyRatio": 15.1,
         "assetMix": {
           "financialShare": 32,
           "nonFinancialShare": 74,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 13,
+          "underemploymentRate": 18.2,
+          "laborForceParticipation": 59,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.2,
+          "wageGrowthYoy": 11,
+          "productivityGrowthYoy": 1
         }
       },
       "1990": {
@@ -1864,10 +4999,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.7,
         "debtToGdp": 43,
         "gini": 0.65,
+        "realGdpGrowth": 2.6,
+        "policyRate": 4.69,
+        "bondYield10Y": 4.36,
+        "currentAccountPercentGdp": 2.1,
+        "fiscalBalancePercentGdp": -2.2,
+        "fxReservesBillionUSD": 10.8,
+        "populationMillion": 38.7,
+        "oldAgeDependencyRatio": 17.7,
         "assetMix": {
           "financialShare": 35,
           "nonFinancialShare": 72,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 12.1,
+          "underemploymentRate": 17,
+          "laborForceParticipation": 59.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.31,
+          "wageGrowthYoy": 6.1,
+          "productivityGrowthYoy": 1
         }
       },
       "1995": {
@@ -1879,10 +5032,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.7,
         "debtToGdp": 63,
         "gini": 0.66,
+        "realGdpGrowth": 3.1,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.75,
+        "currentAccountPercentGdp": 2.3,
+        "fiscalBalancePercentGdp": -2.5,
+        "fxReservesBillionUSD": 17.3,
+        "populationMillion": 39.6,
+        "oldAgeDependencyRatio": 19.7,
         "assetMix": {
           "financialShare": 38,
           "nonFinancialShare": 70,
           "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 12.3,
+          "underemploymentRate": 17.3,
+          "laborForceParticipation": 59.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.29,
+          "wageGrowthYoy": 5,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2000": {
@@ -1894,10 +5065,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.5,
         "debtToGdp": 58,
         "gini": 0.66,
+        "realGdpGrowth": 3.5,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.55,
+        "currentAccountPercentGdp": 2.6,
+        "fiscalBalancePercentGdp": -0.8,
+        "fxReservesBillionUSD": 25.9,
+        "populationMillion": 40.1,
+        "oldAgeDependencyRatio": 21.6,
         "assetMix": {
           "financialShare": 41,
           "nonFinancialShare": 68,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 11.4,
+          "underemploymentRate": 16.1,
+          "laborForceParticipation": 59.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.4,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 4.85,
+        "wealthPerAdultUSD": 135200,
+        "medianWealthUSD": 76100,
+        "gdpTrillionUSD": 1.01,
+        "gdpPerCapitaUSD": 22715,
+        "inflationRate": 2.7,
+        "debtToGdp": 59.3,
+        "gini": 0.67,
+        "realGdpGrowth": 3.2,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.35,
+        "currentAccountPercentGdp": 2.8,
+        "fiscalBalancePercentGdp": -1.2,
+        "fxReservesBillionUSD": 48.6,
+        "populationMillion": 44.5,
+        "oldAgeDependencyRatio": 23.6,
+        "assetMix": {
+          "financialShare": 37.5,
+          "nonFinancialShare": 72,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 11.7,
+          "underemploymentRate": 16.5,
+          "laborForceParticipation": 59.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.36,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2010": {
@@ -1909,10 +5131,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 60.5,
         "gini": 0.68,
+        "realGdpGrowth": 2.7,
+        "policyRate": 0,
+        "bondYield10Y": 2.35,
+        "currentAccountPercentGdp": 2.2,
+        "fiscalBalancePercentGdp": -5.8,
+        "fxReservesBillionUSD": 77.8,
+        "populationMillion": 46.5,
+        "oldAgeDependencyRatio": 25.6,
         "assetMix": {
           "financialShare": 34,
           "nonFinancialShare": 76,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 13.8,
+          "underemploymentRate": 19.3,
+          "laborForceParticipation": 58.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 1
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 7.15,
+        "wealthPerAdultUSD": 187000,
+        "medianWealthUSD": 99250,
+        "gdpTrillionUSD": 1.36,
+        "gdpPerCapitaUSD": 28895,
+        "inflationRate": 0.8,
+        "debtToGdp": 90.3,
+        "gini": 0.69,
+        "realGdpGrowth": 2.6,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.75,
+        "currentAccountPercentGdp": 2.8,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 91.8,
+        "populationMillion": 47.1,
+        "oldAgeDependencyRatio": 27.9,
+        "assetMix": {
+          "financialShare": 36,
+          "nonFinancialShare": 73.5,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 12.1,
+          "underemploymentRate": 17,
+          "laborForceParticipation": 59.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.31,
+          "wageGrowthYoy": 2.9,
+          "productivityGrowthYoy": 1
         }
       },
       "2020": {
@@ -1924,10 +5197,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.3,
         "debtToGdp": 120,
         "gini": 0.69,
+        "realGdpGrowth": -3.5,
+        "policyRate": 0,
+        "bondYield10Y": 0.75,
+        "currentAccountPercentGdp": 2.9,
+        "fiscalBalancePercentGdp": -9.2,
+        "fxReservesBillionUSD": 101.5,
+        "populationMillion": 47.3,
+        "oldAgeDependencyRatio": 30.2,
         "assetMix": {
           "financialShare": 38,
           "nonFinancialShare": 71,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 13.1,
+          "underemploymentRate": 18.4,
+          "laborForceParticipation": 58.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.19,
+          "wageGrowthYoy": 2.3,
+          "productivityGrowthYoy": -1.1
         }
       },
       "2022": {
@@ -1939,10 +5230,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.3,
         "debtToGdp": 111.6,
         "gini": 0.69,
+        "realGdpGrowth": 2.9,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.85,
+        "currentAccountPercentGdp": 2.2,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 103.7,
+        "populationMillion": 47.7,
+        "oldAgeDependencyRatio": 31.2,
         "assetMix": {
           "financialShare": 37.5,
           "nonFinancialShare": 71.5,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 10.9,
+          "underemploymentRate": 15.4,
+          "laborForceParticipation": 59.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.46,
+          "wageGrowthYoy": 7,
+          "productivityGrowthYoy": 1.1
         }
       },
       "2024": {
@@ -1954,10 +5263,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.8,
         "debtToGdp": 106,
         "gini": 0.69,
+        "realGdpGrowth": 2.4,
+        "policyRate": 3.5,
+        "bondYield10Y": 3.3,
+        "currentAccountPercentGdp": 2.7,
+        "fiscalBalancePercentGdp": -3.2,
+        "fxReservesBillionUSD": 105.8,
+        "populationMillion": 48.2,
+        "oldAgeDependencyRatio": 32.1,
         "assetMix": {
           "financialShare": 39,
           "nonFinancialShare": 70,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 11.3,
+          "underemploymentRate": 15.9,
+          "laborForceParticipation": 59.4,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 0.9
         }
       },
       "2025": {
@@ -1969,10 +5296,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.4,
         "debtToGdp": 104.2,
         "gini": 0.69,
+        "realGdpGrowth": 2.3,
+        "policyRate": 3,
+        "bondYield10Y": 3.2,
+        "currentAccountPercentGdp": 2.6,
+        "fiscalBalancePercentGdp": -3.1,
+        "fxReservesBillionUSD": 106.9,
+        "populationMillion": 48.4,
+        "oldAgeDependencyRatio": 32.5,
         "assetMix": {
           "financialShare": 39.5,
           "nonFinancialShare": 69.5,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 11.3,
+          "underemploymentRate": 15.9,
+          "laborForceParticipation": 59.4,
+          "sahmIndicatorValue": 0.07,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 0.9
         }
       },
       "2026": {
@@ -1984,10 +5329,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.1,
         "debtToGdp": 102.8,
         "gini": 0.69,
+        "realGdpGrowth": 2.3,
+        "policyRate": 2.75,
+        "bondYield10Y": 3.15,
+        "currentAccountPercentGdp": 2.6,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 108,
+        "populationMillion": 48.6,
+        "oldAgeDependencyRatio": 32.8,
         "assetMix": {
           "financialShare": 40,
           "nonFinancialShare": 69,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 11.2,
+          "underemploymentRate": 15.8,
+          "laborForceParticipation": 59.4,
+          "sahmIndicatorValue": 0.05,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.42,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 0.9
         }
       }
     }
@@ -2014,10 +5377,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.5,
         "debtToGdp": 44,
         "gini": 0.72,
+        "realGdpGrowth": 1.9,
+        "policyRate": 5.53,
+        "bondYield10Y": 4.88,
+        "currentAccountPercentGdp": 8.6,
+        "fiscalBalancePercentGdp": -0.2,
+        "fxReservesBillionUSD": 2.9,
+        "populationMillion": 14.1,
+        "oldAgeDependencyRatio": 15.4,
         "assetMix": {
           "financialShare": 58,
           "nonFinancialShare": 56,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 5.5,
+          "underemploymentRate": 8.5,
+          "laborForceParticipation": 82,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.96,
+          "wageGrowthYoy": 6.3,
+          "productivityGrowthYoy": 1.1
         }
       },
       "1990": {
@@ -2029,10 +5410,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 75,
         "gini": 0.74,
+        "realGdpGrowth": 1.8,
+        "policyRate": 3.75,
+        "bondYield10Y": 3.72,
+        "currentAccountPercentGdp": 8.9,
+        "fiscalBalancePercentGdp": -0.6,
+        "fxReservesBillionUSD": 7.2,
+        "populationMillion": 15,
+        "oldAgeDependencyRatio": 18,
         "assetMix": {
           "financialShare": 60,
           "nonFinancialShare": 55,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 7.3,
+          "laborForceParticipation": 82.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.07,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 1.1
         }
       },
       "1995": {
@@ -2044,10 +5443,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2,
         "debtToGdp": 73,
         "gini": 0.75,
+        "realGdpGrowth": 2.3,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.32,
+        "currentAccountPercentGdp": 9.1,
+        "fiscalBalancePercentGdp": -0.9,
+        "fxReservesBillionUSD": 11.5,
+        "populationMillion": 15.6,
+        "oldAgeDependencyRatio": 20,
         "assetMix": {
           "financialShare": 62,
           "nonFinancialShare": 54,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7.6,
+          "laborForceParticipation": 82.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.05,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2000": {
@@ -2059,10 +5476,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.3,
         "debtToGdp": 51.5,
         "gini": 0.75,
+        "realGdpGrowth": 2.7,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.12,
+        "currentAccountPercentGdp": 9.4,
+        "fiscalBalancePercentGdp": 0.8,
+        "fxReservesBillionUSD": 17.3,
+        "populationMillion": 16,
+        "oldAgeDependencyRatio": 22,
         "assetMix": {
           "financialShare": 64,
           "nonFinancialShare": 53,
           "debtShareOfGross": 17
+        },
+        "labor": {
+          "unemploymentRate": 3.9,
+          "underemploymentRate": 6.4,
+          "laborForceParticipation": 82.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.16,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 2.9,
+        "wealthPerAdultUSD": 220500,
+        "medianWealthUSD": 80250,
+        "gdpTrillionUSD": 0.64,
+        "gdpPerCapitaUSD": 38600,
+        "inflationRate": 1.8,
+        "debtToGdp": 55.3,
+        "gini": 0.76,
+        "realGdpGrowth": 2.4,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.92,
+        "currentAccountPercentGdp": 9.6,
+        "fiscalBalancePercentGdp": 0.4,
+        "fxReservesBillionUSD": 32.4,
+        "populationMillion": 16.6,
+        "oldAgeDependencyRatio": 24,
+        "assetMix": {
+          "financialShare": 63.5,
+          "nonFinancialShare": 54,
+          "debtShareOfGross": 17.5
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 6.8,
+          "laborForceParticipation": 82.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.12,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2010": {
@@ -2074,10 +5542,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.3,
         "debtToGdp": 59,
         "gini": 0.76,
+        "realGdpGrowth": 1.9,
+        "policyRate": 0,
+        "bondYield10Y": 1.92,
+        "currentAccountPercentGdp": 9,
+        "fiscalBalancePercentGdp": -4.2,
+        "fxReservesBillionUSD": 51.8,
+        "populationMillion": 16.7,
+        "oldAgeDependencyRatio": 26.1,
         "assetMix": {
           "financialShare": 63,
           "nonFinancialShare": 55,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 9.6,
+          "laborForceParticipation": 81.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.87,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 4.1,
+        "wealthPerAdultUSD": 301500,
+        "medianWealthUSD": 106500,
+        "gdpTrillionUSD": 0.88,
+        "gdpPerCapitaUSD": 51650,
+        "inflationRate": 1.2,
+        "debtToGdp": 56.8,
+        "gini": 0.76,
+        "realGdpGrowth": 1.8,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.32,
+        "currentAccountPercentGdp": 9.6,
+        "fiscalBalancePercentGdp": 0,
+        "fxReservesBillionUSD": 61.2,
+        "populationMillion": 17,
+        "oldAgeDependencyRatio": 28.4,
+        "assetMix": {
+          "financialShare": 64,
+          "nonFinancialShare": 54,
+          "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 7.3,
+          "laborForceParticipation": 82.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.07,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 1.1
         }
       },
       "2020": {
@@ -2089,10 +5608,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.1,
         "debtToGdp": 54.6,
         "gini": 0.76,
+        "realGdpGrowth": -4.3,
+        "policyRate": 0,
+        "bondYield10Y": 0.32,
+        "currentAccountPercentGdp": 9.7,
+        "fiscalBalancePercentGdp": -7.6,
+        "fxReservesBillionUSD": 67.7,
+        "populationMillion": 17.4,
+        "oldAgeDependencyRatio": 30.7,
         "assetMix": {
           "financialShare": 65,
           "nonFinancialShare": 53,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 5.6,
+          "underemploymentRate": 8.7,
+          "laborForceParticipation": 81.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": -1
         }
       },
       "2022": {
@@ -2104,10 +5641,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 11.6,
         "debtToGdp": 50.1,
         "gini": 0.76,
+        "realGdpGrowth": 2.1,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.42,
+        "currentAccountPercentGdp": 9,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 69.1,
+        "populationMillion": 17.7,
+        "oldAgeDependencyRatio": 31.7,
         "assetMix": {
           "financialShare": 64,
           "nonFinancialShare": 54,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 82.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.22,
+          "wageGrowthYoy": 9.1,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2024": {
@@ -2119,10 +5674,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.1,
         "debtToGdp": 47.2,
         "gini": 0.76,
+        "realGdpGrowth": 1.6,
+        "policyRate": 3.5,
+        "bondYield10Y": 2.87,
+        "currentAccountPercentGdp": 9.5,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 70.6,
+        "populationMillion": 17.9,
+        "oldAgeDependencyRatio": 32.7,
         "assetMix": {
           "financialShare": 65,
           "nonFinancialShare": 53,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6.2,
+          "laborForceParticipation": 82.4,
+          "sahmIndicatorValue": 0.19,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.17,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 1
         }
       },
       "2025": {
@@ -2134,10 +5707,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.6,
         "debtToGdp": 46.4,
         "gini": 0.76,
+        "realGdpGrowth": 1.5,
+        "policyRate": 3,
+        "bondYield10Y": 2.77,
+        "currentAccountPercentGdp": 9.4,
+        "fiscalBalancePercentGdp": -1.5,
+        "fxReservesBillionUSD": 71.3,
+        "populationMillion": 18,
+        "oldAgeDependencyRatio": 33.1,
         "assetMix": {
           "financialShare": 65.5,
           "nonFinancialShare": 52.5,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6.2,
+          "laborForceParticipation": 82.4,
+          "sahmIndicatorValue": 0.16,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.17,
+          "wageGrowthYoy": 4.2,
+          "productivityGrowthYoy": 1
         }
       },
       "2026": {
@@ -2149,10 +5740,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.3,
         "debtToGdp": 45.8,
         "gini": 0.76,
+        "realGdpGrowth": 1.5,
+        "policyRate": 2.75,
+        "bondYield10Y": 2.72,
+        "currentAccountPercentGdp": 9.4,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 72,
+        "populationMillion": 18.1,
+        "oldAgeDependencyRatio": 33.4,
         "assetMix": {
           "financialShare": 66,
           "nonFinancialShare": 52,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 6.1,
+          "laborForceParticipation": 82.4,
+          "sahmIndicatorValue": 0.14,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.18,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 1
         }
       }
     }
@@ -2177,10 +5786,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4,
         "debtToGdp": 32,
         "gini": 0.74,
+        "realGdpGrowth": 1.8,
+        "policyRate": 3.4,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": 7,
+        "fiscalBalancePercentGdp": 1.7,
+        "fxReservesBillionUSD": 35.4,
+        "populationMillion": 6.3,
+        "oldAgeDependencyRatio": 14.4,
         "assetMix": {
           "financialShare": 62,
           "nonFinancialShare": 52,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 6.2,
+          "laborForceParticipation": 83.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.03,
+          "wageGrowthYoy": 2.9,
+          "productivityGrowthYoy": 1.3
         }
       },
       "1990": {
@@ -2192,10 +5819,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.4,
         "debtToGdp": 31,
         "gini": 0.75,
+        "realGdpGrowth": 1.7,
+        "policyRate": 3.78,
+        "bondYield10Y": 3.51,
+        "currentAccountPercentGdp": 7.3,
+        "fiscalBalancePercentGdp": 1.3,
+        "fxReservesBillionUSD": 88.5,
+        "populationMillion": 6.7,
+        "oldAgeDependencyRatio": 16.8,
         "assetMix": {
           "financialShare": 64,
           "nonFinancialShare": 51,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 3.2,
+          "underemploymentRate": 5,
+          "laborForceParticipation": 84,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.14,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 1.3
         }
       },
       "1995": {
@@ -2207,10 +5852,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 48,
         "gini": 0.75,
+        "realGdpGrowth": 2.2,
+        "policyRate": 2.15,
+        "bondYield10Y": 2.25,
+        "currentAccountPercentGdp": 7.5,
+        "fiscalBalancePercentGdp": 1,
+        "fxReservesBillionUSD": 141.6,
+        "populationMillion": 7,
+        "oldAgeDependencyRatio": 18.7,
         "assetMix": {
           "financialShare": 65,
           "nonFinancialShare": 50,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 5.3,
+          "laborForceParticipation": 83.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.12,
+          "wageGrowthYoy": 1.7,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2000": {
@@ -2222,10 +5885,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.6,
         "debtToGdp": 53,
         "gini": 0.76,
+        "realGdpGrowth": 2.6,
+        "policyRate": 1.95,
+        "bondYield10Y": 2.05,
+        "currentAccountPercentGdp": 7.8,
+        "fiscalBalancePercentGdp": 2.7,
+        "fxReservesBillionUSD": 212.4,
+        "populationMillion": 7.1,
+        "oldAgeDependencyRatio": 20.6,
         "assetMix": {
           "financialShare": 68,
           "nonFinancialShare": 47,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 2.5,
+          "underemploymentRate": 4.1,
+          "laborForceParticipation": 84.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.23,
+          "wageGrowthYoy": 1.6,
+          "productivityGrowthYoy": 1.6
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 2.79,
+        "wealthPerAdultUSD": 446500,
+        "medianWealthUSD": 151000,
+        "gdpTrillionUSD": 0.44,
+        "gdpPerCapitaUSD": 57200,
+        "inflationRate": 1.2,
+        "debtToGdp": 47.5,
+        "gini": 0.77,
+        "realGdpGrowth": 2.3,
+        "policyRate": 0.35,
+        "bondYield10Y": 0.85,
+        "currentAccountPercentGdp": 8,
+        "fiscalBalancePercentGdp": 2.3,
+        "fxReservesBillionUSD": 398.3,
+        "populationMillion": 7.7,
+        "oldAgeDependencyRatio": 22.5,
+        "assetMix": {
+          "financialShare": 66.5,
+          "nonFinancialShare": 49,
+          "debtShareOfGross": 15.5
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 4.5,
+          "laborForceParticipation": 84.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.19,
+          "wageGrowthYoy": 1.4,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2010": {
@@ -2237,10 +5951,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.7,
         "debtToGdp": 42,
         "gini": 0.77,
+        "realGdpGrowth": 1.8,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 7.4,
+        "fiscalBalancePercentGdp": -2.3,
+        "fxReservesBillionUSD": 637.2,
+        "populationMillion": 7.8,
+        "oldAgeDependencyRatio": 24.3,
         "assetMix": {
           "financialShare": 65,
           "nonFinancialShare": 51,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 7.3,
+          "laborForceParticipation": 83.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.94,
+          "wageGrowthYoy": 1.1,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 4.01,
+        "wealthPerAdultUSD": 593500,
+        "medianWealthUSD": 161000,
+        "gdpTrillionUSD": 0.68,
+        "gdpPerCapitaUSD": 81800,
+        "inflationRate": 0,
+        "debtToGdp": 42.5,
+        "gini": 0.77,
+        "realGdpGrowth": 1.7,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 8,
+        "fiscalBalancePercentGdp": 1.9,
+        "fxReservesBillionUSD": 752.3,
+        "populationMillion": 8.3,
+        "oldAgeDependencyRatio": 26.5,
+        "assetMix": {
+          "financialShare": 66,
+          "nonFinancialShare": 50,
+          "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 3.2,
+          "underemploymentRate": 5,
+          "laborForceParticipation": 84,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.14,
+          "wageGrowthYoy": 0.7,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2020": {
@@ -2252,10 +6017,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.7,
         "debtToGdp": 43,
         "gini": 0.77,
+        "realGdpGrowth": -4.4,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 8.1,
+        "fiscalBalancePercentGdp": -5.7,
+        "fxReservesBillionUSD": 831.9,
+        "populationMillion": 8.6,
+        "oldAgeDependencyRatio": 28.7,
         "assetMix": {
           "financialShare": 67,
           "nonFinancialShare": 49,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 6.4,
+          "laborForceParticipation": 83.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.02,
+          "wageGrowthYoy": 0.3,
+          "productivityGrowthYoy": -0.8
         }
       },
       "2022": {
@@ -2267,10 +6050,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.8,
         "debtToGdp": 39.2,
         "gini": 0.77,
+        "realGdpGrowth": 2,
+        "policyRate": 0.35,
+        "bondYield10Y": 0.35,
+        "currentAccountPercentGdp": 7.4,
+        "fiscalBalancePercentGdp": 0.9,
+        "fxReservesBillionUSD": 849.6,
+        "populationMillion": 8.8,
+        "oldAgeDependencyRatio": 29.6,
         "assetMix": {
           "financialShare": 66,
           "nonFinancialShare": 50,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 2,
+          "underemploymentRate": 3.4,
+          "laborForceParticipation": 84.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.29,
+          "wageGrowthYoy": 2.3,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2024": {
@@ -2282,10 +6083,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.4,
         "debtToGdp": 37.8,
         "gini": 0.77,
+        "realGdpGrowth": 1.5,
+        "policyRate": 1.5,
+        "bondYield10Y": 0.8,
+        "currentAccountPercentGdp": 7.9,
+        "fiscalBalancePercentGdp": 0.3,
+        "fxReservesBillionUSD": 867.3,
+        "populationMillion": 8.9,
+        "oldAgeDependencyRatio": 30.6,
         "assetMix": {
           "financialShare": 67.5,
           "nonFinancialShare": 48.5,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 2.4,
+          "underemploymentRate": 3.9,
+          "laborForceParticipation": 84.2,
+          "sahmIndicatorValue": 0.2,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.24,
+          "wageGrowthYoy": 1.5,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2025": {
@@ -2297,10 +6116,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.2,
         "debtToGdp": 37,
         "gini": 0.77,
+        "realGdpGrowth": 1.4,
+        "policyRate": 1,
+        "bondYield10Y": 0.7,
+        "currentAccountPercentGdp": 7.8,
+        "fiscalBalancePercentGdp": 0.4,
+        "fxReservesBillionUSD": 876.2,
+        "populationMillion": 9,
+        "oldAgeDependencyRatio": 30.9,
         "assetMix": {
           "financialShare": 68,
           "nonFinancialShare": 48,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 2.3,
+          "underemploymentRate": 3.9,
+          "laborForceParticipation": 84.2,
+          "sahmIndicatorValue": 0.17,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.24,
+          "wageGrowthYoy": 1.4,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2026": {
@@ -2312,10 +6149,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.1,
         "debtToGdp": 36.4,
         "gini": 0.77,
+        "realGdpGrowth": 1.4,
+        "policyRate": 0.75,
+        "bondYield10Y": 0.65,
+        "currentAccountPercentGdp": 7.8,
+        "fiscalBalancePercentGdp": 0.5,
+        "fxReservesBillionUSD": 885,
+        "populationMillion": 9.1,
+        "oldAgeDependencyRatio": 31.2,
         "assetMix": {
           "financialShare": 68.5,
           "nonFinancialShare": 47.5,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 2.3,
+          "underemploymentRate": 3.8,
+          "laborForceParticipation": 84.2,
+          "sahmIndicatorValue": 0.15,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.25,
+          "wageGrowthYoy": 1.3,
+          "productivityGrowthYoy": 1.2
         }
       }
     }
@@ -2340,10 +6195,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 13.7,
         "debtToGdp": 40,
         "gini": 0.75,
+        "realGdpGrowth": 2.2,
+        "policyRate": 11.65,
+        "bondYield10Y": 10.27,
+        "currentAccountPercentGdp": 5.4,
+        "fiscalBalancePercentGdp": 0.6,
+        "fxReservesBillionUSD": 2.5,
+        "populationMillion": 8.3,
+        "oldAgeDependencyRatio": 15.5,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 60,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 9.9,
+          "underemploymentRate": 13.8,
+          "laborForceParticipation": 81.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.42,
+          "wageGrowthYoy": 9.8,
+          "productivityGrowthYoy": 1.4
         }
       },
       "1990": {
@@ -2355,10 +6228,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 10.5,
         "debtToGdp": 44,
         "gini": 0.78,
+        "realGdpGrowth": 2.1,
+        "policyRate": 7.35,
+        "bondYield10Y": 6.83,
+        "currentAccountPercentGdp": 5.7,
+        "fiscalBalancePercentGdp": 0.2,
+        "fxReservesBillionUSD": 6.2,
+        "populationMillion": 8.6,
+        "oldAgeDependencyRatio": 18.3,
         "assetMix": {
           "financialShare": 56,
           "nonFinancialShare": 59,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 9,
+          "underemploymentRate": 12.6,
+          "laborForceParticipation": 81.3,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.53,
+          "wageGrowthYoy": 8,
+          "productivityGrowthYoy": 1.4
         }
       },
       "1995": {
@@ -2370,10 +6261,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 73,
         "gini": 0.8,
+        "realGdpGrowth": 2.6,
+        "policyRate": 3.9,
+        "bondYield10Y": 3.85,
+        "currentAccountPercentGdp": 5.9,
+        "fiscalBalancePercentGdp": -0.1,
+        "fxReservesBillionUSD": 9.9,
+        "populationMillion": 8.9,
+        "oldAgeDependencyRatio": 20.3,
         "assetMix": {
           "financialShare": 58,
           "nonFinancialShare": 58,
           "debtShareOfGross": 16
+        },
+        "labor": {
+          "unemploymentRate": 9.2,
+          "underemploymentRate": 12.9,
+          "laborForceParticipation": 81.2,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2000": {
@@ -2385,10 +6294,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1,
         "debtToGdp": 53,
         "gini": 0.82,
+        "realGdpGrowth": 3,
+        "policyRate": 3.7,
+        "bondYield10Y": 3.65,
+        "currentAccountPercentGdp": 6.2,
+        "fiscalBalancePercentGdp": 1.6,
+        "fxReservesBillionUSD": 14.9,
+        "populationMillion": 8.8,
+        "oldAgeDependencyRatio": 22.3,
         "assetMix": {
           "financialShare": 62,
           "nonFinancialShare": 55,
           "debtShareOfGross": 17
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 11.7,
+          "laborForceParticipation": 81.5,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.62,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 1.7
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.55,
+        "wealthPerAdultUSD": 211500,
+        "medianWealthUSD": 71000,
+        "gdpTrillionUSD": 0.38,
+        "gdpPerCapitaUSD": 41300,
+        "inflationRate": 1.5,
+        "debtToGdp": 45.5,
+        "gini": 0.83,
+        "realGdpGrowth": 2.7,
+        "policyRate": 2.1,
+        "bondYield10Y": 2.45,
+        "currentAccountPercentGdp": 6.4,
+        "fiscalBalancePercentGdp": 1.2,
+        "fxReservesBillionUSD": 27.9,
+        "populationMillion": 9.2,
+        "oldAgeDependencyRatio": 24.3,
+        "assetMix": {
+          "financialShare": 63,
+          "nonFinancialShare": 54.5,
+          "debtShareOfGross": 17.5
+        },
+        "labor": {
+          "unemploymentRate": 8.6,
+          "underemploymentRate": 12.1,
+          "laborForceParticipation": 81.4,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.58,
+          "wageGrowthYoy": 3.1,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2010": {
@@ -2400,10 +6360,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.9,
         "debtToGdp": 38,
         "gini": 0.84,
+        "realGdpGrowth": 2.2,
+        "policyRate": 0,
+        "bondYield10Y": 1.45,
+        "currentAccountPercentGdp": 5.8,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 44.6,
+        "populationMillion": 9.4,
+        "oldAgeDependencyRatio": 26.4,
         "assetMix": {
           "financialShare": 64,
           "nonFinancialShare": 54,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 10.7,
+          "underemploymentRate": 14.9,
+          "laborForceParticipation": 80.9,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.33,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 2.15,
+        "wealthPerAdultUSD": 277500,
+        "medianWealthUSD": 80500,
+        "gdpTrillionUSD": 0.52,
+        "gdpPerCapitaUSD": 52750,
+        "inflationRate": 1.3,
+        "debtToGdp": 38.9,
+        "gini": 0.85,
+        "realGdpGrowth": 2.1,
+        "policyRate": 0,
+        "bondYield10Y": 0.85,
+        "currentAccountPercentGdp": 6.4,
+        "fiscalBalancePercentGdp": 0.8,
+        "fxReservesBillionUSD": 52.7,
+        "populationMillion": 9.9,
+        "oldAgeDependencyRatio": 28.7,
+        "assetMix": {
+          "financialShare": 66,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 9,
+          "underemploymentRate": 12.6,
+          "laborForceParticipation": 81.3,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.53,
+          "wageGrowthYoy": 2.9,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2020": {
@@ -2415,10 +6426,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.7,
         "debtToGdp": 39.8,
         "gini": 0.86,
+        "realGdpGrowth": -4,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 6.5,
+        "fiscalBalancePercentGdp": -6.8,
+        "fxReservesBillionUSD": 58.3,
+        "populationMillion": 10.3,
+        "oldAgeDependencyRatio": 31.1,
         "assetMix": {
           "financialShare": 68,
           "nonFinancialShare": 50,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 10,
+          "underemploymentRate": 14,
+          "laborForceParticipation": 81,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 2.6,
+          "productivityGrowthYoy": -0.7
         }
       },
       "2022": {
@@ -2430,10 +6459,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.4,
         "debtToGdp": 33.2,
         "gini": 0.86,
+        "realGdpGrowth": 2.4,
+        "policyRate": 2.1,
+        "bondYield10Y": 1.95,
+        "currentAccountPercentGdp": 5.8,
+        "fiscalBalancePercentGdp": -0.2,
+        "fxReservesBillionUSD": 59.5,
+        "populationMillion": 10.5,
+        "oldAgeDependencyRatio": 32.1,
         "assetMix": {
           "financialShare": 66,
           "nonFinancialShare": 52,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 7.8,
+          "underemploymentRate": 11,
+          "laborForceParticipation": 81.6,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.68,
+          "wageGrowthYoy": 6.8,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2024": {
@@ -2445,10 +6492,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.8,
         "debtToGdp": 31.5,
         "gini": 0.86,
+        "realGdpGrowth": 1.9,
+        "policyRate": 3.25,
+        "bondYield10Y": 2.4,
+        "currentAccountPercentGdp": 6.3,
+        "fiscalBalancePercentGdp": -0.8,
+        "fxReservesBillionUSD": 60.8,
+        "populationMillion": 10.5,
+        "oldAgeDependencyRatio": 33.1,
         "assetMix": {
           "financialShare": 68,
           "nonFinancialShare": 50,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 8.2,
+          "underemploymentRate": 11.5,
+          "laborForceParticipation": 81.5,
+          "sahmIndicatorValue": 0.37,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.63,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2025": {
@@ -2460,10 +6525,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.1,
         "debtToGdp": 30.8,
         "gini": 0.86,
+        "realGdpGrowth": 1.8,
+        "policyRate": 2.75,
+        "bondYield10Y": 2.3,
+        "currentAccountPercentGdp": 6.2,
+        "fiscalBalancePercentGdp": -0.7,
+        "fxReservesBillionUSD": 61.4,
+        "populationMillion": 10.6,
+        "oldAgeDependencyRatio": 33.5,
         "assetMix": {
           "financialShare": 68.5,
           "nonFinancialShare": 49.5,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 8.2,
+          "underemploymentRate": 11.5,
+          "laborForceParticipation": 81.5,
+          "sahmIndicatorValue": 0.34,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.63,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2026": {
@@ -2475,10 +6558,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 30.2,
         "gini": 0.86,
+        "realGdpGrowth": 1.8,
+        "policyRate": 2.5,
+        "bondYield10Y": 2.25,
+        "currentAccountPercentGdp": 6.2,
+        "fiscalBalancePercentGdp": -0.6,
+        "fxReservesBillionUSD": 62,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 33.8,
         "assetMix": {
           "financialShare": 69,
           "nonFinancialShare": 49,
           "debtShareOfGross": 18
+        },
+        "labor": {
+          "unemploymentRate": 8.1,
+          "underemploymentRate": 11.4,
+          "laborForceParticipation": 81.5,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.64,
+          "wageGrowthYoy": 3.2,
+          "productivityGrowthYoy": 1.3
         }
       }
     }
@@ -2503,10 +6604,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 9.4,
         "debtToGdp": 45,
         "gini": 0.62,
+        "realGdpGrowth": 3.8,
+        "policyRate": 7.99,
+        "bondYield10Y": 7.05,
+        "currentAccountPercentGdp": 0.3,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 8.5,
+        "populationMillion": 35.7,
+        "oldAgeDependencyRatio": 14.2,
         "assetMix": {
           "financialShare": 24,
           "nonFinancialShare": 80,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 4.7,
+          "underemploymentRate": 6.9,
+          "laborForceParticipation": 73.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.7,
+          "wageGrowthYoy": 11.2,
+          "productivityGrowthYoy": 2.9
         }
       },
       "1990": {
@@ -2518,10 +6637,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 585.8,
         "debtToGdp": 86,
         "gini": 0.64,
+        "realGdpGrowth": 3.7,
+        "policyRate": 85,
+        "bondYield10Y": 75,
+        "currentAccountPercentGdp": 0.6,
+        "fiscalBalancePercentGdp": -4.3,
+        "fxReservesBillionUSD": 21.2,
+        "populationMillion": 40.5,
+        "oldAgeDependencyRatio": 16.6,
         "assetMix": {
           "financialShare": 26,
           "nonFinancialShare": 78,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 74,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.81,
+          "wageGrowthYoy": 29.4,
+          "productivityGrowthYoy": 2.9
         }
       },
       "1995": {
@@ -2533,10 +6670,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 27.8,
         "debtToGdp": 49,
         "gini": 0.65,
+        "realGdpGrowth": 4.2,
+        "policyRate": 6.65,
+        "bondYield10Y": 7,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 33.9,
+        "populationMillion": 38,
+        "oldAgeDependencyRatio": 18.5,
         "assetMix": {
           "financialShare": 28,
           "nonFinancialShare": 77,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 4,
+          "underemploymentRate": 6,
+          "laborForceParticipation": 73.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.79,
+          "wageGrowthYoy": 21.3,
+          "productivityGrowthYoy": 3.1
         }
       },
       "2000": {
@@ -2548,10 +6703,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 10.1,
         "debtToGdp": 36.8,
         "gini": 0.66,
+        "realGdpGrowth": 4.6,
+        "policyRate": 6.45,
+        "bondYield10Y": 6.8,
+        "currentAccountPercentGdp": 1.1,
+        "fiscalBalancePercentGdp": -2.9,
+        "fxReservesBillionUSD": 50.9,
+        "populationMillion": 37.8,
+        "oldAgeDependencyRatio": 20.3,
         "assetMix": {
           "financialShare": 31,
           "nonFinancialShare": 74,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 3.1,
+          "underemploymentRate": 4.8,
+          "laborForceParticipation": 74.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.9,
+          "wageGrowthYoy": 11.6,
+          "productivityGrowthYoy": 3.2
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.92,
+        "wealthPerAdultUSD": 30150,
+        "medianWealthUSD": 14650,
+        "gdpTrillionUSD": 0.32,
+        "gdpPerCapitaUSD": 8550,
+        "inflationRate": 6.4,
+        "debtToGdp": 44.9,
+        "gini": 0.67,
+        "realGdpGrowth": 4.3,
+        "policyRate": 4.85,
+        "bondYield10Y": 5.6,
+        "currentAccountPercentGdp": 1.3,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 95.4,
+        "populationMillion": 37.4,
+        "oldAgeDependencyRatio": 22.2,
+        "assetMix": {
+          "financialShare": 32,
+          "nonFinancialShare": 73.5,
+          "debtShareOfGross": 5.5
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 5.2,
+          "laborForceParticipation": 74.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.86,
+          "wageGrowthYoy": 9.5,
+          "productivityGrowthYoy": 3.1
         }
       },
       "2010": {
@@ -2563,10 +6769,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.6,
         "debtToGdp": 53,
         "gini": 0.67,
+        "realGdpGrowth": 3.8,
+        "policyRate": 2.45,
+        "bondYield10Y": 4.6,
+        "currentAccountPercentGdp": 0.7,
+        "fiscalBalancePercentGdp": -7.9,
+        "fxReservesBillionUSD": 152.6,
+        "populationMillion": 38.1,
+        "oldAgeDependencyRatio": 24,
         "assetMix": {
           "financialShare": 33,
           "nonFinancialShare": 73,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 5.5,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 73.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.61,
+          "wageGrowthYoy": 7.5,
+          "productivityGrowthYoy": 2.9
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.55,
+        "wealthPerAdultUSD": 50500,
+        "medianWealthUSD": 24000,
+        "gdpTrillionUSD": 0.54,
+        "gdpPerCapitaUSD": 14150,
+        "inflationRate": 3,
+        "debtToGdp": 55.1,
+        "gini": 0.68,
+        "realGdpGrowth": 3.7,
+        "policyRate": 2.65,
+        "bondYield10Y": 4,
+        "currentAccountPercentGdp": 1.3,
+        "fiscalBalancePercentGdp": -3.7,
+        "fxReservesBillionUSD": 180.2,
+        "populationMillion": 38.2,
+        "oldAgeDependencyRatio": 26.2,
+        "assetMix": {
+          "financialShare": 33.5,
+          "nonFinancialShare": 73,
+          "debtShareOfGross": 6.5
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 74,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.81,
+          "wageGrowthYoy": 7.7,
+          "productivityGrowthYoy": 2.9
         }
       },
       "2020": {
@@ -2578,10 +6835,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.4,
         "debtToGdp": 57.1,
         "gini": 0.68,
+        "realGdpGrowth": -2.4,
+        "policyRate": 2.05,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": -11.3,
+        "fxReservesBillionUSD": 199.3,
+        "populationMillion": 38.2,
+        "oldAgeDependencyRatio": 28.3,
         "assetMix": {
           "financialShare": 34,
           "nonFinancialShare": 73,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7.1,
+          "laborForceParticipation": 73.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.69,
+          "wageGrowthYoy": 7.9,
+          "productivityGrowthYoy": 0.8
         }
       },
       "2022": {
@@ -2593,10 +6868,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 14.4,
         "debtToGdp": 49.1,
         "gini": 0.68,
+        "realGdpGrowth": 4,
+        "policyRate": 4.85,
+        "bondYield10Y": 5.1,
+        "currentAccountPercentGdp": 0.7,
+        "fiscalBalancePercentGdp": -4.7,
+        "fxReservesBillionUSD": 203.5,
+        "populationMillion": 37.7,
+        "oldAgeDependencyRatio": 29.3,
         "assetMix": {
           "financialShare": 33,
           "nonFinancialShare": 74,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 2.6,
+          "underemploymentRate": 4.1,
+          "laborForceParticipation": 74.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.96,
+          "wageGrowthYoy": 13.9,
+          "productivityGrowthYoy": 3
         }
       },
       "2024": {
@@ -2608,10 +6901,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.2,
         "debtToGdp": 51.5,
         "gini": 0.68,
+        "realGdpGrowth": 3.5,
+        "policyRate": 6,
+        "bondYield10Y": 5.55,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": -5.3,
+        "fxReservesBillionUSD": 207.8,
+        "populationMillion": 37.6,
+        "oldAgeDependencyRatio": 30.2,
         "assetMix": {
           "financialShare": 35,
           "nonFinancialShare": 72,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3,
+          "underemploymentRate": 4.6,
+          "laborForceParticipation": 74.2,
+          "sahmIndicatorValue": 0.13,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.91,
+          "wageGrowthYoy": 8.3,
+          "productivityGrowthYoy": 2.8
         }
       },
       "2025": {
@@ -2623,10 +6934,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.6,
         "debtToGdp": 52.8,
         "gini": 0.68,
+        "realGdpGrowth": 3.4,
+        "policyRate": 5.5,
+        "bondYield10Y": 5.45,
+        "currentAccountPercentGdp": 1.1,
+        "fiscalBalancePercentGdp": -5.2,
+        "fxReservesBillionUSD": 209.9,
+        "populationMillion": 37.3,
+        "oldAgeDependencyRatio": 30.5,
         "assetMix": {
           "financialShare": 35.5,
           "nonFinancialShare": 71.5,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.6,
+          "laborForceParticipation": 74.2,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.91,
+          "wageGrowthYoy": 8,
+          "productivityGrowthYoy": 2.8
         }
       },
       "2026": {
@@ -2638,10 +6967,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.2,
         "debtToGdp": 53.6,
         "gini": 0.68,
+        "realGdpGrowth": 3.4,
+        "policyRate": 5.25,
+        "bondYield10Y": 5.4,
+        "currentAccountPercentGdp": 1.1,
+        "fiscalBalancePercentGdp": -5.1,
+        "fxReservesBillionUSD": 212,
+        "populationMillion": 37.2,
+        "oldAgeDependencyRatio": 30.8,
         "assetMix": {
           "financialShare": 36,
           "nonFinancialShare": 71,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.5,
+          "laborForceParticipation": 74.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.92,
+          "wageGrowthYoy": 7.8,
+          "productivityGrowthYoy": 2.8
         }
       }
     }
@@ -2668,10 +7015,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 18,
         "gini": 0.58,
+        "realGdpGrowth": 2.2,
+        "policyRate": 20,
+        "bondYield10Y": 16.7,
+        "currentAccountPercentGdp": 2.6,
+        "fiscalBalancePercentGdp": -0.6,
+        "fxReservesBillionUSD": 24.2,
+        "populationMillion": 138.7,
+        "oldAgeDependencyRatio": 12.1,
         "assetMix": {
           "financialShare": 20,
           "nonFinancialShare": 83,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 4.4,
+          "underemploymentRate": 6.6,
+          "laborForceParticipation": 62.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.23,
+          "wageGrowthYoy": 9.5,
+          "productivityGrowthYoy": 1.5
         }
       },
       "1990": {
@@ -2683,10 +7048,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.6,
         "debtToGdp": 25,
         "gini": 0.62,
+        "realGdpGrowth": 2.1,
+        "policyRate": 19,
+        "bondYield10Y": 16.2,
+        "currentAccountPercentGdp": 2.9,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 60.5,
+        "populationMillion": 149,
+        "oldAgeDependencyRatio": 14.1,
         "assetMix": {
           "financialShare": 22,
           "nonFinancialShare": 81,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 3.5,
+          "underemploymentRate": 5.4,
+          "laborForceParticipation": 62.6,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.34,
+          "wageGrowthYoy": 11.2,
+          "productivityGrowthYoy": 1.5
         }
       },
       "1995": {
@@ -2698,10 +7081,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 197.5,
         "debtToGdp": 42,
         "gini": 0.74,
+        "realGdpGrowth": 2.6,
+        "policyRate": 19.4,
+        "bondYield10Y": 16.8,
+        "currentAccountPercentGdp": 3.1,
+        "fiscalBalancePercentGdp": -1.3,
+        "fxReservesBillionUSD": 96.8,
+        "populationMillion": 149.8,
+        "oldAgeDependencyRatio": 15.7,
         "assetMix": {
           "financialShare": 24,
           "nonFinancialShare": 79,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 62.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.32,
+          "wageGrowthYoy": 31.5,
+          "productivityGrowthYoy": 1.7
         }
       },
       "2000": {
@@ -2713,10 +7114,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 20.8,
         "debtToGdp": 55,
         "gini": 0.78,
+        "realGdpGrowth": 3,
+        "policyRate": 19.2,
+        "bondYield10Y": 16.6,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": 0.4,
+        "fxReservesBillionUSD": 145.2,
+        "populationMillion": 146.9,
+        "oldAgeDependencyRatio": 17.3,
         "assetMix": {
           "financialShare": 28,
           "nonFinancialShare": 75,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 4.5,
+          "laborForceParticipation": 62.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.43,
+          "wageGrowthYoy": 19.6,
+          "productivityGrowthYoy": 1.8
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.9,
+        "wealthPerAdultUSD": 16800,
+        "medianWealthUSD": 4500,
+        "gdpTrillionUSD": 0.89,
+        "gdpPerCapitaUSD": 6200,
+        "inflationRate": 13.9,
+        "debtToGdp": 32.8,
+        "gini": 0.81,
+        "realGdpGrowth": 2.7,
+        "policyRate": 17.6,
+        "bondYield10Y": 15.4,
+        "currentAccountPercentGdp": 3.6,
+        "fiscalBalancePercentGdp": 0,
+        "fxReservesBillionUSD": 272.3,
+        "populationMillion": 143.5,
+        "oldAgeDependencyRatio": 18.9,
+        "assetMix": {
+          "financialShare": 30,
+          "nonFinancialShare": 73,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 3.1,
+          "underemploymentRate": 4.9,
+          "laborForceParticipation": 62.7,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.39,
+          "wageGrowthYoy": 15.8,
+          "productivityGrowthYoy": 1.7
         }
       },
       "2010": {
@@ -2728,10 +7180,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.9,
         "debtToGdp": 10.6,
         "gini": 0.84,
+        "realGdpGrowth": 2.2,
+        "policyRate": 15.2,
+        "bondYield10Y": 14.4,
+        "currentAccountPercentGdp": 3,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 435.6,
+        "populationMillion": 143,
+        "oldAgeDependencyRatio": 20.4,
         "assetMix": {
           "financialShare": 32,
           "nonFinancialShare": 71,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 7.7,
+          "laborForceParticipation": 62.2,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.14,
+          "wageGrowthYoy": 11.9,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 3.35,
+        "wealthPerAdultUSD": 29700,
+        "medianWealthUSD": 7000,
+        "gdpTrillionUSD": 1.51,
+        "gdpPerCapitaUSD": 10395,
+        "inflationRate": 5.2,
+        "debtToGdp": 15,
+        "gini": 0.86,
+        "realGdpGrowth": 2.1,
+        "policyRate": 15.4,
+        "bondYield10Y": 13.8,
+        "currentAccountPercentGdp": 3.6,
+        "fiscalBalancePercentGdp": -0.4,
+        "fxReservesBillionUSD": 514.3,
+        "populationMillion": 145.3,
+        "oldAgeDependencyRatio": 22.3,
+        "assetMix": {
+          "financialShare": 33.5,
+          "nonFinancialShare": 70,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 3.5,
+          "underemploymentRate": 5.4,
+          "laborForceParticipation": 62.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.34,
+          "wageGrowthYoy": 11,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2020": {
@@ -2743,10 +7246,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.4,
         "debtToGdp": 19.3,
         "gini": 0.88,
+        "realGdpGrowth": -4,
+        "policyRate": 14.8,
+        "bondYield10Y": 12.8,
+        "currentAccountPercentGdp": 3.7,
+        "fiscalBalancePercentGdp": -8,
+        "fxReservesBillionUSD": 568.7,
+        "populationMillion": 146.7,
+        "oldAgeDependencyRatio": 24.1,
         "assetMix": {
           "financialShare": 35,
           "nonFinancialShare": 69,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 4.5,
+          "underemploymentRate": 6.8,
+          "laborForceParticipation": 62.3,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.22,
+          "wageGrowthYoy": 10,
+          "productivityGrowthYoy": -0.6
         }
       },
       "2022": {
@@ -2758,10 +7279,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 13.8,
         "debtToGdp": 17.8,
         "gini": 0.88,
+        "realGdpGrowth": 2.4,
+        "policyRate": 17.6,
+        "bondYield10Y": 14.9,
+        "currentAccountPercentGdp": 3,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 580.8,
+        "populationMillion": 145.5,
+        "oldAgeDependencyRatio": 24.9,
         "assetMix": {
           "financialShare": 34,
           "nonFinancialShare": 70,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.3,
+          "underemploymentRate": 3.8,
+          "laborForceParticipation": 62.9,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.49,
+          "wageGrowthYoy": 15.7,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2024": {
@@ -2773,10 +7312,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.6,
         "debtToGdp": 18.5,
         "gini": 0.88,
+        "realGdpGrowth": 1.9,
+        "policyRate": 18.75,
+        "bondYield10Y": 15.35,
+        "currentAccountPercentGdp": 3.5,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 592.9,
+        "populationMillion": 144.4,
+        "oldAgeDependencyRatio": 25.7,
         "assetMix": {
           "financialShare": 35,
           "nonFinancialShare": 69,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.7,
+          "underemploymentRate": 4.3,
+          "laborForceParticipation": 62.8,
+          "sahmIndicatorValue": 0.11,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.44,
+          "wageGrowthYoy": 12.9,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2025": {
@@ -2788,10 +7345,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 7.4,
         "debtToGdp": 18.9,
         "gini": 0.88,
+        "realGdpGrowth": 1.8,
+        "policyRate": 18.25,
+        "bondYield10Y": 15.25,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -1.9,
+        "fxReservesBillionUSD": 599,
+        "populationMillion": 143.7,
+        "oldAgeDependencyRatio": 25.9,
         "assetMix": {
           "financialShare": 35.5,
           "nonFinancialShare": 68.5,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.7,
+          "underemploymentRate": 4.3,
+          "laborForceParticipation": 62.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.44,
+          "wageGrowthYoy": 12.2,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2026": {
@@ -2803,10 +7378,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.8,
         "debtToGdp": 19.2,
         "gini": 0.88,
+        "realGdpGrowth": 1.8,
+        "policyRate": 18,
+        "bondYield10Y": 15.2,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -1.8,
+        "fxReservesBillionUSD": 605,
+        "populationMillion": 143.4,
+        "oldAgeDependencyRatio": 26.2,
         "assetMix": {
           "financialShare": 36,
           "nonFinancialShare": 68,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.6,
+          "underemploymentRate": 4.2,
+          "laborForceParticipation": 62.8,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.45,
+          "wageGrowthYoy": 11.9,
+          "productivityGrowthYoy": 1.4
         }
       }
     }
@@ -2831,10 +7424,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 28.7,
         "debtToGdp": 17,
         "gini": 0.62,
+        "realGdpGrowth": 2.6,
+        "policyRate": 24.4,
+        "bondYield10Y": 21.53,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -0.4,
+        "fxReservesBillionUSD": 16.7,
+        "populationMillion": 40.9,
+        "oldAgeDependencyRatio": 13.9,
         "assetMix": {
           "financialShare": 34,
           "nonFinancialShare": 72,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.5,
+          "underemploymentRate": 6.9,
+          "laborForceParticipation": 64.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.73,
+          "wageGrowthYoy": 17.8,
+          "productivityGrowthYoy": 2.4
         }
       },
       "1990": {
@@ -2846,10 +7457,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.6,
         "debtToGdp": 13,
         "gini": 0.64,
+        "realGdpGrowth": 2.5,
+        "policyRate": 6.02,
+        "bondYield10Y": 5.59,
+        "currentAccountPercentGdp": 3.7,
+        "fiscalBalancePercentGdp": -0.8,
+        "fxReservesBillionUSD": 41.8,
+        "populationMillion": 42.4,
+        "oldAgeDependencyRatio": 16.3,
         "assetMix": {
           "financialShare": 38,
           "nonFinancialShare": 68,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.6,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 64.3,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.84,
+          "wageGrowthYoy": 6.8,
+          "productivityGrowthYoy": 2.4
         }
       },
       "1995": {
@@ -2861,10 +7490,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.5,
         "debtToGdp": 8.8,
         "gini": 0.65,
+        "realGdpGrowth": 3,
+        "policyRate": 4.4,
+        "bondYield10Y": 4.7,
+        "currentAccountPercentGdp": 3.9,
+        "fiscalBalancePercentGdp": -1.1,
+        "fxReservesBillionUSD": 66.9,
+        "populationMillion": 45.5,
+        "oldAgeDependencyRatio": 18.1,
         "assetMix": {
           "financialShare": 40,
           "nonFinancialShare": 67,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6,
+          "laborForceParticipation": 64.2,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.82,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 2.6
         }
       },
       "2000": {
@@ -2876,10 +7523,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.3,
         "debtToGdp": 17.1,
         "gini": 0.65,
+        "realGdpGrowth": 3.4,
+        "policyRate": 4.2,
+        "bondYield10Y": 4.5,
+        "currentAccountPercentGdp": 4.2,
+        "fiscalBalancePercentGdp": 0.6,
+        "fxReservesBillionUSD": 100.3,
+        "populationMillion": 47.3,
+        "oldAgeDependencyRatio": 19.9,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 66,
           "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.8,
+          "laborForceParticipation": 64.5,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.93,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 2.7
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 4.22,
+        "wealthPerAdultUSD": 110250,
+        "medianWealthUSD": 49200,
+        "gdpTrillionUSD": 0.86,
+        "gdpPerCapitaUSD": 17675,
+        "inflationRate": 2.6,
+        "debtToGdp": 23.3,
+        "gini": 0.66,
+        "realGdpGrowth": 3.1,
+        "policyRate": 2.6,
+        "bondYield10Y": 3.3,
+        "currentAccountPercentGdp": 4.4,
+        "fiscalBalancePercentGdp": 0.2,
+        "fxReservesBillionUSD": 188.1,
+        "populationMillion": 48.7,
+        "oldAgeDependencyRatio": 21.7,
+        "assetMix": {
+          "financialShare": 42.5,
+          "nonFinancialShare": 66,
+          "debtShareOfGross": 8.5
+        },
+        "labor": {
+          "unemploymentRate": 3.2,
+          "underemploymentRate": 5.2,
+          "laborForceParticipation": 64.4,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.89,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 2.6
         }
       },
       "2010": {
@@ -2891,10 +7589,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.9,
         "debtToGdp": 29.5,
         "gini": 0.67,
+        "realGdpGrowth": 2.6,
+        "policyRate": 0.2,
+        "bondYield10Y": 2.3,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -4.4,
+        "fxReservesBillionUSD": 301,
+        "populationMillion": 49.4,
+        "oldAgeDependencyRatio": 23.6,
         "assetMix": {
           "financialShare": 43,
           "nonFinancialShare": 66,
           "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 63.9,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.64,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 2.4
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 7.73,
+        "wealthPerAdultUSD": 187000,
+        "medianWealthUSD": 78000,
+        "gdpTrillionUSD": 1.39,
+        "gdpPerCapitaUSD": 27405,
+        "inflationRate": 1.7,
+        "debtToGdp": 38.2,
+        "gini": 0.68,
+        "realGdpGrowth": 2.5,
+        "policyRate": 0.4,
+        "bondYield10Y": 1.7,
+        "currentAccountPercentGdp": 4.4,
+        "fiscalBalancePercentGdp": -0.2,
+        "fxReservesBillionUSD": 355.3,
+        "populationMillion": 50.7,
+        "oldAgeDependencyRatio": 25.7,
+        "assetMix": {
+          "financialShare": 44,
+          "nonFinancialShare": 65.5,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 3.6,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 64.3,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.84,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2020": {
@@ -2906,10 +7655,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.5,
         "debtToGdp": 46.9,
         "gini": 0.68,
+        "realGdpGrowth": -3.6,
+        "policyRate": 0,
+        "bondYield10Y": 0.7,
+        "currentAccountPercentGdp": 4.5,
+        "fiscalBalancePercentGdp": -7.8,
+        "fxReservesBillionUSD": 392.9,
+        "populationMillion": 51.7,
+        "oldAgeDependencyRatio": 27.8,
         "assetMix": {
           "financialShare": 45,
           "nonFinancialShare": 65,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 7.1,
+          "laborForceParticipation": 64,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.72,
+          "wageGrowthYoy": 2.3,
+          "productivityGrowthYoy": 0.3
         }
       },
       "2022": {
@@ -2921,10 +7688,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.1,
         "debtToGdp": 49.6,
         "gini": 0.68,
+        "realGdpGrowth": 2.8,
+        "policyRate": 2.6,
+        "bondYield10Y": 2.8,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -1.2,
+        "fxReservesBillionUSD": 401.3,
+        "populationMillion": 51.5,
+        "oldAgeDependencyRatio": 28.7,
         "assetMix": {
           "financialShare": 44.5,
           "nonFinancialShare": 65.5,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 2.4,
+          "underemploymentRate": 4.1,
+          "laborForceParticipation": 64.6,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.99,
+          "wageGrowthYoy": 4.8,
+          "productivityGrowthYoy": 2.5
         }
       },
       "2024": {
@@ -2936,10 +7721,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 51.8,
         "gini": 0.68,
+        "realGdpGrowth": 2.3,
+        "policyRate": 3.75,
+        "bondYield10Y": 3.25,
+        "currentAccountPercentGdp": 4.3,
+        "fiscalBalancePercentGdp": -1.8,
+        "fxReservesBillionUSD": 409.6,
+        "populationMillion": 51.6,
+        "oldAgeDependencyRatio": 29.6,
         "assetMix": {
           "financialShare": 45.5,
           "nonFinancialShare": 64.5,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 4.6,
+          "laborForceParticipation": 64.5,
+          "sahmIndicatorValue": 0.15,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.94,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 2.3
         }
       },
       "2025": {
@@ -2951,10 +7754,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.3,
         "debtToGdp": 52.4,
         "gini": 0.68,
+        "realGdpGrowth": 2.2,
+        "policyRate": 3.25,
+        "bondYield10Y": 3.15,
+        "currentAccountPercentGdp": 4.2,
+        "fiscalBalancePercentGdp": -1.7,
+        "fxReservesBillionUSD": 413.8,
+        "populationMillion": 51.4,
+        "oldAgeDependencyRatio": 29.9,
         "assetMix": {
           "financialShare": 46,
           "nonFinancialShare": 64,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 4.6,
+          "laborForceParticipation": 64.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.94,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 2.3
         }
       },
       "2026": {
@@ -2966,10 +7787,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2,
         "debtToGdp": 53,
         "gini": 0.68,
+        "realGdpGrowth": 2.2,
+        "policyRate": 3,
+        "bondYield10Y": 3.1,
+        "currentAccountPercentGdp": 4.2,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 418,
+        "populationMillion": 51.3,
+        "oldAgeDependencyRatio": 30.2,
         "assetMix": {
           "financialShare": 46.5,
           "nonFinancialShare": 63.5,
           "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 2.7,
+          "underemploymentRate": 4.5,
+          "laborForceParticipation": 64.5,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 3.1,
+          "productivityGrowthYoy": 2.3
         }
       }
     }
@@ -2994,10 +7833,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 19,
         "debtToGdp": 12,
         "gini": 0.63,
+        "realGdpGrowth": 3.5,
+        "policyRate": 16.15,
+        "bondYield10Y": 14.25,
+        "currentAccountPercentGdp": 13,
+        "fiscalBalancePercentGdp": 1.6,
+        "fxReservesBillionUSD": 23.1,
+        "populationMillion": 16.9,
+        "oldAgeDependencyRatio": 13.2,
         "assetMix": {
           "financialShare": 46,
           "nonFinancialShare": 60,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 7.4,
+          "laborForceParticipation": 58.9,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.9,
+          "wageGrowthYoy": 12.3,
+          "productivityGrowthYoy": 3
         }
       },
       "1990": {
@@ -3009,10 +7866,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.1,
         "debtToGdp": 8,
         "gini": 0.65,
+        "realGdpGrowth": 3.4,
+        "policyRate": 3,
+        "bondYield10Y": 2.67,
+        "currentAccountPercentGdp": 13.3,
+        "fiscalBalancePercentGdp": 1.2,
+        "fxReservesBillionUSD": 57.8,
+        "populationMillion": 20.4,
+        "oldAgeDependencyRatio": 15.4,
         "assetMix": {
           "financialShare": 52,
           "nonFinancialShare": 54,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 6.2,
+          "laborForceParticipation": 59.1,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.01,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 3
         }
       },
       "1995": {
@@ -3024,10 +7899,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.7,
         "debtToGdp": 18,
         "gini": 0.66,
+        "realGdpGrowth": 3.9,
+        "policyRate": 3.4,
+        "bondYield10Y": 3.2,
+        "currentAccountPercentGdp": 13.5,
+        "fiscalBalancePercentGdp": 0.9,
+        "fxReservesBillionUSD": 92.5,
+        "populationMillion": 21.4,
+        "oldAgeDependencyRatio": 17.2,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 53,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 4.5,
+          "underemploymentRate": 6.5,
+          "laborForceParticipation": 59,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.99,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 3.2
         }
       },
       "2000": {
@@ -3039,10 +7932,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.3,
         "debtToGdp": 25,
         "gini": 0.67,
+        "realGdpGrowth": 4.3,
+        "policyRate": 3.2,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": 13.8,
+        "fiscalBalancePercentGdp": 2.6,
+        "fxReservesBillionUSD": 138.7,
+        "populationMillion": 22.1,
+        "oldAgeDependencyRatio": 18.9,
         "assetMix": {
           "financialShare": 56,
           "nonFinancialShare": 51,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.6,
+          "underemploymentRate": 5.3,
+          "laborForceParticipation": 59.3,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.1,
+          "wageGrowthYoy": 2.5,
+          "productivityGrowthYoy": 3.3
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 2.6,
+        "wealthPerAdultUSD": 148000,
+        "medianWealthUSD": 62600,
+        "gdpTrillionUSD": 0.39,
+        "gdpPerCapitaUSD": 17100,
+        "inflationRate": 1.2,
+        "debtToGdp": 30,
+        "gini": 0.68,
+        "realGdpGrowth": 4,
+        "policyRate": 1.6,
+        "bondYield10Y": 1.8,
+        "currentAccountPercentGdp": 14,
+        "fiscalBalancePercentGdp": 2.2,
+        "fxReservesBillionUSD": 260.1,
+        "populationMillion": 22.8,
+        "oldAgeDependencyRatio": 20.6,
+        "assetMix": {
+          "financialShare": 57,
+          "nonFinancialShare": 50,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.9,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 59.2,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.06,
+          "wageGrowthYoy": 2.5,
+          "productivityGrowthYoy": 3.2
         }
       },
       "2010": {
@@ -3054,10 +7998,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1,
         "debtToGdp": 35,
         "gini": 0.69,
+        "realGdpGrowth": 3.5,
+        "policyRate": 0,
+        "bondYield10Y": 0.8,
+        "currentAccountPercentGdp": 13.4,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 416.2,
+        "populationMillion": 23.3,
+        "oldAgeDependencyRatio": 22.3,
         "assetMix": {
           "financialShare": 58,
           "nonFinancialShare": 49,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 6,
+          "underemploymentRate": 8.5,
+          "laborForceParticipation": 58.7,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.81,
+          "wageGrowthYoy": 2.4,
+          "productivityGrowthYoy": 3
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 4.2,
+        "wealthPerAdultUSD": 223000,
+        "medianWealthUSD": 89000,
+        "gdpTrillionUSD": 0.56,
+        "gdpPerCapitaUSD": 23850,
+        "inflationRate": 0.4,
+        "debtToGdp": 32.8,
+        "gini": 0.7,
+        "realGdpGrowth": 3.4,
+        "policyRate": 0,
+        "bondYield10Y": 0.2,
+        "currentAccountPercentGdp": 14,
+        "fiscalBalancePercentGdp": 1.8,
+        "fxReservesBillionUSD": 491.3,
+        "populationMillion": 23.5,
+        "oldAgeDependencyRatio": 24.3,
+        "assetMix": {
+          "financialShare": 60,
+          "nonFinancialShare": 47,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 6.2,
+          "laborForceParticipation": 59.1,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.01,
+          "wageGrowthYoy": 2,
+          "productivityGrowthYoy": 3
         }
       },
       "2020": {
@@ -3069,10 +8064,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.2,
         "debtToGdp": 30.5,
         "gini": 0.7,
+        "realGdpGrowth": -2.7,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 14.1,
+        "fiscalBalancePercentGdp": -5.8,
+        "fxReservesBillionUSD": 543.3,
+        "populationMillion": 23.6,
+        "oldAgeDependencyRatio": 26.3,
         "assetMix": {
           "financialShare": 62,
           "nonFinancialShare": 45,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 7.6,
+          "laborForceParticipation": 58.8,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.89,
+          "wageGrowthYoy": 1.7,
+          "productivityGrowthYoy": 0.9
         }
       },
       "2022": {
@@ -3084,10 +8097,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.9,
         "debtToGdp": 27.2,
         "gini": 0.7,
+        "realGdpGrowth": 3.7,
+        "policyRate": 1.6,
+        "bondYield10Y": 1.3,
+        "currentAccountPercentGdp": 13.4,
+        "fiscalBalancePercentGdp": 0.8,
+        "fxReservesBillionUSD": 554.9,
+        "populationMillion": 23.3,
+        "oldAgeDependencyRatio": 27.2,
         "assetMix": {
           "financialShare": 63,
           "nonFinancialShare": 44,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.1,
+          "underemploymentRate": 4.6,
+          "laborForceParticipation": 59.4,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.16,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 3.1
         }
       },
       "2024": {
@@ -3099,10 +8130,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.1,
         "debtToGdp": 25.8,
         "gini": 0.7,
+        "realGdpGrowth": 3.2,
+        "policyRate": 2.75,
+        "bondYield10Y": 1.75,
+        "currentAccountPercentGdp": 13.9,
+        "fiscalBalancePercentGdp": 0.2,
+        "fxReservesBillionUSD": 566.4,
+        "populationMillion": 23.3,
+        "oldAgeDependencyRatio": 28,
         "assetMix": {
           "financialShare": 64,
           "nonFinancialShare": 43,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.5,
+          "underemploymentRate": 5.1,
+          "laborForceParticipation": 59.3,
+          "sahmIndicatorValue": 0.13,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.11,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 2.9
         }
       },
       "2025": {
@@ -3114,10 +8163,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.9,
         "debtToGdp": 25.4,
         "gini": 0.7,
+        "realGdpGrowth": 3.1,
+        "policyRate": 2.25,
+        "bondYield10Y": 1.65,
+        "currentAccountPercentGdp": 13.8,
+        "fiscalBalancePercentGdp": 0.3,
+        "fxReservesBillionUSD": 572.2,
+        "populationMillion": 23.5,
+        "oldAgeDependencyRatio": 28.3,
         "assetMix": {
           "financialShare": 64.5,
           "nonFinancialShare": 42.5,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.5,
+          "underemploymentRate": 5.1,
+          "laborForceParticipation": 59.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.11,
+          "wageGrowthYoy": 2.9,
+          "productivityGrowthYoy": 2.9
         }
       },
       "2026": {
@@ -3129,10 +8196,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 25,
         "gini": 0.7,
+        "realGdpGrowth": 3.1,
+        "policyRate": 2,
+        "bondYield10Y": 1.6,
+        "currentAccountPercentGdp": 13.8,
+        "fiscalBalancePercentGdp": 0.4,
+        "fxReservesBillionUSD": 578,
+        "populationMillion": 23.5,
+        "oldAgeDependencyRatio": 28.6,
         "assetMix": {
           "financialShare": 65,
           "nonFinancialShare": 42,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 5,
+          "laborForceParticipation": 59.3,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.12,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 2.9
         }
       }
     }
@@ -3157,10 +8242,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 18,
         "debtToGdp": 22,
         "gini": 0.64,
+        "realGdpGrowth": 5.5,
+        "policyRate": 15.3,
+        "bondYield10Y": 13.5,
+        "currentAccountPercentGdp": -1.4,
+        "fiscalBalancePercentGdp": -1.2,
+        "fxReservesBillionUSD": 6.1,
+        "populationMillion": 150.9,
+        "oldAgeDependencyRatio": 5.2,
         "assetMix": {
           "financialShare": 18,
           "nonFinancialShare": 85,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 6.6,
+          "underemploymentRate": 10.9,
+          "laborForceParticipation": 69,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.5,
+          "wageGrowthYoy": 13.9,
+          "productivityGrowthYoy": 3.7
         }
       },
       "1990": {
@@ -3172,10 +8275,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 7.8,
         "debtToGdp": 41,
         "gini": 0.67,
+        "realGdpGrowth": 5.4,
+        "policyRate": 6.75,
+        "bondYield10Y": 7.65,
+        "currentAccountPercentGdp": -1.1,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 15.2,
+        "populationMillion": 177.4,
+        "oldAgeDependencyRatio": 6.2,
         "assetMix": {
           "financialShare": 20,
           "nonFinancialShare": 83,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.7,
+          "underemploymentRate": 9.7,
+          "laborForceParticipation": 69.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.61,
+          "wageGrowthYoy": 8.3,
+          "productivityGrowthYoy": 3.7
         }
       },
       "1995": {
@@ -3187,10 +8308,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 9.4,
         "debtToGdp": 53,
         "gini": 0.69,
+        "realGdpGrowth": 5.9,
+        "policyRate": 7.15,
+        "bondYield10Y": 8.25,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -1.9,
+        "fxReservesBillionUSD": 24.3,
+        "populationMillion": 192.3,
+        "oldAgeDependencyRatio": 6.8,
         "assetMix": {
           "financialShare": 22,
           "nonFinancialShare": 81,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.9,
+          "underemploymentRate": 10,
+          "laborForceParticipation": 69.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.59,
+          "wageGrowthYoy": 9.2,
+          "productivityGrowthYoy": 3.9
         }
       },
       "2000": {
@@ -3202,10 +8341,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.7,
         "debtToGdp": 87,
         "gini": 0.7,
+        "realGdpGrowth": 6.3,
+        "policyRate": 6.95,
+        "bondYield10Y": 8.05,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": -0.2,
+        "fxReservesBillionUSD": 36.5,
+        "populationMillion": 217.9,
+        "oldAgeDependencyRatio": 7.5,
         "assetMix": {
           "financialShare": 22,
           "nonFinancialShare": 81,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 8.8,
+          "laborForceParticipation": 69.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.7,
+          "wageGrowthYoy": 6.1,
+          "productivityGrowthYoy": 4
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.09,
+        "wealthPerAdultUSD": 7200,
+        "medianWealthUSD": 2260,
+        "gdpTrillionUSD": 0.47,
+        "gdpPerCapitaUSD": 1950,
+        "inflationRate": 4.4,
+        "debtToGdp": 55.8,
+        "gini": 0.72,
+        "realGdpGrowth": 6,
+        "policyRate": 5.35,
+        "bondYield10Y": 6.85,
+        "currentAccountPercentGdp": -0.4,
+        "fiscalBalancePercentGdp": -0.6,
+        "fxReservesBillionUSD": 68.4,
+        "populationMillion": 241,
+        "oldAgeDependencyRatio": 8.2,
+        "assetMix": {
+          "financialShare": 23.5,
+          "nonFinancialShare": 79.5,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 9.2,
+          "laborForceParticipation": 69.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.66,
+          "wageGrowthYoy": 6.4,
+          "productivityGrowthYoy": 3.9
         }
       },
       "2010": {
@@ -3217,10 +8407,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.1,
         "debtToGdp": 24.5,
         "gini": 0.73,
+        "realGdpGrowth": 5.5,
+        "policyRate": 2.95,
+        "bondYield10Y": 5.85,
+        "currentAccountPercentGdp": -1,
+        "fiscalBalancePercentGdp": -5.2,
+        "fxReservesBillionUSD": 109.4,
+        "populationMillion": 243.6,
+        "oldAgeDependencyRatio": 8.9,
         "assetMix": {
           "financialShare": 25,
           "nonFinancialShare": 78,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 7.4,
+          "underemploymentRate": 12,
+          "laborForceParticipation": 68.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 6.8,
+          "productivityGrowthYoy": 3.7
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 2.25,
+        "wealthPerAdultUSD": 12950,
+        "medianWealthUSD": 3925,
+        "gdpTrillionUSD": 0.91,
+        "gdpPerCapitaUSD": 3495,
+        "inflationRate": 3.6,
+        "debtToGdp": 32.1,
+        "gini": 0.74,
+        "realGdpGrowth": 5.4,
+        "policyRate": 3.15,
+        "bondYield10Y": 5.25,
+        "currentAccountPercentGdp": -0.4,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 129.2,
+        "populationMillion": 260.4,
+        "oldAgeDependencyRatio": 9.7,
+        "assetMix": {
+          "financialShare": 25.5,
+          "nonFinancialShare": 77.5,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.7,
+          "underemploymentRate": 9.7,
+          "laborForceParticipation": 69.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.61,
+          "wageGrowthYoy": 6,
+          "productivityGrowthYoy": 3.7
         }
       },
       "2020": {
@@ -3232,10 +8473,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2,
         "debtToGdp": 39.7,
         "gini": 0.75,
+        "realGdpGrowth": -0.7,
+        "policyRate": 2.55,
+        "bondYield10Y": 4.25,
+        "currentAccountPercentGdp": -0.3,
+        "fiscalBalancePercentGdp": -8.6,
+        "fxReservesBillionUSD": 142.9,
+        "populationMillion": 273.9,
+        "oldAgeDependencyRatio": 10.5,
         "assetMix": {
           "financialShare": 26,
           "nonFinancialShare": 77,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 6.7,
+          "underemploymentRate": 11.1,
+          "laborForceParticipation": 68.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.49,
+          "wageGrowthYoy": 5.1,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2022": {
@@ -3247,10 +8506,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.2,
         "debtToGdp": 40.1,
         "gini": 0.76,
+        "realGdpGrowth": 5.7,
+        "policyRate": 5.35,
+        "bondYield10Y": 6.35,
+        "currentAccountPercentGdp": -1,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 145.9,
+        "populationMillion": 275.6,
+        "oldAgeDependencyRatio": 10.8,
         "assetMix": {
           "financialShare": 27,
           "nonFinancialShare": 76,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 4.5,
+          "underemploymentRate": 8.1,
+          "laborForceParticipation": 69.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.76,
+          "wageGrowthYoy": 6.3,
+          "productivityGrowthYoy": 3.8
         }
       },
       "2024": {
@@ -3262,10 +8539,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.8,
         "debtToGdp": 39.2,
         "gini": 0.76,
+        "realGdpGrowth": 5.2,
+        "policyRate": 6.5,
+        "bondYield10Y": 6.8,
+        "currentAccountPercentGdp": -0.5,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 149,
+        "populationMillion": 279.1,
+        "oldAgeDependencyRatio": 11.2,
         "assetMix": {
           "financialShare": 27.5,
           "nonFinancialShare": 75.5,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 69.4,
+          "sahmIndicatorValue": 0.15,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.71,
+          "wageGrowthYoy": 5.6,
+          "productivityGrowthYoy": 3.6
         }
       },
       "2025": {
@@ -3277,10 +8572,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.7,
         "debtToGdp": 39,
         "gini": 0.76,
+        "realGdpGrowth": 5.1,
+        "policyRate": 6,
+        "bondYield10Y": 6.7,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": -2.5,
+        "fxReservesBillionUSD": 150.5,
+        "populationMillion": 280.4,
+        "oldAgeDependencyRatio": 11.3,
         "assetMix": {
           "financialShare": 28,
           "nonFinancialShare": 75,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 69.4,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.71,
+          "wageGrowthYoy": 5.5,
+          "productivityGrowthYoy": 3.6
         }
       },
       "2026": {
@@ -3292,10 +8605,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.6,
         "debtToGdp": 38.6,
         "gini": 0.76,
+        "realGdpGrowth": 5.1,
+        "policyRate": 5.75,
+        "bondYield10Y": 6.65,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 152,
+        "populationMillion": 283.2,
+        "oldAgeDependencyRatio": 11.4,
         "assetMix": {
           "financialShare": 28.5,
           "nonFinancialShare": 74.5,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 8.5,
+          "laborForceParticipation": 69.4,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.72,
+          "wageGrowthYoy": 5.5,
+          "productivityGrowthYoy": 3.6
         }
       }
     }
@@ -3320,10 +8651,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.5,
         "debtToGdp": 70,
         "gini": 0.68,
+        "realGdpGrowth": 3,
+        "policyRate": 7.23,
+        "bondYield10Y": 6.38,
+        "currentAccountPercentGdp": 17.7,
+        "fiscalBalancePercentGdp": 2.4,
+        "fxReservesBillionUSD": 15.4,
+        "populationMillion": 2.4,
+        "oldAgeDependencyRatio": 12.1,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 58,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 5.6,
+          "laborForceParticipation": 70.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.16,
+          "wageGrowthYoy": 7.5,
+          "productivityGrowthYoy": 2.3
         }
       },
       "1990": {
@@ -3335,10 +8684,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.5,
         "debtToGdp": 71,
         "gini": 0.7,
+        "realGdpGrowth": 2.9,
+        "policyRate": 4.1,
+        "bondYield10Y": 3.85,
+        "currentAccountPercentGdp": 18,
+        "fiscalBalancePercentGdp": 2,
+        "fxReservesBillionUSD": 38.5,
+        "populationMillion": 3.1,
+        "oldAgeDependencyRatio": 14.3,
         "assetMix": {
           "financialShare": 56,
           "nonFinancialShare": 56,
           "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.4,
+          "laborForceParticipation": 70.3,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.27,
+          "wageGrowthYoy": 4.8,
+          "productivityGrowthYoy": 2.3
         }
       },
       "1995": {
@@ -3350,10 +8717,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.7,
         "debtToGdp": 68,
         "gini": 0.71,
+        "realGdpGrowth": 3.4,
+        "policyRate": 4.5,
+        "bondYield10Y": 4.45,
+        "currentAccountPercentGdp": 18.2,
+        "fiscalBalancePercentGdp": 1.7,
+        "fxReservesBillionUSD": 61.6,
+        "populationMillion": 3.5,
+        "oldAgeDependencyRatio": 15.8,
         "assetMix": {
           "financialShare": 58,
           "nonFinancialShare": 55,
           "debtShareOfGross": 13
+        },
+        "labor": {
+          "unemploymentRate": 3.1,
+          "underemploymentRate": 4.7,
+          "laborForceParticipation": 70.2,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.25,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 2.5
         }
       },
       "2000": {
@@ -3365,10 +8750,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.4,
         "debtToGdp": 81,
         "gini": 0.72,
+        "realGdpGrowth": 3.8,
+        "policyRate": 4.3,
+        "bondYield10Y": 4.25,
+        "currentAccountPercentGdp": 18.5,
+        "fiscalBalancePercentGdp": 3.4,
+        "fxReservesBillionUSD": 92.4,
+        "populationMillion": 4,
+        "oldAgeDependencyRatio": 17.4,
         "assetMix": {
           "financialShare": 60,
           "nonFinancialShare": 54,
           "debtShareOfGross": 14
+        },
+        "labor": {
+          "unemploymentRate": 2.2,
+          "underemploymentRate": 3.5,
+          "laborForceParticipation": 70.5,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.36,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 2.6
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.87,
+        "wealthPerAdultUSD": 243500,
+        "medianWealthUSD": 85000,
+        "gdpTrillionUSD": 0.17,
+        "gdpPerCapitaUSD": 35500,
+        "inflationRate": 2.1,
+        "debtToGdp": 89.5,
+        "gini": 0.73,
+        "realGdpGrowth": 3.5,
+        "policyRate": 2.7,
+        "bondYield10Y": 3.05,
+        "currentAccountPercentGdp": 18.7,
+        "fiscalBalancePercentGdp": 3,
+        "fxReservesBillionUSD": 173.3,
+        "populationMillion": 4.8,
+        "oldAgeDependencyRatio": 19,
+        "assetMix": {
+          "financialShare": 61,
+          "nonFinancialShare": 53.5,
+          "debtShareOfGross": 14.5
+        },
+        "labor": {
+          "unemploymentRate": 2.5,
+          "underemploymentRate": 3.9,
+          "laborForceParticipation": 70.4,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.32,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 2.5
         }
       },
       "2010": {
@@ -3380,10 +8816,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.8,
         "debtToGdp": 98,
         "gini": 0.73,
+        "realGdpGrowth": 3,
+        "policyRate": 0.3,
+        "bondYield10Y": 2.05,
+        "currentAccountPercentGdp": 18.1,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 277.2,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 20.6,
         "assetMix": {
           "financialShare": 62,
           "nonFinancialShare": 53,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 6.7,
+          "laborForceParticipation": 69.9,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.07,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 2.3
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.45,
+        "wealthPerAdultUSD": 326500,
+        "medianWealthUSD": 105000,
+        "gdpTrillionUSD": 0.3,
+        "gdpPerCapitaUSD": 53950,
+        "inflationRate": 1.3,
+        "debtToGdp": 124.5,
+        "gini": 0.74,
+        "realGdpGrowth": 2.9,
+        "policyRate": 0.5,
+        "bondYield10Y": 1.45,
+        "currentAccountPercentGdp": 18.7,
+        "fiscalBalancePercentGdp": 2.6,
+        "fxReservesBillionUSD": 327.3,
+        "populationMillion": 5.6,
+        "oldAgeDependencyRatio": 22.4,
+        "assetMix": {
+          "financialShare": 63.5,
+          "nonFinancialShare": 51.5,
+          "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.4,
+          "laborForceParticipation": 70.3,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.27,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 2.3
         }
       },
       "2020": {
@@ -3395,10 +8882,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.2,
         "debtToGdp": 151,
         "gini": 0.74,
+        "realGdpGrowth": -3.2,
+        "policyRate": 0,
+        "bondYield10Y": 0.45,
+        "currentAccountPercentGdp": 18.8,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 361.9,
+        "populationMillion": 5.8,
+        "oldAgeDependencyRatio": 24.3,
         "assetMix": {
           "financialShare": 65,
           "nonFinancialShare": 50,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 3.9,
+          "underemploymentRate": 5.8,
+          "laborForceParticipation": 70,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.15,
+          "wageGrowthYoy": 2.7,
+          "productivityGrowthYoy": 0.2
         }
       },
       "2022": {
@@ -3410,10 +8915,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.1,
         "debtToGdp": 167,
         "gini": 0.74,
+        "realGdpGrowth": 3.2,
+        "policyRate": 2.7,
+        "bondYield10Y": 2.55,
+        "currentAccountPercentGdp": 18.1,
+        "fiscalBalancePercentGdp": 1.6,
+        "fxReservesBillionUSD": 369.6,
+        "populationMillion": 5.7,
+        "oldAgeDependencyRatio": 25.1,
         "assetMix": {
           "financialShare": 65.5,
           "nonFinancialShare": 49.5,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 1.7,
+          "underemploymentRate": 2.8,
+          "laborForceParticipation": 70.6,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.42,
+          "wageGrowthYoy": 6.2,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2024": {
@@ -3425,10 +8948,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.4,
         "debtToGdp": 166,
         "gini": 0.74,
+        "realGdpGrowth": 2.7,
+        "policyRate": 3.85,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": 18.6,
+        "fiscalBalancePercentGdp": 1,
+        "fxReservesBillionUSD": 377.3,
+        "populationMillion": 5.9,
+        "oldAgeDependencyRatio": 25.9,
         "assetMix": {
           "financialShare": 66,
           "nonFinancialShare": 49,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 2.1,
+          "underemploymentRate": 3.3,
+          "laborForceParticipation": 70.5,
+          "sahmIndicatorValue": 0.11,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.37,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 2.2
         }
       },
       "2025": {
@@ -3440,10 +8981,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.2,
         "debtToGdp": 165,
         "gini": 0.74,
+        "realGdpGrowth": 2.6,
+        "policyRate": 3.35,
+        "bondYield10Y": 2.9,
+        "currentAccountPercentGdp": 18.5,
+        "fiscalBalancePercentGdp": 1.1,
+        "fxReservesBillionUSD": 381.2,
+        "populationMillion": 5.9,
+        "oldAgeDependencyRatio": 26.1,
         "assetMix": {
           "financialShare": 66.5,
           "nonFinancialShare": 48.5,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 2.1,
+          "underemploymentRate": 3.3,
+          "laborForceParticipation": 70.5,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.37,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 2.2
         }
       },
       "2026": {
@@ -3455,10 +9014,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2,
         "debtToGdp": 164,
         "gini": 0.74,
+        "realGdpGrowth": 2.6,
+        "policyRate": 3.1,
+        "bondYield10Y": 2.85,
+        "currentAccountPercentGdp": 18.5,
+        "fiscalBalancePercentGdp": 1.2,
+        "fxReservesBillionUSD": 385,
+        "populationMillion": 6,
+        "oldAgeDependencyRatio": 26.4,
         "assetMix": {
           "financialShare": 67,
           "nonFinancialShare": 48,
           "debtShareOfGross": 15
+        },
+        "labor": {
+          "unemploymentRate": 2,
+          "underemploymentRate": 3.2,
+          "laborForceParticipation": 70.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.38,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 2.2
         }
       }
     }
@@ -3485,10 +9062,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.4,
         "debtToGdp": 8,
         "gini": 0.71,
+        "realGdpGrowth": 4.2,
+        "policyRate": 6.75,
+        "bondYield10Y": 6.4,
+        "currentAccountPercentGdp": 2.4,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 17.6,
+        "populationMillion": 9.5,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 52,
           "nonFinancialShare": 54,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 5.5,
+          "underemploymentRate": 8.8,
+          "laborForceParticipation": 61.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.74,
+          "wageGrowthYoy": 4.9,
+          "productivityGrowthYoy": 2.2
         }
       },
       "1990": {
@@ -3500,10 +9095,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.1,
         "debtToGdp": 54,
         "gini": 0.74,
+        "realGdpGrowth": 4.1,
+        "policyRate": 5.75,
+        "bondYield10Y": 5.9,
+        "currentAccountPercentGdp": 2.7,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 44,
+        "populationMillion": 16.5,
+        "oldAgeDependencyRatio": 3.1,
         "assetMix": {
           "financialShare": 48,
           "nonFinancialShare": 58,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 7.6,
+          "laborForceParticipation": 61.3,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.85,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 2.2
         }
       },
       "1995": {
@@ -3515,10 +9128,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5,
         "debtToGdp": 76,
         "gini": 0.76,
+        "realGdpGrowth": 4.6,
+        "policyRate": 6.15,
+        "bondYield10Y": 6.5,
+        "currentAccountPercentGdp": 2.9,
+        "fiscalBalancePercentGdp": -2.3,
+        "fxReservesBillionUSD": 70.4,
+        "populationMillion": 18.8,
+        "oldAgeDependencyRatio": 3.5,
         "assetMix": {
           "financialShare": 46,
           "nonFinancialShare": 60,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7.9,
+          "laborForceParticipation": 61.2,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.83,
+          "wageGrowthYoy": 5.3,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2000": {
@@ -3530,10 +9161,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -1.1,
         "debtToGdp": 86,
         "gini": 0.77,
+        "realGdpGrowth": 5,
+        "policyRate": 5.95,
+        "bondYield10Y": 6.3,
+        "currentAccountPercentGdp": 3.2,
+        "fiscalBalancePercentGdp": -0.6,
+        "fxReservesBillionUSD": 105.6,
+        "populationMillion": 20.8,
+        "oldAgeDependencyRatio": 3.8,
         "assetMix": {
           "financialShare": 48,
           "nonFinancialShare": 58,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.9,
+          "underemploymentRate": 6.7,
+          "laborForceParticipation": 61.5,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.94,
+          "wageGrowthYoy": 1.9,
+          "productivityGrowthYoy": 2.5
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.22,
+        "wealthPerAdultUSD": 68000,
+        "medianWealthUSD": 19850,
+        "gdpTrillionUSD": 0.36,
+        "gdpPerCapitaUSD": 14195,
+        "inflationRate": 2.1,
+        "debtToGdp": 47.2,
+        "gini": 0.78,
+        "realGdpGrowth": 4.7,
+        "policyRate": 4.35,
+        "bondYield10Y": 5.1,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 198,
+        "populationMillion": 25.4,
+        "oldAgeDependencyRatio": 4.2,
+        "assetMix": {
+          "financialShare": 49,
+          "nonFinancialShare": 57,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 7.1,
+          "laborForceParticipation": 61.4,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.9,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2010": {
@@ -3545,10 +9227,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.3,
         "debtToGdp": 8.4,
         "gini": 0.79,
+        "realGdpGrowth": 4.2,
+        "policyRate": 1.95,
+        "bondYield10Y": 4.1,
+        "currentAccountPercentGdp": 2.8,
+        "fiscalBalancePercentGdp": -5.6,
+        "fxReservesBillionUSD": 316.8,
+        "populationMillion": 27.5,
+        "oldAgeDependencyRatio": 4.5,
         "assetMix": {
           "financialShare": 50,
           "nonFinancialShare": 56,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 9.9,
+          "laborForceParticipation": 60.9,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.65,
+          "wageGrowthYoy": 5.4,
+          "productivityGrowthYoy": 2.2
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.9,
+        "wealthPerAdultUSD": 86000,
+        "medianWealthUSD": 24250,
+        "gdpTrillionUSD": 0.62,
+        "gdpPerCapitaUSD": 19685,
+        "inflationRate": 4.4,
+        "debtToGdp": 20.5,
+        "gini": 0.8,
+        "realGdpGrowth": 4.1,
+        "policyRate": 2.15,
+        "bondYield10Y": 3.5,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 374,
+        "populationMillion": 31.5,
+        "oldAgeDependencyRatio": 4.9,
+        "assetMix": {
+          "financialShare": 51,
+          "nonFinancialShare": 55,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 7.6,
+          "laborForceParticipation": 61.3,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.85,
+          "wageGrowthYoy": 4.9,
+          "productivityGrowthYoy": 2.2
         }
       },
       "2020": {
@@ -3560,10 +9293,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.4,
         "debtToGdp": 32.5,
         "gini": 0.81,
+        "realGdpGrowth": -2,
+        "policyRate": 1.55,
+        "bondYield10Y": 2.5,
+        "currentAccountPercentGdp": 3.5,
+        "fiscalBalancePercentGdp": -9,
+        "fxReservesBillionUSD": 413.6,
+        "populationMillion": 34.8,
+        "oldAgeDependencyRatio": 5.3,
         "assetMix": {
           "financialShare": 52,
           "nonFinancialShare": 54,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 5.6,
+          "underemploymentRate": 9,
+          "laborForceParticipation": 61,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.73,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 0.1
         }
       },
       "2022": {
@@ -3575,10 +9326,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 23.8,
         "gini": 0.81,
+        "realGdpGrowth": 4.4,
+        "policyRate": 4.35,
+        "bondYield10Y": 4.6,
+        "currentAccountPercentGdp": 13.6,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 422.4,
+        "populationMillion": 36.5,
+        "oldAgeDependencyRatio": 5.5,
         "assetMix": {
           "financialShare": 53,
           "nonFinancialShare": 53,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 6,
+          "laborForceParticipation": 61.6,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 2.3
         }
       },
       "2024": {
@@ -3590,10 +9359,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.7,
         "debtToGdp": 26.2,
         "gini": 0.81,
+        "realGdpGrowth": 3.9,
+        "policyRate": 5.5,
+        "bondYield10Y": 5.05,
+        "currentAccountPercentGdp": 3.3,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 431.2,
+        "populationMillion": 37.2,
+        "oldAgeDependencyRatio": 5.7,
         "assetMix": {
           "financialShare": 53.5,
           "nonFinancialShare": 52.5,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6.5,
+          "laborForceParticipation": 61.5,
+          "sahmIndicatorValue": 0.13,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 2.1
         }
       },
       "2025": {
@@ -3605,10 +9392,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.8,
         "debtToGdp": 27.1,
         "gini": 0.81,
+        "realGdpGrowth": 3.8,
+        "policyRate": 5,
+        "bondYield10Y": 4.95,
+        "currentAccountPercentGdp": 3.2,
+        "fiscalBalancePercentGdp": -2.9,
+        "fxReservesBillionUSD": 435.6,
+        "populationMillion": 37.7,
+        "oldAgeDependencyRatio": 5.7,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 52,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6.5,
+          "laborForceParticipation": 61.5,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 2.1
         }
       },
       "2026": {
@@ -3620,10 +9425,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.7,
         "debtToGdp": 27.5,
         "gini": 0.81,
+        "realGdpGrowth": 3.8,
+        "policyRate": 4.75,
+        "bondYield10Y": 4.9,
+        "currentAccountPercentGdp": 3.2,
+        "fiscalBalancePercentGdp": -2.8,
+        "fxReservesBillionUSD": 440,
+        "populationMillion": 38.1,
+        "oldAgeDependencyRatio": 5.8,
         "assetMix": {
           "financialShare": 54.5,
           "nonFinancialShare": 51.5,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 6.4,
+          "laborForceParticipation": 61.5,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.96,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 2.1
         }
       }
     }
@@ -3650,10 +9473,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 10.2,
         "debtToGdp": 6,
         "gini": 0.7,
+        "realGdpGrowth": 4.6,
+        "policyRate": 8.67,
+        "bondYield10Y": 7.65,
+        "currentAccountPercentGdp": 8.1,
+        "fiscalBalancePercentGdp": 5.4,
+        "fxReservesBillionUSD": 8.7,
+        "populationMillion": 1,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 51,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.5,
+          "underemploymentRate": 6.8,
+          "laborForceParticipation": 81.6,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.02,
+          "wageGrowthYoy": 8.6,
+          "productivityGrowthYoy": 2.6
         }
       },
       "1990": {
@@ -3665,10 +9506,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.6,
         "debtToGdp": 8,
         "gini": 0.74,
+        "realGdpGrowth": 4.5,
+        "policyRate": 5.4,
+        "bondYield10Y": 5.35,
+        "currentAccountPercentGdp": 8.4,
+        "fiscalBalancePercentGdp": 5,
+        "fxReservesBillionUSD": 21.8,
+        "populationMillion": 1.8,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 52,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.6,
+          "underemploymentRate": 5.6,
+          "laborForceParticipation": 81.9,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.13,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 2.6
         }
       },
       "1995": {
@@ -3680,10 +9539,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.4,
         "debtToGdp": 9,
         "gini": 0.76,
+        "realGdpGrowth": 5,
+        "policyRate": 5.8,
+        "bondYield10Y": 5.95,
+        "currentAccountPercentGdp": 8.6,
+        "fiscalBalancePercentGdp": 4.7,
+        "fxReservesBillionUSD": 34.9,
+        "populationMillion": 2.4,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 51,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 5.9,
+          "laborForceParticipation": 81.8,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.11,
+          "wageGrowthYoy": 5.4,
+          "productivityGrowthYoy": 2.8
         }
       },
       "2000": {
@@ -3695,10 +9572,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -1,
         "debtToGdp": 11,
         "gini": 0.78,
+        "realGdpGrowth": 5.4,
+        "policyRate": 5.6,
+        "bondYield10Y": 5.75,
+        "currentAccountPercentGdp": 8.9,
+        "fiscalBalancePercentGdp": 6.4,
+        "fxReservesBillionUSD": 52.3,
+        "populationMillion": 3,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 56,
           "nonFinancialShare": 50,
           "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.7,
+          "laborForceParticipation": 82.1,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.22,
+          "wageGrowthYoy": 2.5,
+          "productivityGrowthYoy": 2.9
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.76,
+        "wealthPerAdultUSD": 162000,
+        "medianWealthUSD": 40750,
+        "gdpTrillionUSD": 0.2,
+        "gdpPerCapitaUSD": 34150,
+        "inflationRate": -0.1,
+        "debtToGdp": 16,
+        "gini": 0.8,
+        "realGdpGrowth": 5.1,
+        "policyRate": 4,
+        "bondYield10Y": 4.55,
+        "currentAccountPercentGdp": 9.1,
+        "fiscalBalancePercentGdp": 6,
+        "fxReservesBillionUSD": 98.1,
+        "populationMillion": 5.9,
+        "oldAgeDependencyRatio": 3,
+        "assetMix": {
+          "financialShare": 55.5,
+          "nonFinancialShare": 51,
+          "debtShareOfGross": 6.5
+        },
+        "labor": {
+          "unemploymentRate": 3.2,
+          "underemploymentRate": 5.1,
+          "laborForceParticipation": 82,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.18,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 2.8
         }
       },
       "2010": {
@@ -3710,10 +9638,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 0.9,
         "debtToGdp": 21,
         "gini": 0.82,
+        "realGdpGrowth": 4.6,
+        "policyRate": 1.6,
+        "bondYield10Y": 3.55,
+        "currentAccountPercentGdp": 8.5,
+        "fiscalBalancePercentGdp": 1.4,
+        "fxReservesBillionUSD": 157,
+        "populationMillion": 8.3,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 52,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 7.9,
+          "laborForceParticipation": 81.4,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.93,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 2.6
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.15,
+        "wealthPerAdultUSD": 152000,
+        "medianWealthUSD": 35250,
+        "gdpTrillionUSD": 0.32,
+        "gdpPerCapitaUSD": 35850,
+        "inflationRate": -0.6,
+        "debtToGdp": 30.2,
+        "gini": 0.83,
+        "realGdpGrowth": 4.5,
+        "policyRate": 1.8,
+        "bondYield10Y": 2.95,
+        "currentAccountPercentGdp": 9.1,
+        "fiscalBalancePercentGdp": 5.6,
+        "fxReservesBillionUSD": 185.3,
+        "populationMillion": 8.9,
+        "oldAgeDependencyRatio": 3,
+        "assetMix": {
+          "financialShare": 55.5,
+          "nonFinancialShare": 51.5,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.6,
+          "underemploymentRate": 5.6,
+          "laborForceParticipation": 81.9,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.13,
+          "wageGrowthYoy": 2.7,
+          "productivityGrowthYoy": 2.6
         }
       },
       "2020": {
@@ -3725,10 +9704,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -2.1,
         "debtToGdp": 39.4,
         "gini": 0.83,
+        "realGdpGrowth": -1.6,
+        "policyRate": 1.2,
+        "bondYield10Y": 1.95,
+        "currentAccountPercentGdp": 9.2,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 204.9,
+        "populationMillion": 9.5,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 56,
           "nonFinancialShare": 51,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 7,
+          "laborForceParticipation": 81.6,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 1.01,
+          "wageGrowthYoy": 1.9,
+          "productivityGrowthYoy": 0.5
         }
       },
       "2022": {
@@ -3740,10 +9737,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.8,
         "debtToGdp": 30,
         "gini": 0.83,
+        "realGdpGrowth": 4.8,
+        "policyRate": 4,
+        "bondYield10Y": 4.05,
+        "currentAccountPercentGdp": 8.5,
+        "fiscalBalancePercentGdp": 4.6,
+        "fxReservesBillionUSD": 209.3,
+        "populationMillion": 9.5,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 57,
           "nonFinancialShare": 50,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 2.4,
+          "underemploymentRate": 4,
+          "laborForceParticipation": 82.2,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.28,
+          "wageGrowthYoy": 5.7,
+          "productivityGrowthYoy": 2.7
         }
       },
       "2024": {
@@ -3755,10 +9770,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.3,
         "debtToGdp": 28.5,
         "gini": 0.83,
+        "realGdpGrowth": 4.3,
+        "policyRate": 5.15,
+        "bondYield10Y": 4.5,
+        "currentAccountPercentGdp": 9,
+        "fiscalBalancePercentGdp": 4,
+        "fxReservesBillionUSD": 213.6,
+        "populationMillion": 9.7,
+        "oldAgeDependencyRatio": 3.1,
         "assetMix": {
           "financialShare": 57.5,
           "nonFinancialShare": 49.5,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 4.5,
+          "laborForceParticipation": 82.1,
+          "sahmIndicatorValue": 0.11,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.23,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 2.5
         }
       },
       "2025": {
@@ -3770,10 +9803,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.1,
         "debtToGdp": 28,
         "gini": 0.83,
+        "realGdpGrowth": 4.2,
+        "policyRate": 4.65,
+        "bondYield10Y": 4.4,
+        "currentAccountPercentGdp": 8.9,
+        "fiscalBalancePercentGdp": 4.1,
+        "fxReservesBillionUSD": 215.8,
+        "populationMillion": 10,
+        "oldAgeDependencyRatio": 3.2,
         "assetMix": {
           "financialShare": 58,
           "nonFinancialShare": 49,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 4.5,
+          "laborForceParticipation": 82.1,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.23,
+          "wageGrowthYoy": 4.2,
+          "productivityGrowthYoy": 2.5
         }
       },
       "2026": {
@@ -3785,10 +9836,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2,
         "debtToGdp": 27.5,
         "gini": 0.83,
+        "realGdpGrowth": 4.2,
+        "policyRate": 4.4,
+        "bondYield10Y": 4.35,
+        "currentAccountPercentGdp": 8.9,
+        "fiscalBalancePercentGdp": 4.2,
+        "fxReservesBillionUSD": 218,
+        "populationMillion": 10.1,
+        "oldAgeDependencyRatio": 3.2,
         "assetMix": {
           "financialShare": 58.5,
           "nonFinancialShare": 48.5,
           "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 2.7,
+          "underemploymentRate": 4.4,
+          "laborForceParticipation": 82.1,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.24,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 2.5
         }
       }
     }
@@ -3813,10 +9882,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 110,
         "debtToGdp": 28,
         "gini": 0.69,
+        "realGdpGrowth": 3.6,
+        "policyRate": 85,
+        "bondYield10Y": 75,
+        "currentAccountPercentGdp": -2.6,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 6.2,
+        "populationMillion": 44.9,
+        "oldAgeDependencyRatio": 7.3,
         "assetMix": {
           "financialShare": 20,
           "nonFinancialShare": 84,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 10.4,
+          "underemploymentRate": 16.6,
+          "laborForceParticipation": 53.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.32,
+          "wageGrowthYoy": 56,
+          "productivityGrowthYoy": 2.2
         }
       },
       "1990": {
@@ -3828,10 +9915,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 60.3,
         "debtToGdp": 35,
         "gini": 0.72,
+        "realGdpGrowth": 3.5,
+        "policyRate": 42.21,
+        "bondYield10Y": 39.2,
+        "currentAccountPercentGdp": -2.3,
+        "fiscalBalancePercentGdp": -3.8,
+        "fxReservesBillionUSD": 15.6,
+        "populationMillion": 53.8,
+        "oldAgeDependencyRatio": 8.5,
         "assetMix": {
           "financialShare": 22,
           "nonFinancialShare": 82,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.5,
+          "underemploymentRate": 15.4,
+          "laborForceParticipation": 54,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.43,
+          "wageGrowthYoy": 56,
+          "productivityGrowthYoy": 2.2
         }
       },
       "1995": {
@@ -3843,10 +9948,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 88,
         "debtToGdp": 41,
         "gini": 0.74,
+        "realGdpGrowth": 4,
+        "policyRate": 39.4,
+        "bondYield10Y": 28.1,
+        "currentAccountPercentGdp": -2.1,
+        "fiscalBalancePercentGdp": -4.1,
+        "fxReservesBillionUSD": 25,
+        "populationMillion": 59,
+        "oldAgeDependencyRatio": 9.5,
         "assetMix": {
           "financialShare": 24,
           "nonFinancialShare": 80,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.7,
+          "underemploymentRate": 15.7,
+          "laborForceParticipation": 53.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 56,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2000": {
@@ -3858,10 +9981,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 54.9,
         "debtToGdp": 51.6,
         "gini": 0.76,
+        "realGdpGrowth": 4.4,
+        "policyRate": 39.2,
+        "bondYield10Y": 27.9,
+        "currentAccountPercentGdp": -1.8,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 37.4,
+        "populationMillion": 62.5,
+        "oldAgeDependencyRatio": 10.4,
         "assetMix": {
           "financialShare": 25,
           "nonFinancialShare": 79,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 8.8,
+          "underemploymentRate": 14.5,
+          "laborForceParticipation": 54.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 56,
+          "productivityGrowthYoy": 2.5
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.12,
+        "wealthPerAdultUSD": 22950,
+        "medianWealthUSD": 6850,
+        "gdpTrillionUSD": 0.52,
+        "gdpPerCapitaUSD": 7495,
+        "inflationRate": 31.8,
+        "debtToGdp": 45.8,
+        "gini": 0.77,
+        "realGdpGrowth": 4.1,
+        "policyRate": 37.6,
+        "bondYield10Y": 26.7,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -2.8,
+        "fxReservesBillionUSD": 70.2,
+        "populationMillion": 69.4,
+        "oldAgeDependencyRatio": 11.4,
+        "assetMix": {
+          "financialShare": 26.5,
+          "nonFinancialShare": 77.5,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.1,
+          "underemploymentRate": 14.9,
+          "laborForceParticipation": 54.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.48,
+          "wageGrowthYoy": 50.1,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2010": {
@@ -3873,10 +10047,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.6,
         "debtToGdp": 40,
         "gini": 0.78,
+        "realGdpGrowth": 3.6,
+        "policyRate": 35.2,
+        "bondYield10Y": 25.7,
+        "currentAccountPercentGdp": -2.2,
+        "fiscalBalancePercentGdp": -7.4,
+        "fxReservesBillionUSD": 112.3,
+        "populationMillion": 72.2,
+        "oldAgeDependencyRatio": 12.3,
         "assetMix": {
           "financialShare": 28,
           "nonFinancialShare": 76,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 11.2,
+          "underemploymentRate": 17.7,
+          "laborForceParticipation": 53.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.23,
+          "wageGrowthYoy": 37.4,
+          "productivityGrowthYoy": 2.2
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.55,
+        "wealthPerAdultUSD": 28150,
+        "medianWealthUSD": 7550,
+        "gdpTrillionUSD": 0.75,
+        "gdpPerCapitaUSD": 9600,
+        "inflationRate": 10.5,
+        "debtToGdp": 39.9,
+        "gini": 0.8,
+        "realGdpGrowth": 3.5,
+        "policyRate": 35.4,
+        "bondYield10Y": 25.1,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -3.2,
+        "fxReservesBillionUSD": 132.6,
+        "populationMillion": 78.1,
+        "oldAgeDependencyRatio": 13.4,
+        "assetMix": {
+          "financialShare": 28.5,
+          "nonFinancialShare": 75.5,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.5,
+          "underemploymentRate": 15.4,
+          "laborForceParticipation": 54,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.43,
+          "wageGrowthYoy": 38.4,
+          "productivityGrowthYoy": 2.2
         }
       },
       "2020": {
@@ -3888,10 +10113,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 12.3,
         "debtToGdp": 39.8,
         "gini": 0.81,
+        "realGdpGrowth": -2.6,
+        "policyRate": 34.8,
+        "bondYield10Y": 24.1,
+        "currentAccountPercentGdp": -1.5,
+        "fiscalBalancePercentGdp": -10.8,
+        "fxReservesBillionUSD": 146.6,
+        "populationMillion": 84.4,
+        "oldAgeDependencyRatio": 14.5,
         "assetMix": {
           "financialShare": 29,
           "nonFinancialShare": 75,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 10.5,
+          "underemploymentRate": 16.8,
+          "laborForceParticipation": 53.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.31,
+          "wageGrowthYoy": 39.4,
+          "productivityGrowthYoy": 0.1
         }
       },
       "2022": {
@@ -3903,10 +10146,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 72.3,
         "debtToGdp": 31.7,
         "gini": 0.81,
+        "realGdpGrowth": 3.8,
+        "policyRate": 37.6,
+        "bondYield10Y": 26.2,
+        "currentAccountPercentGdp": -2.2,
+        "fiscalBalancePercentGdp": -4.2,
+        "fxReservesBillionUSD": 149.8,
+        "populationMillion": 84.9,
+        "oldAgeDependencyRatio": 15,
         "assetMix": {
           "financialShare": 28.5,
           "nonFinancialShare": 75.5,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 13.8,
+          "laborForceParticipation": 54.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.58,
+          "wageGrowthYoy": 56,
+          "productivityGrowthYoy": 2.3
         }
       },
       "2024": {
@@ -3918,10 +10179,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 53.8,
         "debtToGdp": 29.5,
         "gini": 0.81,
+        "realGdpGrowth": 3.3,
+        "policyRate": 38.75,
+        "bondYield10Y": 26.65,
+        "currentAccountPercentGdp": -1.7,
+        "fiscalBalancePercentGdp": -4.8,
+        "fxReservesBillionUSD": 152.9,
+        "populationMillion": 87.5,
+        "oldAgeDependencyRatio": 15.5,
         "assetMix": {
           "financialShare": 29,
           "nonFinancialShare": 75,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 8.7,
+          "underemploymentRate": 14.3,
+          "laborForceParticipation": 54.2,
+          "sahmIndicatorValue": 0.23,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.53,
+          "wageGrowthYoy": 56,
+          "productivityGrowthYoy": 2.1
         }
       },
       "2025": {
@@ -3933,10 +10212,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 38.5,
         "debtToGdp": 28.8,
         "gini": 0.81,
+        "realGdpGrowth": 3.2,
+        "policyRate": 38.25,
+        "bondYield10Y": 26.55,
+        "currentAccountPercentGdp": -1.8,
+        "fiscalBalancePercentGdp": -4.7,
+        "fxReservesBillionUSD": 154.4,
+        "populationMillion": 88.1,
+        "oldAgeDependencyRatio": 15.6,
         "assetMix": {
           "financialShare": 29.5,
           "nonFinancialShare": 74.5,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 8.7,
+          "underemploymentRate": 14.3,
+          "laborForceParticipation": 54.2,
+          "sahmIndicatorValue": 0.2,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.53,
+          "wageGrowthYoy": 53.8,
+          "productivityGrowthYoy": 2.1
         }
       },
       "2026": {
@@ -3948,10 +10245,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 29.5,
         "debtToGdp": 28.2,
         "gini": 0.81,
+        "realGdpGrowth": 3.2,
+        "policyRate": 38,
+        "bondYield10Y": 26.5,
+        "currentAccountPercentGdp": -1.8,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 156,
+        "populationMillion": 88.7,
+        "oldAgeDependencyRatio": 15.8,
         "assetMix": {
           "financialShare": 30,
           "nonFinancialShare": 74,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 8.6,
+          "underemploymentRate": 14.2,
+          "laborForceParticipation": 54.2,
+          "sahmIndicatorValue": 0.18,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.54,
+          "wageGrowthYoy": 48.9,
+          "productivityGrowthYoy": 2.1
         }
       }
     }
@@ -3978,10 +10293,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 26.4,
         "debtToGdp": 31,
         "gini": 0.74,
+        "realGdpGrowth": 2.2,
+        "policyRate": 22.44,
+        "bondYield10Y": 19.8,
+        "currentAccountPercentGdp": -1.7,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 9.1,
+        "populationMillion": 69.1,
+        "oldAgeDependencyRatio": 6.3,
         "assetMix": {
           "financialShare": 28,
           "nonFinancialShare": 76,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 10,
+          "laborForceParticipation": 60,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.62,
+          "wageGrowthYoy": 19.5,
+          "productivityGrowthYoy": 1.2
         }
       },
       "1990": {
@@ -3993,10 +10326,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 26.7,
         "debtToGdp": 54,
         "gini": 0.76,
+        "realGdpGrowth": 2.1,
+        "policyRate": 18.69,
+        "bondYield10Y": 17.36,
+        "currentAccountPercentGdp": -1.4,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 22.8,
+        "populationMillion": 82.8,
+        "oldAgeDependencyRatio": 7.5,
         "assetMix": {
           "financialShare": 30,
           "nonFinancialShare": 74,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 8.8,
+          "laborForceParticipation": 60.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.73,
+          "wageGrowthYoy": 19.7,
+          "productivityGrowthYoy": 1.2
         }
       },
       "1995": {
@@ -4008,10 +10359,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 35,
         "debtToGdp": 68,
         "gini": 0.78,
+        "realGdpGrowth": 2.6,
+        "policyRate": 10.65,
+        "bondYield10Y": 11.2,
+        "currentAccountPercentGdp": -1.2,
+        "fiscalBalancePercentGdp": -3.7,
+        "fxReservesBillionUSD": 36.5,
+        "populationMillion": 93.8,
+        "oldAgeDependencyRatio": 8.3,
         "assetMix": {
           "financialShare": 31,
           "nonFinancialShare": 73,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 3.9,
+          "underemploymentRate": 9.1,
+          "laborForceParticipation": 60.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.71,
+          "wageGrowthYoy": 24.3,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2000": {
@@ -4023,10 +10392,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 9.5,
         "debtToGdp": 40.5,
         "gini": 0.78,
+        "realGdpGrowth": 3,
+        "policyRate": 10.45,
+        "bondYield10Y": 11,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 54.7,
+        "populationMillion": 100.3,
+        "oldAgeDependencyRatio": 9.1,
         "assetMix": {
           "financialShare": 34,
           "nonFinancialShare": 70,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 3,
+          "underemploymentRate": 7.9,
+          "laborForceParticipation": 60.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.82,
+          "wageGrowthYoy": 10.3,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 2.2,
+        "wealthPerAdultUSD": 31850,
+        "medianWealthUSD": 10000,
+        "gdpTrillionUSD": 0.88,
+        "gdpPerCapitaUSD": 8175,
+        "inflationRate": 6.9,
+        "debtToGdp": 41.3,
+        "gini": 0.79,
+        "realGdpGrowth": 2.7,
+        "policyRate": 8.85,
+        "bondYield10Y": 9.8,
+        "currentAccountPercentGdp": -0.7,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 102.6,
+        "populationMillion": 107.6,
+        "oldAgeDependencyRatio": 9.9,
+        "assetMix": {
+          "financialShare": 35,
+          "nonFinancialShare": 69,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 3.3,
+          "underemploymentRate": 8.3,
+          "laborForceParticipation": 60.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.78,
+          "wageGrowthYoy": 8.8,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2010": {
@@ -4038,10 +10458,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.2,
         "debtToGdp": 42,
         "gini": 0.79,
+        "realGdpGrowth": 2.2,
+        "policyRate": 6.45,
+        "bondYield10Y": 8.8,
+        "currentAccountPercentGdp": -1.3,
+        "fiscalBalancePercentGdp": -7,
+        "fxReservesBillionUSD": 164.2,
+        "populationMillion": 113.3,
+        "oldAgeDependencyRatio": 10.8,
         "assetMix": {
           "financialShare": 36,
           "nonFinancialShare": 68,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 5.4,
+          "underemploymentRate": 11.1,
+          "laborForceParticipation": 59.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.53,
+          "wageGrowthYoy": 7.3,
+          "productivityGrowthYoy": 1.2
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 2.95,
+        "wealthPerAdultUSD": 36500,
+        "medianWealthUSD": 11800,
+        "gdpTrillionUSD": 1.07,
+        "gdpPerCapitaUSD": 8960,
+        "inflationRate": 3.8,
+        "debtToGdp": 46.8,
+        "gini": 0.8,
+        "realGdpGrowth": 2.1,
+        "policyRate": 6.65,
+        "bondYield10Y": 8.2,
+        "currentAccountPercentGdp": -0.7,
+        "fiscalBalancePercentGdp": -2.8,
+        "fxReservesBillionUSD": 193.8,
+        "populationMillion": 119.4,
+        "oldAgeDependencyRatio": 11.7,
+        "assetMix": {
+          "financialShare": 37,
+          "nonFinancialShare": 67,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 8.8,
+          "laborForceParticipation": 60.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.73,
+          "wageGrowthYoy": 7.1,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2020": {
@@ -4053,10 +10524,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.4,
         "debtToGdp": 51.5,
         "gini": 0.8,
+        "realGdpGrowth": -4,
+        "policyRate": 6.05,
+        "bondYield10Y": 7.2,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": -10.4,
+        "fxReservesBillionUSD": 214.3,
+        "populationMillion": 126,
+        "oldAgeDependencyRatio": 12.7,
         "assetMix": {
           "financialShare": 38,
           "nonFinancialShare": 66,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 4.7,
+          "underemploymentRate": 10.2,
+          "laborForceParticipation": 59.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.61,
+          "wageGrowthYoy": 6.9,
+          "productivityGrowthYoy": -0.9
         }
       },
       "2022": {
@@ -4068,10 +10557,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 7.9,
         "debtToGdp": 49.6,
         "gini": 0.8,
+        "realGdpGrowth": 2.4,
+        "policyRate": 8.85,
+        "bondYield10Y": 9.3,
+        "currentAccountPercentGdp": -1.3,
+        "fiscalBalancePercentGdp": -3.8,
+        "fxReservesBillionUSD": 218.9,
+        "populationMillion": 128.9,
+        "oldAgeDependencyRatio": 13.1,
         "assetMix": {
           "financialShare": 38.5,
           "nonFinancialShare": 65.5,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.5,
+          "underemploymentRate": 7.2,
+          "laborForceParticipation": 60.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.88,
+          "wageGrowthYoy": 9.4,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2024": {
@@ -4083,10 +10590,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.7,
         "debtToGdp": 50.8,
         "gini": 0.8,
+        "realGdpGrowth": 1.9,
+        "policyRate": 10,
+        "bondYield10Y": 9.75,
+        "currentAccountPercentGdp": -0.8,
+        "fiscalBalancePercentGdp": -4.4,
+        "fxReservesBillionUSD": 223.4,
+        "populationMillion": 130.9,
+        "oldAgeDependencyRatio": 13.5,
         "assetMix": {
           "financialShare": 39,
           "nonFinancialShare": 65,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 7.7,
+          "laborForceParticipation": 60.4,
+          "sahmIndicatorValue": 0.17,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.83,
+          "wageGrowthYoy": 7.6,
+          "productivityGrowthYoy": 1.1
         }
       },
       "2025": {
@@ -4098,10 +10623,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.2,
         "debtToGdp": 51.4,
         "gini": 0.8,
+        "realGdpGrowth": 1.8,
+        "policyRate": 9.5,
+        "bondYield10Y": 9.65,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -4.3,
+        "fxReservesBillionUSD": 225.7,
+        "populationMillion": 131.4,
+        "oldAgeDependencyRatio": 13.7,
         "assetMix": {
           "financialShare": 39.5,
           "nonFinancialShare": 64.5,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 7.7,
+          "laborForceParticipation": 60.4,
+          "sahmIndicatorValue": 0.14,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.83,
+          "wageGrowthYoy": 7.3,
+          "productivityGrowthYoy": 1.1
         }
       },
       "2026": {
@@ -4113,10 +10656,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.8,
         "debtToGdp": 51.8,
         "gini": 0.8,
+        "realGdpGrowth": 1.8,
+        "policyRate": 9.25,
+        "bondYield10Y": 9.6,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -4.2,
+        "fxReservesBillionUSD": 228,
+        "populationMillion": 132.2,
+        "oldAgeDependencyRatio": 13.8,
         "assetMix": {
           "financialShare": 40,
           "nonFinancialShare": 64,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 7.6,
+          "laborForceParticipation": 60.4,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.84,
+          "wageGrowthYoy": 7.1,
+          "productivityGrowthYoy": 1.1
         }
       }
     }
@@ -4141,10 +10702,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 100.8,
         "debtToGdp": 32,
         "gini": 0.68,
+        "realGdpGrowth": 4.2,
+        "policyRate": 85,
+        "bondYield10Y": 75,
+        "currentAccountPercentGdp": 0.4,
+        "fiscalBalancePercentGdp": 1.4,
+        "fxReservesBillionUSD": 1.5,
+        "populationMillion": 28.8,
+        "oldAgeDependencyRatio": 8.9,
         "assetMix": {
           "financialShare": 30,
           "nonFinancialShare": 74,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9,
+          "underemploymentRate": 18.2,
+          "laborForceParticipation": 62.7,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.23,
+          "wageGrowthYoy": 65,
+          "productivityGrowthYoy": 1.7
         }
       },
       "1990": {
@@ -4156,10 +10735,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2314,
         "debtToGdp": 39,
         "gini": 0.72,
+        "realGdpGrowth": 4.1,
+        "policyRate": 85,
+        "bondYield10Y": 75,
+        "currentAccountPercentGdp": 0.7,
+        "fiscalBalancePercentGdp": 1,
+        "fxReservesBillionUSD": 3.5,
+        "populationMillion": 32.3,
+        "oldAgeDependencyRatio": 10.5,
         "assetMix": {
           "financialShare": 32,
           "nonFinancialShare": 72,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 8.1,
+          "underemploymentRate": 17,
+          "laborForceParticipation": 62.9,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.34,
+          "wageGrowthYoy": 65,
+          "productivityGrowthYoy": 1.7
         }
       },
       "1995": {
@@ -4171,10 +10768,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.4,
         "debtToGdp": 36,
         "gini": 0.74,
+        "realGdpGrowth": 4.6,
+        "policyRate": 33.4,
+        "bondYield10Y": 16.1,
+        "currentAccountPercentGdp": 0.9,
+        "fiscalBalancePercentGdp": 0.7,
+        "fxReservesBillionUSD": 5.5,
+        "populationMillion": 35.1,
+        "oldAgeDependencyRatio": 11.6,
         "assetMix": {
           "financialShare": 35,
           "nonFinancialShare": 69,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 17.3,
+          "laborForceParticipation": 62.8,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.32,
+          "wageGrowthYoy": 45.5,
+          "productivityGrowthYoy": 1.9
         }
       },
       "2000": {
@@ -4186,10 +10801,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": -0.9,
         "debtToGdp": 53.7,
         "gini": 0.76,
+        "realGdpGrowth": 5,
+        "policyRate": 33.2,
+        "bondYield10Y": 15.9,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": 2.4,
+        "fxReservesBillionUSD": 8.3,
+        "populationMillion": 36.4,
+        "oldAgeDependencyRatio": 12.8,
         "assetMix": {
           "financialShare": 36,
           "nonFinancialShare": 68,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 7.4,
+          "underemploymentRate": 16.1,
+          "laborForceParticipation": 63.1,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.43,
+          "wageGrowthYoy": 43.1,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.03,
+        "wealthPerAdultUSD": 36750,
+        "medianWealthUSD": 11000,
+        "gdpTrillionUSD": 0.35,
+        "gdpPerCapitaUSD": 9045,
+        "inflationRate": 4.8,
+        "debtToGdp": 48.6,
+        "gini": 0.78,
+        "realGdpGrowth": 4.7,
+        "policyRate": 31.6,
+        "bondYield10Y": 14.7,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": 2,
+        "fxReservesBillionUSD": 15.5,
+        "populationMillion": 38.7,
+        "oldAgeDependencyRatio": 14,
+        "assetMix": {
+          "financialShare": 35.5,
+          "nonFinancialShare": 68.5,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 7.7,
+          "underemploymentRate": 16.5,
+          "laborForceParticipation": 63,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.39,
+          "wageGrowthYoy": 46.3,
+          "productivityGrowthYoy": 1.9
         }
       },
       "2010": {
@@ -4201,10 +10867,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 10.5,
         "debtToGdp": 43.5,
         "gini": 0.79,
+        "realGdpGrowth": 4.2,
+        "policyRate": 29.2,
+        "bondYield10Y": 13.7,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 24.8,
+        "populationMillion": 40.4,
+        "oldAgeDependencyRatio": 15.1,
         "assetMix": {
           "financialShare": 35,
           "nonFinancialShare": 69,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.8,
+          "underemploymentRate": 19.3,
+          "laborForceParticipation": 62.5,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 49.4,
+          "productivityGrowthYoy": 1.7
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.2,
+        "wealthPerAdultUSD": 38650,
+        "medianWealthUSD": 10850,
+        "gdpTrillionUSD": 0.41,
+        "gdpPerCapitaUSD": 9485,
+        "inflationRate": 26.3,
+        "debtToGdp": 73.8,
+        "gini": 0.8,
+        "realGdpGrowth": 4.1,
+        "policyRate": 29.4,
+        "bondYield10Y": 13.1,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": 1.6,
+        "fxReservesBillionUSD": 29.3,
+        "populationMillion": 43.2,
+        "oldAgeDependencyRatio": 16.5,
+        "assetMix": {
+          "financialShare": 35.5,
+          "nonFinancialShare": 68.5,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 8.1,
+          "underemploymentRate": 17,
+          "laborForceParticipation": 62.9,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.34,
+          "wageGrowthYoy": 58.1,
+          "productivityGrowthYoy": 1.7
         }
       },
       "2020": {
@@ -4216,10 +10933,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 42,
         "debtToGdp": 104,
         "gini": 0.81,
+        "realGdpGrowth": -2,
+        "policyRate": 28.8,
+        "bondYield10Y": 12.1,
+        "currentAccountPercentGdp": 1.5,
+        "fiscalBalancePercentGdp": -6,
+        "fxReservesBillionUSD": 32.4,
+        "populationMillion": 45.5,
+        "oldAgeDependencyRatio": 17.8,
         "assetMix": {
           "financialShare": 36,
           "nonFinancialShare": 68,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.1,
+          "underemploymentRate": 18.4,
+          "laborForceParticipation": 62.6,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.22,
+          "wageGrowthYoy": 65,
+          "productivityGrowthYoy": -0.4
         }
       },
       "2022": {
@@ -4231,10 +10966,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 72.4,
         "debtToGdp": 85,
         "gini": 0.81,
+        "realGdpGrowth": 4.4,
+        "policyRate": 31.6,
+        "bondYield10Y": 14.2,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": 0.6,
+        "fxReservesBillionUSD": 33.1,
+        "populationMillion": 46,
+        "oldAgeDependencyRatio": 18.4,
         "assetMix": {
           "financialShare": 37,
           "nonFinancialShare": 67,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 6.9,
+          "underemploymentRate": 15.4,
+          "laborForceParticipation": 63.2,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.49,
+          "wageGrowthYoy": 65,
+          "productivityGrowthYoy": 1.8
         }
       },
       "2024": {
@@ -4246,10 +10999,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 140,
         "debtToGdp": 88,
         "gini": 0.81,
+        "realGdpGrowth": 3.9,
+        "policyRate": 32.75,
+        "bondYield10Y": 14.65,
+        "currentAccountPercentGdp": 1.3,
+        "fiscalBalancePercentGdp": 0,
+        "fxReservesBillionUSD": 33.8,
+        "populationMillion": 47,
+        "oldAgeDependencyRatio": 19,
         "assetMix": {
           "financialShare": 38,
           "nonFinancialShare": 66,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 7.3,
+          "underemploymentRate": 15.9,
+          "laborForceParticipation": 63.1,
+          "sahmIndicatorValue": 0.39,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.44,
+          "wageGrowthYoy": 65,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2025": {
@@ -4261,10 +11032,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 65,
         "debtToGdp": 84,
         "gini": 0.81,
+        "realGdpGrowth": 3.8,
+        "policyRate": 32.25,
+        "bondYield10Y": 14.55,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": 0.1,
+        "fxReservesBillionUSD": 34.2,
+        "populationMillion": 47.1,
+        "oldAgeDependencyRatio": 19.2,
         "assetMix": {
           "financialShare": 38.5,
           "nonFinancialShare": 65.5,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 7.3,
+          "underemploymentRate": 15.9,
+          "laborForceParticipation": 63.1,
+          "sahmIndicatorValue": 0.36,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.44,
+          "wageGrowthYoy": 65,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2026": {
@@ -4276,10 +11065,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 42,
         "debtToGdp": 79.5,
         "gini": 0.81,
+        "realGdpGrowth": 3.8,
+        "policyRate": 32,
+        "bondYield10Y": 14.5,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": 0.2,
+        "fxReservesBillionUSD": 34.5,
+        "populationMillion": 47.7,
+        "oldAgeDependencyRatio": 19.4,
         "assetMix": {
           "financialShare": 39,
           "nonFinancialShare": 65,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 7.2,
+          "underemploymentRate": 15.8,
+          "laborForceParticipation": 63.1,
+          "sahmIndicatorValue": 0.34,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 65,
+          "productivityGrowthYoy": 1.6
         }
       }
     }
@@ -4304,10 +11111,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 35.1,
         "debtToGdp": 38,
         "gini": 0.72,
+        "realGdpGrowth": 2.8,
+        "policyRate": 29.84,
+        "bondYield10Y": 26.33,
+        "currentAccountPercentGdp": -3.2,
+        "fiscalBalancePercentGdp": -0.9,
+        "fxReservesBillionUSD": 1.9,
+        "populationMillion": 11.7,
+        "oldAgeDependencyRatio": 9.6,
         "assetMix": {
           "financialShare": 36,
           "nonFinancialShare": 68,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 10,
+          "underemploymentRate": 15.8,
+          "laborForceParticipation": 61.7,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.3,
+          "wageGrowthYoy": 23,
+          "productivityGrowthYoy": 1.5
         }
       },
       "1990": {
@@ -4319,10 +11144,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 26,
         "debtToGdp": 44,
         "gini": 0.75,
+        "realGdpGrowth": 2.7,
+        "policyRate": 18.2,
+        "bondYield10Y": 16.9,
+        "currentAccountPercentGdp": -2.9,
+        "fiscalBalancePercentGdp": -1.3,
+        "fxReservesBillionUSD": 4.7,
+        "populationMillion": 13.1,
+        "oldAgeDependencyRatio": 11.2,
         "assetMix": {
           "financialShare": 42,
           "nonFinancialShare": 63,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 9.1,
+          "underemploymentRate": 14.6,
+          "laborForceParticipation": 61.9,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 18,
+          "productivityGrowthYoy": 1.5
         }
       },
       "1995": {
@@ -4334,10 +11177,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 8.2,
         "debtToGdp": 18,
         "gini": 0.76,
+        "realGdpGrowth": 3.2,
+        "policyRate": 6.4,
+        "bondYield10Y": 7.05,
+        "currentAccountPercentGdp": -2.7,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 7.4,
+        "populationMillion": 14.3,
+        "oldAgeDependencyRatio": 12.5,
         "assetMix": {
           "financialShare": 46,
           "nonFinancialShare": 59,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 9.3,
+          "underemploymentRate": 14.9,
+          "laborForceParticipation": 61.8,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.39,
+          "wageGrowthYoy": 8.2,
+          "productivityGrowthYoy": 1.7
         }
       },
       "2000": {
@@ -4349,10 +11210,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.8,
         "debtToGdp": 13.5,
         "gini": 0.77,
+        "realGdpGrowth": 3.6,
+        "policyRate": 6.2,
+        "bondYield10Y": 6.85,
+        "currentAccountPercentGdp": -2.4,
+        "fiscalBalancePercentGdp": 0.1,
+        "fxReservesBillionUSD": 11.2,
+        "populationMillion": 15.5,
+        "oldAgeDependencyRatio": 13.7,
         "assetMix": {
           "financialShare": 49,
           "nonFinancialShare": 56,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 8.4,
+          "underemploymentRate": 13.7,
+          "laborForceParticipation": 62.1,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.5,
+          "wageGrowthYoy": 5.8,
+          "productivityGrowthYoy": 1.8
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.62,
+        "wealthPerAdultUSD": 52250,
+        "medianWealthUSD": 16650,
+        "gdpTrillionUSD": 0.15,
+        "gdpPerCapitaUSD": 8975,
+        "inflationRate": 2.6,
+        "debtToGdp": 11.1,
+        "gini": 0.78,
+        "realGdpGrowth": 3.3,
+        "policyRate": 4.6,
+        "bondYield10Y": 5.65,
+        "currentAccountPercentGdp": -2.2,
+        "fiscalBalancePercentGdp": -0.3,
+        "fxReservesBillionUSD": 20.9,
+        "populationMillion": 16.7,
+        "oldAgeDependencyRatio": 15,
+        "assetMix": {
+          "financialShare": 50.5,
+          "nonFinancialShare": 54.5,
+          "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 8.7,
+          "underemploymentRate": 14.1,
+          "laborForceParticipation": 62,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.46,
+          "wageGrowthYoy": 5.2,
+          "productivityGrowthYoy": 1.7
         }
       },
       "2010": {
@@ -4364,10 +11276,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 1.4,
         "debtToGdp": 8.6,
         "gini": 0.78,
+        "realGdpGrowth": 2.8,
+        "policyRate": 2.2,
+        "bondYield10Y": 4.65,
+        "currentAccountPercentGdp": -2.8,
+        "fiscalBalancePercentGdp": -4.9,
+        "fxReservesBillionUSD": 33.5,
+        "populationMillion": 17.2,
+        "oldAgeDependencyRatio": 16.2,
         "assetMix": {
           "financialShare": 52,
           "nonFinancialShare": 53,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 10.8,
+          "underemploymentRate": 16.9,
+          "laborForceParticipation": 61.5,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.21,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.88,
+        "wealthPerAdultUSD": 65250,
+        "medianWealthUSD": 20350,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 13000,
+        "inflationRate": 2.2,
+        "debtToGdp": 20.5,
+        "gini": 0.79,
+        "realGdpGrowth": 2.7,
+        "policyRate": 2.4,
+        "bondYield10Y": 4.05,
+        "currentAccountPercentGdp": -2.2,
+        "fiscalBalancePercentGdp": -0.7,
+        "fxReservesBillionUSD": 39.5,
+        "populationMillion": 18.5,
+        "oldAgeDependencyRatio": 17.7,
+        "assetMix": {
+          "financialShare": 53,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 9.1,
+          "underemploymentRate": 14.6,
+          "laborForceParticipation": 61.9,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.41,
+          "wageGrowthYoy": 4.9,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2020": {
@@ -4379,10 +11342,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3,
         "debtToGdp": 32.5,
         "gini": 0.79,
+        "realGdpGrowth": -3.4,
+        "policyRate": 1.8,
+        "bondYield10Y": 3.05,
+        "currentAccountPercentGdp": -2.1,
+        "fiscalBalancePercentGdp": -8.3,
+        "fxReservesBillionUSD": 43.7,
+        "populationMillion": 18.9,
+        "oldAgeDependencyRatio": 19.1,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 51,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 10.1,
+          "underemploymentRate": 16,
+          "laborForceParticipation": 61.6,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.29,
+          "wageGrowthYoy": 5.4,
+          "productivityGrowthYoy": -0.6
         }
       },
       "2022": {
@@ -4394,10 +11375,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 11.6,
         "debtToGdp": 38,
         "gini": 0.79,
+        "realGdpGrowth": 3,
+        "policyRate": 4.6,
+        "bondYield10Y": 5.15,
+        "currentAccountPercentGdp": -2.8,
+        "fiscalBalancePercentGdp": -1.7,
+        "fxReservesBillionUSD": 44.6,
+        "populationMillion": 19.6,
+        "oldAgeDependencyRatio": 19.8,
         "assetMix": {
           "financialShare": 53.5,
           "nonFinancialShare": 51.5,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 7.9,
+          "underemploymentRate": 13,
+          "laborForceParticipation": 62.2,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.56,
+          "wageGrowthYoy": 10.1,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2024": {
@@ -4409,10 +11408,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.5,
         "debtToGdp": 40.5,
         "gini": 0.79,
+        "realGdpGrowth": 2.5,
+        "policyRate": 5.75,
+        "bondYield10Y": 5.6,
+        "currentAccountPercentGdp": -2.3,
+        "fiscalBalancePercentGdp": -2.3,
+        "fxReservesBillionUSD": 45.6,
+        "populationMillion": 20.1,
+        "oldAgeDependencyRatio": 20.4,
         "assetMix": {
           "financialShare": 54,
           "nonFinancialShare": 51,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 13.5,
+          "laborForceParticipation": 62.1,
+          "sahmIndicatorValue": 0.27,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 6.2,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2025": {
@@ -4424,10 +11441,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.6,
         "debtToGdp": 41.2,
         "gini": 0.79,
+        "realGdpGrowth": 2.4,
+        "policyRate": 5.25,
+        "bondYield10Y": 5.5,
+        "currentAccountPercentGdp": -2.4,
+        "fiscalBalancePercentGdp": -2.2,
+        "fxReservesBillionUSD": 46,
+        "populationMillion": 20.3,
+        "oldAgeDependencyRatio": 20.6,
         "assetMix": {
           "financialShare": 54.5,
           "nonFinancialShare": 50.5,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 13.5,
+          "laborForceParticipation": 62.1,
+          "sahmIndicatorValue": 0.24,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 5.7,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2026": {
@@ -4439,10 +11474,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 3.2,
         "debtToGdp": 41.6,
         "gini": 0.79,
+        "realGdpGrowth": 2.4,
+        "policyRate": 5,
+        "bondYield10Y": 5.45,
+        "currentAccountPercentGdp": -2.4,
+        "fiscalBalancePercentGdp": -2.1,
+        "fxReservesBillionUSD": 46.5,
+        "populationMillion": 20.5,
+        "oldAgeDependencyRatio": 20.8,
         "assetMix": {
           "financialShare": 55,
           "nonFinancialShare": 50,
           "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 8.2,
+          "underemploymentRate": 13.4,
+          "laborForceParticipation": 62.1,
+          "sahmIndicatorValue": 0.22,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 5.5,
+          "productivityGrowthYoy": 1.4
         }
       }
     }
@@ -4467,10 +11520,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 26.5,
         "debtToGdp": 20,
         "gini": 0.72,
+        "realGdpGrowth": 2.9,
+        "policyRate": 22.53,
+        "bondYield10Y": 19.88,
+        "currentAccountPercentGdp": -3.4,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 2.5,
+        "populationMillion": 24.2,
+        "oldAgeDependencyRatio": 6.8,
         "assetMix": {
           "financialShare": 25,
           "nonFinancialShare": 79,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 11.4,
+          "underemploymentRate": 18.6,
+          "laborForceParticipation": 63.6,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.24,
+          "wageGrowthYoy": 20,
+          "productivityGrowthYoy": 1.3
         }
       },
       "1990": {
@@ -4482,10 +11553,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 29.1,
         "debtToGdp": 41,
         "gini": 0.75,
+        "realGdpGrowth": 2.8,
+        "policyRate": 20.37,
+        "bondYield10Y": 18.92,
+        "currentAccountPercentGdp": -3.1,
+        "fiscalBalancePercentGdp": -3.7,
+        "fxReservesBillionUSD": 6.2,
+        "populationMillion": 34,
+        "oldAgeDependencyRatio": 8,
         "assetMix": {
           "financialShare": 26,
           "nonFinancialShare": 78,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 10.5,
+          "underemploymentRate": 17.4,
+          "laborForceParticipation": 63.8,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.35,
+          "wageGrowthYoy": 21.4,
+          "productivityGrowthYoy": 1.3
         }
       },
       "1995": {
@@ -4497,10 +11586,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 20.9,
         "debtToGdp": 28,
         "gini": 0.77,
+        "realGdpGrowth": 3.3,
+        "policyRate": 9.9,
+        "bondYield10Y": 11.4,
+        "currentAccountPercentGdp": -2.9,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 9.8,
+        "populationMillion": 36.4,
+        "oldAgeDependencyRatio": 8.9,
         "assetMix": {
           "financialShare": 28,
           "nonFinancialShare": 76,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 10.7,
+          "underemploymentRate": 17.7,
+          "laborForceParticipation": 63.7,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.33,
+          "wageGrowthYoy": 16.9,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2000": {
@@ -4512,10 +11619,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 9.2,
         "debtToGdp": 42.8,
         "gini": 0.79,
+        "realGdpGrowth": 3.7,
+        "policyRate": 9.7,
+        "bondYield10Y": 11.2,
+        "currentAccountPercentGdp": -2.6,
+        "fiscalBalancePercentGdp": -2.3,
+        "fxReservesBillionUSD": 14.8,
+        "populationMillion": 40,
+        "oldAgeDependencyRatio": 9.8,
         "assetMix": {
           "financialShare": 29,
           "nonFinancialShare": 75,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.8,
+          "underemploymentRate": 16.5,
+          "laborForceParticipation": 64,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.44,
+          "wageGrowthYoy": 10.5,
+          "productivityGrowthYoy": 1.6
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.51,
+        "wealthPerAdultUSD": 18050,
+        "medianWealthUSD": 5400,
+        "gdpTrillionUSD": 0.2,
+        "gdpPerCapitaUSD": 4400,
+        "inflationRate": 5.8,
+        "debtToGdp": 39.7,
+        "gini": 0.8,
+        "realGdpGrowth": 3.4,
+        "policyRate": 8.1,
+        "bondYield10Y": 10,
+        "currentAccountPercentGdp": -2.4,
+        "fiscalBalancePercentGdp": -2.7,
+        "fxReservesBillionUSD": 27.7,
+        "populationMillion": 45.5,
+        "oldAgeDependencyRatio": 10.7,
+        "assetMix": {
+          "financialShare": 30,
+          "nonFinancialShare": 74,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 10.1,
+          "underemploymentRate": 16.9,
+          "laborForceParticipation": 63.9,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.4,
+          "wageGrowthYoy": 8.6,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2010": {
@@ -4527,10 +11685,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.3,
         "debtToGdp": 36.5,
         "gini": 0.81,
+        "realGdpGrowth": 2.9,
+        "policyRate": 5.7,
+        "bondYield10Y": 9,
+        "currentAccountPercentGdp": -3,
+        "fiscalBalancePercentGdp": -7.3,
+        "fxReservesBillionUSD": 44.3,
+        "populationMillion": 46,
+        "oldAgeDependencyRatio": 11.5,
         "assetMix": {
           "financialShare": 31,
           "nonFinancialShare": 73,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 12.2,
+          "underemploymentRate": 19.7,
+          "laborForceParticipation": 63.4,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 6.7,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.74,
+        "wealthPerAdultUSD": 22350,
+        "medianWealthUSD": 6350,
+        "gdpTrillionUSD": 0.28,
+        "gdpPerCapitaUSD": 5825,
+        "inflationRate": 2.4,
+        "debtToGdp": 51,
+        "gini": 0.82,
+        "realGdpGrowth": 2.8,
+        "policyRate": 5.9,
+        "bondYield10Y": 8.4,
+        "currentAccountPercentGdp": -2.4,
+        "fiscalBalancePercentGdp": -3.1,
+        "fxReservesBillionUSD": 52.3,
+        "populationMillion": 48.1,
+        "oldAgeDependencyRatio": 12.6,
+        "assetMix": {
+          "financialShare": 31.5,
+          "nonFinancialShare": 72.5,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 10.5,
+          "underemploymentRate": 17.4,
+          "laborForceParticipation": 63.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.35,
+          "wageGrowthYoy": 6.7,
+          "productivityGrowthYoy": 1.3
         }
       },
       "2020": {
@@ -4542,10 +11751,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.5,
         "debtToGdp": 65.4,
         "gini": 0.82,
+        "realGdpGrowth": -3.3,
+        "policyRate": 5.3,
+        "bondYield10Y": 7.4,
+        "currentAccountPercentGdp": -2.3,
+        "fiscalBalancePercentGdp": -10.7,
+        "fxReservesBillionUSD": 57.8,
+        "populationMillion": 50.5,
+        "oldAgeDependencyRatio": 13.6,
         "assetMix": {
           "financialShare": 32,
           "nonFinancialShare": 72,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 11.5,
+          "underemploymentRate": 18.8,
+          "laborForceParticipation": 63.5,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.23,
+          "wageGrowthYoy": 6.8,
+          "productivityGrowthYoy": -0.8
         }
       },
       "2022": {
@@ -4557,10 +11784,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 10.2,
         "debtToGdp": 60.8,
         "gini": 0.82,
+        "realGdpGrowth": 3.1,
+        "policyRate": 8.1,
+        "bondYield10Y": 9.5,
+        "currentAccountPercentGdp": -3,
+        "fiscalBalancePercentGdp": -4.1,
+        "fxReservesBillionUSD": 59,
+        "populationMillion": 51.3,
+        "oldAgeDependencyRatio": 14.1,
         "assetMix": {
           "financialShare": 32.5,
           "nonFinancialShare": 71.5,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.3,
+          "underemploymentRate": 15.8,
+          "laborForceParticipation": 64.1,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.5,
+          "wageGrowthYoy": 11,
+          "productivityGrowthYoy": 1.4
         }
       },
       "2024": {
@@ -4572,10 +11817,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.8,
         "debtToGdp": 57.5,
         "gini": 0.82,
+        "realGdpGrowth": 2.6,
+        "policyRate": 9.25,
+        "bondYield10Y": 9.95,
+        "currentAccountPercentGdp": -2.5,
+        "fiscalBalancePercentGdp": -4.7,
+        "fxReservesBillionUSD": 60.3,
+        "populationMillion": 52.6,
+        "oldAgeDependencyRatio": 14.5,
         "assetMix": {
           "financialShare": 33,
           "nonFinancialShare": 71,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.7,
+          "underemploymentRate": 16.3,
+          "laborForceParticipation": 64,
+          "sahmIndicatorValue": 0.25,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 9.2,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2025": {
@@ -4587,10 +11850,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.4,
         "debtToGdp": 56.8,
         "gini": 0.82,
+        "realGdpGrowth": 2.5,
+        "policyRate": 8.75,
+        "bondYield10Y": 9.85,
+        "currentAccountPercentGdp": -2.6,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 60.9,
+        "populationMillion": 52.9,
+        "oldAgeDependencyRatio": 14.7,
         "assetMix": {
           "financialShare": 33.5,
           "nonFinancialShare": 70.5,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.7,
+          "underemploymentRate": 16.3,
+          "laborForceParticipation": 64,
+          "sahmIndicatorValue": 0.22,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 8.4,
+          "productivityGrowthYoy": 1.2
         }
       },
       "2026": {
@@ -4602,10 +11883,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 4.6,
         "debtToGdp": 56,
         "gini": 0.82,
+        "realGdpGrowth": 2.5,
+        "policyRate": 8.5,
+        "bondYield10Y": 9.8,
+        "currentAccountPercentGdp": -2.6,
+        "fiscalBalancePercentGdp": -4.5,
+        "fxReservesBillionUSD": 61.5,
+        "populationMillion": 53.1,
+        "oldAgeDependencyRatio": 14.8,
         "assetMix": {
           "financialShare": 34,
           "nonFinancialShare": 70,
           "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 9.6,
+          "underemploymentRate": 16.2,
+          "laborForceParticipation": 64,
+          "sahmIndicatorValue": 0.2,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.46,
+          "wageGrowthYoy": 8,
+          "productivityGrowthYoy": 1.2
         }
       }
     }
@@ -4632,10 +11931,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 20.5,
         "debtToGdp": 85,
         "gini": 0.66,
+        "realGdpGrowth": 4.5,
+        "policyRate": 24.25,
+        "bondYield10Y": 22,
+        "currentAccountPercentGdp": -4,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 1.9,
+        "populationMillion": 39.2,
+        "oldAgeDependencyRatio": 4.2,
         "assetMix": {
           "financialShare": 22,
           "nonFinancialShare": 81,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 8.5,
+          "underemploymentRate": 15.2,
+          "laborForceParticipation": 44.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.26,
+          "wageGrowthYoy": 28.4,
+          "productivityGrowthYoy": 2.3
         }
       },
       "1990": {
@@ -4647,10 +11964,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 16.8,
         "debtToGdp": 125,
         "gini": 0.7,
+        "realGdpGrowth": 4.4,
+        "policyRate": 23.25,
+        "bondYield10Y": 21.5,
+        "currentAccountPercentGdp": -3.7,
+        "fiscalBalancePercentGdp": -5.4,
+        "fxReservesBillionUSD": 4.7,
+        "populationMillion": 55.8,
+        "oldAgeDependencyRatio": 5,
         "assetMix": {
           "financialShare": 24,
           "nonFinancialShare": 79,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 7.6,
+          "underemploymentRate": 14,
+          "laborForceParticipation": 44.3,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.37,
+          "wageGrowthYoy": 26.4,
+          "productivityGrowthYoy": 2.3
         }
       },
       "1995": {
@@ -4662,10 +11997,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 15.7,
         "debtToGdp": 82,
         "gini": 0.72,
+        "realGdpGrowth": 4.9,
+        "policyRate": 23.65,
+        "bondYield10Y": 22.1,
+        "currentAccountPercentGdp": -3.5,
+        "fiscalBalancePercentGdp": -5.7,
+        "fxReservesBillionUSD": 7.6,
+        "populationMillion": 61.9,
+        "oldAgeDependencyRatio": 5.5,
         "assetMix": {
           "financialShare": 25,
           "nonFinancialShare": 78,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 7.8,
+          "underemploymentRate": 14.3,
+          "laborForceParticipation": 44.2,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.35,
+          "wageGrowthYoy": 25.8,
+          "productivityGrowthYoy": 2.5
         }
       },
       "2000": {
@@ -4677,10 +12030,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 2.7,
         "debtToGdp": 78,
         "gini": 0.74,
+        "realGdpGrowth": 5.3,
+        "policyRate": 23.45,
+        "bondYield10Y": 21.9,
+        "currentAccountPercentGdp": -3.2,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 11.3,
+        "populationMillion": 69,
+        "oldAgeDependencyRatio": 6.1,
         "assetMix": {
           "financialShare": 27,
           "nonFinancialShare": 76,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 6.9,
+          "underemploymentRate": 13.1,
+          "laborForceParticipation": 44.5,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.46,
+          "wageGrowthYoy": 18.6,
+          "productivityGrowthYoy": 2.6
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.64,
+        "wealthPerAdultUSD": 12700,
+        "medianWealthUSD": 3850,
+        "gdpTrillionUSD": 0.16,
+        "gdpPerCapitaUSD": 2025,
+        "inflationRate": 7,
+        "debtToGdp": 75.5,
+        "gini": 0.75,
+        "realGdpGrowth": 5,
+        "policyRate": 21.85,
+        "bondYield10Y": 20.7,
+        "currentAccountPercentGdp": -3,
+        "fiscalBalancePercentGdp": -4.4,
+        "fxReservesBillionUSD": 21.2,
+        "populationMillion": 79,
+        "oldAgeDependencyRatio": 6.6,
+        "assetMix": {
+          "financialShare": 28,
+          "nonFinancialShare": 75,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 7.2,
+          "underemploymentRate": 13.5,
+          "laborForceParticipation": 44.4,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.42,
+          "wageGrowthYoy": 21,
+          "productivityGrowthYoy": 2.5
         }
       },
       "2010": {
@@ -4692,10 +12096,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 11.3,
         "debtToGdp": 73,
         "gini": 0.76,
+        "realGdpGrowth": 4.5,
+        "policyRate": 19.45,
+        "bondYield10Y": 19.7,
+        "currentAccountPercentGdp": -3.6,
+        "fiscalBalancePercentGdp": -9,
+        "fxReservesBillionUSD": 34,
+        "populationMillion": 84.6,
+        "oldAgeDependencyRatio": 7.2,
         "assetMix": {
           "financialShare": 29,
           "nonFinancialShare": 74,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 9.3,
+          "underemploymentRate": 16.3,
+          "laborForceParticipation": 43.9,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.17,
+          "wageGrowthYoy": 23.3,
+          "productivityGrowthYoy": 2.3
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1,
+        "wealthPerAdultUSD": 16650,
+        "medianWealthUSD": 4850,
+        "gdpTrillionUSD": 0.29,
+        "gdpPerCapitaUSD": 3050,
+        "inflationRate": 8.5,
+        "debtToGdp": 79.6,
+        "gini": 0.77,
+        "realGdpGrowth": 4.4,
+        "policyRate": 19.65,
+        "bondYield10Y": 19.1,
+        "currentAccountPercentGdp": -3,
+        "fiscalBalancePercentGdp": -4.8,
+        "fxReservesBillionUSD": 40.1,
+        "populationMillion": 95.1,
+        "oldAgeDependencyRatio": 7.8,
+        "assetMix": {
+          "financialShare": 29.5,
+          "nonFinancialShare": 73.5,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 7.6,
+          "underemploymentRate": 14,
+          "laborForceParticipation": 44.3,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.37,
+          "wageGrowthYoy": 21.8,
+          "productivityGrowthYoy": 2.3
         }
       },
       "2020": {
@@ -4707,10 +12162,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 5.7,
         "debtToGdp": 86.2,
         "gini": 0.77,
+        "realGdpGrowth": -1.7,
+        "policyRate": 19.05,
+        "bondYield10Y": 18.1,
+        "currentAccountPercentGdp": -2.9,
+        "fiscalBalancePercentGdp": -12.4,
+        "fxReservesBillionUSD": 44.4,
+        "populationMillion": 102.9,
+        "oldAgeDependencyRatio": 8.5,
         "assetMix": {
           "financialShare": 30,
           "nonFinancialShare": 73,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 8.6,
+          "underemploymentRate": 15.4,
+          "laborForceParticipation": 44,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.25,
+          "wageGrowthYoy": 20.3,
+          "productivityGrowthYoy": 0.2
         }
       },
       "2022": {
@@ -4722,10 +12195,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 13.9,
         "debtToGdp": 88.5,
         "gini": 0.77,
+        "realGdpGrowth": 4.7,
+        "policyRate": 21.85,
+        "bondYield10Y": 20.2,
+        "currentAccountPercentGdp": -3.6,
+        "fiscalBalancePercentGdp": -5.8,
+        "fxReservesBillionUSD": 45.3,
+        "populationMillion": 111.6,
+        "oldAgeDependencyRatio": 8.7,
         "assetMix": {
           "financialShare": 30.5,
           "nonFinancialShare": 72.5,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 6.4,
+          "underemploymentRate": 12.4,
+          "laborForceParticipation": 44.6,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 24.8,
+          "productivityGrowthYoy": 2.4
         }
       },
       "2024": {
@@ -4737,10 +12228,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 33.5,
         "debtToGdp": 92.4,
         "gini": 0.77,
+        "realGdpGrowth": 4.2,
+        "policyRate": 23,
+        "bondYield10Y": 20.65,
+        "currentAccountPercentGdp": -3.1,
+        "fiscalBalancePercentGdp": -6.4,
+        "fxReservesBillionUSD": 46.3,
+        "populationMillion": 113.9,
+        "oldAgeDependencyRatio": 9,
         "assetMix": {
           "financialShare": 31,
           "nonFinancialShare": 72,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 6.8,
+          "underemploymentRate": 12.9,
+          "laborForceParticipation": 44.5,
+          "sahmIndicatorValue": 0.19,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 35.6,
+          "productivityGrowthYoy": 2.2
         }
       },
       "2025": {
@@ -4752,10 +12261,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 24,
         "debtToGdp": 90.5,
         "gini": 0.77,
+        "realGdpGrowth": 4.1,
+        "policyRate": 22.5,
+        "bondYield10Y": 20.55,
+        "currentAccountPercentGdp": -3.2,
+        "fiscalBalancePercentGdp": -6.3,
+        "fxReservesBillionUSD": 46.7,
+        "populationMillion": 115.2,
+        "oldAgeDependencyRatio": 9.1,
         "assetMix": {
           "financialShare": 31.5,
           "nonFinancialShare": 71.5,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 6.8,
+          "underemploymentRate": 12.9,
+          "laborForceParticipation": 44.5,
+          "sahmIndicatorValue": 0.16,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 30.3,
+          "productivityGrowthYoy": 2.2
         }
       },
       "2026": {
@@ -4767,10 +12294,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 17.5,
         "debtToGdp": 88,
         "gini": 0.77,
+        "realGdpGrowth": 4.1,
+        "policyRate": 22.25,
+        "bondYield10Y": 20.5,
+        "currentAccountPercentGdp": -3.2,
+        "fiscalBalancePercentGdp": -6.2,
+        "fxReservesBillionUSD": 47.2,
+        "populationMillion": 116,
+        "oldAgeDependencyRatio": 9.2,
         "assetMix": {
           "financialShare": 32,
           "nonFinancialShare": 71,
           "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 6.7,
+          "underemploymentRate": 12.8,
+          "laborForceParticipation": 44.5,
+          "sahmIndicatorValue": 0.14,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.48,
+          "wageGrowthYoy": 26.8,
+          "productivityGrowthYoy": 2.2
         }
       }
     }
@@ -4795,10 +12340,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 11.4,
         "debtToGdp": 14,
         "gini": 0.68,
+        "realGdpGrowth": 3.7,
+        "policyRate": 26.5,
+        "bondYield10Y": 20.7,
+        "currentAccountPercentGdp": 0.6,
+        "fiscalBalancePercentGdp": -3.2,
+        "fxReservesBillionUSD": 1.6,
+        "populationMillion": 69,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 16,
           "nonFinancialShare": 86,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 7.2,
+          "underemploymentRate": 20.9,
+          "laborForceParticipation": 58.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 20.9,
+          "productivityGrowthYoy": 1.6
         }
       },
       "1990": {
@@ -4810,10 +12373,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 7.4,
         "debtToGdp": 72,
         "gini": 0.71,
+        "realGdpGrowth": 3.6,
+        "policyRate": 25.5,
+        "bondYield10Y": 20.2,
+        "currentAccountPercentGdp": 0.9,
+        "fiscalBalancePercentGdp": -3.6,
+        "fxReservesBillionUSD": 4,
+        "populationMillion": 96.8,
+        "oldAgeDependencyRatio": 3,
         "assetMix": {
           "financialShare": 18,
           "nonFinancialShare": 84,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 19.7,
+          "laborForceParticipation": 59,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.24,
+          "wageGrowthYoy": 18.7,
+          "productivityGrowthYoy": 1.6
         }
       },
       "1995": {
@@ -4825,10 +12406,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 72.8,
         "debtToGdp": 75,
         "gini": 0.73,
+        "realGdpGrowth": 4.1,
+        "policyRate": 25.9,
+        "bondYield10Y": 20.8,
+        "currentAccountPercentGdp": 1.1,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 6.4,
+        "populationMillion": 109.4,
+        "oldAgeDependencyRatio": 3.4,
         "assetMix": {
           "financialShare": 19,
           "nonFinancialShare": 83,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 6.5,
+          "underemploymentRate": 20,
+          "laborForceParticipation": 58.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.22,
+          "wageGrowthYoy": 38,
+          "productivityGrowthYoy": 1.8
         }
       },
       "2000": {
@@ -4840,10 +12439,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 6.9,
         "debtToGdp": 59.8,
         "gini": 0.75,
+        "realGdpGrowth": 4.5,
+        "policyRate": 25.7,
+        "bondYield10Y": 20.6,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": -2.2,
+        "fxReservesBillionUSD": 9.6,
+        "populationMillion": 122.8,
+        "oldAgeDependencyRatio": 3.7,
         "assetMix": {
           "financialShare": 20,
           "nonFinancialShare": 82,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 5.6,
+          "underemploymentRate": 18.8,
+          "laborForceParticipation": 59.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.33,
+          "wageGrowthYoy": 18.4,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.56,
+        "wealthPerAdultUSD": 6950,
+        "medianWealthUSD": 1875,
+        "gdpTrillionUSD": 0.22,
+        "gdpPerCapitaUSD": 1425,
+        "inflationRate": 10.3,
+        "debtToGdp": 34.7,
+        "gini": 0.76,
+        "realGdpGrowth": 4.2,
+        "policyRate": 24.1,
+        "bondYield10Y": 19.4,
+        "currentAccountPercentGdp": 1.6,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 17.9,
+        "populationMillion": 154.4,
+        "oldAgeDependencyRatio": 4,
+        "assetMix": {
+          "financialShare": 21.5,
+          "nonFinancialShare": 80.5,
+          "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 5.9,
+          "underemploymentRate": 19.2,
+          "laborForceParticipation": 59.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.29,
+          "wageGrowthYoy": 20.3,
+          "productivityGrowthYoy": 1.8
         }
       },
       "2010": {
@@ -4855,10 +12505,61 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 13.7,
         "debtToGdp": 9.6,
         "gini": 0.77,
+        "realGdpGrowth": 3.7,
+        "policyRate": 21.7,
+        "bondYield10Y": 18.4,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": -7.2,
+        "fxReservesBillionUSD": 28.7,
+        "populationMillion": 157.9,
+        "oldAgeDependencyRatio": 4.4,
         "assetMix": {
           "financialShare": 23,
           "nonFinancialShare": 79,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 8,
+          "underemploymentRate": 22,
+          "laborForceParticipation": 58.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 22.2,
+          "productivityGrowthYoy": 1.6
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.9,
+        "wealthPerAdultUSD": 9150,
+        "medianWealthUSD": 2325,
+        "gdpTrillionUSD": 0.4,
+        "gdpPerCapitaUSD": 2185,
+        "inflationRate": 13.5,
+        "debtToGdp": 22,
+        "gini": 0.78,
+        "realGdpGrowth": 3.6,
+        "policyRate": 21.9,
+        "bondYield10Y": 17.8,
+        "currentAccountPercentGdp": 1.6,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 33.8,
+        "populationMillion": 183.1,
+        "oldAgeDependencyRatio": 4.8,
+        "assetMix": {
+          "financialShare": 23.5,
+          "nonFinancialShare": 78.5,
+          "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 19.7,
+          "laborForceParticipation": 59,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.24,
+          "wageGrowthYoy": 22.1,
+          "productivityGrowthYoy": 1.6
         }
       },
       "2020": {
@@ -4870,10 +12571,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 13.2,
         "debtToGdp": 34.5,
         "gini": 0.78,
+        "realGdpGrowth": -2.5,
+        "policyRate": 21.3,
+        "bondYield10Y": 16.8,
+        "currentAccountPercentGdp": 1.7,
+        "fiscalBalancePercentGdp": -10.6,
+        "fxReservesBillionUSD": 37.4,
+        "populationMillion": 205.7,
+        "oldAgeDependencyRatio": 5.2,
         "assetMix": {
           "financialShare": 24,
           "nonFinancialShare": 78,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 7.3,
+          "underemploymentRate": 21.1,
+          "laborForceParticipation": 58.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.15,
+          "wageGrowthYoy": 21.9,
+          "productivityGrowthYoy": -0.5
         }
       },
       "2022": {
@@ -4885,10 +12604,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 18.8,
         "debtToGdp": 39.8,
         "gini": 0.78,
+        "realGdpGrowth": 3.9,
+        "policyRate": 24.1,
+        "bondYield10Y": 18.9,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 38.2,
+        "populationMillion": 220.2,
+        "oldAgeDependencyRatio": 5.3,
         "assetMix": {
           "financialShare": 24.5,
           "nonFinancialShare": 77.5,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 18.1,
+          "laborForceParticipation": 59.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.39,
+          "wageGrowthYoy": 25,
+          "productivityGrowthYoy": 1.7
         }
       },
       "2024": {
@@ -4900,10 +12637,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 31.7,
         "debtToGdp": 43.5,
         "gini": 0.78,
+        "realGdpGrowth": 3.4,
+        "policyRate": 25.25,
+        "bondYield10Y": 19.35,
+        "currentAccountPercentGdp": 1.5,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 39,
+        "populationMillion": 226.4,
+        "oldAgeDependencyRatio": 5.5,
         "assetMix": {
           "financialShare": 25,
           "nonFinancialShare": 77,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 5.5,
+          "underemploymentRate": 18.6,
+          "laborForceParticipation": 59.2,
+          "sahmIndicatorValue": 0.21,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.34,
+          "wageGrowthYoy": 32.1,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2025": {
@@ -4915,10 +12670,28 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 24.5,
         "debtToGdp": 42.8,
         "gini": 0.78,
+        "realGdpGrowth": 3.3,
+        "policyRate": 24.75,
+        "bondYield10Y": 19.25,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": -4.5,
+        "fxReservesBillionUSD": 39.4,
+        "populationMillion": 232.1,
+        "oldAgeDependencyRatio": 5.5,
         "assetMix": {
           "financialShare": 25.5,
           "nonFinancialShare": 76.5,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 5.5,
+          "underemploymentRate": 18.6,
+          "laborForceParticipation": 59.2,
+          "sahmIndicatorValue": 0.18,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.34,
+          "wageGrowthYoy": 28.1,
+          "productivityGrowthYoy": 1.5
         }
       },
       "2026": {
@@ -4930,2499 +12703,6206 @@ export const COUNTRIES_DATA: CountryProfile[] = [
         "inflationRate": 18.2,
         "debtToGdp": 41.5,
         "gini": 0.78,
+        "realGdpGrowth": 3.3,
+        "policyRate": 24.5,
+        "bondYield10Y": 19.2,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": -4.4,
+        "fxReservesBillionUSD": 39.8,
+        "populationMillion": 236,
+        "oldAgeDependencyRatio": 5.6,
         "assetMix": {
           "financialShare": 26,
           "nonFinancialShare": 76,
           "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 5.4,
+          "underemploymentRate": 18.5,
+          "laborForceParticipation": 59.2,
+          "sahmIndicatorValue": 0.16,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.35,
+          "wageGrowthYoy": 24.6,
+          "productivityGrowthYoy": 1.5
+        }
+      }
+    }
+  },
+  {
+    "code": "NOR",
+    "name": "Norway",
+    "region": "Europe",
+    "blocs": [
+      "nordic",
+      "efta"
+    ],
+    "flag": "🇳🇴",
+    "coordinates": [
+      8.46,
+      60.47
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.12,
+        "wealthPerAdultUSD": 41200,
+        "medianWealthUSD": 18400,
+        "gdpTrillionUSD": 0.064,
+        "gdpPerCapitaUSD": 15700,
+        "inflationRate": 10.9,
+        "debtToGdp": 47,
+        "gini": 0.62,
+        "realGdpGrowth": 2.1,
+        "policyRate": 9.27,
+        "bondYield10Y": 8.18,
+        "currentAccountPercentGdp": 15.6,
+        "fiscalBalancePercentGdp": 13.7,
+        "fxReservesBillionUSD": 3.3,
+        "populationMillion": 4.1,
+        "oldAgeDependencyRatio": 13.7,
+        "assetMix": {
+          "financialShare": 45,
+          "nonFinancialShare": 65,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 5.7,
+          "underemploymentRate": 8.2,
+          "laborForceParticipation": 79,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.86,
+          "wageGrowthYoy": 9,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.28,
+        "wealthPerAdultUSD": 85400,
+        "medianWealthUSD": 36200,
+        "gdpTrillionUSD": 0.12,
+        "gdpPerCapitaUSD": 28100,
+        "inflationRate": 4.1,
+        "debtToGdp": 28,
+        "gini": 0.63,
+        "realGdpGrowth": 2,
+        "policyRate": 5,
+        "bondYield10Y": 4.65,
+        "currentAccountPercentGdp": 15.9,
+        "fiscalBalancePercentGdp": 13.3,
+        "fxReservesBillionUSD": 8.2,
+        "populationMillion": 4.3,
+        "oldAgeDependencyRatio": 16.1,
+        "assetMix": {
+          "financialShare": 48,
+          "nonFinancialShare": 62,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7,
+          "laborForceParticipation": 79.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.97,
+          "wageGrowthYoy": 5.3,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.42,
+        "wealthPerAdultUSD": 122000,
+        "medianWealthUSD": 49500,
+        "gdpTrillionUSD": 0.15,
+        "gdpPerCapitaUSD": 34800,
+        "inflationRate": 2.5,
+        "debtToGdp": 32,
+        "gini": 0.64,
+        "realGdpGrowth": 2.5,
+        "policyRate": 5.4,
+        "bondYield10Y": 5.25,
+        "currentAccountPercentGdp": 16.1,
+        "fiscalBalancePercentGdp": 13,
+        "fxReservesBillionUSD": 13.1,
+        "populationMillion": 4.3,
+        "oldAgeDependencyRatio": 17.9,
+        "assetMix": {
+          "financialShare": 50,
+          "nonFinancialShare": 60,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 7.3,
+          "laborForceParticipation": 79.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.62,
+        "wealthPerAdultUSD": 174000,
+        "medianWealthUSD": 68500,
+        "gdpTrillionUSD": 0.17,
+        "gdpPerCapitaUSD": 37800,
+        "inflationRate": 3.1,
+        "debtToGdp": 29,
+        "gini": 0.65,
+        "realGdpGrowth": 2.9,
+        "policyRate": 5.2,
+        "bondYield10Y": 5.05,
+        "currentAccountPercentGdp": 16.4,
+        "fiscalBalancePercentGdp": 14.7,
+        "fxReservesBillionUSD": 19.7,
+        "populationMillion": 4.5,
+        "oldAgeDependencyRatio": 19.7,
+        "assetMix": {
+          "financialShare": 52,
+          "nonFinancialShare": 58,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 6.1,
+          "laborForceParticipation": 79.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.06,
+          "wageGrowthYoy": 4.7,
+          "productivityGrowthYoy": 1.6
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.89,
+        "wealthPerAdultUSD": 236000,
+        "medianWealthUSD": 91250,
+        "gdpTrillionUSD": 0.3,
+        "gdpPerCapitaUSD": 62700,
+        "inflationRate": 2.8,
+        "debtToGdp": 35.5,
+        "gini": 0.66,
+        "realGdpGrowth": 2.6,
+        "policyRate": 3.6,
+        "bondYield10Y": 3.85,
+        "currentAccountPercentGdp": 16.6,
+        "fiscalBalancePercentGdp": 14.3,
+        "fxReservesBillionUSD": 36.9,
+        "populationMillion": 4.8,
+        "oldAgeDependencyRatio": 21.5,
+        "assetMix": {
+          "financialShare": 54,
+          "nonFinancialShare": 56,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.4,
+          "underemploymentRate": 6.5,
+          "laborForceParticipation": 79.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.02,
+          "wageGrowthYoy": 4.6,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 1.15,
+        "wealthPerAdultUSD": 298000,
+        "medianWealthUSD": 114000,
+        "gdpTrillionUSD": 0.43,
+        "gdpPerCapitaUSD": 87600,
+        "inflationRate": 2.4,
+        "debtToGdp": 42,
+        "gini": 0.67,
+        "realGdpGrowth": 2.1,
+        "policyRate": 1.2,
+        "bondYield10Y": 2.85,
+        "currentAccountPercentGdp": 16,
+        "fiscalBalancePercentGdp": 9.7,
+        "fxReservesBillionUSD": 59,
+        "populationMillion": 4.9,
+        "oldAgeDependencyRatio": 23.2,
+        "assetMix": {
+          "financialShare": 56,
+          "nonFinancialShare": 54,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 6.5,
+          "underemploymentRate": 9.3,
+          "laborForceParticipation": 78.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.77,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.32,
+        "wealthPerAdultUSD": 330000,
+        "medianWealthUSD": 126500,
+        "gdpTrillionUSD": 0.4,
+        "gdpPerCapitaUSD": 78250,
+        "inflationRate": 1.9,
+        "debtToGdp": 44.3,
+        "gini": 0.68,
+        "realGdpGrowth": 2,
+        "policyRate": 1.4,
+        "bondYield10Y": 2.25,
+        "currentAccountPercentGdp": 16.6,
+        "fiscalBalancePercentGdp": 13.9,
+        "fxReservesBillionUSD": 69.7,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 25.3,
+        "assetMix": {
+          "financialShare": 58.5,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 10.5
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7,
+          "laborForceParticipation": 79.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.97,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 1.48,
+        "wealthPerAdultUSD": 362000,
+        "medianWealthUSD": 139000,
+        "gdpTrillionUSD": 0.37,
+        "gdpPerCapitaUSD": 68900,
+        "inflationRate": 1.3,
+        "debtToGdp": 46.5,
+        "gini": 0.68,
+        "realGdpGrowth": -4.1,
+        "policyRate": 0.8,
+        "bondYield10Y": 1.25,
+        "currentAccountPercentGdp": 16.7,
+        "fiscalBalancePercentGdp": 6.3,
+        "fxReservesBillionUSD": 77.1,
+        "populationMillion": 5.4,
+        "oldAgeDependencyRatio": 27.4,
+        "assetMix": {
+          "financialShare": 61,
+          "nonFinancialShare": 50,
+          "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 5.8,
+          "underemploymentRate": 8.4,
+          "laborForceParticipation": 78.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.85,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": -0.8
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.58,
+        "wealthPerAdultUSD": 382000,
+        "medianWealthUSD": 147000,
+        "gdpTrillionUSD": 0.59,
+        "gdpPerCapitaUSD": 108900,
+        "inflationRate": 5.8,
+        "debtToGdp": 37,
+        "gini": 0.68,
+        "realGdpGrowth": 2.3,
+        "policyRate": 3.6,
+        "bondYield10Y": 3.35,
+        "currentAccountPercentGdp": 16,
+        "fiscalBalancePercentGdp": 12.9,
+        "fxReservesBillionUSD": 78.7,
+        "populationMillion": 5.4,
+        "oldAgeDependencyRatio": 28.3,
+        "assetMix": {
+          "financialShare": 62,
+          "nonFinancialShare": 49,
+          "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 3.6,
+          "underemploymentRate": 5.4,
+          "laborForceParticipation": 79.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.12,
+          "wageGrowthYoy": 6.2,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.69,
+        "wealthPerAdultUSD": 402000,
+        "medianWealthUSD": 154000,
+        "gdpTrillionUSD": 0.54,
+        "gdpPerCapitaUSD": 98500,
+        "inflationRate": 3.2,
+        "debtToGdp": 38,
+        "gini": 0.68,
+        "realGdpGrowth": 1.8,
+        "policyRate": 4.75,
+        "bondYield10Y": 3.8,
+        "currentAccountPercentGdp": 16.5,
+        "fiscalBalancePercentGdp": 12.3,
+        "fxReservesBillionUSD": 80.4,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 29.2,
+        "assetMix": {
+          "financialShare": 63.5,
+          "nonFinancialShare": 48.5,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 4,
+          "underemploymentRate": 5.9,
+          "laborForceParticipation": 79.4,
+          "sahmIndicatorValue": 0.21,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.07,
+          "wageGrowthYoy": 4.8,
+          "productivityGrowthYoy": 1.2
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.73,
+        "wealthPerAdultUSD": 408000,
+        "medianWealthUSD": 156000,
+        "gdpTrillionUSD": 0.55,
+        "gdpPerCapitaUSD": 100200,
+        "inflationRate": 2.9,
+        "debtToGdp": 38.2,
+        "gini": 0.68,
+        "realGdpGrowth": 1.7,
+        "policyRate": 4.25,
+        "bondYield10Y": 3.7,
+        "currentAccountPercentGdp": 16.4,
+        "fiscalBalancePercentGdp": 12.4,
+        "fxReservesBillionUSD": 81.2,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 29.5,
+        "assetMix": {
+          "financialShare": 63.8,
+          "nonFinancialShare": 48.2,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 4,
+          "underemploymentRate": 5.9,
+          "laborForceParticipation": 79.4,
+          "sahmIndicatorValue": 0.18,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.07,
+          "wageGrowthYoy": 4.6,
+          "productivityGrowthYoy": 1.2
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.78,
+        "wealthPerAdultUSD": 415000,
+        "medianWealthUSD": 158000,
+        "gdpTrillionUSD": 0.56,
+        "gdpPerCapitaUSD": 102000,
+        "inflationRate": 2.8,
+        "debtToGdp": 38.5,
+        "gini": 0.68,
+        "realGdpGrowth": 1.7,
+        "policyRate": 4,
+        "bondYield10Y": 3.65,
+        "currentAccountPercentGdp": 16.4,
+        "fiscalBalancePercentGdp": 12.5,
+        "fxReservesBillionUSD": 82,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 29.8,
+        "assetMix": {
+          "financialShare": 64,
+          "nonFinancialShare": 48,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 3.9,
+          "underemploymentRate": 5.8,
+          "laborForceParticipation": 79.4,
+          "sahmIndicatorValue": 0.16,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.08,
+          "wageGrowthYoy": 4.6,
+          "productivityGrowthYoy": 1.2
+        }
+      }
+    }
+  },
+  {
+    "code": "IRL",
+    "name": "Ireland",
+    "region": "Europe",
+    "blocs": [
+      "eurozone",
+      "eu"
+    ],
+    "flag": "🇮🇪",
+    "coordinates": [
+      -8.24,
+      53.41
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.08,
+        "wealthPerAdultUSD": 36500,
+        "medianWealthUSD": 19200,
+        "gdpTrillionUSD": 0.021,
+        "gdpPerCapitaUSD": 6200,
+        "inflationRate": 18.2,
+        "debtToGdp": 73,
+        "gini": 0.64,
+        "realGdpGrowth": 3.9,
+        "policyRate": 15.47,
+        "bondYield10Y": 13.65,
+        "currentAccountPercentGdp": 9,
+        "fiscalBalancePercentGdp": 4,
+        "fxReservesBillionUSD": 1.5,
+        "populationMillion": 3.4,
+        "oldAgeDependencyRatio": 11.3,
+        "assetMix": {
+          "financialShare": 35,
+          "nonFinancialShare": 72,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 6.1,
+          "underemploymentRate": 9.2,
+          "laborForceParticipation": 75.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.8,
+          "wageGrowthYoy": 12.9,
+          "productivityGrowthYoy": 2.7
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.18,
+        "wealthPerAdultUSD": 74200,
+        "medianWealthUSD": 38500,
+        "gdpTrillionUSD": 0.048,
+        "gdpPerCapitaUSD": 13700,
+        "inflationRate": 3.4,
+        "debtToGdp": 96,
+        "gini": 0.66,
+        "realGdpGrowth": 3.8,
+        "policyRate": 3.75,
+        "bondYield10Y": 3.8,
+        "currentAccountPercentGdp": 9.3,
+        "fiscalBalancePercentGdp": 3.6,
+        "fxReservesBillionUSD": 1.5,
+        "populationMillion": 3.5,
+        "oldAgeDependencyRatio": 13.3,
+        "assetMix": {
+          "financialShare": 38,
+          "nonFinancialShare": 70,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 75.6,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.91,
+          "wageGrowthYoy": 4.8,
+          "productivityGrowthYoy": 2.7
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.28,
+        "wealthPerAdultUSD": 106000,
+        "medianWealthUSD": 54000,
+        "gdpTrillionUSD": 0.069,
+        "gdpPerCapitaUSD": 19100,
+        "inflationRate": 2.5,
+        "debtToGdp": 81,
+        "gini": 0.67,
+        "realGdpGrowth": 4.3,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.4,
+        "currentAccountPercentGdp": 9.5,
+        "fiscalBalancePercentGdp": 3.3,
+        "fxReservesBillionUSD": 2.3,
+        "populationMillion": 3.6,
+        "oldAgeDependencyRatio": 14.8,
+        "assetMix": {
+          "financialShare": 42,
+          "nonFinancialShare": 66,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 5.4,
+          "underemploymentRate": 8.3,
+          "laborForceParticipation": 75.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.89,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 2.9
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.52,
+        "wealthPerAdultUSD": 182000,
+        "medianWealthUSD": 92000,
+        "gdpTrillionUSD": 0.1,
+        "gdpPerCapitaUSD": 26300,
+        "inflationRate": 5.6,
+        "debtToGdp": 37,
+        "gini": 0.68,
+        "realGdpGrowth": 4.7,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.2,
+        "currentAccountPercentGdp": 9.8,
+        "fiscalBalancePercentGdp": 5,
+        "fxReservesBillionUSD": 3.5,
+        "populationMillion": 3.8,
+        "oldAgeDependencyRatio": 16.2,
+        "assetMix": {
+          "financialShare": 45,
+          "nonFinancialShare": 64,
+          "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 4.5,
+          "underemploymentRate": 7.1,
+          "laborForceParticipation": 75.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1,
+          "wageGrowthYoy": 6,
+          "productivityGrowthYoy": 3
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.6,
+        "wealthPerAdultUSD": 193000,
+        "medianWealthUSD": 95000,
+        "gdpTrillionUSD": 0.16,
+        "gdpPerCapitaUSD": 37450,
+        "inflationRate": 2.3,
+        "debtToGdp": 61.5,
+        "gini": 0.69,
+        "realGdpGrowth": 4.4,
+        "policyRate": 2.35,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": 10,
+        "fiscalBalancePercentGdp": 4.6,
+        "fxReservesBillionUSD": 6.5,
+        "populationMillion": 4.3,
+        "oldAgeDependencyRatio": 17.7,
+        "assetMix": {
+          "financialShare": 45.5,
+          "nonFinancialShare": 64,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 75.7,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.96,
+          "wageGrowthYoy": 4.2,
+          "productivityGrowthYoy": 2.9
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.68,
+        "wealthPerAdultUSD": 204000,
+        "medianWealthUSD": 98000,
+        "gdpTrillionUSD": 0.22,
+        "gdpPerCapitaUSD": 48600,
+        "inflationRate": -1,
+        "debtToGdp": 86,
+        "gini": 0.7,
+        "realGdpGrowth": 3.9,
+        "policyRate": 0,
+        "bondYield10Y": 2,
+        "currentAccountPercentGdp": 9.4,
+        "fiscalBalancePercentGdp": 0,
+        "fxReservesBillionUSD": 10.4,
+        "populationMillion": 4.5,
+        "oldAgeDependencyRatio": 19.2,
+        "assetMix": {
+          "financialShare": 46,
+          "nonFinancialShare": 64,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 6.9,
+          "underemploymentRate": 10.3,
+          "laborForceParticipation": 75.1,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.71,
+          "wageGrowthYoy": 2.4,
+          "productivityGrowthYoy": 2.7
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.87,
+        "wealthPerAdultUSD": 249500,
+        "medianWealthUSD": 125000,
+        "gdpTrillionUSD": 0.32,
+        "gdpPerCapitaUSD": 66650,
+        "inflationRate": -0.6,
+        "debtToGdp": 72.3,
+        "gini": 0.71,
+        "realGdpGrowth": 3.8,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.4,
+        "currentAccountPercentGdp": 10,
+        "fiscalBalancePercentGdp": 4.2,
+        "fxReservesBillionUSD": 12.3,
+        "populationMillion": 4.8,
+        "oldAgeDependencyRatio": 20.9,
+        "assetMix": {
+          "financialShare": 47.5,
+          "nonFinancialShare": 62.5,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 75.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.91,
+          "wageGrowthYoy": 2.6,
+          "productivityGrowthYoy": 2.7
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 1.05,
+        "wealthPerAdultUSD": 295000,
+        "medianWealthUSD": 152000,
+        "gdpTrillionUSD": 0.42,
+        "gdpPerCapitaUSD": 84700,
+        "inflationRate": -0.3,
+        "debtToGdp": 58.5,
+        "gini": 0.71,
+        "realGdpGrowth": -2.3,
+        "policyRate": 0,
+        "bondYield10Y": 0.4,
+        "currentAccountPercentGdp": 10.1,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 13.6,
+        "populationMillion": 5,
+        "oldAgeDependencyRatio": 22.6,
+        "assetMix": {
+          "financialShare": 49,
+          "nonFinancialShare": 61,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 6.2,
+          "underemploymentRate": 9.4,
+          "laborForceParticipation": 75.3,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.79,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 0.6
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.18,
+        "wealthPerAdultUSD": 325000,
+        "medianWealthUSD": 165000,
+        "gdpTrillionUSD": 0.53,
+        "gdpPerCapitaUSD": 104500,
+        "inflationRate": 7.8,
+        "debtToGdp": 44.5,
+        "gini": 0.71,
+        "realGdpGrowth": 4.1,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.5,
+        "currentAccountPercentGdp": 9.4,
+        "fiscalBalancePercentGdp": 3.2,
+        "fxReservesBillionUSD": 13.9,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 23.4,
+        "assetMix": {
+          "financialShare": 50,
+          "nonFinancialShare": 60,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4,
+          "underemploymentRate": 6.4,
+          "laborForceParticipation": 75.9,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.06,
+          "wageGrowthYoy": 7.2,
+          "productivityGrowthYoy": 2.8
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.3,
+        "wealthPerAdultUSD": 352000,
+        "medianWealthUSD": 176000,
+        "gdpTrillionUSD": 0.55,
+        "gdpPerCapitaUSD": 108500,
+        "inflationRate": 2.4,
+        "debtToGdp": 41,
+        "gini": 0.72,
+        "realGdpGrowth": 3.6,
+        "policyRate": 3.5,
+        "bondYield10Y": 2.95,
+        "currentAccountPercentGdp": 9.9,
+        "fiscalBalancePercentGdp": 2.6,
+        "fxReservesBillionUSD": 14.2,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 24.1,
+        "assetMix": {
+          "financialShare": 51.5,
+          "nonFinancialShare": 58.5,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.4,
+          "underemploymentRate": 6.9,
+          "laborForceParticipation": 75.8,
+          "sahmIndicatorValue": 0.19,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.01,
+          "wageGrowthYoy": 4.2,
+          "productivityGrowthYoy": 2.6
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.34,
+        "wealthPerAdultUSD": 358000,
+        "medianWealthUSD": 179000,
+        "gdpTrillionUSD": 0.57,
+        "gdpPerCapitaUSD": 110500,
+        "inflationRate": 2.2,
+        "debtToGdp": 40.2,
+        "gini": 0.72,
+        "realGdpGrowth": 3.5,
+        "policyRate": 3,
+        "bondYield10Y": 2.85,
+        "currentAccountPercentGdp": 9.8,
+        "fiscalBalancePercentGdp": 2.7,
+        "fxReservesBillionUSD": 14.4,
+        "populationMillion": 5.2,
+        "oldAgeDependencyRatio": 24.4,
+        "assetMix": {
+          "financialShare": 51.8,
+          "nonFinancialShare": 58.2,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.4,
+          "underemploymentRate": 6.9,
+          "laborForceParticipation": 75.8,
+          "sahmIndicatorValue": 0.16,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.01,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 2.6
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.38,
+        "wealthPerAdultUSD": 365000,
+        "medianWealthUSD": 182000,
+        "gdpTrillionUSD": 0.58,
+        "gdpPerCapitaUSD": 112000,
+        "inflationRate": 2.1,
+        "debtToGdp": 39.5,
+        "gini": 0.72,
+        "realGdpGrowth": 3.5,
+        "policyRate": 2.75,
+        "bondYield10Y": 2.8,
+        "currentAccountPercentGdp": 9.8,
+        "fiscalBalancePercentGdp": 2.8,
+        "fxReservesBillionUSD": 14.5,
+        "populationMillion": 5.2,
+        "oldAgeDependencyRatio": 24.6,
+        "assetMix": {
+          "financialShare": 52,
+          "nonFinancialShare": 58,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 6.8,
+          "laborForceParticipation": 75.8,
+          "sahmIndicatorValue": 0.14,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.02,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 2.6
+        }
+      }
+    }
+  },
+  {
+    "code": "BEL",
+    "name": "Belgium",
+    "region": "Europe",
+    "blocs": [
+      "eurozone",
+      "eu"
+    ],
+    "flag": "🇧🇪",
+    "coordinates": [
+      4.46,
+      50.5
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.42,
+        "wealthPerAdultUSD": 56400,
+        "medianWealthUSD": 34500,
+        "gdpTrillionUSD": 0.12,
+        "gdpPerCapitaUSD": 12400,
+        "inflationRate": 6.6,
+        "debtToGdp": 78,
+        "gini": 0.56,
+        "realGdpGrowth": 1.6,
+        "policyRate": 5.61,
+        "bondYield10Y": 4.95,
+        "currentAccountPercentGdp": -1.2,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 1.7,
+        "populationMillion": 9.7,
+        "oldAgeDependencyRatio": 15,
+        "assetMix": {
+          "financialShare": 52,
+          "nonFinancialShare": 56,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 7.4,
+          "underemploymentRate": 10.8,
+          "laborForceParticipation": 70.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.64,
+          "wageGrowthYoy": 5.6,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.98,
+        "wealthPerAdultUSD": 122000,
+        "medianWealthUSD": 74200,
+        "gdpTrillionUSD": 0.2,
+        "gdpPerCapitaUSD": 19800,
+        "inflationRate": 3.4,
+        "debtToGdp": 129,
+        "gini": 0.58,
+        "realGdpGrowth": 1.5,
+        "policyRate": 3.75,
+        "bondYield10Y": 4.05,
+        "currentAccountPercentGdp": -0.9,
+        "fiscalBalancePercentGdp": -3.8,
+        "fxReservesBillionUSD": 4.2,
+        "populationMillion": 10.1,
+        "oldAgeDependencyRatio": 17.6,
+        "assetMix": {
+          "financialShare": 54,
+          "nonFinancialShare": 54,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 6.5,
+          "underemploymentRate": 9.6,
+          "laborForceParticipation": 70.4,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.75,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 1.35,
+        "wealthPerAdultUSD": 165000,
+        "medianWealthUSD": 102000,
+        "gdpTrillionUSD": 0.29,
+        "gdpPerCapitaUSD": 28400,
+        "inflationRate": 1.5,
+        "debtToGdp": 131,
+        "gini": 0.58,
+        "realGdpGrowth": 2,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.65,
+        "currentAccountPercentGdp": -0.7,
+        "fiscalBalancePercentGdp": -4.1,
+        "fxReservesBillionUSD": 6.7,
+        "populationMillion": 10.2,
+        "oldAgeDependencyRatio": 19.6,
+        "assetMix": {
+          "financialShare": 55,
+          "nonFinancialShare": 53,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 6.7,
+          "underemploymentRate": 9.9,
+          "laborForceParticipation": 70.3,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.73,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 1.82,
+        "wealthPerAdultUSD": 218000,
+        "medianWealthUSD": 134000,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 23100,
+        "inflationRate": 2.5,
+        "debtToGdp": 109,
+        "gini": 0.59,
+        "realGdpGrowth": 2.4,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.45,
+        "currentAccountPercentGdp": -0.4,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 10.1,
+        "populationMillion": 10.4,
+        "oldAgeDependencyRatio": 21.5,
+        "assetMix": {
+          "financialShare": 56,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 5.8,
+          "underemploymentRate": 8.7,
+          "laborForceParticipation": 70.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.84,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 1.2
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 2.29,
+        "wealthPerAdultUSD": 265000,
+        "medianWealthUSD": 163000,
+        "gdpTrillionUSD": 0.36,
+        "gdpPerCapitaUSD": 33650,
+        "inflationRate": 2.4,
+        "debtToGdp": 104.5,
+        "gini": 0.6,
+        "realGdpGrowth": 2.1,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.25,
+        "currentAccountPercentGdp": -0.2,
+        "fiscalBalancePercentGdp": -2.8,
+        "fxReservesBillionUSD": 18.9,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 23.5,
+        "assetMix": {
+          "financialShare": 56.3,
+          "nonFinancialShare": 52.3,
+          "debtShareOfGross": 8.5
+        },
+        "labor": {
+          "unemploymentRate": 6.1,
+          "underemploymentRate": 9.1,
+          "laborForceParticipation": 70.5,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.8,
+          "wageGrowthYoy": 3.2,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 2.75,
+        "wealthPerAdultUSD": 312000,
+        "medianWealthUSD": 192000,
+        "gdpTrillionUSD": 0.48,
+        "gdpPerCapitaUSD": 44200,
+        "inflationRate": 2.2,
+        "debtToGdp": 100,
+        "gini": 0.6,
+        "realGdpGrowth": 1.6,
+        "policyRate": 0,
+        "bondYield10Y": 2.25,
+        "currentAccountPercentGdp": -0.8,
+        "fiscalBalancePercentGdp": -7.4,
+        "fxReservesBillionUSD": 30.2,
+        "populationMillion": 10.9,
+        "oldAgeDependencyRatio": 25.4,
+        "assetMix": {
+          "financialShare": 56.5,
+          "nonFinancialShare": 52.5,
+          "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 8.2,
+          "underemploymentRate": 11.9,
+          "laborForceParticipation": 69.9,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.55,
+          "wageGrowthYoy": 3.1,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 3.04,
+        "wealthPerAdultUSD": 343000,
+        "medianWealthUSD": 212000,
+        "gdpTrillionUSD": 0.5,
+        "gdpPerCapitaUSD": 44700,
+        "inflationRate": 1.5,
+        "debtToGdp": 106.3,
+        "gini": 0.6,
+        "realGdpGrowth": 1.5,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.65,
+        "currentAccountPercentGdp": -0.2,
+        "fiscalBalancePercentGdp": -3.2,
+        "fxReservesBillionUSD": 35.7,
+        "populationMillion": 11.2,
+        "oldAgeDependencyRatio": 27.7,
+        "assetMix": {
+          "financialShare": 57,
+          "nonFinancialShare": 52.3,
+          "debtShareOfGross": 9.3
+        },
+        "labor": {
+          "unemploymentRate": 6.5,
+          "underemploymentRate": 9.6,
+          "laborForceParticipation": 70.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.75,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 3.32,
+        "wealthPerAdultUSD": 374000,
+        "medianWealthUSD": 232000,
+        "gdpTrillionUSD": 0.52,
+        "gdpPerCapitaUSD": 45200,
+        "inflationRate": 0.7,
+        "debtToGdp": 112.5,
+        "gini": 0.6,
+        "realGdpGrowth": -4.6,
+        "policyRate": 0,
+        "bondYield10Y": 0.65,
+        "currentAccountPercentGdp": -0.1,
+        "fiscalBalancePercentGdp": -10.8,
+        "fxReservesBillionUSD": 39.5,
+        "populationMillion": 11.5,
+        "oldAgeDependencyRatio": 30,
+        "assetMix": {
+          "financialShare": 57.5,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 7.5,
+          "underemploymentRate": 11,
+          "laborForceParticipation": 70.1,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.63,
+          "wageGrowthYoy": 2.3,
+          "productivityGrowthYoy": -1.2
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 3.52,
+        "wealthPerAdultUSD": 395000,
+        "medianWealthUSD": 242000,
+        "gdpTrillionUSD": 0.58,
+        "gdpPerCapitaUSD": 49800,
+        "inflationRate": 9.6,
+        "debtToGdp": 104.5,
+        "gini": 0.6,
+        "realGdpGrowth": 1.8,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.75,
+        "currentAccountPercentGdp": -0.8,
+        "fiscalBalancePercentGdp": -4.2,
+        "fxReservesBillionUSD": 40.3,
+        "populationMillion": 11.6,
+        "oldAgeDependencyRatio": 31,
+        "assetMix": {
+          "financialShare": 57,
+          "nonFinancialShare": 52.5,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 70.7,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.9,
+          "wageGrowthYoy": 7.2,
+          "productivityGrowthYoy": 1
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 3.72,
+        "wealthPerAdultUSD": 416000,
+        "medianWealthUSD": 251000,
+        "gdpTrillionUSD": 0.63,
+        "gdpPerCapitaUSD": 54100,
+        "inflationRate": 2.8,
+        "debtToGdp": 105,
+        "gini": 0.6,
+        "realGdpGrowth": 1.3,
+        "policyRate": 3.5,
+        "bondYield10Y": 3.2,
+        "currentAccountPercentGdp": -0.3,
+        "fiscalBalancePercentGdp": -4.8,
+        "fxReservesBillionUSD": 41.2,
+        "populationMillion": 11.6,
+        "oldAgeDependencyRatio": 31.9,
+        "assetMix": {
+          "financialShare": 57.8,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 9.8
+        },
+        "labor": {
+          "unemploymentRate": 5.7,
+          "underemploymentRate": 8.5,
+          "laborForceParticipation": 70.6,
+          "sahmIndicatorValue": 0.23,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.85,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 3.78,
+        "wealthPerAdultUSD": 422000,
+        "medianWealthUSD": 253500,
+        "gdpTrillionUSD": 0.65,
+        "gdpPerCapitaUSD": 55300,
+        "inflationRate": 2.5,
+        "debtToGdp": 105.5,
+        "gini": 0.6,
+        "realGdpGrowth": 1.2,
+        "policyRate": 3,
+        "bondYield10Y": 3.1,
+        "currentAccountPercentGdp": -0.4,
+        "fiscalBalancePercentGdp": -4.7,
+        "fxReservesBillionUSD": 41.6,
+        "populationMillion": 11.8,
+        "oldAgeDependencyRatio": 32.3,
+        "assetMix": {
+          "financialShare": 57.9,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 9.9
+        },
+        "labor": {
+          "unemploymentRate": 5.6,
+          "underemploymentRate": 8.5,
+          "laborForceParticipation": 70.6,
+          "sahmIndicatorValue": 0.2,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.85,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 3.85,
+        "wealthPerAdultUSD": 428000,
+        "medianWealthUSD": 256000,
+        "gdpTrillionUSD": 0.66,
+        "gdpPerCapitaUSD": 56500,
+        "inflationRate": 2.4,
+        "debtToGdp": 106,
+        "gini": 0.6,
+        "realGdpGrowth": 1.2,
+        "policyRate": 2.75,
+        "bondYield10Y": 3.05,
+        "currentAccountPercentGdp": -0.4,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 42,
+        "populationMillion": 11.7,
+        "oldAgeDependencyRatio": 32.6,
+        "assetMix": {
+          "financialShare": 58,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 5.6,
+          "underemploymentRate": 8.4,
+          "laborForceParticipation": 70.6,
+          "sahmIndicatorValue": 0.18,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.86,
+          "wageGrowthYoy": 3.2,
+          "productivityGrowthYoy": 0.8
+        }
+      }
+    }
+  },
+  {
+    "code": "AUT",
+    "name": "Austria",
+    "region": "Europe",
+    "blocs": [
+      "eurozone",
+      "eu"
+    ],
+    "flag": "🇦🇹",
+    "coordinates": [
+      14.55,
+      47.51
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.25,
+        "wealthPerAdultUSD": 42500,
+        "medianWealthUSD": 14800,
+        "gdpTrillionUSD": 0.08,
+        "gdpPerCapitaUSD": 10700,
+        "inflationRate": 6.4,
+        "debtToGdp": 36.5,
+        "gini": 0.68,
+        "realGdpGrowth": 1.4,
+        "policyRate": 5.44,
+        "bondYield10Y": 4.8,
+        "currentAccountPercentGdp": 1.3,
+        "fiscalBalancePercentGdp": -1.9,
+        "fxReservesBillionUSD": 1.5,
+        "populationMillion": 7.5,
+        "oldAgeDependencyRatio": 14.6,
+        "assetMix": {
+          "financialShare": 40,
+          "nonFinancialShare": 66,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 7,
+          "underemploymentRate": 10.3,
+          "laborForceParticipation": 77,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.66,
+          "wageGrowthYoy": 5.8,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.62,
+        "wealthPerAdultUSD": 98500,
+        "medianWealthUSD": 33400,
+        "gdpTrillionUSD": 0.17,
+        "gdpPerCapitaUSD": 21700,
+        "inflationRate": 3.3,
+        "debtToGdp": 57,
+        "gini": 0.7,
+        "realGdpGrowth": 1.3,
+        "policyRate": 3.75,
+        "bondYield10Y": 3.95,
+        "currentAccountPercentGdp": 1.6,
+        "fiscalBalancePercentGdp": -2.3,
+        "fxReservesBillionUSD": 3.7,
+        "populationMillion": 7.8,
+        "oldAgeDependencyRatio": 17.2,
+        "assetMix": {
+          "financialShare": 42,
+          "nonFinancialShare": 64,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 6.1,
+          "underemploymentRate": 9.1,
+          "laborForceParticipation": 77.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.77,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.88,
+        "wealthPerAdultUSD": 136000,
+        "medianWealthUSD": 46200,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 30400,
+        "inflationRate": 2.2,
+        "debtToGdp": 68,
+        "gini": 0.71,
+        "realGdpGrowth": 1.8,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.55,
+        "currentAccountPercentGdp": 1.8,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 5.8,
+        "populationMillion": 7.9,
+        "oldAgeDependencyRatio": 19.1,
+        "assetMix": {
+          "financialShare": 43,
+          "nonFinancialShare": 63,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 9.4,
+          "laborForceParticipation": 77.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.75,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 1
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 1.15,
+        "wealthPerAdultUSD": 172000,
+        "medianWealthUSD": 58500,
+        "gdpTrillionUSD": 0.19,
+        "gdpPerCapitaUSD": 24200,
+        "inflationRate": 2.3,
+        "debtToGdp": 66,
+        "gini": 0.72,
+        "realGdpGrowth": 2.2,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.35,
+        "currentAccountPercentGdp": 2.1,
+        "fiscalBalancePercentGdp": -0.9,
+        "fxReservesBillionUSD": 8.8,
+        "populationMillion": 7.9,
+        "oldAgeDependencyRatio": 21,
+        "assetMix": {
+          "financialShare": 44,
+          "nonFinancialShare": 63,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 5.4,
+          "underemploymentRate": 8.2,
+          "laborForceParticipation": 77.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.86,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.45,
+        "wealthPerAdultUSD": 212000,
+        "medianWealthUSD": 70250,
+        "gdpTrillionUSD": 0.29,
+        "gdpPerCapitaUSD": 35550,
+        "inflationRate": 2.1,
+        "debtToGdp": 74.3,
+        "gini": 0.73,
+        "realGdpGrowth": 1.9,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.15,
+        "currentAccountPercentGdp": 2.3,
+        "fiscalBalancePercentGdp": -1.3,
+        "fxReservesBillionUSD": 16.4,
+        "populationMillion": 8.2,
+        "oldAgeDependencyRatio": 22.9,
+        "assetMix": {
+          "financialShare": 44.5,
+          "nonFinancialShare": 63,
+          "debtShareOfGross": 7.5
+        },
+        "labor": {
+          "unemploymentRate": 5.7,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 77.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.82,
+          "wageGrowthYoy": 3.5,
+          "productivityGrowthYoy": 1
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 1.75,
+        "wealthPerAdultUSD": 252000,
+        "medianWealthUSD": 82000,
+        "gdpTrillionUSD": 0.39,
+        "gdpPerCapitaUSD": 46900,
+        "inflationRate": 1.8,
+        "debtToGdp": 82.5,
+        "gini": 0.73,
+        "realGdpGrowth": 1.4,
+        "policyRate": 0,
+        "bondYield10Y": 2.15,
+        "currentAccountPercentGdp": 1.7,
+        "fiscalBalancePercentGdp": -5.9,
+        "fxReservesBillionUSD": 26.3,
+        "populationMillion": 8.3,
+        "oldAgeDependencyRatio": 24.8,
+        "assetMix": {
+          "financialShare": 45,
+          "nonFinancialShare": 63,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 7.8,
+          "underemploymentRate": 11.4,
+          "laborForceParticipation": 76.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.57,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.94,
+        "wealthPerAdultUSD": 275000,
+        "medianWealthUSD": 90250,
+        "gdpTrillionUSD": 0.41,
+        "gdpPerCapitaUSD": 47750,
+        "inflationRate": 1.6,
+        "debtToGdp": 82.8,
+        "gini": 0.74,
+        "realGdpGrowth": 1.3,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.55,
+        "currentAccountPercentGdp": 2.3,
+        "fiscalBalancePercentGdp": -1.7,
+        "fxReservesBillionUSD": 31,
+        "populationMillion": 8.6,
+        "oldAgeDependencyRatio": 27,
+        "assetMix": {
+          "financialShare": 45.3,
+          "nonFinancialShare": 62.8,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 6.1,
+          "underemploymentRate": 9.1,
+          "laborForceParticipation": 77.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.77,
+          "wageGrowthYoy": 3.2,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 2.12,
+        "wealthPerAdultUSD": 298000,
+        "medianWealthUSD": 98500,
+        "gdpTrillionUSD": 0.43,
+        "gdpPerCapitaUSD": 48600,
+        "inflationRate": 1.4,
+        "debtToGdp": 83,
+        "gini": 0.74,
+        "realGdpGrowth": -4.8,
+        "policyRate": 0,
+        "bondYield10Y": 0.55,
+        "currentAccountPercentGdp": 2.4,
+        "fiscalBalancePercentGdp": -9.3,
+        "fxReservesBillionUSD": 34.3,
+        "populationMillion": 8.8,
+        "oldAgeDependencyRatio": 29.3,
+        "assetMix": {
+          "financialShare": 45.5,
+          "nonFinancialShare": 62.5,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 7.1,
+          "underemploymentRate": 10.5,
+          "laborForceParticipation": 76.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.65,
+          "wageGrowthYoy": 3.1,
+          "productivityGrowthYoy": -1.3
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 2.24,
+        "wealthPerAdultUSD": 312000,
+        "medianWealthUSD": 102000,
+        "gdpTrillionUSD": 0.47,
+        "gdpPerCapitaUSD": 52400,
+        "inflationRate": 8.6,
+        "debtToGdp": 78,
+        "gini": 0.74,
+        "realGdpGrowth": 1.6,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.65,
+        "currentAccountPercentGdp": 1.7,
+        "fiscalBalancePercentGdp": -2.7,
+        "fxReservesBillionUSD": 35,
+        "populationMillion": 9,
+        "oldAgeDependencyRatio": 30.2,
+        "assetMix": {
+          "financialShare": 45.8,
+          "nonFinancialShare": 62.2,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 77.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.92,
+          "wageGrowthYoy": 7.1,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 2.37,
+        "wealthPerAdultUSD": 329000,
+        "medianWealthUSD": 106000,
+        "gdpTrillionUSD": 0.52,
+        "gdpPerCapitaUSD": 57400,
+        "inflationRate": 2.9,
+        "debtToGdp": 79,
+        "gini": 0.74,
+        "realGdpGrowth": 1.1,
+        "policyRate": 3.5,
+        "bondYield10Y": 3.1,
+        "currentAccountPercentGdp": 2.2,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 35.8,
+        "populationMillion": 9.1,
+        "oldAgeDependencyRatio": 31.2,
+        "assetMix": {
+          "financialShare": 46,
+          "nonFinancialShare": 62,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 77.4,
+          "sahmIndicatorValue": 0.27,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.87,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 2.41,
+        "wealthPerAdultUSD": 333000,
+        "medianWealthUSD": 107000,
+        "gdpTrillionUSD": 0.53,
+        "gdpPerCapitaUSD": 58600,
+        "inflationRate": 2.7,
+        "debtToGdp": 79.2,
+        "gini": 0.74,
+        "realGdpGrowth": 1,
+        "policyRate": 3,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": 2.1,
+        "fiscalBalancePercentGdp": -3.2,
+        "fxReservesBillionUSD": 36.1,
+        "populationMillion": 9,
+        "oldAgeDependencyRatio": 31.5,
+        "assetMix": {
+          "financialShare": 46,
+          "nonFinancialShare": 62,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 77.4,
+          "sahmIndicatorValue": 0.24,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.87,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 2.45,
+        "wealthPerAdultUSD": 338000,
+        "medianWealthUSD": 108000,
+        "gdpTrillionUSD": 0.54,
+        "gdpPerCapitaUSD": 59800,
+        "inflationRate": 2.6,
+        "debtToGdp": 79.5,
+        "gini": 0.74,
+        "realGdpGrowth": 1,
+        "policyRate": 2.75,
+        "bondYield10Y": 2.95,
+        "currentAccountPercentGdp": 2.1,
+        "fiscalBalancePercentGdp": -3.1,
+        "fxReservesBillionUSD": 36.5,
+        "populationMillion": 9,
+        "oldAgeDependencyRatio": 31.8,
+        "assetMix": {
+          "financialShare": 46,
+          "nonFinancialShare": 62,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 7.9,
+          "laborForceParticipation": 77.4,
+          "sahmIndicatorValue": 0.22,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.88,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 0.7
+        }
+      }
+    }
+  },
+  {
+    "code": "DNK",
+    "name": "Denmark",
+    "region": "Europe",
+    "blocs": [
+      "nordic",
+      "eu"
+    ],
+    "flag": "🇩🇰",
+    "coordinates": [
+      9.5,
+      56.26
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.18,
+        "wealthPerAdultUSD": 45200,
+        "medianWealthUSD": 18500,
+        "gdpTrillionUSD": 0.07,
+        "gdpPerCapitaUSD": 13700,
+        "inflationRate": 12.3,
+        "debtToGdp": 38,
+        "gini": 0.68,
+        "realGdpGrowth": 2.5,
+        "policyRate": 10.46,
+        "bondYield10Y": 9.23,
+        "currentAccountPercentGdp": 9.4,
+        "fiscalBalancePercentGdp": 3.6,
+        "fxReservesBillionUSD": 3.8,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 15.3,
+        "assetMix": {
+          "financialShare": 55,
+          "nonFinancialShare": 55,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.7,
+          "underemploymentRate": 7.2,
+          "laborForceParticipation": 80.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.92,
+          "wageGrowthYoy": 9.3,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.42,
+        "wealthPerAdultUSD": 101000,
+        "medianWealthUSD": 42500,
+        "gdpTrillionUSD": 0.14,
+        "gdpPerCapitaUSD": 27100,
+        "inflationRate": 2.6,
+        "debtToGdp": 68,
+        "gini": 0.7,
+        "realGdpGrowth": 2.4,
+        "policyRate": 3.6,
+        "bondYield10Y": 3.4,
+        "currentAccountPercentGdp": 9.7,
+        "fiscalBalancePercentGdp": 3.2,
+        "fxReservesBillionUSD": 9.6,
+        "populationMillion": 5.2,
+        "oldAgeDependencyRatio": 17.9,
+        "assetMix": {
+          "financialShare": 58,
+          "nonFinancialShare": 52,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6,
+          "laborForceParticipation": 80.4,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.03,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.62,
+        "wealthPerAdultUSD": 146000,
+        "medianWealthUSD": 62000,
+        "gdpTrillionUSD": 0.19,
+        "gdpPerCapitaUSD": 35700,
+        "inflationRate": 2.1,
+        "debtToGdp": 73,
+        "gini": 0.71,
+        "realGdpGrowth": 2.9,
+        "policyRate": 4,
+        "bondYield10Y": 4,
+        "currentAccountPercentGdp": 9.9,
+        "fiscalBalancePercentGdp": 2.9,
+        "fxReservesBillionUSD": 15.4,
+        "populationMillion": 5.3,
+        "oldAgeDependencyRatio": 19.9,
+        "assetMix": {
+          "financialShare": 60,
+          "nonFinancialShare": 51,
+          "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 4,
+          "underemploymentRate": 6.3,
+          "laborForceParticipation": 80.3,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.01,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.85,
+        "wealthPerAdultUSD": 198000,
+        "medianWealthUSD": 85000,
+        "gdpTrillionUSD": 0.16,
+        "gdpPerCapitaUSD": 30800,
+        "inflationRate": 2.9,
+        "debtToGdp": 52,
+        "gini": 0.71,
+        "realGdpGrowth": 3.3,
+        "policyRate": 3.8,
+        "bondYield10Y": 3.8,
+        "currentAccountPercentGdp": 10.2,
+        "fiscalBalancePercentGdp": 4.6,
+        "fxReservesBillionUSD": 23,
+        "populationMillion": 5.2,
+        "oldAgeDependencyRatio": 21.9,
+        "assetMix": {
+          "financialShare": 62,
+          "nonFinancialShare": 49,
+          "debtShareOfGross": 11
+        },
+        "labor": {
+          "unemploymentRate": 3.1,
+          "underemploymentRate": 5.1,
+          "laborForceParticipation": 80.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.12,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 2.2
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.1,
+        "wealthPerAdultUSD": 253000,
+        "medianWealthUSD": 110000,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 44450,
+        "inflationRate": 2.6,
+        "debtToGdp": 47.3,
+        "gini": 0.72,
+        "realGdpGrowth": 3,
+        "policyRate": 2.2,
+        "bondYield10Y": 2.6,
+        "currentAccountPercentGdp": 10.4,
+        "fiscalBalancePercentGdp": 4.2,
+        "fxReservesBillionUSD": 43.2,
+        "populationMillion": 5.4,
+        "oldAgeDependencyRatio": 23.9,
+        "assetMix": {
+          "financialShare": 63,
+          "nonFinancialShare": 48.5,
+          "debtShareOfGross": 11.5
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 5.5,
+          "laborForceParticipation": 80.5,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.08,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 1.35,
+        "wealthPerAdultUSD": 308000,
+        "medianWealthUSD": 135000,
+        "gdpTrillionUSD": 0.32,
+        "gdpPerCapitaUSD": 58100,
+        "inflationRate": 2.3,
+        "debtToGdp": 42.5,
+        "gini": 0.72,
+        "realGdpGrowth": 2.5,
+        "policyRate": 0,
+        "bondYield10Y": 1.6,
+        "currentAccountPercentGdp": 9.8,
+        "fiscalBalancePercentGdp": -0.4,
+        "fxReservesBillionUSD": 69.1,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 25.9,
+        "assetMix": {
+          "financialShare": 64,
+          "nonFinancialShare": 48,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 5.5,
+          "underemploymentRate": 8.3,
+          "laborForceParticipation": 79.9,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.83,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.57,
+        "wealthPerAdultUSD": 351500,
+        "medianWealthUSD": 155000,
+        "gdpTrillionUSD": 0.34,
+        "gdpPerCapitaUSD": 59600,
+        "inflationRate": 1.3,
+        "debtToGdp": 42.3,
+        "gini": 0.73,
+        "realGdpGrowth": 2.4,
+        "policyRate": 0,
+        "bondYield10Y": 1,
+        "currentAccountPercentGdp": 10.4,
+        "fiscalBalancePercentGdp": 3.8,
+        "fxReservesBillionUSD": 81.6,
+        "populationMillion": 5.7,
+        "oldAgeDependencyRatio": 28.2,
+        "assetMix": {
+          "financialShare": 64.5,
+          "nonFinancialShare": 47.5,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6,
+          "laborForceParticipation": 80.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.03,
+          "wageGrowthYoy": 3.2,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 1.78,
+        "wealthPerAdultUSD": 395000,
+        "medianWealthUSD": 175000,
+        "gdpTrillionUSD": 0.35,
+        "gdpPerCapitaUSD": 61100,
+        "inflationRate": 0.4,
+        "debtToGdp": 42,
+        "gini": 0.73,
+        "realGdpGrowth": -3.7,
+        "policyRate": 0,
+        "bondYield10Y": 0.05,
+        "currentAccountPercentGdp": 10.5,
+        "fiscalBalancePercentGdp": -3.8,
+        "fxReservesBillionUSD": 90.2,
+        "populationMillion": 5.7,
+        "oldAgeDependencyRatio": 30.5,
+        "assetMix": {
+          "financialShare": 65,
+          "nonFinancialShare": 47,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7.4,
+          "laborForceParticipation": 80.1,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.91,
+          "wageGrowthYoy": 2.7,
+          "productivityGrowthYoy": -0.2
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.89,
+        "wealthPerAdultUSD": 418000,
+        "medianWealthUSD": 185000,
+        "gdpTrillionUSD": 0.39,
+        "gdpPerCapitaUSD": 67200,
+        "inflationRate": 7.7,
+        "debtToGdp": 30,
+        "gini": 0.73,
+        "realGdpGrowth": 2.7,
+        "policyRate": 2.2,
+        "bondYield10Y": 2.1,
+        "currentAccountPercentGdp": 9.8,
+        "fiscalBalancePercentGdp": 2.8,
+        "fxReservesBillionUSD": 92.2,
+        "populationMillion": 5.8,
+        "oldAgeDependencyRatio": 31.5,
+        "assetMix": {
+          "financialShare": 65.5,
+          "nonFinancialShare": 46.5,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 2.6,
+          "underemploymentRate": 4.4,
+          "laborForceParticipation": 80.7,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.18,
+          "wageGrowthYoy": 6.8,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 2.02,
+        "wealthPerAdultUSD": 439000,
+        "medianWealthUSD": 193000,
+        "gdpTrillionUSD": 0.41,
+        "gdpPerCapitaUSD": 69800,
+        "inflationRate": 2.1,
+        "debtToGdp": 29.8,
+        "gini": 0.73,
+        "realGdpGrowth": 2.2,
+        "policyRate": 3.35,
+        "bondYield10Y": 2.55,
+        "currentAccountPercentGdp": 10.3,
+        "fiscalBalancePercentGdp": 2.2,
+        "fxReservesBillionUSD": 94.1,
+        "populationMillion": 5.9,
+        "oldAgeDependencyRatio": 32.5,
+        "assetMix": {
+          "financialShare": 65.8,
+          "nonFinancialShare": 46.2,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 3,
+          "underemploymentRate": 4.9,
+          "laborForceParticipation": 80.6,
+          "sahmIndicatorValue": 0.17,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.13,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 1.8
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 2.07,
+        "wealthPerAdultUSD": 446000,
+        "medianWealthUSD": 195500,
+        "gdpTrillionUSD": 0.415,
+        "gdpPerCapitaUSD": 70500,
+        "inflationRate": 2,
+        "debtToGdp": 29.6,
+        "gini": 0.73,
+        "realGdpGrowth": 2.1,
+        "policyRate": 2.85,
+        "bondYield10Y": 2.45,
+        "currentAccountPercentGdp": 10.2,
+        "fiscalBalancePercentGdp": 2.3,
+        "fxReservesBillionUSD": 95,
+        "populationMillion": 5.9,
+        "oldAgeDependencyRatio": 32.9,
+        "assetMix": {
+          "financialShare": 65.9,
+          "nonFinancialShare": 46.1,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.9,
+          "laborForceParticipation": 80.6,
+          "sahmIndicatorValue": 0.14,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.13,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 1.8
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 2.12,
+        "wealthPerAdultUSD": 452000,
+        "medianWealthUSD": 198000,
+        "gdpTrillionUSD": 0.42,
+        "gdpPerCapitaUSD": 71200,
+        "inflationRate": 1.9,
+        "debtToGdp": 29.5,
+        "gini": 0.73,
+        "realGdpGrowth": 2.1,
+        "policyRate": 2.6,
+        "bondYield10Y": 2.4,
+        "currentAccountPercentGdp": 10.2,
+        "fiscalBalancePercentGdp": 2.4,
+        "fxReservesBillionUSD": 96,
+        "populationMillion": 5.9,
+        "oldAgeDependencyRatio": 33.2,
+        "assetMix": {
+          "financialShare": 66,
+          "nonFinancialShare": 46,
+          "debtShareOfGross": 12
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.8,
+          "laborForceParticipation": 80.6,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.14,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 1.8
+        }
+      }
+    }
+  },
+  {
+    "code": "ISR",
+    "name": "Israel",
+    "region": "Middle East",
+    "blocs": [
+      "oecd"
+    ],
+    "flag": "🇮🇱",
+    "coordinates": [
+      34.85,
+      31.04
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.05,
+        "wealthPerAdultUSD": 24500,
+        "medianWealthUSD": 7800,
+        "gdpTrillionUSD": 0.024,
+        "gdpPerCapitaUSD": 6200,
+        "inflationRate": 133,
+        "debtToGdp": 145,
+        "gini": 0.7,
+        "realGdpGrowth": 3.2,
+        "policyRate": 85,
+        "bondYield10Y": 75,
+        "currentAccountPercentGdp": 2.8,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 8.6,
+        "populationMillion": 3.9,
+        "oldAgeDependencyRatio": 9.5,
+        "assetMix": {
+          "financialShare": 42,
+          "nonFinancialShare": 64,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 63,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.84,
+          "wageGrowthYoy": 26.6,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.14,
+        "wealthPerAdultUSD": 48200,
+        "medianWealthUSD": 15400,
+        "gdpTrillionUSD": 0.059,
+        "gdpPerCapitaUSD": 12800,
+        "inflationRate": 17.2,
+        "debtToGdp": 110,
+        "gini": 0.72,
+        "realGdpGrowth": 3.1,
+        "policyRate": 12.04,
+        "bondYield10Y": 11.18,
+        "currentAccountPercentGdp": 3.1,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 21.6,
+        "populationMillion": 4.6,
+        "oldAgeDependencyRatio": 11.1,
+        "assetMix": {
+          "financialShare": 46,
+          "nonFinancialShare": 60,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 6.3,
+          "laborForceParticipation": 63.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 12.7,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.24,
+        "wealthPerAdultUSD": 72000,
+        "medianWealthUSD": 23500,
+        "gdpTrillionUSD": 0.1,
+        "gdpPerCapitaUSD": 18100,
+        "inflationRate": 10,
+        "debtToGdp": 98,
+        "gini": 0.73,
+        "realGdpGrowth": 3.6,
+        "policyRate": 5.65,
+        "bondYield10Y": 6.25,
+        "currentAccountPercentGdp": 3.3,
+        "fiscalBalancePercentGdp": -5.3,
+        "fxReservesBillionUSD": 34.6,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 12.4,
+        "assetMix": {
+          "financialShare": 48,
+          "nonFinancialShare": 58,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 6.6,
+          "laborForceParticipation": 63.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.93,
+          "wageGrowthYoy": 8.7,
+          "productivityGrowthYoy": 2.3
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.42,
+        "wealthPerAdultUSD": 114000,
+        "medianWealthUSD": 38000,
+        "gdpTrillionUSD": 0.13,
+        "gdpPerCapitaUSD": 21100,
+        "inflationRate": 1.1,
+        "debtToGdp": 83,
+        "gini": 0.74,
+        "realGdpGrowth": 4,
+        "policyRate": 5.45,
+        "bondYield10Y": 6.05,
+        "currentAccountPercentGdp": 3.6,
+        "fiscalBalancePercentGdp": -3.6,
+        "fxReservesBillionUSD": 51.8,
+        "populationMillion": 6.2,
+        "oldAgeDependencyRatio": 13.6,
+        "assetMix": {
+          "financialShare": 50,
+          "nonFinancialShare": 57,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 5.4,
+          "laborForceParticipation": 63.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.04,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 2.4
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.6,
+        "wealthPerAdultUSD": 139500,
+        "medianWealthUSD": 46000,
+        "gdpTrillionUSD": 0.18,
+        "gdpPerCapitaUSD": 25950,
+        "inflationRate": 1.9,
+        "debtToGdp": 76.5,
+        "gini": 0.74,
+        "realGdpGrowth": 3.7,
+        "policyRate": 3.85,
+        "bondYield10Y": 4.85,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 97.2,
+        "populationMillion": 6.9,
+        "oldAgeDependencyRatio": 14.8,
+        "assetMix": {
+          "financialShare": 50.5,
+          "nonFinancialShare": 56.8,
+          "debtShareOfGross": 7.3
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 5.8,
+          "laborForceParticipation": 63.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 2.3
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.78,
+        "wealthPerAdultUSD": 165000,
+        "medianWealthUSD": 54000,
+        "gdpTrillionUSD": 0.23,
+        "gdpPerCapitaUSD": 30800,
+        "inflationRate": 2.7,
+        "debtToGdp": 70,
+        "gini": 0.74,
+        "realGdpGrowth": 3.2,
+        "policyRate": 1.45,
+        "bondYield10Y": 3.85,
+        "currentAccountPercentGdp": 3.2,
+        "fiscalBalancePercentGdp": -8.6,
+        "fxReservesBillionUSD": 155.5,
+        "populationMillion": 7.5,
+        "oldAgeDependencyRatio": 16.1,
+        "assetMix": {
+          "financialShare": 51,
+          "nonFinancialShare": 56.5,
+          "debtShareOfGross": 7.5
+        },
+        "labor": {
+          "unemploymentRate": 5.8,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 62.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.75,
+          "wageGrowthYoy": 4.7,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.02,
+        "wealthPerAdultUSD": 196500,
+        "medianWealthUSD": 65000,
+        "gdpTrillionUSD": 0.32,
+        "gdpPerCapitaUSD": 37500,
+        "inflationRate": 1.1,
+        "debtToGdp": 70.5,
+        "gini": 0.75,
+        "realGdpGrowth": 3.1,
+        "policyRate": 1.65,
+        "bondYield10Y": 3.25,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -4.4,
+        "fxReservesBillionUSD": 183.6,
+        "populationMillion": 8.5,
+        "oldAgeDependencyRatio": 17.5,
+        "assetMix": {
+          "financialShare": 52,
+          "nonFinancialShare": 56,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 6.3,
+          "laborForceParticipation": 63.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 1.25,
+        "wealthPerAdultUSD": 228000,
+        "medianWealthUSD": 76000,
+        "gdpTrillionUSD": 0.41,
+        "gdpPerCapitaUSD": 44200,
+        "inflationRate": -0.6,
+        "debtToGdp": 71,
+        "gini": 0.75,
+        "realGdpGrowth": -3,
+        "policyRate": 1.05,
+        "bondYield10Y": 2.25,
+        "currentAccountPercentGdp": 3.9,
+        "fiscalBalancePercentGdp": -12,
+        "fxReservesBillionUSD": 203,
+        "populationMillion": 9.3,
+        "oldAgeDependencyRatio": 19,
+        "assetMix": {
+          "financialShare": 53,
+          "nonFinancialShare": 55.5,
+          "debtShareOfGross": 8.5
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 7.7,
+          "laborForceParticipation": 62.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.83,
+          "wageGrowthYoy": 2.9,
+          "productivityGrowthYoy": 0
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.42,
+        "wealthPerAdultUSD": 252000,
+        "medianWealthUSD": 84000,
+        "gdpTrillionUSD": 0.52,
+        "gdpPerCapitaUSD": 54600,
+        "inflationRate": 4.4,
+        "debtToGdp": 61,
+        "gini": 0.75,
+        "realGdpGrowth": 3.4,
+        "policyRate": 3.85,
+        "bondYield10Y": 4.35,
+        "currentAccountPercentGdp": 3.2,
+        "fiscalBalancePercentGdp": -5.4,
+        "fxReservesBillionUSD": 207.4,
+        "populationMillion": 9.5,
+        "oldAgeDependencyRatio": 19.6,
+        "assetMix": {
+          "financialShare": 53.5,
+          "nonFinancialShare": 55,
+          "debtShareOfGross": 8.5
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.7,
+          "laborForceParticipation": 63.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.1,
+          "wageGrowthYoy": 5.6,
+          "productivityGrowthYoy": 2.2
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.55,
+        "wealthPerAdultUSD": 266000,
+        "medianWealthUSD": 89000,
+        "gdpTrillionUSD": 0.51,
+        "gdpPerCapitaUSD": 53200,
+        "inflationRate": 3.3,
+        "debtToGdp": 67,
+        "gini": 0.75,
+        "realGdpGrowth": 2.9,
+        "policyRate": 5,
+        "bondYield10Y": 4.8,
+        "currentAccountPercentGdp": 3.7,
+        "fiscalBalancePercentGdp": -6,
+        "fxReservesBillionUSD": 211.7,
+        "populationMillion": 9.6,
+        "oldAgeDependencyRatio": 20.2,
+        "assetMix": {
+          "financialShare": 53.8,
+          "nonFinancialShare": 55.1,
+          "debtShareOfGross": 8.9
+        },
+        "labor": {
+          "unemploymentRate": 3.3,
+          "underemploymentRate": 5.2,
+          "laborForceParticipation": 63.4,
+          "sahmIndicatorValue": 0.19,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.05,
+          "wageGrowthYoy": 5,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.6,
+        "wealthPerAdultUSD": 271000,
+        "medianWealthUSD": 90500,
+        "gdpTrillionUSD": 0.52,
+        "gdpPerCapitaUSD": 53900,
+        "inflationRate": 3.2,
+        "debtToGdp": 67.8,
+        "gini": 0.75,
+        "realGdpGrowth": 2.8,
+        "policyRate": 4.5,
+        "bondYield10Y": 4.7,
+        "currentAccountPercentGdp": 3.6,
+        "fiscalBalancePercentGdp": -5.9,
+        "fxReservesBillionUSD": 213.8,
+        "populationMillion": 9.6,
+        "oldAgeDependencyRatio": 20.4,
+        "assetMix": {
+          "financialShare": 53.9,
+          "nonFinancialShare": 55,
+          "debtShareOfGross": 8.9
+        },
+        "labor": {
+          "unemploymentRate": 3.3,
+          "underemploymentRate": 5.2,
+          "laborForceParticipation": 63.4,
+          "sahmIndicatorValue": 0.16,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.05,
+          "wageGrowthYoy": 5,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.65,
+        "wealthPerAdultUSD": 275000,
+        "medianWealthUSD": 92000,
+        "gdpTrillionUSD": 0.53,
+        "gdpPerCapitaUSD": 54600,
+        "inflationRate": 3.1,
+        "debtToGdp": 68.5,
+        "gini": 0.75,
+        "realGdpGrowth": 2.8,
+        "policyRate": 4.25,
+        "bondYield10Y": 4.65,
+        "currentAccountPercentGdp": 3.6,
+        "fiscalBalancePercentGdp": -5.8,
+        "fxReservesBillionUSD": 216,
+        "populationMillion": 9.7,
+        "oldAgeDependencyRatio": 20.6,
+        "assetMix": {
+          "financialShare": 54,
+          "nonFinancialShare": 55,
+          "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 3.2,
+          "underemploymentRate": 5.1,
+          "laborForceParticipation": 63.4,
+          "sahmIndicatorValue": 0.14,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.06,
+          "wageGrowthYoy": 4.9,
+          "productivityGrowthYoy": 2
+        }
+      }
+    }
+  },
+  {
+    "code": "VNM",
+    "name": "Vietnam",
+    "region": "Asia",
+    "blocs": [
+      "asean"
+    ],
+    "flag": "🇻🇳",
+    "coordinates": [
+      108.27,
+      14.05
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.015,
+        "wealthPerAdultUSD": 520,
+        "medianWealthUSD": 160,
+        "gdpTrillionUSD": 0.027,
+        "gdpPerCapitaUSD": 490,
+        "inflationRate": 25,
+        "debtToGdp": 80,
+        "gini": 0.68,
+        "realGdpGrowth": 6.6,
+        "policyRate": 21.25,
+        "bondYield10Y": 18.75,
+        "currentAccountPercentGdp": 3,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 3.8,
+        "populationMillion": 55.1,
+        "oldAgeDependencyRatio": 6.5,
+        "assetMix": {
+          "financialShare": 12,
+          "nonFinancialShare": 90,
+          "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 4,
+          "underemploymentRate": 7,
+          "laborForceParticipation": 74.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.93,
+          "wageGrowthYoy": 19.2,
+          "productivityGrowthYoy": 5.2
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.035,
+        "wealthPerAdultUSD": 1050,
+        "medianWealthUSD": 340,
+        "gdpTrillionUSD": 0.008,
+        "gdpPerCapitaUSD": 120,
+        "inflationRate": 67.4,
+        "debtToGdp": 90,
+        "gini": 0.7,
+        "realGdpGrowth": 6.5,
+        "policyRate": 47.18,
+        "bondYield10Y": 43.81,
+        "currentAccountPercentGdp": 3.3,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 9.4,
+        "populationMillion": 66.7,
+        "oldAgeDependencyRatio": 7.7,
+        "assetMix": {
+          "financialShare": 14,
+          "nonFinancialShare": 88,
+          "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 3.1,
+          "underemploymentRate": 5.8,
+          "laborForceParticipation": 74.6,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 1.04,
+          "wageGrowthYoy": 28.8,
+          "productivityGrowthYoy": 5.2
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.075,
+        "wealthPerAdultUSD": 1950,
+        "medianWealthUSD": 620,
+        "gdpTrillionUSD": 0.021,
+        "gdpPerCapitaUSD": 280,
+        "inflationRate": 12.7,
+        "debtToGdp": 72,
+        "gini": 0.71,
+        "realGdpGrowth": 7,
+        "policyRate": 5.9,
+        "bondYield10Y": 4.5,
+        "currentAccountPercentGdp": 3.5,
+        "fiscalBalancePercentGdp": -1.7,
+        "fxReservesBillionUSD": 15,
+        "populationMillion": 75,
+        "oldAgeDependencyRatio": 8.5,
+        "assetMix": {
+          "financialShare": 16,
+          "nonFinancialShare": 86,
+          "debtShareOfGross": 2
+        },
+        "labor": {
+          "unemploymentRate": 3.3,
+          "underemploymentRate": 6.1,
+          "laborForceParticipation": 74.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.02,
+          "wageGrowthYoy": 12.4,
+          "productivityGrowthYoy": 5.4
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.15,
+        "wealthPerAdultUSD": 3450,
+        "medianWealthUSD": 1150,
+        "gdpTrillionUSD": 0.031,
+        "gdpPerCapitaUSD": 390,
+        "inflationRate": -1.7,
+        "debtToGdp": 41.5,
+        "gini": 0.72,
+        "realGdpGrowth": 7.4,
+        "policyRate": 5.7,
+        "bondYield10Y": 4.3,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": 0,
+        "fxReservesBillionUSD": 22.6,
+        "populationMillion": 79.5,
+        "oldAgeDependencyRatio": 9.4,
+        "assetMix": {
+          "financialShare": 18,
+          "nonFinancialShare": 84,
+          "debtShareOfGross": 2.5
+        },
+        "labor": {
+          "unemploymentRate": 2.4,
+          "underemploymentRate": 4.9,
+          "laborForceParticipation": 74.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.13,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 5.5
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.29,
+        "wealthPerAdultUSD": 5525,
+        "medianWealthUSD": 1835,
+        "gdpTrillionUSD": 0.09,
+        "gdpPerCapitaUSD": 1035,
+        "inflationRate": 3.7,
+        "debtToGdp": 43.3,
+        "gini": 0.73,
+        "realGdpGrowth": 7.1,
+        "policyRate": 4.1,
+        "bondYield10Y": 3.1,
+        "currentAccountPercentGdp": 4,
+        "fiscalBalancePercentGdp": -0.4,
+        "fxReservesBillionUSD": 42.3,
+        "populationMillion": 87,
+        "oldAgeDependencyRatio": 10.2,
+        "assetMix": {
+          "financialShare": 19,
+          "nonFinancialShare": 83.3,
+          "debtShareOfGross": 2.8
+        },
+        "labor": {
+          "unemploymentRate": 2.7,
+          "underemploymentRate": 5.3,
+          "laborForceParticipation": 74.7,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.09,
+          "wageGrowthYoy": 7.5,
+          "productivityGrowthYoy": 5.4
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.42,
+        "wealthPerAdultUSD": 7600,
+        "medianWealthUSD": 2520,
+        "gdpTrillionUSD": 0.15,
+        "gdpPerCapitaUSD": 1680,
+        "inflationRate": 9.2,
+        "debtToGdp": 45,
+        "gini": 0.74,
+        "realGdpGrowth": 6.6,
+        "policyRate": 1.7,
+        "bondYield10Y": 2.1,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 67.7,
+        "populationMillion": 89.3,
+        "oldAgeDependencyRatio": 11.1,
+        "assetMix": {
+          "financialShare": 20,
+          "nonFinancialShare": 82.5,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 8.1,
+          "laborForceParticipation": 74.1,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.84,
+          "wageGrowthYoy": 10.5,
+          "productivityGrowthYoy": 5.2
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.69,
+        "wealthPerAdultUSD": 11200,
+        "medianWealthUSD": 3735,
+        "gdpTrillionUSD": 0.25,
+        "gdpPerCapitaUSD": 2615,
+        "inflationRate": 6.2,
+        "debtToGdp": 43.3,
+        "gini": 0.75,
+        "realGdpGrowth": 6.5,
+        "policyRate": 1.9,
+        "bondYield10Y": 1.5,
+        "currentAccountPercentGdp": 4,
+        "fiscalBalancePercentGdp": -0.8,
+        "fxReservesBillionUSD": 79.9,
+        "populationMillion": 95.6,
+        "oldAgeDependencyRatio": 12.1,
+        "assetMix": {
+          "financialShare": 21.3,
+          "nonFinancialShare": 81.8,
+          "debtShareOfGross": 3.3
+        },
+        "labor": {
+          "unemploymentRate": 3.1,
+          "underemploymentRate": 5.8,
+          "laborForceParticipation": 74.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.04,
+          "wageGrowthYoy": 8.8,
+          "productivityGrowthYoy": 5.2
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 0.95,
+        "wealthPerAdultUSD": 14800,
+        "medianWealthUSD": 4950,
+        "gdpTrillionUSD": 0.35,
+        "gdpPerCapitaUSD": 3550,
+        "inflationRate": 3.2,
+        "debtToGdp": 41.5,
+        "gini": 0.76,
+        "realGdpGrowth": 0.4,
+        "policyRate": 1.3,
+        "bondYield10Y": 0.5,
+        "currentAccountPercentGdp": 4.1,
+        "fiscalBalancePercentGdp": -8.4,
+        "fxReservesBillionUSD": 88.4,
+        "populationMillion": 98.6,
+        "oldAgeDependencyRatio": 13.1,
+        "assetMix": {
+          "financialShare": 22.5,
+          "nonFinancialShare": 81,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 7.2,
+          "laborForceParticipation": 74.3,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.92,
+          "wageGrowthYoy": 7.2,
+          "productivityGrowthYoy": 3.1
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.15,
+        "wealthPerAdultUSD": 17200,
+        "medianWealthUSD": 5750,
+        "gdpTrillionUSD": 0.41,
+        "gdpPerCapitaUSD": 4160,
+        "inflationRate": 3.2,
+        "debtToGdp": 38,
+        "gini": 0.76,
+        "realGdpGrowth": 6.8,
+        "policyRate": 4.1,
+        "bondYield10Y": 2.6,
+        "currentAccountPercentGdp": 3.4,
+        "fiscalBalancePercentGdp": -1.8,
+        "fxReservesBillionUSD": 90.2,
+        "populationMillion": 98.6,
+        "oldAgeDependencyRatio": 13.5,
+        "assetMix": {
+          "financialShare": 23,
+          "nonFinancialShare": 80.5,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 1.9,
+          "underemploymentRate": 4.2,
+          "laborForceParticipation": 74.9,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.19,
+          "wageGrowthYoy": 7.2,
+          "productivityGrowthYoy": 5.3
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.32,
+        "wealthPerAdultUSD": 19400,
+        "medianWealthUSD": 6450,
+        "gdpTrillionUSD": 0.46,
+        "gdpPerCapitaUSD": 4620,
+        "inflationRate": 3.7,
+        "debtToGdp": 37.2,
+        "gini": 0.77,
+        "realGdpGrowth": 6.3,
+        "policyRate": 5.25,
+        "bondYield10Y": 3.05,
+        "currentAccountPercentGdp": 3.9,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 92.1,
+        "populationMillion": 99.6,
+        "oldAgeDependencyRatio": 13.9,
+        "assetMix": {
+          "financialShare": 23.8,
+          "nonFinancialShare": 80.2,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.3,
+          "underemploymentRate": 4.7,
+          "laborForceParticipation": 74.8,
+          "sahmIndicatorValue": 0.11,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.14,
+          "wageGrowthYoy": 7.5,
+          "productivityGrowthYoy": 5.1
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.37,
+        "wealthPerAdultUSD": 20000,
+        "medianWealthUSD": 6620,
+        "gdpTrillionUSD": 0.475,
+        "gdpPerCapitaUSD": 4740,
+        "inflationRate": 3.8,
+        "debtToGdp": 37.1,
+        "gini": 0.77,
+        "realGdpGrowth": 6.2,
+        "policyRate": 4.75,
+        "bondYield10Y": 2.95,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -2.3,
+        "fxReservesBillionUSD": 93.1,
+        "populationMillion": 100.2,
+        "oldAgeDependencyRatio": 14.1,
+        "assetMix": {
+          "financialShare": 23.9,
+          "nonFinancialShare": 80.1,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.3,
+          "underemploymentRate": 4.7,
+          "laborForceParticipation": 74.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.14,
+          "wageGrowthYoy": 7.5,
+          "productivityGrowthYoy": 5.1
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.42,
+        "wealthPerAdultUSD": 20500,
+        "medianWealthUSD": 6800,
+        "gdpTrillionUSD": 0.49,
+        "gdpPerCapitaUSD": 4850,
+        "inflationRate": 3.8,
+        "debtToGdp": 37,
+        "gini": 0.77,
+        "realGdpGrowth": 6.2,
+        "policyRate": 4.5,
+        "bondYield10Y": 2.9,
+        "currentAccountPercentGdp": 3.8,
+        "fiscalBalancePercentGdp": -2.2,
+        "fxReservesBillionUSD": 94,
+        "populationMillion": 101,
+        "oldAgeDependencyRatio": 14.2,
+        "assetMix": {
+          "financialShare": 24,
+          "nonFinancialShare": 80,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 2.2,
+          "underemploymentRate": 4.6,
+          "laborForceParticipation": 74.8,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.15,
+          "wageGrowthYoy": 7.5,
+          "productivityGrowthYoy": 5.1
+        }
+      }
+    }
+  },
+  {
+    "code": "MYS",
+    "name": "Malaysia",
+    "region": "Asia",
+    "blocs": [
+      "asean"
+    ],
+    "flag": "🇲🇾",
+    "coordinates": [
+      101.97,
+      4.21
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.04,
+        "wealthPerAdultUSD": 5400,
+        "medianWealthUSD": 1650,
+        "gdpTrillionUSD": 0.025,
+        "gdpPerCapitaUSD": 1800,
+        "inflationRate": 6.7,
+        "debtToGdp": 44,
+        "gini": 0.72,
+        "realGdpGrowth": 5,
+        "policyRate": 5.7,
+        "bondYield10Y": 5.3,
+        "currentAccountPercentGdp": 1.6,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 4.7,
+        "populationMillion": 13.9,
+        "oldAgeDependencyRatio": 5.6,
+        "assetMix": {
+          "financialShare": 30,
+          "nonFinancialShare": 74,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 5.1,
+          "underemploymentRate": 7.8,
+          "laborForceParticipation": 69.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.72,
+          "wageGrowthYoy": 6.8,
+          "productivityGrowthYoy": 3.3
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.11,
+        "wealthPerAdultUSD": 11200,
+        "medianWealthUSD": 3450,
+        "gdpTrillionUSD": 0.044,
+        "gdpPerCapitaUSD": 2450,
+        "inflationRate": 2.6,
+        "debtToGdp": 75,
+        "gini": 0.74,
+        "realGdpGrowth": 4.9,
+        "policyRate": 4,
+        "bondYield10Y": 4.8,
+        "currentAccountPercentGdp": 1.9,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 11.8,
+        "populationMillion": 18,
+        "oldAgeDependencyRatio": 6.6,
+        "assetMix": {
+          "financialShare": 34,
+          "nonFinancialShare": 71,
+          "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 6.6,
+          "laborForceParticipation": 70,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.83,
+          "wageGrowthYoy": 4.6,
+          "productivityGrowthYoy": 3.3
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.22,
+        "wealthPerAdultUSD": 19800,
+        "medianWealthUSD": 6100,
+        "gdpTrillionUSD": 0.089,
+        "gdpPerCapitaUSD": 4350,
+        "inflationRate": 3.4,
+        "debtToGdp": 41,
+        "gini": 0.75,
+        "realGdpGrowth": 5.4,
+        "policyRate": 4.4,
+        "bondYield10Y": 5.4,
+        "currentAccountPercentGdp": 2.1,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 18.9,
+        "populationMillion": 20.5,
+        "oldAgeDependencyRatio": 7.3,
+        "assetMix": {
+          "financialShare": 37,
+          "nonFinancialShare": 68,
+          "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 4.4,
+          "underemploymentRate": 6.9,
+          "laborForceParticipation": 69.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.81,
+          "wageGrowthYoy": 5,
+          "productivityGrowthYoy": 3.5
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.26,
+        "wealthPerAdultUSD": 20500,
+        "medianWealthUSD": 6400,
+        "gdpTrillionUSD": 0.094,
+        "gdpPerCapitaUSD": 4050,
+        "inflationRate": 1.5,
+        "debtToGdp": 33,
+        "gini": 0.76,
+        "realGdpGrowth": 5.8,
+        "policyRate": 4.2,
+        "bondYield10Y": 5.2,
+        "currentAccountPercentGdp": 2.4,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 28.3,
+        "populationMillion": 23.2,
+        "oldAgeDependencyRatio": 8.1,
+        "assetMix": {
+          "financialShare": 38,
+          "nonFinancialShare": 67,
+          "debtShareOfGross": 5
+        },
+        "labor": {
+          "unemploymentRate": 3.5,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 70.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.92,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 3.6
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.39,
+        "wealthPerAdultUSD": 25650,
+        "medianWealthUSD": 7900,
+        "gdpTrillionUSD": 0.18,
+        "gdpPerCapitaUSD": 6550,
+        "inflationRate": 1.6,
+        "debtToGdp": 42.3,
+        "gini": 0.77,
+        "realGdpGrowth": 5.5,
+        "policyRate": 2.6,
+        "bondYield10Y": 4,
+        "currentAccountPercentGdp": 2.6,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 53.1,
+        "populationMillion": 27.5,
+        "oldAgeDependencyRatio": 8.8,
+        "assetMix": {
+          "financialShare": 39,
+          "nonFinancialShare": 66.5,
+          "debtShareOfGross": 5.5
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 6.1,
+          "laborForceParticipation": 70.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.88,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 3.5
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.52,
+        "wealthPerAdultUSD": 30800,
+        "medianWealthUSD": 9400,
+        "gdpTrillionUSD": 0.26,
+        "gdpPerCapitaUSD": 9050,
+        "inflationRate": 1.6,
+        "debtToGdp": 51.5,
+        "gini": 0.78,
+        "realGdpGrowth": 5,
+        "policyRate": 0.2,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": 2,
+        "fiscalBalancePercentGdp": -6.6,
+        "fxReservesBillionUSD": 85,
+        "populationMillion": 28.7,
+        "oldAgeDependencyRatio": 9.5,
+        "assetMix": {
+          "financialShare": 40,
+          "nonFinancialShare": 66,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 5.9,
+          "underemploymentRate": 8.9,
+          "laborForceParticipation": 69.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.63,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 3.3
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.64,
+        "wealthPerAdultUSD": 33300,
+        "medianWealthUSD": 10100,
+        "gdpTrillionUSD": 0.3,
+        "gdpPerCapitaUSD": 9750,
+        "inflationRate": 0.3,
+        "debtToGdp": 59.7,
+        "gini": 0.79,
+        "realGdpGrowth": 4.9,
+        "policyRate": 0.4,
+        "bondYield10Y": 2.4,
+        "currentAccountPercentGdp": 2.6,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 100.3,
+        "populationMillion": 30.8,
+        "oldAgeDependencyRatio": 10.4,
+        "assetMix": {
+          "financialShare": 40.5,
+          "nonFinancialShare": 65.8,
+          "debtShareOfGross": 6.3
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 6.6,
+          "laborForceParticipation": 70,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.83,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": 3.3
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 0.76,
+        "wealthPerAdultUSD": 35800,
+        "medianWealthUSD": 10800,
+        "gdpTrillionUSD": 0.34,
+        "gdpPerCapitaUSD": 10450,
+        "inflationRate": -1.1,
+        "debtToGdp": 67.8,
+        "gini": 0.79,
+        "realGdpGrowth": -1.2,
+        "policyRate": 0,
+        "bondYield10Y": 1.4,
+        "currentAccountPercentGdp": 2.7,
+        "fiscalBalancePercentGdp": -10,
+        "fxReservesBillionUSD": 110.9,
+        "populationMillion": 32.5,
+        "oldAgeDependencyRatio": 11.2,
+        "assetMix": {
+          "financialShare": 41,
+          "nonFinancialShare": 65.5,
+          "debtShareOfGross": 6.5
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 69.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.71,
+          "wageGrowthYoy": 2.5,
+          "productivityGrowthYoy": 1.2
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 0.84,
+        "wealthPerAdultUSD": 38200,
+        "medianWealthUSD": 11400,
+        "gdpTrillionUSD": 0.41,
+        "gdpPerCapitaUSD": 12300,
+        "inflationRate": 3.4,
+        "debtToGdp": 66,
+        "gini": 0.79,
+        "realGdpGrowth": 5.2,
+        "policyRate": 2.6,
+        "bondYield10Y": 3.5,
+        "currentAccountPercentGdp": 2,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 113.3,
+        "populationMillion": 33.3,
+        "oldAgeDependencyRatio": 11.6,
+        "assetMix": {
+          "financialShare": 41.5,
+          "nonFinancialShare": 65.2,
+          "debtShareOfGross": 6.8
+        },
+        "labor": {
+          "unemploymentRate": 3,
+          "underemploymentRate": 5,
+          "laborForceParticipation": 70.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.98,
+          "wageGrowthYoy": 5,
+          "productivityGrowthYoy": 3.4
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 0.92,
+        "wealthPerAdultUSD": 40400,
+        "medianWealthUSD": 12000,
+        "gdpTrillionUSD": 0.44,
+        "gdpPerCapitaUSD": 13100,
+        "inflationRate": 2.1,
+        "debtToGdp": 64.8,
+        "gini": 0.79,
+        "realGdpGrowth": 4.7,
+        "policyRate": 3.75,
+        "bondYield10Y": 3.95,
+        "currentAccountPercentGdp": 2.5,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 115.6,
+        "populationMillion": 33.6,
+        "oldAgeDependencyRatio": 12,
+        "assetMix": {
+          "financialShare": 41.8,
+          "nonFinancialShare": 65.1,
+          "debtShareOfGross": 6.9
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 5.5,
+          "laborForceParticipation": 70.2,
+          "sahmIndicatorValue": 0.13,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.93,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 3.2
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 0.95,
+        "wealthPerAdultUSD": 41100,
+        "medianWealthUSD": 12200,
+        "gdpTrillionUSD": 0.45,
+        "gdpPerCapitaUSD": 13350,
+        "inflationRate": 2.2,
+        "debtToGdp": 64.6,
+        "gini": 0.79,
+        "realGdpGrowth": 4.6,
+        "policyRate": 3.25,
+        "bondYield10Y": 3.85,
+        "currentAccountPercentGdp": 2.4,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 116.8,
+        "populationMillion": 33.7,
+        "oldAgeDependencyRatio": 12.1,
+        "assetMix": {
+          "financialShare": 41.9,
+          "nonFinancialShare": 65,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.4,
+          "underemploymentRate": 5.5,
+          "laborForceParticipation": 70.2,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.93,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 3.2
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 0.98,
+        "wealthPerAdultUSD": 41800,
+        "medianWealthUSD": 12400,
+        "gdpTrillionUSD": 0.46,
+        "gdpPerCapitaUSD": 13600,
+        "inflationRate": 2.2,
+        "debtToGdp": 64.5,
+        "gini": 0.79,
+        "realGdpGrowth": 4.6,
+        "policyRate": 3,
+        "bondYield10Y": 3.8,
+        "currentAccountPercentGdp": 2.4,
+        "fiscalBalancePercentGdp": -3.8,
+        "fxReservesBillionUSD": 118,
+        "populationMillion": 33.8,
+        "oldAgeDependencyRatio": 12.2,
+        "assetMix": {
+          "financialShare": 42,
+          "nonFinancialShare": 65,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3.3,
+          "underemploymentRate": 5.4,
+          "laborForceParticipation": 70.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.94,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 3.2
+        }
+      }
+    }
+  },
+  {
+    "code": "PHL",
+    "name": "Philippines",
+    "region": "Asia",
+    "blocs": [
+      "asean"
+    ],
+    "flag": "🇵🇭",
+    "coordinates": [
+      121.77,
+      12.87
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.05,
+        "wealthPerAdultUSD": 2150,
+        "medianWealthUSD": 620,
+        "gdpTrillionUSD": 0.036,
+        "gdpPerCapitaUSD": 740,
+        "inflationRate": 18.2,
+        "debtToGdp": 49,
+        "gini": 0.78,
+        "realGdpGrowth": 6.2,
+        "policyRate": 15.47,
+        "bondYield10Y": 13.65,
+        "currentAccountPercentGdp": -3,
+        "fiscalBalancePercentGdp": -3.2,
+        "fxReservesBillionUSD": 4.3,
+        "populationMillion": 48.6,
+        "oldAgeDependencyRatio": 4.1,
+        "assetMix": {
+          "financialShare": 20,
+          "nonFinancialShare": 83,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.9,
+          "underemploymentRate": 14.2,
+          "laborForceParticipation": 64.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.54,
+          "wageGrowthYoy": 14.2,
+          "productivityGrowthYoy": 4.2
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.12,
+        "wealthPerAdultUSD": 3850,
+        "medianWealthUSD": 1100,
+        "gdpTrillionUSD": 0.044,
+        "gdpPerCapitaUSD": 720,
+        "inflationRate": 14.1,
+        "debtToGdp": 68,
+        "gini": 0.8,
+        "realGdpGrowth": 6.1,
+        "policyRate": 9.87,
+        "bondYield10Y": 9.17,
+        "currentAccountPercentGdp": -2.7,
+        "fiscalBalancePercentGdp": -3.6,
+        "fxReservesBillionUSD": 10.8,
+        "populationMillion": 61.1,
+        "oldAgeDependencyRatio": 4.9,
+        "assetMix": {
+          "financialShare": 22,
+          "nonFinancialShare": 81,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 13,
+          "laborForceParticipation": 64.4,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.65,
+          "wageGrowthYoy": 12,
+          "productivityGrowthYoy": 4.2
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.22,
+        "wealthPerAdultUSD": 5950,
+        "medianWealthUSD": 1680,
+        "gdpTrillionUSD": 0.074,
+        "gdpPerCapitaUSD": 1060,
+        "inflationRate": 8.1,
+        "debtToGdp": 59,
+        "gini": 0.81,
+        "realGdpGrowth": 6.6,
+        "policyRate": 6.9,
+        "bondYield10Y": 7.7,
+        "currentAccountPercentGdp": -2.5,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 17.3,
+        "populationMillion": 69.8,
+        "oldAgeDependencyRatio": 5.4,
+        "assetMix": {
+          "financialShare": 23,
+          "nonFinancialShare": 80,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 5.2,
+          "underemploymentRate": 13.3,
+          "laborForceParticipation": 64.3,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.63,
+          "wageGrowthYoy": 8.7,
+          "productivityGrowthYoy": 4.4
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.28,
+        "wealthPerAdultUSD": 6850,
+        "medianWealthUSD": 1950,
+        "gdpTrillionUSD": 0.081,
+        "gdpPerCapitaUSD": 1040,
+        "inflationRate": 4.4,
+        "debtToGdp": 64.5,
+        "gini": 0.81,
+        "realGdpGrowth": 7,
+        "policyRate": 6.7,
+        "bondYield10Y": 7.5,
+        "currentAccountPercentGdp": -2.2,
+        "fiscalBalancePercentGdp": -2.2,
+        "fxReservesBillionUSD": 25.9,
+        "populationMillion": 77.9,
+        "oldAgeDependencyRatio": 5.9,
+        "assetMix": {
+          "financialShare": 24,
+          "nonFinancialShare": 79.5,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 4.3,
+          "underemploymentRate": 12.1,
+          "laborForceParticipation": 64.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.74,
+          "wageGrowthYoy": 6.6,
+          "productivityGrowthYoy": 4.5
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.4,
+        "wealthPerAdultUSD": 8325,
+        "medianWealthUSD": 2350,
+        "gdpTrillionUSD": 0.14,
+        "gdpPerCapitaUSD": 1585,
+        "inflationRate": 4.1,
+        "debtToGdp": 55.8,
+        "gini": 0.82,
+        "realGdpGrowth": 6.7,
+        "policyRate": 5.1,
+        "bondYield10Y": 6.3,
+        "currentAccountPercentGdp": -2,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 48.6,
+        "populationMillion": 88.3,
+        "oldAgeDependencyRatio": 6.5,
+        "assetMix": {
+          "financialShare": 24.5,
+          "nonFinancialShare": 79,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 12.5,
+          "laborForceParticipation": 64.5,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.7,
+          "wageGrowthYoy": 6.5,
+          "productivityGrowthYoy": 4.4
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.52,
+        "wealthPerAdultUSD": 9800,
+        "medianWealthUSD": 2750,
+        "gdpTrillionUSD": 0.2,
+        "gdpPerCapitaUSD": 2130,
+        "inflationRate": 3.8,
+        "debtToGdp": 47,
+        "gini": 0.82,
+        "realGdpGrowth": 6.2,
+        "policyRate": 2.7,
+        "bondYield10Y": 5.3,
+        "currentAccountPercentGdp": -2.6,
+        "fiscalBalancePercentGdp": -7.2,
+        "fxReservesBillionUSD": 77.8,
+        "populationMillion": 93.9,
+        "oldAgeDependencyRatio": 7,
+        "assetMix": {
+          "financialShare": 25,
+          "nonFinancialShare": 78.5,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 6.7,
+          "underemploymentRate": 15.3,
+          "laborForceParticipation": 64,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 6.3,
+          "productivityGrowthYoy": 4.2
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.69,
+        "wealthPerAdultUSD": 11500,
+        "medianWealthUSD": 3200,
+        "gdpTrillionUSD": 0.28,
+        "gdpPerCapitaUSD": 2715,
+        "inflationRate": 3.2,
+        "debtToGdp": 50.8,
+        "gini": 0.83,
+        "realGdpGrowth": 6.1,
+        "policyRate": 2.9,
+        "bondYield10Y": 4.7,
+        "currentAccountPercentGdp": -2,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 91.8,
+        "populationMillion": 103.1,
+        "oldAgeDependencyRatio": 7.7,
+        "assetMix": {
+          "financialShare": 25.3,
+          "nonFinancialShare": 78.4,
+          "debtShareOfGross": 3.7
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 13,
+          "laborForceParticipation": 64.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.65,
+          "wageGrowthYoy": 6,
+          "productivityGrowthYoy": 4.2
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 0.85,
+        "wealthPerAdultUSD": 13200,
+        "medianWealthUSD": 3650,
+        "gdpTrillionUSD": 0.36,
+        "gdpPerCapitaUSD": 3300,
+        "inflationRate": 2.6,
+        "debtToGdp": 54.6,
+        "gini": 0.83,
+        "realGdpGrowth": 0,
+        "policyRate": 2.3,
+        "bondYield10Y": 3.7,
+        "currentAccountPercentGdp": -1.9,
+        "fiscalBalancePercentGdp": -10.6,
+        "fxReservesBillionUSD": 101.5,
+        "populationMillion": 109.1,
+        "oldAgeDependencyRatio": 8.3,
+        "assetMix": {
+          "financialShare": 25.5,
+          "nonFinancialShare": 78.2,
+          "debtShareOfGross": 3.8
+        },
+        "labor": {
+          "unemploymentRate": 6,
+          "underemploymentRate": 14.4,
+          "laborForceParticipation": 64.1,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.53,
+          "wageGrowthYoy": 5.7,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 0.98,
+        "wealthPerAdultUSD": 14600,
+        "medianWealthUSD": 3950,
+        "gdpTrillionUSD": 0.4,
+        "gdpPerCapitaUSD": 3620,
+        "inflationRate": 5.8,
+        "debtToGdp": 60.9,
+        "gini": 0.83,
+        "realGdpGrowth": 6.4,
+        "policyRate": 5.1,
+        "bondYield10Y": 5.8,
+        "currentAccountPercentGdp": -2.6,
+        "fiscalBalancePercentGdp": -4,
+        "fxReservesBillionUSD": 103.7,
+        "populationMillion": 110.5,
+        "oldAgeDependencyRatio": 8.5,
+        "assetMix": {
+          "financialShare": 25.8,
+          "nonFinancialShare": 78.1,
+          "debtShareOfGross": 3.9
+        },
+        "labor": {
+          "unemploymentRate": 3.8,
+          "underemploymentRate": 11.4,
+          "laborForceParticipation": 64.7,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.8,
+          "wageGrowthYoy": 7.4,
+          "productivityGrowthYoy": 4.3
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.08,
+        "wealthPerAdultUSD": 15600,
+        "medianWealthUSD": 4100,
+        "gdpTrillionUSD": 0.45,
+        "gdpPerCapitaUSD": 3950,
+        "inflationRate": 3.5,
+        "debtToGdp": 60.6,
+        "gini": 0.83,
+        "realGdpGrowth": 5.9,
+        "policyRate": 6.25,
+        "bondYield10Y": 6.25,
+        "currentAccountPercentGdp": -2.1,
+        "fiscalBalancePercentGdp": -4.6,
+        "fxReservesBillionUSD": 105.8,
+        "populationMillion": 113.9,
+        "oldAgeDependencyRatio": 8.8,
+        "assetMix": {
+          "financialShare": 25.9,
+          "nonFinancialShare": 78.1,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 4.2,
+          "underemploymentRate": 11.9,
+          "laborForceParticipation": 64.6,
+          "sahmIndicatorValue": 0.15,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.75,
+          "wageGrowthYoy": 6.1,
+          "productivityGrowthYoy": 4.1
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.11,
+        "wealthPerAdultUSD": 15900,
+        "medianWealthUSD": 4150,
+        "gdpTrillionUSD": 0.465,
+        "gdpPerCapitaUSD": 4040,
+        "inflationRate": 3.6,
+        "debtToGdp": 60.5,
+        "gini": 0.83,
+        "realGdpGrowth": 5.8,
+        "policyRate": 5.75,
+        "bondYield10Y": 6.15,
+        "currentAccountPercentGdp": -2.2,
+        "fiscalBalancePercentGdp": -4.5,
+        "fxReservesBillionUSD": 106.9,
+        "populationMillion": 115.1,
+        "oldAgeDependencyRatio": 8.9,
+        "assetMix": {
+          "financialShare": 26,
+          "nonFinancialShare": 78,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 11.9,
+          "laborForceParticipation": 64.6,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.75,
+          "wageGrowthYoy": 6.2,
+          "productivityGrowthYoy": 4.1
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.15,
+        "wealthPerAdultUSD": 16200,
+        "medianWealthUSD": 4200,
+        "gdpTrillionUSD": 0.48,
+        "gdpPerCapitaUSD": 4120,
+        "inflationRate": 3.6,
+        "debtToGdp": 60.5,
+        "gini": 0.83,
+        "realGdpGrowth": 5.8,
+        "policyRate": 5.5,
+        "bondYield10Y": 6.1,
+        "currentAccountPercentGdp": -2.2,
+        "fiscalBalancePercentGdp": -4.4,
+        "fxReservesBillionUSD": 108,
+        "populationMillion": 116.5,
+        "oldAgeDependencyRatio": 9,
+        "assetMix": {
+          "financialShare": 26,
+          "nonFinancialShare": 78,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 4.1,
+          "underemploymentRate": 11.8,
+          "laborForceParticipation": 64.6,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.76,
+          "wageGrowthYoy": 6.2,
+          "productivityGrowthYoy": 4.1
+        }
+      }
+    }
+  },
+  {
+    "code": "NZL",
+    "name": "New Zealand",
+    "region": "Oceania",
+    "blocs": [
+      "oceania"
+    ],
+    "flag": "🇳🇿",
+    "coordinates": [
+      174.88,
+      -40.9
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.1,
+        "wealthPerAdultUSD": 48500,
+        "medianWealthUSD": 24200,
+        "gdpTrillionUSD": 0.022,
+        "gdpPerCapitaUSD": 7200,
+        "inflationRate": 17.1,
+        "debtToGdp": 42,
+        "gini": 0.65,
+        "realGdpGrowth": 1.9,
+        "policyRate": 14.54,
+        "bondYield10Y": 12.83,
+        "currentAccountPercentGdp": -6.2,
+        "fiscalBalancePercentGdp": -1.6,
+        "fxReservesBillionUSD": 1.5,
+        "populationMillion": 3.1,
+        "oldAgeDependencyRatio": 12.7,
+        "assetMix": {
+          "financialShare": 38,
+          "nonFinancialShare": 70,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 6.6,
+          "underemploymentRate": 10.3,
+          "laborForceParticipation": 70.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.46,
+          "wageGrowthYoy": 11.7,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.24,
+        "wealthPerAdultUSD": 104000,
+        "medianWealthUSD": 48500,
+        "gdpTrillionUSD": 0.046,
+        "gdpPerCapitaUSD": 13500,
+        "inflationRate": 6.1,
+        "debtToGdp": 54,
+        "gini": 0.67,
+        "realGdpGrowth": 1.8,
+        "policyRate": 5,
+        "bondYield10Y": 5.45,
+        "currentAccountPercentGdp": -5.9,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 2.2,
+        "populationMillion": 3.4,
+        "oldAgeDependencyRatio": 14.9,
+        "assetMix": {
+          "financialShare": 40,
+          "nonFinancialShare": 68,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 5.7,
+          "underemploymentRate": 9.1,
+          "laborForceParticipation": 71,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.57,
+          "wageGrowthYoy": 5.7,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.38,
+        "wealthPerAdultUSD": 154000,
+        "medianWealthUSD": 72000,
+        "gdpTrillionUSD": 0.062,
+        "gdpPerCapitaUSD": 17100,
+        "inflationRate": 3.8,
+        "debtToGdp": 45,
+        "gini": 0.68,
+        "realGdpGrowth": 2.3,
+        "policyRate": 5.4,
+        "bondYield10Y": 6.05,
+        "currentAccountPercentGdp": -5.7,
+        "fiscalBalancePercentGdp": -2.3,
+        "fxReservesBillionUSD": 3.4,
+        "populationMillion": 3.6,
+        "oldAgeDependencyRatio": 16.6,
+        "assetMix": {
+          "financialShare": 42,
+          "nonFinancialShare": 67,
+          "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 5.9,
+          "underemploymentRate": 9.4,
+          "laborForceParticipation": 70.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.55,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.52,
+        "wealthPerAdultUSD": 198000,
+        "medianWealthUSD": 94000,
+        "gdpTrillionUSD": 0.054,
+        "gdpPerCapitaUSD": 14100,
+        "inflationRate": 2.6,
+        "debtToGdp": 32,
+        "gini": 0.69,
+        "realGdpGrowth": 2.7,
+        "policyRate": 5.2,
+        "bondYield10Y": 5.85,
+        "currentAccountPercentGdp": -5.4,
+        "fiscalBalancePercentGdp": -0.6,
+        "fxReservesBillionUSD": 5.2,
+        "populationMillion": 3.8,
+        "oldAgeDependencyRatio": 18.2,
+        "assetMix": {
+          "financialShare": 43,
+          "nonFinancialShare": 66,
+          "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 5,
+          "underemploymentRate": 8.2,
+          "laborForceParticipation": 71.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.66,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 1.2
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.75,
+        "wealthPerAdultUSD": 255000,
+        "medianWealthUSD": 121000,
+        "gdpTrillionUSD": 0.1,
+        "gdpPerCapitaUSD": 23750,
+        "inflationRate": 2.5,
+        "debtToGdp": 31.3,
+        "gini": 0.7,
+        "realGdpGrowth": 2.4,
+        "policyRate": 3.6,
+        "bondYield10Y": 4.65,
+        "currentAccountPercentGdp": -5.2,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 9.7,
+        "populationMillion": 4.2,
+        "oldAgeDependencyRatio": 19.9,
+        "assetMix": {
+          "financialShare": 43.5,
+          "nonFinancialShare": 65.8,
+          "debtShareOfGross": 9.3
+        },
+        "labor": {
+          "unemploymentRate": 5.3,
+          "underemploymentRate": 8.6,
+          "laborForceParticipation": 71.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.62,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 1.1
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.98,
+        "wealthPerAdultUSD": 312000,
+        "medianWealthUSD": 148000,
+        "gdpTrillionUSD": 0.14,
+        "gdpPerCapitaUSD": 33400,
+        "inflationRate": 2.3,
+        "debtToGdp": 30.5,
+        "gini": 0.7,
+        "realGdpGrowth": 1.9,
+        "policyRate": 1.2,
+        "bondYield10Y": 3.65,
+        "currentAccountPercentGdp": -5.8,
+        "fiscalBalancePercentGdp": -5.6,
+        "fxReservesBillionUSD": 15.5,
+        "populationMillion": 4.2,
+        "oldAgeDependencyRatio": 21.5,
+        "assetMix": {
+          "financialShare": 44,
+          "nonFinancialShare": 65.5,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 7.4,
+          "underemploymentRate": 11.4,
+          "laborForceParticipation": 70.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.37,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.23,
+        "wealthPerAdultUSD": 368500,
+        "medianWealthUSD": 173000,
+        "gdpTrillionUSD": 0.18,
+        "gdpPerCapitaUSD": 37750,
+        "inflationRate": 2,
+        "debtToGdp": 36.8,
+        "gini": 0.7,
+        "realGdpGrowth": 1.8,
+        "policyRate": 1.4,
+        "bondYield10Y": 3.05,
+        "currentAccountPercentGdp": -5.2,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 18.3,
+        "populationMillion": 4.8,
+        "oldAgeDependencyRatio": 23.5,
+        "assetMix": {
+          "financialShare": 44.3,
+          "nonFinancialShare": 65.4,
+          "debtShareOfGross": 9.7
+        },
+        "labor": {
+          "unemploymentRate": 5.7,
+          "underemploymentRate": 9.1,
+          "laborForceParticipation": 71,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.57,
+          "wageGrowthYoy": 3.4,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 1.48,
+        "wealthPerAdultUSD": 425000,
+        "medianWealthUSD": 198000,
+        "gdpTrillionUSD": 0.21,
+        "gdpPerCapitaUSD": 42100,
+        "inflationRate": 1.7,
+        "debtToGdp": 43,
+        "gini": 0.7,
+        "realGdpGrowth": -4.3,
+        "policyRate": 0.8,
+        "bondYield10Y": 2.05,
+        "currentAccountPercentGdp": -5.1,
+        "fiscalBalancePercentGdp": -9,
+        "fxReservesBillionUSD": 20.2,
+        "populationMillion": 5,
+        "oldAgeDependencyRatio": 25.4,
+        "assetMix": {
+          "financialShare": 44.5,
+          "nonFinancialShare": 65.2,
+          "debtShareOfGross": 9.8
+        },
+        "labor": {
+          "unemploymentRate": 6.7,
+          "underemploymentRate": 10.5,
+          "laborForceParticipation": 70.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 3.3,
+          "productivityGrowthYoy": -1.2
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.65,
+        "wealthPerAdultUSD": 445000,
+        "medianWealthUSD": 204000,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 47200,
+        "inflationRate": 7.2,
+        "debtToGdp": 48,
+        "gini": 0.7,
+        "realGdpGrowth": 2.1,
+        "policyRate": 3.6,
+        "bondYield10Y": 4.15,
+        "currentAccountPercentGdp": -5.8,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 20.6,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 26.2,
+        "assetMix": {
+          "financialShare": 44.8,
+          "nonFinancialShare": 65.1,
+          "debtShareOfGross": 9.9
+        },
+        "labor": {
+          "unemploymentRate": 4.5,
+          "underemploymentRate": 7.5,
+          "laborForceParticipation": 71.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.72,
+          "wageGrowthYoy": 6.3,
+          "productivityGrowthYoy": 1
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.75,
+        "wealthPerAdultUSD": 458000,
+        "medianWealthUSD": 209000,
+        "gdpTrillionUSD": 0.25,
+        "gdpPerCapitaUSD": 49400,
+        "inflationRate": 2.8,
+        "debtToGdp": 47.5,
+        "gini": 0.7,
+        "realGdpGrowth": 1.6,
+        "policyRate": 4.75,
+        "bondYield10Y": 4.6,
+        "currentAccountPercentGdp": -5.3,
+        "fiscalBalancePercentGdp": -3,
+        "fxReservesBillionUSD": 21.1,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 27,
+        "assetMix": {
+          "financialShare": 45,
+          "nonFinancialShare": 65,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 71.2,
+          "sahmIndicatorValue": 0.39,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.67,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.78,
+        "wealthPerAdultUSD": 463000,
+        "medianWealthUSD": 210500,
+        "gdpTrillionUSD": 0.255,
+        "gdpPerCapitaUSD": 49900,
+        "inflationRate": 2.6,
+        "debtToGdp": 47.2,
+        "gini": 0.7,
+        "realGdpGrowth": 1.5,
+        "policyRate": 4.25,
+        "bondYield10Y": 4.5,
+        "currentAccountPercentGdp": -5.4,
+        "fiscalBalancePercentGdp": -2.9,
+        "fxReservesBillionUSD": 21.3,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 27.3,
+        "assetMix": {
+          "financialShare": 45,
+          "nonFinancialShare": 65,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.9,
+          "underemploymentRate": 8,
+          "laborForceParticipation": 71.2,
+          "sahmIndicatorValue": 0.36,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.67,
+          "wageGrowthYoy": 3.8,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.82,
+        "wealthPerAdultUSD": 468000,
+        "medianWealthUSD": 212000,
+        "gdpTrillionUSD": 0.26,
+        "gdpPerCapitaUSD": 50400,
+        "inflationRate": 2.5,
+        "debtToGdp": 47,
+        "gini": 0.7,
+        "realGdpGrowth": 1.5,
+        "policyRate": 4,
+        "bondYield10Y": 4.45,
+        "currentAccountPercentGdp": -5.4,
+        "fiscalBalancePercentGdp": -2.8,
+        "fxReservesBillionUSD": 21.5,
+        "populationMillion": 5.2,
+        "oldAgeDependencyRatio": 27.6,
+        "assetMix": {
+          "financialShare": 45,
+          "nonFinancialShare": 65,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 4.8,
+          "underemploymentRate": 7.9,
+          "laborForceParticipation": 71.2,
+          "sahmIndicatorValue": 0.34,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.68,
+          "wageGrowthYoy": 3.7,
+          "productivityGrowthYoy": 0.8
+        }
+      }
+    }
+  },
+  {
+    "code": "PRT",
+    "name": "Portugal",
+    "region": "Europe",
+    "blocs": [
+      "eurozone",
+      "eu"
+    ],
+    "flag": "🇵🇹",
+    "coordinates": [
+      -8.22,
+      39.39
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.12,
+        "wealthPerAdultUSD": 16500,
+        "medianWealthUSD": 8200,
+        "gdpTrillionUSD": 0.033,
+        "gdpPerCapitaUSD": 3350,
+        "inflationRate": 16.6,
+        "debtToGdp": 32,
+        "gini": 0.65,
+        "realGdpGrowth": 2.3,
+        "policyRate": 14.11,
+        "bondYield10Y": 12.45,
+        "currentAccountPercentGdp": 0.4,
+        "fiscalBalancePercentGdp": 1.6,
+        "fxReservesBillionUSD": 1.5,
+        "populationMillion": 9.9,
+        "oldAgeDependencyRatio": 17.7,
+        "assetMix": {
+          "financialShare": 32,
+          "nonFinancialShare": 74,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 8.1,
+          "underemploymentRate": 12.2,
+          "laborForceParticipation": 75.8,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.4,
+          "wageGrowthYoy": 12,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.35,
+        "wealthPerAdultUSD": 44200,
+        "medianWealthUSD": 22400,
+        "gdpTrillionUSD": 0.079,
+        "gdpPerCapitaUSD": 7950,
+        "inflationRate": 13.4,
+        "debtToGdp": 58,
+        "gini": 0.67,
+        "realGdpGrowth": 2.2,
+        "policyRate": 9.38,
+        "bondYield10Y": 8.71,
+        "currentAccountPercentGdp": 0.7,
+        "fiscalBalancePercentGdp": 1.2,
+        "fxReservesBillionUSD": 3.8,
+        "populationMillion": 9.9,
+        "oldAgeDependencyRatio": 20.7,
+        "assetMix": {
+          "financialShare": 34,
+          "nonFinancialShare": 72,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 7.2,
+          "underemploymentRate": 11,
+          "laborForceParticipation": 76,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 10.2,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.55,
+        "wealthPerAdultUSD": 68000,
+        "medianWealthUSD": 34500,
+        "gdpTrillionUSD": 0.12,
+        "gdpPerCapitaUSD": 11800,
+        "inflationRate": 4.2,
+        "debtToGdp": 60,
+        "gini": 0.68,
+        "realGdpGrowth": 2.7,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.55,
+        "currentAccountPercentGdp": 0.9,
+        "fiscalBalancePercentGdp": 0.9,
+        "fxReservesBillionUSD": 6.1,
+        "populationMillion": 10.2,
+        "oldAgeDependencyRatio": 23,
+        "assetMix": {
+          "financialShare": 35,
+          "nonFinancialShare": 71,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 7.4,
+          "underemploymentRate": 11.3,
+          "laborForceParticipation": 75.9,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.49,
+          "wageGrowthYoy": 5.1,
+          "productivityGrowthYoy": 1.6
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.78,
+        "wealthPerAdultUSD": 94000,
+        "medianWealthUSD": 46200,
+        "gdpTrillionUSD": 0.11,
+        "gdpPerCapitaUSD": 11200,
+        "inflationRate": 2.8,
+        "debtToGdp": 50,
+        "gini": 0.69,
+        "realGdpGrowth": 3.1,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.35,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": 2.6,
+        "fxReservesBillionUSD": 9.1,
+        "populationMillion": 9.8,
+        "oldAgeDependencyRatio": 25.3,
+        "assetMix": {
+          "financialShare": 36,
+          "nonFinancialShare": 71,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 6.5,
+          "underemploymentRate": 10.1,
+          "laborForceParticipation": 76.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.6,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 1.7
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.97,
+        "wealthPerAdultUSD": 115000,
+        "medianWealthUSD": 55100,
+        "gdpTrillionUSD": 0.18,
+        "gdpPerCapitaUSD": 16850,
+        "inflationRate": 2.1,
+        "debtToGdp": 75,
+        "gini": 0.69,
+        "realGdpGrowth": 2.8,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.15,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": 2.2,
+        "fxReservesBillionUSD": 17.1,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 27.6,
+        "assetMix": {
+          "financialShare": 36.3,
+          "nonFinancialShare": 71,
+          "debtShareOfGross": 7.3
+        },
+        "labor": {
+          "unemploymentRate": 6.8,
+          "underemploymentRate": 10.5,
+          "laborForceParticipation": 76.1,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.56,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 1.6
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 1.15,
+        "wealthPerAdultUSD": 136000,
+        "medianWealthUSD": 64000,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 22500,
+        "inflationRate": 1.4,
+        "debtToGdp": 100,
+        "gini": 0.69,
+        "realGdpGrowth": 2.3,
+        "policyRate": 0,
+        "bondYield10Y": 2.15,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 27.4,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 30,
+        "assetMix": {
+          "financialShare": 36.5,
+          "nonFinancialShare": 71,
+          "debtShareOfGross": 7.5
+        },
+        "labor": {
+          "unemploymentRate": 8.9,
+          "underemploymentRate": 13.3,
+          "laborForceParticipation": 75.6,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.31,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.25,
+        "wealthPerAdultUSD": 152000,
+        "medianWealthUSD": 71000,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 22450,
+        "inflationRate": 0.6,
+        "debtToGdp": 117.5,
+        "gini": 0.7,
+        "realGdpGrowth": 2.2,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.55,
+        "currentAccountPercentGdp": 1.4,
+        "fiscalBalancePercentGdp": 1.8,
+        "fxReservesBillionUSD": 32.3,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 32.6,
+        "assetMix": {
+          "financialShare": 37,
+          "nonFinancialShare": 70.6,
+          "debtShareOfGross": 7.7
+        },
+        "labor": {
+          "unemploymentRate": 7.2,
+          "underemploymentRate": 11,
+          "laborForceParticipation": 76,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.51,
+          "wageGrowthYoy": 3.2,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 1.35,
+        "wealthPerAdultUSD": 168000,
+        "medianWealthUSD": 78000,
+        "gdpTrillionUSD": 0.23,
+        "gdpPerCapitaUSD": 22400,
+        "inflationRate": -0.1,
+        "debtToGdp": 135,
+        "gini": 0.7,
+        "realGdpGrowth": -3.9,
+        "policyRate": 0,
+        "bondYield10Y": 0.55,
+        "currentAccountPercentGdp": 1.5,
+        "fiscalBalancePercentGdp": -5.8,
+        "fxReservesBillionUSD": 35.7,
+        "populationMillion": 10.3,
+        "oldAgeDependencyRatio": 35.3,
+        "assetMix": {
+          "financialShare": 37.5,
+          "nonFinancialShare": 70.2,
+          "debtShareOfGross": 7.8
+        },
+        "labor": {
+          "unemploymentRate": 8.2,
+          "underemploymentRate": 12.4,
+          "laborForceParticipation": 75.7,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.39,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": -0.7
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.45,
+        "wealthPerAdultUSD": 178000,
+        "medianWealthUSD": 82000,
+        "gdpTrillionUSD": 0.25,
+        "gdpPerCapitaUSD": 24500,
+        "inflationRate": 8.1,
+        "debtToGdp": 112.5,
+        "gini": 0.7,
+        "realGdpGrowth": 2.5,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.65,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": 0.8,
+        "fxReservesBillionUSD": 36.5,
+        "populationMillion": 10.2,
+        "oldAgeDependencyRatio": 36.5,
+        "assetMix": {
+          "financialShare": 37.8,
+          "nonFinancialShare": 70.1,
+          "debtShareOfGross": 7.9
+        },
+        "labor": {
+          "unemploymentRate": 6,
+          "underemploymentRate": 9.4,
+          "laborForceParticipation": 76.3,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.66,
+          "wageGrowthYoy": 7.3,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.55,
+        "wealthPerAdultUSD": 189000,
+        "medianWealthUSD": 86000,
+        "gdpTrillionUSD": 0.28,
+        "gdpPerCapitaUSD": 27100,
+        "inflationRate": 2.6,
+        "debtToGdp": 98,
+        "gini": 0.7,
+        "realGdpGrowth": 2,
+        "policyRate": 3.5,
+        "bondYield10Y": 3.1,
+        "currentAccountPercentGdp": 1.3,
+        "fiscalBalancePercentGdp": 0.2,
+        "fxReservesBillionUSD": 37.2,
+        "populationMillion": 10.3,
+        "oldAgeDependencyRatio": 37.6,
+        "assetMix": {
+          "financialShare": 38,
+          "nonFinancialShare": 70,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 6.4,
+          "underemploymentRate": 9.9,
+          "laborForceParticipation": 76.2,
+          "sahmIndicatorValue": 0.21,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.61,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.58,
+        "wealthPerAdultUSD": 192000,
+        "medianWealthUSD": 87000,
+        "gdpTrillionUSD": 0.285,
+        "gdpPerCapitaUSD": 27600,
+        "inflationRate": 2.4,
+        "debtToGdp": 96.5,
+        "gini": 0.7,
+        "realGdpGrowth": 1.9,
+        "policyRate": 3,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": 0.3,
+        "fxReservesBillionUSD": 37.6,
+        "populationMillion": 10.3,
+        "oldAgeDependencyRatio": 38,
+        "assetMix": {
+          "financialShare": 38,
+          "nonFinancialShare": 70,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 6.4,
+          "underemploymentRate": 9.9,
+          "laborForceParticipation": 76.2,
+          "sahmIndicatorValue": 0.18,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.61,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 1.3
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.62,
+        "wealthPerAdultUSD": 195000,
+        "medianWealthUSD": 88000,
+        "gdpTrillionUSD": 0.29,
+        "gdpPerCapitaUSD": 28200,
+        "inflationRate": 2.3,
+        "debtToGdp": 95,
+        "gini": 0.7,
+        "realGdpGrowth": 1.9,
+        "policyRate": 2.75,
+        "bondYield10Y": 2.95,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": 0.4,
+        "fxReservesBillionUSD": 38,
+        "populationMillion": 10.3,
+        "oldAgeDependencyRatio": 38.4,
+        "assetMix": {
+          "financialShare": 38,
+          "nonFinancialShare": 70,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 9.8,
+          "laborForceParticipation": 76.2,
+          "sahmIndicatorValue": 0.16,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.62,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 1.3
+        }
+      }
+    }
+  },
+  {
+    "code": "GRC",
+    "name": "Greece",
+    "region": "Europe",
+    "blocs": [
+      "eurozone",
+      "eu"
+    ],
+    "flag": "🇬🇷",
+    "coordinates": [
+      21.82,
+      39.07
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.15,
+        "wealthPerAdultUSD": 21500,
+        "medianWealthUSD": 11400,
+        "gdpTrillionUSD": 0.056,
+        "gdpPerCapitaUSD": 5900,
+        "inflationRate": 24.9,
+        "debtToGdp": 28,
+        "gini": 0.64,
+        "realGdpGrowth": 2.5,
+        "policyRate": 21.17,
+        "bondYield10Y": 18.67,
+        "currentAccountPercentGdp": -6,
+        "fiscalBalancePercentGdp": 0.1,
+        "fxReservesBillionUSD": 1.5,
+        "populationMillion": 9.5,
+        "oldAgeDependencyRatio": 17.1,
+        "assetMix": {
+          "financialShare": 24,
+          "nonFinancialShare": 82,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 11.2,
+          "underemploymentRate": 16.9,
+          "laborForceParticipation": 69.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.26,
+          "wageGrowthYoy": 16.8,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.38,
+        "wealthPerAdultUSD": 48500,
+        "medianWealthUSD": 25200,
+        "gdpTrillionUSD": 0.098,
+        "gdpPerCapitaUSD": 9600,
+        "inflationRate": 20.4,
+        "debtToGdp": 73,
+        "gini": 0.66,
+        "realGdpGrowth": 2.4,
+        "policyRate": 14.28,
+        "bondYield10Y": 13.26,
+        "currentAccountPercentGdp": -5.7,
+        "fiscalBalancePercentGdp": -0.3,
+        "fxReservesBillionUSD": 1.6,
+        "populationMillion": 10.2,
+        "oldAgeDependencyRatio": 20.1,
+        "assetMix": {
+          "financialShare": 26,
+          "nonFinancialShare": 80,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 10.3,
+          "underemploymentRate": 15.7,
+          "laborForceParticipation": 69.6,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.37,
+          "wageGrowthYoy": 14.3,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.58,
+        "wealthPerAdultUSD": 72000,
+        "medianWealthUSD": 36800,
+        "gdpTrillionUSD": 0.14,
+        "gdpPerCapitaUSD": 13100,
+        "inflationRate": 8.9,
+        "debtToGdp": 98,
+        "gini": 0.67,
+        "realGdpGrowth": 2.9,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.85,
+        "currentAccountPercentGdp": -5.5,
+        "fiscalBalancePercentGdp": -0.6,
+        "fxReservesBillionUSD": 2.6,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 22.3,
+        "assetMix": {
+          "financialShare": 27,
+          "nonFinancialShare": 79,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 10.5,
+          "underemploymentRate": 16,
+          "laborForceParticipation": 69.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.35,
+          "wageGrowthYoy": 8,
+          "productivityGrowthYoy": 1.7
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.85,
+        "wealthPerAdultUSD": 102000,
+        "medianWealthUSD": 52000,
+        "gdpTrillionUSD": 0.13,
+        "gdpPerCapitaUSD": 12000,
+        "inflationRate": 3.2,
+        "debtToGdp": 104,
+        "gini": 0.68,
+        "realGdpGrowth": 3.3,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.65,
+        "currentAccountPercentGdp": -5.2,
+        "fiscalBalancePercentGdp": 1.1,
+        "fxReservesBillionUSD": 3.9,
+        "populationMillion": 10.8,
+        "oldAgeDependencyRatio": 24.6,
+        "assetMix": {
+          "financialShare": 28,
+          "nonFinancialShare": 79,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 9.6,
+          "underemploymentRate": 14.8,
+          "laborForceParticipation": 69.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.46,
+          "wageGrowthYoy": 4.9,
+          "productivityGrowthYoy": 1.8
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 1.05,
+        "wealthPerAdultUSD": 123500,
+        "medianWealthUSD": 63000,
+        "gdpTrillionUSD": 0.22,
+        "gdpPerCapitaUSD": 19450,
+        "inflationRate": 4,
+        "debtToGdp": 125,
+        "gini": 0.68,
+        "realGdpGrowth": 3,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.45,
+        "currentAccountPercentGdp": -5,
+        "fiscalBalancePercentGdp": 0.7,
+        "fxReservesBillionUSD": 7.3,
+        "populationMillion": 11.3,
+        "oldAgeDependencyRatio": 26.8,
+        "assetMix": {
+          "financialShare": 28.5,
+          "nonFinancialShare": 78.8,
+          "debtShareOfGross": 7.3
+        },
+        "labor": {
+          "unemploymentRate": 9.9,
+          "underemploymentRate": 15.2,
+          "laborForceParticipation": 69.7,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.42,
+          "wageGrowthYoy": 5.3,
+          "productivityGrowthYoy": 1.7
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 1.25,
+        "wealthPerAdultUSD": 145000,
+        "medianWealthUSD": 74000,
+        "gdpTrillionUSD": 0.3,
+        "gdpPerCapitaUSD": 26900,
+        "inflationRate": 4.7,
+        "debtToGdp": 146,
+        "gini": 0.68,
+        "realGdpGrowth": 2.5,
+        "policyRate": 0,
+        "bondYield10Y": 2.45,
+        "currentAccountPercentGdp": -5.6,
+        "fiscalBalancePercentGdp": -3.9,
+        "fxReservesBillionUSD": 11.7,
+        "populationMillion": 11.2,
+        "oldAgeDependencyRatio": 29,
+        "assetMix": {
+          "financialShare": 29,
+          "nonFinancialShare": 78.5,
+          "debtShareOfGross": 7.5
+        },
+        "labor": {
+          "unemploymentRate": 12,
+          "underemploymentRate": 18,
+          "laborForceParticipation": 69.1,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.17,
+          "wageGrowthYoy": 5.7,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 1.12,
+        "wealthPerAdultUSD": 131500,
+        "medianWealthUSD": 66000,
+        "gdpTrillionUSD": 0.25,
+        "gdpPerCapitaUSD": 22250,
+        "inflationRate": 1.7,
+        "debtToGdp": 176,
+        "gini": 0.69,
+        "realGdpGrowth": 2.4,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.85,
+        "currentAccountPercentGdp": -5,
+        "fiscalBalancePercentGdp": 0.3,
+        "fxReservesBillionUSD": 13.8,
+        "populationMillion": 11.2,
+        "oldAgeDependencyRatio": 31.6,
+        "assetMix": {
+          "financialShare": 29.3,
+          "nonFinancialShare": 78.4,
+          "debtShareOfGross": 7.7
+        },
+        "labor": {
+          "unemploymentRate": 10.3,
+          "underemploymentRate": 15.7,
+          "laborForceParticipation": 69.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.37,
+          "wageGrowthYoy": 4.1,
+          "productivityGrowthYoy": 1.5
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 0.98,
+        "wealthPerAdultUSD": 118000,
+        "medianWealthUSD": 58000,
+        "gdpTrillionUSD": 0.19,
+        "gdpPerCapitaUSD": 17600,
+        "inflationRate": -1.3,
+        "debtToGdp": 206,
+        "gini": 0.69,
+        "realGdpGrowth": -3.7,
+        "policyRate": 0,
+        "bondYield10Y": 0.85,
+        "currentAccountPercentGdp": -4.9,
+        "fiscalBalancePercentGdp": -7.3,
+        "fxReservesBillionUSD": 15.2,
+        "populationMillion": 10.8,
+        "oldAgeDependencyRatio": 34.2,
+        "assetMix": {
+          "financialShare": 29.5,
+          "nonFinancialShare": 78.2,
+          "debtShareOfGross": 7.8
+        },
+        "labor": {
+          "unemploymentRate": 11.3,
+          "underemploymentRate": 17.1,
+          "laborForceParticipation": 69.3,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.25,
+          "wageGrowthYoy": 2.4,
+          "productivityGrowthYoy": -0.6
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.05,
+        "wealthPerAdultUSD": 128000,
+        "medianWealthUSD": 62000,
+        "gdpTrillionUSD": 0.22,
+        "gdpPerCapitaUSD": 20700,
+        "inflationRate": 9.3,
+        "debtToGdp": 172,
+        "gini": 0.69,
+        "realGdpGrowth": 2.7,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.95,
+        "currentAccountPercentGdp": -5.6,
+        "fiscalBalancePercentGdp": -0.7,
+        "fxReservesBillionUSD": 15.6,
+        "populationMillion": 10.6,
+        "oldAgeDependencyRatio": 35.3,
+        "assetMix": {
+          "financialShare": 29.8,
+          "nonFinancialShare": 78.1,
+          "debtShareOfGross": 7.9
+        },
+        "labor": {
+          "unemploymentRate": 9.1,
+          "underemploymentRate": 14.1,
+          "laborForceParticipation": 69.9,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 8.2,
+          "productivityGrowthYoy": 1.6
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.13,
+        "wealthPerAdultUSD": 137000,
+        "medianWealthUSD": 66000,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 23100,
+        "inflationRate": 2.8,
+        "debtToGdp": 156,
+        "gini": 0.69,
+        "realGdpGrowth": 2.2,
+        "policyRate": 3.5,
+        "bondYield10Y": 3.4,
+        "currentAccountPercentGdp": -5.1,
+        "fiscalBalancePercentGdp": -1.3,
+        "fxReservesBillionUSD": 15.9,
+        "populationMillion": 10.4,
+        "oldAgeDependencyRatio": 36.5,
+        "assetMix": {
+          "financialShare": 30,
+          "nonFinancialShare": 78,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 9.5,
+          "underemploymentRate": 14.6,
+          "laborForceParticipation": 69.8,
+          "sahmIndicatorValue": 0.11,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 4.7,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.15,
+        "wealthPerAdultUSD": 140000,
+        "medianWealthUSD": 67000,
+        "gdpTrillionUSD": 0.245,
+        "gdpPerCapitaUSD": 23600,
+        "inflationRate": 2.6,
+        "debtToGdp": 153.5,
+        "gini": 0.69,
+        "realGdpGrowth": 2.1,
+        "policyRate": 3,
+        "bondYield10Y": 3.3,
+        "currentAccountPercentGdp": -5.2,
+        "fiscalBalancePercentGdp": -1.2,
+        "fxReservesBillionUSD": 16,
+        "populationMillion": 10.4,
+        "oldAgeDependencyRatio": 36.8,
+        "assetMix": {
+          "financialShare": 30,
+          "nonFinancialShare": 78,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 9.5,
+          "underemploymentRate": 14.6,
+          "laborForceParticipation": 69.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 4.6,
+          "productivityGrowthYoy": 1.4
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.18,
+        "wealthPerAdultUSD": 142000,
+        "medianWealthUSD": 68000,
+        "gdpTrillionUSD": 0.25,
+        "gdpPerCapitaUSD": 24100,
+        "inflationRate": 2.5,
+        "debtToGdp": 151,
+        "gini": 0.69,
+        "realGdpGrowth": 2.1,
+        "policyRate": 2.75,
+        "bondYield10Y": 3.25,
+        "currentAccountPercentGdp": -5.2,
+        "fiscalBalancePercentGdp": -1.1,
+        "fxReservesBillionUSD": 16.2,
+        "populationMillion": 10.4,
+        "oldAgeDependencyRatio": 37.2,
+        "assetMix": {
+          "financialShare": 30,
+          "nonFinancialShare": 78,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 9.4,
+          "underemploymentRate": 14.5,
+          "laborForceParticipation": 69.8,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.48,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 1.4
+        }
+      }
+    }
+  },
+  {
+    "code": "PER",
+    "name": "Peru",
+    "region": "Latin America",
+    "blocs": [
+      "pacific-alliance"
+    ],
+    "flag": "🇵🇪",
+    "coordinates": [
+      -75.01,
+      -9.19
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.03,
+        "wealthPerAdultUSD": 3400,
+        "medianWealthUSD": 980,
+        "gdpTrillionUSD": 0.021,
+        "gdpPerCapitaUSD": 1200,
+        "inflationRate": 59.2,
+        "debtToGdp": 45,
+        "gini": 0.74,
+        "realGdpGrowth": 3.2,
+        "policyRate": 50.32,
+        "bondYield10Y": 44.4,
+        "currentAccountPercentGdp": 0,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 3.1,
+        "populationMillion": 17.5,
+        "oldAgeDependencyRatio": 6.6,
+        "assetMix": {
+          "financialShare": 22,
+          "nonFinancialShare": 81,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 8,
+          "underemploymentRate": 17.6,
+          "laborForceParticipation": 71,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.34,
+          "wageGrowthYoy": 26.4,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.06,
+        "wealthPerAdultUSD": 5200,
+        "medianWealthUSD": 1450,
+        "gdpTrillionUSD": 0.026,
+        "gdpPerCapitaUSD": 1200,
+        "inflationRate": 7481,
+        "debtToGdp": 85,
+        "gini": 0.76,
+        "realGdpGrowth": 3.1,
+        "policyRate": 85,
+        "bondYield10Y": 75,
+        "currentAccountPercentGdp": 0.3,
+        "fiscalBalancePercentGdp": -1.8,
+        "fxReservesBillionUSD": 7.9,
+        "populationMillion": 21.7,
+        "oldAgeDependencyRatio": 7.8,
+        "assetMix": {
+          "financialShare": 24,
+          "nonFinancialShare": 79,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 7.1,
+          "underemploymentRate": 16.4,
+          "laborForceParticipation": 71.2,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 26.4,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.12,
+        "wealthPerAdultUSD": 9200,
+        "medianWealthUSD": 2650,
+        "gdpTrillionUSD": 0.053,
+        "gdpPerCapitaUSD": 2200,
+        "inflationRate": 11.1,
+        "debtToGdp": 68,
+        "gini": 0.76,
+        "realGdpGrowth": 3.6,
+        "policyRate": 6.15,
+        "bondYield10Y": 8.05,
+        "currentAccountPercentGdp": 0.5,
+        "fiscalBalancePercentGdp": -2.1,
+        "fxReservesBillionUSD": 12.6,
+        "populationMillion": 24.1,
+        "oldAgeDependencyRatio": 8.6,
+        "assetMix": {
+          "financialShare": 25,
+          "nonFinancialShare": 78,
+          "debtShareOfGross": 3
+        },
+        "labor": {
+          "unemploymentRate": 7.3,
+          "underemploymentRate": 16.7,
+          "laborForceParticipation": 71.1,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.43,
+          "wageGrowthYoy": 9.1,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.16,
+        "wealthPerAdultUSD": 10800,
+        "medianWealthUSD": 3100,
+        "gdpTrillionUSD": 0.051,
+        "gdpPerCapitaUSD": 1950,
+        "inflationRate": 3.8,
+        "debtToGdp": 46,
+        "gini": 0.77,
+        "realGdpGrowth": 4,
+        "policyRate": 5.95,
+        "bondYield10Y": 7.85,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": -0.4,
+        "fxReservesBillionUSD": 18.8,
+        "populationMillion": 26.2,
+        "oldAgeDependencyRatio": 9.5,
+        "assetMix": {
+          "financialShare": 26,
+          "nonFinancialShare": 77.5,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 6.4,
+          "underemploymentRate": 15.5,
+          "laborForceParticipation": 71.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.54,
+          "wageGrowthYoy": 5.1,
+          "productivityGrowthYoy": 2.2
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.24,
+        "wealthPerAdultUSD": 14100,
+        "medianWealthUSD": 4150,
+        "gdpTrillionUSD": 0.1,
+        "gdpPerCapitaUSD": 3450,
+        "inflationRate": 2.7,
+        "debtToGdp": 35,
+        "gini": 0.77,
+        "realGdpGrowth": 3.7,
+        "policyRate": 4.35,
+        "bondYield10Y": 6.65,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": -0.8,
+        "fxReservesBillionUSD": 35.3,
+        "populationMillion": 29,
+        "oldAgeDependencyRatio": 10.4,
+        "assetMix": {
+          "financialShare": 26.5,
+          "nonFinancialShare": 77,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 6.7,
+          "underemploymentRate": 15.9,
+          "laborForceParticipation": 71.3,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.5,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.32,
+        "wealthPerAdultUSD": 17400,
+        "medianWealthUSD": 5200,
+        "gdpTrillionUSD": 0.14,
+        "gdpPerCapitaUSD": 4950,
+        "inflationRate": 1.5,
+        "debtToGdp": 24,
+        "gini": 0.77,
+        "realGdpGrowth": 3.2,
+        "policyRate": 1.95,
+        "bondYield10Y": 5.65,
+        "currentAccountPercentGdp": 0.4,
+        "fiscalBalancePercentGdp": -5.4,
+        "fxReservesBillionUSD": 56.5,
+        "populationMillion": 28.3,
+        "oldAgeDependencyRatio": 11.2,
+        "assetMix": {
+          "financialShare": 27,
+          "nonFinancialShare": 76.5,
+          "debtShareOfGross": 3.5
+        },
+        "labor": {
+          "unemploymentRate": 8.8,
+          "underemploymentRate": 18.7,
+          "laborForceParticipation": 70.8,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.25,
+          "wageGrowthYoy": 3.9,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.4,
+        "wealthPerAdultUSD": 19950,
+        "medianWealthUSD": 6050,
+        "gdpTrillionUSD": 0.18,
+        "gdpPerCapitaUSD": 5650,
+        "inflationRate": 1.7,
+        "debtToGdp": 29.4,
+        "gini": 0.78,
+        "realGdpGrowth": 3.1,
+        "policyRate": 2.15,
+        "bondYield10Y": 5.05,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": -1.2,
+        "fxReservesBillionUSD": 66.7,
+        "populationMillion": 31.9,
+        "oldAgeDependencyRatio": 12.2,
+        "assetMix": {
+          "financialShare": 27.3,
+          "nonFinancialShare": 76.4,
+          "debtShareOfGross": 3.7
+        },
+        "labor": {
+          "unemploymentRate": 7.1,
+          "underemploymentRate": 16.4,
+          "laborForceParticipation": 71.2,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 0.48,
+        "wealthPerAdultUSD": 22500,
+        "medianWealthUSD": 6900,
+        "gdpTrillionUSD": 0.21,
+        "gdpPerCapitaUSD": 6350,
+        "inflationRate": 1.8,
+        "debtToGdp": 34.8,
+        "gini": 0.78,
+        "realGdpGrowth": -3,
+        "policyRate": 1.55,
+        "bondYield10Y": 4.05,
+        "currentAccountPercentGdp": 1.1,
+        "fiscalBalancePercentGdp": -8.8,
+        "fxReservesBillionUSD": 73.8,
+        "populationMillion": 33.1,
+        "oldAgeDependencyRatio": 13.2,
+        "assetMix": {
+          "financialShare": 27.5,
+          "nonFinancialShare": 76.2,
+          "debtShareOfGross": 3.8
+        },
+        "labor": {
+          "unemploymentRate": 8.1,
+          "underemploymentRate": 17.8,
+          "laborForceParticipation": 70.9,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.33,
+          "wageGrowthYoy": 4,
+          "productivityGrowthYoy": -0.2
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 0.54,
+        "wealthPerAdultUSD": 24800,
+        "medianWealthUSD": 7600,
+        "gdpTrillionUSD": 0.24,
+        "gdpPerCapitaUSD": 7200,
+        "inflationRate": 8.5,
+        "debtToGdp": 33.8,
+        "gini": 0.78,
+        "realGdpGrowth": 3.4,
+        "policyRate": 4.35,
+        "bondYield10Y": 6.15,
+        "currentAccountPercentGdp": 0.4,
+        "fiscalBalancePercentGdp": -2.2,
+        "fxReservesBillionUSD": 75.4,
+        "populationMillion": 33.3,
+        "oldAgeDependencyRatio": 13.7,
+        "assetMix": {
+          "financialShare": 27.8,
+          "nonFinancialShare": 76.1,
+          "debtShareOfGross": 3.9
+        },
+        "labor": {
+          "unemploymentRate": 5.9,
+          "underemploymentRate": 14.8,
+          "laborForceParticipation": 71.5,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.6,
+          "wageGrowthYoy": 7.7,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 0.59,
+        "wealthPerAdultUSD": 26500,
+        "medianWealthUSD": 8100,
+        "gdpTrillionUSD": 0.27,
+        "gdpPerCapitaUSD": 7900,
+        "inflationRate": 2.6,
+        "debtToGdp": 33.6,
+        "gini": 0.78,
+        "realGdpGrowth": 2.9,
+        "policyRate": 5.5,
+        "bondYield10Y": 6.6,
+        "currentAccountPercentGdp": 0.9,
+        "fiscalBalancePercentGdp": -2.8,
+        "fxReservesBillionUSD": 76.9,
+        "populationMillion": 34.2,
+        "oldAgeDependencyRatio": 14.1,
+        "assetMix": {
+          "financialShare": 27.9,
+          "nonFinancialShare": 76,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 15.3,
+          "laborForceParticipation": 71.4,
+          "sahmIndicatorValue": 0.19,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.55,
+          "wageGrowthYoy": 4.5,
+          "productivityGrowthYoy": 1.8
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 0.6,
+        "wealthPerAdultUSD": 27000,
+        "medianWealthUSD": 8250,
+        "gdpTrillionUSD": 0.275,
+        "gdpPerCapitaUSD": 8050,
+        "inflationRate": 2.5,
+        "debtToGdp": 33.5,
+        "gini": 0.78,
+        "realGdpGrowth": 2.8,
+        "policyRate": 5,
+        "bondYield10Y": 6.5,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": -2.7,
+        "fxReservesBillionUSD": 77.7,
+        "populationMillion": 34.2,
+        "oldAgeDependencyRatio": 14.3,
+        "assetMix": {
+          "financialShare": 28,
+          "nonFinancialShare": 76,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 6.3,
+          "underemploymentRate": 15.3,
+          "laborForceParticipation": 71.4,
+          "sahmIndicatorValue": 0.16,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.55,
+          "wageGrowthYoy": 4.4,
+          "productivityGrowthYoy": 1.8
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 0.62,
+        "wealthPerAdultUSD": 27500,
+        "medianWealthUSD": 8400,
+        "gdpTrillionUSD": 0.28,
+        "gdpPerCapitaUSD": 8200,
+        "inflationRate": 2.4,
+        "debtToGdp": 33.5,
+        "gini": 0.78,
+        "realGdpGrowth": 2.8,
+        "policyRate": 4.75,
+        "bondYield10Y": 6.45,
+        "currentAccountPercentGdp": 0.8,
+        "fiscalBalancePercentGdp": -2.6,
+        "fxReservesBillionUSD": 78.5,
+        "populationMillion": 34.1,
+        "oldAgeDependencyRatio": 14.4,
+        "assetMix": {
+          "financialShare": 28,
+          "nonFinancialShare": 76,
+          "debtShareOfGross": 4
+        },
+        "labor": {
+          "unemploymentRate": 6.2,
+          "underemploymentRate": 15.2,
+          "laborForceParticipation": 71.4,
+          "sahmIndicatorValue": 0.14,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.56,
+          "wageGrowthYoy": 4.3,
+          "productivityGrowthYoy": 1.8
+        }
+      }
+    }
+  },
+  {
+    "code": "CZE",
+    "name": "Czech Republic",
+    "region": "Europe",
+    "blocs": [
+      "eu"
+    ],
+    "flag": "🇨🇿",
+    "coordinates": [
+      15.47,
+      49.81
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.12,
+        "wealthPerAdultUSD": 16200,
+        "medianWealthUSD": 6400,
+        "gdpTrillionUSD": 0.045,
+        "gdpPerCapitaUSD": 4400,
+        "inflationRate": 8.5,
+        "debtToGdp": 20,
+        "gini": 0.68,
+        "realGdpGrowth": 2.6,
+        "policyRate": 7.23,
+        "bondYield10Y": 6.38,
+        "currentAccountPercentGdp": 0.2,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 5.9,
+        "populationMillion": 10.2,
+        "oldAgeDependencyRatio": 14.9,
+        "assetMix": {
+          "financialShare": 36,
+          "nonFinancialShare": 70,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 4.6,
+          "underemploymentRate": 6.6,
+          "laborForceParticipation": 77.1,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.84,
+          "wageGrowthYoy": 8.5,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.24,
+        "wealthPerAdultUSD": 30500,
+        "medianWealthUSD": 12200,
+        "gdpTrillionUSD": 0.049,
+        "gdpPerCapitaUSD": 4750,
+        "inflationRate": 9.7,
+        "debtToGdp": 15,
+        "gini": 0.7,
+        "realGdpGrowth": 2.5,
+        "policyRate": 6.79,
+        "bondYield10Y": 6.31,
+        "currentAccountPercentGdp": 0.5,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 14.8,
+        "populationMillion": 10.3,
+        "oldAgeDependencyRatio": 17.5,
+        "assetMix": {
+          "financialShare": 38,
+          "nonFinancialShare": 68,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 5.4,
+          "laborForceParticipation": 77.4,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 9.2,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.38,
+        "wealthPerAdultUSD": 46200,
+        "medianWealthUSD": 18500,
+        "gdpTrillionUSD": 0.06,
+        "gdpPerCapitaUSD": 5800,
+        "inflationRate": 9.1,
+        "debtToGdp": 14,
+        "gini": 0.72,
+        "realGdpGrowth": 3,
+        "policyRate": 5.15,
+        "bondYield10Y": 5.55,
+        "currentAccountPercentGdp": 0.7,
+        "fiscalBalancePercentGdp": -1.7,
+        "fxReservesBillionUSD": 23.7,
+        "populationMillion": 10.3,
+        "oldAgeDependencyRatio": 19.4,
+        "assetMix": {
+          "financialShare": 40,
+          "nonFinancialShare": 66,
+          "debtShareOfGross": 6
+        },
+        "labor": {
+          "unemploymentRate": 3.9,
+          "underemploymentRate": 5.7,
+          "laborForceParticipation": 77.3,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.93,
+          "wageGrowthYoy": 8.8,
+          "productivityGrowthYoy": 2.2
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.48,
+        "wealthPerAdultUSD": 58400,
+        "medianWealthUSD": 23200,
+        "gdpTrillionUSD": 0.062,
+        "gdpPerCapitaUSD": 6050,
+        "inflationRate": 3.9,
+        "debtToGdp": 17.5,
+        "gini": 0.73,
+        "realGdpGrowth": 3.4,
+        "policyRate": 4.95,
+        "bondYield10Y": 5.35,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": 0,
+        "fxReservesBillionUSD": 35.5,
+        "populationMillion": 10.2,
+        "oldAgeDependencyRatio": 21.4,
+        "assetMix": {
+          "financialShare": 41,
+          "nonFinancialShare": 66,
+          "debtShareOfGross": 7
+        },
+        "labor": {
+          "unemploymentRate": 3,
+          "underemploymentRate": 4.5,
+          "laborForceParticipation": 77.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.04,
+          "wageGrowthYoy": 6,
+          "productivityGrowthYoy": 2.3
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.65,
+        "wealthPerAdultUSD": 77200,
+        "medianWealthUSD": 30850,
+        "gdpTrillionUSD": 0.14,
+        "gdpPerCapitaUSD": 12925,
+        "inflationRate": 2.7,
+        "debtToGdp": 27.5,
+        "gini": 0.74,
+        "realGdpGrowth": 3.1,
+        "policyRate": 3.35,
+        "bondYield10Y": 4.15,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": -0.4,
+        "fxReservesBillionUSD": 66.6,
+        "populationMillion": 10.8,
+        "oldAgeDependencyRatio": 23.3,
+        "assetMix": {
+          "financialShare": 41.5,
+          "nonFinancialShare": 65.5,
+          "debtShareOfGross": 7.3
+        },
+        "labor": {
+          "unemploymentRate": 3.3,
+          "underemploymentRate": 4.9,
+          "laborForceParticipation": 77.5,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1,
+          "wageGrowthYoy": 5.3,
+          "productivityGrowthYoy": 2.2
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.82,
+        "wealthPerAdultUSD": 96000,
+        "medianWealthUSD": 38500,
+        "gdpTrillionUSD": 0.21,
+        "gdpPerCapitaUSD": 19800,
+        "inflationRate": 1.5,
+        "debtToGdp": 37.5,
+        "gini": 0.74,
+        "realGdpGrowth": 2.6,
+        "policyRate": 0.95,
+        "bondYield10Y": 3.15,
+        "currentAccountPercentGdp": 0.6,
+        "fiscalBalancePercentGdp": -5,
+        "fxReservesBillionUSD": 106.6,
+        "populationMillion": 10.6,
+        "oldAgeDependencyRatio": 25.3,
+        "assetMix": {
+          "financialShare": 42,
+          "nonFinancialShare": 65,
+          "debtShareOfGross": 7.5
+        },
+        "labor": {
+          "unemploymentRate": 5.4,
+          "underemploymentRate": 7.7,
+          "laborForceParticipation": 76.9,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.75,
+          "wageGrowthYoy": 4.7,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.94,
+        "wealthPerAdultUSD": 110000,
+        "medianWealthUSD": 44000,
+        "gdpTrillionUSD": 0.23,
+        "gdpPerCapitaUSD": 21450,
+        "inflationRate": 2.4,
+        "debtToGdp": 37.7,
+        "gini": 0.75,
+        "realGdpGrowth": 2.5,
+        "policyRate": 1.15,
+        "bondYield10Y": 2.55,
+        "currentAccountPercentGdp": 1.2,
+        "fiscalBalancePercentGdp": -0.8,
+        "fxReservesBillionUSD": 125.8,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 27.5,
+        "assetMix": {
+          "financialShare": 42.5,
+          "nonFinancialShare": 64.8,
+          "debtShareOfGross": 7.7
+        },
+        "labor": {
+          "unemploymentRate": 3.7,
+          "underemploymentRate": 5.4,
+          "laborForceParticipation": 77.4,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.95,
+          "wageGrowthYoy": 5.1,
+          "productivityGrowthYoy": 2
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 1.05,
+        "wealthPerAdultUSD": 124000,
+        "medianWealthUSD": 49500,
+        "gdpTrillionUSD": 0.25,
+        "gdpPerCapitaUSD": 23100,
+        "inflationRate": 3.2,
+        "debtToGdp": 37.8,
+        "gini": 0.75,
+        "realGdpGrowth": -3.6,
+        "policyRate": 0.55,
+        "bondYield10Y": 1.55,
+        "currentAccountPercentGdp": 1.3,
+        "fiscalBalancePercentGdp": -8.4,
+        "fxReservesBillionUSD": 139.1,
+        "populationMillion": 10.8,
+        "oldAgeDependencyRatio": 29.8,
+        "assetMix": {
+          "financialShare": 43,
+          "nonFinancialShare": 64.5,
+          "debtShareOfGross": 7.8
+        },
+        "labor": {
+          "unemploymentRate": 4.7,
+          "underemploymentRate": 6.8,
+          "laborForceParticipation": 77.1,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.83,
+          "wageGrowthYoy": 5.6,
+          "productivityGrowthYoy": -0.1
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.12,
+        "wealthPerAdultUSD": 132000,
+        "medianWealthUSD": 53000,
+        "gdpTrillionUSD": 0.29,
+        "gdpPerCapitaUSD": 27500,
+        "inflationRate": 15.1,
+        "debtToGdp": 44.2,
+        "gini": 0.75,
+        "realGdpGrowth": 2.8,
+        "policyRate": 3.35,
+        "bondYield10Y": 3.65,
+        "currentAccountPercentGdp": 0.6,
+        "fiscalBalancePercentGdp": -1.8,
+        "fxReservesBillionUSD": 142.1,
+        "populationMillion": 10.5,
+        "oldAgeDependencyRatio": 30.8,
+        "assetMix": {
+          "financialShare": 43.5,
+          "nonFinancialShare": 64.2,
+          "debtShareOfGross": 7.9
+        },
+        "labor": {
+          "unemploymentRate": 2.5,
+          "underemploymentRate": 3.8,
+          "laborForceParticipation": 77.7,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.1,
+          "wageGrowthYoy": 12.1,
+          "productivityGrowthYoy": 2.1
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.2,
+        "wealthPerAdultUSD": 141000,
+        "medianWealthUSD": 56500,
+        "gdpTrillionUSD": 0.33,
+        "gdpPerCapitaUSD": 30800,
+        "inflationRate": 2.7,
+        "debtToGdp": 44.6,
+        "gini": 0.75,
+        "realGdpGrowth": 2.3,
+        "policyRate": 4.5,
+        "bondYield10Y": 4.1,
+        "currentAccountPercentGdp": 1.1,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 145,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 31.8,
+        "assetMix": {
+          "financialShare": 43.8,
+          "nonFinancialShare": 64.1,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 2.9,
+          "underemploymentRate": 4.3,
+          "laborForceParticipation": 77.6,
+          "sahmIndicatorValue": 0.15,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.05,
+          "wageGrowthYoy": 5.3,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.22,
+        "wealthPerAdultUSD": 143000,
+        "medianWealthUSD": 57200,
+        "gdpTrillionUSD": 0.335,
+        "gdpPerCapitaUSD": 31300,
+        "inflationRate": 2.6,
+        "debtToGdp": 44.5,
+        "gini": 0.75,
+        "realGdpGrowth": 2.2,
+        "policyRate": 4,
+        "bondYield10Y": 4,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": -2.3,
+        "fxReservesBillionUSD": 146.5,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 32.1,
+        "assetMix": {
+          "financialShare": 43.9,
+          "nonFinancialShare": 64,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 4.3,
+          "laborForceParticipation": 77.6,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.05,
+          "wageGrowthYoy": 5.3,
+          "productivityGrowthYoy": 1.9
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.24,
+        "wealthPerAdultUSD": 145000,
+        "medianWealthUSD": 58000,
+        "gdpTrillionUSD": 0.34,
+        "gdpPerCapitaUSD": 31800,
+        "inflationRate": 2.6,
+        "debtToGdp": 44.5,
+        "gini": 0.75,
+        "realGdpGrowth": 2.2,
+        "policyRate": 3.75,
+        "bondYield10Y": 3.95,
+        "currentAccountPercentGdp": 1,
+        "fiscalBalancePercentGdp": -2.2,
+        "fxReservesBillionUSD": 148,
+        "populationMillion": 10.7,
+        "oldAgeDependencyRatio": 32.4,
+        "assetMix": {
+          "financialShare": 44,
+          "nonFinancialShare": 64,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 2.8,
+          "underemploymentRate": 4.2,
+          "laborForceParticipation": 77.6,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 1.06,
+          "wageGrowthYoy": 5.3,
+          "productivityGrowthYoy": 1.9
+        }
+      }
+    }
+  },
+  {
+    "code": "FIN",
+    "name": "Finland",
+    "region": "Europe",
+    "blocs": [
+      "eurozone",
+      "nordic",
+      "eu"
+    ],
+    "flag": "🇫🇮",
+    "coordinates": [
+      25.74,
+      61.92
+    ],
+    "history": {
+      "1980": {
+        "totalWealthTrillion": 0.11,
+        "wealthPerAdultUSD": 28500,
+        "medianWealthUSD": 12400,
+        "gdpTrillionUSD": 0.054,
+        "gdpPerCapitaUSD": 11200,
+        "inflationRate": 11.6,
+        "debtToGdp": 11.5,
+        "gini": 0.65,
+        "realGdpGrowth": 1.5,
+        "policyRate": 9.86,
+        "bondYield10Y": 8.7,
+        "currentAccountPercentGdp": -1.6,
+        "fiscalBalancePercentGdp": -2,
+        "fxReservesBillionUSD": 1.5,
+        "populationMillion": 4.8,
+        "oldAgeDependencyRatio": 18,
+        "assetMix": {
+          "financialShare": 42,
+          "nonFinancialShare": 66,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 9.6,
+          "underemploymentRate": 13.6,
+          "laborForceParticipation": 78.4,
+          "sahmIndicatorValue": 0.55,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.36,
+          "wageGrowthYoy": 8.1,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "1990": {
+        "totalWealthTrillion": 0.28,
+        "wealthPerAdultUSD": 72000,
+        "medianWealthUSD": 31500,
+        "gdpTrillionUSD": 0.14,
+        "gdpPerCapitaUSD": 28200,
+        "inflationRate": 6.1,
+        "debtToGdp": 14.5,
+        "gini": 0.67,
+        "realGdpGrowth": 1.4,
+        "policyRate": 4.27,
+        "bondYield10Y": 3.97,
+        "currentAccountPercentGdp": -1.3,
+        "fiscalBalancePercentGdp": -2.4,
+        "fxReservesBillionUSD": 1.9,
+        "populationMillion": 5,
+        "oldAgeDependencyRatio": 21.2,
+        "assetMix": {
+          "financialShare": 45,
+          "nonFinancialShare": 63,
+          "debtShareOfGross": 8
+        },
+        "labor": {
+          "unemploymentRate": 8.7,
+          "underemploymentRate": 12.4,
+          "laborForceParticipation": 78.6,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 5.1,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "1995": {
+        "totalWealthTrillion": 0.35,
+        "wealthPerAdultUSD": 88500,
+        "medianWealthUSD": 38200,
+        "gdpTrillionUSD": 0.13,
+        "gdpPerCapitaUSD": 25400,
+        "inflationRate": 1,
+        "debtToGdp": 56,
+        "gini": 0.68,
+        "realGdpGrowth": 1.9,
+        "policyRate": 4.15,
+        "bondYield10Y": 4.45,
+        "currentAccountPercentGdp": -1.1,
+        "fiscalBalancePercentGdp": -2.7,
+        "fxReservesBillionUSD": 3,
+        "populationMillion": 5.1,
+        "oldAgeDependencyRatio": 23.5,
+        "assetMix": {
+          "financialShare": 47,
+          "nonFinancialShare": 61,
+          "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 8.9,
+          "underemploymentRate": 12.7,
+          "laborForceParticipation": 78.5,
+          "sahmIndicatorValue": 0.12,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.45,
+          "wageGrowthYoy": 2.3,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2000": {
+        "totalWealthTrillion": 0.52,
+        "wealthPerAdultUSD": 128000,
+        "medianWealthUSD": 54500,
+        "gdpTrillionUSD": 0.13,
+        "gdpPerCapitaUSD": 24100,
+        "inflationRate": 3.4,
+        "debtToGdp": 42.5,
+        "gini": 0.69,
+        "realGdpGrowth": 2.3,
+        "policyRate": 3.95,
+        "bondYield10Y": 4.25,
+        "currentAccountPercentGdp": -0.8,
+        "fiscalBalancePercentGdp": -1,
+        "fxReservesBillionUSD": 4.4,
+        "populationMillion": 5.4,
+        "oldAgeDependencyRatio": 25.9,
+        "assetMix": {
+          "financialShare": 49,
+          "nonFinancialShare": 59,
+          "debtShareOfGross": 9
+        },
+        "labor": {
+          "unemploymentRate": 8,
+          "underemploymentRate": 11.5,
+          "laborForceParticipation": 78.8,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.56,
+          "wageGrowthYoy": 3.6,
+          "productivityGrowthYoy": 1
+        }
+      },
+      "2005": {
+        "totalWealthTrillion": 0.65,
+        "wealthPerAdultUSD": 155000,
+        "medianWealthUSD": 66250,
+        "gdpTrillionUSD": 0.19,
+        "gdpPerCapitaUSD": 35150,
+        "inflationRate": 2.3,
+        "debtToGdp": 45.3,
+        "gini": 0.7,
+        "realGdpGrowth": 2,
+        "policyRate": 2.35,
+        "bondYield10Y": 3.05,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": -1.4,
+        "fxReservesBillionUSD": 8.3,
+        "populationMillion": 5.4,
+        "oldAgeDependencyRatio": 28.2,
+        "assetMix": {
+          "financialShare": 49.5,
+          "nonFinancialShare": 59,
+          "debtShareOfGross": 9.3
+        },
+        "labor": {
+          "unemploymentRate": 8.3,
+          "underemploymentRate": 11.9,
+          "laborForceParticipation": 78.7,
+          "sahmIndicatorValue": 0.1,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.52,
+          "wageGrowthYoy": 3,
+          "productivityGrowthYoy": 0.9
+        }
+      },
+      "2010": {
+        "totalWealthTrillion": 0.78,
+        "wealthPerAdultUSD": 182000,
+        "medianWealthUSD": 78000,
+        "gdpTrillionUSD": 0.25,
+        "gdpPerCapitaUSD": 46200,
+        "inflationRate": 1.2,
+        "debtToGdp": 48,
+        "gini": 0.7,
+        "realGdpGrowth": 1.5,
+        "policyRate": 0,
+        "bondYield10Y": 2.05,
+        "currentAccountPercentGdp": -1.2,
+        "fiscalBalancePercentGdp": -6,
+        "fxReservesBillionUSD": 13.3,
+        "populationMillion": 5.4,
+        "oldAgeDependencyRatio": 30.6,
+        "assetMix": {
+          "financialShare": 50,
+          "nonFinancialShare": 59,
+          "debtShareOfGross": 9.5
+        },
+        "labor": {
+          "unemploymentRate": 10.4,
+          "underemploymentRate": 14.7,
+          "laborForceParticipation": 78.1,
+          "sahmIndicatorValue": 0.42,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.27,
+          "wageGrowthYoy": 2.4,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "2015": {
+        "totalWealthTrillion": 0.87,
+        "wealthPerAdultUSD": 201500,
+        "medianWealthUSD": 86000,
+        "gdpTrillionUSD": 0.26,
+        "gdpPerCapitaUSD": 47700,
+        "inflationRate": 0.8,
+        "debtToGdp": 61.3,
+        "gini": 0.71,
+        "realGdpGrowth": 1.4,
+        "policyRate": 0.15,
+        "bondYield10Y": 1.45,
+        "currentAccountPercentGdp": -0.6,
+        "fiscalBalancePercentGdp": -1.8,
+        "fxReservesBillionUSD": 15.7,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 33.3,
+        "assetMix": {
+          "financialShare": 50.5,
+          "nonFinancialShare": 58.8,
+          "debtShareOfGross": 9.7
+        },
+        "labor": {
+          "unemploymentRate": 8.7,
+          "underemploymentRate": 12.4,
+          "laborForceParticipation": 78.6,
+          "sahmIndicatorValue": 0.08,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.47,
+          "wageGrowthYoy": 2.2,
+          "productivityGrowthYoy": 0.7
+        }
+      },
+      "2020": {
+        "totalWealthTrillion": 0.96,
+        "wealthPerAdultUSD": 221000,
+        "medianWealthUSD": 94000,
+        "gdpTrillionUSD": 0.27,
+        "gdpPerCapitaUSD": 49200,
+        "inflationRate": 0.3,
+        "debtToGdp": 74.5,
+        "gini": 0.71,
+        "realGdpGrowth": -4.7,
+        "policyRate": 0,
+        "bondYield10Y": 0.45,
+        "currentAccountPercentGdp": -0.5,
+        "fiscalBalancePercentGdp": -9.4,
+        "fxReservesBillionUSD": 17.4,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 36.1,
+        "assetMix": {
+          "financialShare": 51,
+          "nonFinancialShare": 58.5,
+          "debtShareOfGross": 9.8
+        },
+        "labor": {
+          "unemploymentRate": 9.7,
+          "underemploymentRate": 13.8,
+          "laborForceParticipation": 78.3,
+          "sahmIndicatorValue": 0.95,
+          "sahmStatus": "triggered",
+          "jobOpeningsPerUnemployed": 0.35,
+          "wageGrowthYoy": 1.9,
+          "productivityGrowthYoy": -1.4
+        }
+      },
+      "2022": {
+        "totalWealthTrillion": 1.02,
+        "wealthPerAdultUSD": 232000,
+        "medianWealthUSD": 99000,
+        "gdpTrillionUSD": 0.28,
+        "gdpPerCapitaUSD": 51200,
+        "inflationRate": 7.1,
+        "debtToGdp": 73.5,
+        "gini": 0.71,
+        "realGdpGrowth": 1.7,
+        "policyRate": 2.35,
+        "bondYield10Y": 2.55,
+        "currentAccountPercentGdp": -1.2,
+        "fiscalBalancePercentGdp": -2.8,
+        "fxReservesBillionUSD": 17.8,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 37.2,
+        "assetMix": {
+          "financialShare": 51.5,
+          "nonFinancialShare": 58.2,
+          "debtShareOfGross": 9.9
+        },
+        "labor": {
+          "unemploymentRate": 7.5,
+          "underemploymentRate": 10.8,
+          "laborForceParticipation": 78.9,
+          "sahmIndicatorValue": 0.06,
+          "sahmStatus": "tranquil",
+          "jobOpeningsPerUnemployed": 0.62,
+          "wageGrowthYoy": 5.6,
+          "productivityGrowthYoy": 0.8
+        }
+      },
+      "2024": {
+        "totalWealthTrillion": 1.06,
+        "wealthPerAdultUSD": 241000,
+        "medianWealthUSD": 102500,
+        "gdpTrillionUSD": 0.3,
+        "gdpPerCapitaUSD": 54200,
+        "inflationRate": 2,
+        "debtToGdp": 77.5,
+        "gini": 0.71,
+        "realGdpGrowth": 1.2,
+        "policyRate": 3.5,
+        "bondYield10Y": 3,
+        "currentAccountPercentGdp": -0.7,
+        "fiscalBalancePercentGdp": -3.4,
+        "fxReservesBillionUSD": 18.1,
+        "populationMillion": 5.5,
+        "oldAgeDependencyRatio": 38.4,
+        "assetMix": {
+          "financialShare": 51.8,
+          "nonFinancialShare": 58.1,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 7.9,
+          "underemploymentRate": 11.3,
+          "laborForceParticipation": 78.8,
+          "sahmIndicatorValue": 0.37,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.57,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 0.6
+        }
+      },
+      "2025": {
+        "totalWealthTrillion": 1.07,
+        "wealthPerAdultUSD": 243000,
+        "medianWealthUSD": 103200,
+        "gdpTrillionUSD": 0.305,
+        "gdpPerCapitaUSD": 54800,
+        "inflationRate": 1.9,
+        "debtToGdp": 78,
+        "gini": 0.71,
+        "realGdpGrowth": 1.1,
+        "policyRate": 3,
+        "bondYield10Y": 2.9,
+        "currentAccountPercentGdp": -0.8,
+        "fiscalBalancePercentGdp": -3.3,
+        "fxReservesBillionUSD": 18.3,
+        "populationMillion": 5.6,
+        "oldAgeDependencyRatio": 38.8,
+        "assetMix": {
+          "financialShare": 51.9,
+          "nonFinancialShare": 58,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 7.9,
+          "underemploymentRate": 11.3,
+          "laborForceParticipation": 78.8,
+          "sahmIndicatorValue": 0.34,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.57,
+          "wageGrowthYoy": 2.8,
+          "productivityGrowthYoy": 0.6
+        }
+      },
+      "2026": {
+        "totalWealthTrillion": 1.08,
+        "wealthPerAdultUSD": 245000,
+        "medianWealthUSD": 104000,
+        "gdpTrillionUSD": 0.31,
+        "gdpPerCapitaUSD": 55400,
+        "inflationRate": 1.8,
+        "debtToGdp": 78.5,
+        "gini": 0.71,
+        "realGdpGrowth": 1.1,
+        "policyRate": 2.75,
+        "bondYield10Y": 2.85,
+        "currentAccountPercentGdp": -0.8,
+        "fiscalBalancePercentGdp": -3.2,
+        "fxReservesBillionUSD": 18.5,
+        "populationMillion": 5.6,
+        "oldAgeDependencyRatio": 39.2,
+        "assetMix": {
+          "financialShare": 52,
+          "nonFinancialShare": 58,
+          "debtShareOfGross": 10
+        },
+        "labor": {
+          "unemploymentRate": 7.8,
+          "underemploymentRate": 11.2,
+          "laborForceParticipation": 78.8,
+          "sahmIndicatorValue": 0.32,
+          "sahmStatus": "elevated",
+          "jobOpeningsPerUnemployed": 0.58,
+          "wageGrowthYoy": 2.7,
+          "productivityGrowthYoy": 0.6
         }
       }
     }
   }
-,
-  {
-  "code": "NOR",
-  "name": "Norway",
-  "region": "Europe",
-  "blocs": [
-    "nordic",
-    "efta"
-  ],
-  "flag": "🇳🇴",
-  "coordinates": [
-    8.46,
-    60.47
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.12,
-      "wealthPerAdultUSD": 41200,
-      "medianWealthUSD": 18400,
-      "gdpTrillionUSD": 0.064,
-      "gdpPerCapitaUSD": 15700,
-      "inflationRate": 10.9,
-      "debtToGdp": 47,
-      "gini": 0.62,
-      "assetMix": {
-        "financialShare": 45,
-        "nonFinancialShare": 65,
-        "debtShareOfGross": 10
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.28,
-      "wealthPerAdultUSD": 85400,
-      "medianWealthUSD": 36200,
-      "gdpTrillionUSD": 0.12,
-      "gdpPerCapitaUSD": 28100,
-      "inflationRate": 4.1,
-      "debtToGdp": 28,
-      "gini": 0.63,
-      "assetMix": {
-        "financialShare": 48,
-        "nonFinancialShare": 62,
-        "debtShareOfGross": 10
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.42,
-      "wealthPerAdultUSD": 122000,
-      "medianWealthUSD": 49500,
-      "gdpTrillionUSD": 0.15,
-      "gdpPerCapitaUSD": 34800,
-      "inflationRate": 2.5,
-      "debtToGdp": 32,
-      "gini": 0.64,
-      "assetMix": {
-        "financialShare": 50,
-        "nonFinancialShare": 60,
-        "debtShareOfGross": 10
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.62,
-      "wealthPerAdultUSD": 174000,
-      "medianWealthUSD": 68500,
-      "gdpTrillionUSD": 0.17,
-      "gdpPerCapitaUSD": 37800,
-      "inflationRate": 3.1,
-      "debtToGdp": 29,
-      "gini": 0.65,
-      "assetMix": {
-        "financialShare": 52,
-        "nonFinancialShare": 58,
-        "debtShareOfGross": 10
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 1.15,
-      "wealthPerAdultUSD": 298000,
-      "medianWealthUSD": 114000,
-      "gdpTrillionUSD": 0.43,
-      "gdpPerCapitaUSD": 87600,
-      "inflationRate": 2.4,
-      "debtToGdp": 42,
-      "gini": 0.67,
-      "assetMix": {
-        "financialShare": 56,
-        "nonFinancialShare": 54,
-        "debtShareOfGross": 10
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 1.48,
-      "wealthPerAdultUSD": 362000,
-      "medianWealthUSD": 139000,
-      "gdpTrillionUSD": 0.37,
-      "gdpPerCapitaUSD": 68900,
-      "inflationRate": 1.3,
-      "debtToGdp": 46.5,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 61,
-        "nonFinancialShare": 50,
-        "debtShareOfGross": 11
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.58,
-      "wealthPerAdultUSD": 382000,
-      "medianWealthUSD": 147000,
-      "gdpTrillionUSD": 0.59,
-      "gdpPerCapitaUSD": 108900,
-      "inflationRate": 5.8,
-      "debtToGdp": 37,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 62,
-        "nonFinancialShare": 49,
-        "debtShareOfGross": 11
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.69,
-      "wealthPerAdultUSD": 402000,
-      "medianWealthUSD": 154000,
-      "gdpTrillionUSD": 0.54,
-      "gdpPerCapitaUSD": 98500,
-      "inflationRate": 3.2,
-      "debtToGdp": 38,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 63.5,
-        "nonFinancialShare": 48.5,
-        "debtShareOfGross": 12
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.73,
-      "wealthPerAdultUSD": 408000,
-      "medianWealthUSD": 156000,
-      "gdpTrillionUSD": 0.55,
-      "gdpPerCapitaUSD": 100200,
-      "inflationRate": 2.9,
-      "debtToGdp": 38.2,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 63.8,
-        "nonFinancialShare": 48.2,
-        "debtShareOfGross": 12
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.78,
-      "wealthPerAdultUSD": 415000,
-      "medianWealthUSD": 158000,
-      "gdpTrillionUSD": 0.56,
-      "gdpPerCapitaUSD": 102000,
-      "inflationRate": 2.8,
-      "debtToGdp": 38.5,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 64,
-        "nonFinancialShare": 48,
-        "debtShareOfGross": 12
-      }
-    }
-  }
-},
-  {
-  "code": "IRL",
-  "name": "Ireland",
-  "region": "Europe",
-  "blocs": [
-    "eurozone",
-    "eu"
-  ],
-  "flag": "🇮🇪",
-  "coordinates": [
-    -8.24,
-    53.41
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.08,
-      "wealthPerAdultUSD": 36500,
-      "medianWealthUSD": 19200,
-      "gdpTrillionUSD": 0.021,
-      "gdpPerCapitaUSD": 6200,
-      "inflationRate": 18.2,
-      "debtToGdp": 73,
-      "gini": 0.64,
-      "assetMix": {
-        "financialShare": 35,
-        "nonFinancialShare": 72,
-        "debtShareOfGross": 7
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.18,
-      "wealthPerAdultUSD": 74200,
-      "medianWealthUSD": 38500,
-      "gdpTrillionUSD": 0.048,
-      "gdpPerCapitaUSD": 13700,
-      "inflationRate": 3.4,
-      "debtToGdp": 96,
-      "gini": 0.66,
-      "assetMix": {
-        "financialShare": 38,
-        "nonFinancialShare": 70,
-        "debtShareOfGross": 8
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.28,
-      "wealthPerAdultUSD": 106000,
-      "medianWealthUSD": 54000,
-      "gdpTrillionUSD": 0.069,
-      "gdpPerCapitaUSD": 19100,
-      "inflationRate": 2.5,
-      "debtToGdp": 81,
-      "gini": 0.67,
-      "assetMix": {
-        "financialShare": 42,
-        "nonFinancialShare": 66,
-        "debtShareOfGross": 8
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.52,
-      "wealthPerAdultUSD": 182000,
-      "medianWealthUSD": 92000,
-      "gdpTrillionUSD": 0.1,
-      "gdpPerCapitaUSD": 26300,
-      "inflationRate": 5.6,
-      "debtToGdp": 37,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 45,
-        "nonFinancialShare": 64,
-        "debtShareOfGross": 9
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.68,
-      "wealthPerAdultUSD": 204000,
-      "medianWealthUSD": 98000,
-      "gdpTrillionUSD": 0.22,
-      "gdpPerCapitaUSD": 48600,
-      "inflationRate": -1,
-      "debtToGdp": 86,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 46,
-        "nonFinancialShare": 64,
-        "debtShareOfGross": 10
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 1.05,
-      "wealthPerAdultUSD": 295000,
-      "medianWealthUSD": 152000,
-      "gdpTrillionUSD": 0.42,
-      "gdpPerCapitaUSD": 84700,
-      "inflationRate": -0.3,
-      "debtToGdp": 58.5,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 49,
-        "nonFinancialShare": 61,
-        "debtShareOfGross": 10
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.18,
-      "wealthPerAdultUSD": 325000,
-      "medianWealthUSD": 165000,
-      "gdpTrillionUSD": 0.53,
-      "gdpPerCapitaUSD": 104500,
-      "inflationRate": 7.8,
-      "debtToGdp": 44.5,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 50,
-        "nonFinancialShare": 60,
-        "debtShareOfGross": 10
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.3,
-      "wealthPerAdultUSD": 352000,
-      "medianWealthUSD": 176000,
-      "gdpTrillionUSD": 0.55,
-      "gdpPerCapitaUSD": 108500,
-      "inflationRate": 2.4,
-      "debtToGdp": 41,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 51.5,
-        "nonFinancialShare": 58.5,
-        "debtShareOfGross": 10
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.34,
-      "wealthPerAdultUSD": 358000,
-      "medianWealthUSD": 179000,
-      "gdpTrillionUSD": 0.57,
-      "gdpPerCapitaUSD": 110500,
-      "inflationRate": 2.2,
-      "debtToGdp": 40.2,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 51.8,
-        "nonFinancialShare": 58.2,
-        "debtShareOfGross": 10
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.38,
-      "wealthPerAdultUSD": 365000,
-      "medianWealthUSD": 182000,
-      "gdpTrillionUSD": 0.58,
-      "gdpPerCapitaUSD": 112000,
-      "inflationRate": 2.1,
-      "debtToGdp": 39.5,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 52,
-        "nonFinancialShare": 58,
-        "debtShareOfGross": 10
-      }
-    }
-  }
-},
-  {
-  "code": "BEL",
-  "name": "Belgium",
-  "region": "Europe",
-  "blocs": [
-    "eurozone",
-    "eu"
-  ],
-  "flag": "🇧🇪",
-  "coordinates": [
-    4.46,
-    50.5
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.42,
-      "wealthPerAdultUSD": 56400,
-      "medianWealthUSD": 34500,
-      "gdpTrillionUSD": 0.12,
-      "gdpPerCapitaUSD": 12400,
-      "inflationRate": 6.6,
-      "debtToGdp": 78,
-      "gini": 0.56,
-      "assetMix": {
-        "financialShare": 52,
-        "nonFinancialShare": 56,
-        "debtShareOfGross": 8
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.98,
-      "wealthPerAdultUSD": 122000,
-      "medianWealthUSD": 74200,
-      "gdpTrillionUSD": 0.2,
-      "gdpPerCapitaUSD": 19800,
-      "inflationRate": 3.4,
-      "debtToGdp": 129,
-      "gini": 0.58,
-      "assetMix": {
-        "financialShare": 54,
-        "nonFinancialShare": 54,
-        "debtShareOfGross": 8
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 1.35,
-      "wealthPerAdultUSD": 165000,
-      "medianWealthUSD": 102000,
-      "gdpTrillionUSD": 0.29,
-      "gdpPerCapitaUSD": 28400,
-      "inflationRate": 1.5,
-      "debtToGdp": 131,
-      "gini": 0.58,
-      "assetMix": {
-        "financialShare": 55,
-        "nonFinancialShare": 53,
-        "debtShareOfGross": 8
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 1.82,
-      "wealthPerAdultUSD": 218000,
-      "medianWealthUSD": 134000,
-      "gdpTrillionUSD": 0.24,
-      "gdpPerCapitaUSD": 23100,
-      "inflationRate": 2.5,
-      "debtToGdp": 109,
-      "gini": 0.59,
-      "assetMix": {
-        "financialShare": 56,
-        "nonFinancialShare": 52,
-        "debtShareOfGross": 8
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 2.75,
-      "wealthPerAdultUSD": 312000,
-      "medianWealthUSD": 192000,
-      "gdpTrillionUSD": 0.48,
-      "gdpPerCapitaUSD": 44200,
-      "inflationRate": 2.2,
-      "debtToGdp": 100,
-      "gini": 0.6,
-      "assetMix": {
-        "financialShare": 56.5,
-        "nonFinancialShare": 52.5,
-        "debtShareOfGross": 9
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 3.32,
-      "wealthPerAdultUSD": 374000,
-      "medianWealthUSD": 232000,
-      "gdpTrillionUSD": 0.52,
-      "gdpPerCapitaUSD": 45200,
-      "inflationRate": 0.7,
-      "debtToGdp": 112.5,
-      "gini": 0.6,
-      "assetMix": {
-        "financialShare": 57.5,
-        "nonFinancialShare": 52,
-        "debtShareOfGross": 9.5
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 3.52,
-      "wealthPerAdultUSD": 395000,
-      "medianWealthUSD": 242000,
-      "gdpTrillionUSD": 0.58,
-      "gdpPerCapitaUSD": 49800,
-      "inflationRate": 9.6,
-      "debtToGdp": 104.5,
-      "gini": 0.6,
-      "assetMix": {
-        "financialShare": 57,
-        "nonFinancialShare": 52.5,
-        "debtShareOfGross": 9.5
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 3.72,
-      "wealthPerAdultUSD": 416000,
-      "medianWealthUSD": 251000,
-      "gdpTrillionUSD": 0.63,
-      "gdpPerCapitaUSD": 54100,
-      "inflationRate": 2.8,
-      "debtToGdp": 105,
-      "gini": 0.6,
-      "assetMix": {
-        "financialShare": 57.8,
-        "nonFinancialShare": 52,
-        "debtShareOfGross": 9.8
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 3.78,
-      "wealthPerAdultUSD": 422000,
-      "medianWealthUSD": 253500,
-      "gdpTrillionUSD": 0.65,
-      "gdpPerCapitaUSD": 55300,
-      "inflationRate": 2.5,
-      "debtToGdp": 105.5,
-      "gini": 0.6,
-      "assetMix": {
-        "financialShare": 57.9,
-        "nonFinancialShare": 52,
-        "debtShareOfGross": 9.9
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 3.85,
-      "wealthPerAdultUSD": 428000,
-      "medianWealthUSD": 256000,
-      "gdpTrillionUSD": 0.66,
-      "gdpPerCapitaUSD": 56500,
-      "inflationRate": 2.4,
-      "debtToGdp": 106,
-      "gini": 0.6,
-      "assetMix": {
-        "financialShare": 58,
-        "nonFinancialShare": 52,
-        "debtShareOfGross": 10
-      }
-    }
-  }
-},
-  {
-  "code": "AUT",
-  "name": "Austria",
-  "region": "Europe",
-  "blocs": [
-    "eurozone",
-    "eu"
-  ],
-  "flag": "🇦🇹",
-  "coordinates": [
-    14.55,
-    47.51
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.25,
-      "wealthPerAdultUSD": 42500,
-      "medianWealthUSD": 14800,
-      "gdpTrillionUSD": 0.08,
-      "gdpPerCapitaUSD": 10700,
-      "inflationRate": 6.4,
-      "debtToGdp": 36.5,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 40,
-        "nonFinancialShare": 66,
-        "debtShareOfGross": 6
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.62,
-      "wealthPerAdultUSD": 98500,
-      "medianWealthUSD": 33400,
-      "gdpTrillionUSD": 0.17,
-      "gdpPerCapitaUSD": 21700,
-      "inflationRate": 3.3,
-      "debtToGdp": 57,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 42,
-        "nonFinancialShare": 64,
-        "debtShareOfGross": 6
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.88,
-      "wealthPerAdultUSD": 136000,
-      "medianWealthUSD": 46200,
-      "gdpTrillionUSD": 0.24,
-      "gdpPerCapitaUSD": 30400,
-      "inflationRate": 2.2,
-      "debtToGdp": 68,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 43,
-        "nonFinancialShare": 63,
-        "debtShareOfGross": 6
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 1.15,
-      "wealthPerAdultUSD": 172000,
-      "medianWealthUSD": 58500,
-      "gdpTrillionUSD": 0.19,
-      "gdpPerCapitaUSD": 24200,
-      "inflationRate": 2.3,
-      "debtToGdp": 66,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 44,
-        "nonFinancialShare": 63,
-        "debtShareOfGross": 7
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 1.75,
-      "wealthPerAdultUSD": 252000,
-      "medianWealthUSD": 82000,
-      "gdpTrillionUSD": 0.39,
-      "gdpPerCapitaUSD": 46900,
-      "inflationRate": 1.8,
-      "debtToGdp": 82.5,
-      "gini": 0.73,
-      "assetMix": {
-        "financialShare": 45,
-        "nonFinancialShare": 63,
-        "debtShareOfGross": 8
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 2.12,
-      "wealthPerAdultUSD": 298000,
-      "medianWealthUSD": 98500,
-      "gdpTrillionUSD": 0.43,
-      "gdpPerCapitaUSD": 48600,
-      "inflationRate": 1.4,
-      "debtToGdp": 83,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 45.5,
-        "nonFinancialShare": 62.5,
-        "debtShareOfGross": 8
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 2.24,
-      "wealthPerAdultUSD": 312000,
-      "medianWealthUSD": 102000,
-      "gdpTrillionUSD": 0.47,
-      "gdpPerCapitaUSD": 52400,
-      "inflationRate": 8.6,
-      "debtToGdp": 78,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 45.8,
-        "nonFinancialShare": 62.2,
-        "debtShareOfGross": 8
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 2.37,
-      "wealthPerAdultUSD": 329000,
-      "medianWealthUSD": 106000,
-      "gdpTrillionUSD": 0.52,
-      "gdpPerCapitaUSD": 57400,
-      "inflationRate": 2.9,
-      "debtToGdp": 79,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 46,
-        "nonFinancialShare": 62,
-        "debtShareOfGross": 8
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 2.41,
-      "wealthPerAdultUSD": 333000,
-      "medianWealthUSD": 107000,
-      "gdpTrillionUSD": 0.53,
-      "gdpPerCapitaUSD": 58600,
-      "inflationRate": 2.7,
-      "debtToGdp": 79.2,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 46,
-        "nonFinancialShare": 62,
-        "debtShareOfGross": 8
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 2.45,
-      "wealthPerAdultUSD": 338000,
-      "medianWealthUSD": 108000,
-      "gdpTrillionUSD": 0.54,
-      "gdpPerCapitaUSD": 59800,
-      "inflationRate": 2.6,
-      "debtToGdp": 79.5,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 46,
-        "nonFinancialShare": 62,
-        "debtShareOfGross": 8
-      }
-    }
-  }
-},
-  {
-  "code": "DNK",
-  "name": "Denmark",
-  "region": "Europe",
-  "blocs": [
-    "nordic",
-    "eu"
-  ],
-  "flag": "🇩🇰",
-  "coordinates": [
-    9.5,
-    56.26
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.18,
-      "wealthPerAdultUSD": 45200,
-      "medianWealthUSD": 18500,
-      "gdpTrillionUSD": 0.07,
-      "gdpPerCapitaUSD": 13700,
-      "inflationRate": 12.3,
-      "debtToGdp": 38,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 55,
-        "nonFinancialShare": 55,
-        "debtShareOfGross": 10
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.42,
-      "wealthPerAdultUSD": 101000,
-      "medianWealthUSD": 42500,
-      "gdpTrillionUSD": 0.14,
-      "gdpPerCapitaUSD": 27100,
-      "inflationRate": 2.6,
-      "debtToGdp": 68,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 58,
-        "nonFinancialShare": 52,
-        "debtShareOfGross": 10
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.62,
-      "wealthPerAdultUSD": 146000,
-      "medianWealthUSD": 62000,
-      "gdpTrillionUSD": 0.19,
-      "gdpPerCapitaUSD": 35700,
-      "inflationRate": 2.1,
-      "debtToGdp": 73,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 60,
-        "nonFinancialShare": 51,
-        "debtShareOfGross": 11
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.85,
-      "wealthPerAdultUSD": 198000,
-      "medianWealthUSD": 85000,
-      "gdpTrillionUSD": 0.16,
-      "gdpPerCapitaUSD": 30800,
-      "inflationRate": 2.9,
-      "debtToGdp": 52,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 62,
-        "nonFinancialShare": 49,
-        "debtShareOfGross": 11
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 1.35,
-      "wealthPerAdultUSD": 308000,
-      "medianWealthUSD": 135000,
-      "gdpTrillionUSD": 0.32,
-      "gdpPerCapitaUSD": 58100,
-      "inflationRate": 2.3,
-      "debtToGdp": 42.5,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 64,
-        "nonFinancialShare": 48,
-        "debtShareOfGross": 12
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 1.78,
-      "wealthPerAdultUSD": 395000,
-      "medianWealthUSD": 175000,
-      "gdpTrillionUSD": 0.35,
-      "gdpPerCapitaUSD": 61100,
-      "inflationRate": 0.4,
-      "debtToGdp": 42,
-      "gini": 0.73,
-      "assetMix": {
-        "financialShare": 65,
-        "nonFinancialShare": 47,
-        "debtShareOfGross": 12
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.89,
-      "wealthPerAdultUSD": 418000,
-      "medianWealthUSD": 185000,
-      "gdpTrillionUSD": 0.39,
-      "gdpPerCapitaUSD": 67200,
-      "inflationRate": 7.7,
-      "debtToGdp": 30,
-      "gini": 0.73,
-      "assetMix": {
-        "financialShare": 65.5,
-        "nonFinancialShare": 46.5,
-        "debtShareOfGross": 12
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 2.02,
-      "wealthPerAdultUSD": 439000,
-      "medianWealthUSD": 193000,
-      "gdpTrillionUSD": 0.41,
-      "gdpPerCapitaUSD": 69800,
-      "inflationRate": 2.1,
-      "debtToGdp": 29.8,
-      "gini": 0.73,
-      "assetMix": {
-        "financialShare": 65.8,
-        "nonFinancialShare": 46.2,
-        "debtShareOfGross": 12
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 2.07,
-      "wealthPerAdultUSD": 446000,
-      "medianWealthUSD": 195500,
-      "gdpTrillionUSD": 0.415,
-      "gdpPerCapitaUSD": 70500,
-      "inflationRate": 2,
-      "debtToGdp": 29.6,
-      "gini": 0.73,
-      "assetMix": {
-        "financialShare": 65.9,
-        "nonFinancialShare": 46.1,
-        "debtShareOfGross": 12
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 2.12,
-      "wealthPerAdultUSD": 452000,
-      "medianWealthUSD": 198000,
-      "gdpTrillionUSD": 0.42,
-      "gdpPerCapitaUSD": 71200,
-      "inflationRate": 1.9,
-      "debtToGdp": 29.5,
-      "gini": 0.73,
-      "assetMix": {
-        "financialShare": 66,
-        "nonFinancialShare": 46,
-        "debtShareOfGross": 12
-      }
-    }
-  }
-},
-  {
-  "code": "ISR",
-  "name": "Israel",
-  "region": "Middle East",
-  "blocs": [
-    "oecd"
-  ],
-  "flag": "🇮🇱",
-  "coordinates": [
-    34.85,
-    31.04
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.05,
-      "wealthPerAdultUSD": 24500,
-      "medianWealthUSD": 7800,
-      "gdpTrillionUSD": 0.024,
-      "gdpPerCapitaUSD": 6200,
-      "inflationRate": 133,
-      "debtToGdp": 145,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 42,
-        "nonFinancialShare": 64,
-        "debtShareOfGross": 6
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.14,
-      "wealthPerAdultUSD": 48200,
-      "medianWealthUSD": 15400,
-      "gdpTrillionUSD": 0.059,
-      "gdpPerCapitaUSD": 12800,
-      "inflationRate": 17.2,
-      "debtToGdp": 110,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 46,
-        "nonFinancialShare": 60,
-        "debtShareOfGross": 6
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.24,
-      "wealthPerAdultUSD": 72000,
-      "medianWealthUSD": 23500,
-      "gdpTrillionUSD": 0.1,
-      "gdpPerCapitaUSD": 18100,
-      "inflationRate": 10,
-      "debtToGdp": 98,
-      "gini": 0.73,
-      "assetMix": {
-        "financialShare": 48,
-        "nonFinancialShare": 58,
-        "debtShareOfGross": 6
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.42,
-      "wealthPerAdultUSD": 114000,
-      "medianWealthUSD": 38000,
-      "gdpTrillionUSD": 0.13,
-      "gdpPerCapitaUSD": 21100,
-      "inflationRate": 1.1,
-      "debtToGdp": 83,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 50,
-        "nonFinancialShare": 57,
-        "debtShareOfGross": 7
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.78,
-      "wealthPerAdultUSD": 165000,
-      "medianWealthUSD": 54000,
-      "gdpTrillionUSD": 0.23,
-      "gdpPerCapitaUSD": 30800,
-      "inflationRate": 2.7,
-      "debtToGdp": 70,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 51,
-        "nonFinancialShare": 56.5,
-        "debtShareOfGross": 7.5
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 1.25,
-      "wealthPerAdultUSD": 228000,
-      "medianWealthUSD": 76000,
-      "gdpTrillionUSD": 0.41,
-      "gdpPerCapitaUSD": 44200,
-      "inflationRate": -0.6,
-      "debtToGdp": 71,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 53,
-        "nonFinancialShare": 55.5,
-        "debtShareOfGross": 8.5
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.42,
-      "wealthPerAdultUSD": 252000,
-      "medianWealthUSD": 84000,
-      "gdpTrillionUSD": 0.52,
-      "gdpPerCapitaUSD": 54600,
-      "inflationRate": 4.4,
-      "debtToGdp": 61,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 53.5,
-        "nonFinancialShare": 55,
-        "debtShareOfGross": 8.5
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.55,
-      "wealthPerAdultUSD": 266000,
-      "medianWealthUSD": 89000,
-      "gdpTrillionUSD": 0.51,
-      "gdpPerCapitaUSD": 53200,
-      "inflationRate": 3.3,
-      "debtToGdp": 67,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 53.8,
-        "nonFinancialShare": 55.1,
-        "debtShareOfGross": 8.9
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.6,
-      "wealthPerAdultUSD": 271000,
-      "medianWealthUSD": 90500,
-      "gdpTrillionUSD": 0.52,
-      "gdpPerCapitaUSD": 53900,
-      "inflationRate": 3.2,
-      "debtToGdp": 67.8,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 53.9,
-        "nonFinancialShare": 55,
-        "debtShareOfGross": 8.9
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.65,
-      "wealthPerAdultUSD": 275000,
-      "medianWealthUSD": 92000,
-      "gdpTrillionUSD": 0.53,
-      "gdpPerCapitaUSD": 54600,
-      "inflationRate": 3.1,
-      "debtToGdp": 68.5,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 54,
-        "nonFinancialShare": 55,
-        "debtShareOfGross": 9
-      }
-    }
-  }
-},
-  {
-  "code": "VNM",
-  "name": "Vietnam",
-  "region": "Asia",
-  "blocs": [
-    "asean"
-  ],
-  "flag": "🇻🇳",
-  "coordinates": [
-    108.27,
-    14.05
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.015,
-      "wealthPerAdultUSD": 520,
-      "medianWealthUSD": 160,
-      "gdpTrillionUSD": 0.027,
-      "gdpPerCapitaUSD": 490,
-      "inflationRate": 25,
-      "debtToGdp": 80,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 12,
-        "nonFinancialShare": 90,
-        "debtShareOfGross": 2
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.035,
-      "wealthPerAdultUSD": 1050,
-      "medianWealthUSD": 340,
-      "gdpTrillionUSD": 0.008,
-      "gdpPerCapitaUSD": 120,
-      "inflationRate": 67.4,
-      "debtToGdp": 90,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 14,
-        "nonFinancialShare": 88,
-        "debtShareOfGross": 2
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.075,
-      "wealthPerAdultUSD": 1950,
-      "medianWealthUSD": 620,
-      "gdpTrillionUSD": 0.021,
-      "gdpPerCapitaUSD": 280,
-      "inflationRate": 12.7,
-      "debtToGdp": 72,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 16,
-        "nonFinancialShare": 86,
-        "debtShareOfGross": 2
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.15,
-      "wealthPerAdultUSD": 3450,
-      "medianWealthUSD": 1150,
-      "gdpTrillionUSD": 0.031,
-      "gdpPerCapitaUSD": 390,
-      "inflationRate": -1.7,
-      "debtToGdp": 41.5,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 18,
-        "nonFinancialShare": 84,
-        "debtShareOfGross": 2.5
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.42,
-      "wealthPerAdultUSD": 7600,
-      "medianWealthUSD": 2520,
-      "gdpTrillionUSD": 0.15,
-      "gdpPerCapitaUSD": 1680,
-      "inflationRate": 9.2,
-      "debtToGdp": 45,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 20,
-        "nonFinancialShare": 82.5,
-        "debtShareOfGross": 3
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 0.95,
-      "wealthPerAdultUSD": 14800,
-      "medianWealthUSD": 4950,
-      "gdpTrillionUSD": 0.35,
-      "gdpPerCapitaUSD": 3550,
-      "inflationRate": 3.2,
-      "debtToGdp": 41.5,
-      "gini": 0.76,
-      "assetMix": {
-        "financialShare": 22.5,
-        "nonFinancialShare": 81,
-        "debtShareOfGross": 3.5
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.15,
-      "wealthPerAdultUSD": 17200,
-      "medianWealthUSD": 5750,
-      "gdpTrillionUSD": 0.41,
-      "gdpPerCapitaUSD": 4160,
-      "inflationRate": 3.2,
-      "debtToGdp": 38,
-      "gini": 0.76,
-      "assetMix": {
-        "financialShare": 23,
-        "nonFinancialShare": 80.5,
-        "debtShareOfGross": 3.5
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.32,
-      "wealthPerAdultUSD": 19400,
-      "medianWealthUSD": 6450,
-      "gdpTrillionUSD": 0.46,
-      "gdpPerCapitaUSD": 4620,
-      "inflationRate": 3.7,
-      "debtToGdp": 37.2,
-      "gini": 0.77,
-      "assetMix": {
-        "financialShare": 23.8,
-        "nonFinancialShare": 80.2,
-        "debtShareOfGross": 4
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.37,
-      "wealthPerAdultUSD": 20000,
-      "medianWealthUSD": 6620,
-      "gdpTrillionUSD": 0.475,
-      "gdpPerCapitaUSD": 4740,
-      "inflationRate": 3.8,
-      "debtToGdp": 37.1,
-      "gini": 0.77,
-      "assetMix": {
-        "financialShare": 23.9,
-        "nonFinancialShare": 80.1,
-        "debtShareOfGross": 4
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.42,
-      "wealthPerAdultUSD": 20500,
-      "medianWealthUSD": 6800,
-      "gdpTrillionUSD": 0.49,
-      "gdpPerCapitaUSD": 4850,
-      "inflationRate": 3.8,
-      "debtToGdp": 37,
-      "gini": 0.77,
-      "assetMix": {
-        "financialShare": 24,
-        "nonFinancialShare": 80,
-        "debtShareOfGross": 4
-      }
-    }
-  }
-},
-  {
-  "code": "MYS",
-  "name": "Malaysia",
-  "region": "Asia",
-  "blocs": [
-    "asean"
-  ],
-  "flag": "🇲🇾",
-  "coordinates": [
-    101.97,
-    4.21
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.04,
-      "wealthPerAdultUSD": 5400,
-      "medianWealthUSD": 1650,
-      "gdpTrillionUSD": 0.025,
-      "gdpPerCapitaUSD": 1800,
-      "inflationRate": 6.7,
-      "debtToGdp": 44,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 30,
-        "nonFinancialShare": 74,
-        "debtShareOfGross": 4
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.11,
-      "wealthPerAdultUSD": 11200,
-      "medianWealthUSD": 3450,
-      "gdpTrillionUSD": 0.044,
-      "gdpPerCapitaUSD": 2450,
-      "inflationRate": 2.6,
-      "debtToGdp": 75,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 34,
-        "nonFinancialShare": 71,
-        "debtShareOfGross": 5
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.22,
-      "wealthPerAdultUSD": 19800,
-      "medianWealthUSD": 6100,
-      "gdpTrillionUSD": 0.089,
-      "gdpPerCapitaUSD": 4350,
-      "inflationRate": 3.4,
-      "debtToGdp": 41,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 37,
-        "nonFinancialShare": 68,
-        "debtShareOfGross": 5
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.26,
-      "wealthPerAdultUSD": 20500,
-      "medianWealthUSD": 6400,
-      "gdpTrillionUSD": 0.094,
-      "gdpPerCapitaUSD": 4050,
-      "inflationRate": 1.5,
-      "debtToGdp": 33,
-      "gini": 0.76,
-      "assetMix": {
-        "financialShare": 38,
-        "nonFinancialShare": 67,
-        "debtShareOfGross": 5
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.52,
-      "wealthPerAdultUSD": 30800,
-      "medianWealthUSD": 9400,
-      "gdpTrillionUSD": 0.26,
-      "gdpPerCapitaUSD": 9050,
-      "inflationRate": 1.6,
-      "debtToGdp": 51.5,
-      "gini": 0.78,
-      "assetMix": {
-        "financialShare": 40,
-        "nonFinancialShare": 66,
-        "debtShareOfGross": 6
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 0.76,
-      "wealthPerAdultUSD": 35800,
-      "medianWealthUSD": 10800,
-      "gdpTrillionUSD": 0.34,
-      "gdpPerCapitaUSD": 10450,
-      "inflationRate": -1.1,
-      "debtToGdp": 67.8,
-      "gini": 0.79,
-      "assetMix": {
-        "financialShare": 41,
-        "nonFinancialShare": 65.5,
-        "debtShareOfGross": 6.5
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 0.84,
-      "wealthPerAdultUSD": 38200,
-      "medianWealthUSD": 11400,
-      "gdpTrillionUSD": 0.41,
-      "gdpPerCapitaUSD": 12300,
-      "inflationRate": 3.4,
-      "debtToGdp": 66,
-      "gini": 0.79,
-      "assetMix": {
-        "financialShare": 41.5,
-        "nonFinancialShare": 65.2,
-        "debtShareOfGross": 6.8
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 0.92,
-      "wealthPerAdultUSD": 40400,
-      "medianWealthUSD": 12000,
-      "gdpTrillionUSD": 0.44,
-      "gdpPerCapitaUSD": 13100,
-      "inflationRate": 2.1,
-      "debtToGdp": 64.8,
-      "gini": 0.79,
-      "assetMix": {
-        "financialShare": 41.8,
-        "nonFinancialShare": 65.1,
-        "debtShareOfGross": 6.9
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 0.95,
-      "wealthPerAdultUSD": 41100,
-      "medianWealthUSD": 12200,
-      "gdpTrillionUSD": 0.45,
-      "gdpPerCapitaUSD": 13350,
-      "inflationRate": 2.2,
-      "debtToGdp": 64.6,
-      "gini": 0.79,
-      "assetMix": {
-        "financialShare": 41.9,
-        "nonFinancialShare": 65,
-        "debtShareOfGross": 7
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 0.98,
-      "wealthPerAdultUSD": 41800,
-      "medianWealthUSD": 12400,
-      "gdpTrillionUSD": 0.46,
-      "gdpPerCapitaUSD": 13600,
-      "inflationRate": 2.2,
-      "debtToGdp": 64.5,
-      "gini": 0.79,
-      "assetMix": {
-        "financialShare": 42,
-        "nonFinancialShare": 65,
-        "debtShareOfGross": 7
-      }
-    }
-  }
-},
-  {
-  "code": "PHL",
-  "name": "Philippines",
-  "region": "Asia",
-  "blocs": [
-    "asean"
-  ],
-  "flag": "🇵🇭",
-  "coordinates": [
-    121.77,
-    12.87
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.05,
-      "wealthPerAdultUSD": 2150,
-      "medianWealthUSD": 620,
-      "gdpTrillionUSD": 0.036,
-      "gdpPerCapitaUSD": 740,
-      "inflationRate": 18.2,
-      "debtToGdp": 49,
-      "gini": 0.78,
-      "assetMix": {
-        "financialShare": 20,
-        "nonFinancialShare": 83,
-        "debtShareOfGross": 3
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.12,
-      "wealthPerAdultUSD": 3850,
-      "medianWealthUSD": 1100,
-      "gdpTrillionUSD": 0.044,
-      "gdpPerCapitaUSD": 720,
-      "inflationRate": 14.1,
-      "debtToGdp": 68,
-      "gini": 0.8,
-      "assetMix": {
-        "financialShare": 22,
-        "nonFinancialShare": 81,
-        "debtShareOfGross": 3
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.22,
-      "wealthPerAdultUSD": 5950,
-      "medianWealthUSD": 1680,
-      "gdpTrillionUSD": 0.074,
-      "gdpPerCapitaUSD": 1060,
-      "inflationRate": 8.1,
-      "debtToGdp": 59,
-      "gini": 0.81,
-      "assetMix": {
-        "financialShare": 23,
-        "nonFinancialShare": 80,
-        "debtShareOfGross": 3
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.28,
-      "wealthPerAdultUSD": 6850,
-      "medianWealthUSD": 1950,
-      "gdpTrillionUSD": 0.081,
-      "gdpPerCapitaUSD": 1040,
-      "inflationRate": 4.4,
-      "debtToGdp": 64.5,
-      "gini": 0.81,
-      "assetMix": {
-        "financialShare": 24,
-        "nonFinancialShare": 79.5,
-        "debtShareOfGross": 3.5
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.52,
-      "wealthPerAdultUSD": 9800,
-      "medianWealthUSD": 2750,
-      "gdpTrillionUSD": 0.2,
-      "gdpPerCapitaUSD": 2130,
-      "inflationRate": 3.8,
-      "debtToGdp": 47,
-      "gini": 0.82,
-      "assetMix": {
-        "financialShare": 25,
-        "nonFinancialShare": 78.5,
-        "debtShareOfGross": 3.5
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 0.85,
-      "wealthPerAdultUSD": 13200,
-      "medianWealthUSD": 3650,
-      "gdpTrillionUSD": 0.36,
-      "gdpPerCapitaUSD": 3300,
-      "inflationRate": 2.6,
-      "debtToGdp": 54.6,
-      "gini": 0.83,
-      "assetMix": {
-        "financialShare": 25.5,
-        "nonFinancialShare": 78.2,
-        "debtShareOfGross": 3.8
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 0.98,
-      "wealthPerAdultUSD": 14600,
-      "medianWealthUSD": 3950,
-      "gdpTrillionUSD": 0.4,
-      "gdpPerCapitaUSD": 3620,
-      "inflationRate": 5.8,
-      "debtToGdp": 60.9,
-      "gini": 0.83,
-      "assetMix": {
-        "financialShare": 25.8,
-        "nonFinancialShare": 78.1,
-        "debtShareOfGross": 3.9
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.08,
-      "wealthPerAdultUSD": 15600,
-      "medianWealthUSD": 4100,
-      "gdpTrillionUSD": 0.45,
-      "gdpPerCapitaUSD": 3950,
-      "inflationRate": 3.5,
-      "debtToGdp": 60.6,
-      "gini": 0.83,
-      "assetMix": {
-        "financialShare": 25.9,
-        "nonFinancialShare": 78.1,
-        "debtShareOfGross": 4
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.11,
-      "wealthPerAdultUSD": 15900,
-      "medianWealthUSD": 4150,
-      "gdpTrillionUSD": 0.465,
-      "gdpPerCapitaUSD": 4040,
-      "inflationRate": 3.6,
-      "debtToGdp": 60.5,
-      "gini": 0.83,
-      "assetMix": {
-        "financialShare": 26,
-        "nonFinancialShare": 78,
-        "debtShareOfGross": 4
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.15,
-      "wealthPerAdultUSD": 16200,
-      "medianWealthUSD": 4200,
-      "gdpTrillionUSD": 0.48,
-      "gdpPerCapitaUSD": 4120,
-      "inflationRate": 3.6,
-      "debtToGdp": 60.5,
-      "gini": 0.83,
-      "assetMix": {
-        "financialShare": 26,
-        "nonFinancialShare": 78,
-        "debtShareOfGross": 4
-      }
-    }
-  }
-},
-  {
-  "code": "NZL",
-  "name": "New Zealand",
-  "region": "Oceania",
-  "blocs": [
-    "oceania"
-  ],
-  "flag": "🇳🇿",
-  "coordinates": [
-    174.88,
-    -40.9
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.1,
-      "wealthPerAdultUSD": 48500,
-      "medianWealthUSD": 24200,
-      "gdpTrillionUSD": 0.022,
-      "gdpPerCapitaUSD": 7200,
-      "inflationRate": 17.1,
-      "debtToGdp": 42,
-      "gini": 0.65,
-      "assetMix": {
-        "financialShare": 38,
-        "nonFinancialShare": 70,
-        "debtShareOfGross": 8
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.24,
-      "wealthPerAdultUSD": 104000,
-      "medianWealthUSD": 48500,
-      "gdpTrillionUSD": 0.046,
-      "gdpPerCapitaUSD": 13500,
-      "inflationRate": 6.1,
-      "debtToGdp": 54,
-      "gini": 0.67,
-      "assetMix": {
-        "financialShare": 40,
-        "nonFinancialShare": 68,
-        "debtShareOfGross": 8
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.38,
-      "wealthPerAdultUSD": 154000,
-      "medianWealthUSD": 72000,
-      "gdpTrillionUSD": 0.062,
-      "gdpPerCapitaUSD": 17100,
-      "inflationRate": 3.8,
-      "debtToGdp": 45,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 42,
-        "nonFinancialShare": 67,
-        "debtShareOfGross": 9
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.52,
-      "wealthPerAdultUSD": 198000,
-      "medianWealthUSD": 94000,
-      "gdpTrillionUSD": 0.054,
-      "gdpPerCapitaUSD": 14100,
-      "inflationRate": 2.6,
-      "debtToGdp": 32,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 43,
-        "nonFinancialShare": 66,
-        "debtShareOfGross": 9
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.98,
-      "wealthPerAdultUSD": 312000,
-      "medianWealthUSD": 148000,
-      "gdpTrillionUSD": 0.14,
-      "gdpPerCapitaUSD": 33400,
-      "inflationRate": 2.3,
-      "debtToGdp": 30.5,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 44,
-        "nonFinancialShare": 65.5,
-        "debtShareOfGross": 9.5
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 1.48,
-      "wealthPerAdultUSD": 425000,
-      "medianWealthUSD": 198000,
-      "gdpTrillionUSD": 0.21,
-      "gdpPerCapitaUSD": 42100,
-      "inflationRate": 1.7,
-      "debtToGdp": 43,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 44.5,
-        "nonFinancialShare": 65.2,
-        "debtShareOfGross": 9.8
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.65,
-      "wealthPerAdultUSD": 445000,
-      "medianWealthUSD": 204000,
-      "gdpTrillionUSD": 0.24,
-      "gdpPerCapitaUSD": 47200,
-      "inflationRate": 7.2,
-      "debtToGdp": 48,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 44.8,
-        "nonFinancialShare": 65.1,
-        "debtShareOfGross": 9.9
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.75,
-      "wealthPerAdultUSD": 458000,
-      "medianWealthUSD": 209000,
-      "gdpTrillionUSD": 0.25,
-      "gdpPerCapitaUSD": 49400,
-      "inflationRate": 2.8,
-      "debtToGdp": 47.5,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 45,
-        "nonFinancialShare": 65,
-        "debtShareOfGross": 10
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.78,
-      "wealthPerAdultUSD": 463000,
-      "medianWealthUSD": 210500,
-      "gdpTrillionUSD": 0.255,
-      "gdpPerCapitaUSD": 49900,
-      "inflationRate": 2.6,
-      "debtToGdp": 47.2,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 45,
-        "nonFinancialShare": 65,
-        "debtShareOfGross": 10
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.82,
-      "wealthPerAdultUSD": 468000,
-      "medianWealthUSD": 212000,
-      "gdpTrillionUSD": 0.26,
-      "gdpPerCapitaUSD": 50400,
-      "inflationRate": 2.5,
-      "debtToGdp": 47,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 45,
-        "nonFinancialShare": 65,
-        "debtShareOfGross": 10
-      }
-    }
-  }
-},
-  {
-  "code": "PRT",
-  "name": "Portugal",
-  "region": "Europe",
-  "blocs": [
-    "eurozone",
-    "eu"
-  ],
-  "flag": "🇵🇹",
-  "coordinates": [
-    -8.22,
-    39.39
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.12,
-      "wealthPerAdultUSD": 16500,
-      "medianWealthUSD": 8200,
-      "gdpTrillionUSD": 0.033,
-      "gdpPerCapitaUSD": 3350,
-      "inflationRate": 16.6,
-      "debtToGdp": 32,
-      "gini": 0.65,
-      "assetMix": {
-        "financialShare": 32,
-        "nonFinancialShare": 74,
-        "debtShareOfGross": 6
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.35,
-      "wealthPerAdultUSD": 44200,
-      "medianWealthUSD": 22400,
-      "gdpTrillionUSD": 0.079,
-      "gdpPerCapitaUSD": 7950,
-      "inflationRate": 13.4,
-      "debtToGdp": 58,
-      "gini": 0.67,
-      "assetMix": {
-        "financialShare": 34,
-        "nonFinancialShare": 72,
-        "debtShareOfGross": 6
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.55,
-      "wealthPerAdultUSD": 68000,
-      "medianWealthUSD": 34500,
-      "gdpTrillionUSD": 0.12,
-      "gdpPerCapitaUSD": 11800,
-      "inflationRate": 4.2,
-      "debtToGdp": 60,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 35,
-        "nonFinancialShare": 71,
-        "debtShareOfGross": 6
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.78,
-      "wealthPerAdultUSD": 94000,
-      "medianWealthUSD": 46200,
-      "gdpTrillionUSD": 0.11,
-      "gdpPerCapitaUSD": 11200,
-      "inflationRate": 2.8,
-      "debtToGdp": 50,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 36,
-        "nonFinancialShare": 71,
-        "debtShareOfGross": 7
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 1.15,
-      "wealthPerAdultUSD": 136000,
-      "medianWealthUSD": 64000,
-      "gdpTrillionUSD": 0.24,
-      "gdpPerCapitaUSD": 22500,
-      "inflationRate": 1.4,
-      "debtToGdp": 100,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 36.5,
-        "nonFinancialShare": 71,
-        "debtShareOfGross": 7.5
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 1.35,
-      "wealthPerAdultUSD": 168000,
-      "medianWealthUSD": 78000,
-      "gdpTrillionUSD": 0.23,
-      "gdpPerCapitaUSD": 22400,
-      "inflationRate": -0.1,
-      "debtToGdp": 135,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 37.5,
-        "nonFinancialShare": 70.2,
-        "debtShareOfGross": 7.8
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.45,
-      "wealthPerAdultUSD": 178000,
-      "medianWealthUSD": 82000,
-      "gdpTrillionUSD": 0.25,
-      "gdpPerCapitaUSD": 24500,
-      "inflationRate": 8.1,
-      "debtToGdp": 112.5,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 37.8,
-        "nonFinancialShare": 70.1,
-        "debtShareOfGross": 7.9
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.55,
-      "wealthPerAdultUSD": 189000,
-      "medianWealthUSD": 86000,
-      "gdpTrillionUSD": 0.28,
-      "gdpPerCapitaUSD": 27100,
-      "inflationRate": 2.6,
-      "debtToGdp": 98,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 38,
-        "nonFinancialShare": 70,
-        "debtShareOfGross": 8
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.58,
-      "wealthPerAdultUSD": 192000,
-      "medianWealthUSD": 87000,
-      "gdpTrillionUSD": 0.285,
-      "gdpPerCapitaUSD": 27600,
-      "inflationRate": 2.4,
-      "debtToGdp": 96.5,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 38,
-        "nonFinancialShare": 70,
-        "debtShareOfGross": 8
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.62,
-      "wealthPerAdultUSD": 195000,
-      "medianWealthUSD": 88000,
-      "gdpTrillionUSD": 0.29,
-      "gdpPerCapitaUSD": 28200,
-      "inflationRate": 2.3,
-      "debtToGdp": 95,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 38,
-        "nonFinancialShare": 70,
-        "debtShareOfGross": 8
-      }
-    }
-  }
-},
-  {
-  "code": "GRC",
-  "name": "Greece",
-  "region": "Europe",
-  "blocs": [
-    "eurozone",
-    "eu"
-  ],
-  "flag": "🇬🇷",
-  "coordinates": [
-    21.82,
-    39.07
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.15,
-      "wealthPerAdultUSD": 21500,
-      "medianWealthUSD": 11400,
-      "gdpTrillionUSD": 0.056,
-      "gdpPerCapitaUSD": 5900,
-      "inflationRate": 24.9,
-      "debtToGdp": 28,
-      "gini": 0.64,
-      "assetMix": {
-        "financialShare": 24,
-        "nonFinancialShare": 82,
-        "debtShareOfGross": 6
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.38,
-      "wealthPerAdultUSD": 48500,
-      "medianWealthUSD": 25200,
-      "gdpTrillionUSD": 0.098,
-      "gdpPerCapitaUSD": 9600,
-      "inflationRate": 20.4,
-      "debtToGdp": 73,
-      "gini": 0.66,
-      "assetMix": {
-        "financialShare": 26,
-        "nonFinancialShare": 80,
-        "debtShareOfGross": 6
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.58,
-      "wealthPerAdultUSD": 72000,
-      "medianWealthUSD": 36800,
-      "gdpTrillionUSD": 0.14,
-      "gdpPerCapitaUSD": 13100,
-      "inflationRate": 8.9,
-      "debtToGdp": 98,
-      "gini": 0.67,
-      "assetMix": {
-        "financialShare": 27,
-        "nonFinancialShare": 79,
-        "debtShareOfGross": 6
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.85,
-      "wealthPerAdultUSD": 102000,
-      "medianWealthUSD": 52000,
-      "gdpTrillionUSD": 0.13,
-      "gdpPerCapitaUSD": 12000,
-      "inflationRate": 3.2,
-      "debtToGdp": 104,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 28,
-        "nonFinancialShare": 79,
-        "debtShareOfGross": 7
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 1.25,
-      "wealthPerAdultUSD": 145000,
-      "medianWealthUSD": 74000,
-      "gdpTrillionUSD": 0.3,
-      "gdpPerCapitaUSD": 26900,
-      "inflationRate": 4.7,
-      "debtToGdp": 146,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 29,
-        "nonFinancialShare": 78.5,
-        "debtShareOfGross": 7.5
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 0.98,
-      "wealthPerAdultUSD": 118000,
-      "medianWealthUSD": 58000,
-      "gdpTrillionUSD": 0.19,
-      "gdpPerCapitaUSD": 17600,
-      "inflationRate": -1.3,
-      "debtToGdp": 206,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 29.5,
-        "nonFinancialShare": 78.2,
-        "debtShareOfGross": 7.8
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.05,
-      "wealthPerAdultUSD": 128000,
-      "medianWealthUSD": 62000,
-      "gdpTrillionUSD": 0.22,
-      "gdpPerCapitaUSD": 20700,
-      "inflationRate": 9.3,
-      "debtToGdp": 172,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 29.8,
-        "nonFinancialShare": 78.1,
-        "debtShareOfGross": 7.9
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.13,
-      "wealthPerAdultUSD": 137000,
-      "medianWealthUSD": 66000,
-      "gdpTrillionUSD": 0.24,
-      "gdpPerCapitaUSD": 23100,
-      "inflationRate": 2.8,
-      "debtToGdp": 156,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 30,
-        "nonFinancialShare": 78,
-        "debtShareOfGross": 8
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.15,
-      "wealthPerAdultUSD": 140000,
-      "medianWealthUSD": 67000,
-      "gdpTrillionUSD": 0.245,
-      "gdpPerCapitaUSD": 23600,
-      "inflationRate": 2.6,
-      "debtToGdp": 153.5,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 30,
-        "nonFinancialShare": 78,
-        "debtShareOfGross": 8
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.18,
-      "wealthPerAdultUSD": 142000,
-      "medianWealthUSD": 68000,
-      "gdpTrillionUSD": 0.25,
-      "gdpPerCapitaUSD": 24100,
-      "inflationRate": 2.5,
-      "debtToGdp": 151,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 30,
-        "nonFinancialShare": 78,
-        "debtShareOfGross": 8
-      }
-    }
-  }
-},
-  {
-  "code": "PER",
-  "name": "Peru",
-  "region": "Latin America",
-  "blocs": [
-    "pacific-alliance"
-  ],
-  "flag": "🇵🇪",
-  "coordinates": [
-    -75.01,
-    -9.19
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.03,
-      "wealthPerAdultUSD": 3400,
-      "medianWealthUSD": 980,
-      "gdpTrillionUSD": 0.021,
-      "gdpPerCapitaUSD": 1200,
-      "inflationRate": 59.2,
-      "debtToGdp": 45,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 22,
-        "nonFinancialShare": 81,
-        "debtShareOfGross": 3
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.06,
-      "wealthPerAdultUSD": 5200,
-      "medianWealthUSD": 1450,
-      "gdpTrillionUSD": 0.026,
-      "gdpPerCapitaUSD": 1200,
-      "inflationRate": 7481,
-      "debtToGdp": 85,
-      "gini": 0.76,
-      "assetMix": {
-        "financialShare": 24,
-        "nonFinancialShare": 79,
-        "debtShareOfGross": 3
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.12,
-      "wealthPerAdultUSD": 9200,
-      "medianWealthUSD": 2650,
-      "gdpTrillionUSD": 0.053,
-      "gdpPerCapitaUSD": 2200,
-      "inflationRate": 11.1,
-      "debtToGdp": 68,
-      "gini": 0.76,
-      "assetMix": {
-        "financialShare": 25,
-        "nonFinancialShare": 78,
-        "debtShareOfGross": 3
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.16,
-      "wealthPerAdultUSD": 10800,
-      "medianWealthUSD": 3100,
-      "gdpTrillionUSD": 0.051,
-      "gdpPerCapitaUSD": 1950,
-      "inflationRate": 3.8,
-      "debtToGdp": 46,
-      "gini": 0.77,
-      "assetMix": {
-        "financialShare": 26,
-        "nonFinancialShare": 77.5,
-        "debtShareOfGross": 3.5
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.32,
-      "wealthPerAdultUSD": 17400,
-      "medianWealthUSD": 5200,
-      "gdpTrillionUSD": 0.14,
-      "gdpPerCapitaUSD": 4950,
-      "inflationRate": 1.5,
-      "debtToGdp": 24,
-      "gini": 0.77,
-      "assetMix": {
-        "financialShare": 27,
-        "nonFinancialShare": 76.5,
-        "debtShareOfGross": 3.5
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 0.48,
-      "wealthPerAdultUSD": 22500,
-      "medianWealthUSD": 6900,
-      "gdpTrillionUSD": 0.21,
-      "gdpPerCapitaUSD": 6350,
-      "inflationRate": 1.8,
-      "debtToGdp": 34.8,
-      "gini": 0.78,
-      "assetMix": {
-        "financialShare": 27.5,
-        "nonFinancialShare": 76.2,
-        "debtShareOfGross": 3.8
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 0.54,
-      "wealthPerAdultUSD": 24800,
-      "medianWealthUSD": 7600,
-      "gdpTrillionUSD": 0.24,
-      "gdpPerCapitaUSD": 7200,
-      "inflationRate": 8.5,
-      "debtToGdp": 33.8,
-      "gini": 0.78,
-      "assetMix": {
-        "financialShare": 27.8,
-        "nonFinancialShare": 76.1,
-        "debtShareOfGross": 3.9
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 0.59,
-      "wealthPerAdultUSD": 26500,
-      "medianWealthUSD": 8100,
-      "gdpTrillionUSD": 0.27,
-      "gdpPerCapitaUSD": 7900,
-      "inflationRate": 2.6,
-      "debtToGdp": 33.6,
-      "gini": 0.78,
-      "assetMix": {
-        "financialShare": 27.9,
-        "nonFinancialShare": 76,
-        "debtShareOfGross": 4
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 0.6,
-      "wealthPerAdultUSD": 27000,
-      "medianWealthUSD": 8250,
-      "gdpTrillionUSD": 0.275,
-      "gdpPerCapitaUSD": 8050,
-      "inflationRate": 2.5,
-      "debtToGdp": 33.5,
-      "gini": 0.78,
-      "assetMix": {
-        "financialShare": 28,
-        "nonFinancialShare": 76,
-        "debtShareOfGross": 4
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 0.62,
-      "wealthPerAdultUSD": 27500,
-      "medianWealthUSD": 8400,
-      "gdpTrillionUSD": 0.28,
-      "gdpPerCapitaUSD": 8200,
-      "inflationRate": 2.4,
-      "debtToGdp": 33.5,
-      "gini": 0.78,
-      "assetMix": {
-        "financialShare": 28,
-        "nonFinancialShare": 76,
-        "debtShareOfGross": 4
-      }
-    }
-  }
-},
-  {
-  "code": "CZE",
-  "name": "Czech Republic",
-  "region": "Europe",
-  "blocs": [
-    "eu"
-  ],
-  "flag": "🇨🇿",
-  "coordinates": [
-    15.47,
-    49.81
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.12,
-      "wealthPerAdultUSD": 16200,
-      "medianWealthUSD": 6400,
-      "gdpTrillionUSD": 0.045,
-      "gdpPerCapitaUSD": 4400,
-      "inflationRate": 8.5,
-      "debtToGdp": 20,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 36,
-        "nonFinancialShare": 70,
-        "debtShareOfGross": 6
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.24,
-      "wealthPerAdultUSD": 30500,
-      "medianWealthUSD": 12200,
-      "gdpTrillionUSD": 0.049,
-      "gdpPerCapitaUSD": 4750,
-      "inflationRate": 9.7,
-      "debtToGdp": 15,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 38,
-        "nonFinancialShare": 68,
-        "debtShareOfGross": 6
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.38,
-      "wealthPerAdultUSD": 46200,
-      "medianWealthUSD": 18500,
-      "gdpTrillionUSD": 0.06,
-      "gdpPerCapitaUSD": 5800,
-      "inflationRate": 9.1,
-      "debtToGdp": 14,
-      "gini": 0.72,
-      "assetMix": {
-        "financialShare": 40,
-        "nonFinancialShare": 66,
-        "debtShareOfGross": 6
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.48,
-      "wealthPerAdultUSD": 58400,
-      "medianWealthUSD": 23200,
-      "gdpTrillionUSD": 0.062,
-      "gdpPerCapitaUSD": 6050,
-      "inflationRate": 3.9,
-      "debtToGdp": 17.5,
-      "gini": 0.73,
-      "assetMix": {
-        "financialShare": 41,
-        "nonFinancialShare": 66,
-        "debtShareOfGross": 7
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.82,
-      "wealthPerAdultUSD": 96000,
-      "medianWealthUSD": 38500,
-      "gdpTrillionUSD": 0.21,
-      "gdpPerCapitaUSD": 19800,
-      "inflationRate": 1.5,
-      "debtToGdp": 37.5,
-      "gini": 0.74,
-      "assetMix": {
-        "financialShare": 42,
-        "nonFinancialShare": 65,
-        "debtShareOfGross": 7.5
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 1.05,
-      "wealthPerAdultUSD": 124000,
-      "medianWealthUSD": 49500,
-      "gdpTrillionUSD": 0.25,
-      "gdpPerCapitaUSD": 23100,
-      "inflationRate": 3.2,
-      "debtToGdp": 37.8,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 43,
-        "nonFinancialShare": 64.5,
-        "debtShareOfGross": 7.8
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.12,
-      "wealthPerAdultUSD": 132000,
-      "medianWealthUSD": 53000,
-      "gdpTrillionUSD": 0.29,
-      "gdpPerCapitaUSD": 27500,
-      "inflationRate": 15.1,
-      "debtToGdp": 44.2,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 43.5,
-        "nonFinancialShare": 64.2,
-        "debtShareOfGross": 7.9
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.2,
-      "wealthPerAdultUSD": 141000,
-      "medianWealthUSD": 56500,
-      "gdpTrillionUSD": 0.33,
-      "gdpPerCapitaUSD": 30800,
-      "inflationRate": 2.7,
-      "debtToGdp": 44.6,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 43.8,
-        "nonFinancialShare": 64.1,
-        "debtShareOfGross": 8
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.22,
-      "wealthPerAdultUSD": 143000,
-      "medianWealthUSD": 57200,
-      "gdpTrillionUSD": 0.335,
-      "gdpPerCapitaUSD": 31300,
-      "inflationRate": 2.6,
-      "debtToGdp": 44.5,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 43.9,
-        "nonFinancialShare": 64,
-        "debtShareOfGross": 8
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.24,
-      "wealthPerAdultUSD": 145000,
-      "medianWealthUSD": 58000,
-      "gdpTrillionUSD": 0.34,
-      "gdpPerCapitaUSD": 31800,
-      "inflationRate": 2.6,
-      "debtToGdp": 44.5,
-      "gini": 0.75,
-      "assetMix": {
-        "financialShare": 44,
-        "nonFinancialShare": 64,
-        "debtShareOfGross": 8
-      }
-    }
-  }
-},
-  {
-  "code": "FIN",
-  "name": "Finland",
-  "region": "Europe",
-  "blocs": [
-    "eurozone",
-    "nordic",
-    "eu"
-  ],
-  "flag": "🇫🇮",
-  "coordinates": [
-    25.74,
-    61.92
-  ],
-  "history": {
-    "1980": {
-      "totalWealthTrillion": 0.11,
-      "wealthPerAdultUSD": 28500,
-      "medianWealthUSD": 12400,
-      "gdpTrillionUSD": 0.054,
-      "gdpPerCapitaUSD": 11200,
-      "inflationRate": 11.6,
-      "debtToGdp": 11.5,
-      "gini": 0.65,
-      "assetMix": {
-        "financialShare": 42,
-        "nonFinancialShare": 66,
-        "debtShareOfGross": 8
-      }
-    },
-    "1990": {
-      "totalWealthTrillion": 0.28,
-      "wealthPerAdultUSD": 72000,
-      "medianWealthUSD": 31500,
-      "gdpTrillionUSD": 0.14,
-      "gdpPerCapitaUSD": 28200,
-      "inflationRate": 6.1,
-      "debtToGdp": 14.5,
-      "gini": 0.67,
-      "assetMix": {
-        "financialShare": 45,
-        "nonFinancialShare": 63,
-        "debtShareOfGross": 8
-      }
-    },
-    "1995": {
-      "totalWealthTrillion": 0.35,
-      "wealthPerAdultUSD": 88500,
-      "medianWealthUSD": 38200,
-      "gdpTrillionUSD": 0.13,
-      "gdpPerCapitaUSD": 25400,
-      "inflationRate": 1,
-      "debtToGdp": 56,
-      "gini": 0.68,
-      "assetMix": {
-        "financialShare": 47,
-        "nonFinancialShare": 61,
-        "debtShareOfGross": 9
-      }
-    },
-    "2000": {
-      "totalWealthTrillion": 0.52,
-      "wealthPerAdultUSD": 128000,
-      "medianWealthUSD": 54500,
-      "gdpTrillionUSD": 0.13,
-      "gdpPerCapitaUSD": 24100,
-      "inflationRate": 3.4,
-      "debtToGdp": 42.5,
-      "gini": 0.69,
-      "assetMix": {
-        "financialShare": 49,
-        "nonFinancialShare": 59,
-        "debtShareOfGross": 9
-      }
-    },
-    "2010": {
-      "totalWealthTrillion": 0.78,
-      "wealthPerAdultUSD": 182000,
-      "medianWealthUSD": 78000,
-      "gdpTrillionUSD": 0.25,
-      "gdpPerCapitaUSD": 46200,
-      "inflationRate": 1.2,
-      "debtToGdp": 48,
-      "gini": 0.7,
-      "assetMix": {
-        "financialShare": 50,
-        "nonFinancialShare": 59,
-        "debtShareOfGross": 9.5
-      }
-    },
-    "2020": {
-      "totalWealthTrillion": 0.96,
-      "wealthPerAdultUSD": 221000,
-      "medianWealthUSD": 94000,
-      "gdpTrillionUSD": 0.27,
-      "gdpPerCapitaUSD": 49200,
-      "inflationRate": 0.3,
-      "debtToGdp": 74.5,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 51,
-        "nonFinancialShare": 58.5,
-        "debtShareOfGross": 9.8
-      }
-    },
-    "2022": {
-      "totalWealthTrillion": 1.02,
-      "wealthPerAdultUSD": 232000,
-      "medianWealthUSD": 99000,
-      "gdpTrillionUSD": 0.28,
-      "gdpPerCapitaUSD": 51200,
-      "inflationRate": 7.1,
-      "debtToGdp": 73.5,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 51.5,
-        "nonFinancialShare": 58.2,
-        "debtShareOfGross": 9.9
-      }
-    },
-    "2024": {
-      "totalWealthTrillion": 1.06,
-      "wealthPerAdultUSD": 241000,
-      "medianWealthUSD": 102500,
-      "gdpTrillionUSD": 0.3,
-      "gdpPerCapitaUSD": 54200,
-      "inflationRate": 2,
-      "debtToGdp": 77.5,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 51.8,
-        "nonFinancialShare": 58.1,
-        "debtShareOfGross": 10
-      }
-    },
-    "2025": {
-      "totalWealthTrillion": 1.07,
-      "wealthPerAdultUSD": 243000,
-      "medianWealthUSD": 103200,
-      "gdpTrillionUSD": 0.305,
-      "gdpPerCapitaUSD": 54800,
-      "inflationRate": 1.9,
-      "debtToGdp": 78,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 51.9,
-        "nonFinancialShare": 58,
-        "debtShareOfGross": 10
-      }
-    },
-    "2026": {
-      "totalWealthTrillion": 1.08,
-      "wealthPerAdultUSD": 245000,
-      "medianWealthUSD": 104000,
-      "gdpTrillionUSD": 0.31,
-      "gdpPerCapitaUSD": 55400,
-      "inflationRate": 1.8,
-      "debtToGdp": 78.5,
-      "gini": 0.71,
-      "assetMix": {
-        "financialShare": 52,
-        "nonFinancialShare": 58,
-        "debtShareOfGross": 10
-      }
-    }
-  }
-}
 ];
 
 /*
@@ -7485,6 +18965,16 @@ export const ECONOMIC_BLOCS: EconomicBloc[] = [
         "globalWealthShare": 78.1,
         "globalGdpShare": 68.3
       },
+      "2005": {
+        "totalWealthTrillion": 116.9,
+        "wealthPerAdultUSD": 201500,
+        "medianWealthUSD": 65300,
+        "gdpTrillionUSD": 28.79,
+        "gdpPerCapitaUSD": 35850,
+        "populationMillion": 801,
+        "globalWealthShare": 71.7,
+        "globalGdpShare": 60.4
+      },
       "2010": {
         "totalWealthTrillion": 141.7,
         "wealthPerAdultUSD": 234000,
@@ -7494,6 +18984,16 @@ export const ECONOMIC_BLOCS: EconomicBloc[] = [
         "populationMillion": 814,
         "globalWealthShare": 65.2,
         "globalGdpShare": 52.5
+      },
+      "2015": {
+        "totalWealthTrillion": 189.8,
+        "wealthPerAdultUSD": 300000,
+        "medianWealthUSD": 85100,
+        "gdpTrillionUSD": 37.56,
+        "gdpPerCapitaUSD": 44600,
+        "populationMillion": 824,
+        "globalWealthShare": 61.1,
+        "globalGdpShare": 50.1
       },
       "2020": {
         "totalWealthTrillion": 237.9,
@@ -7603,6 +19103,16 @@ export const ECONOMIC_BLOCS: EconomicBloc[] = [
         "globalWealthShare": 14,
         "globalGdpShare": 11.8
       },
+      "2005": {
+        "totalWealthTrillion": 34.65,
+        "wealthPerAdultUSD": 11675,
+        "medianWealthUSD": 3975,
+        "gdpTrillionUSD": 8.57,
+        "gdpPerCapitaUSD": 2710,
+        "populationMillion": 3085,
+        "globalWealthShare": 19.2,
+        "globalGdpShare": 15.9
+      },
       "2010": {
         "totalWealthTrillion": 52.8,
         "wealthPerAdultUSD": 17200,
@@ -7612,6 +19122,16 @@ export const ECONOMIC_BLOCS: EconomicBloc[] = [
         "populationMillion": 3230,
         "globalWealthShare": 24.3,
         "globalGdpShare": 20
+      },
+      "2015": {
+        "totalWealthTrillion": 82.65,
+        "wealthPerAdultUSD": 24800,
+        "medianWealthUSD": 8800,
+        "gdpTrillionUSD": 17.5,
+        "gdpPerCapitaUSD": 5180,
+        "populationMillion": 3350,
+        "globalWealthShare": 25.6,
+        "globalGdpShare": 22.8
       },
       "2020": {
         "totalWealthTrillion": 112.5,
@@ -7718,6 +19238,16 @@ export const ECONOMIC_BLOCS: EconomicBloc[] = [
         "globalWealthShare": 25.5,
         "globalGdpShare": 25.7
       },
+      "2005": {
+        "totalWealthTrillion": 42.9,
+        "wealthPerAdultUSD": 133250,
+        "medianWealthUSD": 65550,
+        "gdpTrillionUSD": 12.82,
+        "gdpPerCapitaUSD": 33150,
+        "populationMillion": 384,
+        "globalWealthShare": 25.6,
+        "globalGdpShare": 25.7
+      },
       "2010": {
         "totalWealthTrillion": 55.7,
         "wealthPerAdultUSD": 168000,
@@ -7727,6 +19257,16 @@ export const ECONOMIC_BLOCS: EconomicBloc[] = [
         "populationMillion": 393,
         "globalWealthShare": 25.6,
         "globalGdpShare": 25.7
+      },
+      "2015": {
+        "totalWealthTrillion": 63.65,
+        "wealthPerAdultUSD": 188000,
+        "medianWealthUSD": 89500,
+        "gdpTrillionUSD": 17.03,
+        "gdpPerCapitaUSD": 42650,
+        "populationMillion": 399,
+        "globalWealthShare": 21.4,
+        "globalGdpShare": 22.9
       },
       "2020": {
         "totalWealthTrillion": 71.6,
