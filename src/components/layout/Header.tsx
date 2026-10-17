@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Globe2, TrendingUp, Layers, MapPin, BarChart3, Sun, Moon, Monitor } from 'lucide-react';
+import { Globe2, TrendingUp, Layers, MapPin, BarChart3, Sun, Moon, Monitor, Compass, Award } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { CurrencyPerspective } from '../../lib/types';
 import { MarketPulseTicker } from './MarketPulseTicker';
@@ -15,42 +15,55 @@ export function Header() {
     setCurrencyPerspective,
     themePreference,
     setThemePreference,
+    completedChallenges,
+    unlockedEras,
+    discoveryScore,
+    explorerRank,
   } = useApp();
 
   const navLinks = [
-    { href: '/', label: 'Overview', icon: Globe2 },
-    { href: '/wealth', label: 'Wealth & Inequality', icon: TrendingUp },
-    { href: '/assets', label: 'Asset Classes', icon: Layers },
-    { href: '/geography', label: 'Geographies', icon: MapPin },
-    { href: '/macro', label: 'Macro Trends', icon: BarChart3 },
+    { href: '/', label: 'Earth Pulse', icon: Globe2 },
+    { href: '/wealth', label: 'Who Owns What?', icon: TrendingUp },
+    { href: '/assets', label: 'Where Wealth Lives', icon: Layers },
+    { href: '/geography', label: 'Country Arena', icon: MapPin },
+    { href: '/macro', label: 'Economic Engine', icon: BarChart3 },
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-black/65 backdrop-blur-2xl transition-colors">
+    <header className="sticky top-0 z-50 border-b border-white/[0.09] bg-[#090d16]/85 backdrop-blur-2xl transition-colors">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2.5 sm:px-6 sm:py-3">
-        {/* Brand identity */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group">
-            <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-b from-white/10 to-white/[0.03] border border-white/[0.12] text-sky-400 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] group-hover:border-sky-400/40 group-hover:scale-[1.03] transition-all">
-              <Globe2 className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
+        {/* Brand identity & Interactive Field Guide Rank */}
+        <div className="flex items-center gap-2.5 sm:gap-3.5">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            {/* Custom tactile compass/prism emblem instead of generic SaaS box */}
+            <div className="tactile-button flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-amber-500/15 border border-amber-400/40 text-amber-400 shadow-sm group-hover:bg-amber-500/25">
+              <Compass className="h-5 w-5" />
             </div>
             <div>
-              <span className="text-sm sm:text-base font-semibold tracking-tight text-white flex items-center gap-2">
-                MacroMonitor
-                <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-300 border border-emerald-500/25">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  2026
+              <div className="flex items-center gap-2">
+                <span className="font-editorial text-lg sm:text-xl font-bold tracking-tight text-white">
+                  MacroMonitor
                 </span>
-              </span>
+                <span
+                  title={`Field Mastery: ${completedChallenges.length} concept challenges solved, ${unlockedEras.length} historical eras explored`}
+                  className="hidden lg:inline-flex items-center gap-1.5 rounded-lg bg-amber-500/15 px-2.5 py-0.5 text-[11px] font-semibold text-amber-300 border border-amber-500/30"
+                >
+                  <Award className="h-3 w-3 text-amber-400" />
+                  <span>{explorerRank}</span>
+                  <span className="font-mono-tabular text-amber-200/90 border-l border-amber-400/30 pl-1.5">
+                    {discoveryScore} XP
+                  </span>
+                </span>
+              </div>
               <p className="text-[11px] text-slate-400 hidden sm:block font-normal">
-                Global Wealth &amp; Macro Intelligence
+                Interactive Field Guide to the World Economy
               </p>
             </div>
           </Link>
         </div>
 
-        {/* Primary navigation: Apple-style segmented glass capsule */}
-        <nav className="hidden md:flex items-center p-1 rounded-full bg-white/[0.04] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+        {/* Primary navigation: Tactile chapter tabs */}
+        <nav className="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-white/[0.04] border border-white/[0.09]">
           {navLinks.map((link) => {
             const Icon = link.icon;
             const isActive = pathname === link.href;
@@ -58,9 +71,9 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all duration-150 ${
                   isActive
-                    ? 'bg-white/15 text-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-white/20'
+                    ? 'bg-sky-500 text-white shadow-sm border-b-2 border-sky-700'
                     : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
@@ -71,13 +84,13 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Controls: Currency Perspective & Appearance Mode */}
+        {/* Action Controls: Lens Switcher & Appearance Mode */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* Currency Perspective Switcher: Apple segmented control */}
+          {/* Currency Perspective Switcher */}
           <div
             role="radiogroup"
             aria-label="Currency valuation perspective"
-            className="flex items-center rounded-full p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs"
+            className="flex items-center rounded-xl p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.09] text-xs"
           >
             {(['nominal', 'real', 'ppp'] as CurrencyPerspective[]).map((mode) => (
               <button
@@ -88,14 +101,14 @@ export function Header() {
                 onClick={() => setCurrencyPerspective(mode)}
                 title={
                   mode === 'nominal'
-                    ? 'Nominal USD: Current unadjusted market values'
+                    ? 'Nominal USD: Raw sticker price in that year'
                     : mode === 'real'
-                    ? 'Real USD: Inflation-adjusted to constant 2026 purchasing power'
-                    : 'PPP: Purchasing Power Parity adjusted for local basket costs'
+                    ? 'Real USD: Adjusted for inflation (2026 buying power)'
+                    : 'PPP: Adjusted for what local prices actually buy'
                 }
-                className={`rounded-full px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold transition-all duration-200 uppercase tracking-wider min-h-[36px] min-w-[34px] sm:min-h-[32px] sm:min-w-0 flex items-center justify-center active:scale-95 ${
+                className={`rounded-lg px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-mono-tabular font-bold transition-all duration-150 uppercase tracking-wider min-h-[34px] min-w-[34px] sm:min-h-[30px] sm:min-w-0 flex items-center justify-center cursor-pointer ${
                   currencyPerspective === mode
-                    ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
+                    ? 'bg-white text-slate-950 shadow-sm'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
@@ -105,11 +118,11 @@ export function Header() {
             ))}
           </div>
 
-          {/* Theme Mode Switcher: Apple segmented control (System / Light / Dark) */}
+          {/* Theme Mode Switcher: System / Light / Dark */}
           <div
             role="radiogroup"
             aria-label="Appearance Mode"
-            className="flex items-center rounded-full p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.08] shadow-inner text-xs shrink-0"
+            className="flex items-center rounded-xl p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.09] text-xs shrink-0"
           >
             <button
               type="button"
@@ -118,9 +131,9 @@ export function Header() {
               onClick={() => setThemePreference('system')}
               aria-label="Auto System Theme"
               title="System: Follow device settings automatically"
-              className={`rounded-full p-1.5 sm:p-2 min-h-[36px] min-w-[36px] sm:min-h-[32px] sm:min-w-[32px] flex items-center justify-center transition-all duration-200 active:scale-95 ${
+              className={`rounded-lg p-1.5 min-h-[34px] min-w-[34px] sm:min-h-[30px] sm:min-w-[30px] flex items-center justify-center transition-all duration-150 cursor-pointer ${
                 themePreference === 'system'
-                  ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
+                  ? 'bg-white text-slate-950 shadow-sm'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -132,10 +145,10 @@ export function Header() {
               aria-checked={themePreference === 'light'}
               onClick={() => setThemePreference('light')}
               aria-label="Light Mode"
-              title="Light Mode"
-              className={`rounded-full p-1.5 sm:p-2 min-h-[36px] min-w-[36px] sm:min-h-[32px] sm:min-w-[32px] flex items-center justify-center transition-all duration-200 active:scale-95 ${
+              title="Light Mode (Editorial Paper)"
+              className={`rounded-lg p-1.5 min-h-[34px] min-w-[34px] sm:min-h-[30px] sm:min-w-[30px] flex items-center justify-center transition-all duration-150 cursor-pointer ${
                 themePreference === 'light'
-                  ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
+                  ? 'bg-white text-slate-950 shadow-sm'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -147,10 +160,10 @@ export function Header() {
               aria-checked={themePreference === 'dark'}
               onClick={() => setThemePreference('dark')}
               aria-label="Dark Mode"
-              title="Dark Mode"
-              className={`rounded-full p-1.5 sm:p-2 min-h-[36px] min-w-[36px] sm:min-h-[32px] sm:min-w-[32px] flex items-center justify-center transition-all duration-200 active:scale-95 ${
+              title="Dark Mode (Warm Ink Studio)"
+              className={`rounded-lg p-1.5 min-h-[34px] min-w-[34px] sm:min-h-[30px] sm:min-w-[30px] flex items-center justify-center transition-all duration-150 cursor-pointer ${
                 themePreference === 'dark'
-                  ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
+                  ? 'bg-white text-slate-950 shadow-sm'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >

@@ -309,25 +309,25 @@ export function MacroContextualExplainers({ activeTab }: MacroContextualExplaine
   if (relevantExplainers.length === 0) return null;
 
   return (
-    <div className="pt-6 border-t border-slate-200 dark:border-white/[0.08] space-y-4">
+    <div className="pt-6 border-t border-slate-200 dark:border-white/[0.09] space-y-4">
       <div className="flex items-center justify-between">
         <button
           type="button"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="flex items-center gap-2 text-left group cursor-pointer"
+          className="flex items-center gap-2.5 text-left group cursor-pointer"
         >
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20 group-hover:bg-sky-500/20 transition-colors">
-            <BookOpen className="h-3.5 w-3.5" />
+          <div className="tactile-button flex h-8 w-8 items-center justify-center rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/30">
+            <BookOpen className="h-4 w-4" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-              <span>Domain Mechanics &amp; Institutional Knowledge</span>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/[0.08] text-slate-600 dark:text-slate-400">
-                {relevantExplainers.length} {relevantExplainers.length === 1 ? 'guide' : 'guides'}
+            <h3 className="font-editorial text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+              <span>Field Notebook: Mental Models for This Chapter</span>
+              <span className="font-mono-tabular text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/25">
+                {relevantExplainers.length} {relevantExplainers.length === 1 ? 'lesson' : 'lessons'}
               </span>
             </h3>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400">
-              Plain-English institutional concepts contextualized for this section
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Expand any card and click &ldquo;Got It (+15 XP)&rdquo; to log the mental model to your Explorer Rank
             </p>
           </div>
         </button>
@@ -335,7 +335,7 @@ export function MacroContextualExplainers({ activeTab }: MacroContextualExplaine
         <button
           type="button"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+          className="tactile-button p-1.5 rounded-xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.10] text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors cursor-pointer"
           aria-label={isExpanded ? 'Collapse guides' : 'Expand guides'}
         >
           {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
@@ -343,10 +343,11 @@ export function MacroContextualExplainers({ activeTab }: MacroContextualExplaine
       </div>
 
       {isExpanded && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 animate-fade-in">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {relevantExplainers.map((item, idx) => (
             <PlainEnglishCard
               key={item.id}
+              id={item.id}
               title={item.title}
               summary={item.summary}
               detail={item.detail}

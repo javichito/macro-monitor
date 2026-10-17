@@ -34,4 +34,20 @@ describe('MacroExecutiveBriefing Component', () => {
     fireEvent.click(ratesCard);
     expect(handleSelectTab).toHaveBeenCalledWith('yields');
   });
+
+  it('simulates macro shocks in the interactive cause-and-effect flight simulator', () => {
+    const handleSelectTab = vi.fn();
+    render(<MacroExecutiveBriefing onSelectTab={handleSelectTab} />);
+
+    const oilShockBtn = screen.getByRole('button', { name: /Oil Spikes to \$130\/bbl/i });
+    fireEvent.click(oilShockBtn);
+
+    expect(
+      screen.getByText(/Primary energy burden crosses the 8.5% of World GDP recession danger line/i)
+    ).toBeDefined();
+
+    const inspectBtn = screen.getByRole('button', { name: /Inspect Energy Burden Radar/i });
+    fireEvent.click(inspectBtn);
+    expect(handleSelectTab).toHaveBeenCalledWith('physical');
+  });
 });

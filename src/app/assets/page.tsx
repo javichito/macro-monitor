@@ -26,42 +26,47 @@ export default function AssetsPage() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="border-b border-slate-200 dark:border-white/[0.08] pb-6">
-        <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-white/[0.12] bg-slate-100 dark:bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-800 dark:text-slate-200 mb-3 shadow-inner">
-          <Layers className="h-3.5 w-3.5 text-sky-400" />
+      {/* Chapter 03 Header */}
+      <div className="border-b border-slate-200 dark:border-white/[0.09] pb-6">
+        <div className="inline-flex items-center gap-2 font-mono-tabular text-[11px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2">
+          <span className="px-2 py-0.5 rounded bg-sky-500/15 border border-sky-500/30">
+            Field Guide • Chapter 03
+          </span>
+          <span>•</span>
           <span>Global Asset Allocation</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Where is the World's Wealth Stored?
+        <h1 className="font-editorial text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Where is the World&apos;s Wealth Stored?
         </h1>
-        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
-          Examine the composition of aggregate global assets across residential real estate, corporate equities, bonds, sovereign debt liabilities, and physical gold from 1980 through 2026.
+        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2.5 max-w-2xl font-normal leading-relaxed">
+          Follow the world&apos;s capital across homes, stocks, bonds, government debt, and physical gold from 1980 to 2026—and see why different eras reward tangible bricks over paper claims.
         </p>
 
-        {/* View Switcher Tabs */}
-        <div className="mt-5 inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] shadow-sm">
+        {/* Tactile View Switcher Tabs */}
+        <div className="mt-5 inline-flex p-1.5 gap-1.5 rounded-2xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.09]">
           <button
+            type="button"
             onClick={() => setActiveTab('global')}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+            className={`tactile-button inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               activeTab === 'global'
-                ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white shadow-sm'
-                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-sky-500 text-white border-sky-700 shadow-sm'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-transparent'
             }`}
           >
-            <Layers className="h-4 w-4 text-sky-400" />
-            <span>Global Asset Classes</span>
+            <Layers className="h-4 w-4" />
+            <span>Global Asset Stack</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('regional')}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+            className={`tactile-button inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               activeTab === 'regional'
-                ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white shadow-sm'
-                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-emerald-500 text-slate-950 border-emerald-700 shadow-sm'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-transparent'
             }`}
           >
-            <Globe2 className="h-4 w-4 text-emerald-400" />
-            <span>Regional Breakdown &amp; Shift</span>
+            <Globe2 className="h-4 w-4" />
+            <span>Regional Shift (East vs. West)</span>
           </button>
         </div>
       </div>
@@ -80,19 +85,45 @@ export default function AssetsPage() {
           {/* Educational Explainers */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PlainEnglishCard
+              id="assets-real-estate-dominance"
               title="Why is Real Estate consistently the largest asset class on Earth?"
               summary="Real estate accounts for nearly half of all global private wealth ($297T+ in 2026). Unlike paper securities, real estate fulfills a universal physical need: shelter."
               detail="Governments and central banks historically protect and subsidize mortgages through 30-year fixed loans, tax deductions, and zoning limits that constrain supply. As populations grow and urbanize, finite land values systematically compound."
               takeaway="For the bottom 90% of households, the primary residence represents over 70% of total family net worth."
               defaultExpanded={true}
+              quiz={{
+                question: 'For a typical middle-class household, which asset represents the vast majority of their net worth?',
+                options: [
+                  'Corporate stocks & index funds',
+                  'Their primary home (residential real estate)',
+                  'Physical gold and commodities',
+                  'Government treasury bonds',
+                ],
+                correctIndex: 1,
+                feedback:
+                  'Over 70% of middle-class wealth is tied up in residential property—while the top 1% holds most of their wealth in corporate equities and private businesses.',
+              }}
             />
 
             <PlainEnglishCard
+              id="assets-tangible-vs-paper"
               title="Tangible Assets vs Paper Financial Claims"
               summary="Tangible assets (land, buildings, gold) exist physically in the real world. Financial assets (stocks, bonds, cash) are contractual claims on future earnings."
               detail="During high-inflation eras (such as 2022-2023), tangible assets often retain purchasing power better because their replacement costs rise. During zero-interest-rate bull markets (such as 2010-2021), financial equities explode in valuation as borrowing costs hit floor levels."
               takeaway="A balanced civilization requires both productive physical land and fluid financial markets to allocate capital to innovations."
-              defaultExpanded={false}
+              defaultExpanded={true}
+              quiz={{
+                question: 'When inflation spikes and interest rates surge, which asset class typically suffers the most immediate valuation drop?',
+                options: [
+                  'Long-term fixed-rate paper bonds & high-multiple tech stocks',
+                  'Productive farmland and commodities',
+                  'Energy infrastructure',
+                  'Physical gold reserves',
+                ],
+                correctIndex: 0,
+                feedback:
+                  'Paper claims locked into low fixed yields lose real purchasing power when inflation and discount rates rise!',
+              }}
             />
           </div>
         </>

@@ -5,7 +5,7 @@ import { CurrencyPerspective, Granularity } from '../lib/types';
 
 export type ThemePreference = 'system' | 'dark' | 'light';
 
-interface AppContextValue {
+export interface AppContextValue {
   currencyPerspective: CurrencyPerspective;
   setCurrencyPerspective: (val: CurrencyPerspective) => void;
   granularity: Granularity;
@@ -18,6 +18,12 @@ interface AppContextValue {
   themePreference: ThemePreference;
   setThemePreference: (pref: ThemePreference) => void;
   resolvedTheme: 'dark' | 'light';
+  completedChallenges: string[];
+  markChallengeCompleted: (challengeId: string) => void;
+  unlockedEras: number[];
+  markEraUnlocked: (year: number) => void;
+  discoveryScore: number;
+  explorerRank: string;
 }
 
 const AppContext = createContext<AppContextValue | undefined>(undefined);
@@ -27,10 +33,39 @@ const AVAILABLE_YEARS = [1980, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2022, 2
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [currencyPerspective, setCurrencyPerspective] = useState<CurrencyPerspective>('nominal');
   const [granularity, setGranularity] = useState<Granularity>('country');
-  const [selectedYear, setSelectedYear] = useState<number>(2026);
+  const [selectedYear, setSelectedYearState] = useState<number>(2026);
   const [isPlayingTimeline, setIsPlayingTimeline] = useState<boolean>(false);
   const [themePreference, setThemePreferenceState] = useState<ThemePreference>('system');
   const [resolvedTheme, setResolvedTheme] = useState<'dark' | 'light'>('dark');
+  const [completedChallenges, setCompletedChallenges] = useState<string[]>([]);
+  const [unlockedEras, setUnlockedEras] = useState<number[]>([2026]);
+
+  const markEraUnlocked = (year: number) => {
+    setUnlockedEras((prev) => {
+      if (prev.includes(year)) return prev;
+      const next = [...prev, year];
+      try {
+        localStorage.setItem('macro_unlocked_eras', JSON.stringify(next));
+      } catch (e) {}
+      return next;
+    });
+  };
+
+  const setSelectedYear = (year: number) => {
+    setSelectedYearState(year);
+    markEraUnlocked(year);
+  };
+
+  const markChallengeCompleted = (challengeId: string) => {
+    setCompletedChallenges((prev) => {
+      if (prev.includes(challengeId)) return prev;
+      const next = [...prev, challengeId];
+      try {
+        localStorage.setItem('macro_completed_challenges', JSON.stringify(next));
+      } catch (e) {}
+      return next;
+    });
+  };
 
   /*
    * Synchronize active theme with DOM root attributes and PWA meta theme-color.
@@ -47,7 +82,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
     // Update dynamic PWA theme-color tag
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    const colorHex = resolved === 'dark' ? '#05070c' : '#f8fafc';
+    const colorHex = resolved === 'dark' ? '#090d16' : '#faf8f5';
     if (metaThemeColor) {
       metaThemeColor.setAttribute('content', colorHex);
     }
@@ -62,7 +97,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
 
     if (pref === 'system') {
-      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark =
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
       applyResolvedTheme(isDark ? 'dark' : 'light');
     } else {
       applyResolvedTheme(pref);
@@ -70,7 +107,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   };
 
   /*
-   * Initialize theme from localStorage or system device settings on client mount,
+   * Initialize theme and learning progression from localStorage on client mount,
    * and bind a live mediaQuery listener for when device shifts between light and dark.
    */
   useEffect(() => {
@@ -82,19 +119,34 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       if (stored === 'system' || stored === 'dark' || stored === 'light') {
         savedPref = stored;
       }
+      const storedChallenges = localStorage.getItem('macro_completed_challenges');
+      if (storedChallenges) {
+        const parsed = JSON.parse(storedChallenges);
+        if (Array.isArray(parsed)) setCompletedChallenges(parsed);
+      }
+      const storedEras = localStorage.getItem('macro_unlocked_eras');
+      if (storedEras) {
+        const parsedEras = JSON.parse(storedEras);
+        if (Array.isArray(parsedEras)) setUnlockedEras(parsedEras);
+      }
     } catch (e) {}
 
     setThemePreferenceState(savedPref);
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const mediaQuery =
+      typeof window.matchMedia === 'function'
+        ? window.matchMedia('(prefers-color-scheme: dark)')
+        : null;
     const computeResolved = (pref: ThemePreference) => {
       if (pref === 'system') {
-        return mediaQuery.matches ? 'dark' : 'light';
+        return mediaQuery ? (mediaQuery.matches ? 'dark' : 'light') : 'dark';
       }
       return pref;
     };
 
     applyResolvedTheme(computeResolved(savedPref));
+
+    if (!mediaQuery) return;
 
     const handleSystemChange = (e: MediaQueryListEvent) => {
       setThemePreferenceState((currentPref) => {
@@ -117,7 +169,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     const params = new URLSearchParams(window.location.search);
     const yr = Number(params.get('year'));
     if (yr && AVAILABLE_YEARS.includes(yr)) {
-      setSelectedYear(yr);
+      setSelectedYearState(yr);
+      markEraUnlocked(yr);
     }
     const curr = params.get('currency')?.toLowerCase();
     if (curr === 'nominal' || curr === 'real' || curr === 'ppp') {
@@ -137,17 +190,30 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     if (!isPlayingTimeline) return;
 
     const interval = setInterval(() => {
-      setSelectedYear((current) => {
+      setSelectedYearState((current) => {
         const currentIndex = AVAILABLE_YEARS.indexOf(current);
-        if (currentIndex === -1 || currentIndex === AVAILABLE_YEARS.length - 1) {
-          return AVAILABLE_YEARS[0];
-        }
-        return AVAILABLE_YEARS[currentIndex + 1];
+        const nextYear =
+          currentIndex === -1 || currentIndex === AVAILABLE_YEARS.length - 1
+            ? AVAILABLE_YEARS[0]
+            : AVAILABLE_YEARS[currentIndex + 1];
+        markEraUnlocked(nextYear);
+        return nextYear;
       });
     }, 1800);
 
     return () => clearInterval(interval);
   }, [isPlayingTimeline]);
+
+  // Compute gamified learning progression so curiosity is visibly rewarded
+  const discoveryScore = completedChallenges.length * 15 + unlockedEras.length * 5;
+  const explorerRank =
+    discoveryScore >= 120
+      ? 'Central Bank Fellow'
+      : discoveryScore >= 65
+      ? 'Macro Strategist'
+      : discoveryScore >= 30
+      ? 'Cycle Detective'
+      : 'Curious Citizen';
 
   return (
     <AppContext.Provider
@@ -164,6 +230,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         themePreference,
         setThemePreference,
         resolvedTheme,
+        completedChallenges,
+        markChallengeCompleted,
+        unlockedEras,
+        markEraUnlocked,
+        discoveryScore,
+        explorerRank,
       }}
     >
       {children}

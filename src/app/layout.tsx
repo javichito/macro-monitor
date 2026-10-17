@@ -12,15 +12,15 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: 'cover',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
-    { media: '(prefers-color-scheme: dark)', color: '#05070c' },
+    { media: '(prefers-color-scheme: light)', color: '#faf8f5' },
+    { media: '(prefers-color-scheme: dark)', color: '#090d16' },
   ],
 };
 
 export const metadata: Metadata = {
-  title: 'MacroMonitor — Global Wealth & Macroeconomic Intelligence',
+  title: 'MacroMonitor — Interactive Field Guide to the World Economy',
   description:
-    'State-of-the-art web application tracking global wealth distribution, asset classes, geographies, and macroeconomic trends over time.',
+    'An interactive economic laboratory for curious minds: test your intuition on global wealth, asset cycles, and central bank plumbing.',
   manifest: '/macro-monitor/manifest.json',
   icons: {
     icon: '/macro-monitor/icon.svg',
@@ -63,33 +63,30 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] flex flex-col selection:bg-sky-500/30 selection:text-sky-200 antialiased relative safe-top safe-bottom transition-colors duration-200">
-        {/* Apple subtle ambient top glow */}
-        <div className="ambient-glow fixed inset-0 pointer-events-none z-0 overflow-hidden transition-opacity duration-300">
-          <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-sky-500/10 via-indigo-500/5 to-transparent blur-[120px] rounded-full" />
-        </div>
-
+      <body className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] flex flex-col selection:bg-amber-500/30 selection:text-amber-200 antialiased relative safe-top safe-bottom transition-colors duration-200">
         <AppProvider>
           <ServiceWorkerRegister />
           <Header />
-          <main className="relative flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-4 sm:py-8 pb-24 md:pb-8">
+          <main className="relative flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5 sm:py-9 pb-24 md:pb-12">
             {children}
           </main>
           <InstallPrompt />
           <MobileTabBar />
-          <footer className="relative border-t border-white/[0.08] bg-black/40 backdrop-blur-xl py-8 text-xs text-slate-400 mb-16 md:mb-0 pb-12 sm:pb-8">
+          <footer className="relative border-t border-white/[0.09] bg-[#090d16]/70 backdrop-blur-xl py-8 text-xs text-slate-400 mb-16 md:mb-0 pb-12 sm:pb-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <span className="font-semibold text-white tracking-tight">MacroMonitor</span> — Modern Financial Transparency
+                <span className="font-editorial text-base font-bold text-white tracking-tight">MacroMonitor</span>{' '}
+                <span className="text-slate-400">— Interactive Economic Field Guide</span>
                 <p className="text-[11px] text-slate-400 mt-0.5">
-                  Synthesizing authoritative data from UBS Global Wealth Reports, World Bank Open Data, and IMF WEO.
+                  Built on open empirical series from the UBS Global Wealth Report, Federal Reserve (FRED), World Bank, and BIS.
                 </p>
               </div>
-              <div className="flex items-center gap-6 text-slate-400">
-                <span>Updated for 2026</span>
-                <span className="inline-flex items-center gap-1.5 font-medium text-slate-300">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Institutional Grade
+              <div className="flex items-center gap-4 text-slate-400 font-mono-tabular text-[11px]">
+                <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08]">
+                  Edition: 1980–2026
+                </span>
+                <span className="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/25 text-amber-300 font-semibold">
+                  Learn by Experimenting
                 </span>
               </div>
             </div>

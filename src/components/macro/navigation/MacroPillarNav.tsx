@@ -44,7 +44,7 @@ export function MacroPillarNav({ activeTab, onTabChange }: MacroPillarNavProps) 
     <div className="space-y-3">
       {/* Tier 1: Primary Macro Pillars */}
       <div className="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar scroll-mask-x sm:[mask-image:none] -mx-4 px-4 sm:mx-0 sm:px-0 pt-1">
-        <div className="inline-flex items-center gap-1.5 rounded-2xl p-1.5 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.10] shadow-inner text-xs whitespace-nowrap">
+        <div className="inline-flex items-center gap-1.5 rounded-2xl p-1.5 bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.10] text-xs whitespace-nowrap">
           {MACRO_PILLARS.map((pillar) => {
             const Icon = pillar.icon;
             const isSelected = activePillarId === pillar.id && activeTab !== 'all';
@@ -54,14 +54,14 @@ export function MacroPillarNav({ activeTab, onTabChange }: MacroPillarNavProps) 
                 key={pillar.id}
                 type="button"
                 onClick={() => handlePillarSelect(pillar.id)}
-                className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-semibold transition-all cursor-pointer ${
+                className={`tactile-button flex items-center gap-1.5 rounded-xl px-3 py-1.5 font-bold transition-all cursor-pointer border ${
                   isSelected
-                    ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+                    ? 'bg-amber-400 text-slate-950 border-amber-600 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.05] border-transparent'
                 }`}
                 title={pillar.description}
               >
-                <Icon className={`h-3.5 w-3.5 ${isSelected ? 'text-sky-500 dark:text-sky-600' : 'text-slate-500 dark:text-slate-400'}`} />
+                <Icon className={`h-3.5 w-3.5 ${isSelected ? 'text-slate-950' : 'text-slate-500 dark:text-slate-400'}`} />
                 <span className="hidden sm:inline">{pillar.label}</span>
                 <span className="sm:hidden">{pillar.shortLabel}</span>
               </button>
@@ -73,10 +73,10 @@ export function MacroPillarNav({ activeTab, onTabChange }: MacroPillarNavProps) 
           <button
             type="button"
             onClick={() => onTabChange('all')}
-            className={`flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-medium transition-all cursor-pointer text-xs ${
+            className={`tactile-button flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-bold transition-all cursor-pointer text-xs border ${
               activeTab === 'all'
-                ? 'bg-white text-slate-900 shadow-md dark:bg-white dark:text-black font-bold'
-                : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04]'
+                ? 'bg-sky-500 text-white border-sky-700 shadow-sm'
+                : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.04] border-transparent'
             }`}
             title="Comprehensive Dossier: Render all models simultaneously for complete cross-section export"
           >
@@ -89,10 +89,10 @@ export function MacroPillarNav({ activeTab, onTabChange }: MacroPillarNavProps) 
       {/* Tier 2: Contextual Sub-metrics for the active pillar */}
       {currentPillar && currentPillar.subTabs.length > 0 && activeTab !== 'all' && (
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 py-1">
-          <span className="text-[11px] font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider shrink-0 pl-1">
-            Focus:
+          <span className="font-mono-tabular text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider shrink-0 pl-1">
+            Chapter Lab:
           </span>
-          <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/60 dark:border-white/[0.06] text-xs">
+          <div className="inline-flex items-center gap-1.5 p-1.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/60 dark:border-white/[0.08] text-xs">
             {currentPillar.subTabs.map((subTab) => {
               const SubIcon = subTab.icon;
               const isSubActive = activeTab === subTab.id;
@@ -102,10 +102,10 @@ export function MacroPillarNav({ activeTab, onTabChange }: MacroPillarNavProps) 
                   key={subTab.id}
                   type="button"
                   onClick={() => onTabChange(subTab.id)}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                  className={`tactile-button flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border ${
                     isSubActive
-                      ? 'bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20 shadow-sm font-semibold'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/40 dark:hover:bg-white/[0.03]'
+                      ? 'bg-sky-500 text-white border-sky-700 shadow-sm'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/40 dark:hover:bg-white/[0.04] border-transparent'
                   }`}
                   title={subTab.description}
                 >

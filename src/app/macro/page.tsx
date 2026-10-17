@@ -106,18 +106,21 @@ export default function MacroPage() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="border-b border-slate-200 dark:border-white/[0.08] pb-6 space-y-5">
+      {/* Chapter 05 Header */}
+      <div className="border-b border-slate-200 dark:border-white/[0.09] pb-6 space-y-5">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/[0.12] bg-slate-100 dark:bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-200 mb-3 shadow-inner">
-            <BarChart3 className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
-            <span>State-of-the-Art Macro Intelligence</span>
+          <div className="inline-flex items-center gap-2 font-mono-tabular text-[11px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2">
+            <span className="px-2 py-0.5 rounded bg-sky-500/15 border border-sky-500/30">
+              Field Guide • Chapter 05
+            </span>
+            <span>•</span>
+            <span>How the Economic Machine Works</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="font-editorial text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             The Global Economic Engine
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-3xl font-normal leading-relaxed">
-            Monitor sovereign yield curve inversions and 3D term structure evolution surfaces, high-frequency GDP nowcasting and PMI diffusion, real-time macro regimes (Dalio growth-inflation clock), Claudia Sahm labor triggers, external sector balances, and central bank liquidity mechanics.
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2.5 max-w-3xl font-normal leading-relaxed">
+            Why do interest rates, unemployment, and inflation move in cycles? Pull levers in the flight simulator below or choose one of the 5 guided investigations to see what central bankers and bond traders watch under the hood.
           </p>
         </div>
 

@@ -2,60 +2,71 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *, .dark, .dark *));
 
+@property --animation-reduced {
+  syntax: "*";
+  inherits: false;
+  initial-value: none;
+}
+
 @layer base {
   :root,
   html.dark {
     color-scheme: dark;
-    /* Apple Obsidian canvas foundations with high contrast and translucent layers */
-    --bg-canvas: #05070c;
-    --bg-surface: rgba(255, 255, 255, 0.04);
-    --bg-surface-elevated: rgba(255, 255, 255, 0.07);
-    --bg-surface-hover: rgba(255, 255, 255, 0.09);
+    /* Warm Ink Studio canvas foundations — tactile and editorial rather than sterile SaaS black */
+    --bg-canvas: #090d16;
+    --bg-surface: rgba(255, 255, 255, 0.045);
+    --bg-surface-elevated: rgba(255, 255, 255, 0.075);
+    --bg-surface-hover: rgba(255, 255, 255, 0.10);
     
-    /* Apple hairline border strokes */
-    --border-hairline: rgba(255, 255, 255, 0.10);
-    --border-subtle: rgba(255, 255, 255, 0.15);
+    /* Crisp tactile border strokes */
+    --border-hairline: rgba(255, 255, 255, 0.11);
+    --border-subtle: rgba(255, 255, 255, 0.18);
     
-    /* Apple High-Legibility Typography colors */
-    --text-primary: #ffffff;
+    /* High-Legibility Typography colors */
+    --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
     --text-tertiary: #94a3b8;
     --text-quaternary: #64748b;
     
-    /* Apple System Vibrant Accents */
-    --apple-blue: #0a84ff;
-    --apple-green: #30d158;
-    --apple-mint: #64d2ff;
-    --apple-orange: #ff9f0a;
-    --apple-purple: #bf5af2;
-    --apple-red: #ff453a;
+    /* Editorial & Educational Accent Palette */
+    --apple-blue: #38bdf8;
+    --apple-green: #34d399;
+    --apple-mint: #2dd4bf;
+    --apple-orange: #fbbf24;
+    --apple-purple: #c084fc;
+    --apple-red: #fb7185;
+
+    /* Three-tier human-crafted typography stacks */
+    --font-display: "Instrument Serif", "Fraunces", "Iowan Old Style", "Playfair Display", "Newsreader", Georgia, serif;
+    --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", "Geist Mono", "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
 
   html.light {
     color-scheme: light;
-    /* Apple Ceramic Snow canvas foundations */
-    --bg-canvas: #f8fafc;
-    --bg-surface: rgba(15, 23, 42, 0.04);
-    --bg-surface-elevated: rgba(15, 23, 42, 0.07);
+    /* Warm Editorial Paper canvas foundations */
+    --bg-canvas: #faf8f5;
+    --bg-surface: rgba(15, 23, 42, 0.035);
+    --bg-surface-elevated: rgba(15, 23, 42, 0.065);
     --bg-surface-hover: rgba(15, 23, 42, 0.09);
     
-    /* Apple Light hairline border strokes */
-    --border-hairline: rgba(15, 23, 42, 0.08);
-    --border-subtle: rgba(15, 23, 42, 0.14);
+    /* Crisp paper border strokes */
+    --border-hairline: rgba(15, 23, 42, 0.09);
+    --border-subtle: rgba(15, 23, 42, 0.16);
     
-    /* Apple Light High-Legibility Typography colors */
+    /* High-Legibility Ink Typography colors */
     --text-primary: #0f172a;
     --text-secondary: #334155;
     --text-tertiary: #64748b;
     --text-quaternary: #94a3b8;
     
-    /* Apple System Vibrant Accents */
-    --apple-blue: #0071e3;
-    --apple-green: #28cd41;
-    --apple-mint: #00c7be;
-    --apple-orange: #ff9500;
-    --apple-purple: #af52de;
-    --apple-red: #ff3b30;
+    /* Vibrant Print Accents */
+    --apple-blue: #0284c7;
+    --apple-green: #059669;
+    --apple-mint: #0d9488;
+    --apple-orange: #d97706;
+    --apple-purple: #7c3aed;
+    --apple-red: #e11d48;
   }
 
   html,
@@ -66,8 +77,10 @@
 
   body {
     background-color: var(--bg-canvas);
+    background-image: radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
     color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -86,17 +99,31 @@
 }
 
 /*
- * Respect user preferences for reduced motion (WCAG 2.3.3).
+ * Respect user preferences for reduced motion without jarring 0.01ms flash jumps.
+ * Uses registered custom property --animation-reduced so components can opt into
+ * gentle static states while disabling continuous keyframe loops.
  */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: var(--animation-reduced) !important;
+    transition-duration: 0.01s !important;
     scroll-behavior: auto !important;
   }
+}
+
+/*
+ * Editorial Typography & Tabular Numeric Utilities
+ */
+.font-editorial {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 /*
@@ -129,26 +156,61 @@
 }
 
 /*
- * Apple Frosted Glass & Specular Depth
+ * Tactile Studio Cards & Physical Depth
+ * Replaces flat uniform AI glass with a subtle 3D bottom lip and compositor-safe
+ * individual transform properties (translate / scale with base identity values).
  */
 .apple-card {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 12px 32px -8px rgba(0, 0, 0, 0.6);
-  border-radius: 1.25rem; /* rounded-2xl continuous squircle */
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-bottom-width: 2px;
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.09), 0 10px 28px -8px rgba(0, 0, 0, 0.55);
+  border-radius: 1.25rem;
+  translate: 0px 0px;
+  scale: 1;
 }
 
 .apple-card-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  translate: 0px 0px;
+  scale: 1;
+  transition:
+    translate 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    scale 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .apple-card-hover:hover {
-  background: rgba(255, 255, 255, 0.065);
-  border-color: rgba(255, 255, 255, 0.18);
-  transform: translateY(-2px);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 20px 40px -12px rgba(0, 0, 0, 0.7);
+  background: rgba(30, 41, 59, 0.78);
+  border-color: rgba(56, 189, 248, 0.32);
+  border-bottom-color: rgba(56, 189, 248, 0.5);
+  translate: 0px -2px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.16), 0 18px 36px -12px rgba(0, 0, 0, 0.65);
+}
+
+/* Tactile chunk button for learning interactions (Brilliant / Duolingo style) */
+.tactile-button {
+  translate: 0px 0px;
+  scale: 1;
+  border-bottom-width: 3px;
+  transition:
+    translate 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+    scale 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.tactile-button:hover {
+  translate: 0px -1px;
+}
+
+.tactile-button:active {
+  translate: 0px 1px;
+  scale: 0.98;
 }
 
 .apple-pill {
@@ -161,22 +223,24 @@
 }
 
 /*
- * Apple Light Mode Overrides
- * Transforms dark-mode utility classes into high-contrast ceramic surfaces
- * so all 31 sovereign tools and macroeconomic charts remain crystal clear.
+ * Warm Editorial Light Mode Overrides
+ * Transforms dark-mode utility classes into warm paper cards with crisp ink borders.
  */
 html.light .apple-card {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-bottom-width: 2px;
+  border-bottom-color: rgba(15, 23, 42, 0.18);
+  box-shadow: 0 6px 20px -4px rgba(15, 23, 42, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 html.light .apple-card-hover:hover {
   background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.14);
-  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.10), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  border-color: rgba(2, 132, 199, 0.35);
+  border-bottom-color: rgba(2, 132, 199, 0.55);
+  box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.10), inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 html.light .apple-pill {

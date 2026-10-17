@@ -40,17 +40,20 @@ export default function WealthPage() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="border-b border-slate-200 dark:border-white/[0.08] pb-6">
-        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/[0.12] bg-slate-100/80 dark:bg-white/[0.05] px-3.5 py-1 text-xs font-medium text-slate-700 dark:text-slate-200 mb-3 shadow-inner">
-          <TrendingUp className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+      {/* Chapter 02 Header */}
+      <div className="border-b border-slate-200 dark:border-white/[0.09] pb-6">
+        <div className="inline-flex items-center gap-2 font-mono-tabular text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">
+          <span className="px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30">
+            Field Guide • Chapter 02
+          </span>
+          <span>•</span>
           <span>Wealth Distribution &amp; Inequality</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="font-editorial text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
           Who Holds the Wealth of the World?
         </h1>
-        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 max-w-2xl font-normal leading-relaxed">
-          Track the distribution of private wealth across population tiers, understand the historical evolution of the wealth gap, and discover where your household sits on the global and national spectrum.
+        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2.5 max-w-2xl font-normal leading-relaxed">
+          Explore how private wealth is stacked across population tiers, why $100,000 buys wildly different lives in Zurich vs. Madrid, and where your household ranks on Earth.
         </p>
       </div>
 
@@ -62,24 +65,51 @@ export default function WealthPage() {
       {/* Inequality Trends Chart */}
       <InequalityTrends />
 
-      {/* Plain English Guide */}
+      {/* Interactive Concept Lessons */}
       <PlainEnglishCard
+        id="wealth-gini-coefficient"
         title="What is the Gini Coefficient, and why should regular people care?"
         summary="The Gini Coefficient is a single number between 0 (everyone owns exactly the same) and 1 (one single person owns everything on Earth). It measures how evenly economic wealth is spread."
         detail="Global wealth inequality has a Gini around 0.88—far higher than income inequality (~0.65). This occurs because wealth accumulates exponentially through compound growth, property appreciation, and equity ownership, while labor wages grow linearly."
         takeaway="Even though wealth inequality within some Western countries increased recently, global inequality between countries actually decreased slightly since 2000 as hundreds of millions in Asia and Latin America joined the middle class."
-        defaultExpanded={false}
+        defaultExpanded={true}
+        quiz={{
+          question: 'Why is wealth inequality (Gini ~0.88) so much higher than income inequality (Gini ~0.65)?',
+          options: [
+            'Because salaries are taxed less than capital gains',
+            'Because assets compound exponentially while wages grow linearly',
+            'Because everyone saves the exact same percentage of their paycheck',
+            'Because inflation hurts stock owners more than renters',
+          ],
+          correctIndex: 1,
+          feedback:
+            'Spot on! Once capital is accumulated, it compounds on itself via equities and real estate, whereas hourly labor scales linearly.',
+        }}
       />
 
       <PlainEnglishCard
+        id="wealth-ppp-arbitrage"
         title="What is Purchasing Power Parity (PPP), and how does geo-arbitrage work?"
         summary="PPP measures what money can actually buy in goods and services inside a specific country, eliminating artificial currency exchange rate distortions."
         detail="Under the Balassa-Samuelson effect, non-tradable services like housing rent, healthcare, transport, and dining out are drastically cheaper in developing or lower-cost economies because local wages are lower. Tradable electronics or cars, however, cost almost the same globally."
         takeaway="A household with $150,000 has middle-class purchasing power in high-cost hubs like Zurich or San Francisco, but upper-echelon purchasing power in Spain, Japan, or India. True economic freedom is a function of both your capital and where you spend it."
         defaultExpanded={false}
+        quiz={{
+          question: 'Which item changes price the MOST when you move from San Francisco to Valencia or Tokyo?',
+          options: [
+            'A brand-new iPhone or MacBook',
+            'An ounce of physical gold',
+            'Local rent, haircuts, and dining out (non-tradable services)',
+            'A barrel of Brent crude oil',
+          ],
+          correctIndex: 2,
+          feedback:
+            'Non-tradable local services depend on local labor and land costs, which is why PPP purchasing power varies dramatically across borders.',
+        }}
       />
 
       <PlainEnglishCard
+        id="wealth-cashflow-vulnerability"
         title="Why does top-level median wealth mask dangerous consumer cash-flow vulnerability?"
         summary="Median wealth measures the static stock of accumulated assets (e.g. illiquid home equity or locked pensions), but cannot pay monthly credit card bills or auto loan payments when cash flow is exhausted."
         detail="Over 60% of US mortgage holders locked in sub-4% rates during 2020-21, keeping aggregate mortgage debt service low. However, the bottom 50% wealth tier holds only 2.6% of national wealth, has completely depleted post-pandemic excess savings buffers, and is now burdened by 22%+ credit card APRs—pushing bottom-tier delinquency to 8.4%."
@@ -90,41 +120,40 @@ export default function WealthPage() {
       {/* Household Balance Sheets & Consumer Vulnerability Radar */}
       <HouseholdVulnerabilityRadar />
 
-      {/* Interactive Tool Suite */}
+      {/* Interactive Personal Sandbox */}
       <div className="pt-4 space-y-4">
-        {/* Segmented Pill Selector */}
         <div className="flex items-center justify-between flex-wrap gap-3">
-          <div className="flex rounded-full border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.04] p-1 backdrop-blur-md">
+          <div className="flex rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/[0.04] p-1.5 gap-1">
             <button
               type="button"
               onClick={() => setCalculatorView('percentile')}
-              className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
+              className={`tactile-button flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
                 calculatorView === 'percentile'
-                  ? 'bg-white dark:bg-white text-slate-900 dark:text-black shadow-sm'
-                  : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.06]'
+                  ? 'bg-emerald-500 text-slate-950 border-emerald-700 shadow-sm'
+                  : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.06] border-transparent'
               }`}
             >
-              <Compass className="h-3.5 w-3.5 text-emerald-600 dark:text-inherit" />
-              <span>Percentile Positioner</span>
+              <Compass className="h-3.5 w-3.5" />
+              <span>Where Do I Rank? (Percentile Lab)</span>
             </button>
             <button
               type="button"
               onClick={() => setCalculatorView('ppp')}
-              className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all ${
+              className={`tactile-button flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
                 calculatorView === 'ppp'
-                  ? 'bg-white dark:bg-white text-slate-900 dark:text-black shadow-sm'
-                  : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.06]'
+                  ? 'bg-sky-500 text-white border-sky-700 shadow-sm'
+                  : 'text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/[0.06] border-transparent'
               }`}
             >
-              <Globe2 className="h-3.5 w-3.5 text-sky-600 dark:text-inherit" />
-              <span>PPP Cost-of-Living Converter</span>
+              <Globe2 className="h-3.5 w-3.5" />
+              <span>How Far Does My Money Go? (PPP Lab)</span>
             </button>
           </div>
 
-          <span className="text-xs text-slate-500 dark:text-white/50 hidden sm:inline-block">
+          <span className="font-mono-tabular text-xs text-slate-500 dark:text-white/50 hidden sm:inline-block">
             {calculatorView === 'percentile'
-              ? 'Calculate domestic & global wealth percentile'
-              : 'Calculate real purchasing power across 31 economies'}
+              ? 'Personal Lab 01: Domestic & Global Wealth Percentile'
+              : 'Personal Lab 02: Real Buying Power Across 31 Economies'}
           </span>
         </div>
 
