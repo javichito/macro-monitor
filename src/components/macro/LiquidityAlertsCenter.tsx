@@ -29,6 +29,8 @@ import {
   getNotificationPermissionStatus,
   requestPushPermission,
   triggerNativeAlert,
+  checkAndDispatchScheduledAlerts,
+  EvaluatedTriggeredAlert,
   SIMULATED_SCENARIOS,
   LiquidityScenario,
 } from '../../lib/push-notifications';
@@ -37,6 +39,19 @@ interface AlertLogEntry {
   id: string;
   timestamp: string;
   scenario: LiquidityScenario;
+}
+
+function mapTriggeredAlertToScenario(alert: EvaluatedTriggeredAlert): LiquidityScenario {
+  return {
+    id: alert.id,
+    name: alert.title,
+    tag: alert.id,
+    category: alert.category,
+    headline: alert.title,
+    body: alert.body,
+    macroContext: alert.body,
+    riskAssetImpact: alert.riskAssetImpact,
+  };
 }
 
 export function LiquidityAlertsCenter() {
@@ -58,8 +73,46 @@ export function LiquidityAlertsCenter() {
   ]);
 
   useEffect(() => {
+    let isMounted = true;
     setPreferences(getStoredAlertPreferences());
     setPermission(getNotificationPermissionStatus());
+
+    const syncLiveStatus = (triggered: EvaluatedTriggeredAlert[], statusTimestamp?: string) => {
+      if (!isMounted || triggered.length === 0) return;
+      setPreferences(getStoredAlertPreferences());
+      const formattedTime = statusTimestamp
+        ? `Live Sync · ${statusTimestamp.slice(0, 10)}`
+        : 'Live Sync';
+      const liveEntries: AlertLogEntry[] = triggered.map((t) => ({
+        id: `live-${t.dedupeKey}`,
+        timestamp: formattedTime,
+        scenario: mapTriggeredAlertToScenario(t),
+      }));
+      setAlertLogs((prev) => {
+        const existingIds = new Set(liveEntries.map((e) => e.id));
+        return [...liveEntries, ...prev.filter((p) => !existingIds.has(p.id))].slice(0, 6);
+      });
+    };
+
+    void checkAndDispatchScheduledAlerts().then(({ triggered, status }) => {
+      syncLiveStatus(triggered, status.timestamp);
+    });
+
+    const handleAlertsUpdated = (event: Event) => {
+      const customEvent = event as CustomEvent<{
+        triggered: EvaluatedTriggeredAlert[];
+        status: { timestamp: string };
+      }>;
+      if (customEvent.detail) {
+        syncLiveStatus(customEvent.detail.triggered, customEvent.detail.status?.timestamp);
+      }
+    };
+
+    window.addEventListener('macro-liquidity-alerts-updated', handleAlertsUpdated);
+    return () => {
+      isMounted = false;
+      window.removeEventListener('macro-liquidity-alerts-updated', handleAlertsUpdated);
+    };
   }, []);
 
   const handleTogglePush = async () => {
@@ -70,16 +123,23 @@ export function LiquidityAlertsCenter() {
         const updated = { ...preferences, pushEnabled: true };
         setPreferences(updated);
         saveStoredAlertPreferences(updated);
-        triggerNativeAlert(
-          '🔔 MacroMonitor Alerts Active',
-          'Alerts are configured! You will receive notifications when major liquidity thresholds are breached.',
-          'welcome-alert'
-        );
+        const { newlyDispatched } = await checkAndDispatchScheduledAlerts({ force: true });
+        if (newlyDispatched.length === 0) {
+          await triggerNativeAlert(
+            '🔔 MacroMonitor Alerts Active',
+            'Alerts are configured! You will receive notifications when major liquidity thresholds are breached.',
+            'welcome-alert'
+          );
+        }
       }
     } else {
-      const updated = { ...preferences, pushEnabled: !preferences.pushEnabled };
+      const nextEnabled = !preferences.pushEnabled;
+      const updated = { ...preferences, pushEnabled: nextEnabled };
       setPreferences(updated);
       saveStoredAlertPreferences(updated);
+      if (nextEnabled) {
+        await checkAndDispatchScheduledAlerts({ force: true });
+      }
     }
   };
 
@@ -87,6 +147,31 @@ export function LiquidityAlertsCenter() {
     const updated = { ...preferences, [key]: value };
     setPreferences(updated);
     saveStoredAlertPreferences(updated);
+  };
+
+  const handleEvaluateLiveTriggers = async () => {
+    const { status, triggered, newlyDispatched } = await checkAndDispatchScheduledAlerts({
+      force: true,
+    });
+    if ( newlyDispatched.length > 0 ) {
+      setTestStatus(
+        `Dispatched ${newlyDispatched.length} active trigger(s) from live Fed snapshot ($${status.netLiquidityTrillion}T)!`
+      );
+    } else if (triggered.length > 0) {
+      await triggerNativeAlert(
+        triggered[0].title,
+        triggered[0].body,
+        triggered[0].id
+      );
+      setTestStatus(
+        `Dispatched active Fed trigger: ${triggered[0].title}`
+      );
+    } else {
+      setTestStatus(
+        `Checked live Fed data ($${status.netLiquidityTrillion}T Net Liquidity, $${status.reverseRepoBillion}B RRP): no thresholds breached.`
+      );
+    }
+    setTimeout(() => setTestStatus(null), 5000);
   };
 
   const handleTestAlert = async () => {
@@ -355,7 +440,15 @@ export function LiquidityAlertsCenter() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={handleEvaluateLiveTriggers}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/30 text-sky-600 dark:text-sky-300 text-xs font-semibold transition-all cursor-pointer shadow-sm active:scale-95"
+            >
+              <RotateCcw className="h-3.5 w-3.5 text-sky-400" />
+              Evaluate Live Fed Triggers
+            </button>
             <button
               type="button"
               onClick={handleTestAlert}

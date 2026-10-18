@@ -157,19 +157,149 @@ export function evaluateYieldCurveStatus(
   };
 }
 
-// When run directly as a script
-if (process.argv[1]?.endsWith('sync-liquidity-triggers.ts')) {
-  const liquidityResult = evaluateLiquidityTriggers();
-  const liquidityOutputPath = path.join(process.cwd(), 'src/data/latest-liquidity-status.json');
-  fs.writeFileSync(liquidityOutputPath, JSON.stringify(liquidityResult, null, 2));
+/*
+ * Fetches the two most recent numeric observations for a FRED series so we can compute
+ * both current levels and weekly deltas without requiring external infrastructure.
+ * Uses the authenticated JSON endpoint when FRED_API_KEY is present, and falls back to
+ * the unauthenticated public FRED graph CSV endpoint before gracefully degrading to baseline.
+ */
+async function fetchFredRecentObservations(
+  seriesId: string,
+  apiKey?: string
+): Promise<{ latest: number; prior: number } | null> {
+  if (apiKey) {
+    const jsonUrl = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${apiKey}&file_type=json&sort_order=desc&limit=5`;
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 6000);
+      const res = await fetch(jsonUrl, { signal: controller.signal });
+      clearTimeout(timeout);
+      if (res.ok) {
+        const data = await res.json();
+        const numericValues = (data?.observations ?? [])
+          .map((obs: { value: string }) => parseFloat(obs.value))
+          .filter((v: number) => Number.isFinite(v));
+        if (numericValues.length >= 2) {
+          return { latest: numericValues[0], prior: numericValues[1] };
+        }
+        if (numericValues.length === 1) {
+          return { latest: numericValues[0], prior: numericValues[0] };
+        }
+      }
+    } catch (err: any) {
+      console.warn(`[Liquidity Sync] FRED JSON request skipped for ${seriesId} (${err.message}).`);
+    }
+  }
 
-  const yieldResult = evaluateYieldCurveStatus();
-  const yieldOutputPath = path.join(process.cwd(), 'src/data/latest-yield-status.json');
-  fs.writeFileSync(yieldOutputPath, JSON.stringify(yieldResult, null, 2));
+  const csvUrl = `https://fred.stlouisfed.org/graph/fredgraph.csv?id=${seriesId}`;
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000);
+    const res = await fetch(csvUrl, { signal: controller.signal });
+    clearTimeout(timeout);
+    if (!res.ok) return null;
+
+    const text = await res.text();
+    const lines = text.trim().split('\n').slice(1);
+    const numericValues: number[] = [];
+    for (let i = Math.max(0, lines.length - 15); i < lines.length; i++) {
+      const parts = lines[i].split(',');
+      if (parts.length >= 2) {
+        const val = parseFloat(parts[1]);
+        if (Number.isFinite(val)) {
+          numericValues.push(val);
+        }
+      }
+    }
+    if (numericValues.length >= 2) {
+      return {
+        latest: numericValues[numericValues.length - 1],
+        prior: numericValues[numericValues.length - 2],
+      };
+    }
+    if (numericValues.length === 1) {
+      return { latest: numericValues[0], prior: numericValues[0] };
+    }
+  } catch (err: any) {
+    console.warn(`[Liquidity Sync] Public CSV fallback skipped for ${seriesId} (${err.message}). Using canonical baseline.`);
+  }
+
+  return null;
+}
+
+export async function runLiquidityTriggersSync(): Promise<{
+  liquidityResult: EvaluatedLiquidityState;
+  yieldResult: EvaluatedYieldStatus;
+}> {
+  const apiKey = process.env.FRED_API_KEY;
+
+  const [walcl, wtregen, rrpontsyd, dgs10, dgs2, dgs3mo] = await Promise.all([
+    fetchFredRecentObservations('WALCL', apiKey),
+    fetchFredRecentObservations('WTREGEN', apiKey),
+    fetchFredRecentObservations('RRPONTSYD', apiKey),
+    fetchFredRecentObservations('DGS10', apiKey),
+    fetchFredRecentObservations('DGS2', apiKey),
+    fetchFredRecentObservations('DGS3MO', apiKey),
+  ]);
+
+  /*
+   * WALCL and WTREGEN are published by FRED in millions of dollars, whereas
+   * RRPONTSYD is published in billions of dollars. Normalize all inputs to billions.
+   */
+  const fedAssetsBillion = walcl ? Math.round(walcl.latest / 1000) : 7040;
+  const tgaBillion = wtregen ? Math.round(wtregen.latest / 1000) : 780;
+  const reverseRepoBillion = rrpontsyd ? Math.round(rrpontsyd.latest) : 145;
+
+  const priorFedAssetsBillion = walcl ? walcl.prior / 1000 : 6605;
+  const priorTgaBillion = wtregen ? wtregen.prior / 1000 : 780;
+  const priorRrpBillion = rrpontsyd ? rrpontsyd.prior : 145;
+  const priorNetLiquidityTrillion =
+    walcl || wtregen || rrpontsyd
+      ? Number(((priorFedAssetsBillion - priorTgaBillion - priorRrpBillion) / 1000).toFixed(2))
+      : 5.68;
+
+  const liquidityResult = evaluateLiquidityTriggers(
+    fedAssetsBillion,
+    tgaBillion,
+    reverseRepoBillion,
+    priorNetLiquidityTrillion
+  );
+
+  const us10Y = dgs10 ? Number(dgs10.latest.toFixed(2)) : 4.19;
+  const us2Y = dgs2 ? Number(dgs2.latest.toFixed(2)) : 4.02;
+  const us3M = dgs3mo ? Number(dgs3mo.latest.toFixed(2)) : 4.65;
+  const yieldResult = evaluateYieldCurveStatus(us10Y, us2Y, us3M);
+
+  const liquidityJson = JSON.stringify(liquidityResult, null, 2);
+  const yieldJson = JSON.stringify(yieldResult, null, 2);
+
+  /*
+   * Write to both src/data/ (for build-time bundling and invariant validation)
+   * and public/ (so installed PWAs can poll fresh daily status over static HTTP without a backend).
+   */
+  fs.writeFileSync(path.join(process.cwd(), 'src/data/latest-liquidity-status.json'), liquidityJson);
+  fs.writeFileSync(path.join(process.cwd(), 'public/latest-liquidity-status.json'), liquidityJson);
+
+  fs.writeFileSync(path.join(process.cwd(), 'src/data/latest-yield-status.json'), yieldJson);
+  fs.writeFileSync(path.join(process.cwd(), 'public/latest-yield-status.json'), yieldJson);
 
   console.log(`Evaluated Daily Macro Status:`);
-  console.log(`- Net Liquidity: $${liquidityResult.netLiquidityTrillion}T (Weekly: ${liquidityResult.weeklyDeltaBillion > 0 ? '+' : ''}$${liquidityResult.weeklyDeltaBillion}B)`);
-  console.log(`- 10Y-2Y Spread: ${yieldResult.spread10Y2Y > 0 ? '+' : ''}${yieldResult.spread10Y2Y}% (${yieldResult.curveShape})`);
+  console.log(
+    `- Net Liquidity: $${liquidityResult.netLiquidityTrillion}T (Weekly: ${liquidityResult.weeklyDeltaBillion > 0 ? '+' : ''}$${liquidityResult.weeklyDeltaBillion}B)`
+  );
+  console.log(
+    `- 10Y-2Y Spread: ${yieldResult.spread10Y2Y > 0 ? '+' : ''}${yieldResult.spread10Y2Y}% (${yieldResult.curveShape})`
+  );
   console.log(`- 12M Recession Probability: ${yieldResult.recessionProbability12M}%`);
+
+  return { liquidityResult, yieldResult };
 }
+
+if (process.argv[1]?.endsWith('sync-liquidity-triggers.ts')) {
+  runLiquidityTriggersSync().catch((err) => {
+    console.error('Failed to evaluate liquidity triggers:', err);
+    process.exit(1);
+  });
+}
+
 

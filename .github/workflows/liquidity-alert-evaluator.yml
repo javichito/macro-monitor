@@ -34,5 +34,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/latest-liquidity-status.json
-          git diff --staged --quiet || (git commit -m "chore(data): automated daily liquidity trigger update [skip ci]" && git push origin main)
+          git add src/data/latest-liquidity-status.json src/data/latest-yield-status.json public/latest-liquidity-status.json public/latest-yield-status.json
+          git diff --staged --quiet || (git commit -m "chore(data): automated daily liquidity trigger update" && git push origin main)
+

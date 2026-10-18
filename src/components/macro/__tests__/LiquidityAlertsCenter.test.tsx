@@ -10,6 +10,26 @@ vi.mock('../../../lib/push-notifications', async () => {
     triggerNativeAlert: vi.fn().mockResolvedValue(true),
     requestPushPermission: vi.fn().mockResolvedValue('granted'),
     getNotificationPermissionStatus: vi.fn().mockReturnValue('granted'),
+    checkAndDispatchScheduledAlerts: vi.fn().mockResolvedValue({
+      status: {
+        timestamp: '2026-10-16T23:17:24.597Z',
+        fedAssetsBillion: 7040,
+        tgaBillion: 780,
+        reverseRepoBillion: 145,
+        netLiquidityTrillion: 6.12,
+        weeklyDeltaBillion: 440,
+        triggers: {
+          rrpDepleted: true,
+          rrpBufferLevelBillion: 145,
+          impulseDirection: 'expansion',
+          impulseBillion: 440,
+          inflectionBreached: true,
+        },
+        activeAlerts: [],
+      },
+      triggered: [],
+      newlyDispatched: [],
+    }),
   };
 });
 
@@ -69,4 +89,46 @@ describe('LiquidityAlertsCenter Component', () => {
       expect(screen.getByText(/Dispatched: Net Liquidity Expansion Impulse/i)).toBeDefined();
     });
   });
+
+  it('evaluates live Fed liquidity triggers against user threshold sliders', async () => {
+    const {
+      evaluateUserThresholdsAgainstStatus,
+      DEFAULT_ALERT_PREFERENCES,
+    } = await import('../../../lib/push-notifications');
+
+    const triggered = evaluateUserThresholdsAgainstStatus(
+      {
+        timestamp: '2026-10-15T21:00:00.000Z', // Thursday
+        fedAssetsBillion: 7040,
+        tgaBillion: 780,
+        reverseRepoBillion: 140,
+        netLiquidityTrillion: 6.12,
+        weeklyDeltaBillion: 85,
+        triggers: {
+          rrpDepleted: true,
+          rrpBufferLevelBillion: 140,
+          impulseDirection: 'expansion',
+          impulseBillion: 85,
+          inflectionBreached: true,
+        },
+        activeAlerts: [],
+      },
+      {
+        ...DEFAULT_ALERT_PREFERENCES,
+        pushEnabled: true,
+        netLiquidityTargetTrillion: 5.75,
+        rrpDrainFloorBillion: 150,
+        weeklyImpulseThresholdBillion: 50,
+        thursdayReleaseAlert: true,
+      }
+    );
+
+    expect(triggered.map((t) => t.id)).toEqual([
+      'rrp-floor-breach',
+      'weekly-impulse-trigger',
+      'net-liquidity-inflection',
+      'thursday-h41-release',
+    ]);
+  });
 });
+

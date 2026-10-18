@@ -45,14 +45,35 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+const PREFS_CACHE_URL = '/__sw_alert_preferences__';
+
 /*
- * Stale-while-revalidate fetch handler for resilient offline execution
+ * Network-first for daily telemetry status JSON files so the PWA never evaluates
+ * stale cached thresholds when online, and stale-while-revalidate for static assets.
  */
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   const url = new URL(event.request.url);
-  // Only handle requests within the app's scope
+  if (!url.pathname.startsWith('/macro-monitor') && url.origin !== self.location.origin) return;
+
+  if (url.pathname.endsWith('-status.json')) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, clone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   if (!url.pathname.startsWith('/macro-monitor')) return;
 
   event.respondWith(
@@ -148,11 +169,139 @@ self.addEventListener('notificationclick', (event) => {
 });
 
 /*
- * Handle direct postMessage calls from client scripts, enabling instant
- * native test notifications and simulated scenario dispatches directly from the PWA UI.
+ * Evaluate user threshold preferences inside the Service Worker context during
+ * background periodicSync wakeups without requiring an active DOM window.
+ */
+async function evaluateBackgroundLiquidityAlerts() {
+  try {
+    const cache = await caches.open(CACHE_NAME);
+    const prefsRes = await cache.match(PREFS_CACHE_URL);
+    if (!prefsRes) return;
+
+    const prefs = await prefsRes.json();
+    if (!prefs || !prefs.pushEnabled) return;
+
+    const scopePath = new URL(self.registration.scope).pathname.replace(/\/$/, '');
+    const statusUrl = `${scopePath}/latest-liquidity-status.json`;
+    const statusRes = await fetch(statusUrl, { cache: 'no-store' });
+    if (!statusRes.ok) return;
+
+    const status = await statusRes.json();
+    if (!status || typeof status.netLiquidityTrillion !== 'number') return;
+
+    const dateKey = (status.timestamp || new Date().toISOString()).slice(0, 10);
+    const dispatchedSet = new Set(Array.isArray(prefs.dispatchedAlertKeys) ? prefs.dispatchedAlertKeys : []);
+    const triggered = [];
+
+    if (prefs.rrpDrainAlert && status.reverseRepoBillion <= prefs.rrpDrainFloorBillion) {
+      triggered.push({
+        id: 'rrp-floor-breach',
+        dedupeKey: `${dateKey}:rrp-floor:${prefs.rrpDrainFloorBillion}`,
+        title: `⚠️ Reverse Repo Below $${prefs.rrpDrainFloorBillion}B Floor ($${status.reverseRepoBillion}B)`,
+        body: `ON RRP stands at $${status.reverseRepoBillion}B (below your $${prefs.rrpDrainFloorBillion}B safety floor). Future Treasury issuance pulls directly from bank reserves.`,
+      });
+    }
+
+    if (
+      prefs.weeklyImpulseAlert &&
+      Math.abs(status.weeklyDeltaBillion) >= prefs.weeklyImpulseThresholdBillion
+    ) {
+      const isExpansion = status.weeklyDeltaBillion >= 0;
+      const sign = isExpansion ? '+' : '';
+      triggered.push({
+        id: 'weekly-impulse-trigger',
+        dedupeKey: `${dateKey}:weekly-impulse:${prefs.weeklyImpulseThresholdBillion}`,
+        title: `${isExpansion ? '🚀' : '📉'} Fed Net Liquidity Impulse: ${sign}$${status.weeklyDeltaBillion}B Weekly`,
+        body: `Net Liquidity shifted by ${sign}$${status.weeklyDeltaBillion}B over 7 days to $${status.netLiquidityTrillion.toFixed(2)}T, breaching your $${prefs.weeklyImpulseThresholdBillion}B/wk momentum threshold.`,
+      });
+    }
+
+    if (
+      prefs.netLiquidityInflection &&
+      status.netLiquidityTrillion >= prefs.netLiquidityTargetTrillion
+    ) {
+      triggered.push({
+        id: 'net-liquidity-inflection',
+        dedupeKey: `${dateKey}:net-liquidity-target:${Number(prefs.netLiquidityTargetTrillion).toFixed(2)}`,
+        title: `⚡ Net Liquidity Crossed $${Number(prefs.netLiquidityTargetTrillion).toFixed(2)}T Milestone`,
+        body: `Aggregate Fed Net Liquidity reached $${status.netLiquidityTrillion.toFixed(2)}T (Fed Assets $${(status.fedAssetsBillion / 1000).toFixed(2)}T − TGA $${status.tgaBillion}B − ON RRP $${status.reverseRepoBillion}B).`,
+      });
+    }
+
+    const candidates = triggered.filter((item) => !dispatchedSet.has(item.dedupeKey));
+    if (candidates.length === 0) return;
+
+    const primary = candidates[0];
+    for (const item of candidates) {
+      dispatchedSet.add(item.dedupeKey);
+    }
+
+    const updatedPrefs = {
+      ...prefs,
+      lastCheckedTimestamp: new Date().toISOString(),
+      dispatchedAlertKeys: Array.from(dispatchedSet).slice(-50),
+    };
+    await cache.put(
+      PREFS_CACHE_URL,
+      new Response(JSON.stringify(updatedPrefs), {
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    const iconUrl = `${scopePath}/icon.svg`;
+    const targetUrl = `${scopePath}/macro#central-bank-liquidity-radar`;
+
+    await self.registration.showNotification(primary.title, {
+      body: primary.body,
+      icon: iconUrl,
+      badge: iconUrl,
+      tag: primary.id,
+      renotify: true,
+      vibrate: [200, 100, 200],
+      data: { url: targetUrl },
+      actions: [
+        { action: 'open_radar', title: 'Open Radar' },
+        { action: 'dismiss', title: 'Dismiss' },
+      ],
+    });
+  } catch (err) {
+    console.warn('Background liquidity alert evaluation skipped:', err);
+  }
+}
+
+self.addEventListener('periodicsync', (event) => {
+  if (event.tag === 'liquidity-alert-sync') {
+    event.waitUntil(evaluateBackgroundLiquidityAlerts());
+  }
+});
+
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'liquidity-alert-sync') {
+    event.waitUntil(evaluateBackgroundLiquidityAlerts());
+  }
+});
+
+/*
+ * Handle direct postMessage calls from client scripts, enabling preference cache mirroring,
+ * instant native test notifications, and simulated scenario dispatches directly from the PWA UI.
  */
 self.addEventListener('message', (event) => {
   if (!event.data) return;
+
+  if (event.data.type === 'SYNC_ALERT_PREFERENCES') {
+    const prefs = event.data.payload || {};
+    event.waitUntil(
+      caches.open(CACHE_NAME).then((cache) =>
+        cache.put(
+          PREFS_CACHE_URL,
+          new Response(JSON.stringify(prefs), {
+            headers: { 'Content-Type': 'application/json' },
+          })
+        )
+      )
+    );
+    return;
+  }
 
   if (event.data.type === 'TRIGGER_LOCAL_NOTIFICATION') {
     const payload = event.data.payload || {};
@@ -177,3 +326,4 @@ self.addEventListener('message', (event) => {
     self.registration.showNotification(title, options);
   }
 });
+
