@@ -6,7 +6,7 @@
  * 2. Federal Reserve Economic Data (FRED) API & Canonical Sovereign Telemetry
  *
  * Validates accounting identities, cross-dataset parity, and econometric bounds
- * across global aggregates and all 46 modeled sovereign economies.
+ * across global aggregates and all 71 modeled sovereign economies.
  * Can be run manually (`npm run data:sync`) or via scheduled GitHub Actions (`.github/workflows/data-sync.yml`).
  */
 
@@ -94,7 +94,145 @@ function validateMacroBounds(year: number, data: FetchedMacroIndicator): boolean
 }
 
 /**
- * Validates per-country macroeconomic metrics across all 46 sovereign profiles
+ * Fetch a World Bank indicator across all countries in a single paginated request
+ * for recent checkpoint years (2020–2026), keyed by `${iso3}:${year}`.
+ */
+async function fetchWorldBankBatchIndicator(
+  indicatorCode: string,
+  dateRange: string = '2020:2026'
+): Promise<Map<string, number>> {
+  const url = `https://api.worldbank.org/v2/country/all/indicator/${indicatorCode}?date=${dateRange}&format=json&per_page=4000`;
+  const result = new Map<string, number>();
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+    const response = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      console.warn(`[WorldBank Batch API] Warning: HTTP ${response.status} for all/${indicatorCode}`);
+      return result;
+    }
+
+    const json = await response.json();
+    if (Array.isArray(json) && json.length >= 2 && Array.isArray(json[1])) {
+      const records = json[1] as WorldBankDataPoint[];
+      for (const rec of records) {
+        const year = parseInt(rec.date, 10);
+        if (rec.countryiso3code && !isNaN(year) && rec.value !== null && rec.value !== undefined) {
+          result.set(`${rec.countryiso3code}:${year}`, rec.value);
+        }
+      }
+    }
+  } catch (error: any) {
+    console.warn(`[WorldBank Batch API] Notice: Network fetch failed for all/${indicatorCode} (${error.message}). Relying on verified canonical cache.`);
+  }
+
+  return result;
+}
+
+/**
+ * Synchronizes recent World Bank sovereign revisions (2020–2026) across all 71 countries
+ * in src/data/country-metrics.ts while preserving accounting identities and bounds.
+ */
+async function syncSovereignCountriesFromWorldBank(): Promise<number> {
+  const syncYears = [2020, 2022, 2024, 2025, 2026];
+  const [growthBatch, cpiBatch, caBatch, depBatch, unempBatch] = await Promise.all([
+    fetchWorldBankBatchIndicator('NY.GDP.MKTP.KD.ZG'),
+    fetchWorldBankBatchIndicator('FP.CPI.TOTL.ZG'),
+    fetchWorldBankBatchIndicator('BN.CAB.XOKA.GD.ZS'),
+    fetchWorldBankBatchIndicator('SP.POP.DPND.OL'),
+    fetchWorldBankBatchIndicator('SL.UEM.TOTL.ZS'),
+  ]);
+
+  if (
+    growthBatch.size === 0 &&
+    cpiBatch.size === 0 &&
+    caBatch.size === 0 &&
+    depBatch.size === 0 &&
+    unempBatch.size === 0
+  ) {
+    return 0;
+  }
+
+  const countryFilePath = path.resolve(process.cwd(), 'src/data/country-metrics.ts');
+  const countryContent = fs.readFileSync(countryFilePath, 'utf8');
+  const cStartMarker = 'export const COUNTRIES_DATA: CountryProfile[] = ';
+  const cStart = countryContent.indexOf(cStartMarker) + cStartMarker.length;
+  const cEndMarker = '];\n\n/*\n * Economic blocs';
+  const cEnd = countryContent.indexOf(cEndMarker) + 1;
+  const countries = JSON.parse(countryContent.slice(cStart, cEnd));
+
+  let updatedFields = 0;
+
+  for (const country of countries) {
+    for (const yr of syncYears) {
+      const m = country.history[String(yr)];
+      if (!m) continue;
+      const key = `${country.code}:${yr}`;
+
+      const growth = growthBatch.get(key);
+      if (growth !== undefined && growth >= -30 && growth <= 30) {
+        const rounded = Number(growth.toFixed(1));
+        if (m.realGdpGrowth !== rounded) {
+          m.realGdpGrowth = rounded;
+          updatedFields++;
+        }
+      }
+
+      const cpi = cpiBatch.get(key);
+      if (cpi !== undefined && cpi >= -15 && cpi <= 250) {
+        const rounded = Number(cpi.toFixed(1));
+        if (m.inflationRate !== rounded) {
+          m.inflationRate = rounded;
+          updatedFields++;
+        }
+      }
+
+      const ca = caBatch.get(key);
+      if (ca !== undefined && ca >= -35 && ca <= 45) {
+        const rounded = Number(ca.toFixed(1));
+        if (m.currentAccountPercentGdp !== rounded) {
+          m.currentAccountPercentGdp = rounded;
+          updatedFields++;
+        }
+      }
+
+      const dep = depBatch.get(key);
+      if (dep !== undefined && dep >= 2 && dep <= 75) {
+        const rounded = Number(dep.toFixed(1));
+        if (m.oldAgeDependencyRatio !== rounded) {
+          m.oldAgeDependencyRatio = rounded;
+          updatedFields++;
+        }
+      }
+
+      const unemp = unempBatch.get(key);
+      if (unemp !== undefined && unemp > 0 && unemp <= 45 && m.labor) {
+        const rounded = Number(unemp.toFixed(1));
+        if (m.labor.unemploymentRate !== rounded) {
+          m.labor.unemploymentRate = rounded;
+          updatedFields++;
+        }
+      }
+    }
+  }
+
+  if (updatedFields > 0) {
+    const updatedContent =
+      countryContent.slice(0, cStart) +
+      JSON.stringify(countries, null, 2) +
+      countryContent.slice(cEnd);
+    fs.writeFileSync(countryFilePath, updatedContent, 'utf8');
+  }
+
+  return updatedFields;
+}
+
+/**
+ * Validates per-country macroeconomic metrics across all 71 sovereign profiles
  * to enforce accounting identities (GDP / GDP per capita = Population) and realistic bounds.
  */
 function validateSovereignCountryDataset() {
@@ -106,8 +244,8 @@ function validateSovereignCountryDataset() {
   const cEnd = countryContent.indexOf(cEndMarker) + 1;
   const countries = JSON.parse(countryContent.slice(cStart, cEnd));
 
-  if (countries.length < 46) {
-    throw new Error(`Expected at least 46 modeled sovereigns in country-metrics.ts, found ${countries.length}`);
+  if (countries.length < 71) {
+    throw new Error(`Expected at least 71 modeled sovereigns in country-metrics.ts, found ${countries.length}`);
   }
 
   for (const country of countries) {
@@ -232,7 +370,11 @@ async function runSync() {
     }
   }
 
-  console.log('\n3. Validating 46-Country Sovereign Macro & Demographic Matrix...');
+  console.log('\n3. Syncing & Validating 71-Country Sovereign Macro & Demographic Matrix...');
+  const updatedSovereignFields = await syncSovereignCountriesFromWorldBank();
+  if (updatedSovereignFields > 0) {
+    console.log(`   ✓ Wrote ${updatedSovereignFields} updated sovereign datapoints from World Bank WDI to src/data/country-metrics.ts.`);
+  }
   const verifiedCountryCount = validateSovereignCountryDataset();
   console.log(
     `   ✓ All ${verifiedCountryCount} sovereign profiles verified across ${EXPECTED_HISTORY_YEARS.length} historical checkpoints (Real GDP Growth, Policy Rate, 10Y Yield, Current Account, Fiscal Balance, FX Reserves, Population, Old-Age Dependency, and Labor/Sahm).`

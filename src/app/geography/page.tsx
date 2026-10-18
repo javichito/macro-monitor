@@ -196,7 +196,7 @@ export default function GeographyPage() {
             How Do Nations Stack Up Against Each Other?
           </h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2.5 max-w-2xl font-normal leading-relaxed">
-            Click any nation on the map to inspect its balance sheet across 15 macro layers, pit two superpowers head-to-head across 22 indicators in the duel arena, or sort the 46-country global league table.
+            Click any nation on the map to inspect its balance sheet across 15 macro layers, pit two superpowers head-to-head across 22 indicators in the duel arena, or sort the 71-country global league table.
           </p>
         </div>
 

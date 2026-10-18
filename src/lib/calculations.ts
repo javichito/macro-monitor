@@ -108,7 +108,7 @@ export function calculateWealthPercentile(
 
 /*
  * We compile empirical World Bank International Comparison Program (ICP) Price Level Ratios (PLR)
- * and sectoral cost multipliers relative to the United States (base = 1.00) across all 31 tracked nations.
+ * and sectoral cost multipliers relative to the United States (base = 1.00) across all 71 tracked nations.
  * These metrics capture the Balassa-Samuelson effect where non-tradable services and housing
  * are dramatically cheaper in developing nations while tradable goods remain closer in parity.
  */
@@ -154,6 +154,46 @@ export const COUNTRY_PPP_METRICS: Record<string, CountryPppMetric> = {
   IND: { code: 'IND', priceLevelRatio: 0.28, housingFactor: 0.20, goodsFactor: 0.35, servicesFactor: 0.24, currencyCode: 'INR', currencySymbol: '₹' },
   NGA: { code: 'NGA', priceLevelRatio: 0.26, housingFactor: 0.22, goodsFactor: 0.32, servicesFactor: 0.22, currencyCode: 'NGN', currencySymbol: '₦' },
   EGY: { code: 'EGY', priceLevelRatio: 0.24, housingFactor: 0.18, goodsFactor: 0.30, servicesFactor: 0.20, currencyCode: 'EGP', currencySymbol: 'E£' },
+  NOR: { code: 'NOR', priceLevelRatio: 1.14, housingFactor: 1.12, goodsFactor: 1.15, servicesFactor: 1.16, currencyCode: 'NOK', currencySymbol: 'kr' },
+  IRL: { code: 'IRL', priceLevelRatio: 1.05, housingFactor: 1.24, goodsFactor: 1.01, servicesFactor: 0.99, currencyCode: 'EUR', currencySymbol: '€' },
+  BEL: { code: 'BEL', priceLevelRatio: 0.88, housingFactor: 0.84, goodsFactor: 0.90, servicesFactor: 0.89, currencyCode: 'EUR', currencySymbol: '€' },
+  AUT: { code: 'AUT', priceLevelRatio: 0.89, housingFactor: 0.86, goodsFactor: 0.91, servicesFactor: 0.89, currencyCode: 'EUR', currencySymbol: '€' },
+  DNK: { code: 'DNK', priceLevelRatio: 1.09, housingFactor: 1.06, goodsFactor: 1.10, servicesFactor: 1.11, currencyCode: 'DKK', currencySymbol: 'kr' },
+  ISR: { code: 'ISR', priceLevelRatio: 1.04, housingFactor: 1.18, goodsFactor: 1.02, servicesFactor: 0.98, currencyCode: 'ILS', currencySymbol: '₪' },
+  VNM: { code: 'VNM', priceLevelRatio: 0.31, housingFactor: 0.24, goodsFactor: 0.37, servicesFactor: 0.27, currencyCode: 'VND', currencySymbol: '₫' },
+  MYS: { code: 'MYS', priceLevelRatio: 0.38, housingFactor: 0.31, goodsFactor: 0.45, servicesFactor: 0.34, currencyCode: 'MYR', currencySymbol: 'RM' },
+  PHL: { code: 'PHL', priceLevelRatio: 0.34, housingFactor: 0.27, goodsFactor: 0.41, servicesFactor: 0.30, currencyCode: 'PHP', currencySymbol: '₱' },
+  NZL: { code: 'NZL', priceLevelRatio: 0.97, housingFactor: 1.04, goodsFactor: 0.96, servicesFactor: 0.94, currencyCode: 'NZD', currencySymbol: 'NZ$' },
+  PRT: { code: 'PRT', priceLevelRatio: 0.66, housingFactor: 0.58, goodsFactor: 0.74, servicesFactor: 0.62, currencyCode: 'EUR', currencySymbol: '€' },
+  GRC: { code: 'GRC', priceLevelRatio: 0.64, housingFactor: 0.52, goodsFactor: 0.73, servicesFactor: 0.60, currencyCode: 'EUR', currencySymbol: '€' },
+  PER: { code: 'PER', priceLevelRatio: 0.39, housingFactor: 0.31, goodsFactor: 0.45, servicesFactor: 0.35, currencyCode: 'PEN', currencySymbol: 'S/' },
+  CZE: { code: 'CZE', priceLevelRatio: 0.63, housingFactor: 0.56, goodsFactor: 0.69, servicesFactor: 0.59, currencyCode: 'CZK', currencySymbol: 'Kč' },
+  FIN: { code: 'FIN', priceLevelRatio: 0.95, housingFactor: 0.91, goodsFactor: 0.97, servicesFactor: 0.96, currencyCode: 'EUR', currencySymbol: '€' },
+  THA: { code: 'THA', priceLevelRatio: 0.36, housingFactor: 0.29, goodsFactor: 0.43, servicesFactor: 0.32, currencyCode: 'THB', currencySymbol: '฿' },
+  BGD: { code: 'BGD', priceLevelRatio: 0.27, housingFactor: 0.19, goodsFactor: 0.34, servicesFactor: 0.23, currencyCode: 'BDT', currencySymbol: '৳' },
+  PAK: { code: 'PAK', priceLevelRatio: 0.25, housingFactor: 0.17, goodsFactor: 0.32, servicesFactor: 0.21, currencyCode: 'PKR', currencySymbol: '₨' },
+  KAZ: { code: 'KAZ', priceLevelRatio: 0.38, housingFactor: 0.31, goodsFactor: 0.44, servicesFactor: 0.34, currencyCode: 'KZT', currencySymbol: '₸' },
+  UZB: { code: 'UZB', priceLevelRatio: 0.29, housingFactor: 0.22, goodsFactor: 0.36, servicesFactor: 0.25, currencyCode: 'UZS', currencySymbol: 'soʻm' },
+  QAT: { code: 'QAT', priceLevelRatio: 0.68, housingFactor: 0.84, goodsFactor: 0.70, servicesFactor: 0.60, currencyCode: 'QAR', currencySymbol: 'QR' },
+  KWT: { code: 'KWT', priceLevelRatio: 0.62, housingFactor: 0.72, goodsFactor: 0.65, servicesFactor: 0.55, currencyCode: 'KWD', currencySymbol: 'KD' },
+  OMN: { code: 'OMN', priceLevelRatio: 0.52, housingFactor: 0.45, goodsFactor: 0.58, servicesFactor: 0.49, currencyCode: 'OMR', currencySymbol: 'OMR' },
+  UKR: { code: 'UKR', priceLevelRatio: 0.33, housingFactor: 0.25, goodsFactor: 0.40, servicesFactor: 0.29, currencyCode: 'UAH', currencySymbol: '₴' },
+  ROU: { code: 'ROU', priceLevelRatio: 0.51, housingFactor: 0.41, goodsFactor: 0.59, servicesFactor: 0.47, currencyCode: 'RON', currencySymbol: 'lei' },
+  HUN: { code: 'HUN', priceLevelRatio: 0.55, housingFactor: 0.46, goodsFactor: 0.63, servicesFactor: 0.51, currencyCode: 'HUF', currencySymbol: 'Ft' },
+  LUX: { code: 'LUX', priceLevelRatio: 1.12, housingFactor: 1.38, goodsFactor: 1.04, servicesFactor: 1.08, currencyCode: 'EUR', currencySymbol: '€' },
+  SVK: { code: 'SVK', priceLevelRatio: 0.64, housingFactor: 0.54, goodsFactor: 0.71, servicesFactor: 0.60, currencyCode: 'EUR', currencySymbol: '€' },
+  BGR: { code: 'BGR', priceLevelRatio: 0.49, housingFactor: 0.38, goodsFactor: 0.58, servicesFactor: 0.44, currencyCode: 'EUR', currencySymbol: '€' },
+  HRV: { code: 'HRV', priceLevelRatio: 0.60, housingFactor: 0.50, goodsFactor: 0.68, servicesFactor: 0.56, currencyCode: 'EUR', currencySymbol: '€' },
+  MAR: { code: 'MAR', priceLevelRatio: 0.36, housingFactor: 0.28, goodsFactor: 0.43, servicesFactor: 0.32, currencyCode: 'MAD', currencySymbol: 'DH' },
+  DZA: { code: 'DZA', priceLevelRatio: 0.31, housingFactor: 0.23, goodsFactor: 0.38, servicesFactor: 0.27, currencyCode: 'DZD', currencySymbol: 'DA' },
+  KEN: { code: 'KEN', priceLevelRatio: 0.30, housingFactor: 0.23, goodsFactor: 0.37, servicesFactor: 0.26, currencyCode: 'KES', currencySymbol: 'KSh' },
+  ETH: { code: 'ETH', priceLevelRatio: 0.26, housingFactor: 0.18, goodsFactor: 0.33, servicesFactor: 0.22, currencyCode: 'ETB', currencySymbol: 'Br' },
+  GHA: { code: 'GHA', priceLevelRatio: 0.28, housingFactor: 0.20, goodsFactor: 0.35, servicesFactor: 0.24, currencyCode: 'GHS', currencySymbol: 'GH₵' },
+  URY: { code: 'URY', priceLevelRatio: 0.64, housingFactor: 0.54, goodsFactor: 0.72, servicesFactor: 0.60, currencyCode: 'UYU', currencySymbol: '$U' },
+  ECU: { code: 'ECU', priceLevelRatio: 0.44, housingFactor: 0.35, goodsFactor: 0.51, servicesFactor: 0.40, currencyCode: 'USD', currencySymbol: '$' },
+  CRI: { code: 'CRI', priceLevelRatio: 0.56, housingFactor: 0.45, goodsFactor: 0.64, servicesFactor: 0.52, currencyCode: 'CRC', currencySymbol: '₡' },
+  PAN: { code: 'PAN', priceLevelRatio: 0.52, housingFactor: 0.44, goodsFactor: 0.58, servicesFactor: 0.48, currencyCode: 'USD', currencySymbol: '$' },
+  DOM: { code: 'DOM', priceLevelRatio: 0.43, housingFactor: 0.34, goodsFactor: 0.50, servicesFactor: 0.39, currencyCode: 'DOP', currencySymbol: 'RD$' },
 };
 
 export interface PppConversionResult {

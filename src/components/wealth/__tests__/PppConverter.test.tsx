@@ -43,9 +43,9 @@ describe('PPP Calculation Logic', () => {
     expect(result.baskets.housingMultiplier).toBeLessThan(1.0);
   });
 
-  it('maps all 31 sovereign nations with valid non-zero PPP metrics', () => {
+  it('maps all 71 sovereign nations with valid non-zero PPP metrics', () => {
     const keys = Object.keys(COUNTRY_PPP_METRICS);
-    expect(keys.length).toBe(31);
+    expect(keys.length).toBe(71);
 
     for (const key of keys) {
       const metric = COUNTRY_PPP_METRICS[key];

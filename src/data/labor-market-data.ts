@@ -2853,6 +2853,1956 @@ export const SOVEREIGN_LABOR_PROFILES: SovereignLaborProfile[] = [
       }
     ]
   },
+  {
+    "countryCode": "THA",
+    "countryName": "Thailand",
+    "flag": "🇹🇭",
+    "currentUnemployment": 1.1,
+    "unemployment12mLow": 0.9,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 1.9,
+        "underemploymentRate": 2.8,
+        "laborForceParticipation": 67.8,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.04,
+        "wageGrowthYoy": 3.1,
+        "productivityGrowthYoy": 1.8
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 1.7,
+        "underemploymentRate": 2.5,
+        "laborForceParticipation": 67.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.05,
+        "wageGrowthYoy": 4.3,
+        "productivityGrowthYoy": 1.8
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 1.6,
+        "underemploymentRate": 2.3,
+        "laborForceParticipation": 67.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.05,
+        "wageGrowthYoy": 3.1,
+        "productivityGrowthYoy": 1.8
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 1.4,
+        "underemploymentRate": 2,
+        "laborForceParticipation": 67.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.07,
+        "wageGrowthYoy": 3.1,
+        "productivityGrowthYoy": 1.8
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 1.3,
+        "underemploymentRate": 1.9,
+        "laborForceParticipation": 67.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.07,
+        "wageGrowthYoy": 3.1,
+        "productivityGrowthYoy": 1.8
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 1.1,
+        "underemploymentRate": 1.6,
+        "laborForceParticipation": 67.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.08,
+        "wageGrowthYoy": 3.1,
+        "productivityGrowthYoy": 1.8
+      }
+    ]
+  },
+  {
+    "countryCode": "BGD",
+    "countryName": "Bangladesh",
+    "flag": "🇧🇩",
+    "currentUnemployment": 4.3,
+    "unemployment12mLow": 4.1,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 5.1,
+        "underemploymentRate": 7.4,
+        "laborForceParticipation": 58.2,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.84,
+        "wageGrowthYoy": 7.4,
+        "productivityGrowthYoy": 4.1
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 4.9,
+        "underemploymentRate": 7.1,
+        "laborForceParticipation": 58.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.86,
+        "wageGrowthYoy": 8.6,
+        "productivityGrowthYoy": 4.1
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 4.8,
+        "underemploymentRate": 7,
+        "laborForceParticipation": 58.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.86,
+        "wageGrowthYoy": 7.4,
+        "productivityGrowthYoy": 4.1
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 4.6,
+        "underemploymentRate": 6.7,
+        "laborForceParticipation": 58.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.87,
+        "wageGrowthYoy": 7.4,
+        "productivityGrowthYoy": 4.1
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 4.5,
+        "underemploymentRate": 6.5,
+        "laborForceParticipation": 58.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.88,
+        "wageGrowthYoy": 7.4,
+        "productivityGrowthYoy": 4.1
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 4.3,
+        "underemploymentRate": 6.2,
+        "laborForceParticipation": 58.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.89,
+        "wageGrowthYoy": 7.4,
+        "productivityGrowthYoy": 4.1
+      }
+    ]
+  },
+  {
+    "countryCode": "PAK",
+    "countryName": "Pakistan",
+    "flag": "🇵🇰",
+    "currentUnemployment": 5.6,
+    "unemployment12mLow": 5.4,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 6.4,
+        "underemploymentRate": 9.3,
+        "laborForceParticipation": 52.8,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.77,
+        "wageGrowthYoy": 9.2,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 6.2,
+        "underemploymentRate": 9,
+        "laborForceParticipation": 52.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 10.4,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 6.1,
+        "underemploymentRate": 8.8,
+        "laborForceParticipation": 52.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 9.2,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 5.9,
+        "underemploymentRate": 8.6,
+        "laborForceParticipation": 52.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 9.2,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 5.8,
+        "underemploymentRate": 8.4,
+        "laborForceParticipation": 52.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 9.2,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 5.6,
+        "underemploymentRate": 8.1,
+        "laborForceParticipation": 52.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.81,
+        "wageGrowthYoy": 9.2,
+        "productivityGrowthYoy": 1.9
+      }
+    ]
+  },
+  {
+    "countryCode": "KAZ",
+    "countryName": "Kazakhstan",
+    "flag": "🇰🇿",
+    "currentUnemployment": 4.7,
+    "unemployment12mLow": 4.5,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 5.5,
+        "underemploymentRate": 8,
+        "laborForceParticipation": 69.2,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.82,
+        "wageGrowthYoy": 9.8,
+        "productivityGrowthYoy": 2.9
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 5.3,
+        "underemploymentRate": 7.7,
+        "laborForceParticipation": 69.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.83,
+        "wageGrowthYoy": 11,
+        "productivityGrowthYoy": 2.9
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 5.2,
+        "underemploymentRate": 7.5,
+        "laborForceParticipation": 69.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.84,
+        "wageGrowthYoy": 9.8,
+        "productivityGrowthYoy": 2.9
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 5,
+        "underemploymentRate": 7.3,
+        "laborForceParticipation": 69.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.85,
+        "wageGrowthYoy": 9.8,
+        "productivityGrowthYoy": 2.9
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 4.9,
+        "underemploymentRate": 7.1,
+        "laborForceParticipation": 69.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.86,
+        "wageGrowthYoy": 9.8,
+        "productivityGrowthYoy": 2.9
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 4.7,
+        "underemploymentRate": 6.8,
+        "laborForceParticipation": 69.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.87,
+        "wageGrowthYoy": 9.8,
+        "productivityGrowthYoy": 2.9
+      }
+    ]
+  },
+  {
+    "countryCode": "UZB",
+    "countryName": "Uzbekistan",
+    "flag": "🇺🇿",
+    "currentUnemployment": 5.8,
+    "unemployment12mLow": 5.6,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 6.6,
+        "underemploymentRate": 9.6,
+        "laborForceParticipation": 61.5,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.75,
+        "wageGrowthYoy": 11.2,
+        "productivityGrowthYoy": 3.8
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 6.4,
+        "underemploymentRate": 9.3,
+        "laborForceParticipation": 61.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.77,
+        "wageGrowthYoy": 12.4,
+        "productivityGrowthYoy": 3.8
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 6.3,
+        "underemploymentRate": 9.1,
+        "laborForceParticipation": 61.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.77,
+        "wageGrowthYoy": 11.2,
+        "productivityGrowthYoy": 3.8
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 6.1,
+        "underemploymentRate": 8.8,
+        "laborForceParticipation": 61.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 11.2,
+        "productivityGrowthYoy": 3.8
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 6,
+        "underemploymentRate": 8.7,
+        "laborForceParticipation": 61.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.79,
+        "wageGrowthYoy": 11.2,
+        "productivityGrowthYoy": 3.8
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 5.8,
+        "underemploymentRate": 8.4,
+        "laborForceParticipation": 61.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 11.2,
+        "productivityGrowthYoy": 3.8
+      }
+    ]
+  },
+  {
+    "countryCode": "QAT",
+    "countryName": "Qatar",
+    "flag": "🇶🇦",
+    "currentUnemployment": 0.3,
+    "unemployment12mLow": 0.2,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 1.1,
+        "underemploymentRate": 1.6,
+        "laborForceParticipation": 87.4,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.08,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.7
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 0.9,
+        "underemploymentRate": 1.3,
+        "laborForceParticipation": 87.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.1,
+        "wageGrowthYoy": 4.6,
+        "productivityGrowthYoy": 1.7
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 0.8,
+        "underemploymentRate": 1.2,
+        "laborForceParticipation": 87.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.1,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.7
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 0.6,
+        "underemploymentRate": 0.9,
+        "laborForceParticipation": 87.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.11,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.7
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 0.5,
+        "underemploymentRate": 0.7,
+        "laborForceParticipation": 87.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.12,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.7
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 0.3,
+        "underemploymentRate": 0.4,
+        "laborForceParticipation": 87.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.13,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.7
+      }
+    ]
+  },
+  {
+    "countryCode": "KWT",
+    "countryName": "Kuwait",
+    "flag": "🇰🇼",
+    "currentUnemployment": 2.1,
+    "unemployment12mLow": 1.9,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 2.9,
+        "underemploymentRate": 4.2,
+        "laborForceParticipation": 73.5,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.98,
+        "wageGrowthYoy": 3,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 2.7,
+        "underemploymentRate": 3.9,
+        "laborForceParticipation": 73.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.99,
+        "wageGrowthYoy": 4.2,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 2.6,
+        "underemploymentRate": 3.8,
+        "laborForceParticipation": 73.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.99,
+        "wageGrowthYoy": 3,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 2.4,
+        "underemploymentRate": 3.5,
+        "laborForceParticipation": 73.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.01,
+        "wageGrowthYoy": 3,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 2.3,
+        "underemploymentRate": 3.3,
+        "laborForceParticipation": 73.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.01,
+        "wageGrowthYoy": 3,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 2.1,
+        "underemploymentRate": 3,
+        "laborForceParticipation": 73.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 1.02,
+        "wageGrowthYoy": 3,
+        "productivityGrowthYoy": 1.4
+      }
+    ]
+  },
+  {
+    "countryCode": "OMN",
+    "countryName": "Oman",
+    "flag": "🇴🇲",
+    "currentUnemployment": 3.1,
+    "unemployment12mLow": 2.9,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 3.9,
+        "underemploymentRate": 5.7,
+        "laborForceParticipation": 68.4,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.92,
+        "wageGrowthYoy": 2.8,
+        "productivityGrowthYoy": 1.6
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 3.7,
+        "underemploymentRate": 5.4,
+        "laborForceParticipation": 68.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.93,
+        "wageGrowthYoy": 4,
+        "productivityGrowthYoy": 1.6
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 3.6,
+        "underemploymentRate": 5.2,
+        "laborForceParticipation": 68.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.93,
+        "wageGrowthYoy": 2.8,
+        "productivityGrowthYoy": 1.6
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 3.4,
+        "underemploymentRate": 4.9,
+        "laborForceParticipation": 68.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.95,
+        "wageGrowthYoy": 2.8,
+        "productivityGrowthYoy": 1.6
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 3.3,
+        "underemploymentRate": 4.8,
+        "laborForceParticipation": 68.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.95,
+        "wageGrowthYoy": 2.8,
+        "productivityGrowthYoy": 1.6
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 3.1,
+        "underemploymentRate": 4.5,
+        "laborForceParticipation": 68.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.96,
+        "wageGrowthYoy": 2.8,
+        "productivityGrowthYoy": 1.6
+      }
+    ]
+  },
+  {
+    "countryCode": "UKR",
+    "countryName": "Ukraine",
+    "flag": "🇺🇦",
+    "currentUnemployment": 12.4,
+    "unemployment12mLow": 12.2,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "slack",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 13.2,
+        "underemploymentRate": 19.1,
+        "laborForceParticipation": 59.5,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.36,
+        "wageGrowthYoy": 10.5,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 13,
+        "underemploymentRate": 18.8,
+        "laborForceParticipation": 59.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.37,
+        "wageGrowthYoy": 11.7,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 12.9,
+        "underemploymentRate": 18.7,
+        "laborForceParticipation": 59.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.38,
+        "wageGrowthYoy": 10.5,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 12.7,
+        "underemploymentRate": 18.4,
+        "laborForceParticipation": 59.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.39,
+        "wageGrowthYoy": 10.5,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 12.6,
+        "underemploymentRate": 18.3,
+        "laborForceParticipation": 59.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.39,
+        "wageGrowthYoy": 10.5,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 12.4,
+        "underemploymentRate": 18,
+        "laborForceParticipation": 59.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.41,
+        "wageGrowthYoy": 10.5,
+        "productivityGrowthYoy": 2.8
+      }
+    ]
+  },
+  {
+    "countryCode": "ROU",
+    "countryName": "Romania",
+    "flag": "🇷🇴",
+    "currentUnemployment": 5.3,
+    "unemployment12mLow": 5.1,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 6.1,
+        "underemploymentRate": 8.8,
+        "laborForceParticipation": 66.8,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 6.8,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 5.9,
+        "underemploymentRate": 8.6,
+        "laborForceParticipation": 66.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 8,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 5.8,
+        "underemploymentRate": 8.4,
+        "laborForceParticipation": 66.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 6.8,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 5.6,
+        "underemploymentRate": 8.1,
+        "laborForceParticipation": 66.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.81,
+        "wageGrowthYoy": 6.8,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 5.5,
+        "underemploymentRate": 8,
+        "laborForceParticipation": 66.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.82,
+        "wageGrowthYoy": 6.8,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 5.3,
+        "underemploymentRate": 7.7,
+        "laborForceParticipation": 66.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.83,
+        "wageGrowthYoy": 6.8,
+        "productivityGrowthYoy": 2.6
+      }
+    ]
+  },
+  {
+    "countryCode": "HUN",
+    "countryName": "Hungary",
+    "flag": "🇭🇺",
+    "currentUnemployment": 4.3,
+    "unemployment12mLow": 4.1,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 5.1,
+        "underemploymentRate": 7.4,
+        "laborForceParticipation": 75.4,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.84,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 4.9,
+        "underemploymentRate": 7.1,
+        "laborForceParticipation": 75.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.86,
+        "wageGrowthYoy": 7.6,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 4.8,
+        "underemploymentRate": 7,
+        "laborForceParticipation": 75.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.86,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 4.6,
+        "underemploymentRate": 6.7,
+        "laborForceParticipation": 75.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.87,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 4.5,
+        "underemploymentRate": 6.5,
+        "laborForceParticipation": 75.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.88,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 4.3,
+        "underemploymentRate": 6.2,
+        "laborForceParticipation": 75.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.89,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.1
+      }
+    ]
+  },
+  {
+    "countryCode": "LUX",
+    "countryName": "Luxembourg",
+    "flag": "🇱🇺",
+    "currentUnemployment": 5.6,
+    "unemployment12mLow": 5.4,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 6.4,
+        "underemploymentRate": 9.3,
+        "laborForceParticipation": 73.8,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.77,
+        "wageGrowthYoy": 3.2,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 6.2,
+        "underemploymentRate": 9,
+        "laborForceParticipation": 73.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 4.4,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 6.1,
+        "underemploymentRate": 8.8,
+        "laborForceParticipation": 73.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 3.2,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 5.9,
+        "underemploymentRate": 8.6,
+        "laborForceParticipation": 73.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 3.2,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 5.8,
+        "underemploymentRate": 8.4,
+        "laborForceParticipation": 73.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 3.2,
+        "productivityGrowthYoy": 1.4
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 5.6,
+        "underemploymentRate": 8.1,
+        "laborForceParticipation": 73.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.81,
+        "wageGrowthYoy": 3.2,
+        "productivityGrowthYoy": 1.4
+      }
+    ]
+  },
+  {
+    "countryCode": "SVK",
+    "countryName": "Slovakia",
+    "flag": "🇸🇰",
+    "currentUnemployment": 5.4,
+    "unemployment12mLow": 5.2,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 6.2,
+        "underemploymentRate": 9,
+        "laborForceParticipation": 76.2,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 4.8,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 6,
+        "underemploymentRate": 8.7,
+        "laborForceParticipation": 76.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.79,
+        "wageGrowthYoy": 6,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 5.9,
+        "underemploymentRate": 8.6,
+        "laborForceParticipation": 76.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 4.8,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 5.7,
+        "underemploymentRate": 8.3,
+        "laborForceParticipation": 76.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.81,
+        "wageGrowthYoy": 4.8,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 5.6,
+        "underemploymentRate": 8.1,
+        "laborForceParticipation": 76.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.81,
+        "wageGrowthYoy": 4.8,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 5.4,
+        "underemploymentRate": 7.8,
+        "laborForceParticipation": 76.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.83,
+        "wageGrowthYoy": 4.8,
+        "productivityGrowthYoy": 1.9
+      }
+    ]
+  },
+  {
+    "countryCode": "BGR",
+    "countryName": "Bulgaria",
+    "flag": "🇧🇬",
+    "currentUnemployment": 4.2,
+    "unemployment12mLow": 4,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 5,
+        "underemploymentRate": 7.3,
+        "laborForceParticipation": 73.1,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.85,
+        "wageGrowthYoy": 6.2,
+        "productivityGrowthYoy": 2.3
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 4.8,
+        "underemploymentRate": 7,
+        "laborForceParticipation": 73.1,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.86,
+        "wageGrowthYoy": 7.4,
+        "productivityGrowthYoy": 2.3
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 4.7,
+        "underemploymentRate": 6.8,
+        "laborForceParticipation": 73.1,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.87,
+        "wageGrowthYoy": 6.2,
+        "productivityGrowthYoy": 2.3
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 4.5,
+        "underemploymentRate": 6.5,
+        "laborForceParticipation": 73.1,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.88,
+        "wageGrowthYoy": 6.2,
+        "productivityGrowthYoy": 2.3
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 4.4,
+        "underemploymentRate": 6.4,
+        "laborForceParticipation": 73.1,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.89,
+        "wageGrowthYoy": 6.2,
+        "productivityGrowthYoy": 2.3
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 4.2,
+        "underemploymentRate": 6.1,
+        "laborForceParticipation": 73.1,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.9,
+        "wageGrowthYoy": 6.2,
+        "productivityGrowthYoy": 2.3
+      }
+    ]
+  },
+  {
+    "countryCode": "HRV",
+    "countryName": "Croatia",
+    "flag": "🇭🇷",
+    "currentUnemployment": 5.5,
+    "unemployment12mLow": 5.3,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 6.3,
+        "underemploymentRate": 9.1,
+        "laborForceParticipation": 70.8,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.77,
+        "wageGrowthYoy": 5.4,
+        "productivityGrowthYoy": 2.2
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 6.1,
+        "underemploymentRate": 8.8,
+        "laborForceParticipation": 70.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 6.6,
+        "productivityGrowthYoy": 2.2
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 6,
+        "underemploymentRate": 8.7,
+        "laborForceParticipation": 70.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.79,
+        "wageGrowthYoy": 5.4,
+        "productivityGrowthYoy": 2.2
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 5.8,
+        "underemploymentRate": 8.4,
+        "laborForceParticipation": 70.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 5.4,
+        "productivityGrowthYoy": 2.2
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 5.7,
+        "underemploymentRate": 8.3,
+        "laborForceParticipation": 70.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.81,
+        "wageGrowthYoy": 5.4,
+        "productivityGrowthYoy": 2.2
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 5.5,
+        "underemploymentRate": 8,
+        "laborForceParticipation": 70.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.82,
+        "wageGrowthYoy": 5.4,
+        "productivityGrowthYoy": 2.2
+      }
+    ]
+  },
+  {
+    "countryCode": "MAR",
+    "countryName": "Morocco",
+    "flag": "🇲🇦",
+    "currentUnemployment": 11.8,
+    "unemployment12mLow": 11.6,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "slack",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 12.6,
+        "underemploymentRate": 18.3,
+        "laborForceParticipation": 44.5,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.39,
+        "wageGrowthYoy": 3.8,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 12.4,
+        "underemploymentRate": 18,
+        "laborForceParticipation": 44.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.41,
+        "wageGrowthYoy": 5,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 12.3,
+        "underemploymentRate": 17.8,
+        "laborForceParticipation": 44.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.41,
+        "wageGrowthYoy": 3.8,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 12.1,
+        "underemploymentRate": 17.5,
+        "laborForceParticipation": 44.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.42,
+        "wageGrowthYoy": 3.8,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 12,
+        "underemploymentRate": 17.4,
+        "laborForceParticipation": 44.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.43,
+        "wageGrowthYoy": 3.8,
+        "productivityGrowthYoy": 2.1
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 11.8,
+        "underemploymentRate": 17.1,
+        "laborForceParticipation": 44.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.44,
+        "wageGrowthYoy": 3.8,
+        "productivityGrowthYoy": 2.1
+      }
+    ]
+  },
+  {
+    "countryCode": "DZA",
+    "countryName": "Algeria",
+    "flag": "🇩🇿",
+    "currentUnemployment": 11.4,
+    "unemployment12mLow": 11.2,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "slack",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 12.2,
+        "underemploymentRate": 17.7,
+        "laborForceParticipation": 42.8,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.42,
+        "wageGrowthYoy": 5.2,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 12,
+        "underemploymentRate": 17.4,
+        "laborForceParticipation": 42.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.43,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 11.9,
+        "underemploymentRate": 17.3,
+        "laborForceParticipation": 42.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.44,
+        "wageGrowthYoy": 5.2,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 11.7,
+        "underemploymentRate": 17,
+        "laborForceParticipation": 42.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.45,
+        "wageGrowthYoy": 5.2,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 11.6,
+        "underemploymentRate": 16.8,
+        "laborForceParticipation": 42.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.45,
+        "wageGrowthYoy": 5.2,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 11.4,
+        "underemploymentRate": 16.5,
+        "laborForceParticipation": 42.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.47,
+        "wageGrowthYoy": 5.2,
+        "productivityGrowthYoy": 1.9
+      }
+    ]
+  },
+  {
+    "countryCode": "KEN",
+    "countryName": "Kenya",
+    "flag": "🇰🇪",
+    "currentUnemployment": 5.5,
+    "unemployment12mLow": 5.3,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 6.3,
+        "underemploymentRate": 9.1,
+        "laborForceParticipation": 72.4,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.77,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 6.1,
+        "underemploymentRate": 8.8,
+        "laborForceParticipation": 72.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 7.6,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 6,
+        "underemploymentRate": 8.7,
+        "laborForceParticipation": 72.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.79,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 5.8,
+        "underemploymentRate": 8.4,
+        "laborForceParticipation": 72.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 5.7,
+        "underemploymentRate": 8.3,
+        "laborForceParticipation": 72.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.81,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.8
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 5.5,
+        "underemploymentRate": 8,
+        "laborForceParticipation": 72.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.82,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 2.8
+      }
+    ]
+  },
+  {
+    "countryCode": "ETH",
+    "countryName": "Ethiopia",
+    "flag": "🇪🇹",
+    "currentUnemployment": 3.9,
+    "unemployment12mLow": 3.7,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 4.7,
+        "underemploymentRate": 6.8,
+        "laborForceParticipation": 78.6,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.87,
+        "wageGrowthYoy": 14.2,
+        "productivityGrowthYoy": 4.2
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 4.5,
+        "underemploymentRate": 6.5,
+        "laborForceParticipation": 78.6,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.88,
+        "wageGrowthYoy": 15.4,
+        "productivityGrowthYoy": 4.2
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 4.4,
+        "underemploymentRate": 6.4,
+        "laborForceParticipation": 78.6,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.89,
+        "wageGrowthYoy": 14.2,
+        "productivityGrowthYoy": 4.2
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 4.2,
+        "underemploymentRate": 6.1,
+        "laborForceParticipation": 78.6,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.9,
+        "wageGrowthYoy": 14.2,
+        "productivityGrowthYoy": 4.2
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 4.1,
+        "underemploymentRate": 5.9,
+        "laborForceParticipation": 78.6,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.9,
+        "wageGrowthYoy": 14.2,
+        "productivityGrowthYoy": 4.2
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 3.9,
+        "underemploymentRate": 5.7,
+        "laborForceParticipation": 78.6,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.92,
+        "wageGrowthYoy": 14.2,
+        "productivityGrowthYoy": 4.2
+      }
+    ]
+  },
+  {
+    "countryCode": "GHA",
+    "countryName": "Ghana",
+    "flag": "🇬🇭",
+    "currentUnemployment": 3.8,
+    "unemployment12mLow": 3.6,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 4.6,
+        "underemploymentRate": 6.7,
+        "laborForceParticipation": 68.2,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.87,
+        "wageGrowthYoy": 12.8,
+        "productivityGrowthYoy": 2.5
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 4.4,
+        "underemploymentRate": 6.4,
+        "laborForceParticipation": 68.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.89,
+        "wageGrowthYoy": 14,
+        "productivityGrowthYoy": 2.5
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 4.3,
+        "underemploymentRate": 6.2,
+        "laborForceParticipation": 68.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.89,
+        "wageGrowthYoy": 12.8,
+        "productivityGrowthYoy": 2.5
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 4.1,
+        "underemploymentRate": 5.9,
+        "laborForceParticipation": 68.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.9,
+        "wageGrowthYoy": 12.8,
+        "productivityGrowthYoy": 2.5
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 4,
+        "underemploymentRate": 5.8,
+        "laborForceParticipation": 68.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.91,
+        "wageGrowthYoy": 12.8,
+        "productivityGrowthYoy": 2.5
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 3.8,
+        "underemploymentRate": 5.5,
+        "laborForceParticipation": 68.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.92,
+        "wageGrowthYoy": 12.8,
+        "productivityGrowthYoy": 2.5
+      }
+    ]
+  },
+  {
+    "countryCode": "URY",
+    "countryName": "Uruguay",
+    "flag": "🇺🇾",
+    "currentUnemployment": 7.9,
+    "unemployment12mLow": 7.7,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "slack",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 8.7,
+        "underemploymentRate": 12.6,
+        "laborForceParticipation": 64.2,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.63,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 8.5,
+        "underemploymentRate": 12.3,
+        "laborForceParticipation": 64.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.64,
+        "wageGrowthYoy": 7.6,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 8.4,
+        "underemploymentRate": 12.2,
+        "laborForceParticipation": 64.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.65,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 8.2,
+        "underemploymentRate": 11.9,
+        "laborForceParticipation": 64.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.66,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 8.1,
+        "underemploymentRate": 11.7,
+        "laborForceParticipation": 64.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.66,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 1.9
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 7.9,
+        "underemploymentRate": 11.5,
+        "laborForceParticipation": 64.2,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.68,
+        "wageGrowthYoy": 6.4,
+        "productivityGrowthYoy": 1.9
+      }
+    ]
+  },
+  {
+    "countryCode": "ECU",
+    "countryName": "Ecuador",
+    "flag": "🇪🇨",
+    "currentUnemployment": 3.8,
+    "unemployment12mLow": 3.6,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "tight",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 4.6,
+        "underemploymentRate": 6.7,
+        "laborForceParticipation": 65.8,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.87,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.5
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 4.4,
+        "underemploymentRate": 6.4,
+        "laborForceParticipation": 65.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.89,
+        "wageGrowthYoy": 4.6,
+        "productivityGrowthYoy": 1.5
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 4.3,
+        "underemploymentRate": 6.2,
+        "laborForceParticipation": 65.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.89,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.5
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 4.1,
+        "underemploymentRate": 5.9,
+        "laborForceParticipation": 65.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.9,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.5
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 4,
+        "underemploymentRate": 5.8,
+        "laborForceParticipation": 65.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.91,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.5
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 3.8,
+        "underemploymentRate": 5.5,
+        "laborForceParticipation": 65.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.92,
+        "wageGrowthYoy": 3.4,
+        "productivityGrowthYoy": 1.5
+      }
+    ]
+  },
+  {
+    "countryCode": "CRI",
+    "countryName": "Costa Rica",
+    "flag": "🇨🇷",
+    "currentUnemployment": 7.4,
+    "unemployment12mLow": 7.2,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 8.2,
+        "underemploymentRate": 11.9,
+        "laborForceParticipation": 60.4,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.66,
+        "wageGrowthYoy": 4.5,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 8,
+        "underemploymentRate": 11.6,
+        "laborForceParticipation": 60.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.67,
+        "wageGrowthYoy": 5.7,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 7.9,
+        "underemploymentRate": 11.5,
+        "laborForceParticipation": 60.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.68,
+        "wageGrowthYoy": 4.5,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 7.7,
+        "underemploymentRate": 11.2,
+        "laborForceParticipation": 60.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.69,
+        "wageGrowthYoy": 4.5,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 7.6,
+        "underemploymentRate": 11,
+        "laborForceParticipation": 60.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.69,
+        "wageGrowthYoy": 4.5,
+        "productivityGrowthYoy": 2.6
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 7.4,
+        "underemploymentRate": 10.7,
+        "laborForceParticipation": 60.4,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.71,
+        "wageGrowthYoy": 4.5,
+        "productivityGrowthYoy": 2.6
+      }
+    ]
+  },
+  {
+    "countryCode": "PAN",
+    "countryName": "Panama",
+    "flag": "🇵🇦",
+    "currentUnemployment": 6.8,
+    "unemployment12mLow": 6.6,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 7.6,
+        "underemploymentRate": 11,
+        "laborForceParticipation": 63.5,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.69,
+        "wageGrowthYoy": 3.9,
+        "productivityGrowthYoy": 2.4
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 7.4,
+        "underemploymentRate": 10.7,
+        "laborForceParticipation": 63.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.71,
+        "wageGrowthYoy": 5.1,
+        "productivityGrowthYoy": 2.4
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 7.3,
+        "underemploymentRate": 10.6,
+        "laborForceParticipation": 63.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.71,
+        "wageGrowthYoy": 3.9,
+        "productivityGrowthYoy": 2.4
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 7.1,
+        "underemploymentRate": 10.3,
+        "laborForceParticipation": 63.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.72,
+        "wageGrowthYoy": 3.9,
+        "productivityGrowthYoy": 2.4
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 7,
+        "underemploymentRate": 10.2,
+        "laborForceParticipation": 63.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.73,
+        "wageGrowthYoy": 3.9,
+        "productivityGrowthYoy": 2.4
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 6.8,
+        "underemploymentRate": 9.9,
+        "laborForceParticipation": 63.5,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.74,
+        "wageGrowthYoy": 3.9,
+        "productivityGrowthYoy": 2.4
+      }
+    ]
+  },
+  {
+    "countryCode": "DOM",
+    "countryName": "Dominican Republic",
+    "flag": "🇩🇴",
+    "currentUnemployment": 5.3,
+    "unemployment12mLow": 5.1,
+    "sahmValue": 0.16,
+    "sahmStatus": "tranquil",
+    "laborTightness": "balanced",
+    "historicalSeries": [
+      {
+        "year": 2021,
+        "unemploymentRate": 6.1,
+        "underemploymentRate": 8.8,
+        "laborForceParticipation": 64.8,
+        "sahmIndicatorValue": 0.34,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.78,
+        "wageGrowthYoy": 5.8,
+        "productivityGrowthYoy": 3.2
+      },
+      {
+        "year": 2022,
+        "unemploymentRate": 5.9,
+        "underemploymentRate": 8.6,
+        "laborForceParticipation": 64.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 7,
+        "productivityGrowthYoy": 3.2
+      },
+      {
+        "year": 2023,
+        "unemploymentRate": 5.8,
+        "underemploymentRate": 8.4,
+        "laborForceParticipation": 64.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.8,
+        "wageGrowthYoy": 5.8,
+        "productivityGrowthYoy": 3.2
+      },
+      {
+        "year": 2024,
+        "unemploymentRate": 5.6,
+        "underemploymentRate": 8.1,
+        "laborForceParticipation": 64.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.81,
+        "wageGrowthYoy": 5.8,
+        "productivityGrowthYoy": 3.2
+      },
+      {
+        "year": 2025,
+        "unemploymentRate": 5.5,
+        "underemploymentRate": 8,
+        "laborForceParticipation": 64.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.82,
+        "wageGrowthYoy": 5.8,
+        "productivityGrowthYoy": 3.2
+      },
+      {
+        "year": 2026,
+        "unemploymentRate": 5.3,
+        "underemploymentRate": 7.7,
+        "laborForceParticipation": 64.8,
+        "sahmIndicatorValue": 0.16,
+        "sahmTriggered": false,
+        "jobOpeningsPerUnemployed": 0.83,
+        "wageGrowthYoy": 5.8,
+        "productivityGrowthYoy": 3.2
+      }
+    ]
+  }
 ];
 
 /**

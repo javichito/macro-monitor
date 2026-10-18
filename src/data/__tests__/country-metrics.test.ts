@@ -1,12 +1,14 @@
 import { describe, it, expect } from 'vitest';
 import { COUNTRIES_DATA, ECONOMIC_BLOCS } from '../country-metrics';
 import { getLaborMetricsForCountry, SOVEREIGN_LABOR_PROFILES } from '../labor-market-data';
+import { WORLD_COUNTRIES_PATHS } from '../../components/map/world-paths';
+import { COUNTRY_PPP_METRICS } from '../../lib/calculations';
 
 const EXPECTED_YEARS = [1980, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2022, 2024, 2025, 2026];
 
 describe('Sovereign Geography Macro & Balance Sheet Dataset (country-metrics.ts)', () => {
-  it('models all 46 sovereign economies across all 12 historical eras (1980–2026)', () => {
-    expect(COUNTRIES_DATA.length).toBe(46);
+  it('models all 71 sovereign economies across all 12 historical eras (1980–2026)', () => {
+    expect(COUNTRIES_DATA.length).toBe(71);
     for (const country of COUNTRIES_DATA) {
       for (const yr of EXPECTED_YEARS) {
         const metrics = country.history[yr];
@@ -57,8 +59,10 @@ describe('Sovereign Geography Macro & Balance Sheet Dataset (country-metrics.ts)
     }
   });
 
-  it('maintains 100% labor market & Sahm Rule parity across all 46 countries (including IND and NOR)', () => {
+  it('maintains 100% labor market, World Map polygon, and PPP parity across all 71 countries', () => {
     expect(SOVEREIGN_LABOR_PROFILES.length).toBe(COUNTRIES_DATA.length);
+    const mappedCodes = new Set(WORLD_COUNTRIES_PATHS.filter((p) => p.code).map((p) => p.code));
+
     for (const country of COUNTRIES_DATA) {
       const labor2026 = getLaborMetricsForCountry(country.code, 2026);
       expect(labor2026, `Missing 2026 labor metrics for ${country.code}`).not.toBeNull();
@@ -68,6 +72,11 @@ describe('Sovereign Geography Macro & Balance Sheet Dataset (country-metrics.ts)
       const labor1990 = getLaborMetricsForCountry(country.code, 1990);
       expect(labor1990, `Missing 1990 labor metrics for ${country.code}`).not.toBeNull();
       expect(labor1990!.unemploymentRate).toBeGreaterThan(0);
+
+      expect(COUNTRY_PPP_METRICS[country.code], `Missing PPP profile for ${country.code}`).toBeDefined();
+      if (country.code !== 'SGP' && country.code !== 'HKG') {
+        expect(mappedCodes.has(country.code), `Missing World Map polygon code for ${country.code}`).toBe(true);
+      }
     }
   });
 
@@ -80,3 +89,4 @@ describe('Sovereign Geography Macro & Balance Sheet Dataset (country-metrics.ts)
     }
   });
 });
+
