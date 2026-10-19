@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-15T18:51:49.827Z",
+  "timestamp": "2026-10-19T11:50:26.321Z",
   "asOfDate": "2026",
   "energyMetrics": {
     "latestEnergyBurdenPctGdp": 6.1,
@@ -13,9 +13,9 @@
     "energyIntensityIndex": 50.1
   },
   "tradeMetrics": {
-    "worldTradeToGdpPct": 57.2,
+    "worldTradeToGdpPct": 68.5,
     "peakTradeToGdpPct": 61,
-    "tradeDeltaFromPeakPct": -3.8,
+    "tradeDeltaFromPeakPct": 7.5,
     "geoeconomicFragmentationIndex": 85,
     "averageGlobalTariffRatePct": 4.9,
     "deglobalizationPhase": "geoeconomic_fragmentation"
@@ -57,7 +57,7 @@
     {
       "id": "deglobalization-fragmentation",
       "level": "INFO",
-      "headline": "📉 Deglobalization / Fragmentation: Trade at 57.2% (-3.8% vs 2008 Peak)",
+      "headline": "📉 Deglobalization / Fragmentation: Trade at 68.5% (7.5% vs 2008 Peak)",
       "body": "World trade peaked as a share of GDP in 2008 (61.0%). Active geoeconomic fragmentation, tariff escalation, and friendshoring policies have permanently plateaued cross-border merchandise intensity."
     },
     {
