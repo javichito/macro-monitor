@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-10-21T23:55:32.427Z",
-  "fedAssetsBillion": 7040,
-  "tgaBillion": 780,
-  "reverseRepoBillion": 145,
-  "netLiquidityTrillion": 6.12,
-  "weeklyDeltaBillion": 440,
+  "timestamp": "2026-10-22T23:54:21.689Z",
+  "fedAssetsBillion": 6754,
+  "tgaBillion": 952,
+  "reverseRepoBillion": 0,
+  "netLiquidityTrillion": 5.8,
+  "weeklyDeltaBillion": -70,
   "triggers": {
     "rrpDepleted": true,
-    "rrpBufferLevelBillion": 145,
-    "impulseDirection": "expansion",
-    "impulseBillion": 440,
+    "rrpBufferLevelBillion": 0,
+    "impulseDirection": "contraction",
+    "impulseBillion": -70,
     "inflectionBreached": true
   },
   "activeAlerts": [
     {
       "id": "rrp-floor-breach",
       "level": "CRITICAL",
-      "headline": "⚠️ Overnight Reverse Repo Buffer Low: $145B",
+      "headline": "⚠️ Overnight Reverse Repo Buffer Low: $0B",
       "body": "ON RRP stands below the $150B safety threshold. Future Treasury issuance will drain commercial bank reserves directly."
     },
     {
       "id": "weekly-impulse-trigger",
       "level": "IMPULSE",
-      "headline": "🚀 Fed Net Liquidity Impulse: +$440B Weekly",
-      "body": "Net Liquidity reached $6.12T, creating a high-powered liquidity expansion cycle."
+      "headline": "🚀 Fed Net Liquidity Impulse: $-70B Weekly",
+      "body": "Net Liquidity reached $5.8T, creating a high-powered liquidity contraction cycle."
     }
   ]
 }
