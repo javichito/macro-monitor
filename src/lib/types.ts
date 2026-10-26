@@ -11,6 +11,13 @@ export interface WealthTier {
   wealthShare: number;
 }
 
+export interface WealthShares {
+  top1Percent: number;
+  top10Percent: number;
+  middle40Percent: number;
+  bottom50Percent: number;
+}
+
 export interface GlobalWealthYear {
   year: number;
   totalWealthTrillion: number;
@@ -18,13 +25,23 @@ export interface GlobalWealthYear {
   meanWealthPerAdult: number;
   medianWealthPerAdult: number;
   giniCoefficient: number;
-  shares: {
-    top1Percent: number;
-    top10Percent: number;
-    middle40Percent: number;
-    bottom50Percent: number;
-  };
+  shares: WealthShares;
   tiers: WealthTier[];
+}
+
+export interface SovereignWealthDistribution extends GlobalWealthYear {
+  scopeCode: string; // 'GLOBAL' or ISO 3-letter country code (e.g. 'USA', 'AUS', 'CHN')
+  scopeName: string;
+  flag: string;
+  region: string;
+  adultsMillion: number;
+  millionaireDensityPercent: number; // % of adults with >= $1M net worth
+  middleClassDensityPercent: number; // % of adults in $100k - $1M bracket
+  thresholds: {
+    medianUSD: number;
+    top10PercentUSD: number;
+    top1PercentUSD: number;
+  };
 }
 
 export interface SubAssetCategory {

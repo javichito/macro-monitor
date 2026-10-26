@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { COUNTRIES_DATA } from '../../data/country-metrics';
 import { getLaborMetricsForCountry } from '../../data/labor-market-data';
 import { CountryProfile, CountryYearMetric, CurrencyPerspective } from '../../lib/types';
+import { calculateCountryWealthDistribution } from '../../lib/calculations';
 import { formatCurrency, formatPercent, adjustValue } from '../../lib/formatters';
 import {
   ArrowLeftRight,
@@ -16,7 +17,9 @@ import {
   Check,
   Users,
   Globe,
+  ArrowUpRight,
 } from 'lucide-react';
+import Link from 'next/link';
 import { DataExportMenu } from '../common/DataExportMenu';
 
 export type DuelLens =
@@ -233,6 +236,16 @@ export function CountryComparison({
    */
   const skewA = metricsA.medianWealthUSD > 0 ? metricsA.wealthPerAdultUSD / metricsA.medianWealthUSD : 1;
   const skewB = metricsB.medianWealthUSD > 0 ? metricsB.wealthPerAdultUSD / metricsB.medianWealthUSD : 1;
+
+  const wealthDistA = useMemo(
+    () => calculateCountryWealthDistribution(countryA, selectedYear),
+    [countryA, selectedYear]
+  );
+  const wealthDistB = useMemo(
+    () => calculateCountryWealthDistribution(countryB, selectedYear),
+    [countryB, selectedYear]
+  );
+  const [pyramidDuelMode, setPyramidDuelMode] = useState<'population' | 'wealth'>('population');
 
   /*
    * Real Policy Rate (r - pi) measures whether the central bank is actively restricting credit (>0%)
@@ -758,6 +771,198 @@ export function CountryComparison({
                   </span>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* 01C / Sovereign Wealth Distribution & 6-Tier Pyramid Duel */}
+          <div className="apple-card p-5 sm:p-6 transition-all duration-300 space-y-5">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-white/[0.08]">
+              <div>
+                <span className="font-mono-tabular text-[11px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-1">
+                  01C / Private Wealth Distribution &amp; Pyramid Duel ({selectedYear})
+                </span>
+                <h3 className="font-editorial text-lg sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+                  Who Holds the Wealth in {countryA.name} vs. {countryB.name}?
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-normal">
+                  Comparing internal wealth concentration across decile cohorts (Top 1%, Next 9%, Middle 40%, Bottom 50%) and the 6-tier net-worth pyramid.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 self-start lg:self-auto">
+                <div className="flex items-center rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
+                  <button
+                    type="button"
+                    onClick={() => setPyramidDuelMode('population')}
+                    className={`tactile-button rounded-lg px-3 py-1.5 font-bold transition-all cursor-pointer ${
+                      pyramidDuelMode === 'population'
+                        ? 'bg-sky-500 text-white border-sky-700 shadow-sm'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-transparent'
+                    }`}
+                  >
+                    % of Adults by Bracket
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPyramidDuelMode('wealth')}
+                    className={`tactile-button rounded-lg px-3 py-1.5 font-bold transition-all cursor-pointer ${
+                      pyramidDuelMode === 'wealth'
+                        ? 'bg-emerald-500 text-slate-950 border-emerald-700 shadow-sm'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-transparent'
+                    }`}
+                  >
+                    % of National Wealth
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Decile Concentration Stacked Bars (Top 1% / Next 9% / Middle 40% / Bottom 50%) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {[
+                { country: countryA, dist: wealthDistA, accent: 'sky' },
+                { country: countryB, dist: wealthDistB, accent: 'emerald' },
+              ].map(({ country, dist }) => {
+                const next9 = Number(Math.max(0, dist.shares.top10Percent - dist.shares.top1Percent).toFixed(1));
+                return (
+                  <div
+                    key={country.code}
+                    className="rounded-2xl border border-slate-200/80 dark:border-white/[0.10] bg-slate-100/70 dark:bg-white/[0.035] p-4 space-y-3"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span>{country.flag}</span>
+                        <span>{country.name} Decile Shares</span>
+                      </span>
+                      <Link
+                        href={`/wealth?scope=${country.code}&year=${selectedYear}`}
+                        className="inline-flex items-center gap-1 font-mono-tabular text-[11px] font-semibold text-sky-600 dark:text-sky-400 hover:underline"
+                      >
+                        <span>Full Pyramid</span>
+                        <ArrowUpRight className="h-3 w-3" />
+                      </Link>
+                    </div>
+
+                    <div className="h-3.5 w-full rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden flex">
+                      <div
+                        className="h-full bg-rose-500 transition-all duration-500"
+                        style={{ width: `${dist.shares.top1Percent}%` }}
+                        title={`Top 1%: ${dist.shares.top1Percent}%`}
+                      />
+                      <div
+                        className="h-full bg-amber-500 transition-all duration-500"
+                        style={{ width: `${next9}%` }}
+                        title={`Next 9% (90th-99th): ${next9}%`}
+                      />
+                      <div
+                        className="h-full bg-sky-500 transition-all duration-500"
+                        style={{ width: `${dist.shares.middle40Percent}%` }}
+                        title={`Middle 40%: ${dist.shares.middle40Percent}%`}
+                      />
+                      <div
+                        className="h-full bg-emerald-500 transition-all duration-500"
+                        style={{ width: `${dist.shares.bottom50Percent}%` }}
+                        title={`Bottom 50%: ${dist.shares.bottom50Percent}%`}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-4 gap-1.5 text-[11px] font-mono-tabular pt-1">
+                      <div>
+                        <span className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+                          <span className="h-2 w-2 rounded-full bg-rose-500" /> Top 1%
+                        </span>
+                        <span className="font-bold text-slate-900 dark:text-white block mt-0.5">
+                          {dist.shares.top1Percent.toFixed(1)}%
+                        </span>
+                      </div>
+                      <div>
+                        <span className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+                          <span className="h-2 w-2 rounded-full bg-amber-500" /> Next 9%
+                        </span>
+                        <span className="font-bold text-slate-900 dark:text-white block mt-0.5">
+                          {next9.toFixed(1)}%
+                        </span>
+                      </div>
+                      <div>
+                        <span className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+                          <span className="h-2 w-2 rounded-full bg-sky-500" /> Mid 40%
+                        </span>
+                        <span className="font-bold text-slate-900 dark:text-white block mt-0.5">
+                          {dist.shares.middle40Percent.toFixed(1)}%
+                        </span>
+                      </div>
+                      <div>
+                        <span className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+                          <span className="h-2 w-2 rounded-full bg-emerald-500" /> Bot 50%
+                        </span>
+                        <span className="font-bold text-slate-900 dark:text-white block mt-0.5">
+                          {dist.shares.bottom50Percent.toFixed(1)}%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* 6-Tier Head-to-Head Butterfly Pyramid */}
+            <div className="space-y-2.5 pt-2">
+              <div className="flex items-center justify-between text-xs font-mono-tabular font-semibold text-slate-500 dark:text-slate-400 px-2">
+                <span className="text-sky-600 dark:text-sky-400">
+                  {countryA.flag} {countryA.name} ({pyramidDuelMode === 'population' ? '% of Adults' : '% of Wealth'})
+                </span>
+                <span>Net Worth Bracket</span>
+                <span className="text-emerald-600 dark:text-emerald-400">
+                  {countryB.flag} {countryB.name} ({pyramidDuelMode === 'population' ? '% of Adults' : '% of Wealth'})
+                </span>
+              </div>
+
+              {[...wealthDistA.tiers].reverse().map((tierA) => {
+                const tierB =
+                  wealthDistB.tiers.find((t) => t.bracket === tierA.bracket) || tierA;
+                const valA = pyramidDuelMode === 'population' ? tierA.adultsShare : tierA.wealthShare;
+                const valB = pyramidDuelMode === 'population' ? tierB.adultsShare : tierB.wealthShare;
+
+                return (
+                  <div
+                    key={tierA.bracket}
+                    className="grid grid-cols-12 items-center gap-2 sm:gap-3 rounded-xl border border-slate-200/70 dark:border-white/[0.07] bg-slate-50/60 dark:bg-white/[0.025] px-3 py-2"
+                  >
+                    {/* Country A Left Bar */}
+                    <div className="col-span-4 sm:col-span-5 flex items-center justify-end gap-2">
+                      <span className="font-mono-tabular text-xs font-bold text-slate-900 dark:text-white shrink-0">
+                        {valA < 0.01 ? '<0.01%' : `${valA.toFixed(1)}%`}
+                      </span>
+                      <div className="w-full max-w-[180px] h-2.5 rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden flex justify-end">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-l from-sky-500 to-sky-400 transition-all duration-500"
+                          style={{ width: `${Math.min(100, Math.max(1.5, valA))}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Center Bracket Label */}
+                    <div className="col-span-4 sm:col-span-2 text-center">
+                      <span className="font-mono-tabular text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-200/80 dark:bg-white/[0.08] text-slate-800 dark:text-slate-200 border border-slate-300/60 dark:border-white/[0.12] inline-block">
+                        {tierA.bracket}
+                      </span>
+                    </div>
+
+                    {/* Country B Right Bar */}
+                    <div className="col-span-4 sm:col-span-5 flex items-center justify-start gap-2">
+                      <div className="w-full max-w-[180px] h-2.5 rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden flex justify-start">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500"
+                          style={{ width: `${Math.min(100, Math.max(1.5, valB))}%` }}
+                        />
+                      </div>
+                      <span className="font-mono-tabular text-xs font-bold text-slate-900 dark:text-white shrink-0">
+                        {valB < 0.01 ? '<0.01%' : `${valB.toFixed(1)}%`}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

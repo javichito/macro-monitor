@@ -3,6 +3,8 @@ import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { WealthPyramid } from '../WealthPyramid';
 import { GLOBAL_WEALTH_HISTORY } from '../../../data/global-wealth';
+import { COUNTRIES_DATA } from '../../../data/country-metrics';
+import { calculateCountryWealthDistribution } from '../../../lib/calculations';
 
 /*
  * Component testing for WealthPyramid verifying tier presentation,
@@ -80,5 +82,27 @@ describe('WealthPyramid Component', () => {
     expect(
       screen.getByText(/Very-High-Net-Worth \(Multi-Millionaires & Family Offices\)/)
     ).toBeDefined();
+  });
+
+  it('renders country-specific wealth pyramid with global benchmark ghost comparison for any country', () => {
+    const australia = COUNTRIES_DATA.find((c) => c.code === 'AUS')!;
+    const ausDist = calculateCountryWealthDistribution(australia, 2026);
+
+    render(
+      <WealthPyramid
+        data={ausDist}
+        globalBaseline={wealth2026}
+        currencyPerspective="nominal"
+      />
+    );
+
+    expect(screen.getByText(/How Is Private Wealth Stacked Inside Australia\?/)).toBeDefined();
+    expect(screen.getByText(/vs\. Global Benchmark/)).toBeDefined();
+    expect(screen.getByText(/03 \/ Middle-Class Core/)).toBeDefined();
+    expect(screen.getByText(/04 \/ Millionaire Density/)).toBeDefined();
+
+    // Verify tiers sum to 100% of national wealth
+    const totalWealthShare = ausDist.tiers.reduce((acc, t) => acc + t.wealthShare, 0);
+    expect(Math.round(totalWealthShare)).toBe(100);
   });
 });

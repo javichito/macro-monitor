@@ -4,8 +4,10 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { COUNTRIES_DATA, ECONOMIC_BLOCS } from '../../data/country-metrics';
 import { WORLD_COUNTRIES_PATHS, SPHERE_PATH, GRATICULE_PATH } from './world-paths';
 import { CountryProfile, Granularity, CurrencyPerspective } from '../../lib/types';
+import { calculateCountryWealthDistribution } from '../../lib/calculations';
 import { formatCurrency, formatPercent, adjustValue } from '../../lib/formatters';
-import { MapPin, Search, Info, Globe, Plus, Minus, RotateCcw, ArrowLeftRight, Share2, Check } from 'lucide-react';
+import { MapPin, Search, Info, Globe, Plus, Minus, RotateCcw, ArrowLeftRight, Share2, Check, Layers } from 'lucide-react';
+import Link from 'next/link';
 import { useApp } from '../../context/AppContext';
 
 export type MapMetricType =
@@ -395,6 +397,11 @@ export function WorldMap({
     selectedCountry.history[selectedYear] ||
     selectedCountry.history[2026] ||
     selectedCountry.history[2025];
+
+  const activeWealthDist = useMemo(
+    () => calculateCountryWealthDistribution(selectedCountry, selectedYear),
+    [selectedCountry, selectedYear]
+  );
 
   return (
     <div className="space-y-6">
@@ -879,6 +886,49 @@ export function WorldMap({
                   <span className="font-mono-tabular font-semibold text-amber-600 dark:text-amber-300">
                     {activeCountryMetrics.gini.toFixed(2)}
                   </span>
+                </div>
+
+                {/* Compact Decile Concentration Stack */}
+                <div className="pt-2">
+                  <div className="flex items-center justify-between text-[11px] font-mono-tabular text-slate-500 dark:text-slate-400 mb-1">
+                    <span>Top 1%: <strong className="text-rose-500 dark:text-rose-400">{activeWealthDist.shares.top1Percent.toFixed(1)}%</strong></span>
+                    <span>Mid 40%: <strong className="text-sky-600 dark:text-sky-400">{activeWealthDist.shares.middle40Percent.toFixed(1)}%</strong></span>
+                    <span>Bot 50%: <strong className="text-emerald-600 dark:text-emerald-400">{activeWealthDist.shares.bottom50Percent.toFixed(1)}%</strong></span>
+                  </div>
+                  <div className="h-2 w-full rounded-full bg-slate-200 dark:bg-white/[0.08] overflow-hidden flex">
+                    <div
+                      className="h-full bg-rose-500"
+                      style={{ width: `${activeWealthDist.shares.top1Percent}%` }}
+                      title={`Top 1%: ${activeWealthDist.shares.top1Percent.toFixed(1)}%`}
+                    />
+                    <div
+                      className="h-full bg-amber-500"
+                      style={{
+                        width: `${Math.max(0, activeWealthDist.shares.top10Percent - activeWealthDist.shares.top1Percent)}%`,
+                      }}
+                      title={`Next 9%: ${(activeWealthDist.shares.top10Percent - activeWealthDist.shares.top1Percent).toFixed(1)}%`}
+                    />
+                    <div
+                      className="h-full bg-sky-500"
+                      style={{ width: `${activeWealthDist.shares.middle40Percent}%` }}
+                      title={`Middle 40%: ${activeWealthDist.shares.middle40Percent.toFixed(1)}%`}
+                    />
+                    <div
+                      className="h-full bg-emerald-500"
+                      style={{ width: `${activeWealthDist.shares.bottom50Percent}%` }}
+                      title={`Bottom 50%: ${activeWealthDist.shares.bottom50Percent.toFixed(1)}%`}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between text-[10px] font-mono-tabular text-slate-500 dark:text-slate-400 mt-1.5">
+                    <span>Millionaire Density (&gt;$1M): <strong>{activeWealthDist.millionaireDensityPercent.toFixed(2)}%</strong></span>
+                    <Link
+                      href={`/wealth?scope=${selectedCountry.code}&year=${selectedYear}`}
+                      className="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline inline-flex items-center gap-0.5"
+                    >
+                      <Layers className="h-2.5 w-2.5" />
+                      <span>6-Tier Pyramid &rarr;</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   AreaChart,
   Area,
@@ -13,12 +13,16 @@ import {
   Line,
 } from 'recharts';
 import { GLOBAL_WEALTH_HISTORY } from '../../data/global-wealth';
-import { formatPercent } from '../../lib/formatters';
+import { COUNTRIES_DATA } from '../../data/country-metrics';
+import { calculateCountryWealthShares } from '../../lib/calculations';
 import { useThemeMode } from '../../context/AppContext';
 import { DataExportMenu } from '../common/DataExportMenu';
-import { TrendingUp, ShieldAlert } from 'lucide-react';
 
-export function InequalityTrends() {
+interface InequalityTrendsProps {
+  scopeCode?: string; // 'GLOBAL' or ISO 3-letter country code
+}
+
+export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps) {
   const theme = useThemeMode();
   const isDark = theme === 'dark';
   const [viewMode, setViewMode] = useState<'shares' | 'gini'>('shares');
@@ -35,47 +39,101 @@ export function InequalityTrends() {
   const gridStroke = isDark ? '#1e2433' : 'rgba(0, 0, 0, 0.08)';
   const axisStroke = isDark ? '#64748b' : '#94a3b8';
 
-  const chartData = GLOBAL_WEALTH_HISTORY.map((item) => ({
-    year: item.year,
-    top1: item.shares.top1Percent,
-    top10: item.shares.top10Percent,
-    middle40: item.shares.middle40Percent,
-    bottom50: item.shares.bottom50Percent,
-    gini: item.giniCoefficient,
-  }));
+  const selectedCountry = useMemo(() => {
+    if (scopeCode === 'GLOBAL') return null;
+    return COUNTRIES_DATA.find((c) => c.code === scopeCode) || null;
+  }, [scopeCode]);
+
+  const chartData = useMemo(() => {
+    if (!selectedCountry) {
+      return GLOBAL_WEALTH_HISTORY.map((item) => ({
+        year: item.year,
+        top1: item.shares.top1Percent,
+        top10: item.shares.top10Percent,
+        middle40: item.shares.middle40Percent,
+        bottom50: item.shares.bottom50Percent,
+        gini: item.giniCoefficient,
+        globalGini: item.giniCoefficient,
+      }));
+    }
+
+    const years = Object.keys(selectedCountry.history)
+      .map(Number)
+      .sort((a, b) => a - b);
+
+    return years.map((yr) => {
+      const metric = selectedCountry.history[yr];
+      const shares = calculateCountryWealthShares(metric);
+      const globalMatch =
+        GLOBAL_WEALTH_HISTORY.find((g) => g.year === yr) ||
+        GLOBAL_WEALTH_HISTORY[GLOBAL_WEALTH_HISTORY.length - 1];
+
+      return {
+        year: yr,
+        top1: shares.top1Percent,
+        top10: shares.top10Percent,
+        middle40: shares.middle40Percent,
+        bottom50: shares.bottom50Percent,
+        gini: metric.gini,
+        globalGini: globalMatch.giniCoefficient,
+      };
+    });
+  }, [selectedCountry]);
+
+  const latestPoint = chartData[chartData.length - 1] || {
+    year: 2026,
+    top1: 45.3,
+    top10: 83.5,
+    middle40: 15.0,
+    bottom50: 1.5,
+    gini: 0.877,
+    globalGini: 0.877,
+  };
+
+  const firstPoint = chartData[0] || latestPoint;
+  const scopeLabel = selectedCountry ? `${selectedCountry.flag} ${selectedCountry.name}` : '🌍 Global World';
 
   return (
     <div className="apple-card p-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h3 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-            <TrendingUp className="h-4 w-4 text-[#30d158]" />
-            Wealth Inequality Trajectory (1980–2026)
+          <div className="inline-flex items-center gap-2 font-mono-tabular text-[10px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-1.5">
+            <span>02 / HISTORICAL CONCENTRATION TRAJECTORY (1980–2026)</span>
+            <span>•</span>
+            <span>{scopeLabel.toUpperCase()}</span>
+          </div>
+          <h3 className="font-editorial text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+            {selectedCountry
+              ? `Has Wealth In ${selectedCountry.name} Grown More Concentrated Since 1980?`
+              : `How Has Global Wealth Concentration Shifted Since 1980?`}
           </h3>
-          <p className="text-xs text-slate-500 dark:text-white/60 mt-0.5">
-            Tracking how wealth concentration shifted between the Top 1%, Middle 40%, and Bottom 50%.
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+            Tracking how private net worth shifted between the Top 1%, Top 10%, Middle 40%, and Bottom 50% in{' '}
+            {selectedCountry ? selectedCountry.name : 'the global economy'}.
           </p>
         </div>
 
         <div className="flex items-center gap-2.5 self-start sm:self-auto">
           {/* View toggle */}
-          <div className="flex items-center rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
+          <div className="flex items-center rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/[0.04] p-1 text-xs">
             <button
+              type="button"
               onClick={() => setViewMode('shares')}
-              className={`rounded-full px-3 py-1 font-medium transition-all ${
+              className={`tactile-button rounded-lg px-3 py-1 font-bold transition-all cursor-pointer ${
                 viewMode === 'shares'
-                  ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white shadow-sm'
-                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-emerald-500 text-slate-950 border-emerald-700 shadow-sm'
+                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white border-transparent'
               }`}
             >
               Tier Shares (%)
             </button>
             <button
+              type="button"
               onClick={() => setViewMode('gini')}
-              className={`rounded-full px-3 py-1 font-medium transition-all ${
+              className={`tactile-button rounded-lg px-3 py-1 font-bold transition-all cursor-pointer ${
                 viewMode === 'gini'
-                  ? 'bg-white dark:bg-white/20 text-slate-900 dark:text-white shadow-sm'
-                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-sky-500 text-white border-sky-700 shadow-sm'
+                  : 'text-slate-600 dark:text-white/60 hover:text-slate-900 dark:hover:text-white border-transparent'
               }`}
             >
               Gini Coefficient
@@ -84,8 +142,8 @@ export function InequalityTrends() {
 
           {/* One-click Data Export for Researchers & Journalists */}
           <DataExportMenu
-            title="Global Wealth Inequality Trajectory (1980–2026)"
-            filename="wealth-inequality-trajectory-1980-2026"
+            title={`${selectedCountry ? selectedCountry.name : 'Global'} Wealth Inequality Trajectory (1980–2026)`}
+            filename={`wealth-inequality-trajectory-${(selectedCountry?.code || 'global').toLowerCase()}-1980-2026`}
             data={chartData}
             columns={[
               { key: 'year', label: 'Year' },
@@ -96,9 +154,9 @@ export function InequalityTrends() {
               { key: 'gini', label: 'Gini Coefficient (0–1)' },
             ]}
             metadata={{
-              description: 'Historical wealth concentration across population tiers and Gini coefficient.',
+              description: `Historical wealth concentration across population tiers and Gini coefficient for ${selectedCountry ? selectedCountry.name : 'Global World'}.`,
               source: 'Credit Suisse / UBS Global Wealth Databook, World Inequality Database (WID)',
-              unit: 'Percentage of global wealth (%) and Gini coefficient (0-1)',
+              unit: 'Percentage of total wealth (%) and Gini coefficient (0-1)',
             }}
           />
         </div>
@@ -127,7 +185,7 @@ export function InequalityTrends() {
               <YAxis
                 stroke={axisStroke}
                 tick={{ fontSize: 11 }}
-                domain={[0, 90]}
+                domain={[0, 95]}
                 tickFormatter={(v) => `${v}%`}
               />
               <Tooltip
@@ -174,12 +232,15 @@ export function InequalityTrends() {
               <YAxis
                 stroke={axisStroke}
                 tick={{ fontSize: 11 }}
-                domain={[0.85, 0.92]}
-                tickFormatter={(v) => v.toFixed(3)}
+                domain={[0.5, 0.95]}
+                tickFormatter={(v) => v.toFixed(2)}
               />
               <Tooltip
                 contentStyle={tooltipStyle}
-                formatter={(val: any) => [Number(val).toFixed(3), 'Global Wealth Gini']}
+                formatter={(val: any, name: any) => [
+                  Number(val).toFixed(3),
+                  name === 'globalGini' ? 'Global Benchmark Gini' : `${selectedCountry ? selectedCountry.name : 'Global'} Wealth Gini`,
+                ]}
               />
               <Line
                 type="monotone"
@@ -189,35 +250,63 @@ export function InequalityTrends() {
                 dot={{ fill: '#10b981', r: 4 }}
                 activeDot={{ r: 6 }}
               />
+              {selectedCountry && (
+                <Line
+                  type="monotone"
+                  dataKey="globalGini"
+                  stroke="#f59e0b"
+                  strokeWidth={1.8}
+                  strokeDasharray="4 4"
+                  dot={false}
+                />
+              )}
             </LineChart>
           )}
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-slate-200 dark:border-white/[0.08] pt-4">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs border-t border-slate-200 dark:border-white/[0.08] pt-4 font-mono-tabular">
         {viewMode === 'shares' ? (
           <>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#ff9f0a]"></span>
-              <span className="text-slate-600 dark:text-white/70">Top 10% Share (~83.7%)</span>
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff9f0a]"></span>
+              <span className="text-slate-600 dark:text-white/70">
+                Top 10% Share ({latestPoint.top10.toFixed(1)}%)
+              </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#ff453a]"></span>
-              <span className="text-slate-600 dark:text-white/70">Top 1% Share (~45.4%)</span>
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff453a]"></span>
+              <span className="text-slate-600 dark:text-white/70">
+                Top 1% Share ({latestPoint.top1.toFixed(1)}%)
+              </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#64d2ff]"></span>
-              <span className="text-slate-600 dark:text-white/70">Middle 40% Share (~14.8%)</span>
+              <span className="h-2.5 w-2.5 rounded-full bg-[#64d2ff]"></span>
+              <span className="text-slate-600 dark:text-white/70">
+                Middle 40% Share ({latestPoint.middle40.toFixed(1)}%)
+              </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-slate-400 dark:bg-white/40"></span>
-              <span className="text-slate-600 dark:text-white/70">Bottom 50% Share (~1.5%)</span>
+              <span className="h-2.5 w-2.5 rounded-full bg-slate-400 dark:bg-white/40"></span>
+              <span className="text-slate-600 dark:text-white/70">
+                Bottom 50% Share ({latestPoint.bottom50.toFixed(1)}%)
+              </span>
             </div>
           </>
         ) : (
-          <div className="text-slate-600 dark:text-white/60">
-            A Gini coefficient of 1.0 represents total inequality (one person holding all wealth).
-            Global wealth Gini softened from 0.912 in 1980 to 0.877 in 2026 as emerging markets expanded their asset base.
+          <div className="text-slate-600 dark:text-white/60 font-sans">
+            {selectedCountry ? (
+              <span>
+                <strong>{selectedCountry.name}</strong> shifted from a wealth Gini of{' '}
+                <span className="font-mono-tabular font-semibold">{firstPoint.gini.toFixed(2)}</span> in {firstPoint.year} to{' '}
+                <span className="font-mono-tabular font-semibold">{latestPoint.gini.toFixed(2)}</span> in {latestPoint.year} (dashed amber line shows the Global World Gini at{' '}
+                <span className="font-mono-tabular font-semibold">{latestPoint.globalGini.toFixed(3)}</span>).
+              </span>
+            ) : (
+              <span>
+                A Gini coefficient of 1.0 represents total inequality (one person holding all wealth). Global wealth Gini softened from 0.912 in 1980 to 0.877 in 2026 as emerging markets expanded their middle-class asset base.
+              </span>
+            )}
           </div>
         )}
       </div>

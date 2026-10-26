@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { COUNTRIES_DATA } from '../../data/country-metrics';
 import { getLaborMetricsForCountry } from '../../data/labor-market-data';
 import { CurrencyPerspective } from '../../lib/types';
+import { calculateCountryWealthDistribution } from '../../lib/calculations';
 import { adjustValue, formatCurrency, formatPercent } from '../../lib/formatters';
 import { DataExportMenu } from '../common/DataExportMenu';
 import {
@@ -13,7 +14,9 @@ import {
   Scale,
   Share2,
   Check,
+  Layers,
 } from 'lucide-react';
+import Link from 'next/link';
 
 export type LeagueSortField =
   | 'name'
@@ -21,6 +24,9 @@ export type LeagueSortField =
   | 'medianWealth'
   | 'skew'
   | 'totalWealth'
+  | 'top1Share'
+  | 'bottom50Share'
+  | 'millionaireDensity'
   | 'gdpPerCapita'
   | 'realGdpGrowth'
   | 'inflationRate'
@@ -41,6 +47,9 @@ export const VALID_LEAGUE_SORT_FIELDS: LeagueSortField[] = [
   'medianWealth',
   'skew',
   'totalWealth',
+  'top1Share',
+  'bottom50Share',
+  'millionaireDensity',
   'gdpPerCapita',
   'realGdpGrowth',
   'inflationRate',
@@ -187,6 +196,7 @@ export function CountryRankingsTable({
         currencyPerspective
       );
       const skew = adjMedian > 0 ? adjMean / adjMedian : 0;
+      const wealthDist = calculateCountryWealthDistribution(country, selectedYear);
 
       return {
         country,
@@ -197,6 +207,9 @@ export function CountryRankingsTable({
         adjTotal,
         adjGdpPerCap,
         skew,
+        top1Share: wealthDist.shares.top1Percent,
+        bottom50Share: wealthDist.shares.bottom50Percent,
+        millionaireDensity: wealthDist.millionaireDensityPercent,
         realGdpGrowth: metrics.realGdpGrowth,
         inflationRate: metrics.inflationRate,
         policyRate: metrics.policyRate,
@@ -240,6 +253,15 @@ export function CountryRankingsTable({
             break;
           case 'totalWealth':
             diff = a.adjTotal - b.adjTotal;
+            break;
+          case 'top1Share':
+            diff = a.top1Share - b.top1Share;
+            break;
+          case 'bottom50Share':
+            diff = a.bottom50Share - b.bottom50Share;
+            break;
+          case 'millionaireDensity':
+            diff = a.millionaireDensity - b.millionaireDensity;
             break;
           case 'gdpPerCapita':
             diff = a.adjGdpPerCap - b.adjGdpPerCap;
@@ -506,6 +528,39 @@ export function CountryRankingsTable({
                       </th>
                       <th
                         scope="col"
+                        aria-sort={sortField === 'top1Share' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
+                        onClick={() => handleSort('top1Share')}
+                        className="py-3 px-3 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right"
+                      >
+                        <div className="flex items-center justify-end gap-1">
+                          <span>Top 1% Share</span>
+                          <ArrowUpDown className="h-3 w-3 opacity-60" />
+                        </div>
+                      </th>
+                      <th
+                        scope="col"
+                        aria-sort={sortField === 'bottom50Share' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
+                        onClick={() => handleSort('bottom50Share')}
+                        className="py-3 px-3 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right hidden md:table-cell"
+                      >
+                        <div className="flex items-center justify-end gap-1">
+                          <span>Bottom 50%</span>
+                          <ArrowUpDown className="h-3 w-3 opacity-60" />
+                        </div>
+                      </th>
+                      <th
+                        scope="col"
+                        aria-sort={sortField === 'millionaireDensity' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
+                        onClick={() => handleSort('millionaireDensity')}
+                        className="py-3 px-3 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right hidden lg:table-cell"
+                      >
+                        <div className="flex items-center justify-end gap-1">
+                          <span>&gt;$1M Adults</span>
+                          <ArrowUpDown className="h-3 w-3 opacity-60" />
+                        </div>
+                      </th>
+                      <th
+                        scope="col"
                         aria-sort={sortField === 'totalWealth' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
                         onClick={() => handleSort('totalWealth')}
                         className="py-3 px-3 cursor-pointer hover:text-slate-900 dark:hover:text-white transition-colors text-right"
@@ -525,6 +580,9 @@ export function CountryRankingsTable({
                           <span>Gini</span>
                           <ArrowUpDown className="h-3 w-3 opacity-60" />
                         </div>
+                      </th>
+                      <th scope="col" className="py-3 px-3 text-center">
+                        Pyramid
                       </th>
                     </>
                   )}
@@ -758,11 +816,30 @@ export function CountryRankingsTable({
                             {row.skew.toFixed(2)}x
                           </span>
                         </td>
+                        <td className="py-3 px-3 text-right font-mono-tabular text-rose-600 dark:text-rose-400 font-semibold">
+                          {row.top1Share.toFixed(1)}%
+                        </td>
+                        <td className="py-3 px-3 text-right font-mono-tabular text-emerald-600 dark:text-emerald-400 font-medium hidden md:table-cell">
+                          {row.bottom50Share.toFixed(1)}%
+                        </td>
+                        <td className="py-3 px-3 text-right font-mono-tabular text-sky-600 dark:text-sky-400 font-semibold hidden lg:table-cell">
+                          {row.millionaireDensity.toFixed(2)}%
+                        </td>
                         <td className="py-3 px-3 text-right font-mono-tabular text-slate-900 dark:text-white font-semibold">
                           ${row.adjTotal.toFixed(1)}T
                         </td>
                         <td className="py-3 px-3 text-right font-mono-tabular text-slate-700 dark:text-slate-300">
                           {row.gini.toFixed(2)}
+                        </td>
+                        <td className="py-3 px-3 text-center">
+                          <Link
+                            href={`/wealth?scope=${row.country.code}&year=${selectedYear}`}
+                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition-colors"
+                            title={`Inspect ${row.country.name}'s 6-Tier Wealth Pyramid`}
+                          >
+                            <Layers className="h-2.5 w-2.5" />
+                            <span>View</span>
+                          </Link>
                         </td>
                       </>
                     )}
