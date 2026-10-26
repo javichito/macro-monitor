@@ -126,6 +126,7 @@ export function MacroTrendChart() {
                   eurReserveSharePercent: m.currencyReserves.eur,
                   cnyReserveSharePercent: m.currencyReserves.cny,
                   jpyReserveSharePercent: m.currencyReserves.jpy,
+                  gbpReserveSharePercent: m.currencyReserves.gbp,
                   goldAndOtherReserveSharePercent: m.currencyReserves.goldAndOther,
                   globalInflationRatePercent: m.globalInflationRate,
                   usCpiIndexBase100: m.usCpiIndex,
@@ -155,6 +156,7 @@ export function MacroTrendChart() {
                       { key: 'eurReserveSharePercent', label: 'EUR Reserve Share (%)' },
                       { key: 'goldAndOtherReserveSharePercent', label: 'Gold & Others Share (%)' },
                       { key: 'jpyReserveSharePercent', label: 'JPY Reserve Share (%)' },
+                      { key: 'gbpReserveSharePercent', label: 'GBP Reserve Share (%)' },
                       { key: 'cnyReserveSharePercent', label: 'CNY Reserve Share (%)' },
                     ]
                   : [
@@ -251,13 +253,14 @@ export function MacroTrendChart() {
                   eur: m.currencyReserves.eur,
                   cny: m.currencyReserves.cny,
                   jpy: m.currencyReserves.jpy,
+                  gbp: m.currencyReserves.gbp,
                   gold: m.currencyReserves.goldAndOther,
                 }))}
                 margin={{ top: 10, right: 10, left: -15, bottom: 0 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} vertical={false} />
                 <XAxis dataKey="year" stroke={axisStroke} tick={{ fontSize: 11 }} />
-                <YAxis stroke={axisStroke} tick={{ fontSize: 11 }} domain={[0, 100]} tickFormatter={(v) => `${v}%`} />
+                <YAxis stroke={axisStroke} tick={{ fontSize: 11 }} domain={[0, 100]} ticks={[0, 25, 50, 75, 100]} tickFormatter={(v) => `${v}%`} />
                 <Tooltip
                   contentStyle={tooltipStyle}
                   formatter={(v: any, name: any) => [`${Number(v).toFixed(1)}%`, name.toUpperCase()]}
@@ -267,6 +270,7 @@ export function MacroTrendChart() {
                 <Area type="monotone" dataKey="eur" name="EUR Share" stackId="1" stroke="#818cf8" fill="#818cf8" fillOpacity={0.8} />
                 <Area type="monotone" dataKey="gold" name="Gold & Others" stackId="1" stroke="#eab308" fill="#eab308" fillOpacity={0.8} />
                 <Area type="monotone" dataKey="jpy" name="JPY Share" stackId="1" stroke="#10b981" fill="#10b981" fillOpacity={0.8} />
+                <Area type="monotone" dataKey="gbp" name="GBP Share" stackId="1" stroke="#a855f7" fill="#a855f7" fillOpacity={0.8} />
                 <Area type="monotone" dataKey="cny" name="CNY Share" stackId="1" stroke="#f43f5e" fill="#f43f5e" fillOpacity={0.8} />
               </AreaChart>
             ) : (

@@ -943,7 +943,7 @@ export const REGIONAL_ASSET_HISTORY: RegionalAssetYear[] = [
         totalGrossAssetsTrillion: 207.5,
         totalLiabilitiesTrillion: 26.8,
         netWealthTrillion: 180.7,
-        shareOfGlobalGrossPercent: 36.1,
+        shareOfGlobalGrossPercent: 36.2,
         assets: {
           realEstate: 74.5,
           equities: 84.5,

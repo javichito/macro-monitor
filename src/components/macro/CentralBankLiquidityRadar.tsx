@@ -471,20 +471,20 @@ export function CentralBankLiquidityRadar() {
               <AreaChart data={GLOBAL_LIQUIDITY_HISTORY} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorFed" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#0284c7" stopOpacity={0.6} />
-                    <stop offset="95%" stopColor="#0284c7" stopOpacity={0.1} />
+                    <stop offset="5%" stopColor="#0284c7" stopOpacity={0.7} />
+                    <stop offset="95%" stopColor="#0284c7" stopOpacity={0.35} />
                   </linearGradient>
                   <linearGradient id="colorEcb" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#818cf8" stopOpacity={0.6} />
-                    <stop offset="95%" stopColor="#818cf8" stopOpacity={0.1} />
+                    <stop offset="5%" stopColor="#818cf8" stopOpacity={0.7} />
+                    <stop offset="95%" stopColor="#818cf8" stopOpacity={0.35} />
                   </linearGradient>
                   <linearGradient id="colorPboc" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.6} />
-                    <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.1} />
+                    <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.7} />
+                    <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.35} />
                   </linearGradient>
                   <linearGradient id="colorBoj" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.6} />
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0.1} />
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.7} />
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0.35} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke={isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)'} vertical={false} />

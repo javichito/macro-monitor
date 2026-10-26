@@ -423,8 +423,8 @@ export function RegionalAssetBreakdown({
                     const color = REGIONAL_METADATA[rId].color;
                     return (
                       <linearGradient key={rId} id={`grad-${rId}`} x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={color} stopOpacity={0.7} />
-                        <stop offset="95%" stopColor={color} stopOpacity={0.1} />
+                        <stop offset="5%" stopColor={color} stopOpacity={0.75} />
+                        <stop offset="95%" stopColor={color} stopOpacity={0.4} />
                       </linearGradient>
                     );
                   })}
@@ -433,8 +433,8 @@ export function RegionalAssetBreakdown({
                     const color = ASSET_CLASS_META[cKey].color;
                     return (
                       <linearGradient key={cKey} id={`grad-cat-${cKey}`} x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={color} stopOpacity={0.7} />
-                        <stop offset="95%" stopColor={color} stopOpacity={0.1} />
+                        <stop offset="5%" stopColor={color} stopOpacity={0.75} />
+                        <stop offset="95%" stopColor={color} stopOpacity={0.4} />
                       </linearGradient>
                     );
                   })}
@@ -454,6 +454,7 @@ export function RegionalAssetBreakdown({
                     unitType === 'share' ? `${val}%` : `$${val}T`
                   }
                   domain={unitType === 'share' ? [0, 100] : ['auto', 'auto']}
+                  ticks={unitType === 'share' ? [0, 25, 50, 75, 100] : undefined}
                 />
                 <Tooltip content={renderTooltip} />
                 <Legend

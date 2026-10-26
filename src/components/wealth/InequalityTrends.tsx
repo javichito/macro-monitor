@@ -46,15 +46,19 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
 
   const chartData = useMemo(() => {
     if (!selectedCountry) {
-      return GLOBAL_WEALTH_HISTORY.map((item) => ({
-        year: item.year,
-        top1: item.shares.top1Percent,
-        top10: item.shares.top10Percent,
-        middle40: item.shares.middle40Percent,
-        bottom50: item.shares.bottom50Percent,
-        gini: item.giniCoefficient,
-        globalGini: item.giniCoefficient,
-      }));
+      return GLOBAL_WEALTH_HISTORY.map((item) => {
+        const next9 = Number((item.shares.top10Percent - item.shares.top1Percent).toFixed(1));
+        return {
+          year: item.year,
+          top1: item.shares.top1Percent,
+          next9,
+          top10: item.shares.top10Percent,
+          middle40: item.shares.middle40Percent,
+          bottom50: item.shares.bottom50Percent,
+          gini: item.giniCoefficient,
+          globalGini: item.giniCoefficient,
+        };
+      });
     }
 
     const years = Object.keys(selectedCountry.history)
@@ -64,6 +68,7 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
     return years.map((yr) => {
       const metric = selectedCountry.history[yr];
       const shares = calculateCountryWealthShares(metric);
+      const next9 = Number((shares.top10Percent - shares.top1Percent).toFixed(1));
       const globalMatch =
         GLOBAL_WEALTH_HISTORY.find((g) => g.year === yr) ||
         GLOBAL_WEALTH_HISTORY[GLOBAL_WEALTH_HISTORY.length - 1];
@@ -71,6 +76,7 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
       return {
         year: yr,
         top1: shares.top1Percent,
+        next9,
         top10: shares.top10Percent,
         middle40: shares.middle40Percent,
         bottom50: shares.bottom50Percent,
@@ -83,6 +89,7 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
   const latestPoint = chartData[chartData.length - 1] || {
     year: 2026,
     top1: 45.3,
+    next9: 38.2,
     top10: 83.5,
     middle40: 15.0,
     bottom50: 1.5,
@@ -168,16 +175,20 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
             <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorTop1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.4} />
-                  <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.0} />
+                  <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.65} />
+                  <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.35} />
                 </linearGradient>
-                <linearGradient id="colorTop10" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.4} />
-                  <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.0} />
+                <linearGradient id="colorNext9" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.65} />
+                  <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.35} />
                 </linearGradient>
                 <linearGradient id="colorMiddle" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.4} />
-                  <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.0} />
+                  <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.65} />
+                  <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.35} />
+                </linearGradient>
+                <linearGradient id="colorBottom" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.75} />
+                  <stop offset="95%" stopColor="#10b981" stopOpacity={0.45} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} vertical={false} />
@@ -185,15 +196,23 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
               <YAxis
                 stroke={axisStroke}
                 tick={{ fontSize: 11 }}
-                domain={[0, 95]}
+                domain={[0, 100]}
+                ticks={[0, 25, 50, 75, 100]}
                 tickFormatter={(v) => `${v}%`}
               />
               <Tooltip
                 contentStyle={tooltipStyle}
-                formatter={(value: any, name: any) => {
+                formatter={(value: any, name: any, item: any) => {
+                  const payload = item?.payload;
+                  if (name === 'next9' && payload) {
+                    return [
+                      `${Number(value).toFixed(1)}% (Top 10% Combined: ${Number(payload.top10).toFixed(1)}%)`,
+                      'Next 9% (P90–P99) Share',
+                    ];
+                  }
                   const labels: Record<string, string> = {
                     top1: 'Top 1% Share',
-                    top10: 'Top 10% Share',
+                    next9: 'Next 9% (P90–P99) Share',
                     middle40: 'Middle 40% Share',
                     bottom50: 'Bottom 50% Share',
                   };
@@ -202,15 +221,8 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
               />
               <Area
                 type="monotone"
-                dataKey="top10"
-                stroke="#f59e0b"
-                strokeWidth={2}
-                fillOpacity={1}
-                fill="url(#colorTop10)"
-              />
-              <Area
-                type="monotone"
                 dataKey="top1"
+                stackId="wealth"
                 stroke="#f43f5e"
                 strokeWidth={2}
                 fillOpacity={1}
@@ -218,11 +230,30 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
               />
               <Area
                 type="monotone"
+                dataKey="next9"
+                stackId="wealth"
+                stroke="#f59e0b"
+                strokeWidth={2}
+                fillOpacity={1}
+                fill="url(#colorNext9)"
+              />
+              <Area
+                type="monotone"
                 dataKey="middle40"
+                stackId="wealth"
                 stroke="#06b6d4"
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorMiddle)"
+              />
+              <Area
+                type="monotone"
+                dataKey="bottom50"
+                stackId="wealth"
+                stroke="#10b981"
+                strokeWidth={2}
+                fillOpacity={1}
+                fill="url(#colorBottom)"
               />
             </AreaChart>
           ) : (
@@ -232,7 +263,8 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
               <YAxis
                 stroke={axisStroke}
                 tick={{ fontSize: 11 }}
-                domain={[0.5, 0.95]}
+                domain={[0.5, 1.0]}
+                ticks={[0.5, 0.6, 0.7, 0.8, 0.9, 1.0]}
                 tickFormatter={(v) => v.toFixed(2)}
               />
               <Tooltip
@@ -269,25 +301,25 @@ export function InequalityTrends({ scopeCode = 'GLOBAL' }: InequalityTrendsProps
         {viewMode === 'shares' ? (
           <>
             <div className="flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ff9f0a]"></span>
-              <span className="text-slate-600 dark:text-white/70">
-                Top 10% Share ({latestPoint.top10.toFixed(1)}%)
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ff453a]"></span>
+              <span className="h-2.5 w-2.5 rounded-full bg-[#f43f5e]"></span>
               <span className="text-slate-600 dark:text-white/70">
                 Top 1% Share ({latestPoint.top1.toFixed(1)}%)
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#64d2ff]"></span>
+              <span className="h-2.5 w-2.5 rounded-full bg-[#f59e0b]"></span>
+              <span className="text-slate-600 dark:text-white/70">
+                Next 9% Share ({latestPoint.next9.toFixed(1)}% • Top 10%: {latestPoint.top10.toFixed(1)}%)
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#06b6d4]"></span>
               <span className="text-slate-600 dark:text-white/70">
                 Middle 40% Share ({latestPoint.middle40.toFixed(1)}%)
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-slate-400 dark:bg-white/40"></span>
+              <span className="h-2.5 w-2.5 rounded-full bg-[#10b981]"></span>
               <span className="text-slate-600 dark:text-white/70">
                 Bottom 50% Share ({latestPoint.bottom50.toFixed(1)}%)
               </span>

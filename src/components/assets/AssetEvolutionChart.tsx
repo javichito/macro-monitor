@@ -131,10 +131,15 @@ export function AssetEvolutionChart({
       };
 
       if (viewType === 'share') {
+        const subTotal = Object.values(subs).reduce((acc, v) => acc + v, 0) || gross;
         const out: Record<string, number> = { year: item.year };
+        let roundedSum = 0;
         for (const [k, v] of Object.entries(subs)) {
-          out[k] = Number(((v / gross) * 100).toFixed(1));
+          const pct = Number(((v / subTotal) * 100).toFixed(1));
+          out[k] = pct;
+          roundedSum += pct;
         }
+        out.reResidential = Number((out.reResidential + (100 - roundedSum)).toFixed(1));
         return out;
       }
 
@@ -153,14 +158,22 @@ export function AssetEvolutionChart({
     const crypto = item.categories.find((c) => c.id === 'crypto-digital')?.valueTrillion || 0;
 
     if (viewType === 'share') {
+      const macroTotal = realEstate + equities + bonds + cash + gold + crypto || gross;
+      const rePct = Number(((realEstate / macroTotal) * 100).toFixed(1));
+      const eqPct = Number(((equities / macroTotal) * 100).toFixed(1));
+      const boPct = Number(((bonds / macroTotal) * 100).toFixed(1));
+      const caPct = Number(((cash / macroTotal) * 100).toFixed(1));
+      const goPct = Number(((gold / macroTotal) * 100).toFixed(1));
+      const crPct = Number(((crypto / macroTotal) * 100).toFixed(1));
+      const residual = 100 - (rePct + eqPct + boPct + caPct + goPct + crPct);
       return {
         year: item.year,
-        realEstate: Number(((realEstate / gross) * 100).toFixed(1)),
-        equities: Number(((equities / gross) * 100).toFixed(1)),
-        bonds: Number(((bonds / gross) * 100).toFixed(1)),
-        cash: Number(((cash / gross) * 100).toFixed(1)),
-        gold: Number(((gold / gross) * 100).toFixed(1)),
-        crypto: Number(((crypto / gross) * 100).toFixed(1)),
+        realEstate: Number((rePct + residual).toFixed(1)),
+        equities: eqPct,
+        bonds: boPct,
+        cash: caPct,
+        gold: goPct,
+        crypto: crPct,
       };
     }
 
@@ -284,27 +297,27 @@ export function AssetEvolutionChart({
                 {/* Macro Gradients */}
                 <linearGradient id="colorRealEstate" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#10b981" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#10b981" stopOpacity={0.45} />
                 </linearGradient>
                 <linearGradient id="colorEquities" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.45} />
                 </linearGradient>
                 <linearGradient id="colorBonds" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#6366f1" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#6366f1" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#6366f1" stopOpacity={0.45} />
                 </linearGradient>
                 <linearGradient id="colorCash" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.45} />
                 </linearGradient>
                 <linearGradient id="colorGold" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#eab308" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#eab308" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#eab308" stopOpacity={0.45} />
                 </linearGradient>
                 <linearGradient id="colorCrypto" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#a855f7" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#a855f7" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#a855f7" stopOpacity={0.45} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} vertical={false} />
@@ -313,6 +326,7 @@ export function AssetEvolutionChart({
                 stroke={axisStroke}
                 tick={{ fontSize: 11 }}
                 domain={viewType === 'share' ? [0, 100] : ['auto', 'auto']}
+                ticks={viewType === 'share' ? [0, 25, 50, 75, 100] : undefined}
                 tickFormatter={(v) => (viewType === 'share' ? `${v}%` : `$${v}T`)}
               />
               <Tooltip
