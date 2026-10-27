@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-10-23T23:46:15.118Z",
+  "timestamp": "2026-10-27T00:15:34.163Z",
   "sovereignCode": "USA",
-  "us10Y": 4.96,
-  "us2Y": 4.65,
+  "us10Y": 5,
+  "us2Y": 4.69,
   "us3M": 4.22,
   "spread10Y2Y": 0.31,
-  "spread10Y3M": 0.74,
+  "spread10Y3M": 0.78,
   "curveShape": "normal",
-  "recessionProbability12M": 15.4,
+  "recessionProbability12M": 14.9,
   "activeAlerts": []
 }
