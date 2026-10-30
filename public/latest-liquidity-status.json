@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-10-29T00:38:49.164Z",
-  "fedAssetsBillion": 6754,
-  "tgaBillion": 952,
+  "timestamp": "2026-10-30T00:39:25.993Z",
+  "fedAssetsBillion": 6746,
+  "tgaBillion": 1000,
   "reverseRepoBillion": 0,
-  "netLiquidityTrillion": 5.8,
-  "weeklyDeltaBillion": -70,
+  "netLiquidityTrillion": 5.75,
+  "weeklyDeltaBillion": -50,
   "triggers": {
     "rrpDepleted": true,
     "rrpBufferLevelBillion": 0,
     "impulseDirection": "contraction",
-    "impulseBillion": -70,
+    "impulseBillion": -50,
     "inflectionBreached": true
   },
   "activeAlerts": [
@@ -22,8 +22,8 @@
     {
       "id": "weekly-impulse-trigger",
       "level": "IMPULSE",
-      "headline": "🚀 Fed Net Liquidity Impulse: $-70B Weekly",
-      "body": "Net Liquidity reached $5.8T, creating a high-powered liquidity contraction cycle."
+      "headline": "🚀 Fed Net Liquidity Impulse: $-50B Weekly",
+      "body": "Net Liquidity reached $5.75T, creating a high-powered liquidity contraction cycle."
     }
   ]
 }
