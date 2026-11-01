@@ -237,6 +237,28 @@ export default function OverviewPage() {
           selectedYear={selectedYear}
         />
       </div>
+
+      {/* Custom Graph Studio Launchpad Banner */}
+      <div className="apple-card p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-5 border-sky-500/30">
+        <div className="space-y-1.5 max-w-2xl">
+          <span className="font-mono-tabular text-[11px] font-bold uppercase tracking-wider text-amber-500">
+            Field Guide • Chapter 06 • Universal Graph Lab
+          </span>
+          <h2 className="font-editorial text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+            Want to Plot Any Metric &amp; Build Your Own Custom Graphs?
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Mix and match any of our 70+ macroeconomic, wealth, housing, credit, and liquidity metrics across 26 sovereign countries. Build multi-axis charts, custom ratios, and lead-lag correlation tests—and pin them to your personal graph board.
+          </p>
+        </div>
+        <Link
+          href="/studio"
+          className="tactile-button inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 border-amber-700 text-xs sm:text-sm font-bold transition-all self-start md:self-center shrink-0"
+        >
+          <span>Open Custom Graph Studio</span>
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
     </div>
   );
 }

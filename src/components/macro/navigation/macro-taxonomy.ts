@@ -12,6 +12,7 @@ import {
   Landmark,
   Layers,
   Scale,
+  Sliders,
   LayoutDashboard,
   LucideIcon,
 } from 'lucide-react';
@@ -41,7 +42,8 @@ export type MacroSectionTab =
   | 'external'
   | 'calendar'
   | 'liquidity'
-  | 'mechanics';
+  | 'mechanics'
+  | 'studio';
 
 export interface MacroSubTab {
   id: MacroSectionTab;
@@ -161,6 +163,14 @@ export const MACRO_PILLARS: MacroPillar[] = [
         shortLabel: 'Macro Ratios',
         icon: Scale,
         description: 'Copper/Gold industrial pulse, S&P 500/M2 fiat debasement, and Gold/Oil energy ratios.',
+      },
+      {
+        id: 'studio',
+        label: 'Custom Graph Builder Studio',
+        shortLabel: 'Custom Graph Builder',
+        icon: Sliders,
+        badge: 'NEW',
+        description: 'Combine any of 70+ metrics and 26 sovereigns into your own custom multi-axis graphs.',
       },
     ],
   },

@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Globe2, TrendingUp, Layers, MapPin, BarChart3 } from 'lucide-react';
+import { Globe2, TrendingUp, Layers, MapPin, BarChart3, Sliders } from 'lucide-react';
 
 /*
  * Apple Human Interface Guidelines specify bottom tab bars for primary mobile navigation,
@@ -19,6 +19,7 @@ export function MobileTabBar() {
     { href: '/assets', label: 'Assets', icon: Layers },
     { href: '/geography', label: 'Geography', icon: MapPin },
     { href: '/macro', label: 'Macro', icon: BarChart3 },
+    { href: '/studio', label: 'Studio', icon: Sliders },
   ];
 
   return (
@@ -27,7 +28,7 @@ export function MobileTabBar() {
       className="md:hidden fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200/80 dark:border-white/[0.08] bg-white/85 dark:bg-[#06080e]/85 backdrop-blur-2xl transition-colors duration-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_-4px_24px_rgba(0,0,0,0.5)]"
       style={{ paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 8px)' }}
     >
-      <div className="flex items-center justify-around px-2 pt-2">
+      <div className="grid grid-cols-6 gap-0.5 px-1.5 pt-1.5">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = pathname === tab.href;
@@ -37,7 +38,7 @@ export function MobileTabBar() {
               key={tab.href}
               href={tab.href}
               aria-current={isActive ? 'page' : undefined}
-              className={`flex flex-col items-center justify-center py-1.5 px-2.5 rounded-xl transition-all duration-150 active:scale-90 min-w-[56px] min-h-[44px] ${
+              className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-colors duration-150 min-w-0 min-h-[44px] ${
                 isActive
                   ? 'text-sky-500 dark:text-sky-400 font-semibold'
                   : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
@@ -48,9 +49,9 @@ export function MobileTabBar() {
                   isActive ? 'bg-sky-500/10 dark:bg-sky-400/15' : ''
                 }`}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
               </div>
-              <span className="text-[10px] tracking-tight mt-0.5 font-medium">
+              <span className="text-[10px] leading-tight tracking-tight mt-0.5 font-medium truncate max-w-full">
                 {tab.label}
               </span>
             </Link>

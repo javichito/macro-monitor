@@ -24,6 +24,7 @@ import { BondVolatilityPlumbingRadar } from '../../components/macro/BondVolatili
 import { HousingMacroRadar } from '../../components/macro/HousingMacroRadar';
 import { MonetaryMechanicsRadar } from '../../components/macro/MonetaryMechanicsRadar';
 import { PhysicalEconomyRadar } from '../../components/macro/PhysicalEconomyRadar';
+import { CustomGraphBuilderStudio } from '../../components/studio/CustomGraphBuilderStudio';
 
 import { BarChart3, ArrowUp } from 'lucide-react';
 
@@ -58,6 +59,7 @@ export default function MacroPage() {
       'calendar',
       'liquidity',
       'mechanics',
+      'studio',
     ];
 
     if (tabParam && validTabs.includes(tabParam)) {
@@ -140,6 +142,9 @@ export default function MacroPage() {
 
       {/* Analytical Cross-Asset Ratio Studio & Macro Sandbox */}
       {(activeTab === 'all' || activeTab === 'ratios') && <CrossAssetRatioStudio />}
+
+      {/* Universal Metric & Custom Graph Builder Studio */}
+      {(activeTab === 'all' || activeTab === 'studio') && <CustomGraphBuilderStudio />}
 
       {/* Sovereign Yield Curve Monitor & Inversion Tracker */}
       {(activeTab === 'all' || activeTab === 'yields') && <YieldCurveMonitor />}

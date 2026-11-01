@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Globe2, TrendingUp, Layers, MapPin, BarChart3, Sun, Moon, Monitor, Compass, Award } from 'lucide-react';
+import { Globe2, TrendingUp, Layers, MapPin, BarChart3, Sliders, Sun, Moon, Monitor, Compass, Award } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { CurrencyPerspective } from '../../lib/types';
 import { MarketPulseTicker } from './MarketPulseTicker';
@@ -27,6 +27,7 @@ export function Header() {
     { href: '/assets', label: 'Where Wealth Lives', icon: Layers },
     { href: '/geography', label: 'Country Arena', icon: MapPin },
     { href: '/macro', label: 'Economic Engine', icon: BarChart3 },
+    { href: '/studio', label: 'Graph Studio', icon: Sliders },
   ];
 
   return (

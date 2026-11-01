@@ -20,7 +20,18 @@ export type SimulatorDeepLinkType =
   | 'housing'
   | 'consumer'
   | 'mechanics'
-  | 'physical';
+  | 'physical'
+  | 'studio';
+
+export interface CustomGraphStudioDeepLinkState {
+  chartType: 'line' | 'area' | 'bar' | 'composed' | 'scatter' | 'stacked-area';
+  transformMode: 'raw' | 'indexed100' | 'pctChange' | 'zScore';
+  formulaMode: 'none' | 'ratio' | 'spread' | 'sum';
+  leadLagYears: number;
+  startYear: number;
+  endYear: number;
+  seriesCompact: string; // e.g. "mm_m2_supply||left|area,hm_median_home_price||left|line"
+}
 
 export interface PhysicalEconomyState {
   view: 'overview' | 'energy' | 'deglobalization' | 'demographics';
@@ -1059,6 +1070,103 @@ export function deserializePhysicalEconomy(input?: string): PhysicalEconomyState
 }
 
 // -----------------------------------------------------------------------------
+// Custom Graph Studio Serialization & Deserialization
+// -----------------------------------------------------------------------------
+
+export function serializeCustomGraphStudio(
+  state: CustomGraphStudioDeepLinkState,
+  format: 'hash' | 'query' = 'hash'
+): string {
+  const p = new URLSearchParams();
+  if (format === 'hash') {
+    p.set('ct', state.chartType);
+    p.set('tr', state.transformMode);
+    p.set('fm', state.formulaMode);
+    p.set('ll', String(state.leadLagYears));
+    p.set('sy', String(state.startYear));
+    p.set('ey', String(state.endYear));
+    p.set('sc', state.seriesCompact);
+    return `#graph-studio?${p.toString()}`;
+  } else {
+    p.set('gs_ct', state.chartType);
+    p.set('gs_tr', state.transformMode);
+    p.set('gs_fm', state.formulaMode);
+    p.set('gs_ll', String(state.leadLagYears));
+    p.set('gs_sy', String(state.startYear));
+    p.set('gs_ey', String(state.endYear));
+    p.set('gs_sc', state.seriesCompact);
+    return p.toString();
+  }
+}
+
+export function deserializeCustomGraphStudio(
+  input?: string
+): CustomGraphStudioDeepLinkState | null {
+  const params = extractParamsFromUrl(input);
+  const seriesParam = params.get('gs_sc') || params.get('sc');
+  const chartParam = params.get('gs_ct') || params.get('ct');
+
+  if (!seriesParam && !chartParam) {
+    return null;
+  }
+
+  const validCharts: CustomGraphStudioDeepLinkState['chartType'][] = [
+    'line',
+    'area',
+    'bar',
+    'composed',
+    'scatter',
+    'stacked-area',
+  ];
+  const chartType = validCharts.includes(chartParam as any)
+    ? (chartParam as CustomGraphStudioDeepLinkState['chartType'])
+    : 'composed';
+
+  const trParam = params.get('gs_tr') || params.get('tr');
+  const validTransforms: CustomGraphStudioDeepLinkState['transformMode'][] = [
+    'raw',
+    'indexed100',
+    'pctChange',
+    'zScore',
+  ];
+  const transformMode = validTransforms.includes(trParam as any)
+    ? (trParam as CustomGraphStudioDeepLinkState['transformMode'])
+    : 'raw';
+
+  const fmParam = params.get('gs_fm') || params.get('fm');
+  const validFormulas: CustomGraphStudioDeepLinkState['formulaMode'][] = [
+    'none',
+    'ratio',
+    'spread',
+    'sum',
+  ];
+  const formulaMode = validFormulas.includes(fmParam as any)
+    ? (fmParam as CustomGraphStudioDeepLinkState['formulaMode'])
+    : 'none';
+
+  const leadLagYears = Math.round(
+    parseBoundedNumber(params.get('gs_ll') || params.get('ll'), -5, 5, 0)
+  );
+  const startYear = Math.round(
+    parseBoundedNumber(params.get('gs_sy') || params.get('sy'), 1980, 2025, 1980)
+  );
+  const endYear = Math.round(
+    parseBoundedNumber(params.get('gs_ey') || params.get('ey'), 1985, 2026, 2026)
+  );
+
+  return {
+    chartType,
+    transformMode,
+    formulaMode,
+    leadLagYears,
+    startYear,
+    endYear: Math.max(startYear + 1, endYear),
+    seriesCompact:
+      seriesParam || 'mm_m2_supply||left|area,hm_median_home_price||left|line',
+  };
+}
+
+// -----------------------------------------------------------------------------
 // Universal URL Construction & Clipboard Helpers
 // -----------------------------------------------------------------------------
 
@@ -1092,12 +1200,14 @@ export function buildSimulatorUrl({
     if (!origin) origin = 'https://macro-monitor.app';
     if (!pathname) {
       pathname =
-        simulator === 'fiscal' ||
-        simulator === 'ratios' ||
-        simulator === 'volatility' ||
-        simulator === 'housing' ||
-        simulator === 'mechanics' ||
-        simulator === 'physical'
+        simulator === 'studio'
+          ? '/studio'
+          : simulator === 'fiscal' ||
+            simulator === 'ratios' ||
+            simulator === 'volatility' ||
+            simulator === 'housing' ||
+            simulator === 'mechanics' ||
+            simulator === 'physical'
           ? '/macro'
           : '/wealth';
     }
@@ -1186,6 +1296,14 @@ export function buildSimulatorUrl({
       const q = new URLSearchParams(serializePhysicalEconomy(state, 'query'));
       q.forEach((v, k) => url.searchParams.set(k, v));
       url.hash = 'physical-radar';
+    }
+  } else if (simulator === 'studio') {
+    if (format === 'hash') {
+      url.hash = serializeCustomGraphStudio(state, 'hash').replace(/^#/, '');
+    } else {
+      const q = new URLSearchParams(serializeCustomGraphStudio(state, 'query'));
+      q.forEach((v, k) => url.searchParams.set(k, v));
+      url.hash = 'graph-studio';
     }
   }
 
