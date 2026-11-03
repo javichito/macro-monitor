@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-10-31T00:29:21.020Z",
+  "timestamp": "2026-11-03T02:47:13.578Z",
   "fedAssetsBillion": 6746,
   "tgaBillion": 1000,
-  "reverseRepoBillion": 4,
+  "reverseRepoBillion": 5,
   "netLiquidityTrillion": 5.74,
   "weeklyDeltaBillion": -60,
   "triggers": {
     "rrpDepleted": true,
-    "rrpBufferLevelBillion": 4,
+    "rrpBufferLevelBillion": 5,
     "impulseDirection": "contraction",
     "impulseBillion": -60,
     "inflectionBreached": false
@@ -16,7 +16,7 @@
     {
       "id": "rrp-floor-breach",
       "level": "CRITICAL",
-      "headline": "⚠️ Overnight Reverse Repo Buffer Low: $4B",
+      "headline": "⚠️ Overnight Reverse Repo Buffer Low: $5B",
       "body": "ON RRP stands below the $150B safety threshold. Future Treasury issuance will drain commercial bank reserves directly."
     },
     {
