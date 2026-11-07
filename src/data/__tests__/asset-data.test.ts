@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { GLOBAL_ASSET_HISTORY } from '../asset-breakdown';
-import { adjustValue } from '../../lib/formatters';
+import { adjustValue, getCountryPppFactor } from '../../lib/formatters';
 
 /*
  * Unit tests validating asset breakdown mathematical integrity,
@@ -123,5 +123,20 @@ describe('Asset Breakdown Longitudinal Data Pipeline', () => {
         }
       }
     }
+  });
+
+  it('applies sovereign PPP price-level multipliers when a country code is passed', () => {
+    const nominalVal = 100;
+    // India has a priceLevelRatio of 0.28 (< 1.0), so PPP purchasing power is amplified
+    expect(getCountryPppFactor('IND')).toBeGreaterThan(3.0);
+    expect(adjustValue(nominalVal, 2026, 'ppp', 'IND')).toBeGreaterThan(300);
+
+    // Switzerland has a priceLevelRatio of 1.36 (> 1.0), so PPP purchasing power is compressed
+    expect(getCountryPppFactor('CHE')).toBeLessThan(1.0);
+    expect(adjustValue(nominalVal, 2026, 'ppp', 'CHE')).toBeLessThan(100);
+
+    // US benchmark (1.00) and GLOBAL aggregate remain 1.0x
+    expect(adjustValue(nominalVal, 2026, 'ppp', 'USA')).toBe(100);
+    expect(adjustValue(nominalVal, 2026, 'ppp', 'GLOBAL')).toBe(100);
   });
 });

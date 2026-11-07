@@ -130,7 +130,7 @@ export default function MacroPage() {
         <MacroPillarNav activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
 
-      <TimelineControls />
+      <TimelineControls showCurrencyLens={activeTab === 'studio'} showPppLens={activeTab === 'studio'} />
 
       {/* Executive Briefing Landing View */}
       {activeTab === 'briefing' && (

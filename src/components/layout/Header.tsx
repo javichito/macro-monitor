@@ -5,14 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Globe2, TrendingUp, Layers, MapPin, BarChart3, Sliders, Sun, Moon, Monitor, Compass, Award } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { CurrencyPerspective } from '../../lib/types';
 import { MarketPulseTicker } from './MarketPulseTicker';
 
 export function Header() {
   const pathname = usePathname();
   const {
-    currencyPerspective,
-    setCurrencyPerspective,
     themePreference,
     setThemePreference,
     completedChallenges,
@@ -85,40 +82,8 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Controls: Lens Switcher & Appearance Mode */}
+        {/* Action Controls: Appearance Mode */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* Currency Perspective Switcher */}
-          <div
-            role="radiogroup"
-            aria-label="Currency valuation perspective"
-            className="flex items-center rounded-xl p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.09] text-xs"
-          >
-            {(['nominal', 'real', 'ppp'] as CurrencyPerspective[]).map((mode) => (
-              <button
-                key={mode}
-                type="button"
-                role="radio"
-                aria-checked={currencyPerspective === mode}
-                onClick={() => setCurrencyPerspective(mode)}
-                title={
-                  mode === 'nominal'
-                    ? 'Nominal USD: Raw sticker price in that year'
-                    : mode === 'real'
-                    ? 'Real USD: Adjusted for inflation (2026 buying power)'
-                    : 'PPP: Adjusted for what local prices actually buy'
-                }
-                className={`rounded-lg px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-mono-tabular font-bold transition-all duration-150 uppercase tracking-wider min-h-[34px] min-w-[34px] sm:min-h-[30px] sm:min-w-0 flex items-center justify-center cursor-pointer ${
-                  currencyPerspective === mode
-                    ? 'bg-white text-slate-950 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                <span className="sm:hidden">{mode === 'nominal' ? 'Nom' : mode.toUpperCase()}</span>
-                <span className="hidden sm:inline">{mode}</span>
-              </button>
-            ))}
-          </div>
-
           {/* Theme Mode Switcher: System / Light / Dark */}
           <div
             role="radiogroup"

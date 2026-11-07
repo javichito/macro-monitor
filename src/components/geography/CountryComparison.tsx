@@ -211,24 +211,24 @@ export function CountryComparison({
   /*
    * Normalize monetary amounts according to user perspective (nominal USD, real 2026 inflation-adjusted, or PPP).
    */
-  const adjMeanWealthA = adjustValue(metricsA.wealthPerAdultUSD, selectedYear, currencyPerspective);
-  const adjMeanWealthB = adjustValue(metricsB.wealthPerAdultUSD, selectedYear, currencyPerspective);
+  const adjMeanWealthA = adjustValue(metricsA.wealthPerAdultUSD, selectedYear, currencyPerspective, countryA.code);
+  const adjMeanWealthB = adjustValue(metricsB.wealthPerAdultUSD, selectedYear, currencyPerspective, countryB.code);
 
-  const adjMedianWealthA = adjustValue(metricsA.medianWealthUSD, selectedYear, currencyPerspective);
-  const adjMedianWealthB = adjustValue(metricsB.medianWealthUSD, selectedYear, currencyPerspective);
+  const adjMedianWealthA = adjustValue(metricsA.medianWealthUSD, selectedYear, currencyPerspective, countryA.code);
+  const adjMedianWealthB = adjustValue(metricsB.medianWealthUSD, selectedYear, currencyPerspective, countryB.code);
 
   const adjTotalWealthA =
-    adjustValue(metricsA.totalWealthTrillion, selectedYear, currencyPerspective) * 1_000_000_000_000;
+    adjustValue(metricsA.totalWealthTrillion, selectedYear, currencyPerspective, countryA.code) * 1_000_000_000_000;
   const adjTotalWealthB =
-    adjustValue(metricsB.totalWealthTrillion, selectedYear, currencyPerspective) * 1_000_000_000_000;
+    adjustValue(metricsB.totalWealthTrillion, selectedYear, currencyPerspective, countryB.code) * 1_000_000_000_000;
 
   const adjGdpA =
-    adjustValue(metricsA.gdpTrillionUSD, selectedYear, currencyPerspective) * 1_000_000_000_000;
+    adjustValue(metricsA.gdpTrillionUSD, selectedYear, currencyPerspective, countryA.code) * 1_000_000_000_000;
   const adjGdpB =
-    adjustValue(metricsB.gdpTrillionUSD, selectedYear, currencyPerspective) * 1_000_000_000_000;
+    adjustValue(metricsB.gdpTrillionUSD, selectedYear, currencyPerspective, countryB.code) * 1_000_000_000_000;
 
-  const adjGdpPerCapA = adjustValue(metricsA.gdpPerCapitaUSD, selectedYear, currencyPerspective);
-  const adjGdpPerCapB = adjustValue(metricsB.gdpPerCapitaUSD, selectedYear, currencyPerspective);
+  const adjGdpPerCapA = adjustValue(metricsA.gdpPerCapitaUSD, selectedYear, currencyPerspective, countryA.code);
+  const adjGdpPerCapB = adjustValue(metricsB.gdpPerCapitaUSD, selectedYear, currencyPerspective, countryB.code);
 
   /*
    * The Mean-to-Median Skew ratio quantifies the degree to which national wealth is pulled up

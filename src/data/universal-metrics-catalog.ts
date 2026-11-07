@@ -2032,7 +2032,7 @@ export function resolveMetricTimeSeries(
 
   return raw.map((pt) => {
     const val = def.isMonetaryCurrency
-      ? adjustValue(pt.value, pt.year, currencyPerspective)
+      ? adjustValue(pt.value, pt.year, currencyPerspective, spec.scopeCode)
       : pt.value;
     return {
       year: pt.year,

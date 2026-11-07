@@ -29,9 +29,9 @@ export function WealthPyramid({ data, globalBaseline, currencyPerspective }: Wea
    */
   const displayTiers = [...dist.tiers].reverse();
 
-  const adjustedTotalWealth = adjustValue(dist.totalWealthTrillion, dist.year, currencyPerspective);
-  const adjustedMeanWealth = adjustValue(dist.meanWealthPerAdult, dist.year, currencyPerspective);
-  const adjustedMedianWealth = adjustValue(dist.medianWealthPerAdult, dist.year, currencyPerspective);
+  const adjustedTotalWealth = adjustValue(dist.totalWealthTrillion, dist.year, currencyPerspective, dist.scopeCode);
+  const adjustedMeanWealth = adjustValue(dist.meanWealthPerAdult, dist.year, currencyPerspective, dist.scopeCode);
+  const adjustedMedianWealth = adjustValue(dist.medianWealthPerAdult, dist.year, currencyPerspective, dist.scopeCode);
 
   return (
     <div className="apple-card p-5 sm:p-6 transition-all duration-300">
@@ -96,12 +96,12 @@ export function WealthPyramid({ data, globalBaseline, currencyPerspective }: Wea
                 bracket: t.bracket,
                 adultsMillion: t.adultsMillion,
                 adultsSharePercent: Number(t.adultsShare.toFixed(2)),
-                wealthTrillion: adjustValue(t.wealthTrillion, dist.year, currencyPerspective),
+                wealthTrillion: adjustValue(t.wealthTrillion, dist.year, currencyPerspective, dist.scopeCode),
                 wealthSharePercent: Number(t.wealthShare.toFixed(2)),
                 averageWealthPerAdult:
                   t.adultsMillion > 0
                     ? Math.round(
-                        (adjustValue(t.wealthTrillion, dist.year, currencyPerspective) * 1_000_000_000_000) /
+                        (adjustValue(t.wealthTrillion, dist.year, currencyPerspective, dist.scopeCode) * 1_000_000_000_000) /
                           (t.adultsMillion * 1_000_000)
                       )
                     : 0,
@@ -187,7 +187,7 @@ export function WealthPyramid({ data, globalBaseline, currencyPerspective }: Wea
       <div className="space-y-3.5">
         {displayTiers.map((tier) => {
           const isSelected = activeBracket === tier.bracket;
-          const adjustedWealthTrillion = adjustValue(tier.wealthTrillion, dist.year, currencyPerspective);
+          const adjustedWealthTrillion = adjustValue(tier.wealthTrillion, dist.year, currencyPerspective, dist.scopeCode);
           const globalTier = globalBaseline?.tiers.find((gt) => gt.bracket === tier.bracket);
 
           const popDeltaVsGlobal =

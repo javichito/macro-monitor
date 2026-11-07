@@ -139,7 +139,7 @@ export default function WealthPage() {
         </p>
       </div>
 
-      <TimelineControls />
+      <TimelineControls showPppLens={scopeCode !== 'GLOBAL'} />
 
       {/* Sovereign Wealth Scope Selector + Predict-First Active Learning Hook */}
       <div className="apple-card p-5 sm:p-6 space-y-5">

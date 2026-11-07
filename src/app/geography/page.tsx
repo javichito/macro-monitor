@@ -229,7 +229,7 @@ export default function GeographyPage() {
         </div>
       </div>
 
-      <TimelineControls />
+      <TimelineControls showPppLens />
 
       {activeTab === 'map-duel' ? (
         <>

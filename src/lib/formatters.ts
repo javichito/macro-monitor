@@ -1,4 +1,5 @@
 import { CurrencyPerspective } from './types';
+import { COUNTRY_PPP_METRICS } from './calculations';
 
 /* 
  * The base year 2000 has a CPI benchmark of 100.
@@ -22,6 +23,28 @@ const CPI_FACTORS_TO_2026: Record<number, number> = {
   2026: 1.00,
 };
 
+export function getCpiFactorTo2026(year: number): number {
+  return CPI_FACTORS_TO_2026[year] ?? 1.0;
+}
+
+/*
+ * Purchasing Power Parity (PPP) multipliers are inversely proportional to local price levels
+ * relative to the US benchmark (priceLevelRatio = 1.00), so lower domestic costs amplify
+ * the local buying power of a nominal dollar while expensive economies compress it.
+ */
+export function getCountryPppFactor(countryCode?: string): number {
+  if (!countryCode || countryCode === 'GLOBAL') return 1.0;
+  const metric = COUNTRY_PPP_METRICS[countryCode.toUpperCase()];
+  if (!metric || metric.priceLevelRatio <= 0) return 1.0;
+  return Number((1 / metric.priceLevelRatio).toFixed(4));
+}
+
+export function getBlocPppFactor(memberCodes: string[]): number {
+  if (!memberCodes.length) return 1.0;
+  const sum = memberCodes.reduce((acc, code) => acc + getCountryPppFactor(code), 0);
+  return Number((sum / memberCodes.length).toFixed(4));
+}
+
 /*
  * PPP conversion factors reflect relative price level differences
  * across developing vs developed nations to avoid understating living standards.
@@ -30,17 +53,21 @@ export function adjustValue(
   value: number,
   year: number,
   perspective: CurrencyPerspective,
-  countryPppFactor: number = 1.0
+  countryPppOrCode: number | string = 1.0
 ): number {
   if (perspective === 'nominal') {
     return value;
   }
   if (perspective === 'real') {
-    const factor = CPI_FACTORS_TO_2026[year] ?? 1.0;
+    const factor = getCpiFactorTo2026(year);
     return value * factor;
   }
   if (perspective === 'ppp') {
-    return value * countryPppFactor;
+    const factor =
+      typeof countryPppOrCode === 'string'
+        ? getCountryPppFactor(countryPppOrCode)
+        : countryPppOrCode;
+    return value * factor;
   }
   return value;
 }

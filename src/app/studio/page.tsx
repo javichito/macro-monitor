@@ -47,7 +47,7 @@ export default function GraphStudioPage() {
       </div>
 
       {/* Interactive Economic Time Machine */}
-      <TimelineControls />
+      <TimelineControls showPppLens />
 
       {/* Universal Metric & Custom Graph Builder Studio */}
       <CustomGraphBuilderStudio />

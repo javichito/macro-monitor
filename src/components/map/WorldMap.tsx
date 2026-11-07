@@ -5,7 +5,7 @@ import { COUNTRIES_DATA, ECONOMIC_BLOCS } from '../../data/country-metrics';
 import { WORLD_COUNTRIES_PATHS, SPHERE_PATH, GRATICULE_PATH } from './world-paths';
 import { CountryProfile, Granularity, CurrencyPerspective } from '../../lib/types';
 import { calculateCountryWealthDistribution } from '../../lib/calculations';
-import { formatCurrency, formatPercent, adjustValue } from '../../lib/formatters';
+import { formatCurrency, formatPercent, adjustValue, getBlocPppFactor } from '../../lib/formatters';
 import { MapPin, Search, Info, Globe, Plus, Minus, RotateCcw, ArrowLeftRight, Share2, Check, Layers } from 'lucide-react';
 import Link from 'next/link';
 import { useApp } from '../../context/AppContext';
@@ -169,15 +169,15 @@ export function WorldMap({
     const historyData = country.history[selectedYear] || country.history[2026] || country.history[2025];
     switch (metric) {
       case 'totalWealth':
-        return historyData.totalWealthTrillion;
+        return adjustValue(historyData.totalWealthTrillion, selectedYear, currencyPerspective, country.code);
       case 'wealthPerAdult':
-        return historyData.wealthPerAdultUSD;
+        return adjustValue(historyData.wealthPerAdultUSD, selectedYear, currencyPerspective, country.code);
       case 'medianWealth':
-        return historyData.medianWealthUSD;
+        return adjustValue(historyData.medianWealthUSD, selectedYear, currencyPerspective, country.code);
       case 'gdp':
-        return historyData.gdpTrillionUSD;
+        return adjustValue(historyData.gdpTrillionUSD, selectedYear, currencyPerspective, country.code);
       case 'gdpPerCapita':
-        return historyData.gdpPerCapitaUSD;
+        return adjustValue(historyData.gdpPerCapitaUSD, selectedYear, currencyPerspective, country.code);
       case 'realGdpGrowth':
         return historyData.realGdpGrowth;
       case 'inflation':
@@ -207,17 +207,17 @@ export function WorldMap({
       minVal: Math.min(...values),
       maxVal: Math.max(...values),
     };
-  }, [activeMetric, selectedYear]);
+  }, [activeMetric, selectedYear, currencyPerspective]);
 
   const formatMetricScaleValue = (rawVal: number, metric: MapMetricType): string => {
     switch (metric) {
       case 'totalWealth':
       case 'gdp':
-        return formatCurrency(adjustValue(rawVal, selectedYear, currencyPerspective) * 1_000_000_000_000, { compact: true });
+        return formatCurrency(rawVal * 1_000_000_000_000, { compact: true });
       case 'wealthPerAdult':
       case 'medianWealth':
       case 'gdpPerCapita':
-        return formatCurrency(adjustValue(rawVal, selectedYear, currencyPerspective), { compact: true });
+        return formatCurrency(rawVal, { compact: true });
       case 'realGdpGrowth':
       case 'fiscalBalance':
       case 'currentAccount':
@@ -866,19 +866,19 @@ export function WorldMap({
                 <div className="flex justify-between items-center py-1 border-b border-slate-100 dark:border-white/[0.05]">
                   <span className="text-slate-600 dark:text-slate-300">Total Net Wealth:</span>
                   <span className="font-mono-tabular font-bold text-emerald-600 dark:text-emerald-400">
-                    {formatCurrency(adjustValue(activeCountryMetrics.totalWealthTrillion, selectedYear, currencyPerspective) * 1_000_000_000_000, { compact: true })}
+                    {formatCurrency(adjustValue(activeCountryMetrics.totalWealthTrillion, selectedYear, currencyPerspective, selectedCountry.code) * 1_000_000_000_000, { compact: true })}
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-slate-100 dark:border-white/[0.05]">
                   <span className="text-slate-600 dark:text-slate-300">Wealth per Adult (Mean):</span>
                   <span className="font-mono-tabular font-bold text-slate-900 dark:text-white">
-                    {formatCurrency(adjustValue(activeCountryMetrics.wealthPerAdultUSD, selectedYear, currencyPerspective), { compact: true })}
+                    {formatCurrency(adjustValue(activeCountryMetrics.wealthPerAdultUSD, selectedYear, currencyPerspective, selectedCountry.code), { compact: true })}
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-slate-100 dark:border-white/[0.05]">
                   <span className="text-slate-600 dark:text-slate-300">Median Wealth (50th %):</span>
                   <span className="font-mono-tabular font-bold text-sky-600 dark:text-sky-400">
-                    {formatCurrency(adjustValue(activeCountryMetrics.medianWealthUSD, selectedYear, currencyPerspective), { compact: true })}
+                    {formatCurrency(adjustValue(activeCountryMetrics.medianWealthUSD, selectedYear, currencyPerspective, selectedCountry.code), { compact: true })}
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-1">
@@ -940,7 +940,7 @@ export function WorldMap({
                 <div className="flex justify-between items-center py-1 border-b border-slate-100 dark:border-white/[0.05]">
                   <span className="text-slate-600 dark:text-slate-300">Annual Gross GDP / Per Cap:</span>
                   <span className="font-mono-tabular font-semibold text-slate-800 dark:text-slate-200">
-                    {formatCurrency(adjustValue(activeCountryMetrics.gdpTrillionUSD, selectedYear, currencyPerspective) * 1_000_000_000_000, { compact: true })} • {formatCurrency(adjustValue(activeCountryMetrics.gdpPerCapitaUSD, selectedYear, currencyPerspective), { compact: true })}
+                    {formatCurrency(adjustValue(activeCountryMetrics.gdpTrillionUSD, selectedYear, currencyPerspective, selectedCountry.code) * 1_000_000_000_000, { compact: true })} • {formatCurrency(adjustValue(activeCountryMetrics.gdpPerCapitaUSD, selectedYear, currencyPerspective, selectedCountry.code), { compact: true })}
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-slate-100 dark:border-white/[0.05]">
@@ -1054,12 +1054,13 @@ export function WorldMap({
               {/* Bloc Metrics */}
               {(() => {
                 const blocMetric = selectedBloc.history[selectedYear] || selectedBloc.history[2026] || selectedBloc.history[2025];
+                const blocPppFactor = getBlocPppFactor(selectedBloc.memberCodes);
                 return (
                   <div className="space-y-2 border-t border-slate-200/80 dark:border-white/[0.08] pt-3 text-xs sm:text-sm">
                     <div className="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-white/[0.05]">
                       <span className="text-slate-600 dark:text-slate-300">Total Bloc Wealth:</span>
                       <span className="font-mono-tabular font-bold text-emerald-600 dark:text-emerald-400">
-                        {formatCurrency(adjustValue(blocMetric.totalWealthTrillion, selectedYear, currencyPerspective) * 1_000_000_000_000, { compact: true })}
+                        {formatCurrency(adjustValue(blocMetric.totalWealthTrillion, selectedYear, currencyPerspective, blocPppFactor) * 1_000_000_000_000, { compact: true })}
                       </span>
                     </div>
                     <div className="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-white/[0.05]">
@@ -1083,7 +1084,7 @@ export function WorldMap({
                     <div className="flex justify-between items-center py-1.5">
                       <span className="text-slate-600 dark:text-slate-300">Average Wealth / Adult:</span>
                       <span className="font-mono-tabular font-semibold text-slate-800 dark:text-slate-200">
-                        {formatCurrency(adjustValue(blocMetric.wealthPerAdultUSD, selectedYear, currencyPerspective), { compact: true })}
+                        {formatCurrency(adjustValue(blocMetric.wealthPerAdultUSD, selectedYear, currencyPerspective, blocPppFactor), { compact: true })}
                       </span>
                     </div>
                   </div>

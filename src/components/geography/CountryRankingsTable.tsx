@@ -178,22 +178,26 @@ export function CountryRankingsTable({
       const adjMean = adjustValue(
         metrics.wealthPerAdultUSD,
         selectedYear,
-        currencyPerspective
+        currencyPerspective,
+        country.code
       );
       const adjMedian = adjustValue(
         metrics.medianWealthUSD,
         selectedYear,
-        currencyPerspective
+        currencyPerspective,
+        country.code
       );
       const adjTotal = adjustValue(
         metrics.totalWealthTrillion,
         selectedYear,
-        currencyPerspective
+        currencyPerspective,
+        country.code
       );
       const adjGdpPerCap = adjustValue(
         metrics.gdpPerCapitaUSD,
         selectedYear,
-        currencyPerspective
+        currencyPerspective,
+        country.code
       );
       const skew = adjMedian > 0 ? adjMean / adjMedian : 0;
       const wealthDist = calculateCountryWealthDistribution(country, selectedYear);
@@ -390,7 +394,14 @@ export function CountryRankingsTable({
                 meanWealthPerAdultUsd: Math.round(row.adjMean),
                 medianWealthPerAdultUsd: Math.round(row.adjMedian),
                 totalWealthTrillionUsd: Number(row.adjTotal.toFixed(2)),
-                gdpTrillionUsd: row.metrics.gdpTrillionUSD,
+                gdpTrillionUsd: Number(
+                  adjustValue(
+                    row.metrics.gdpTrillionUSD,
+                    selectedYear,
+                    currencyPerspective,
+                    row.country.code
+                  ).toFixed(2)
+                ),
                 gdpPerCapitaUsd: Math.round(row.adjGdpPerCap),
                 realGdpGrowthPercent: row.realGdpGrowth,
                 inflationRatePercent: row.inflationRate,

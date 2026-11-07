@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Play, Pause, RotateCcw, Clock, CheckCircle2, Compass } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { CurrencyPerspective } from '../../lib/types';
+import { getCpiFactorTo2026 } from '../../lib/formatters';
 
 interface HistoricalFlashpoint {
   year: number;
@@ -50,15 +52,48 @@ const HISTORICAL_FLASHPOINTS: HistoricalFlashpoint[] = [
   },
 ];
 
-export function TimelineControls() {
+interface TimelineControlsProps {
+  /**
+   * Whether to show the Dollar Valuation Lens toggle (Nominal vs Real 2026 USD).
+   * Omit or set false on pages where metrics are strictly rates/spreads (/macro).
+   */
+  showCurrencyLens?: boolean;
+  /**
+   * Whether to include the Local PPP option (used on Country Arena / sovereign views
+   * where country-specific price level adjustments apply).
+   */
+  showPppLens?: boolean;
+}
+
+export function TimelineControls({
+  showCurrencyLens = true,
+  showPppLens = false,
+}: TimelineControlsProps = {}) {
   const {
     selectedYear,
     setSelectedYear,
+    currencyPerspective,
+    setCurrencyPerspective,
     isPlayingTimeline,
     setIsPlayingTimeline,
     availableYears,
     unlockedEras,
   } = useApp();
+
+  /*
+   * Prevent global aggregate pages from staying stuck in PPP mode after navigating
+   * away from Country Arena, since PPP is only meaningful for sovereign comparisons.
+   */
+  useEffect(() => {
+    if (!showPppLens && currencyPerspective === 'ppp') {
+      setCurrencyPerspective('nominal');
+    }
+  }, [showPppLens, currencyPerspective, setCurrencyPerspective]);
+
+  const cpiFactor = getCpiFactorTo2026(selectedYear);
+  const lensModes: CurrencyPerspective[] = showPppLens
+    ? ['nominal', 'real', 'ppp']
+    : ['nominal', 'real'];
 
   const getEraStory = (year: number): { title: string; takeaway: string } => {
     const exact = HISTORICAL_FLASHPOINTS.find((f) => f.year === year);
@@ -112,11 +147,55 @@ export function TimelineControls() {
           </span>
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] font-mono-tabular text-slate-500 dark:text-slate-400">
-          <Compass className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
-          <span>
-            Eras Explored: <strong className="text-slate-800 dark:text-slate-200">{unlockedEras.length}/{availableYears.length}</strong>
-          </span>
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+          {showCurrencyLens && (
+            <div
+              role="group"
+              aria-label="Dollar valuation lens"
+              className="inline-flex items-center rounded-xl p-0.5 bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.09] text-xs"
+            >
+              {lensModes.map((mode) => {
+                const isSelected = currencyPerspective === mode;
+                const label =
+                  mode === 'nominal'
+                    ? 'Nominal USD'
+                    : mode === 'real'
+                    ? selectedYear < 2026
+                      ? `Real 2026 (×${cpiFactor.toFixed(2)})`
+                      : 'Real 2026 USD'
+                    : 'Local PPP';
+                return (
+                  <button
+                    key={mode}
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() => setCurrencyPerspective(mode)}
+                    title={
+                      mode === 'nominal'
+                        ? `Nominal USD: Raw sticker price in ${selectedYear}`
+                        : mode === 'real'
+                        ? `Real 2026 USD: Deflated for cumulative CPI inflation (${cpiFactor.toFixed(2)}× from ${selectedYear} to 2026)`
+                        : 'Local PPP: Adjusted for sovereign domestic price levels (International Dollars)'
+                    }
+                    className={`rounded-lg px-2.5 py-1 text-[10px] sm:text-[11px] font-mono-tabular font-bold transition-all duration-150 cursor-pointer ${
+                      isSelected
+                        ? 'bg-sky-500 text-white shadow-sm'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="flex items-center gap-2 text-[11px] font-mono-tabular text-slate-500 dark:text-slate-400">
+            <Compass className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+            <span>
+              Eras Explored: <strong className="text-slate-800 dark:text-slate-200">{unlockedEras.length}/{availableYears.length}</strong>
+            </span>
+          </div>
         </div>
       </div>
 
