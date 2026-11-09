@@ -88,8 +88,17 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const syncMetaColorScheme = (pref: ThemePreference) => {
+    if (typeof document === 'undefined') return;
+    const metaColorScheme = document.querySelector('meta[name="color-scheme"]');
+    if (metaColorScheme) {
+      metaColorScheme.setAttribute('content', pref === 'system' ? 'light dark' : pref);
+    }
+  };
+
   const setThemePreference = (pref: ThemePreference) => {
     setThemePreferenceState(pref);
+    syncMetaColorScheme(pref);
     try {
       localStorage.setItem('macro_theme', pref);
     } catch (e) {
@@ -132,6 +141,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     } catch (e) {}
 
     setThemePreferenceState(savedPref);
+    syncMetaColorScheme(savedPref);
 
     const mediaQuery =
       typeof window.matchMedia === 'function'

@@ -1,11 +1,54 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Globe2, TrendingUp, Layers, MapPin, BarChart3, Sliders, Sun, Moon, Monitor, Compass, Award } from 'lucide-react';
-import { useApp } from '../../context/AppContext';
+import {
+  Globe2,
+  TrendingUp,
+  Layers,
+  MapPin,
+  BarChart3,
+  Sliders,
+  Sun,
+  Moon,
+  Monitor,
+  Compass,
+  Award,
+  Check,
+} from 'lucide-react';
+import { useApp, ThemePreference } from '../../context/AppContext';
 import { MarketPulseTicker } from './MarketPulseTicker';
+
+const THEME_OPTIONS: {
+  value: ThemePreference;
+  label: string;
+  sublabel: string;
+  ariaLabel: string;
+  icon: typeof Monitor;
+}[] = [
+  {
+    value: 'system',
+    label: 'System',
+    sublabel: 'Follow device setting',
+    ariaLabel: 'Auto System Theme',
+    icon: Monitor,
+  },
+  {
+    value: 'light',
+    label: 'Light',
+    sublabel: 'Editorial Paper',
+    ariaLabel: 'Light Mode',
+    icon: Sun,
+  },
+  {
+    value: 'dark',
+    label: 'Dark',
+    sublabel: 'Warm Ink Studio',
+    ariaLabel: 'Dark Mode',
+    icon: Moon,
+  },
+];
 
 export function Header() {
   const pathname = usePathname();
@@ -17,6 +60,46 @@ export function Header() {
     discoveryScore,
     explorerRank,
   } = useApp();
+
+  const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
+  const themeMenuRef = useRef<HTMLDivElement>(null);
+
+  const activeThemeOption =
+    THEME_OPTIONS.find((opt) => opt.value === themePreference) ?? THEME_OPTIONS[0];
+  const ActiveThemeIcon = activeThemeOption.icon;
+
+  /*
+   * Dismiss appearance popover on outside pointer interaction or Escape key so
+   * the selector behaves like a native disclosure overlay without trapping focus.
+   */
+  useEffect(() => {
+    if (!isThemeMenuOpen) return;
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      if (
+        themeMenuRef.current &&
+        event.target instanceof Node &&
+        !themeMenuRef.current.contains(event.target)
+      ) {
+        setIsThemeMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsThemeMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isThemeMenuOpen]);
 
   const navLinks = [
     { href: '/', label: 'Earth Pulse', icon: Globe2 },
@@ -82,60 +165,67 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Controls: Appearance Mode */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* Theme Mode Switcher: System / Light / Dark */}
-          <div
-            role="radiogroup"
-            aria-label="Appearance Mode"
-            className="flex items-center rounded-xl p-0.5 sm:p-1 bg-white/[0.05] border border-white/[0.09] text-xs shrink-0"
+        {/* Action Controls: Appearance Mode Popover Selector */}
+        <div ref={themeMenuRef} className="relative flex items-center shrink-0">
+          <button
+            type="button"
+            aria-expanded={isThemeMenuOpen}
+            aria-label={`Appearance theme: ${activeThemeOption.label}`}
+            title={`Theme: ${activeThemeOption.label} (${activeThemeOption.sublabel})`}
+            onClick={() => setIsThemeMenuOpen((prev) => !prev)}
+            className="tactile-button flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.05] hover:bg-white/[0.09] border border-white/[0.09] text-slate-200 transition-colors cursor-pointer"
           >
-            <button
-              type="button"
-              role="radio"
-              aria-checked={themePreference === 'system'}
-              onClick={() => setThemePreference('system')}
-              aria-label="Auto System Theme"
-              title="System: Follow device settings automatically"
-              className={`rounded-lg p-1.5 min-h-[34px] min-w-[34px] sm:min-h-[30px] sm:min-w-[30px] flex items-center justify-center transition-all duration-150 cursor-pointer ${
-                themePreference === 'system'
-                  ? 'bg-white text-slate-950 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
+            <ActiveThemeIcon className="h-4 w-4 text-amber-400 shrink-0" />
+          </button>
+
+          {isThemeMenuOpen && (
+            <div
+              role="radiogroup"
+              aria-label="Appearance Mode"
+              className="apple-card absolute right-0 top-full mt-2 w-52 p-1.5 z-50 shadow-2xl"
             >
-              <Monitor className="h-3.5 w-3.5" />
-            </button>
-            <button
-              type="button"
-              role="radio"
-              aria-checked={themePreference === 'light'}
-              onClick={() => setThemePreference('light')}
-              aria-label="Light Mode"
-              title="Light Mode (Editorial Paper)"
-              className={`rounded-lg p-1.5 min-h-[34px] min-w-[34px] sm:min-h-[30px] sm:min-w-[30px] flex items-center justify-center transition-all duration-150 cursor-pointer ${
-                themePreference === 'light'
-                  ? 'bg-white text-slate-950 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <Sun className="h-3.5 w-3.5" />
-            </button>
-            <button
-              type="button"
-              role="radio"
-              aria-checked={themePreference === 'dark'}
-              onClick={() => setThemePreference('dark')}
-              aria-label="Dark Mode"
-              title="Dark Mode (Warm Ink Studio)"
-              className={`rounded-lg p-1.5 min-h-[34px] min-w-[34px] sm:min-h-[30px] sm:min-w-[30px] flex items-center justify-center transition-all duration-150 cursor-pointer ${
-                themePreference === 'dark'
-                  ? 'bg-white text-slate-950 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <Moon className="h-3.5 w-3.5" />
-            </button>
-          </div>
+              <div className="px-2.5 py-1 text-[10px] font-mono-tabular uppercase tracking-wider text-slate-400">
+                Appearance · Device Saved
+              </div>
+              {THEME_OPTIONS.map((option) => {
+                const OptionIcon = option.icon;
+                const isSelected = themePreference === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    role="radio"
+                    aria-checked={isSelected}
+                    aria-label={option.ariaLabel}
+                    onClick={() => {
+                      setThemePreference(option.value);
+                      setIsThemeMenuOpen(false);
+                    }}
+                    className={`w-full flex items-center justify-between gap-2.5 rounded-xl px-2.5 py-2 text-left text-xs transition-colors cursor-pointer ${
+                      isSelected
+                        ? 'bg-sky-500/15 text-sky-300 font-semibold border border-sky-500/30'
+                        : 'text-slate-300 hover:bg-white/[0.06] hover:text-white border border-transparent'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <OptionIcon
+                        className={`h-3.5 w-3.5 shrink-0 ${
+                          isSelected ? 'text-sky-400' : 'text-slate-400'
+                        }`}
+                      />
+                      <div>
+                        <div className="leading-tight">{option.label}</div>
+                        <div className="text-[10px] font-normal text-slate-400 leading-tight mt-0.5">
+                          {option.sublabel}
+                        </div>
+                      </div>
+                    </div>
+                    {isSelected && <Check className="h-3.5 w-3.5 text-sky-400 shrink-0" />}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
 

@@ -98,24 +98,44 @@ describe('Theme Context & Device Color Scheme Synchronization', () => {
 });
 
 describe('Header Appearance Controls', () => {
-  it('renders all 3 segmented appearance options in the header', () => {
+  beforeEach(() => {
+    localStorage.clear();
+    document.documentElement.className = '';
+    document.documentElement.removeAttribute('data-theme');
+  });
+
+  it('defaults to System on the selector trigger and reveals all 3 options when clicked', () => {
     render(
       <AppProvider>
         <Header />
       </AppProvider>
     );
 
+    const trigger = screen.getByRole('button', { name: /Appearance theme: System/i });
+    expect(trigger).toBeDefined();
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
+
+    act(() => {
+      fireEvent.click(trigger);
+    });
+
+    expect(trigger.getAttribute('aria-expanded')).toBe('true');
     expect(screen.getByLabelText('Auto System Theme')).toBeDefined();
     expect(screen.getByLabelText('Light Mode')).toBeDefined();
     expect(screen.getByLabelText('Dark Mode')).toBeDefined();
   });
 
-  it('allows clicking Light Mode button in Header to update DOM', () => {
+  it('allows selecting Light Mode from the popover selector, persists to localStorage, and closes the menu', () => {
     render(
       <AppProvider>
         <Header />
       </AppProvider>
     );
+
+    const trigger = screen.getByRole('button', { name: /Appearance theme: System/i });
+    act(() => {
+      fireEvent.click(trigger);
+    });
 
     const lightBtn = screen.getByLabelText('Light Mode');
     act(() => {
@@ -124,5 +144,21 @@ describe('Header Appearance Controls', () => {
 
     expect(document.documentElement.classList.contains('light')).toBe(true);
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+    expect(localStorage.getItem('macro_theme')).toBe('light');
+    expect(screen.getByRole('button', { name: /Appearance theme: Light/i }).getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('hydrates stored theme preference from device localStorage on initial mount', () => {
+    localStorage.setItem('macro_theme', 'dark');
+
+    render(
+      <AppProvider>
+        <Header />
+      </AppProvider>
+    );
+
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    expect(screen.getByRole('button', { name: /Appearance theme: Dark/i })).toBeDefined();
   });
 });

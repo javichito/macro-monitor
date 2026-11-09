@@ -41,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        <meta name="color-scheme" content="light dark" />
         {/*
          * Next.js beforeInteractive strategy executes synchronously prior to first-party scripts
          * to eliminate dark/light theme flash of unstyled content while complying with React 19 script hoisting.
@@ -57,6 +58,10 @@ export default function RootLayout({
                   var theme = isDark ? 'dark' : 'light';
                   document.documentElement.classList.add(theme);
                   document.documentElement.setAttribute('data-theme', theme);
+                  var metaScheme = document.querySelector('meta[name="color-scheme"]');
+                  if (metaScheme) {
+                    metaScheme.setAttribute('content', stored === 'light' || stored === 'dark' ? stored : 'light dark');
+                  }
                 } catch (e) {}
               })();
             `,

@@ -9,9 +9,16 @@
 }
 
 @layer base {
-  :root,
+  :root {
+    color-scheme: light dark;
+  }
+
   html.dark {
     color-scheme: dark;
+  }
+
+  :root,
+  html.dark {
     /* Warm Ink Studio canvas foundations — tactile and editorial rather than sterile SaaS black */
     --bg-canvas: #090d16;
     --bg-surface: rgba(255, 255, 255, 0.045);
