@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-11-27T03:30:56.859Z",
-  "fedAssetsBillion": 6741,
-  "tgaBillion": 917,
+  "timestamp": "2026-11-28T03:07:52.679Z",
+  "fedAssetsBillion": 6732,
+  "tgaBillion": 902,
   "reverseRepoBillion": 0,
-  "netLiquidityTrillion": 5.82,
-  "weeklyDeltaBillion": -20,
+  "netLiquidityTrillion": 5.83,
+  "weeklyDeltaBillion": 10,
   "triggers": {
     "rrpDepleted": true,
     "rrpBufferLevelBillion": 0,
     "impulseDirection": "neutral",
-    "impulseBillion": -20,
+    "impulseBillion": 10,
     "inflectionBreached": true
   },
   "activeAlerts": [
